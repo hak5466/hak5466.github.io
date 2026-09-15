@@ -1,0 +1,726 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>품사 표본실</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#EDE6D6;
+  --bg-card:#F8F3E8;
+  --bg-card-2:#F1EADA;
+  --ink:#2A2420;
+  --ink-soft:#5B5147;
+  --ink-faint:#8A7F6E;
+  --line:#C9BFA9;
+  --accent:#2F4B3C;
+  --accent-ink:#F3EEDF;
+  --wrong:#8B3A2B;
+  --right:#2F6B4A;
+  --gold:#A6752E;
+  --shadow:rgba(42,36,32,.16);
+  --paper-grain: radial-gradient(circle at 20% 30%, rgba(42,36,32,.025) 0, transparent 45%),
+                 radial-gradient(circle at 80% 70%, rgba(42,36,32,.02) 0, transparent 50%);
+
+  --c-noun:#8B5A3E;
+  --c-pronoun:#6E5B9E;
+  --c-verb:#3F7A5C;
+  --c-adjective:#A6752E;
+  --c-adverb:#3E6E85;
+  --c-preposition:#7A4B6E;
+  --c-conjunction:#5B6B3A;
+  --c-interjection:#B5553D;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181510;
+    --bg-card:#211C16;
+    --bg-card-2:#26201A;
+    --ink:#EDE4D3;
+    --ink-soft:#B9AD97;
+    --ink-faint:#7C7263;
+    --line:#3A322A;
+    --accent:#7FA88E;
+    --accent-ink:#151714;
+    --wrong:#D98A78;
+    --right:#7FBE99;
+    --gold:#D6A85C;
+    --shadow:rgba(0,0,0,.4);
+
+    --c-noun:#C79268;
+    --c-pronoun:#A996D6;
+    --c-verb:#6FBF95;
+    --c-adjective:#D6A85C;
+    --c-adverb:#7FB8D6;
+    --c-preposition:#C08CB4;
+    --c-conjunction:#A3B87A;
+    --c-interjection:#E08D77;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181510;
+  --bg-card:#211C16;
+  --bg-card-2:#26201A;
+  --ink:#EDE4D3;
+  --ink-soft:#B9AD97;
+  --ink-faint:#7C7263;
+  --line:#3A322A;
+  --accent:#7FA88E;
+  --accent-ink:#151714;
+  --wrong:#D98A78;
+  --right:#7FBE99;
+  --gold:#D6A85C;
+  --shadow:rgba(0,0,0,.4);
+
+  --c-noun:#C79268;
+  --c-pronoun:#A996D6;
+  --c-verb:#6FBF95;
+  --c-adjective:#D6A85C;
+  --c-adverb:#7FB8D6;
+  --c-preposition:#C08CB4;
+  --c-conjunction:#A3B87A;
+  --c-interjection:#E08D77;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg) var(--paper-grain);
+  color:var(--ink);
+  font-family:'Noto Sans KR',system-ui,sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:36px 16px 60px;
+}
+.wrap{width:100%;max-width:640px;}
+
+.masthead{
+  text-align:center;
+  border-bottom:1px solid var(--line);
+  padding-bottom:18px;
+  margin-bottom:22px;
+}
+.masthead .kicker{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  color:var(--ink-faint);
+  text-transform:uppercase;
+}
+.masthead h1{
+  font-family:'Noto Serif KR',serif;
+  font-weight:700;
+  font-size:clamp(26px,5vw,34px);
+  margin:6px 0 4px;
+  text-wrap:balance;
+  color:var(--ink);
+}
+.masthead .sub{
+  font-size:13px;
+  color:var(--ink-soft);
+}
+
+/* ---- screens ---- */
+.screen{display:none;}
+.screen.active{display:block;}
+
+/* start screen */
+.intro-card{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:28px 26px;
+  box-shadow:0 2px 0 var(--line), 0 10px 24px var(--shadow);
+}
+.intro-card p{
+  font-size:14.5px;
+  line-height:1.75;
+  color:var(--ink-soft);
+  margin:0 0 14px;
+}
+.intro-card p strong{color:var(--ink);font-weight:700;}
+.pos-legend{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin:18px 0 22px;
+}
+.pos-legend .chip{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  text-align:center;
+  padding:7px 4px;
+  border:1px solid var(--line);
+  border-radius:2px;
+  color:var(--ink);
+  background:var(--bg-card-2);
+  position:relative;
+}
+.pos-legend .chip::before{
+  content:'';
+  display:block;
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--dot);
+  margin:0 auto 5px;
+}
+.best-row{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--ink-faint);
+  margin-bottom:16px;
+}
+.best-row b{color:var(--gold);}
+
+button.primary{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;
+  font-size:13.5px;
+  letter-spacing:.04em;
+  width:100%;
+  padding:14px;
+  background:var(--accent);
+  color:var(--accent-ink);
+  border:none;
+  border-radius:2px;
+  cursor:pointer;
+  transition:transform .12s ease, opacity .12s ease;
+}
+button.primary:hover{opacity:.92;}
+button.primary:active{transform:translateY(1px);}
+button.primary:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* game hud */
+.hud{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--ink-faint);
+  margin-bottom:10px;
+  letter-spacing:.03em;
+}
+.hud .num{color:var(--ink);font-weight:600;}
+.hud .streak{color:var(--gold);}
+
+.timer-track{
+  height:3px;
+  background:var(--line);
+  border-radius:2px;
+  overflow:hidden;
+  margin-bottom:18px;
+}
+.timer-fill{
+  height:100%;
+  width:100%;
+  background:var(--gold);
+  transform-origin:left;
+  transition:width linear;
+}
+
+/* specimen card */
+.specimen{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:30px 26px 22px;
+  box-shadow:0 2px 0 var(--line), 0 10px 24px var(--shadow);
+  position:relative;
+  margin-bottom:20px;
+}
+.specimen .tag-no{
+  position:absolute;
+  top:14px;
+  right:16px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  color:var(--ink-faint);
+  letter-spacing:.08em;
+}
+.specimen .instruction{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:14px;
+}
+.specimen .sentence{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:clamp(16px,3.6vw,19px);
+  line-height:1.85;
+  color:var(--ink);
+}
+.specimen .sentence .target{
+  border-bottom:2px solid var(--gold);
+  padding:1px 2px;
+  font-weight:600;
+  position:relative;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+  margin-bottom:16px;
+}
+.pos-btn{
+  --dot: #999;
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:12px 6px 10px;
+  cursor:pointer;
+  text-align:center;
+  transition:transform .08s ease, border-color .12s ease, background .12s ease;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);
+}
+.pos-btn:hover{border-color:var(--dot);transform:translateY(-1px);}
+.pos-btn:active{transform:translateY(0);}
+.pos-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.pos-btn .swatch{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--dot);
+  margin:0 auto 6px;
+}
+.pos-btn .label{font-size:13.5px;font-weight:700;color:var(--ink);}
+.pos-btn .def{
+  font-size:10px;
+  color:var(--ink-faint);
+  margin-top:3px;
+  line-height:1.4;
+}
+.pos-btn:disabled{cursor:default;opacity:.55;}
+.pos-btn.correct{border-color:var(--right);background:color-mix(in srgb, var(--right) 14%, var(--bg-card));}
+.pos-btn.wrong{border-color:var(--wrong);background:color-mix(in srgb, var(--wrong) 14%, var(--bg-card));}
+
+.feedback{
+  min-height:64px;
+  border-left:3px solid var(--line);
+  padding:10px 14px;
+  font-size:13px;
+  line-height:1.65;
+  color:var(--ink-soft);
+  background:var(--bg-card-2);
+  border-radius:0 2px 2px 0;
+  transition:border-color .15s ease;
+}
+.feedback.correct{border-left-color:var(--right);}
+.feedback.incorrect{border-left-color:var(--wrong);}
+.feedback .verdict{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  font-size:11.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+  display:block;
+}
+.feedback.correct .verdict{color:var(--right);}
+.feedback.incorrect .verdict{color:var(--wrong);}
+.feedback .empty{color:var(--ink-faint);font-style:italic;}
+
+/* results */
+.result-card{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:32px 26px;
+  text-align:center;
+  box-shadow:0 2px 0 var(--line), 0 10px 24px var(--shadow);
+}
+.result-card .grade{
+  font-family:'Noto Serif KR',serif;
+  font-weight:700;
+  font-size:24px;
+  margin:6px 0 2px;
+}
+.result-card .score-big{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:44px;
+  font-weight:600;
+  margin:14px 0 2px;
+  font-variant-numeric:tabular-nums;
+}
+.result-card .score-of{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  color:var(--ink-faint);
+  margin-bottom:18px;
+}
+.stat-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:18px 0 24px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.stat-row div{
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:10px 4px;
+  background:var(--bg-card-2);
+}
+.stat-row .n{font-size:18px;font-weight:600;color:var(--ink);}
+.stat-row .l{font-size:10px;color:var(--ink-faint);margin-top:2px;letter-spacing:.04em;}
+
+@media (prefers-reduced-motion: reduce){
+  .timer-fill{transition:none;}
+  .pos-btn, button.primary{transition:none;}
+}
+
+footer.credit{
+  text-align:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  color:var(--ink-faint);
+  margin-top:26px;
+  letter-spacing:.05em;
+}
+</style>
+
+<div class="wrap">
+  <div class="masthead">
+    <div class="kicker">GRAMMAR SPECIMEN ROOM · No. 8</div>
+    <h1>품사 표본실</h1>
+    <div class="sub">문장 속 단어를 채집해 여덟 가지 품사로 분류하세요</div>
+  </div>
+
+  <!-- START -->
+  <section class="screen active" id="screen-start">
+    <div class="intro-card">
+      <p>영어 문장 속에 <strong>밑줄 친 단어</strong>가 하나씩 등장합니다. 그 단어가 어떤 <strong>품사(品詞)</strong>에 속하는지 12초 안에 골라 표본함에 분류하세요.</p>
+      <div class="pos-legend" id="legend"></div>
+      <div class="best-row">역대 최고 기록: <b id="best-display">아직 없음</b></div>
+      <button class="primary" id="btn-start" type="button">채집 시작 · 16문항</button>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section class="screen" id="screen-game">
+    <div class="hud">
+      <span>표본 <span class="num" id="hud-round">1</span>/<span id="hud-total">16</span></span>
+      <span class="streak" id="hud-streak"></span>
+      <span>점수 <span class="num" id="hud-score">0</span></span>
+    </div>
+    <div class="timer-track"><div class="timer-fill" id="timer-fill"></div></div>
+
+    <div class="specimen">
+      <div class="tag-no" id="tag-no">SPEC. 01</div>
+      <div class="instruction">밑줄 친 단어의 품사는?</div>
+      <div class="sentence" id="sentence"></div>
+    </div>
+
+    <div class="grid" id="pos-grid"></div>
+
+    <div class="feedback" id="feedback"><span class="empty">품사를 선택하면 해설이 여기에 표시됩니다.</span></div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="screen-result">
+    <div class="result-card">
+      <div class="kicker" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--ink-faint);">채집 결과 보고서</div>
+      <div class="grade" id="result-grade">-</div>
+      <div class="score-big" id="result-score">0</div>
+      <div class="score-of">TOTAL SCORE</div>
+      <div class="stat-row">
+        <div><div class="n" id="stat-correct">0/0</div><div class="l">정답 수</div></div>
+        <div><div class="n" id="stat-acc">0%</div><div class="l">정확도</div></div>
+        <div><div class="n" id="stat-streak">0</div><div class="l">최고 연속</div></div>
+      </div>
+      <button class="primary" id="btn-retry" type="button">다시 채집하기</button>
+    </div>
+  </section>
+
+  <footer class="credit">HANDLE SPECIMENS WITH GRAMMATICAL CARE</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var POS = [
+    {code:"noun", label:"명사", def:"사람·사물의 이름", color:"var(--c-noun)"},
+    {code:"pronoun", label:"대명사", def:"명사를 대신함", color:"var(--c-pronoun)"},
+    {code:"verb", label:"동사", def:"동작·상태", color:"var(--c-verb)"},
+    {code:"adjective", label:"형용사", def:"명사를 꾸밈", color:"var(--c-adjective)"},
+    {code:"adverb", label:"부사", def:"동사·형용사를 꾸밈", color:"var(--c-adverb)"},
+    {code:"preposition", label:"전치사", def:"명사 앞, 관계 표시", color:"var(--c-preposition)"},
+    {code:"conjunction", label:"접속사", def:"단어·문장을 이음", color:"var(--c-conjunction)"},
+    {code:"interjection", label:"감탄사", def:"놀람·감정 표현", color:"var(--c-interjection)"}
+  ];
+  var POS_MAP = {};
+  POS.forEach(function(p){ POS_MAP[p.code] = p; });
+
+  var ITEMS = [
+    {s:"The **teacher** wrote the answer on the board.", pos:"noun", ex:"'teacher'는 사람을 가리키는 이름씨이므로 명사입니다."},
+    {s:"She poured the coffee into a large **mug**.", pos:"noun", ex:"'mug'는 사물의 이름을 나타내는 명사입니다."},
+    {s:"Honesty is the best **policy**.", pos:"noun", ex:"'policy'는 눈에 보이지 않는 개념을 가리키는 추상명사입니다."},
+    {s:"A flock of **birds** flew over the lake.", pos:"noun", ex:"'birds'는 동물을 가리키는 명사입니다."},
+    {s:"His **kindness** touched everyone in the room.", pos:"noun", ex:"'kindness'는 성질을 이름으로 나타낸 추상명사입니다."},
+
+    {s:"**She** finished her homework before dinner.", pos:"pronoun", ex:"'She'는 특정 사람의 이름 대신 쓰인 대명사입니다."},
+    {s:"This gift is for **you**.", pos:"pronoun", ex:"'you'는 상대방을 가리키는 인칭대명사입니다."},
+    {s:"**Somebody** left the door open.", pos:"pronoun", ex:"'Somebody'는 정해지지 않은 사람을 가리키는 부정대명사입니다."},
+    {s:"**Those** are my favorite shoes.", pos:"pronoun", ex:"'Those'는 앞서 나온 대상을 가리키는 지시대명사입니다."},
+    {s:"I don't know **who** called earlier.", pos:"pronoun", ex:"'who'는 사람을 가리키는 의문대명사입니다."},
+
+    {s:"The children **play** in the park every afternoon.", pos:"verb", ex:"'play'는 동작을 나타내는 동사입니다."},
+    {s:"She **believes** in second chances.", pos:"verb", ex:"'believes'는 마음의 상태를 나타내는 동사입니다."},
+    {s:"They **built** a treehouse last summer.", pos:"verb", ex:"'built'는 과거의 동작을 나타내는 동사입니다."},
+    {s:"He **whispered** the secret to his friend.", pos:"verb", ex:"'whispered'는 동작을 나타내는 동사입니다."},
+    {s:"The sun **rises** in the east.", pos:"verb", ex:"'rises'는 태양의 움직임, 즉 동작을 나타내는 동사입니다."},
+
+    {s:"It was a **freezing** morning in December.", pos:"adjective", ex:"'freezing'은 명사 'morning'의 상태를 꾸미는 형용사입니다."},
+    {s:"She wore a **gorgeous** dress to the party.", pos:"adjective", ex:"'gorgeous'는 명사 'dress'를 꾸미는 형용사입니다."},
+    {s:"The **ancient** castle stood on the hill.", pos:"adjective", ex:"'ancient'는 명사 'castle'의 성질을 나타내는 형용사입니다."},
+    {s:"He gave a **brief** answer to the question.", pos:"adjective", ex:"'brief'는 명사 'answer'를 꾸미는 형용사입니다."},
+    {s:"That was a **ridiculous** excuse.", pos:"adjective", ex:"'ridiculous'는 명사 'excuse'의 성질을 나타내는 형용사입니다."},
+
+    {s:"He speaks English **fluently**.", pos:"adverb", ex:"'fluently'는 동사 'speaks'를 꾸미는 부사입니다."},
+    {s:"She **almost** missed the bus.", pos:"adverb", ex:"'almost'는 동사 'missed'를 꾸미는 부사입니다."},
+    {s:"They arrived **late** for the meeting.", pos:"adverb", ex:"'late'는 동사 'arrived'를 꾸미는 부사로 쓰였습니다."},
+    {s:"The cat moved **silently** across the room.", pos:"adverb", ex:"'silently'는 동사 'moved'를 꾸미는 부사입니다."},
+    {s:"I **rarely** eat fast food.", pos:"adverb", ex:"'rarely'는 동사 'eat'를 꾸미는 빈도부사입니다."},
+
+    {s:"The cat is hiding **under** the table.", pos:"preposition", ex:"'under'는 명사 'table' 앞에서 위치 관계를 나타내는 전치사입니다."},
+    {s:"We walked **through** the forest.", pos:"preposition", ex:"'through'는 명사 'forest' 앞에서 경로를 나타내는 전치사입니다."},
+    {s:"The letter is **from** my grandmother.", pos:"preposition", ex:"'from'은 명사 앞에서 출처를 나타내는 전치사입니다."},
+    {s:"She stood **beside** the door.", pos:"preposition", ex:"'beside'는 명사 'door' 앞에서 위치를 나타내는 전치사입니다."},
+    {s:"The meeting starts **at** nine o'clock.", pos:"preposition", ex:"'at'은 시각 앞에 쓰여 시간을 나타내는 전치사입니다."},
+
+    {s:"I wanted to go, **but** it started raining.", pos:"conjunction", ex:"'but'은 두 문장을 대조로 이어주는 접속사입니다."},
+    {s:"You can have tea **or** coffee.", pos:"conjunction", ex:"'or'는 두 단어를 선택 관계로 이어주는 접속사입니다."},
+    {s:"She stayed home **because** she was sick.", pos:"conjunction", ex:"'because'는 이유를 나타내며 두 문장을 이어주는 접속사입니다."},
+    {s:"He studied hard, **so** he passed the exam.", pos:"conjunction", ex:"'so'는 결과를 나타내며 두 문장을 이어주는 접속사입니다."},
+    {s:"Wait here **until** I come back.", pos:"conjunction", ex:"'until'은 시간의 범위를 나타내며 문장을 이어주는 접속사입니다."},
+
+    {s:"**Wow**! That was an amazing performance.", pos:"interjection", ex:"'Wow'는 놀라움을 나타내는 감탄사입니다."},
+    {s:"**Ouch**! I stubbed my toe.", pos:"interjection", ex:"'Ouch'는 아픔을 나타내는 감탄사입니다."},
+    {s:"**Hey**, watch where you're going!", pos:"interjection", ex:"'Hey'는 주의를 끄는 감탄사입니다."},
+    {s:"**Alas**, the poor kingdom fell.", pos:"interjection", ex:"'Alas'는 슬픔·탄식을 나타내는 감탄사입니다."},
+    {s:"**Bravo**! What a wonderful show.", pos:"interjection", ex:"'Bravo'는 찬사·감탄을 나타내는 감탄사입니다."}
+  ];
+
+  var ROUNDS = 16;
+  var TIME_LIMIT = 12000;
+  var LS_KEY = "pos-specimen-best";
+
+  var state = {
+    queue: [],
+    idx: 0,
+    score: 0,
+    streak: 0,
+    bestStreak: 0,
+    correctCount: 0,
+    timerStart: 0,
+    timerId: null,
+    answered: false
+  };
+
+  function $(id){ return document.getElementById(id); }
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function showScreen(id){
+    document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
+    $(id).classList.add("active");
+  }
+
+  function getBest(){
+    try {
+      var v = localStorage.getItem(LS_KEY);
+      return v ? parseInt(v, 10) : 0;
+    } catch(e){ return 0; }
+  }
+  function setBest(v){
+    try { localStorage.setItem(LS_KEY, String(v)); } catch(e){}
+  }
+
+  function renderLegend(){
+    var legend = $("legend");
+    legend.innerHTML = "";
+    POS.forEach(function(p){
+      var d = document.createElement("div");
+      d.className = "chip";
+      d.style.setProperty("--dot", p.color);
+      d.textContent = p.label;
+      legend.appendChild(d);
+    });
+  }
+
+  function renderBest(){
+    var b = getBest();
+    $("best-display").textContent = b > 0 ? (b + "점") : "아직 없음";
+  }
+
+  function parseSentence(raw){
+    var m = raw.match(/\*\*(.+?)\*\*/);
+    var word = m ? m[1] : "";
+    var parts = raw.split(/\*\*(.+?)\*\*/);
+    return {word: word, before: parts[0], after: parts[2] || ""};
+  }
+
+  function buildGrid(){
+    var grid = $("pos-grid");
+    grid.innerHTML = "";
+    POS.forEach(function(p){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "pos-btn";
+      btn.style.setProperty("--dot", p.color);
+      btn.dataset.pos = p.code;
+      btn.innerHTML =
+        '<span class="swatch"></span>' +
+        '<span class="label">' + p.label + '</span>' +
+        '<span class="def">' + p.def + '</span>';
+      btn.addEventListener("click", function(){ onAnswer(p.code, btn); });
+      grid.appendChild(btn);
+    });
+  }
+
+  function startGame(){
+    state.queue = shuffle(ITEMS).slice(0, ROUNDS);
+    state.idx = 0;
+    state.score = 0;
+    state.streak = 0;
+    state.bestStreak = 0;
+    state.correctCount = 0;
+    $("hud-total").textContent = ROUNDS;
+    showScreen("screen-game");
+    nextRound();
+  }
+
+  function nextRound(){
+    if (state.idx >= state.queue.length){
+      finishGame();
+      return;
+    }
+    state.answered = false;
+    var item = state.queue[state.idx];
+    var parsed = parseSentence(item.s);
+
+    $("hud-round").textContent = state.idx + 1;
+    $("hud-score").textContent = state.score;
+    $("hud-streak").textContent = state.streak >= 2 ? ("연속 " + state.streak + "!") : "";
+    $("tag-no").textContent = "SPEC. " + String(state.idx + 1).padStart(2, "0");
+
+    var sentEl = $("sentence");
+    sentEl.innerHTML = "";
+    sentEl.appendChild(document.createTextNode(parsed.before));
+    var span = document.createElement("span");
+    span.className = "target";
+    span.textContent = parsed.word;
+    sentEl.appendChild(span);
+    sentEl.appendChild(document.createTextNode(parsed.after));
+
+    document.querySelectorAll(".pos-btn").forEach(function(b){
+      b.disabled = false;
+      b.classList.remove("correct", "wrong");
+    });
+
+    var fb = $("feedback");
+    fb.className = "feedback";
+    fb.innerHTML = '<span class="empty">품사를 선택하면 해설이 여기에 표시됩니다.</span>';
+
+    startTimer();
+  }
+
+  function startTimer(){
+    var fill = $("timer-fill");
+    fill.style.transition = "none";
+    fill.style.width = "100%";
+    void fill.offsetWidth;
+    fill.style.transition = "width " + TIME_LIMIT + "ms linear";
+    fill.style.width = "0%";
+
+    clearTimeout(state.timerId);
+    state.timerId = setTimeout(function(){
+      if (!state.answered) onAnswer(null, null);
+    }, TIME_LIMIT);
+  }
+
+  function onAnswer(chosenCode, btnEl){
+    if (state.answered) return;
+    state.answered = true;
+    clearTimeout(state.timerId);
+    $("timer-fill").style.transition = "none";
+
+    var item = state.queue[state.idx];
+    var correct = chosenCode === item.pos;
+
+    document.querySelectorAll(".pos-btn").forEach(function(b){
+      b.disabled = true;
+      if (b.dataset.pos === item.pos) b.classList.add("correct");
+      else if (b === btnEl) b.classList.add("wrong");
+    });
+
+    var fb = $("feedback");
+    if (correct){
+      state.score += 10;
+      state.streak += 1;
+      state.bestStreak = Math.max(state.bestStreak, state.streak);
+      state.correctCount += 1;
+      fb.className = "feedback correct";
+      fb.innerHTML = '<span class="verdict">정확한 채집</span>' + item.ex;
+    } else {
+      state.streak = 0;
+      fb.className = "feedback incorrect";
+      var label = POS_MAP[item.pos].label;
+      var prefix = chosenCode ? "" : "시간 초과 — ";
+      fb.innerHTML = '<span class="verdict">오분류</span>' + prefix + "정답은 <strong>" + label + "</strong>입니다. " + item.ex;
+    }
+
+    $("hud-score").textContent = state.score;
+    $("hud-streak").textContent = state.streak >= 2 ? ("연속 " + state.streak + "!") : "";
+
+    setTimeout(function(){
+      state.idx += 1;
+      nextRound();
+    }, 1700);
+  }
+
+  function finishGame(){
+    var best = getBest();
+    if (state.score > best){
+      best = state.score;
+      setBest(best);
+    }
+    var acc = Math.round((state.correctCount / ROUNDS) * 100);
+
+    var grade;
+    if (acc >= 90) grade = "수석 채집가";
+    else if (acc >= 75) grade = "숙련 채집가";
+    else if (acc >= 50) grade = "견습 채집가";
+    else grade = "표본실 신입";
+
+    $("result-grade").textContent = grade;
+    $("result-score").textContent = state.score;
+    $("stat-correct").textContent = state.correctCount + "/" + ROUNDS;
+    $("stat-acc").textContent = acc + "%";
+    $("stat-streak").textContent = state.bestStreak;
+
+    renderBest();
+    showScreen("screen-result");
+  }
+
+  renderLegend();
+  renderBest();
+  buildGrid();
+
+  $("btn-start").addEventListener("click", startGame);
+  $("btn-retry").addEventListener("click", startGame);
+})();
+</script>
+
+<script src="/kkt.js"></script>
+</body></html>

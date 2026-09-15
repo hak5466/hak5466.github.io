@@ -1,0 +1,587 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>문법 족집게 퀴즈</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper: #f5f2ec;
+    --paper-raised: #fffdf9;
+    --ink: #21232b;
+    --ink-soft: #55575f;
+    --accent: #2f4b7c;
+    --accent-soft: #e4e9f2;
+    --accent-line: #c3cee3;
+    --correct: #2f7a4f;
+    --correct-soft: #e3f1e7;
+    --incorrect: #b23a2e;
+    --incorrect-soft: #f6e4e1;
+    --line: #d8d2c4;
+    --shadow: 0 1px 2px rgba(33,35,43,0.06), 0 8px 24px -12px rgba(33,35,43,0.18);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #1b1c22;
+      --paper-raised: #24252d;
+      --ink: #ece8de;
+      --ink-soft: #a9a9ad;
+      --accent: #8fabdc;
+      --accent-soft: #28304a;
+      --accent-line: #3c4a6c;
+      --correct: #59c087;
+      --correct-soft: #1f3329;
+      --incorrect: #e58579;
+      --incorrect-soft: #3a2321;
+      --line: #3a3b45;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #1b1c22;
+    --paper-raised: #24252d;
+    --ink: #ece8de;
+    --ink-soft: #a9a9ad;
+    --accent: #8fabdc;
+    --accent-soft: #28304a;
+    --accent-line: #3c4a6c;
+    --correct: #59c087;
+    --correct-soft: #1f3329;
+    --incorrect: #e58579;
+    --incorrect-soft: #3a2321;
+    --line: #3a3b45;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ -webkit-text-size-adjust: 100%; }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Work Sans", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  .wrap{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 96px;
+  }
+
+  header.masthead{
+    padding: 44px 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .eyebrow{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  h1{
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 38px);
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .lede{
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    max-width: 52ch;
+    margin: 2px 0 0;
+  }
+
+  .progress-bar{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--paper);
+    padding: 14px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .progress-track{
+    flex: 1;
+    height: 6px;
+    border-radius: 99px;
+    background: var(--accent-soft);
+    overflow: hidden;
+    display: flex;
+  }
+  .progress-seg{
+    flex: 1;
+    margin-right: 2px;
+    border-radius: 99px;
+    background: transparent;
+    transition: background 0.3s ease;
+  }
+  .progress-seg:last-child{ margin-right: 0; }
+  .progress-seg[data-state="correct"]{ background: var(--correct); }
+  .progress-seg[data-state="incorrect"]{ background: var(--incorrect); }
+
+  .progress-count{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 28px;
+  }
+
+  .card{
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 26px 26px 24px;
+  }
+
+  .card-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .unit-tag{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 6px;
+    padding: 4px 9px;
+  }
+
+  .q-num{
+    font-family: "Fraunces", serif;
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .stem{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+  }
+
+  .sentence{
+    font-size: 19px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+  .sentence .blank{
+    display: inline-block;
+    min-width: 3.4em;
+    border-bottom: 2px solid var(--accent);
+    text-align: center;
+  }
+
+  .options{
+    display: grid;
+    gap: 10px;
+  }
+
+  .option{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15.5px;
+    cursor: pointer;
+    transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  }
+  .option:hover:not(:disabled){
+    border-color: var(--accent-line);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px -6px rgba(33,35,43,0.25);
+  }
+  .option:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .option:disabled{ cursor: default; }
+
+  .option .letter{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-weight: 600;
+    font-size: 13px;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .option[data-mark="correct"]{
+    background: var(--correct-soft);
+    border-color: var(--correct);
+  }
+  .option[data-mark="correct"] .letter{
+    background: var(--correct);
+    color: var(--paper-raised);
+  }
+  .option[data-mark="incorrect"]{
+    background: var(--incorrect-soft);
+    border-color: var(--incorrect);
+  }
+  .option[data-mark="incorrect"] .letter{
+    background: var(--incorrect);
+    color: var(--paper-raised);
+  }
+  .option[data-mark="muted"]{ opacity: 0.55; }
+
+  .feedback{
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.32s ease, opacity 0.28s ease;
+    margin-top: 4px;
+  }
+  .feedback.open{
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 16px;
+  }
+  .feedback > div{ overflow: hidden; }
+  .feedback-inner{
+    border-left: 3px solid var(--line);
+    padding: 4px 0 4px 16px;
+  }
+  .card[data-result="correct"] .feedback-inner{ border-color: var(--correct); }
+  .card[data-result="incorrect"] .feedback-inner{ border-color: var(--incorrect); }
+
+  .verdict{
+    font-weight: 600;
+    font-size: 14.5px;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card[data-result="correct"] .verdict{ color: var(--correct); }
+  .card[data-result="incorrect"] .verdict{ color: var(--incorrect); }
+
+  .explain{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .explain b{ color: var(--ink); font-weight: 600; }
+
+  .summary{
+    margin-top: 8px;
+    padding: 24px 26px;
+    border-radius: 14px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .summary.show{ display: flex; }
+
+  .summary-text{ display: flex; flex-direction: column; gap: 4px; }
+  .summary-score{
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 22px;
+  }
+  .summary-msg{ font-size: 14.5px; color: var(--ink-soft); }
+
+  .retry{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    background: var(--accent);
+    color: var(--paper-raised);
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    cursor: pointer;
+    transition: opacity 0.15s ease, transform 0.12s ease;
+  }
+  .retry:hover{ opacity: 0.88; transform: translateY(-1px); }
+  .retry:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .option, .retry, .feedback, .progress-seg{ transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">중3 영어 · 자가진단 3문항</div>
+    <h1>문법 족집게 퀴즈</h1>
+    <p class="lede">현재완료 · 관계대명사 · 수동태에서 한 문제씩. 답을 고르면 바로 정오답과 해설이 나옵니다.</p>
+  </header>
+
+  <div class="progress-bar">
+    <div class="progress-track" id="progressTrack">
+      <div class="progress-seg" data-seg="0"></div>
+      <div class="progress-seg" data-seg="1"></div>
+      <div class="progress-seg" data-seg="2"></div>
+    </div>
+    <div class="progress-count" id="progressCount" aria-live="polite">0 / 3 풀이</div>
+  </div>
+
+  <main id="quiz"></main>
+
+  <div class="summary" id="summary" aria-live="polite">
+    <div class="summary-text">
+      <div class="summary-score" id="summaryScore"></div>
+      <div class="summary-msg" id="summaryMsg"></div>
+    </div>
+    <button class="retry" id="retryBtn" type="button">다시 풀기 ↺</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var QUESTIONS = [
+    {
+      unit: "UNIT 01 · 현재완료",
+      before: "A: Have you ever been to Jeju Island?\nB: Yes, I",
+      blankWidth: "4.8em",
+      after: "there twice.",
+      options: [
+        { key: "A", text: "go" },
+        { key: "B", text: "went" },
+        { key: "C", text: "have gone" },
+        { key: "D", text: "has gone" }
+      ],
+      correct: "C",
+      explain: "현재완료는 <b>have/has + 과거분사(p.p.)</b> 형태이고, <b>twice</b>처럼 횟수를 나타내는 표현과 함께 쓰이면 '경험'을 뜻합니다. 주어가 I이므로 has가 아니라 <b>have</b>를 써야 하고, go의 3단 변화는 go&nbsp;-&nbsp;went&nbsp;-&nbsp;<b>gone</b>이므로 정답은 have gone입니다."
+    },
+    {
+      unit: "UNIT 02 · 관계대명사",
+      before: "Look at the boy",
+      blankWidth: "4.2em",
+      after: "dog is running in the park.",
+      options: [
+        { key: "A", text: "who" },
+        { key: "B", text: "which" },
+        { key: "C", text: "whose" },
+        { key: "D", text: "whom" }
+      ],
+      correct: "C",
+      explain: "빈칸 바로 뒤에 명사 <b>dog</b>가 이어지고 있죠. '그 소년의 개'라는 소유 관계를 나타내야 하므로 소유격 관계대명사 <b>whose</b>가 필요합니다. who·whom은 뒤에 명사가 아니라 동사나 「주어+동사」가 와야 합니다."
+    },
+    {
+      unit: "UNIT 03 · 수동태",
+      before: "This bridge",
+      blankWidth: "5.4em",
+      after: "in 1990.",
+      options: [
+        { key: "A", text: "built" },
+        { key: "B", text: "was built" },
+        { key: "C", text: "is building" },
+        { key: "D", text: "has build" }
+      ],
+      correct: "B",
+      explain: "다리는 사람에 의해 '지어지는' 대상이므로 능동이 아니라 <b>수동태(be동사 + p.p.)</b>가 필요합니다. 문장 끝의 <b>in 1990</b>이 과거 시점을 나타내므로 be동사는 was를 써서 <b>was built</b>가 정답입니다."
+    }
+  ];
+
+  var state = QUESTIONS.map(function(){ return null; }); // null | 'correct' | 'incorrect'
+
+  var quizEl = document.getElementById("quiz");
+  var progressCount = document.getElementById("progressCount");
+  var summaryEl = document.getElementById("summary");
+  var summaryScore = document.getElementById("summaryScore");
+  var summaryMsg = document.getElementById("summaryMsg");
+
+  function buildSentence(q){
+    var span = document.createElement("span");
+    span.className = "blank";
+    span.style.minWidth = q.blankWidth;
+    var frag = document.createDocumentFragment();
+    frag.appendChild(document.createTextNode(q.before + " "));
+    frag.appendChild(span);
+    frag.appendChild(document.createTextNode(" " + q.after));
+    return frag;
+  }
+
+  function render(){
+    quizEl.innerHTML = "";
+    QUESTIONS.forEach(function(q, i){
+      var card = document.createElement("section");
+      card.className = "card";
+      card.id = "card-" + i;
+
+      var head = document.createElement("div");
+      head.className = "card-head";
+      var tag = document.createElement("span");
+      tag.className = "unit-tag";
+      tag.textContent = q.unit;
+      var num = document.createElement("span");
+      num.className = "q-num";
+      num.textContent = "Q" + (i + 1);
+      head.appendChild(tag);
+      head.appendChild(num);
+
+      var stem = document.createElement("p");
+      stem.className = "stem";
+      stem.textContent = "다음 빈칸에 알맞은 것을 고르시오.";
+
+      var sentence = document.createElement("p");
+      sentence.className = "sentence";
+      sentence.appendChild(buildSentence(q));
+
+      var optionsWrap = document.createElement("div");
+      optionsWrap.className = "options";
+      optionsWrap.setAttribute("role", "group");
+      optionsWrap.setAttribute("aria-label", "Q" + (i + 1) + " 보기");
+
+      q.options.forEach(function(opt){
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "option";
+        btn.dataset.key = opt.key;
+        var letter = document.createElement("span");
+        letter.className = "letter";
+        letter.textContent = opt.key;
+        var text = document.createElement("span");
+        text.textContent = opt.text;
+        btn.appendChild(letter);
+        btn.appendChild(text);
+        btn.addEventListener("click", function(){ answer(i, opt.key); });
+        optionsWrap.appendChild(btn);
+      });
+
+      var feedback = document.createElement("div");
+      feedback.className = "feedback";
+      feedback.id = "feedback-" + i;
+      var feedbackInner = document.createElement("div");
+      var feedbackContent = document.createElement("div");
+      feedbackContent.className = "feedback-inner";
+      var verdict = document.createElement("p");
+      verdict.className = "verdict";
+      verdict.id = "verdict-" + i;
+      var explain = document.createElement("p");
+      explain.className = "explain";
+      explain.innerHTML = q.explain;
+      feedbackContent.appendChild(verdict);
+      feedbackContent.appendChild(explain);
+      feedbackInner.appendChild(feedbackContent);
+      feedback.appendChild(feedbackInner);
+
+      card.appendChild(head);
+      card.appendChild(stem);
+      card.appendChild(sentence);
+      card.appendChild(optionsWrap);
+      card.appendChild(feedback);
+      quizEl.appendChild(card);
+    });
+    updateProgress();
+  }
+
+  function answer(i, chosenKey){
+    if (state[i] !== null) return; // already answered, locked
+    var q = QUESTIONS[i];
+    var isCorrect = chosenKey === q.correct;
+    state[i] = isCorrect ? "correct" : "incorrect";
+
+    var card = document.getElementById("card-" + i);
+    card.dataset.result = state[i];
+
+    var buttons = card.querySelectorAll(".option");
+    buttons.forEach(function(btn){
+      btn.disabled = true;
+      var key = btn.dataset.key;
+      if (key === q.correct) {
+        btn.dataset.mark = "correct";
+      } else if (key === chosenKey) {
+        btn.dataset.mark = "incorrect";
+      } else {
+        btn.dataset.mark = "muted";
+      }
+    });
+
+    var verdict = document.getElementById("verdict-" + i);
+    verdict.textContent = isCorrect ? "정답이에요!" : "아쉬워요, 오답이에요.";
+
+    var feedback = document.getElementById("feedback-" + i);
+    feedback.classList.add("open");
+
+    updateProgress();
+  }
+
+  function updateProgress(){
+    var answered = state.filter(function(s){ return s !== null; }).length;
+    var correct = state.filter(function(s){ return s === "correct"; }).length;
+    progressCount.textContent = answered + " / " + QUESTIONS.length + " 풀이";
+
+    state.forEach(function(s, i){
+      var seg = document.querySelector('.progress-seg[data-seg="' + i + '"]');
+      if (s) seg.dataset.state = s;
+      else seg.removeAttribute("data-state");
+    });
+
+    if (answered === QUESTIONS.length) {
+      summaryEl.classList.add("show");
+      summaryScore.textContent = correct + " / " + QUESTIONS.length + " 정답";
+      var msg;
+      if (correct === QUESTIONS.length) msg = "완벽해요! 현재완료·관계대명사·수동태 모두 정확히 잡아냈어요.";
+      else if (correct === QUESTIONS.length - 1) msg = "거의 다 왔어요! 틀린 문제 해설을 한 번 더 읽어보세요.";
+      else msg = "차근차근 다시 볼까요? 각 카드의 해설을 천천히 읽어보면 감이 잡힐 거예요.";
+      summaryMsg.textContent = msg;
+    } else {
+      summaryEl.classList.remove("show");
+    }
+  }
+
+  document.getElementById("retryBtn").addEventListener("click", function(){
+    state = QUESTIONS.map(function(){ return null; });
+    render();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  render();
+})();
+</script>
+
+<script src="/kkt.js"></script>
+</body></html>

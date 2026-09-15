@@ -1,0 +1,871 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>파닉스 자음 뒤집기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Baloo+2:wght@600;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FBF6EC;
+    --paper-raised:#FFFFFF;
+    --ink:#232C2A;
+    --ink-soft:#5B6663;
+    --teal:#1F7A6C;
+    --teal-ink:#0E4A40;
+    --coral:#FF6B4A;
+    --sun:#FFC145;
+    --line:#E4D9C3;
+    --good:#2E9E5B;
+    --bad:#E4573D;
+    --shadow: 0 10px 24px -12px rgba(35,44,42,0.28);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#14201D;
+      --paper-raised:#1C2A26;
+      --ink:#F4EFE2;
+      --ink-soft:#AEBBB6;
+      --teal:#4FD3B8;
+      --teal-ink:#DFFFF7;
+      --coral:#FF8A6B;
+      --sun:#FFD166;
+      --line:#2A3A35;
+      --good:#5FCB86;
+      --bad:#FF8072;
+      --shadow: 0 10px 26px -12px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#14201D;
+    --paper-raised:#1C2A26;
+    --ink:#F4EFE2;
+    --ink-soft:#AEBBB6;
+    --teal:#4FD3B8;
+    --teal-ink:#DFFFF7;
+    --coral:#FF8A6B;
+    --sun:#FFD166;
+    --line:#2A3A35;
+    --good:#5FCB86;
+    --bad:#FF8072;
+    --shadow: 0 10px 26px -12px rgba(0,0,0,0.55);
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Gowun Dodum','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 56px;
+  }
+  .page{
+    width:100%;
+    max-width:640px;
+  }
+
+  h1,h2,.display{
+    font-family:'Jua','Malgun Gothic',sans-serif;
+    font-weight:400;
+    text-wrap:balance;
+  }
+
+  header.top{
+    text-align:center;
+    margin-bottom:22px;
+  }
+  header.top h1{
+    font-size:clamp(1.5rem,5vw,2.1rem);
+    color:var(--teal-ink);
+    margin:0 0 6px;
+  }
+  header.top p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+  }
+
+  .stage-dots{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:18px 0 26px;
+  }
+  .stage-dots span{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    padding:5px 12px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+  }
+  .stage-dots span.active{
+    color:var(--paper);
+    background:var(--teal);
+    border-color:var(--teal);
+    font-weight:700;
+  }
+  .stage-dots span.done{
+    color:var(--teal-ink);
+    border-color:var(--teal);
+  }
+
+  .sheet{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    padding:32px 28px;
+    background-image: repeating-linear-gradient(var(--paper-raised), var(--paper-raised) 35px, var(--line) 36px);
+  }
+  .sheet.plain{ background-image:none; }
+
+  .hidden{ display:none !important; }
+
+  /* Start stage */
+  .start-copy{ text-align:center; margin-bottom:22px; }
+  .start-copy p{ color:var(--ink-soft); line-height:1.6; margin:8px 0 0; }
+  label.name-label{
+    display:block;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  input#nameInput{
+    width:100%;
+    font-size:1.15rem;
+    font-family:inherit;
+    padding:14px 16px;
+    border-radius:12px;
+    border:2px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+  }
+  input#nameInput:focus{
+    outline:none;
+    border-color:var(--teal);
+  }
+
+  button.primary{
+    font-family:'Jua',sans-serif;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    color:#fff;
+    background:var(--coral);
+    border:none;
+    border-radius:14px;
+    padding:14px 22px;
+    cursor:pointer;
+    box-shadow:0 6px 0 0 rgba(0,0,0,0.12);
+    transition:transform .08s ease;
+  }
+  button.primary:active{ transform:translateY(3px); box-shadow:0 3px 0 0 rgba(0,0,0,0.12); }
+  button.primary:disabled{ opacity:0.45; cursor:not-allowed; }
+  button.primary:disabled:active{ transform:none; }
+
+  button.ghost{
+    font-family:'Gowun Dodum',sans-serif;
+    font-size:0.95rem;
+    color:var(--teal-ink);
+    background:transparent;
+    border:2px solid var(--teal);
+    border-radius:12px;
+    padding:10px 16px;
+    cursor:pointer;
+  }
+
+  .row-end{ display:flex; justify-content:center; margin-top:24px; }
+  .row-between{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; gap:12px; }
+
+  /* Flashcard stage */
+  .progress-line{
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+    font-variant-numeric: tabular-nums;
+  }
+  .card-word{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:clamp(2rem,9vw,2.8rem);
+  }
+  .card-meaning{
+    font-family:'Jua',sans-serif;
+    font-size:clamp(1.6rem,7vw,2.2rem);
+  }
+  .card-hint{
+    font-size:0.8rem;
+    opacity:0.85;
+  }
+  .speak-btn{
+    border:none;
+    background:rgba(255,255,255,0.35);
+    color:inherit;
+    border-radius:999px;
+    width:40px;
+    height:40px;
+    font-size:1.1rem;
+    cursor:pointer;
+    line-height:1;
+  }
+  .speak-btn:focus-visible, button:focus-visible, input:focus-visible{
+    outline:3px solid var(--coral);
+    outline-offset:2px;
+  }
+
+  .flash-intro{
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  .flash-intro strong{
+    color:var(--teal-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .flash-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:7px;
+    margin-bottom:22px;
+  }
+  @media (max-width:520px){
+    .flash-grid{ grid-template-columns:repeat(5, 1fr); gap:6px; }
+  }
+  @media (max-width:380px){
+    .flash-grid{ grid-template-columns:repeat(4, 1fr); }
+  }
+  .mini-scene{
+    perspective:700px;
+    aspect-ratio:1/1;
+  }
+  .mini-card{
+    position:relative;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:transform 0.45s cubic-bezier(.4,.2,.2,1);
+  }
+  .mini-card.flipped{ transform:rotateY(180deg); }
+  @media (prefers-reduced-motion:reduce){
+    .mini-card{ transition:none; }
+  }
+  .mini-face{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:9px;
+    backface-visibility:hidden;
+    padding:3px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .mini-face.front{
+    background:var(--teal);
+    color:var(--paper-raised);
+  }
+  .mini-face.back{
+    background:var(--sun);
+    color:var(--teal-ink);
+    transform:rotateY(180deg);
+  }
+  .mini-word{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:clamp(0.62rem, 2.6vw, 0.85rem);
+    line-height:1.1;
+    word-break:break-word;
+  }
+  .mini-meaning{
+    font-family:'Jua',sans-serif;
+    font-size:clamp(0.58rem, 2.3vw, 0.78rem);
+    line-height:1.15;
+    word-break:keep-all;
+  }
+  .mini-speak{
+    position:absolute;
+    top:2px;
+    right:2px;
+    width:18px;
+    height:18px;
+    border:none;
+    border-radius:999px;
+    background:rgba(255,255,255,0.4);
+    color:inherit;
+    font-size:0.6rem;
+    line-height:1;
+    padding:0;
+    cursor:pointer;
+  }
+  .mini-mic{
+    position:absolute;
+    bottom:2px;
+    right:2px;
+    width:18px;
+    height:18px;
+    border:none;
+    border-radius:999px;
+    background:rgba(255,255,255,0.4);
+    color:inherit;
+    font-size:0.62rem;
+    line-height:1;
+    padding:0;
+    cursor:pointer;
+  }
+  .mini-mic.listening{
+    background:var(--coral);
+    color:#fff;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .mini-mic.listening{ animation:micPulse 0.9s ease-in-out infinite; }
+  }
+  @keyframes micPulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.2); }
+  }
+
+  .mini-scene.done .mini-face.back::after{
+    content:"✓";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.3rem;
+    background:rgba(46,158,91,0.88);
+    color:#fff;
+  }
+  .mini-scene.done .mini-card{ cursor:default; }
+  .mini-scene.nudge .mini-card{
+    box-shadow:0 0 0 3px var(--coral);
+    border-radius:9px;
+  }
+  button.primary.nudge{
+    box-shadow:0 0 0 4px var(--sun), 0 6px 0 0 rgba(0,0,0,0.12);
+  }
+
+  /* Quiz stage */
+  .quiz-prompt{
+    text-align:center;
+    background:var(--teal);
+    color:var(--paper-raised);
+    border-radius:16px;
+    padding:26px 18px;
+    margin-bottom:18px;
+  }
+  .quiz-prompt .card-word{ margin-bottom:2px; }
+  .options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .opt-btn{
+    font-family:'Gowun Dodum',sans-serif;
+    font-size:1.02rem;
+    padding:16px 10px;
+    border-radius:12px;
+    border:2px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+    cursor:pointer;
+    text-align:center;
+  }
+  .opt-btn:hover:not(:disabled){ border-color:var(--teal); }
+  .opt-btn.correct{ background:var(--good); border-color:var(--good); color:#fff; }
+  .opt-btn.wrong{ background:var(--bad); border-color:var(--bad); color:#fff; }
+  .opt-btn:disabled{ cursor:default; }
+
+  /* Report stage */
+  .report-head{ text-align:center; margin-bottom:18px; }
+  .report-head .score{
+    font-family:'Jua',sans-serif;
+    font-size:2.6rem;
+    color:var(--coral);
+  }
+  .report-meta{
+    display:flex;
+    justify-content:space-between;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    border-bottom:1px dashed var(--line);
+    padding:10px 0;
+    margin-bottom:18px;
+  }
+  table.wrong-list{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.92rem;
+  }
+  table.wrong-list th, table.wrong-list td{
+    text-align:left;
+    padding:8px 6px;
+    border-bottom:1px solid var(--line);
+  }
+  table.wrong-list td.ok{ color:var(--good); }
+  table.wrong-list td.no{ color:var(--bad); text-decoration:line-through; }
+  .all-correct{
+    text-align:center;
+    color:var(--good);
+    font-weight:700;
+    padding:14px 0;
+  }
+  .submit-note{
+    margin-top:20px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    text-align:center;
+    line-height:1.6;
+  }
+
+  @media print{
+    body{ background:#fff; padding:0; }
+    .no-print{ display:none !important; }
+    .sheet{ box-shadow:none; border:none; background-image:none; }
+  }
+</style>
+
+<div class="page">
+  <header class="top">
+    <h1>파닉스 자음 뒤집기</h1>
+    <p>Phonics 2 · 자음 30단어 카드 &amp; 퀴즈</p>
+  </header>
+
+  <div class="stage-dots no-print" id="stageDots">
+    <span data-stage="start">이름</span>
+    <span data-stage="flash">카드</span>
+    <span data-stage="quiz">퀴즈</span>
+    <span data-stage="report">결과</span>
+  </div>
+
+  <main class="sheet" id="sheet">
+
+    <section id="stage-start">
+      <div class="start-copy">
+        <h2>시작하기 전에</h2>
+        <p>이름을 적으면 발음 카드 30개를 먼저 넘겨보고, 사지선다 퀴즈 15문제를 풀게 됩니다.</p>
+      </div>
+      <label class="name-label" for="nameInput">이름</label>
+      <input id="nameInput" type="text" placeholder="예: 김민준" autocomplete="off" />
+      <div class="row-end">
+        <button class="primary" id="startBtn" disabled>카드 시작하기</button>
+      </div>
+    </section>
+
+    <section id="stage-flash" class="hidden">
+      <div class="flash-intro">카드를 눌러 뒤집어 보세요 · <strong id="flashCount">0/30</strong> 확인</div>
+      <div class="flash-grid" id="flashGrid"></div>
+      <div class="row-end">
+        <button class="primary" id="flashToQuiz">퀴즈 시작하기 →</button>
+      </div>
+    </section>
+
+    <section id="stage-quiz" class="hidden">
+      <div class="progress-line" id="quizProgress">문제 1 / 15</div>
+      <div class="quiz-prompt" id="quizPrompt"></div>
+      <div class="options" id="quizOptions"></div>
+      <div class="row-end">
+        <button class="primary hidden" id="quizNext">다음 문제 →</button>
+      </div>
+    </section>
+
+    <section id="stage-report" class="hidden">
+      <div class="report-head">
+        <div class="score" id="reportScore">0 / 15</div>
+        <div id="reportGreeting">수고했어요!</div>
+      </div>
+      <div class="report-meta">
+        <span id="reportName">이름</span>
+        <span id="reportDate">날짜</span>
+      </div>
+      <div id="reportBody"></div>
+      <div class="row-between no-print">
+        <button class="ghost" id="restartBtn">처음부터 다시</button>
+        <button class="primary" id="printBtn">🖨 인쇄 · PDF로 저장</button>
+      </div>
+      <p class="submit-note no-print">저장한 파일이나 화면 캡처를 선생님께 제출해 주세요.</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var WORDS = [
+    {en:"cap", ko:"모자"}, {en:"bat", ko:"방망이"}, {en:"sad", ko:"슬픈"},
+    {en:"cake", ko:"케이크"}, {en:"game", ko:"게임"}, {en:"cave", ko:"동굴"},
+    {en:"bed", ko:"침대"}, {en:"jet", ko:"제트기"}, {en:"pen", ko:"펜"},
+    {en:"me", ko:"나를, 나에게"}, {en:"he", ko:"그는"}, {en:"she", ko:"그녀는"},
+    {en:"pig", ko:"돼지"}, {en:"sit", ko:"앉다"}, {en:"mix", ko:"섞다"},
+    {en:"fire", ko:"불"}, {en:"bike", ko:"자전거"}, {en:"kite", ko:"연"},
+    {en:"top", ko:"꼭대기"}, {en:"hot", ko:"뜨거운"}, {en:"mop", ko:"자루걸레"},
+    {en:"nose", ko:"코"}, {en:"home", ko:"집"}, {en:"one", ko:"하나"},
+    {en:"sun", ko:"태양"}, {en:"hug", ko:"껴안다"}, {en:"run", ko:"뛰다"},
+    {en:"tube", ko:"튜브"}, {en:"mule", ko:"노새"}, {en:"flute", ko:"플루트"}
+  ];
+  var QUIZ_LEN = 15;
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var t=a[i]; a[i]=a[j]; a[j]=t;
+    }
+    return a;
+  }
+
+  var canSpeak = "speechSynthesis" in window;
+  function speak(text, onDone){
+    if(!canSpeak){ if(onDone) setTimeout(onDone, 400); return; }
+    try{
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = "en-US";
+      u.rate = 0.9;
+      if(onDone){
+        var called = false;
+        var finish = function(){ if(called) return; called = true; onDone(); };
+        u.onend = finish;
+        u.onerror = finish;
+        setTimeout(finish, 2500);
+      }
+      window.speechSynthesis.speak(u);
+    }catch(e){ if(onDone) onDone(); }
+  }
+
+  var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var canListen = !!SpeechRec;
+  var activeRecognition = null;
+  function normalizeWord(s){
+    return String(s || "").toLowerCase().replace(/[^a-z]/g, "");
+  }
+  function listenFor(targetEn, micBtn, onResult){
+    if(!canListen || activeRecognition) return;
+    var rec = new SpeechRec();
+    rec.lang = "en-US";
+    rec.maxAlternatives = 1;
+    rec.interimResults = false;
+    activeRecognition = rec;
+    micBtn.classList.add("listening");
+    var done = false;
+    function cleanup(){
+      if(done) return;
+      done = true;
+      micBtn.classList.remove("listening");
+      activeRecognition = null;
+    }
+    rec.onresult = function(e){
+      var said = "";
+      try{ said = e.results[0][0].transcript; }catch(err){}
+      cleanup();
+      onResult(normalizeWord(said) === normalizeWord(targetEn));
+    };
+    rec.onerror = function(){ cleanup(); };
+    rec.onend = function(){ cleanup(); };
+    try{ rec.start(); }catch(e){ cleanup(); }
+  }
+
+  var stages = ["start","flash","quiz","report"];
+  function showStage(name){
+    stages.forEach(function(s){
+      document.getElementById("stage-"+s).classList.toggle("hidden", s!==name);
+    });
+    var dots = document.querySelectorAll("#stageDots span");
+    var idx = stages.indexOf(name);
+    dots.forEach(function(d,i){
+      d.classList.toggle("active", i===idx);
+      d.classList.toggle("done", i<idx);
+    });
+    window.scrollTo({top:0, behavior:"instant" in window.scrollTo ? "instant":"auto"});
+  }
+
+  // ---------- Start stage ----------
+  var studentName = "";
+  var nameInput = document.getElementById("nameInput");
+  var startBtn = document.getElementById("startBtn");
+  nameInput.addEventListener("input", function(){
+    startBtn.disabled = nameInput.value.trim().length === 0;
+  });
+  nameInput.addEventListener("keydown", function(e){
+    if(e.key === "Enter" && !startBtn.disabled) startBtn.click();
+  });
+  startBtn.addEventListener("click", function(){
+    studentName = nameInput.value.trim();
+    if(!studentName) return;
+    beginFlash();
+  });
+
+  // ---------- Flashcard stage (grid) ----------
+  var flashDeck = [];
+  var flashDoneCount = 0;
+  var flashGrid = document.getElementById("flashGrid");
+  var flashCount = document.getElementById("flashCount");
+  var flashToQuizBtn = document.getElementById("flashToQuiz");
+  var flashIntroEl = document.querySelector(".flash-intro");
+
+  function beginFlash(){
+    flashDeck = shuffle(WORDS).map(function(w, i){
+      return { word:w, type: (i % 2 === 0) ? "en2ko" : "ko2en" };
+    });
+    flashDoneCount = 0;
+    flashCount.textContent = "0/" + flashDeck.length;
+    if(canListen){
+      flashIntroEl.innerHTML = '카드를 눌러 뜻을 보거나, 🎤을 눌러 발음해 보세요 · <strong id="flashCount">0/30</strong> 성공';
+    } else {
+      flashIntroEl.innerHTML = '카드를 눌러 뒤집어 보세요 · <strong id="flashCount">0/30</strong> 확인';
+    }
+    flashCount = document.getElementById("flashCount");
+    renderFlashGrid();
+    showStage("flash");
+  }
+
+  function renderFlashGrid(){
+    flashGrid.innerHTML = "";
+    flashDeck.forEach(function(item, i){
+      var scene = document.createElement("div");
+      scene.className = "mini-scene";
+
+      var card = document.createElement("div");
+      card.className = "mini-card";
+
+      var front = document.createElement("div");
+      front.className = "mini-face front";
+      var back = document.createElement("div");
+      back.className = "mini-face back";
+
+      var micHtml = canListen ? '<button class="mini-mic" aria-label="발음해서 확인하기">🎤</button>' : '';
+
+      if(item.type === "en2ko"){
+        front.innerHTML = '<span class="mini-word">'+item.word.en+'</span>' +
+          (canSpeak ? '<button class="mini-speak" aria-label="발음 듣기">🔊</button>' : '') +
+          micHtml;
+        back.innerHTML = '<span class="mini-meaning">'+item.word.ko+'</span>';
+      } else {
+        front.innerHTML = '<span class="mini-meaning">'+item.word.ko+'</span>' + micHtml;
+        back.innerHTML = '<span class="mini-word">'+item.word.en+'</span>' +
+          (canSpeak ? '<button class="mini-speak" aria-label="발음 듣기">🔊</button>' : '');
+      }
+
+      card.appendChild(front);
+      card.appendChild(back);
+      scene.appendChild(card);
+      flashGrid.appendChild(scene);
+
+      var speakBtn = card.querySelector(".mini-speak");
+      if(speakBtn){
+        speakBtn.addEventListener("click", function(e){
+          e.stopPropagation();
+          speak(item.word.en);
+        });
+      }
+
+      var micBtn = card.querySelector(".mini-mic");
+      if(micBtn){
+        micBtn.addEventListener("click", function(e){
+          e.stopPropagation();
+          if(scene.classList.contains("done")) return;
+          listenFor(item.word.en, micBtn, function(isCorrect){
+            card.classList.add("flipped");
+            if(isCorrect){
+              markDone(scene);
+              speak(item.word.en, function(){ advanceNudge(scene); });
+            } else {
+              speak(item.word.en);
+            }
+          });
+        });
+      }
+
+      card.addEventListener("click", function(){
+        if(scene.classList.contains("done")) return;
+        card.classList.toggle("flipped");
+        if(card.classList.contains("flipped")){
+          speak(item.word.en);
+        }
+      });
+    });
+  }
+
+  function markDone(scene){
+    if(scene.classList.contains("done")) return;
+    scene.classList.add("done");
+    flashDoneCount++;
+    flashCount.textContent = flashDoneCount + "/" + flashDeck.length;
+  }
+
+  function advanceNudge(fromScene){
+    var scenes = Array.prototype.slice.call(flashGrid.children);
+    var idx = scenes.indexOf(fromScene);
+    var next = null;
+    for(var step=1; step<=scenes.length; step++){
+      var candidate = scenes[(idx+step) % scenes.length];
+      if(!candidate.classList.contains("done")){ next = candidate; break; }
+    }
+    if(next){
+      next.classList.add("nudge");
+      next.scrollIntoView({block:"center", behavior:"smooth"});
+      setTimeout(function(){ next.classList.remove("nudge"); }, 900);
+    } else {
+      flashToQuizBtn.classList.add("nudge");
+      setTimeout(function(){ flashToQuizBtn.classList.remove("nudge"); }, 900);
+    }
+  }
+
+  flashToQuizBtn.addEventListener("click", function(){
+    beginQuiz();
+  });
+
+  // ---------- Quiz stage ----------
+  var quizItems = [];
+  var quizIdx = 0;
+  var quizScore = 0;
+  var quizWrong = [];
+  var quizPrompt = document.getElementById("quizPrompt");
+  var quizOptions = document.getElementById("quizOptions");
+  var quizProgress = document.getElementById("quizProgress");
+  var quizNextBtn = document.getElementById("quizNext");
+
+  function buildQuiz(){
+    var pool = shuffle(WORDS).slice(0, QUIZ_LEN);
+    return pool.map(function(w){
+      var type = Math.random() < 0.5 ? "en2ko" : "ko2en";
+      var correct = type === "en2ko" ? w.ko : w.en;
+      var others = WORDS.filter(function(o){ return o.en !== w.en; });
+      var distractors = shuffle(others).slice(0,3).map(function(o){
+        return type === "en2ko" ? o.ko : o.en;
+      });
+      var options = shuffle([correct].concat(distractors));
+      return { word:w, type:type, correct:correct, options:options };
+    });
+  }
+
+  function beginQuiz(){
+    quizItems = buildQuiz();
+    quizIdx = 0;
+    quizScore = 0;
+    quizWrong = [];
+    renderQuiz();
+    showStage("quiz");
+  }
+
+  function renderQuiz(){
+    var q = quizItems[quizIdx];
+    quizProgress.textContent = "문제 " + (quizIdx+1) + " / " + quizItems.length;
+    quizNextBtn.classList.add("hidden");
+
+    if(q.type === "en2ko"){
+      quizPrompt.innerHTML =
+        '<div class="card-word">'+q.word.en+'</div>'+
+        (canSpeak ? '<button class="speak-btn" id="quizSpeak" aria-label="발음 듣기">🔊</button>' : '') +
+        '<div class="card-hint">알맞은 뜻을 고르세요</div>';
+      setTimeout(function(){ speak(q.word.en); }, 150);
+    } else {
+      quizPrompt.innerHTML =
+        '<div class="card-meaning">'+q.word.ko+'</div>'+
+        '<div class="card-hint">알맞은 영어 단어를 고르세요</div>';
+    }
+    var speakBtn = document.getElementById("quizSpeak");
+    if(speakBtn) speakBtn.addEventListener("click", function(e){
+      e.stopPropagation(); speak(q.word.en);
+    });
+
+    quizOptions.innerHTML = "";
+    q.options.forEach(function(opt){
+      var b = document.createElement("button");
+      b.className = "opt-btn";
+      b.textContent = opt;
+      b.addEventListener("click", function(){ handleAnswer(opt, b); });
+      quizOptions.appendChild(b);
+    });
+  }
+
+  function handleAnswer(chosen, btnEl){
+    var q = quizItems[quizIdx];
+    var allBtns = quizOptions.querySelectorAll(".opt-btn");
+    allBtns.forEach(function(b){
+      b.disabled = true;
+      if(b.textContent === q.correct) b.classList.add("correct");
+    });
+    var isCorrect = chosen === q.correct;
+    if(isCorrect){
+      quizScore++;
+    } else {
+      btnEl.classList.add("wrong");
+      quizWrong.push({
+        prompt: q.type === "en2ko" ? q.word.en : q.word.ko,
+        yours: chosen,
+        correct: q.correct
+      });
+    }
+    quizNextBtn.classList.remove("hidden");
+  }
+
+  quizNextBtn.addEventListener("click", function(){
+    quizIdx++;
+    if(quizIdx >= quizItems.length){
+      showReport();
+    } else {
+      renderQuiz();
+    }
+  });
+
+  // ---------- Report stage ----------
+  var reportScore = document.getElementById("reportScore");
+  var reportGreeting = document.getElementById("reportGreeting");
+  var reportName = document.getElementById("reportName");
+  var reportDate = document.getElementById("reportDate");
+  var reportBody = document.getElementById("reportBody");
+
+  function showReport(){
+    reportScore.textContent = quizScore + " / " + quizItems.length;
+    var pct = Math.round((quizScore/quizItems.length)*100);
+    reportGreeting.textContent = pct === 100 ? "만점이에요! 최고예요 🎉" :
+      pct >= 80 ? "아주 잘했어요!" :
+      pct >= 50 ? "조금만 더 연습해봐요!" : "카드부터 다시 넘겨볼까요?";
+    reportName.textContent = "이름: " + studentName;
+    reportDate.textContent = new Date().toLocaleDateString("ko-KR", {year:"numeric", month:"long", day:"numeric"});
+
+    if(quizWrong.length === 0){
+      reportBody.innerHTML = '<div class="all-correct">모든 문제를 맞혔어요!</div>';
+    } else {
+      var rows = quizWrong.map(function(w){
+        return '<tr><td>'+escapeHtml(w.prompt)+'</td>'+
+          '<td class="no">'+escapeHtml(w.yours)+'</td>'+
+          '<td class="ok">'+escapeHtml(w.correct)+'</td></tr>';
+      }).join("");
+      reportBody.innerHTML =
+        '<table class="wrong-list"><thead><tr><th>문제</th><th>내가 고른 답</th><th>정답</th></tr></thead>'+
+        '<tbody>'+rows+'</tbody></table>';
+    }
+    showStage("report");
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  document.getElementById("printBtn").addEventListener("click", function(){
+    window.print();
+  });
+  document.getElementById("restartBtn").addEventListener("click", function(){
+    location.reload();
+  });
+
+})();
+</script>
+
+<script src="/kkt.js"></script>
+</body></html>

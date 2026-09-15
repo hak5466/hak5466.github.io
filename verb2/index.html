@@ -1,0 +1,1652 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>일반동사 완전정복</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#eef2f7;
+    --paper:#ffffff;
+    --paper-2:#e3e9f2;
+    --ink:#16223a;
+    --ink-dim:#54627e;
+    --line:#c3cede;
+    --accent:#b8792a;
+    --accent-ink:#4a2f0d;
+    --accent-soft:#f2e2c6;
+    --good:#2f8f5b;
+    --good-bg:#e1f2e7;
+    --bad:#c1473c;
+    --bad-bg:#fbe6e3;
+    --radius:14px;
+    --font-kr:'IBM Plex Sans KR', system-ui, sans-serif;
+    --font-mono:'IBM Plex Mono', 'D2Coding', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1727;
+      --paper:#152037;
+      --paper-2:#1b2c4a;
+      --ink:#eaf0fb;
+      --ink-dim:#9fb0cc;
+      --line:#2c3d60;
+      --accent:#e0a94a;
+      --accent-ink:#2b1c06;
+      --accent-soft:#3a2c12;
+      --good:#5fce93;
+      --good-bg:rgba(95,206,147,0.14);
+      --bad:#ef7669;
+      --bad-bg:rgba(239,118,105,0.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f1727;
+    --paper:#152037;
+    --paper-2:#1b2c4a;
+    --ink:#eaf0fb;
+    --ink-dim:#9fb0cc;
+    --line:#2c3d60;
+    --accent:#e0a94a;
+    --accent-ink:#2b1c06;
+    --accent-soft:#3a2c12;
+    --good:#5fce93;
+    --good-bg:rgba(95,206,147,0.14);
+    --bad:#ef7669;
+    --bad-bg:rgba(239,118,105,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 45%, transparent) 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 45%, transparent) 0 1px, transparent 1px 32px),
+      var(--bg);
+    color:var(--ink);
+    font-family:var(--font-kr);
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 64px;
+  }
+  .sheet{
+    width:100%;
+    max-width:720px;
+  }
+
+  /* ---- title block ---- */
+  .titleblock{
+    position:relative;
+    background:var(--paper);
+    border:1.5px solid var(--ink);
+    padding:20px 22px 16px;
+    margin-bottom:18px;
+  }
+  .titleblock::before, .titleblock::after,
+  .corner-br::before, .corner-br::after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-color:var(--accent);
+    border-style:solid;
+  }
+  .titleblock::before{ top:-1.5px; left:-1.5px; border-width:2.5px 0 0 2.5px; }
+  .titleblock::after{ top:-1.5px; right:-1.5px; border-width:2.5px 2.5px 0 0; }
+  .corner-br{ position:absolute; inset:0; pointer-events:none; }
+  .corner-br::before{ bottom:-1.5px; left:-1.5px; border-width:0 0 2.5px 2.5px; top:auto; }
+  .corner-br::after{ bottom:-1.5px; right:-1.5px; border-width:0 2.5px 2.5px 0; top:auto; }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.14em;
+    color:var(--ink-dim);
+    text-transform:uppercase;
+  }
+  h1{
+    margin:4px 0 6px;
+    font-size:clamp(26px, 5vw, 34px);
+    font-weight:700;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+  }
+  .sub{
+    margin:0;
+    color:var(--ink-dim);
+    font-size:14.5px;
+    line-height:1.55;
+  }
+  .sub b{ color:var(--ink); font-weight:600; }
+
+  /* ---- app bar ---- */
+  .appbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px 14px;
+    margin-bottom:14px;
+  }
+  .brand{ display:flex; align-items:center; gap:8px; }
+  .brand-mark{ font-size:19px; line-height:1; }
+  .brand-name{
+    font-family:var(--font-mono);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.03em;
+    color:var(--ink);
+  }
+  .appbar-right{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .status-badge{
+    font-family:var(--font-mono);
+    font-size:11px;
+    font-weight:600;
+    padding:4px 10px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:var(--paper-2);
+    color:var(--ink-dim);
+    white-space:nowrap;
+  }
+  .status-badge.done{ background:var(--good-bg); color:var(--good); border-color:var(--good); }
+  .status-badge.pending{ background:var(--accent-soft); color:var(--accent-ink); border-color:var(--accent); }
+  #studentName{
+    font-family:var(--font-kr);
+    font-weight:600;
+    font-size:17px;
+    color:var(--ink);
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:7px;
+    padding:7px 12px;
+    width:160px;
+  }
+  #studentName:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
+
+  /* ---- legend ---- */
+  details.legend{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    margin-bottom:18px;
+    overflow:hidden;
+  }
+  details.legend > summary{
+    cursor:pointer;
+    padding:13px 18px;
+    font-size:14px;
+    font-weight:600;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--ink);
+  }
+  details.legend > summary::-webkit-details-marker{ display:none; }
+  details.legend > summary::after{
+    content:"펼치기";
+    margin-left:auto;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--ink-dim);
+    letter-spacing:.06em;
+  }
+  details.legend[open] > summary::after{ content:"접기"; }
+  .legend-body{ padding:0 18px 16px; }
+  .legend-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12.5px;
+    overflow-x:auto;
+    display:block;
+  }
+  .legend-table table{ width:100%; border-collapse:collapse; min-width:560px; }
+  .legend-table th, .legend-table td{
+    border:1px solid var(--line);
+    padding:7px 9px;
+    text-align:left;
+  }
+  .legend-table th{
+    background:var(--paper-2);
+    font-family:var(--font-mono);
+    font-weight:600;
+    font-size:11px;
+    letter-spacing:.03em;
+  }
+  .legend-table td{ font-family:var(--font-mono); }
+  .legend-table td.kr{ font-family:var(--font-kr); font-weight:600; }
+
+  /* ---- status bar ---- */
+  .statusbar{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:12px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--ink-dim);
+  }
+  .statusbar .count{
+    font-variant-numeric:tabular-nums;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .track{
+    flex:1;
+    height:8px;
+    border:1px solid var(--line);
+    background:var(--paper-2);
+    position:relative;
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .track > span{
+    display:block;
+    height:100%;
+    background:var(--accent);
+    width:0%;
+    transition:width .35s ease;
+  }
+  .score-pill{
+    font-variant-numeric:tabular-nums;
+    color:var(--accent-ink);
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    padding:3px 9px;
+    border-radius:100px;
+    font-weight:600;
+  }
+
+  .mode-banner{
+    display:none;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.03em;
+    color:var(--accent-ink);
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    padding:8px 12px;
+    border-radius:8px;
+    margin-bottom:12px;
+  }
+  .mode-banner.show{ display:flex; }
+
+  /* ---- question card ---- */
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 22px 22px;
+    box-shadow:0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent);
+  }
+  .tag{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.05em;
+    color:var(--ink-dim);
+    border:1px solid var(--line);
+    background:var(--paper-2);
+    padding:3px 9px;
+    border-radius:100px;
+    min-height:24px;
+  }
+  .tag.revealed{
+    color:var(--accent-ink);
+    background:var(--accent-soft);
+    border-color:var(--accent);
+    font-weight:600;
+  }
+  .kr-line{
+    margin:14px 0 6px;
+    color:var(--ink-dim);
+    font-size:14px;
+  }
+  .en-line{
+    font-family:var(--font-mono);
+    font-size:19px;
+    font-weight:500;
+    line-height:1.5;
+    margin:0 0 18px;
+    text-wrap:balance;
+  }
+  .en-line .blank{
+    display:inline-block;
+    min-width:2.4em;
+    border-bottom:2px solid var(--ink);
+    text-align:center;
+  }
+  .en-line .filled{
+    display:inline-block;
+    padding:0 6px;
+    border-bottom:2px solid var(--accent);
+    color:var(--accent-ink);
+    font-weight:700;
+  }
+
+  .options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  @media (max-width:480px){ .options{ grid-template-columns:1fr; } }
+
+  .opt{
+    font-family:var(--font-mono);
+    font-size:14.5px;
+    text-align:left;
+    background:var(--paper-2);
+    border:1.5px solid var(--line);
+    color:var(--ink);
+    border-radius:10px;
+    padding:11px 13px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .opt .mark{
+    font-family:var(--font-mono);
+    color:var(--ink-dim);
+    border:1px solid var(--line);
+    background:var(--paper);
+    width:20px; height:20px;
+    border-radius:5px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px;
+    flex:none;
+  }
+  .opt:hover:not(:disabled){ border-color:var(--accent); }
+  .opt:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .opt:active:not(:disabled){ transform:translateY(1px); }
+  .opt:disabled{ cursor:default; }
+  .opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); font-weight:600; }
+  .opt.correct .mark{ border-color:var(--good); color:var(--good); }
+  .opt.wrong{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); font-weight:600; }
+  .opt.wrong .mark{ border-color:var(--bad); color:var(--bad); }
+  .opt.dim{ opacity:.55; }
+
+  .feedback{
+    margin-top:16px;
+    padding:13px 14px;
+    border-radius:10px;
+    font-size:13.5px;
+    line-height:1.6;
+    display:none;
+  }
+  .feedback.show{ display:block; }
+  .feedback.good{ background:var(--good-bg); color:var(--good); border:1px solid var(--good); }
+  .feedback.bad{ background:var(--bad-bg); color:var(--bad); border:1px solid var(--bad); }
+  .feedback b{ font-family:var(--font-mono); }
+
+  .card-foot{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:18px;
+  }
+  button.next{
+    font-family:var(--font-kr);
+    font-weight:600;
+    font-size:14px;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    display:none;
+  }
+  button.next.show{ display:inline-flex; }
+  button.next:hover{ background:var(--accent); color:var(--accent-ink); }
+  button.next:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  /* ---- result ---- */
+  .result{ display:none; }
+  .result.show{ display:block; }
+  .result .big{
+    font-family:var(--font-mono);
+    font-size:15px;
+    color:var(--ink-dim);
+  }
+  .result .score{
+    font-size:clamp(40px,10vw,56px);
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+    margin:2px 0 4px;
+  }
+  .result .score span{ color:var(--accent); }
+  .breakdown{ margin-top:20px; display:flex; flex-direction:column; gap:9px; }
+  .brow{ display:grid; grid-template-columns:150px 1fr 44px; align-items:center; gap:10px; font-size:12.5px; }
+  .brow .label{ font-family:var(--font-mono); color:var(--ink-dim); }
+  .brow .bar{ height:8px; background:var(--paper-2); border:1px solid var(--line); border-radius:2px; overflow:hidden; }
+  .brow .bar > span{ display:block; height:100%; background:var(--accent); }
+  .brow .num{ font-family:var(--font-mono); text-align:right; font-variant-numeric:tabular-nums; color:var(--ink-dim); }
+  .retry-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  button.retry{
+    font-family:var(--font-kr);
+    font-weight:600;
+    font-size:14px;
+    background:var(--accent);
+    color:var(--accent-ink);
+    border:none;
+    padding:11px 22px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  button.retry:hover{ filter:brightness(1.06); }
+  button.retry:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
+  button.retry.ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1.5px solid var(--line);
+  }
+  button.retry.ghost:hover{ border-color:var(--ink); filter:none; }
+  button.retry.wrong-only{ display:none; }
+  button.retry.wrong-only.show{ display:inline-flex; }
+
+  /* ---- report overlay ---- */
+  .overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:color-mix(in srgb, var(--ink) 55%, transparent);
+    align-items:flex-start;
+    justify-content:center;
+    padding:32px 16px;
+    overflow-y:auto;
+    z-index:50;
+  }
+  .overlay.show{ display:flex; }
+  .report{
+    width:100%;
+    max-width:560px;
+    background:var(--paper);
+    border:1.5px solid var(--ink);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .report-head{
+    background:var(--ink);
+    color:var(--paper);
+    padding:18px 22px;
+  }
+  .report-head .academy{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    opacity:.8;
+  }
+  .report-head h2{
+    margin:4px 0 0;
+    font-size:20px;
+    font-weight:700;
+  }
+  .report-body{ padding:20px 22px 22px; }
+  .report-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 18px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--ink-dim);
+    padding-bottom:14px;
+    margin-bottom:16px;
+    border-bottom:1px dashed var(--line);
+  }
+  .report-scores{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .report-scores.single{ grid-template-columns:1fr; }
+  .score-box{
+    border:1px solid var(--line);
+    background:var(--paper-2);
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .score-box .lbl{ font-family:var(--font-mono); font-size:11px; color:var(--ink-dim); }
+  .score-box .val{ font-size:24px; font-weight:700; font-variant-numeric:tabular-nums; margin-top:2px; }
+  .score-box .val span{ font-size:14px; color:var(--ink-dim); font-weight:500; }
+  .report h3{
+    font-size:13px;
+    letter-spacing:.02em;
+    margin:0 0 10px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .table-scroll{ overflow-x:auto; margin-bottom:18px; }
+  .report-table{ width:100%; min-width:420px; border-collapse:collapse; font-size:12.5px; }
+  .report-table th, .report-table td{ border:1px solid var(--line); padding:6px 8px; text-align:left; }
+  .report-table th{ background:var(--paper-2); font-family:var(--font-mono); font-size:10.5px; font-weight:600; }
+  .report-table td.num{ font-family:var(--font-mono); text-align:center; font-variant-numeric:tabular-nums; }
+  .weak-badge{ font-size:11px; padding:1px 7px; border-radius:100px; font-weight:600; }
+  .wrong-round{ margin-bottom:14px; }
+  .wrong-round-title{ font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--ink-dim); letter-spacing:.03em; margin-bottom:8px; }
+  .wrong-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .wrong-list li{ border:1px solid var(--line); border-radius:8px; padding:9px 11px; background:var(--paper-2); }
+  .wrong-kr{ font-size:12px; color:var(--ink-dim); margin-bottom:3px; }
+  .wrong-en{ font-family:var(--font-mono); font-size:13px; color:var(--ink); margin-bottom:5px; line-height:1.4; }
+  .wrong-diff{ font-size:11.5px; color:var(--ink-dim); display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .chip-cat{ font-family:var(--font-mono); font-size:10px; background:var(--paper); border:1px solid var(--line); border-radius:100px; padding:1px 7px; color:var(--ink-dim); }
+  .bad-text{ color:var(--bad); }
+  .good-text{ color:var(--good); }
+  .weak-badge.low{ background:var(--bad-bg); color:var(--bad); }
+  .weak-badge.mid{ background:var(--accent-soft); color:var(--accent-ink); }
+  .weak-badge.high{ background:var(--good-bg); color:var(--good); }
+  .coach-box{
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:8px;
+    padding:13px 14px;
+    font-size:13px;
+    line-height:1.65;
+    color:var(--accent-ink);
+  }
+  .coach-box b{ display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; margin-bottom:8px; }
+  .coach-weak{ font-weight:700; margin-bottom:10px; }
+  .coach-weak em{ font-style:normal; font-weight:500; opacity:.85; }
+  .coach-tip-lbl{ font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:.04em; margin-bottom:6px; }
+  .coach-tips{ margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px; }
+  .coach-tips li b{ display:inline; font-family:var(--font-kr); font-size:13px; letter-spacing:normal; margin-bottom:0; }
+  .report-foot{
+    margin-top:18px;
+    padding-top:12px;
+    border-top:1px dashed var(--line);
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--ink-dim);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+  }
+  .report-actions{
+    display:flex;
+    gap:8px;
+    padding:14px 22px 20px;
+    border-top:1px solid var(--line);
+  }
+  .report-actions button{
+    flex:1;
+    font-family:var(--font-kr);
+    font-weight:600;
+    font-size:13.5px;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  #shareImageBtn{ background:var(--accent); color:var(--accent-ink); border:none; flex:1 1 100%; }
+  #shareImageBtn:hover{ filter:brightness(1.06); }
+  #shareImageBtn:disabled{ opacity:.6; cursor:default; }
+  .report-actions button.secondary{ background:transparent; color:var(--ink); border:1.5px solid var(--line); }
+  .report-actions button.secondary:hover{ border-color:var(--ink); }
+  #copyReportBtn.copied::after{ content:" ✓ 복사됨"; }
+  .report-hint{
+    margin:10px 22px 0;
+    padding:10px 12px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:11.5px;
+    line-height:1.55;
+    color:var(--ink-dim);
+  }
+  .report-hint b{ color:var(--ink); }
+  .report-note{
+    padding:10px 22px 16px;
+    font-size:12px;
+    color:var(--ink-dim);
+    line-height:1.5;
+    display:none;
+  }
+  .report-note.show{ display:block; }
+  .image-preview{
+    display:none;
+    padding:0 22px 20px;
+  }
+  .image-preview.show{ display:block; }
+  .image-preview img{
+    display:block;
+    width:100%;
+    height:auto;
+    border:1px solid var(--line);
+    border-radius:8px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+
+<div class="sheet">
+
+  <div class="appbar">
+    <div class="brand">
+      <span class="brand-mark">📐</span>
+      <span class="brand-name">꾸메땅학습코칭학원</span>
+    </div>
+    <div class="appbar-right">
+      <span class="status-badge pending" id="statusBadge">🟡 진행중</span>
+      <input type="text" id="studentName" placeholder="학생 이름" maxlength="20">
+    </div>
+  </div>
+
+  <div class="titleblock">
+    <div class="corner-br"></div>
+    <div class="eyebrow">GENERAL VERBS · 일반동사 드릴 세트</div>
+    <h1>일반동사 완전정복</h1>
+    <p class="sub">
+      <b>평서문 · 부정문 · 의문문</b> × <b>현재 · 과거</b> × <b>3인칭 단수 여부</b>를
+      무작위로 섞은 27문항입니다. 문장을 읽고 빈칸에 들어갈 형태를 고르세요.
+    </p>
+  </div>
+
+  <details class="legend">
+    <summary>📐 규칙 한눈에 보기</summary>
+    <div class="legend-body">
+      <div class="legend-table">
+        <table>
+          <thead>
+            <tr>
+              <th>주어</th><th>현재 평서문</th><th>현재 부정문</th><th>현재 의문문</th>
+              <th>과거 평서문</th><th>과거 부정문</th><th>과거 의문문</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="kr">3인칭 단수<br>(He/She/It)</td>
+              <td>동사 + (e)s</td>
+              <td>doesn't + 원형</td>
+              <td>Does + 원형 ~?</td>
+              <td>동사 + ed / 불규칙</td>
+              <td>didn't + 원형</td>
+              <td>Did + 원형 ~?</td>
+            </tr>
+            <tr>
+              <td class="kr">비3인칭 단수<br>(I/You/We/They)</td>
+              <td>동사원형</td>
+              <td>don't + 원형</td>
+              <td>Do + 원형 ~?</td>
+              <td>동사 + ed / 불규칙</td>
+              <td>didn't + 원형</td>
+              <td>Did + 원형 ~?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <div class="mode-banner" id="modeBanner">🔁 오답 재도전 모드</div>
+
+  <div class="statusbar">
+    <span class="count" id="qCount">01 / 27</span>
+    <div class="track"><span id="progressFill"></span></div>
+    <span class="score-pill" id="scorePill">0 정답</span>
+  </div>
+
+  <div class="card" id="quizCard">
+    <span class="tag" id="catTag"></span>
+    <p class="kr-line" id="krLine"></p>
+    <p class="en-line" id="enLine"></p>
+    <div class="options" id="optionsWrap"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="card-foot">
+      <button class="next" id="nextBtn">다음 문항 →</button>
+    </div>
+  </div>
+
+  <div class="card result" id="resultCard">
+    <span class="tag">결과</span>
+    <p class="big">최종 점수</p>
+    <p class="score" id="finalScore">0<span>/27</span></p>
+    <p class="sub" id="finalMsg"></p>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="retry-row">
+      <button class="retry wrong-only" id="retryWrongBtn">❌ 틀린 문제만 다시 풀기</button>
+      <button class="retry ghost" id="reportBtn">📋 학습 리포트 보기</button>
+      <button class="retry ghost" id="retryAllBtn">🔄 처음부터 다시 풀기</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="overlay" id="reportOverlay">
+  <div class="report">
+    <div class="report-head">
+      <div class="academy">꾸메땅학습코칭학원</div>
+      <h2>일반동사 완전정복 학습 리포트</h2>
+    </div>
+    <div class="report-body" id="reportBody"></div>
+    <div class="report-actions">
+      <button id="shareImageBtn">🖼️ 이미지로 저장 / 카톡 공유</button>
+      <button id="copyReportBtn" class="secondary">📋 텍스트 복사</button>
+      <button id="closeReportBtn" class="secondary">닫기</button>
+    </div>
+    <p class="report-hint">모바일: 버튼을 누르면 뜨는 공유 시트에서 <b>"파일에 저장" / "사진 앱에 저장"</b>을 고르면 파일로 저장되고, <b>"카카오톡"</b>을 고르면 바로 전송됩니다. 공유 시트가 뜨지 않는 환경(PC 등)에서는 아래에 이미지가 나타나니 길게 누르거나 마우스 오른쪽 버튼으로 저장하세요.</p>
+    <div class="report-note" id="reportNote"></div>
+    <div class="image-preview" id="imagePreview">
+      <img id="imagePreviewImg" alt="꾸메땅학습코칭학원 학습 리포트 이미지">
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var CATS = {
+    stmt3: "평서문·현재·3인칭단수",
+    stmtN: "평서문·현재·비3인칭단수",
+    stmtP: "평서문·과거",
+    neg3:  "부정문·현재·3인칭단수",
+    negN:  "부정문·현재·비3인칭단수",
+    negP:  "부정문·과거",
+    q3:    "의문문·현재·3인칭단수",
+    qN:    "의문문·현재·비3인칭단수",
+    qP:    "의문문·과거"
+  };
+
+  var RULE_TIP = {
+    stmt3: "3인칭 단수(He/She/It) 뒤 동사에는 -(e)s를 붙이는 규칙을 문장으로 소리 내어 반복 연습하세요.",
+    stmtN: "I/You/We/They 뒤에는 동사원형을 그대로 쓴다는 점을 짧은 문장으로 반복해 익히세요.",
+    stmtP: "과거형은 인칭과 무관하게 동일한 형태이므로, get→got, write→wrote 같은 불규칙 변화표를 함께 외우게 하세요.",
+    neg3:  "3인칭 단수 부정문은 doesn't + 동사원형이며, 뒤 동사에 다시 -s를 붙이는 실수를 특히 확인하세요.",
+    negN:  "I/You/We/They의 부정문은 don't + 동사원형임을 반복 문제로 굳혀주세요.",
+    negP:  "과거 부정문은 인칭 상관없이 didn't + 동사원형이며, 동사를 과거형으로 또 바꾸지 않는지 확인하세요.",
+    q3:    "3인칭 단수 의문문은 Does로 시작하고 본동사는 반드시 원형을 씁니다.",
+    qN:    "I/You/We/They 의문문은 Do로 시작한다는 규칙을 다시 짚어주세요.",
+    qP:    "과거 의문문은 Did로 시작하고 본동사는 원형을 쓴다는 점을 강조해 주세요."
+  };
+
+  var BANK = [
+    {cat:"stmt3", kr:"그는 매일 학교에 걸어간다.", pre:"He", post:"to school every day.", opts:["walk","walks","walked","is walk"], ans:"walks", ex:"3인칭 단수(He) + 현재 평서문 → 동사에 -s를 붙여요."},
+    {cat:"stmt3", kr:"그녀는 매주 일요일에 교회에 간다.", pre:"She", post:"to church every Sunday.", opts:["go","goes","went","is going"], ans:"goes", ex:"3인칭 단수(She) 현재 습관 → go에 -es를 붙여 goes."},
+    {cat:"stmt3", kr:"우리 강아지는 밤에 짖는다.", pre:"My dog", post:"at night.", opts:["bark","barks","barked","barking"], ans:"barks", ex:"My dog은 3인칭 단수 취급 → bark + s."},
+
+    {cat:"stmtN", kr:"나는 매일 아침 커피를 마신다.", pre:"I", post:"coffee every morning.", opts:["drink","drinks","drank","am drink"], ans:"drink", ex:"주어가 I이면 3인칭 단수가 아니므로 동사원형을 그대로 씁니다."},
+    {cat:"stmtN", kr:"그들은 주말마다 축구를 한다.", pre:"They", post:"soccer every weekend.", opts:["plays","play","played","playing"], ans:"play", ex:"They는 복수 주어 → 동사원형 play."},
+    {cat:"stmtN", kr:"너와 나는 함께 영어를 공부한다.", pre:"You and I", post:"English together.", opts:["studies","study","studied","studying"], ans:"study", ex:"You and I는 복수 취급 → 동사원형 study."},
+
+    {cat:"stmtP", kr:"그는 어제 늦게 일어났다.", pre:"He", post:"up late yesterday.", opts:["get","gets","got","getted"], ans:"got", ex:"과거형은 인칭과 무관하게 동일한 형태. get의 불규칙 과거형은 got."},
+    {cat:"stmtP", kr:"그녀는 지난주에 편지를 썼다.", pre:"She", post:"a letter last week.", opts:["write","writes","wrote","writed"], ans:"wrote", ex:"write의 불규칙 과거형은 wrote. 3인칭이어도 -s를 붙이지 않아요."},
+    {cat:"stmtP", kr:"우리는 작년에 그 영화를 봤다.", pre:"We", post:"that movie last year.", opts:["watch","watches","watched","watching"], ans:"watched", ex:"규칙 동사 watch의 과거형은 watched."},
+
+    {cat:"neg3", kr:"그는 고기를 먹지 않는다.", pre:"He", post:"meat.", opts:["don't eat","doesn't eat","doesn't eats","didn't eat"], ans:"doesn't eat", ex:"3인칭 단수 현재 부정문 → doesn't + 동사원형."},
+    {cat:"neg3", kr:"그녀는 아침을 먹지 않는다.", pre:"She", post:"have breakfast in the morning.", opts:["don't","doesn't","didn't","isn't"], ans:"doesn't", ex:"She는 3인칭 단수 → doesn't + have(원형)."},
+    {cat:"neg3", kr:"내 남동생은 채소를 좋아하지 않는다.", pre:"My brother", post:"like vegetables.", opts:["don't","doesn't","didn't","isn't"], ans:"doesn't", ex:"My brother = 3인칭 단수 → doesn't."},
+
+    {cat:"negN", kr:"나는 그 이야기를 믿지 않는다.", pre:"I", post:"believe the story.", opts:["don't","doesn't","didn't","am not"], ans:"don't", ex:"I는 3인칭 단수가 아니므로 don't + 동사원형."},
+    {cat:"negN", kr:"그들은 이 도시에 살지 않는다.", pre:"They", post:"live in this city.", opts:["doesn't","don't","didn't","aren't"], ans:"don't", ex:"They는 복수 → don't + 동사원형."},
+    {cat:"negN", kr:"우리는 텔레비전을 많이 보지 않는다.", pre:"We", post:"watch TV much.", opts:["doesn't","don't","didn't","not"], ans:"don't", ex:"We는 복수 → don't + 동사원형."},
+
+    {cat:"negP", kr:"그는 어제 숙제를 하지 않았다.", pre:"He", post:"do his homework yesterday.", opts:["don't","doesn't","didn't","didn't did"], ans:"didn't", ex:"과거 부정문은 인칭에 상관없이 didn't + 동사원형."},
+    {cat:"negP", kr:"나는 그 파티에 가지 않았다.", pre:"I", post:"go to the party.", opts:["don't","doesn't","didn't","wasn't"], ans:"didn't", ex:"과거 부정문 → didn't + 동사원형(go)."},
+    {cat:"negP", kr:"그들은 그 소식을 듣지 못했다.", pre:"They", post:"hear the news.", opts:["don't","doesn't","didn't","haven't"], ans:"didn't", ex:"과거 부정문 → didn't + 동사원형(hear)."},
+
+    {cat:"q3", kr:"그는 매일 운동을 하니?", pre:"", post:"he exercise every day?", opts:["Do","Does","Did","Is"], ans:"Does", ex:"3인칭 단수 현재 의문문 → Does + 주어 + 동사원형 ~?"},
+    {cat:"q3", kr:"그녀는 스페인어를 할 줄 아니?", pre:"", post:"she speak Spanish?", opts:["Do","Does","Did","Is"], ans:"Does", ex:"she = 3인칭 단수 → Does로 시작."},
+    {cat:"q3", kr:"그 가게는 일요일마다 여니?", pre:"", post:"the store open on Sundays?", opts:["Do","Does","Did","Is"], ans:"Does", ex:"the store = 3인칭 단수 → Does로 시작."},
+
+    {cat:"qN", kr:"너는 매운 음식을 좋아하니?", pre:"", post:"you like spicy food?", opts:["Do","Does","Did","Are"], ans:"Do", ex:"you는 3인칭 단수가 아니므로 Do로 시작."},
+    {cat:"qN", kr:"그들은 함께 공부하니?", pre:"", post:"they study together?", opts:["Do","Does","Did","Are"], ans:"Do", ex:"they는 복수 → Do로 시작."},
+    {cat:"qN", kr:"우리는 도움이 필요하니?", pre:"", post:"we need help?", opts:["Do","Does","Did","Are"], ans:"Do", ex:"we는 복수 → Do로 시작."},
+
+    {cat:"qP", kr:"그는 어제 그녀를 만났니?", pre:"", post:"he meet her yesterday?", opts:["Do","Does","Did","Was"], ans:"Did", ex:"과거 의문문은 인칭과 무관하게 Did + 주어 + 동사원형 ~?"},
+    {cat:"qP", kr:"너는 그 영화를 봤니?", pre:"", post:"you watch the movie?", opts:["Do","Does","Did","Were"], ans:"Did", ex:"과거 의문문 → Did + 동사원형(watch)."},
+    {cat:"qP", kr:"그들은 지난밤에 잘 잤니?", pre:"", post:"they sleep well last night?", opts:["Do","Does","Did","Were"], ans:"Did", ex:"과거 의문문 → Did + 동사원형(sleep)."}
+  ];
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var t=a[i]; a[i]=a[j]; a[j]=t;
+    }
+    return a;
+  }
+
+  var order, current, score, perCat, answered, mode, wrongIndices, results, wrongLog;
+  results = [];
+  wrongLog = [];
+
+  function fullSentence(q){
+    return (q.pre ? q.pre + ' ' : '') + q.ans + ' ' + q.post;
+  }
+
+  var qCount = document.getElementById('qCount');
+  var progressFill = document.getElementById('progressFill');
+  var scorePill = document.getElementById('scorePill');
+  var modeBanner = document.getElementById('modeBanner');
+  var catTag = document.getElementById('catTag');
+  var krLine = document.getElementById('krLine');
+  var enLine = document.getElementById('enLine');
+  var optionsWrap = document.getElementById('optionsWrap');
+  var feedback = document.getElementById('feedback');
+  var nextBtn = document.getElementById('nextBtn');
+  var quizCard = document.getElementById('quizCard');
+  var resultCard = document.getElementById('resultCard');
+  var finalScore = document.getElementById('finalScore');
+  var finalMsg = document.getElementById('finalMsg');
+  var breakdown = document.getElementById('breakdown');
+  var retryWrongBtn = document.getElementById('retryWrongBtn');
+  var retryAllBtn = document.getElementById('retryAllBtn');
+  var reportBtn = document.getElementById('reportBtn');
+  var reportOverlay = document.getElementById('reportOverlay');
+  var reportBody = document.getElementById('reportBody');
+  var copyReportBtn = document.getElementById('copyReportBtn');
+  var shareImageBtn = document.getElementById('shareImageBtn');
+  var closeReportBtn = document.getElementById('closeReportBtn');
+  var imagePreview = document.getElementById('imagePreview');
+  var imagePreviewImg = document.getElementById('imagePreviewImg');
+  var studentNameInput = document.getElementById('studentName');
+  var statusBadge = document.getElementById('statusBadge');
+  var reportNote = document.getElementById('reportNote');
+
+  var ROUND_LABEL = ['1차', '2차', '3차'];
+  var MAX_ROUNDS = 3;
+
+  function pad(n){ return n<10 ? '0'+n : ''+n; }
+
+  function updateStatusBadge(inProgressRoundIdx){
+    if(results.length === 0){
+      statusBadge.textContent = '🟡 진행중 · ' + ROUND_LABEL[inProgressRoundIdx || 0] + ' 풀이중';
+      statusBadge.className = 'status-badge pending';
+      return;
+    }
+    var last = results[results.length - 1];
+    if(last.score === last.total){
+      statusBadge.textContent = '🟢 학습 완료';
+      statusBadge.className = 'status-badge done';
+    } else if(results.length >= MAX_ROUNDS){
+      statusBadge.textContent = '🔴 미완료 · 3차까지 종료';
+      statusBadge.className = 'status-badge pending';
+    } else if(inProgressRoundIdx !== undefined){
+      statusBadge.textContent = '🟡 진행중 · ' + ROUND_LABEL[inProgressRoundIdx] + ' 풀이중';
+      statusBadge.className = 'status-badge pending';
+    } else {
+      statusBadge.textContent = '🟡 미완료 · ' + ROUND_LABEL[results.length] + ' 필요';
+      statusBadge.className = 'status-badge pending';
+    }
+  }
+
+  function init(){
+    mode = 'full';
+    results = [];
+    wrongLog = [];
+    startRound(BANK.map(function(q,i){ return i; }));
+  }
+
+  function startRound(indices){
+    order = shuffle(indices.slice());
+    current = 0;
+    score = 0;
+    answered = false;
+    wrongIndices = [];
+    perCat = {};
+    Object.keys(CATS).forEach(function(k){ perCat[k] = {correct:0, total:0}; });
+    order.forEach(function(i){ perCat[BANK[i].cat].total++; });
+
+    if(mode === 'wrong'){
+      modeBanner.textContent = '🔁 오답 재도전 모드 · 총 ' + order.length + '문항';
+      modeBanner.classList.add('show');
+    } else {
+      modeBanner.classList.remove('show');
+    }
+
+    updateStatusBadge(results.length);
+    resultCard.classList.remove('show');
+    quizCard.style.display = '';
+    renderQuestion();
+  }
+
+  function renderQuestion(){
+    answered = false;
+    var q = BANK[order[current]];
+    qCount.textContent = pad(current+1) + ' / ' + order.length;
+    progressFill.style.width = (current / order.length * 100) + '%';
+    scorePill.textContent = score + ' 정답';
+
+    catTag.textContent = '문제 ' + pad(current+1);
+    catTag.classList.remove('revealed');
+
+    krLine.textContent = q.kr;
+
+    var pre = q.pre ? q.pre + ' ' : '';
+    enLine.innerHTML = pre + '<span class="blank" id="blankSlot">____</span> ' + q.post;
+
+    var opts = shuffle(q.opts.map(function(o,i){ return {text:o, correct:o===q.ans}; }));
+
+    optionsWrap.innerHTML = '';
+    opts.forEach(function(o, idx){
+      var btn = document.createElement('button');
+      btn.className = 'opt';
+      btn.type = 'button';
+      var mark = document.createElement('span');
+      mark.className = 'mark';
+      mark.textContent = String.fromCharCode(65+idx);
+      var label = document.createElement('span');
+      label.textContent = o.text;
+      btn.appendChild(mark);
+      btn.appendChild(label);
+      btn.addEventListener('click', function(){ selectOption(btn, o, q); });
+      optionsWrap.appendChild(btn);
+    });
+
+    feedback.className = 'feedback';
+    feedback.textContent = '';
+    nextBtn.classList.remove('show');
+  }
+
+  function selectOption(btn, opt, q){
+    if(answered) return;
+    answered = true;
+
+    var allBtns = optionsWrap.querySelectorAll('.opt');
+    allBtns.forEach(function(b){ b.disabled = true; });
+
+    var blank = document.getElementById('blankSlot');
+    blank.outerHTML = '<span class="filled">' + opt.text + '</span>';
+
+    if(opt.correct){
+      btn.classList.add('correct');
+      score++;
+      perCat[q.cat].correct++;
+      feedback.className = 'feedback show good';
+      feedback.innerHTML = '<b>정답!</b> ' + q.ex;
+    } else {
+      btn.classList.add('wrong');
+      allBtns.forEach(function(b){
+        if(b.textContent.trim() === q.ans) b.classList.add('correct');
+        else if(b !== btn) b.classList.add('dim');
+      });
+      feedback.className = 'feedback show bad';
+      feedback.innerHTML = '<b>오답.</b> 정답은 <b>' + q.ans + '</b> — ' + q.ex;
+      wrongIndices.push(order[current]);
+      wrongLog.push({
+        round: results.length + 1,
+        cat: q.cat,
+        kr: q.kr,
+        sentence: fullSentence(q),
+        chosen: opt.text,
+        correct: q.ans
+      });
+    }
+
+    catTag.textContent = CATS[q.cat];
+    catTag.classList.add('revealed');
+    scorePill.textContent = score + ' 정답';
+
+    nextBtn.classList.add('show');
+    nextBtn.textContent = (current === order.length-1) ? '결과 보기 →' : '다음 문항 →';
+  }
+
+  nextBtn.addEventListener('click', function(){
+    if(current === order.length-1){
+      showResult();
+    } else {
+      current++;
+      renderQuestion();
+    }
+  });
+
+  function showResult(){
+    progressFill.style.width = '100%';
+    quizCard.style.display = 'none';
+    resultCard.classList.add('show');
+    finalScore.innerHTML = score + '<span>/' + order.length + '</span>';
+
+    results.push({
+      mode: mode,
+      score: score,
+      total: order.length,
+      perCat: JSON.parse(JSON.stringify(perCat))
+    });
+
+    var pct = Math.round(score / order.length * 100);
+    var reachedCap = results.length >= MAX_ROUNDS && wrongIndices.length > 0;
+    var msg;
+    if(mode === 'wrong' && wrongIndices.length === 0){
+      msg = '오답 문항을 전부 다시 맞혔어요. 이 세트는 완전정복입니다.';
+    } else if(reachedCap){
+      msg = ROUND_LABEL[results.length-1] + '까지 진행했지만 아직 틀린 문항이 남아있습니다. 리포트를 확인하고 해당 유형을 별도로 지도해주세요.';
+    } else if(pct === 100){
+      msg = '완벽합니다. 일반동사의 인칭·시제·긍정/부정/의문 변화를 전부 정복했어요.';
+    } else if(pct >= 80){
+      msg = '아주 좋아요. 틀린 유형만 다시 확인하면 완전정복입니다.';
+    } else if(pct >= 50){
+      msg = '절반 이상 맞혔어요. 3인칭 단수 여부와 시제를 함께 체크하는 연습을 더 해보세요.';
+    } else {
+      msg = '위의 "규칙 한눈에 보기" 표를 다시 살펴본 뒤 재도전해보세요.';
+    }
+    finalMsg.textContent = msg;
+
+    breakdown.innerHTML = '';
+    Object.keys(CATS).forEach(function(k){
+      var c = perCat[k];
+      if(!c.total) return;
+      var row = document.createElement('div');
+      row.className = 'brow';
+      var pctC = c.total ? (c.correct/c.total*100) : 0;
+      row.innerHTML =
+        '<span class="label">' + CATS[k] + '</span>' +
+        '<span class="bar"><span style="width:' + pctC + '%"></span></span>' +
+        '<span class="num">' + c.correct + '/' + c.total + '</span>';
+      breakdown.appendChild(row);
+    });
+
+    if(wrongIndices.length > 0 && results.length < MAX_ROUNDS){
+      retryWrongBtn.textContent = '❌ 틀린 문제만 다시 풀기 (' + wrongIndices.length + '문항)';
+      retryWrongBtn.classList.add('show');
+    } else {
+      retryWrongBtn.classList.remove('show');
+    }
+
+    updateStatusBadge();
+  }
+
+  retryWrongBtn.addEventListener('click', function(){
+    if(wrongIndices.length === 0) return;
+    mode = 'wrong';
+    startRound(wrongIndices);
+  });
+
+  retryAllBtn.addEventListener('click', init);
+
+  /* ---- 리포트 ---- */
+
+  function getRounds(){ return results.slice(0, MAX_ROUNDS); }
+
+  function categoryStats(rounds){
+    return Object.keys(CATS).map(function(k){
+      var perRound = rounds.map(function(r){
+        var c = r.perCat[k];
+        return (c && c.total) ? c : null;
+      });
+      return { key:k, label:CATS[k], rounds:perRound };
+    }).filter(function(s){ return s.rounds[0]; })
+      .sort(function(x,y){
+        var ax = x.rounds[0].correct / x.rounds[0].total;
+        var ay = y.rounds[0].correct / y.rounds[0].total;
+        return ax - ay;
+      });
+  }
+
+  function rowStatus(s){
+    var attempts = s.rounds.filter(function(r){ return r; });
+    var last = attempts[attempts.length - 1];
+    if(last.correct === last.total){
+      return attempts.length > 1 ? {label:'개선완료', cls:'high'} : {label:'우수', cls:'high'};
+    }
+    if(attempts.length > 1) return {label:'취약 지속', cls:'low'};
+    var pct = last.correct / last.total * 100;
+    if(pct >= 60) return {label:'보통', cls:'mid'};
+    return {label:'취약', cls:'low'};
+  }
+
+  function analyzeWeak(stats){
+    var weak = stats.filter(function(s){ return rowStatus(s).cls === 'low'; });
+    if(weak.length === 0) return null;
+    var persistent = weak.filter(function(s){ return s.rounds.filter(function(r){return r;}).length > 1; });
+    var target = (persistent.length ? persistent : weak).slice(0, 2);
+    return {
+      persistent: persistent.length > 0,
+      items: target.map(function(s){ return { label:s.label, tip:RULE_TIP[s.key] }; })
+    };
+  }
+
+  var PERFECT_MSG = '모든 유형에서 정답을 완성했습니다. 다음 단계(불규칙 동사 확장, 조동사 등)로 진도를 나가도 좋습니다.';
+
+  function buildCoachHtml(stats){
+    var a = analyzeWeak(stats);
+    if(!a){
+      return '<div class="coach-box"><b>꾸메땅학습코칭학원</b>' + PERFECT_MSG + '</div>';
+    }
+    var weakLine = '🔻 약점 유형: ' + a.items.map(function(i){ return i.label; }).join(', ') +
+      (a.persistent ? ' <em>(오답 재도전 후에도 반복됨)</em>' : '');
+    var tipsHtml = a.items.map(function(i){
+      return '<li><b>' + i.label + '</b> — ' + i.tip + '</li>';
+    }).join('');
+    return '<div class="coach-box"><b>꾸메땅학습코칭학원</b>' +
+      '<div class="coach-weak">' + weakLine + '</div>' +
+      '<div class="coach-tip-lbl">📌 학습 tip</div>' +
+      '<ul class="coach-tips">' + tipsHtml + '</ul>' +
+      '</div>';
+  }
+
+  function buildCoachText(stats){
+    var a = analyzeWeak(stats);
+    var lines = [];
+    if(!a){
+      lines.push(PERFECT_MSG);
+      return lines;
+    }
+    lines.push('🔻 약점 유형: ' + a.items.map(function(i){ return i.label; }).join(', ') +
+      (a.persistent ? ' (오답 재도전 후에도 반복됨)' : ''));
+    lines.push('📌 학습 tip:');
+    a.items.forEach(function(i){ lines.push('  - ' + i.label + ': ' + i.tip); });
+    return lines;
+  }
+
+  function todayKR(){
+    return new Date().toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
+  }
+
+  function studentName(){
+    var v = (studentNameInput.value || '').trim();
+    return v || '학생';
+  }
+
+  function groupWrongByRound(rounds){
+    var byRound = {};
+    rounds.forEach(function(r, i){
+      byRound[i+1] = wrongLog.filter(function(e){ return e.round === i+1; });
+    });
+    return byRound;
+  }
+
+  function buildWrongDetailHtml(rounds){
+    var groups = groupWrongByRound(rounds);
+    return rounds.map(function(r, i){
+      var items = groups[i+1];
+      if(!items.length){
+        return '<div class="wrong-round"><div class="wrong-round-title">' + ROUND_LABEL[i] + ' — 오답 없음 ✅</div></div>';
+      }
+      var list = items.map(function(e){
+        return '<li><div class="wrong-kr">' + e.kr + '</div><div class="wrong-en">' + e.sentence + '</div>' +
+          '<div class="wrong-diff"><span class="chip-cat">' + CATS[e.cat] + '</span> 선택: <b class="bad-text">' + e.chosen + '</b> → 정답: <b class="good-text">' + e.correct + '</b></div></li>';
+      }).join('');
+      return '<div class="wrong-round"><div class="wrong-round-title">' + ROUND_LABEL[i] + ' 오답 (' + items.length + '문항)</div><ul class="wrong-list">' + list + '</ul></div>';
+    }).join('');
+  }
+
+  function buildWrongDetailText(rounds){
+    var groups = groupWrongByRound(rounds);
+    var lines = [];
+    rounds.forEach(function(r, i){
+      var items = groups[i+1];
+      if(!items.length){
+        lines.push(ROUND_LABEL[i] + ' — 오답 없음');
+        return;
+      }
+      lines.push(ROUND_LABEL[i] + ' 오답 (' + items.length + '문항)');
+      items.forEach(function(e, idx){
+        lines.push('  ' + (idx+1) + ') ' + e.kr);
+        lines.push('     ' + e.sentence + '  [' + CATS[e.cat] + ']');
+        lines.push('     선택: ' + e.chosen + ' → 정답: ' + e.correct);
+      });
+    });
+    return lines;
+  }
+
+  function completionLine(rounds){
+    var last = rounds[rounds.length - 1];
+    if(last.score === last.total) return '🟢 학습 완료 — 모든 문항을 정답으로 마무리했습니다.';
+    if(rounds.length >= MAX_ROUNDS) return '🔴 미완료 — 3차까지 진행했으나 오답이 남아 추가 지도가 필요합니다.';
+    return '🟡 미완료 — ' + ROUND_LABEL[rounds.length] + ' 재도전이 필요합니다.';
+  }
+
+  function openReport(){
+    var rounds = getRounds();
+    if(!rounds.length) return;
+    var stats = categoryStats(rounds);
+    var name = studentName();
+    var date = todayKR();
+    var coachHtml = buildCoachHtml(stats);
+
+    var scoreBoxes = rounds.map(function(r, i){
+      var pt = Math.round(r.score / r.total * 100);
+      var lbl = i === 0 ? ROUND_LABEL[i] + ' 결과' : ROUND_LABEL[i] + ' (오답 재도전)';
+      return '<div class="score-box"><div class="lbl">' + lbl + '</div><div class="val">' + pt + '점<span> (' + r.score + '/' + r.total + ')</span></div></div>';
+    }).join('');
+
+    var headCols = rounds.map(function(r, i){ return '<th>' + ROUND_LABEL[i] + '</th>'; }).join('');
+    var rowsHtml = stats.map(function(s){
+      var st = rowStatus(s);
+      var cells = s.rounds.map(function(r){ return '<td class="num">' + (r ? r.correct + '/' + r.total : '-') + '</td>'; }).join('');
+      return '<tr><td>' + s.label + '</td>' + cells + '<td><span class="weak-badge ' + st.cls + '">' + st.label + '</span></td></tr>';
+    }).join('');
+
+    reportBody.innerHTML =
+      '<div class="report-meta"><span>📅 ' + date + '</span><span>👤 ' + name + ' 학생</span><span>📘 일반동사(평서문·부정문·의문문 / 현재·과거 / 3인칭단수)</span></div>' +
+      '<div class="report-scores' + (rounds.length === 1 ? ' single' : '') + '">' + scoreBoxes + '</div>' +
+      '<p class="sub" style="margin-bottom:16px;">' + completionLine(rounds) + '</p>' +
+      '<h3>🔍 오답분석 — 유형별 정답률</h3>' +
+      '<div class="table-scroll"><table class="report-table"><thead><tr><th>유형</th>' + headCols + '<th>상태</th></tr></thead><tbody>' + rowsHtml + '</tbody></table></div>' +
+      '<h3>📝 오답 문항 상세</h3>' +
+      buildWrongDetailHtml(rounds) +
+      '<h3>🎯 코칭 코멘트</h3>' +
+      coachHtml +
+      '<div class="report-foot"><span>꾸메땅학습코칭학원 · 일반동사 완전정복 세트</span></div>';
+
+    imagePreview.classList.remove('show');
+    imagePreviewImg.src = '';
+    reportNote.classList.remove('show');
+    reportOverlay.classList.add('show');
+  }
+
+  function buildReportText(){
+    var rounds = getRounds();
+    if(!rounds.length) return '';
+    var stats = categoryStats(rounds);
+    var name = studentName();
+    var date = todayKR();
+
+    var lines = [];
+    lines.push('📐 꾸메땅학습코칭학원 학습 리포트');
+    lines.push('일반동사 완전정복 · ' + date);
+    lines.push('학생: ' + name);
+    lines.push('');
+    rounds.forEach(function(r, i){
+      var pt = Math.round(r.score / r.total * 100);
+      var lbl = i === 0 ? ROUND_LABEL[i] + ' 결과' : ROUND_LABEL[i] + '(오답 재도전)';
+      lines.push(lbl + ': ' + pt + '점 (' + r.score + '/' + r.total + ')');
+    });
+    lines.push(completionLine(rounds));
+    lines.push('');
+    lines.push('[오답분석]');
+    stats.forEach(function(s){
+      var st = rowStatus(s);
+      var parts = s.rounds.map(function(r, i){ return ROUND_LABEL[i] + ' ' + (r ? r.correct + '/' + r.total : '-'); });
+      lines.push('- ' + s.label + ': ' + parts.join(', ') + ' [' + st.label + ']');
+    });
+    lines.push('');
+    lines.push('[오답 문항 상세]');
+    buildWrongDetailText(rounds).forEach(function(l){ lines.push(l); });
+    lines.push('');
+    lines.push('[코칭 코멘트]');
+    buildCoachText(stats).forEach(function(l){ lines.push(l); });
+    lines.push('');
+    lines.push('꾸메땅학습코칭학원');
+    return lines.join('\n');
+  }
+
+  reportBtn.addEventListener('click', openReport);
+  closeReportBtn.addEventListener('click', function(){ reportOverlay.classList.remove('show'); });
+  reportOverlay.addEventListener('click', function(e){ if(e.target === reportOverlay) reportOverlay.classList.remove('show'); });
+
+  function showReportNote(msg){
+    reportNote.textContent = msg;
+    reportNote.classList.add('show');
+    setTimeout(function(){ reportNote.classList.remove('show'); }, 4000);
+  }
+
+  copyReportBtn.addEventListener('click', function(){
+    var text = buildReportText();
+    fallbackCopy(text, function(){
+      copyReportBtn.classList.add('copied');
+      setTimeout(function(){ copyReportBtn.classList.remove('copied'); }, 1600);
+      showReportNote('텍스트를 클립보드에 복사했어요. 카톡 채팅창에 붙여넣기 하세요.');
+    });
+  });
+
+  /* ---- 리포트 이미지(카톡 공유용) ---- */
+
+  function cssVar(name){
+    var v = getComputedStyle(document.body).getPropertyValue(name);
+    return v ? v.trim() : '';
+  }
+
+  function roundRectPath(ctx, x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function wrapText(ctx, text, maxWidth){
+    var words = text.split(' ');
+    var lines = [];
+    var cur = '';
+    words.forEach(function(w){
+      var test = cur ? cur + ' ' + w : w;
+      if(ctx.measureText(test).width > maxWidth && cur){
+        lines.push(cur);
+        cur = w;
+      } else {
+        cur = test;
+      }
+    });
+    if(cur) lines.push(cur);
+    return lines;
+  }
+
+  function drawReportCanvas(){
+    var rounds = getRounds();
+    if(!rounds.length) return null;
+    var stats = categoryStats(rounds);
+    var analyze = analyzeWeak(stats);
+    var name = studentName();
+    var date = todayKR();
+
+    var col = {
+      bg: cssVar('--paper') || '#ffffff',
+      ink: cssVar('--ink') || '#16223a',
+      inkDim: cssVar('--ink-dim') || '#54627e',
+      line: cssVar('--line') || '#c3cede',
+      paper2: cssVar('--paper-2') || '#e3e9f2',
+      accent: cssVar('--accent') || '#b8792a',
+      accentInk: cssVar('--accent-ink') || '#4a2f0d',
+      accentSoft: cssVar('--accent-soft') || '#f2e2c6',
+      good: cssVar('--good') || '#2f8f5b',
+      goodBg: cssVar('--good-bg') || '#e1f2e7',
+      bad: cssVar('--bad') || '#c1473c',
+      badBg: cssVar('--bad-bg') || '#fbe6e3'
+    };
+
+    var SCALE = 2, W = 680, MAXH = 6000, PAD = 28;
+    var work = document.createElement('canvas');
+    work.width = W * SCALE;
+    work.height = MAXH * SCALE;
+    var ctx = work.getContext('2d');
+    ctx.scale(SCALE, SCALE);
+
+    var FONT_KR = '"IBM Plex Sans KR", sans-serif';
+    var FONT_MONO = '"IBM Plex Mono", monospace';
+    var x = PAD, innerW = W - PAD * 2, y = 0;
+
+    ctx.fillStyle = col.bg;
+    ctx.fillRect(0, 0, W, MAXH);
+
+    ctx.fillStyle = col.ink;
+    ctx.fillRect(0, 0, W, 74);
+    ctx.fillStyle = col.bg;
+    ctx.font = '700 12px ' + FONT_MONO;
+    ctx.fillText('꾸메땅학습코칭학원', x, 28);
+    ctx.font = '700 21px ' + FONT_KR;
+    ctx.fillText('일반동사 완전정복 학습 리포트', x, 56);
+    y = 74 + PAD;
+
+    ctx.fillStyle = col.inkDim;
+    ctx.font = '500 12px ' + FONT_MONO;
+    ctx.fillText('📅 ' + date + '   👤 ' + name + ' 학생', x, y); y += 18;
+    ctx.fillText('📘 일반동사 (평서문·부정문·의문문 / 현재·과거 / 3인칭단수)', x, y); y += 16;
+
+    ctx.strokeStyle = col.line;
+    ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(W - PAD, y); ctx.stroke();
+    ctx.setLineDash([]);
+    y += 22;
+
+    var boxGap = 10, boxH = 66;
+    var boxW = (innerW - boxGap * (rounds.length - 1)) / rounds.length;
+    rounds.forEach(function(r, i){
+      var bx = x + i * (boxW + boxGap);
+      ctx.fillStyle = col.paper2;
+      roundRectPath(ctx, bx, y, boxW, boxH, 8); ctx.fill();
+      ctx.strokeStyle = col.line; ctx.lineWidth = 1;
+      roundRectPath(ctx, bx, y, boxW, boxH, 8); ctx.stroke();
+
+      ctx.fillStyle = col.inkDim;
+      ctx.font = '600 10px ' + FONT_MONO;
+      ctx.fillText(i === 0 ? ROUND_LABEL[i] + ' 결과' : ROUND_LABEL[i] + ' (재도전)', bx + 10, y + 18);
+
+      var pt = Math.round(r.score / r.total * 100);
+      ctx.fillStyle = col.ink;
+      ctx.font = '700 22px ' + FONT_MONO;
+      ctx.fillText(pt + '점', bx + 10, y + 44);
+
+      ctx.fillStyle = col.inkDim;
+      ctx.font = '500 11px ' + FONT_MONO;
+      ctx.fillText('(' + r.score + '/' + r.total + ')', bx + 10, y + 58);
+    });
+    y += boxH + 20;
+
+    ctx.fillStyle = col.inkDim;
+    ctx.font = '500 12px ' + FONT_KR;
+    wrapText(ctx, completionLine(rounds), innerW).forEach(function(line){
+      ctx.fillText(line, x, y); y += 16;
+    });
+    y += 12;
+
+    ctx.fillStyle = col.ink;
+    ctx.font = '700 13px ' + FONT_KR;
+    ctx.fillText('🔍 오답분석 — 유형별 정답률', x, y);
+    y += 14;
+
+    var labelW = 190, roundColW = 48;
+    var rowH = 22;
+    ctx.fillStyle = col.paper2;
+    ctx.fillRect(x, y, innerW, rowH);
+    ctx.fillStyle = col.inkDim;
+    ctx.font = '700 10px ' + FONT_MONO;
+    ctx.fillText('유형', x + 8, y + 15);
+    ctx.textAlign = 'center';
+    rounds.forEach(function(r, i){
+      ctx.fillText(ROUND_LABEL[i], x + labelW + i * roundColW + roundColW / 2, y + 15);
+    });
+    ctx.textAlign = 'left';
+    ctx.fillText('상태', x + labelW + roundColW * rounds.length + 10, y + 15);
+    y += rowH;
+
+    stats.forEach(function(s, idx){
+      if(idx % 2 === 1){
+        ctx.fillStyle = col.paper2;
+        ctx.globalAlpha = 0.45;
+        ctx.fillRect(x, y, innerW, rowH);
+        ctx.globalAlpha = 1;
+      }
+      ctx.fillStyle = col.ink;
+      ctx.font = '500 11.5px ' + FONT_KR;
+      ctx.fillText(s.label, x + 8, y + 15);
+
+      ctx.font = '500 11px ' + FONT_MONO;
+      ctx.fillStyle = col.inkDim;
+      ctx.textAlign = 'center';
+      s.rounds.forEach(function(r, i){
+        var cx = x + labelW + i * roundColW + roundColW / 2;
+        ctx.fillText(r ? r.correct + '/' + r.total : '-', cx, y + 15);
+      });
+      ctx.textAlign = 'left';
+
+      var st = rowStatus(s);
+      var bc = st.cls === 'high' ? { bg: col.goodBg, fg: col.good } :
+               st.cls === 'low'  ? { bg: col.badBg,  fg: col.bad  } :
+                                    { bg: col.accentSoft, fg: col.accentInk };
+      ctx.font = '700 10px ' + FONT_MONO;
+      var bx2 = x + labelW + roundColW * rounds.length + 8;
+      var tw = ctx.measureText(st.label).width;
+      ctx.fillStyle = bc.bg;
+      roundRectPath(ctx, bx2, y + 3, tw + 14, 16, 8); ctx.fill();
+      ctx.fillStyle = bc.fg;
+      ctx.fillText(st.label, bx2 + 7, y + 15);
+
+      y += rowH;
+    });
+    y += 16;
+
+    ctx.fillStyle = col.ink;
+    ctx.font = '700 13px ' + FONT_KR;
+    ctx.fillText('📝 오답 문항 상세', x, y);
+    y += 16;
+
+    var wrongGroups = groupWrongByRound(rounds);
+    rounds.forEach(function(r, ridx){
+      var items = wrongGroups[ridx + 1];
+      ctx.fillStyle = col.inkDim;
+      ctx.font = '700 10px ' + FONT_MONO;
+      ctx.fillText(ROUND_LABEL[ridx] + (items.length ? ' 오답 (' + items.length + '문항)' : ' — 오답 없음 ✅'), x, y + 8);
+      y += 18;
+
+      items.forEach(function(e){
+        var cardH = 54;
+        ctx.fillStyle = col.paper2;
+        roundRectPath(ctx, x, y, innerW, cardH, 7); ctx.fill();
+        ctx.strokeStyle = col.line; ctx.lineWidth = 1;
+        roundRectPath(ctx, x, y, innerW, cardH, 7); ctx.stroke();
+
+        ctx.font = '500 11px ' + FONT_KR;
+        ctx.fillStyle = col.inkDim;
+        ctx.fillText(wrapText(ctx, e.kr, innerW - 24)[0], x + 12, y + 16);
+
+        ctx.font = '500 12px ' + FONT_MONO;
+        ctx.fillStyle = col.ink;
+        ctx.fillText(wrapText(ctx, e.sentence, innerW - 24)[0], x + 12, y + 32);
+
+        ctx.font = '500 10.5px ' + FONT_MONO;
+        ctx.fillStyle = col.bad;
+        var chosenText = '선택: ' + e.chosen;
+        ctx.fillText(chosenText, x + 12, y + 47);
+        var chosenW = ctx.measureText(chosenText).width;
+        ctx.fillStyle = col.inkDim;
+        ctx.fillText('  →  ', x + 12 + chosenW, y + 47);
+        var arrowW = ctx.measureText('  →  ').width;
+        ctx.fillStyle = col.good;
+        ctx.fillText('정답: ' + e.correct, x + 12 + chosenW + arrowW, y + 47);
+
+        y += cardH + 8;
+      });
+      y += 6;
+    });
+    y += 10;
+
+    ctx.fillStyle = col.ink;
+    ctx.font = '700 13px ' + FONT_KR;
+    ctx.fillText('🎯 코칭 코멘트', x, y);
+    y += 16;
+
+    var boxTop = y;
+    var blocks = [];
+    var innerPad = 20;
+    if(!analyze){
+      ctx.font = '500 12px ' + FONT_KR;
+      wrapText(ctx, PERFECT_MSG, innerW - innerPad * 2).forEach(function(l){
+        blocks.push({ text:l, font:'500 12px ' + FONT_KR });
+      });
+    } else {
+      ctx.font = '700 12px ' + FONT_KR;
+      var weakLine = '🔻 약점 유형: ' + analyze.items.map(function(i){ return i.label; }).join(', ') +
+        (analyze.persistent ? ' (재도전 후에도 반복)' : '');
+      wrapText(ctx, weakLine, innerW - innerPad * 2).forEach(function(l){
+        blocks.push({ text:l, font:'700 12px ' + FONT_KR });
+      });
+      blocks.push({ text:'', font:'500 12px ' + FONT_KR });
+      ctx.font = '700 11px ' + FONT_MONO;
+      blocks.push({ text:'📌 학습 tip', font:'700 11px ' + FONT_MONO });
+      analyze.items.forEach(function(item){
+        ctx.font = '700 12px ' + FONT_KR;
+        wrapText(ctx, item.label, innerW - innerPad * 2 - 10).forEach(function(l, i2){
+          blocks.push({ text:(i2 === 0 ? '· ' : '  ') + l, font:'700 12px ' + FONT_KR });
+        });
+        ctx.font = '500 12px ' + FONT_KR;
+        wrapText(ctx, item.tip, innerW - innerPad * 2 - 18).forEach(function(l){
+          blocks.push({ text:'   ' + l, font:'500 12px ' + FONT_KR });
+        });
+      });
+    }
+    var lineH = 18;
+    var boxH2 = blocks.length * lineH + innerPad + 8;
+    ctx.fillStyle = col.accentSoft;
+    roundRectPath(ctx, x, boxTop, innerW, boxH2, 8); ctx.fill();
+    ctx.strokeStyle = col.accent; ctx.lineWidth = 1;
+    roundRectPath(ctx, x, boxTop, innerW, boxH2, 8); ctx.stroke();
+    var ty = boxTop + innerPad + 2;
+    ctx.fillStyle = col.accentInk;
+    blocks.forEach(function(b){
+      ctx.font = b.font;
+      ctx.fillText(b.text, x + innerPad, ty);
+      ty += lineH;
+    });
+    y = boxTop + boxH2 + 20;
+
+    ctx.strokeStyle = col.line;
+    ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(W - PAD, y); ctx.stroke();
+    ctx.setLineDash([]);
+    y += 18;
+    ctx.fillStyle = col.inkDim;
+    ctx.font = '500 10px ' + FONT_MONO;
+    ctx.fillText('꾸메땅학습코칭학원 · 일반동사 완전정복 세트', x, y);
+    y += 14;
+
+    var out = document.createElement('canvas');
+    var outHpx = Math.ceil(y) * SCALE;
+    out.width = W * SCALE;
+    out.height = outHpx;
+    var octx = out.getContext('2d');
+    octx.drawImage(work, 0, 0, W * SCALE, outHpx, 0, 0, W * SCALE, outHpx);
+    return out;
+  }
+
+  function withFontsReady(cb){
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(cb).catch(cb);
+    } else {
+      cb();
+    }
+  }
+
+  shareImageBtn.addEventListener('click', function(){
+    if(!getRounds().length) return;
+    shareImageBtn.disabled = true;
+    var originalLabel = shareImageBtn.textContent;
+    shareImageBtn.textContent = '이미지 생성 중…';
+
+    withFontsReady(function(){
+      var canvas = drawReportCanvas();
+      shareImageBtn.disabled = false;
+      shareImageBtn.textContent = originalLabel;
+      if(!canvas) return;
+
+      canvas.toBlob(function(blob){
+        if(!blob) return;
+        var file = new File([blob], 'report.png', { type:'image/png' });
+
+        if(navigator.canShare && navigator.canShare({ files:[file] })){
+          navigator.share({
+            files:[file],
+            title:'꾸메땅학습코칭학원 학습 리포트'
+          }).catch(function(err){
+            if(err && err.name === 'AbortError') return;
+            openImageFallback(blob);
+          });
+        } else {
+          openImageFallback(blob);
+        }
+      }, 'image/png');
+    });
+  });
+
+  function openImageFallback(blob){
+    var url = URL.createObjectURL(blob);
+    imagePreviewImg.src = url;
+    imagePreview.classList.add('show');
+    imagePreviewImg.scrollIntoView({ behavior:'smooth', block:'center' });
+    showReportNote('이 환경은 공유 시트를 지원하지 않아 아래에 이미지를 표시했어요. 모바일은 이미지를 길게 눌러 "이미지 저장", PC는 마우스 오른쪽 버튼 → "이미지를 다른 이름으로 저장"을 선택하세요.');
+  }
+
+  function fallbackCopy(text, cb){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(cb).catch(function(){ execCopy(text, cb); });
+    } else {
+      execCopy(text, cb);
+    }
+  }
+
+  function execCopy(text, cb){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+    cb();
+  }
+
+  init();
+})();
+</script>
+
+<script src="/kkt.js"></script>
+</body></html>

@@ -1,0 +1,1318 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>꾸메땅 도전 비인칭주어 GAME</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --card:#FFFFFF;
+  --ink:#15201D;
+  --muted:#54615D;
+  --line:#E1E5DD;
+  --line-strong:#C9D1C8;
+  --accent:#0F6E5C;
+  --accent-soft:#E1F0EA;
+  --mark:#F3D74B;
+  --ok:#1C7A5B;
+  --ok-soft:#E3F1EA;
+  --no:#BC443A;
+  --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
+  --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+    --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+    --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+  --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+  --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:19px;line-height:1.62;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:720px;margin:0 auto;padding:24px 14px 72px;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){ .wrap{padding:28px 18px 72px} }
+h1,h2,h3{margin:0;text-wrap:balance}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7vw,39px);letter-spacing:-.02em;line-height:1.08}
+h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
+.sub{color:var(--muted);font-size:16.5px}
+
+.rail{display:flex;gap:10px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
+.seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
+.seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
+.seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+@media (min-width:600px){ .card{padding:24px} }
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
+
+
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
+.btn:hover{opacity:.88}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:19.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
+.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:21px;line-height:1.2}
+.role .m{font-size:15px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:18px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:17.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+#qlevel{font-size:17px;font-weight:800;padding:5px 13px}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
+
+.exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+.verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
+.verdict.ok{color:var(--ok)}
+.verdict.no{color:var(--no)}
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
+.full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
+.full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
+.full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
+.full .kr{font-size:18.5px;line-height:1.6}
+
+/* ---------- 결과 ---------- */
+.score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
+.score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+.bd .t{font-size:14px;color:var(--muted);font-weight:600}
+.bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
+.wrongs{display:flex;flex-direction:column;gap:10px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.wrong .top{display:flex;gap:8px;align-items:baseline}
+.wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
+.wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
+.wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
+.submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tablewrap{overflow-x:auto}
+table.rank{width:100%;border-collapse:collapse;font-size:17.5px}
+table.rank th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
+table.rank tr.top .pos{color:var(--accent)}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
+table.rank .when{color:var(--muted);font-size:15px}
+table.rank tr.me{background:var(--accent-soft)}
+table.rank tr.me .who{color:var(--accent)}
+.empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
+.toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1>꾸메땅 도전 <span class="mark">비인칭주어 GAME</span></h1>
+    <p class="sub">해석하지 않는 주어 it 완전정복 80문제 · 네 단계 각 20문제 / 문제에는 답을 알려 주는 힌트를 두지 않고, 답을 고른 뒤에 완성 문장과 해설이 나옵니다.</p>
+  </header>
+
+  <div class="rail" id="rail" aria-hidden="true">
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+  </div>
+
+  <!-- 시작 -->
+  <section class="card" id="start">
+    <h2>단계를 골라 도전해 보세요</h2>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
+    <div class="namebar">
+      <span class="h">이름</span>
+      <div class="row">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <button class="btn small" id="saveName">저장</button>
+      </div>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
+    </div>
+    <div class="levels" id="levelPick"></div>
+    <div class="actions">
+      <button class="btn ghost" id="openRank">순위 보기</button>
+    </div>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+  </section>
+
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
+    <div class="actions">
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
+    </div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="card hide" id="quiz">
+    <div class="qhead">
+      <span class="qnum" id="qnum">1 / 20</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
+    </div>
+    <div class="qbody" id="qbody"></div>
+    <div id="qexp"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="card hide" id="result">
+    <h2 id="rtitle">1단계 결과</h2>
+    <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
+    <div id="rsubmit"></div>
+    <div id="rwrong"></div>
+    <div class="actions" id="ractions"></div>
+  </section>
+
+  <!-- 순위 -->
+  <section class="card hide" id="rank">
+    <div class="subhead">
+      <h2>도전 순위</h2>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
+    </div>
+    <div id="rankToast"></div>
+    <div class="tabs" id="rankTabs">
+      <button class="tab on" data-t="all">종합</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rankHome">단계 선택으로</button>
+    </div>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
+  </section>
+
+  <p class="foot">꾸메땅 도전 비인칭주어 GAME · 중1 비인칭 주어편</p>
+</div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ===================== 문제 은행 ===================== */
+
+/* ---------- LEVEL 1 : it의 쓰임 20 (개념 5 · 쓰이는 경우 고르기 4 · 문장 속 구별 8 · 해석 3) ---------- */
+var L1 = [
+  {type:"n", tag:"개념", q:"<b>비인칭 주어</b>란 무엇일까요?",
+   opts:["뜻 없이 자리만 채우는 주어라서 해석하지 않는 it","‘그것’이라고 해석하는 주어","사람 이름을 대신 부르는 말","문장 맨 뒤에 오는 말","동사를 꾸며 주는 말"], a:0,
+   exp:"영어 문장에는 주어가 꼭 있어야 합니다. 그런데 날씨나 시간처럼 주어라고 할 것이 마땅히 없을 때, 빈자리를 채우려고 <b>it</b>을 놓습니다. 이 it은 뜻이 없어서 <b>‘그것’이라고 해석하지 않습니다.</b>"},
+
+  {type:"n", tag:"개념", q:"비인칭 주어 <b>it</b>은 우리말로 어떻게 해석할까요?",
+   opts:["해석하지 않는다","그것","이것","저것","그 사람"], a:0,
+   exp:"비인칭 주어는 자리만 채우는 it이라 해석하지 않습니다. It is sunny.는 ‘<u>그것은</u> 화창하다’가 아니라 ‘<b>날씨가 화창하다</b>’입니다."},
+
+  {type:"n", tag:"개념", q:"대명사 <b>it</b>은 우리말로 어떻게 해석할까요?",
+   opts:["그것","해석하지 않는다","나는","우리는","거기에"], a:0,
+   exp:"대명사 it은 앞에 나온 물건이나 동물을 대신 가리키는 말이라 <b>‘그것’</b>이라고 해석합니다. I have a dog. <b>It</b> is cute. (그것은 귀엽다.)"},
+
+  {type:"n", tag:"개념", q:"비인칭 주어와 대명사 it을 구별하는 가장 쉬운 방법은?",
+   opts:["‘그것은’을 넣어 보아 말이 되면 대명사, 어색하면 비인칭 주어","문장 길이를 세어 본다","맨 앞 글자가 대문자인지 본다","뒤에 물음표가 있는지 본다","단어 수가 짝수인지 본다"], a:0,
+   exp:"‘그것은’을 넣어 보세요. ‘<u>그것은</u> 귀엽다’는 말이 되니 <b>대명사</b>, ‘<u>그것은</u> 화창하다’는 어색하니 <b>비인칭 주어</b>입니다. 이 방법 하나면 거의 다 가려집니다."},
+
+  {type:"n", tag:"개념", q:"비인칭 주어 it을 쓸 때 <b>뒤에 오는 동사</b>는 어떤 모양일까요?",
+   opts:["3인칭 단수처럼 is, was, takes 를 쓴다","복수처럼 are, were 를 쓴다","항상 동사원형을 쓴다","동사를 쓰지 않는다","아무 모양이나 써도 된다"], a:0,
+   exp:"it은 3인칭 단수이므로 동사도 <b>is, was, takes, rains</b>처럼 3인칭 단수 모양을 씁니다. It <b>are</b> sunny.(✕) · It <b>is</b> sunny.(○)"},
+
+  {type:"a", tag:"쓰이는 경우", q:"다음 중 <b>비인칭 주어 it</b>을 쓰는 경우는?",
+   opts:["날씨를 말할 때","친구의 이름을 말할 때","좋아하는 음식을 말할 때","가족 수를 말할 때","장래 희망을 말할 때"], a:0,
+   exp:"날씨는 주어라고 할 것이 따로 없어서 비인칭 주어 it을 씁니다. It is rainy. (비가 온다.) 이름·음식·가족·희망은 말하려는 대상이 분명하므로 그 대상을 주어로 씁니다."},
+
+  {type:"a", tag:"쓰이는 경우", q:"다음 중 비인칭 주어 it을 쓰는 경우가 <b>아닌</b> 것은?",
+   opts:["책상 위에 있는 물건을 가리킬 때","요일을 말할 때","시간을 말할 때","거리를 말할 때","날짜를 말할 때"], a:0,
+   exp:"물건을 가리킬 때의 it은 ‘그것’이라는 뜻이 있는 <b>대명사</b>입니다. 요일·시간·거리·날짜는 모두 비인칭 주어를 씁니다."},
+
+  {type:"a", tag:"쓰이는 경우", q:"비인칭 주어 it을 쓰는 경우를 바르게 묶은 것은?",
+   opts:["시간 · 요일 · 날짜 · 날씨 · 거리 · 명암","이름 · 나이 · 직업 · 취미","색깔 · 크기 · 모양 · 무게","나라 · 도시 · 학교 · 학년","기쁨 · 슬픔 · 놀람 · 화남"], a:0,
+   exp:"비인칭 주어는 <b>시간, 요일, 날짜, 계절·월, 날씨, 거리, 명암(밝고 어두움), 기온</b>을 말할 때 씁니다. 여섯 가지만 먼저 확실히 외워 두세요."},
+
+  {type:"a", tag:"쓰이는 경우", q:"다음 중 비인칭 주어 it을 쓰는 경우를 고르세요.",
+   opts:["방이 밝은지 어두운지 말할 때","가방이 누구 것인지 말할 때","동생이 몇 살인지 말할 때","무엇을 먹었는지 말할 때","어디에 사는지 말할 때"], a:0,
+   exp:"밝고 어두움(명암)도 비인칭 주어를 씁니다. It is dark in here. (여기는 어둡다.) 나머지는 말하려는 대상이 분명하므로 그 대상을 주어로 씁니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"I have a new bike. **It** is very fast.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["앞에 나온 물건","날씨","시간","거리","요일"], a:0,
+   exp:"앞 문장의 a new bike를 가리키므로 <b>대명사</b>입니다. ‘그것은 매우 빠르다’로 해석됩니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"**It** is very cold today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["날씨","앞에 나온 물건","요일","거리","날짜"], a:0,
+   exp:"‘그것은 춥다’는 어색하지요. 날씨를 나타내는 <b>비인칭 주어</b>이므로 해석하지 않고 ‘오늘은 매우 춥다’가 됩니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"**It** is seven o'clock.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["시간","앞에 나온 물건","날씨","명암","거리"], a:0,
+   exp:"시간을 나타내는 <b>비인칭 주어</b>입니다. ‘일곱 시다’로 해석하고 it은 해석하지 않습니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"Look at that cat. **It** is sleeping.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["앞에 나온 동물","시간","날씨","요일","거리"], a:0,
+   exp:"앞의 that cat을 가리키는 <b>대명사</b>입니다. ‘그것은 자고 있다’로 해석됩니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"**It** is Sunday today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["요일","앞에 나온 물건","날씨","거리","명암"], a:0,
+   exp:"요일을 나타내는 <b>비인칭 주어</b>입니다. ‘오늘은 일요일이다’로 해석합니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"**It** is five kilometers to the beach.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["거리","앞에 나온 물건","시간","날짜","날씨"], a:0,
+   exp:"거리를 나타내는 <b>비인칭 주어</b>입니다. ‘해변까지 5킬로미터다’로 해석합니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"**It** is getting dark outside.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["밝고 어두움","앞에 나온 물건","요일","거리","날짜"], a:0,
+   exp:"밝고 어두움(명암)을 나타내는 <b>비인칭 주어</b>입니다. ‘밖이 점점 어두워지고 있다’로 해석합니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"**It** is May 5th today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["날짜","앞에 나온 물건","시간","거리","명암"], a:0,
+   exp:"날짜를 나타내는 <b>비인칭 주어</b>입니다. ‘오늘은 5월 5일이다’로 해석합니다."},
+
+  {type:"v", tag:"문장 속 구별", q:"밑줄 친 It의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["I lost my pen. **It** was blue.","**It** is windy today.","**It** is Friday.","**It** is ten o'clock.","**It** is dark in the room."], a:0, eng:true,
+   exp:"첫 번째 문장의 It은 앞에 나온 my pen을 가리키는 <b>대명사</b>이고, 나머지는 모두 날씨·요일·시간·명암을 나타내는 비인칭 주어입니다."},
+
+  {type:"n", tag:"해석", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is Monday today.</span>",
+   opts:["오늘은 월요일이다.","그것은 월요일이다.","그것은 오늘이다.","오늘 그것을 본다.","월요일에 그것이 있다."], a:0,
+   exp:"비인칭 주어는 해석하지 않습니다. ‘<u>그것은</u> 월요일이다’처럼 옮기면 어색합니다."},
+
+  {type:"n", tag:"해석", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is snowing now.</span>",
+   opts:["지금 눈이 오고 있다.","그것은 지금 눈이다.","그것이 지금 내린다.","지금 그것을 본다.","눈이 그것을 덮는다."], a:0,
+   exp:"날씨를 나타내는 비인칭 주어이므로 it을 해석하지 않고 ‘눈이 오고 있다’로 옮깁니다."}
+];
+
+/* ---------- LEVEL 2 : 비인칭 주어와 해석 20 (시간·요일·날짜 7 · 날씨·계절 7 · 거리·명암 6) ---------- */
+var L2 = [
+  {type:"n", tag:"시간", sent:"___ is half past six.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","That","This","There","He"], a:0, eng:true,
+   ko:"여섯 시 삼십 분이다.",
+   exp:"시간을 말할 때는 비인칭 주어 <b>It</b>으로 시작합니다. half past six는 ‘여섯 시 삼십 분’입니다."},
+
+  {type:"n", tag:"시간", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What time is it now?<br>B: ___ ten thirty.</span>",
+   opts:["It's","That's","This is","There is","He is"], a:0, eng:true,
+   exp:"시간을 묻는 What time is it?에는 <b>It's</b>로 대답합니다. 묻는 쪽도 대답하는 쪽도 비인칭 주어 it을 씁니다."},
+
+  {type:"n", tag:"요일", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What day is it today?<br>B: ___ Wednesday.</span>",
+   opts:["It's","That's","This is","There is","Today has"], a:0, eng:true,
+   exp:"요일을 묻고 답할 때도 비인칭 주어 <b>It</b>을 씁니다. What day is it today? — It's Wednesday."},
+
+  {type:"n", tag:"요일", sent:"___ Saturday tomorrow.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","That's","He's","We're"], a:0, eng:true,
+   ko:"내일은 토요일이다.",
+   exp:"요일은 비인칭 주어 <b>It</b>으로 나타냅니다. Tomorrow is Saturday.처럼 말할 수도 있지만, 빈칸이 맨 앞이면 It's가 알맞습니다."},
+
+  {type:"n", tag:"날짜", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What's the date today?<br>B: ___ June 10th.</span>",
+   opts:["It's","That's","This is","There is","Date is"], a:0, eng:true,
+   exp:"날짜를 물을 때는 What's the date today?, 대답은 <b>It's</b> + 날짜입니다."},
+
+  {type:"n", tag:"날짜", sent:"___ my birthday today.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","He's","This are","That are"], a:0, eng:true,
+   ko:"오늘은 내 생일이다.",
+   exp:"날짜에 해당하는 말이므로 비인칭 주어 <b>It's</b>를 씁니다."},
+
+  {type:"n", tag:"월·계절", sent:"___ December already.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","They're","He's","This are"], a:0, eng:true,
+   ko:"벌써 12월이다.",
+   exp:"달(월)을 말할 때도 비인칭 주어 <b>It</b>을 씁니다. It's spring.(봄이다)처럼 계절도 마찬가지입니다."},
+
+  {type:"a", tag:"날씨", sent:"___ raining outside.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","They're","He's","That's"], a:0, eng:true,
+   ko:"밖에 비가 오고 있다.",
+   exp:"날씨는 비인칭 주어 <b>It</b>으로 시작합니다. It's raining.은 ‘비가 오고 있다’입니다."},
+
+  {type:"a", tag:"날씨", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: How's the weather today?<br>B: ___ sunny and warm.</span>",
+   opts:["It's","There's","That's","He's","Weather is"], a:0, eng:true,
+   exp:"날씨를 묻는 How's the weather?에는 <b>It's</b> + 날씨 형용사로 답합니다."},
+
+  {type:"a", tag:"날씨", sent:"It ___ a lot in summer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["rains","rain","raining","is rain","are rain"], a:0, eng:true,
+   ko:"여름에는 비가 많이 온다.",
+   exp:"it은 3인칭 단수이므로 동사에 -s를 붙여 <b>rains</b>가 됩니다. It is rain.(✕)처럼 be동사와 함께 쓰지 않도록 주의하세요."},
+
+  {type:"a", tag:"날씨", q:"다음 중 어법상 <b>알맞은</b> 문장은?",
+   opts:["It is windy today.","It is wind today.","There is windy today.","It are windy today.","Today is wind."], a:0, eng:true,
+   exp:"be동사 뒤에는 <b>형용사</b>가 옵니다. wind(명사) → windy(형용사). 주어 it에 맞춰 is를 씁니다."},
+
+  {type:"a", tag:"날씨", sent:"___ was very hot last summer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","They","He","That"], a:0, eng:true,
+   ko:"지난여름에는 매우 더웠다.",
+   exp:"과거의 날씨도 비인칭 주어 <b>It</b>으로 말합니다. it은 단수이므로 was를 씁니다."},
+
+  {type:"a", tag:"날씨", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is cloudy in Seoul.</span>",
+   opts:["서울은 흐리다.","그것은 서울의 구름이다.","서울에 그것이 있다.","구름이 서울을 본다.","그것은 서울에서 흐려진다."], a:0,
+   exp:"날씨의 it은 해석하지 않습니다. ‘서울은 흐리다’가 자연스러운 우리말입니다."},
+
+  {type:"a", tag:"계절", sent:"___ gets cold in November.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","They","We","Those"], a:0, eng:true,
+   ko:"11월에는 추워진다.",
+   exp:"날씨의 변화도 비인칭 주어 <b>It</b>으로 나타냅니다. get + 형용사는 ‘~해지다’라는 뜻입니다."},
+
+  {type:"v", tag:"거리", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: How far is it to the library?<br>B: ___ about two kilometers.</span>",
+   opts:["It's","There's","That's","They're","Far is"], a:0, eng:true,
+   exp:"거리를 묻는 How far is it ~?에는 <b>It's</b>로 답합니다. 묻는 문장에도 it이 들어 있는 것을 눈여겨보세요."},
+
+  {type:"v", tag:"거리", sent:"___ is not far from here.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","They","We","Those"], a:0, eng:true,
+   ko:"여기서 멀지 않다.",
+   exp:"거리를 말할 때는 비인칭 주어 <b>It</b>을 씁니다."},
+
+  {type:"v", tag:"거리", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is ten minutes from my house to school.</span>",
+   opts:["우리 집에서 학교까지 10분 걸린다.","그것은 우리 집의 10분이다.","10분이 그것을 학교에 보낸다.","그것은 학교에서 집으로 간다.","우리 집은 10분이다."], a:0,
+   exp:"거리·걸리는 시간을 나타내는 it은 해석하지 않습니다."},
+
+  {type:"v", tag:"명암", sent:"___ is dark in this room.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","They","He","Those"], a:0, eng:true,
+   ko:"이 방은 어둡다.",
+   exp:"밝고 어두움도 비인칭 주어 <b>It</b>으로 말합니다."},
+
+  {type:"v", tag:"명암", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is bright outside.</span>",
+   opts:["밖은 밝다.","그것은 밝은 밖이다.","밖에 그것이 있다.","그것이 밖을 비춘다.","밝은 것이 밖에 있다."], a:0,
+   exp:"명암을 나타내는 it은 해석하지 않고 ‘밖은 밝다’로 옮깁니다."},
+
+  {type:"v", tag:"정리", q:"다음 중 it을 <b>‘그것은’이라고 해석해야 하는</b> 문장은?",
+   opts:["I bought a hat. It is red.","It is Tuesday.","It is snowy.","It is six o'clock.","It is dark here."], a:0, eng:true,
+   exp:"첫 번째 문장의 It은 앞에 나온 a hat을 가리키는 <b>대명사</b>라 ‘그것은’으로 해석합니다. 나머지는 모두 해석하지 않는 비인칭 주어입니다."}
+];
+
+/* ---------- LEVEL 3 : 학교 문제 20 (묻고 답하기 7 · 어법 판별 7 · 쓰임 구별·서술형 6) ---------- */
+var L3 = [
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it today?<br>B: It's Thursday.</span>",
+   opts:["What day","What time","How far","How much","What date"], a:0, eng:true,
+   exp:"대답이 요일(Thursday)이므로 <b>What day</b>로 물어야 합니다. What time은 시각, How far는 거리를 묻습니다."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it from here to the park?<br>B: It's about 500 meters.</span>",
+   opts:["How far","How long","What time","What day","How many"], a:0, eng:true,
+   exp:"대답이 거리(500 meters)이므로 <b>How far</b>가 알맞습니다."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ the weather in Busan?<br>B: It's windy.</span>",
+   opts:["How's","What's","Where's","When's","Who's"], a:0, eng:true,
+   exp:"날씨를 물을 때는 <b>How's the weather?</b> 또는 What's the weather like?라고 합니다."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 B의 대답으로 알맞은 것은?<br><span class=\"eng\">A: What's the date today?</span>",
+   opts:["It's March 3rd.","It's Monday.","It's sunny.","It's five o'clock.","It's two kilometers."], a:0, eng:true,
+   exp:"date는 <b>날짜</b>를 묻는 말입니다. 요일(Monday)이나 날씨로 답하지 않도록 주의하세요."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It's a quarter to nine.</span>",
+   opts:["What time is it?","What day is it?","How's the weather?","How far is it?","What's the date?"], a:0, eng:true,
+   exp:"a quarter to nine은 ‘아홉 시 십오 분 전’이라는 <b>시각</b>이므로 What time is it?이 알맞습니다."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 중 대화가 <b>어색한</b> 것은?",
+   opts:["A: What day is it? B: It's July 7th.","A: What time is it? B: It's noon.","A: How's the weather? B: It's foggy.","A: How far is it? B: It's one kilometer.","A: What's the date? B: It's May 1st."], a:0, eng:true,
+   exp:"What day는 <b>요일</b>을 묻는 말인데 날짜로 답했습니다. It's Monday.처럼 요일로 답해야 합니다."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Is it cold outside?<br>B: No, ___ .</span>",
+   opts:["it isn't","there isn't","it doesn't","it don't","that isn't"], a:0, eng:true,
+   exp:"It is ~?로 물었으므로 <b>it isn't</b>로 답합니다. 비인칭 주어도 대답할 때 그대로 it을 씁니다."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It is rain today.","It is rainy today.","It rains a lot here.","It is raining now.","It was rainy yesterday."], a:0, eng:true,
+   exp:"be동사 뒤에는 형용사가 옵니다. rain은 명사·동사라서 <b>rainy</b>(형용사)로 고쳐야 합니다."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 어법상 <b>알맞은</b> 문장은?",
+   opts:["It snows a lot in winter.","It snow a lot in winter.","It is snow a lot in winter.","There snows a lot in winter.","It are snowy in winter."], a:0, eng:true,
+   exp:"it은 3인칭 단수이므로 동사에 -s를 붙여 <b>snows</b>가 됩니다."},
+
+  {type:"a", tag:"어법 판별", sent:"___ is not far from the station.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","They","Those","We"], a:0, eng:true,
+   ko:"역에서 멀지 않다.",
+   exp:"거리를 나타내는 비인칭 주어 <b>It</b>입니다. There is ~는 ‘~가 있다’는 뜻이라 여기에 맞지 않습니다."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 빈칸에 <b>There</b>가 들어가야 하는 것은?",
+   opts:["___ is a cat under the table.","___ is Monday today.","___ is five o'clock.","___ is cloudy today.","___ is dark in here."], a:0, eng:true,
+   exp:"‘~가 있다’는 <b>There is ~</b>입니다. 나머지는 요일·시간·날씨·명암이라 비인칭 주어 It을 씁니다. It과 There를 바꿔 쓰지 않도록 조심하세요."},
+
+  {type:"a", tag:"어법 판별", q:"다음 문장에서 <b>틀린</b> 부분을 바르게 고친 것은?<br><span class=\"eng\">It are very hot in August.</span>",
+   opts:["are → is","It → There","hot → hotly","in → on","very → much"], a:0, eng:true,
+   exp:"it은 단수이므로 <b>is</b>를 씁니다. It is very hot in August."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 어법상 <b>알맞은</b> 문장을 모두 고른 것은?<br><span class=\"eng\">ⓐ It is windy.&nbsp;ⓑ It is wind.&nbsp;ⓒ It blows hard.&nbsp;ⓓ There is windy.</span>",
+   opts:["ⓐ, ⓒ","ⓑ, ⓓ","ⓐ, ⓑ","ⓒ, ⓓ","ⓑ, ⓒ"], a:0,
+   exp:"ⓑ는 형용사 windy가 와야 하고, ⓓ는 There is 뒤에 형용사가 올 수 없습니다. 남는 것은 ⓐ와 ⓒ입니다."},
+
+  {type:"a", tag:"어법 판별", sent:"It ___ dark at six in winter.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["gets","get","getting","are getting","is get"], a:0, eng:true,
+   ko:"겨울에는 여섯 시면 어두워진다.",
+   exp:"it은 3인칭 단수이므로 <b>gets</b>입니다. get + 형용사 = ~해지다."},
+
+  {type:"v", tag:"쓰임 구별", q:"밑줄 친 It의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["This is my phone. **It** is new.","**It** is very hot today.","**It** is Friday.","**It** is nine o'clock.","**It** is three kilometers."], a:0, eng:true,
+   exp:"첫 번째는 앞의 my phone을 가리키는 <b>대명사</b>이고, 나머지는 날씨·요일·시간·거리를 나타내는 비인칭 주어입니다."},
+
+  {type:"v", tag:"쓰임 구별", q:"밑줄 친 it의 쓰임이 <b>같은</b> 것끼리 묶은 것은?<br><span class=\"eng\">ⓐ It is spring.&nbsp;ⓑ I like it.&nbsp;ⓒ It is warm.&nbsp;ⓓ Give it to me.</span>",
+   opts:["ⓐ와 ⓒ / ⓑ와 ⓓ","ⓐ와 ⓑ / ⓒ와 ⓓ","ⓐ와 ⓓ / ⓑ와 ⓒ","넷 다 같다","넷 다 다르다"], a:0,
+   exp:"ⓐ·ⓒ는 계절과 날씨를 나타내는 <b>비인칭 주어</b>, ⓑ·ⓓ는 앞에 나온 것을 가리키는 <b>대명사</b>입니다."},
+
+  {type:"v", tag:"서술형", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘오늘은 5월 15일이다.’</span>",
+   opts:["It is May 15th today.","There is May 15th today.","Today is it May 15th.","It are May 15th today.","That is May 15th today."], a:0, eng:true,
+   exp:"날짜는 <b>It is ~</b>로 나타냅니다. There is나 That is를 쓰지 않습니다."},
+
+  {type:"v", tag:"서술형", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘학교까지 얼마나 머니?’</span>",
+   opts:["How far is it to school?","How far is there to school?","How long is it to school?","How much is it to school?","How far does it to school?"], a:0, eng:true,
+   exp:"거리를 묻는 표현은 <b>How far is it ~?</b>입니다. 이때도 비인칭 주어 it이 들어갑니다."},
+
+  {type:"v", tag:"서술형", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It was already dark when I got home.</span>",
+   opts:["내가 집에 도착했을 때 이미 어두웠다.","그것은 내가 집에 왔을 때 어두웠다.","어두운 것이 나를 집으로 데려갔다.","나는 어두운 그것을 집에서 보았다.","집이 어두워서 내가 도착했다."], a:0,
+   exp:"명암을 나타내는 it은 해석하지 않습니다."},
+
+  {type:"v", tag:"쓰임 구별", q:"다음 중 비인칭 주어 it이 쓰인 문장은 모두 몇 개인가요?<br><span class=\"eng\">ⓐ It is Sunday.&nbsp;ⓑ It is my bag.&nbsp;ⓒ It is snowing.&nbsp;ⓓ It is five o'clock.</span>",
+   opts:["3개","2개","1개","4개","0개"], a:0,
+   exp:"ⓐ 요일, ⓒ 날씨, ⓓ 시간 — 세 개가 비인칭 주어입니다. ⓑ는 ‘그것은 내 가방이다’라는 뜻의 대명사입니다."}
+];
+
+/* ---------- LEVEL 4 : 전체 어법 아우르기 20 (가주어 7 · It takes 6 · 세 가지 구별·고난도 7) ---------- */
+var L4 = [
+  {type:"n", tag:"가주어", sent:"___ is important to keep your promise.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","That","There","This","What"], a:0, eng:true,
+   ko:"약속을 지키는 것은 중요하다.",
+   exp:"to부정사가 주어이면 너무 길어지므로, 앞에 <b>It</b>을 대신 세우고 진짜 주어는 뒤로 보냅니다. 이 It을 <b>가주어</b>라고 하며 역시 해석하지 않습니다."},
+
+  {type:"n", tag:"가주어", q:"다음 문장에서 <b>진짜 주어</b>는 어느 것일까요?<br><span class=\"eng\">It is easy to ride a bike.</span>",
+   opts:["to ride a bike","It","easy","is","a bike"], a:0, eng:true,
+   exp:"It은 자리만 지키는 가주어이고, 뜻의 중심인 <b>to ride a bike</b>가 진짜 주어입니다. ‘자전거를 타는 것은 쉽다’로 해석합니다."},
+
+  {type:"n", tag:"가주어", sent:"It is kind ___ you to help me.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["of","for","to","with","at"], a:0, eng:true,
+   ko:"나를 도와주다니 너는 친절하구나.",
+   exp:"kind, nice, foolish처럼 <b>사람의 성격</b>을 나타내는 형용사 뒤에는 of를 씁니다. 그 밖의 형용사에는 for를 씁니다."},
+
+  {type:"n", tag:"가주어", sent:"It is difficult ___ me to solve this.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["for","of","to","with","in"], a:0, eng:true,
+   ko:"내가 이것을 푸는 것은 어렵다.",
+   exp:"difficult, easy, important처럼 <b>일의 성질</b>을 나타내는 형용사 뒤에는 for를 씁니다."},
+
+  {type:"n", tag:"가주어", q:"다음 두 문장이 같은 뜻이 되도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">To learn English is fun.<br>= ___ is fun to learn English.</span>",
+   opts:["It","There","That","This","What"], a:0, eng:true,
+   exp:"긴 to부정사 주어를 뒤로 보내고 그 자리에 가주어 <b>It</b>을 세웁니다. 뜻은 그대로입니다."},
+
+  {type:"n", tag:"가주어", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["There is important to be honest.","It is important to be honest.","It is hard for him to wake up early.","It is nice of you to say so.","It is fun to play soccer."], a:0, eng:true,
+   exp:"가주어 자리에는 There가 아니라 <b>It</b>을 씁니다. There is ~는 ‘~가 있다’는 뜻입니다."},
+
+  {type:"n", tag:"가주어", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is dangerous to swim here.</span>",
+   opts:["여기서 수영하는 것은 위험하다.","그것은 여기서 위험하게 수영한다.","여기에 위험한 그것이 있다.","위험한 것이 여기서 수영한다.","그것은 수영을 위험하게 만든다."], a:0,
+   exp:"가주어 It은 해석하지 않고, 뒤의 to부정사를 주어처럼 옮깁니다."},
+
+  {type:"a", tag:"It takes", sent:"It ___ me twenty minutes to get to school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["takes","take","taking","is take","took to"], a:0, eng:true,
+   ko:"학교에 가는 데 20분이 걸린다.",
+   exp:"<b>It takes + 사람 + 시간 + to 동사원형</b>은 ‘~하는 데 시간이 걸리다’라는 뜻입니다. it은 3인칭 단수라 takes가 됩니다."},
+
+  {type:"a", tag:"It takes", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: How long does it take to walk there?<br>B: ___ about ten minutes.</span>",
+   opts:["It takes","There takes","It is take","It taking","That takes"], a:0, eng:true,
+   exp:"How long does it take ~?로 물으면 <b>It takes</b> + 시간으로 답합니다."},
+
+  {type:"a", tag:"It takes", q:"다음 중 어법상 <b>알맞은</b> 문장은?",
+   opts:["It took two hours to finish the work.","It took two hours finish the work.","It took to finish two hours the work.","There took two hours to finish the work.","It take two hours to finish the work."], a:0, eng:true,
+   exp:"과거는 took을 쓰고, 뒤에는 <b>to + 동사원형</b>이 옵니다. 어순은 It takes + (사람) + 시간 + to V로 고정입니다."},
+
+  {type:"a", tag:"It takes", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그가 그 책을 읽는 데 일주일이 걸렸다.’</span>",
+   opts:["It took him a week to read the book.","It took a week him to read the book.","He took it a week to read the book.","There took him a week to read the book.","It takes him a week to read the book."], a:0, eng:true,
+   exp:"사람은 시간 <b>앞</b>에 옵니다. It took <b>him</b> a week to read ~. 지난 일이므로 과거형 took을 씁니다."},
+
+  {type:"a", tag:"It takes", q:"다음 문장에서 it의 쓰임으로 알맞은 것은?<br><span class=\"eng\">It takes ten minutes by bus.</span>",
+   opts:["뜻 없이 자리만 채우는 it","앞에 나온 버스를 가리키는 대명사","‘그것’이라고 해석하는 대명사","사람을 가리키는 말","장소를 가리키는 말"], a:0,
+   exp:"It takes ~의 it도 해석하지 않는 <b>비인칭 주어</b>입니다. ‘버스로 10분 걸린다’로 옮깁니다."},
+
+  {type:"a", tag:"It takes", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It takes about thirty minutes.</span>",
+   opts:["How long does it take?","How far is it?","What time is it?","What day is it?","How's the weather?"], a:0, eng:true,
+   exp:"걸리는 <b>시간</b>을 물을 때는 How long does it take?입니다. How far는 거리를 묻습니다."},
+
+  {type:"v", tag:"세 가지 구별", q:"밑줄 친 It의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["**It** is easy to swim.","**It** is Monday.","**It** is cold.","**It** is seven o'clock.","**It** is dark outside."], a:0, eng:true,
+   exp:"첫 번째는 뒤의 to swim을 대신 세운 <b>가주어</b>이고, 나머지는 요일·날씨·시간·명암을 나타내는 <b>비인칭 주어</b>입니다."},
+
+  {type:"v", tag:"세 가지 구별", q:"밑줄 친 It이 <b>대명사</b>인 것은?",
+   opts:["I found a key. **It** was on the desk.","**It** is Friday today.","**It** takes an hour.","**It** is hard to say no.","**It** is getting warm."], a:0, eng:true,
+   exp:"앞에 나온 a key를 가리키므로 <b>대명사</b>입니다. 나머지는 비인칭 주어 또는 가주어입니다."},
+
+  {type:"v", tag:"세 가지 구별", q:"다음 세 문장의 it을 바르게 짝지은 것은?<br><span class=\"eng\">ⓐ It is rainy.&nbsp;ⓑ It is fun to sing.&nbsp;ⓒ I like it.</span>",
+   opts:["ⓐ 비인칭 주어 – ⓑ 가주어 – ⓒ 대명사","ⓐ 가주어 – ⓑ 비인칭 주어 – ⓒ 대명사","ⓐ 대명사 – ⓑ 가주어 – ⓒ 비인칭 주어","셋 다 비인칭 주어","셋 다 대명사"], a:0,
+   exp:"날씨는 비인칭 주어, to부정사를 뒤로 보낸 것은 가주어, 앞의 것을 가리키면 대명사입니다. 이 세 가지만 구별하면 it은 끝입니다."},
+
+  {type:"v", tag:"고난도", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It is snow outside now.","It is snowing outside now.","It snows a lot in Gangwon-do.","It was snowy yesterday.","It is going to snow tonight."], a:0, eng:true,
+   exp:"be동사 뒤에는 명사 snow가 아니라 <b>형용사 snowy</b>나 <b>진행형 snowing</b>이 와야 합니다."},
+
+  {type:"v", tag:"고난도", hard:true, q:"빈칸 ⓐ와 ⓑ에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ is important ⓑ us to save water.</span>",
+   opts:["ⓐ It – ⓑ for","ⓐ There – ⓑ for","ⓐ It – ⓑ of","ⓐ That – ⓑ to","ⓐ It – ⓑ with"], a:0,
+   exp:"가주어 자리에는 <b>It</b>, important는 일의 성질을 나타내는 형용사이므로 의미상의 주어는 <b>for us</b>입니다."},
+
+  {type:"v", tag:"고난도", hard:true, q:"다음 글의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">Jimin woke up late. ___ was already ten o'clock, and it was raining hard outside.</span>",
+   opts:["It","There","That","He","This"], a:0, eng:true,
+   exp:"시간을 나타내므로 비인칭 주어 <b>It</b>입니다. 뒤 문장의 it is raining과 같은 쓰임이라는 점도 함께 보세요."},
+
+  {type:"v", tag:"고난도", hard:true, q:"다음 중 it의 쓰임이 <b>같은</b> 것끼리 묶인 것은?<br><span class=\"eng\">ⓐ It takes two hours.&nbsp;ⓑ It is autumn.&nbsp;ⓒ It is my book.&nbsp;ⓓ It is easy to read.</span>",
+   opts:["ⓐ와 ⓑ","ⓐ와 ⓒ","ⓑ와 ⓒ","ⓒ와 ⓓ","ⓐ와 ⓓ"], a:0,
+   exp:"ⓐ 걸리는 시간과 ⓑ 계절은 모두 해석하지 않는 <b>비인칭 주어</b>입니다. ⓒ는 대명사, ⓓ는 가주어입니다."}
+];
+
+var LEVELS = {
+  1:{name:"기본1 · it의 두 얼굴", desc:"‘그것’인 대명사와 해석하지 않는 비인칭 주어 구별 · 초등도 가능", qs:L1, typeLabels:{n:"개념·해석",a:"쓰이는 경우",v:"문장 속 구별"}},
+  2:{name:"기본2 · 여섯 가지 쓰임", desc:"시간 · 요일 · 날짜 · 월 · 날씨 · 거리 · 명암과 해석하는 법 · 중1", qs:L2, typeLabels:{n:"시간·요일·날짜",a:"날씨·계절",v:"거리·명암"}},
+  3:{name:"기본3 · 학교 문제", desc:"묻고 답하기 · 어법 판별 · 쓰임 구별 · 서술형", qs:L3, typeLabels:{n:"묻고 답하기",a:"어법 판별",v:"구별·서술형"}},
+  4:{name:"기본4 · 전체 어법", desc:"가주어 it · It takes · 세 가지 it 구별까지 아우르기", qs:L4, typeLabels:{n:"가주어",a:"It takes",v:"구별·고난도"}}
+};
+
+/* ===================== 개념 화면 ===================== */
+function figSix(){
+  var items=[["시간","seven o'clock",46],["요일","Monday",144],["날짜","May 5th",242],["날씨","sunny",340],["거리","2 km",438],["명암","dark",512]];
+  return '<svg class="fig" viewBox="0 0 560 110" role="img" aria-label="비인칭 주어 it이 여섯 가지 경우에 쓰이는 그림">'+
+    '<defs><marker id="ar6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">'+
+    '<path d="M0,0 L9,4.5 L0,9 z" fill="var(--rn)"/></marker></defs>'+
+    '<rect x="228" y="2" width="104" height="30" rx="15" fill="var(--ink)"/>'+
+    '<text x="280" y="23" text-anchor="middle" font-size="17" font-weight="700" fill="var(--paper)">It is ~</text>'+
+    items.map(function(x){
+      return '<line x1="280" y1="34" x2="'+x[2]+'" y2="60" stroke="var(--rn)" stroke-width="2" marker-end="url(#ar6)" opacity="0.7"/>'+
+             '<text x="'+x[2]+'" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="var(--rn)">'+x[0]+'</text>'+
+             '<text x="'+x[2]+'" y="100" text-anchor="middle" font-size="12" fill="var(--muted)">'+x[1]+'</text>';
+    }).join('')+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · it의 두 얼굴</h2>'+
+  '<p class="lead">영어 문장에는 <b>주어가 반드시 있어야</b> 합니다. 그런데 “비가 온다”, “지금 일곱 시다” 같은 말에는 주어라고 할 것이 마땅히 없지요. 그럴 때 빈자리를 채우려고 놓는 것이 <b>비인칭 주어 it</b>입니다.</p>'+
+  '<div class="trio" style="grid-template-columns:repeat(2,1fr)">'+
+    '<div class="role r-n"><span class="t">대명사 it</span><span class="m">뜻이 있다 → <b>그것</b></span><span class="e">I have a cat.<br>It is cute.<br><span style="font-family:\'IBM Plex Sans KR\',sans-serif;font-size:15px;color:var(--muted)">그것은 귀엽다</span></span></div>'+
+    '<div class="role r-a"><span class="t">비인칭 주어 it</span><span class="m">뜻이 없다 → <b>해석 안 함</b></span><span class="e">It is sunny.<br><span style="font-family:\'IBM Plex Sans KR\',sans-serif;font-size:15px;color:var(--muted)">날씨가 화창하다</span></span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>가리는 방법은 딱 하나</span>'+
+    '<p>‘<b>그것은</b>’을 넣어 읽어 보세요.</p>'+
+    '<div class="ex">It is cute.<span class="k"><b>그것은</b> 귀엽다 → 말이 됩니다 → 대명사</span></div>'+
+    '<div class="ex">It is sunny.<span class="k"><b>그것은</b> 화창하다 → 어색합니다 → 비인칭 주어</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>비인칭 주어를 쓰는 여섯 가지</span>'+
+    figSix()+
+    '<p>시간 · 요일 · 날짜 · 날씨 · 거리 · 명암(밝고 어두움). 여기에 <b>월과 계절, 기온</b>도 같은 무리입니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">꼭 지키기</span>it은 <b>3인칭 단수</b>입니다. 그래서 동사도 is, was, takes, rains처럼 단수 모양을 씁니다. It <b>are</b> sunny.(✕)</div>'+
+  '<div class="tip"><span class="h">이 단계에서 할 일</span>비인칭 주어가 무엇인지 우리말로 확인하고, 쓰는 경우를 다섯 개 보기에서 골라낸 뒤, 영어 문장 속 It이 둘 중 어느 쪽인지 가려 봅니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · 여섯 가지 쓰임과 해석</h2>'+
+  '<p class="lead">이제 실제 문장으로 익힐 차례입니다. 모두 <b>It is ~</b>로 시작하고, <b>it은 해석하지 않는다</b>는 규칙 하나만 지키면 됩니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>시간 · 요일 · 날짜 · 월</span>'+
+    '<div class="ex">It is seven o\'clock.<span class="k">일곱 시다 · What time is it? 으로 묻습니다</span></div>'+
+    '<div class="ex">It is Monday.<span class="k">월요일이다 · What day is it? 으로 묻습니다</span></div>'+
+    '<div class="ex">It is May 5th.<span class="k">5월 5일이다 · What\'s the date? 로 묻습니다</span></div>'+
+    '<div class="ex">It is December already.<span class="k">벌써 12월이다</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>날씨 · 계절</span>'+
+    '<div class="ex">It is rainy. / It is raining.<span class="k">비가 온다 · How\'s the weather? 로 묻습니다</span></div>'+
+    '<div class="ex">It rains a lot in summer.<span class="k">여름에는 비가 많이 온다</span></div>'+
+    '<div class="tip"><span class="h">자주 틀리는 곳</span>be동사 뒤에는 <b>형용사</b>가 옵니다. It is <b>rain</b>.(✕) → It is <b>rainy</b>.(○) 또는 It <b>rains</b>.(○)</div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>거리 · 명암</span>'+
+    '<div class="ex">It is two kilometers to the park.<span class="k">공원까지 2킬로미터다 · How far is it? 로 묻습니다</span></div>'+
+    '<div class="ex">It is dark in this room.<span class="k">이 방은 어둡다</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">It과 There를 바꿔 쓰지 않기</span><b>It is ~</b>는 시간·날씨 등을 말하고, <b>There is ~</b>는 ‘~가 있다’는 뜻입니다. There is windy.(✕)</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 학교 시험에 나오는 모습</h2>'+
+  '<p class="lead">시험에서는 <b>묻고 답하기</b>가 짝으로 나옵니다. 무엇을 묻는지만 정확히 알면 대답이 바로 정해집니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>묻는 말과 답하는 말</span>'+
+    '<div class="swap"><span>What time is it?</span><span class="ar">→</span><span class="good">It\'s ten thirty. (시각)</span></div>'+
+    '<div class="swap"><span>What day is it today?</span><span class="ar">→</span><span class="good">It\'s Wednesday. (요일)</span></div>'+
+    '<div class="swap"><span>What\'s the date today?</span><span class="ar">→</span><span class="good">It\'s June 10th. (날짜)</span></div>'+
+    '<div class="swap"><span>How\'s the weather?</span><span class="ar">→</span><span class="good">It\'s sunny. (날씨)</span></div>'+
+    '<div class="swap"><span>How far is it?</span><span class="ar">→</span><span class="good">It\'s two kilometers. (거리)</span></div>'+
+    '<div class="tip"><span class="h">가장 흔한 함정</span><b>day</b>는 요일, <b>date</b>는 날짜입니다. What day로 묻는데 날짜로 답하면 틀립니다.</div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>시험이 노리는 세 가지</span>'+
+    '<div class="ex">It is rain today. <span class="k">형용사가 와야 하니 ✕ → rainy</span></div>'+
+    '<div class="ex">It are very hot. <span class="k">it은 단수이니 ✕ → is</span></div>'+
+    '<div class="ex">There is cloudy. <span class="k">There is 뒤에 형용사는 ✕ → It is cloudy</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">서술형 대비</span>밑줄 친 it이 <b>대명사</b>인지 <b>비인칭 주어</b>인지 고르는 문제가 꼭 나옵니다. ‘그것은’을 넣어 보는 방법을 잊지 마세요.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · it의 세 가지 얼굴</h2>'+
+  '<p class="lead">지금까지 두 가지를 배웠고, 여기서 하나가 더 늘어납니다. 이 <b>세 가지</b>만 구별하면 it은 완전히 끝납니다.</p>'+
+  '<div class="trio">'+
+    '<div class="role r-n"><span class="t">대명사</span><span class="m">그것</span><span class="e">I like <b>it</b>.</span></div>'+
+    '<div class="role r-a"><span class="t">비인칭 주어</span><span class="m">해석 안 함</span><span class="e"><b>It</b> is rainy.</span></div>'+
+    '<div class="role r-v"><span class="t">가주어</span><span class="m">해석 안 함 · 진짜 주어는 뒤에</span><span class="e"><b>It</b> is fun to sing.</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>① 가주어 it</span>'+
+    '<div class="swap"><span>To learn English is fun.</span><span class="ar">=</span><span class="good">It is fun to learn English.</span></div>'+
+    '<p>주어가 길면 앞이 무거워집니다. 그래서 <b>It</b>을 대신 세우고 진짜 주어(to부정사)를 뒤로 보냅니다. 이 It도 해석하지 않습니다.</p>'+
+    '<div class="ex">It is difficult <u class="hl">for me</u> to solve this.<span class="k">일의 성질을 말하는 형용사 → for</span></div>'+
+    '<div class="ex">It is kind <u class="hl a">of you</u> to help me.<span class="k">사람의 성격을 말하는 형용사 → of</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>② It takes ~ (시간이 걸리다)</span>'+
+    '<div class="ex">It takes <u class="hl">me</u> twenty minutes <u class="hl">to get</u> to school.<span class="k">It takes + 사람 + 시간 + to 동사원형</span></div>'+
+    '<p>걸리는 시간을 물을 때는 <b>How long does it take?</b>, 거리를 물을 때는 <b>How far is it?</b>입니다. 헷갈리지 마세요.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">한눈에 정리</span>‘그것은’이 되면 <b>대명사</b>, 뒤에 to부정사가 따라오면 <b>가주어</b>, 나머지 시간·날씨·거리 같은 것이면 <b>비인칭 주어</b>입니다.</div>';
+}
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_itsub_v1", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
+
+/* ===================== 문제 ===================== */
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=L.qs.map(function(_,i){return i;});
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || "";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
+
+  var h="";
+  h+='<p class="ask">'+q.q+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  h+='<div class="opts">';
+  q.opts.forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
+  S.answered=false;S.picked=-1;
+
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
+  });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  show("quiz");
+}
+
+function buildFull(q){
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
+
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
+
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
+
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
+  }else{
+    if(!ok) S.retryWrong.push(S.list[S.i]);
+  }
+
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
+function next(){
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
+}
+
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+var LVCHEER = {
+  1:"it의 두 얼굴을 가려낼 수 있게 되었어요. 2단계에서는 여섯 가지 쓰임을 문장으로 익힙니다.",
+  2:"시간도 날씨도 거리도 모두 It is로 시작한다는 것, 이제 몸에 익었지요?",
+  3:"묻는 말만 보면 답이 보입니다. 시험지에서도 헷갈리지 않을 거예요.",
+  4:"대명사 · 비인칭 주어 · 가주어, 세 가지를 모두 끝냈습니다. 정말 훌륭합니다."
+};
+function praise(p){
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  var L=LEVELS[S.level], total=L.qs.length;
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var tl=L.typeLabels||{};
+  var keys=Object.keys(tl).filter(function(k){ return S.byType[k] && S.byType[k][1]>0; });
+  var bd;
+  if(keys.length<2){
+    bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+       '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>'+
+       '<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  }else{
+    bd=keys.map(function(k){
+      var cls = k==="v" ? "v3" : k;
+      return '<div class="bd '+cls+'"><div class="t">'+esc(tl[k])+'</div><div class="v">'+S.byType[k][0]+'/'+S.byType[k][1]+'</div></div>';
+    }).join('');
+  }
+  $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
+  $("rbreak").innerHTML=bd;
+
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  show("result");
+  openPraise(S.score, total, S.correct, S.wrong.length);
+}
+
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
+}
+
+function renderRetryResult(){
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  if(!still){ S.finished[S.level]=true; S.active=0; }
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").style.gridTemplateColumns = "repeat(3,1fr)";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+}
+
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+  }else{
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
+  }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
+}
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
+  show("rank");
+}
+
+/* ===================== 시작 배선 ===================== */
+function goHome(){
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
+}
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+refreshStart();
+</script>
+<script src="/kkt.js"></script>
+</body></html>

@@ -1,0 +1,1032 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>꾸메땅 도전 TO부정사 GAME</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --card:#FFFFFF;
+  --ink:#15201D;
+  --muted:#54615D;
+  --line:#E1E5DD;
+  --line-strong:#C9D1C8;
+  --accent:#0F6E5C;
+  --accent-soft:#E1F0EA;
+  --mark:#F3D74B;
+  --ok:#1C7A5B;
+  --ok-soft:#E3F1EA;
+  --no:#BC443A;
+  --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
+  --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+    --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+    --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+  --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+  --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:19px;line-height:1.62;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:720px;margin:0 auto;padding:24px 14px 72px;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){ .wrap{padding:28px 18px 72px} }
+h1,h2,h3{margin:0;text-wrap:balance}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(31px,8.2vw,46px);letter-spacing:-.02em;line-height:1.08}
+h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
+.sub{color:var(--muted);font-size:16.5px}
+
+.rail{display:flex;gap:8px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:6px}
+.seg .lab{font-size:16.5px;letter-spacing:.01em;color:var(--muted);font-weight:700}
+.seg .bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:4px;font-variant-numeric:tabular-nums}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+@media (min-width:600px){ .card{padding:24px} }
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:27px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
+
+
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
+.btn:hover{opacity:.88}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:23px;width:54px;height:54px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:21.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:17px}
+.lvcard .desc{font-size:17px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:23px;line-height:1.2}
+.role .m{font-size:16px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:19px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:19.5px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:18.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20.5px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:15px;font-weight:700;padding:4px 11px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
+
+.exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+.verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
+.verdict.ok{color:var(--ok)}
+.verdict.no{color:var(--no)}
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
+.full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
+.full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
+.full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
+.full .kr{font-size:18.5px;line-height:1.6}
+
+/* ---------- 결과 ---------- */
+.score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
+.score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+.bd .t{font-size:14px;color:var(--muted);font-weight:600}
+.bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
+.wrongs{display:flex;flex-direction:column;gap:10px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.wrong .top{display:flex;gap:8px;align-items:baseline}
+.wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
+.wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
+.wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
+.submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tablewrap{overflow-x:auto}
+table.rank{width:100%;border-collapse:collapse;font-size:17.5px}
+table.rank th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
+table.rank tr.top .pos{color:var(--accent)}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
+table.rank .when{color:var(--muted);font-size:15px}
+table.rank tr.me{background:var(--accent-soft)}
+table.rank tr.me .who{color:var(--accent)}
+.empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
+.toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1>꾸메땅 도전 <span class="mark">TO부정사 GAME</span></h1>
+    <p class="sub">to부정사 91문제 · 기본개념 21 · 해당학년 25 · 기출문제 25 · 고난도 20 / 개념 그림을 먼저 보고, 문제마다 완성 문장과 해석, 해설이 함께 나옵니다.</p>
+  </header>
+
+  <div class="rail" id="rail" aria-hidden="true">
+    <div class="seg" style="flex:21"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg" style="flex:25"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg" style="flex:25"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg" style="flex:20"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+  </div>
+
+  <!-- 시작 -->
+  <section class="card" id="start">
+    <h2>단계를 골라 도전해 보세요</h2>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
+    <div class="namebar">
+      <span class="h">이름</span>
+      <div class="row">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <button class="btn small" id="saveName">저장</button>
+      </div>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
+    </div>
+    <div class="levels" id="levelPick"></div>
+    <div class="actions">
+      <button class="btn ghost" id="openRank">순위 보기</button>
+    </div>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+  </section>
+
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
+    <div class="actions">
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
+    </div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="card hide" id="quiz">
+    <div class="qhead">
+      <span class="qnum" id="qnum">1 / 21</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
+    </div>
+    <div class="qbody" id="qbody"></div>
+    <div id="qexp"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="card hide" id="result">
+    <h2 id="rtitle">1단계 결과</h2>
+    <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rsubmit"></div>
+    <div id="rwrong"></div>
+    <div class="actions" id="ractions"></div>
+  </section>
+
+  <!-- 순위 -->
+  <section class="card hide" id="rank">
+    <div class="subhead">
+      <h2>도전 순위</h2>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
+    </div>
+    <div id="rankToast"></div>
+    <div class="tabs" id="rankTabs">
+      <button class="tab on" data-t="all">종합</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rankHome">단계 선택으로</button>
+    </div>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
+  </section>
+
+  <p class="foot">꾸메땅 도전 TO부정사 GAME · to부정사편</p>
+</div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ===================== 문제 은행 ===================== */
+var POS3 = ["명사 — 이름을 나타내는 말","형용사 — 명사를 꾸미는 말","부사 — 동사·형용사를 꾸미는 말"];
+var ROLE3 = ["명사처럼 (~하는 것은 / 것을 / 것)","형용사처럼 (~할, ~하는)","부사처럼 (~하기 위해, ~해서)"];
+var NOUN4 = ["주어 — ~하는 것은","목적어 — ~하는 것을","보어 — ~하는 것","수식어 — ~할, ~하는"];
+
+var L1 = [
+  {tag:"품사 구별", word:"teacher", q:"다음 단어의 품사는?", opts:POS3, a:0, exp:"‘선생님’이라는 <b>사람의 이름</b>을 나타내므로 명사입니다."},
+  {tag:"품사 구별", word:"beautiful", q:"다음 단어의 품사는?", opts:POS3, a:1, exp:"‘아름다운’처럼 <b>명사를 꾸며 주는 말</b>은 형용사입니다. (a beautiful flower)"},
+  {tag:"품사 구별", word:"slowly", q:"다음 단어의 품사는?", opts:POS3, a:2, exp:"‘천천히’ — 동작이 <b>어떻게</b> 일어나는지 꾸며 주는 부사입니다. (walk slowly)"},
+  {tag:"품사 구별", word:"water", q:"다음 단어의 품사는?", opts:POS3, a:0, exp:"‘물’이라는 <b>사물의 이름</b>이므로 명사입니다."},
+  {tag:"품사 구별", word:"quickly", q:"다음 단어의 품사는?", opts:POS3, a:2, exp:"‘빠르게’ — 동사를 꾸며 주는 부사입니다. 대부분 <b>-ly</b>로 끝납니다."},
+  {tag:"품사 구별", word:"delicious", q:"다음 단어의 품사는?", opts:POS3, a:1, exp:"‘맛있는’ — 음식이 <b>어떤지</b> 설명하므로 형용사입니다. (delicious food)"},
+  {tag:"품사 구별", word:"music", q:"다음 단어의 품사는?", opts:POS3, a:0, exp:"‘음악’이라는 <b>대상의 이름</b>이므로 명사입니다."},
+
+  {tag:"문장 속 역할", sent:"I like **music**.", ko:"나는 음악을 좋아한다.", q:"밑줄 친 말은 문장에서 어떤 역할을 하나요?", opts:POS3, a:0, exp:"like의 <b>목적어</b> 자리입니다. 목적어 자리에는 명사가 옵니다."},
+  {tag:"문장 속 역할", sent:"She is a **smart** student.", ko:"그녀는 똑똑한 학생이다.", q:"밑줄 친 말은 문장에서 어떤 역할을 하나요?", opts:POS3, a:1, exp:"뒤의 명사 student를 <b>앞에서 꾸며</b> 줍니다."},
+  {tag:"문장 속 역할", sent:"He runs **fast**.", ko:"그는 빠르게 달린다.", q:"밑줄 친 말은 문장에서 어떤 역할을 하나요?", opts:POS3, a:2, exp:"동사 runs를 꾸며 <b>어떻게 달리는지</b> 알려 줍니다."},
+  {tag:"문장 속 역할", sent:"The bag is **heavy**.", ko:"그 가방은 무겁다.", q:"밑줄 친 말은 문장에서 어떤 역할을 하나요?", opts:POS3, a:1, exp:"주어 The bag이 <b>어떤 상태인지</b> 설명하는 형용사입니다."},
+  {tag:"문장 속 역할", sent:"We met **yesterday**.", ko:"우리는 어제 만났다.", q:"밑줄 친 말은 문장에서 어떤 역할을 하나요?", opts:POS3, a:2, exp:"‘언제’ 만났는지 알려 주는 부사입니다."},
+  {tag:"문장 속 역할", sent:"My father is a **doctor**.", ko:"우리 아버지는 의사이시다.", q:"밑줄 친 말은 문장에서 어떤 역할을 하나요?", opts:POS3, a:0, exp:"주어가 <b>무엇인지</b> 알려 주는 이름, 즉 명사입니다."},
+  {tag:"문장 속 역할", sent:"She sings **beautifully**.", ko:"그녀는 아름답게 노래한다.", q:"밑줄 친 말은 문장에서 어떤 역할을 하나요?", opts:POS3, a:2, exp:"동사 sings를 꾸며 주므로 부사입니다. beautiful(형용사) → beautifully(부사)"},
+
+  {tag:"to부정사 첫걸음", type:"n", sent:"I want **to eat** pizza.", ko:"나는 피자를 먹고 싶다.", q:"밑줄 친 to부정사는 무엇처럼 쓰였나요?", opts:ROLE3, a:0, exp:"want의 목적어 자리 = ‘<b>먹는 것을</b>’ 원한다. 명사처럼 쓰였습니다."},
+  {tag:"to부정사 첫걸음", type:"a", sent:"I have work **to do**.", ko:"나는 해야 할 일이 있다.", q:"밑줄 친 to부정사는 무엇처럼 쓰였나요?", opts:ROLE3, a:1, exp:"앞의 명사 work를 <b>뒤에서 꾸며</b> ‘해야 할 일’이 됩니다."},
+  {tag:"to부정사 첫걸음", type:"v", sent:"He went out **to play** soccer.", ko:"그는 축구를 하려고 나갔다.", q:"밑줄 친 to부정사는 무엇처럼 쓰였나요?", opts:ROLE3, a:2, exp:"나간 <b>목적</b>을 알려 줍니다. ‘~하기 위해’로 해석되면 부사처럼 쓰인 것입니다."},
+  {tag:"to부정사 첫걸음", type:"n", sent:"**To read** books is fun.", ko:"책을 읽는 것은 재미있다.", q:"밑줄 친 to부정사는 무엇처럼 쓰였나요?", opts:ROLE3, a:0, exp:"문장 맨 앞 <b>주어</b> 자리입니다. ‘읽는 것은’으로 해석됩니다."},
+  {tag:"to부정사 첫걸음", type:"a", sent:"Give me something **to drink**.", ko:"마실 것을 좀 주세요.", q:"밑줄 친 to부정사는 무엇처럼 쓰였나요?", opts:ROLE3, a:1, exp:"something을 뒤에서 꾸며 ‘<b>마실</b> 것’이 됩니다."},
+  {tag:"to부정사 첫걸음", type:"v", sent:"She was happy **to see** him.", ko:"그녀는 그를 봐서 행복했다.", q:"밑줄 친 to부정사는 무엇처럼 쓰였나요?", opts:ROLE3, a:2, exp:"행복한 <b>이유</b>를 알려 줍니다. 감정 형용사 뒤의 to부정사는 부사처럼 쓰입니다."},
+  {tag:"to부정사 첫걸음", type:"n", sent:"My hobby is **to take** pictures.", ko:"내 취미는 사진을 찍는 것이다.", q:"밑줄 친 to부정사는 무엇처럼 쓰였나요?", opts:ROLE3, a:0, exp:"be동사 뒤 <b>보어</b> 자리로, ‘~하는 것’이라고 해석됩니다."}
+];
+
+var L2 = [
+  {type:"n", sent:"___ English every day is important.", ko:"매일 영어를 공부하는 것은 중요하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["To study","Study","Studies","Studied"], a:0, exp:"문장의 <b>주어</b> 자리이므로 ‘~하는 것’을 뜻하는 to부정사가 옵니다."},
+  {type:"n", sent:"I want ___ a singer.", ko:"나는 가수가 되고 싶다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["be","to be","being","to being"], a:1, exp:"want는 <b>to부정사</b>를 목적어로 받습니다. to 뒤에는 항상 동사원형이 옵니다."},
+  {type:"n", sent:"My dream is ___ around the world.", ko:"내 꿈은 세계를 여행하는 것이다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["travel","to travel","traveled","travels"], a:1, exp:"be동사 뒤 <b>보어</b> 자리입니다. ‘여행하는 것’으로 해석됩니다."},
+  {type:"n", sent:"It is not easy ___ up early.", ko:"일찍 일어나는 것은 쉽지 않다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["get","to get","getting","got"], a:1, exp:"It은 <b>가주어</b>, to부정사가 <b>진주어</b>입니다. (It ~ to부정사)"},
+  {type:"n", sent:"**To read** books is fun.", ko:"책을 읽는 것은 재미있다.", q:"밑줄 친 to부정사의 자리와 해석으로 알맞은 것은?", opts:NOUN4, a:0, exp:"문장 맨 앞 <b>주어</b> 자리입니다. ‘책을 읽는 <b>것은</b>’으로 해석합니다."},
+  {type:"n", sent:"I like **to read** books.", ko:"나는 책을 읽는 것을 좋아한다.", q:"밑줄 친 to부정사의 자리와 해석으로 알맞은 것은?", opts:NOUN4, a:1, exp:"like 뒤 <b>목적어</b> 자리입니다. ‘책을 읽는 <b>것을</b>’로 해석합니다."},
+  {type:"n", sent:"My hobby is **to read** books.", ko:"내 취미는 책을 읽는 것이다.", q:"밑줄 친 to부정사의 자리와 해석으로 알맞은 것은?", opts:NOUN4, a:2, exp:"be동사 뒤 <b>보어</b> 자리입니다. to read는 ‘책을 읽는 <b>것</b>’이고, 뒤의 ‘이다’는 be동사 is의 뜻입니다. 같은 to read라도 자리에 따라 붙는 조사가 달라집니다."},
+  {type:"n", sent:"He didn't know what ___ .", ko:"그는 무엇을 해야 할지 몰랐다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["do","to do","doing","does"], a:1, exp:"<b>의문사 + to부정사</b>는 ‘무엇을 ~해야 할지’라는 뜻의 명사 덩어리입니다."},
+  {type:"n", q:"to부정사가 <b>목적어</b>로 쓰인 문장은?", opts:["To swim is fun.","I like to swim.","My plan is to swim.","I have time to swim."], a:1, eng:true, exp:"①은 주어, ③은 보어, ④는 time을 꾸미는 형용사적 용법입니다. ②만 like의 <b>목적어</b>입니다."},
+
+  {type:"a", sent:"I have a lot of homework ___ today.", ko:"나는 오늘 해야 할 숙제가 많다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["do","to do","doing","did"], a:1, exp:"앞의 명사 homework를 <b>뒤에서 꾸며</b> ‘해야 할 숙제’가 됩니다."},
+  {type:"a", sent:"Do you want something ___ ?", ko:"먹을 것 좀 줄까?", q:"빈칸에 알맞은 것을 고르세요.", opts:["eat","to eat","eating","ate"], a:1, exp:"-thing으로 끝나는 말은 to부정사가 <b>뒤에서</b> 꾸며 줍니다."},
+  {type:"a", sent:"It's time ___ to bed.", ko:"잠자리에 들 시간이다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["go","to go","going","went"], a:1, exp:"time을 꾸며 ‘<b>잘</b> 시간’이 됩니다."},
+  {type:"a", sent:"There are many places ___ in Jeju.", ko:"제주에는 방문할 곳이 많다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["visit","to visit","visiting","visited"], a:1, exp:"places를 꾸며 ‘<b>방문할</b> 장소’가 됩니다."},
+  {type:"a", sent:"I have a book **to read**.", ko:"나는 읽을 책이 한 권 있다.", q:"밑줄 친 to부정사의 용법은?", opts:["명사적 용법","형용사적 용법","부사적 용법","보어 역할"], a:1, exp:"앞의 명사 a book을 꾸며 주므로 <b>형용사적 용법</b>입니다."},
+  {type:"a", sent:"He was the first student ___ the classroom.", ko:"그는 교실에 들어온 첫 번째 학생이었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["enter","to enter","entering","entered"], a:1, exp:"<b>the first[last] + 명사 + to부정사</b> — ‘가장 먼저 ~한’이라는 뜻입니다."},
+  {type:"a", sent:"I want something ___ .", ko:"나는 시원한 마실 것을 원한다.", q:"빈칸에 알맞은 말이 바르게 배열된 것은?", opts:["cold to drink","to drink cold","to cold drink","drink to cold"], a:0, eng:true, exp:"-thing은 형용사가 <b>뒤에</b> 오고, to부정사는 그 <b>뒤에</b> 옵니다. (something + 형용사 + to V)"},
+  {type:"a", sent:"She has no time ___ lunch.", ko:"그녀는 점심을 먹을 시간이 없다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["have","to have","having","had"], a:1, exp:"time을 꾸며 ‘점심을 <b>먹을</b> 시간’이 됩니다."},
+
+  {type:"v", sent:"He went to the store ___ some milk.", ko:"그는 우유를 사러 가게에 갔다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["buy","to buy","buying","bought"], a:1, exp:"가게에 간 <b>목적</b>을 나타냅니다. ‘~하기 위해’"},
+  {type:"v", sent:"I'm glad ___ you.", ko:"너를 만나서 반가워.", q:"빈칸에 알맞은 것을 고르세요.", opts:["meet","to meet","meeting","met"], a:1, exp:"감정 형용사 glad 뒤에서 <b>감정의 원인</b>을 나타냅니다."},
+  {type:"v", sent:"We were sad ___ the news.", ko:"우리는 그 소식을 듣고 슬펐다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["hear","to hear","hearing","heard"], a:1, exp:"슬픈 <b>이유</b>를 나타내는 부사적 용법입니다."},
+  {type:"v", sent:"This math problem is difficult ___ .", ko:"이 수학 문제는 풀기 어렵다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["solve","to solve","solving","solved"], a:1, exp:"형용사 difficult를 뒤에서 꾸며 ‘<b>풀기에</b> 어렵다’가 됩니다."},
+  {type:"v", sent:"I studied hard **to pass** the exam.", ko:"나는 시험에 합격하려고 열심히 공부했다.", q:"밑줄 친 to부정사의 용법은?", opts:["명사적 용법","형용사적 용법","부사적 용법 – 목적","부사적 용법 – 감정의 원인"], a:2, exp:"공부한 <b>목적</b>을 나타냅니다. ‘~하기 위해’로 해석됩니다."},
+  {type:"v", sent:"She was happy **to get** a present.", ko:"그녀는 선물을 받아서 기뻤다.", q:"밑줄 친 to부정사의 용법은?", opts:["명사적 용법","형용사적 용법","부사적 용법 – 목적","부사적 용법 – 감정의 원인"], a:3, exp:"happy한 <b>이유</b>를 알려 줍니다. ‘~해서’로 해석됩니다."},
+  {type:"v", sent:"He came here ___ me.", ko:"그는 나를 도우러 여기에 왔다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["help","to help","helping","helped"], a:1, exp:"온 <b>목적</b>을 나타내는 부사적 용법입니다."},
+  {type:"v", q:"‘~하기 위해서’의 뜻으로 바르게 쓴 문장은?", opts:["I ran to catch the bus.","I ran catching the bus.","I ran for catch the bus.","I ran catch the bus."], a:0, eng:true, exp:"목적은 <b>to + 동사원형</b>으로 나타냅니다. for 뒤에는 동사원형이 올 수 없습니다."}
+];
+
+var L3 = [
+  {type:"n", hard:true, sent:"I found it difficult ___ the puzzle.", ko:"나는 그 퍼즐을 푸는 것이 어렵다는 것을 알았다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["solve","to solve","solving","to solving","solved"], a:1, exp:"it은 <b>가목적어</b>, to부정사가 <b>진목적어</b>입니다. (find/think/make + it + 형용사 + to V)"},
+  {type:"n", q:"다음 문장을 <b>부정문</b>으로 바르게 고친 것은?<br><span class=\"eng\">He decided to tell the truth.</span>", opts:["He decided not to tell the truth.","He decided to not tell the truth.","He decided to tell not the truth.","He didn't decided to tell the truth.","He decided don't tell the truth."], a:0, eng:true, exp:"to부정사를 부정할 때는 <b>not을 to 바로 앞</b>에 붙입니다. → not to tell"},
+  {type:"n", sent:"My teacher told me ___ late.", ko:"선생님은 나에게 늦지 말라고 말씀하셨다.", q:"어법상 알맞은 것을 고르세요.", opts:["not to be","to not be","to be not","don't be","not being"], a:0, exp:"to부정사의 부정은 <b>not을 to 앞</b>에 씁니다. → not to be"},
+  {type:"n", sent:"My mom wants me ___ the dishes.", ko:"엄마는 내가 설거지하기를 원하신다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["wash","to wash","washing","washed","to washing"], a:1, exp:"want + 목적어 + <b>to부정사</b>(목적격보어). ‘~가 …하기를 원하다’"},
+  {type:"n", sent:"My teacher asked me ___ the window.", ko:"선생님은 나에게 창문을 열어 달라고 부탁하셨다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["open","to open","opening","opened","to opening"], a:1, exp:"ask · tell · want · advise는 <b>목적어 + to부정사</b>를 씁니다. ‘~에게 …하라고 부탁하다’"},
+  {type:"n", hard:true, sent:"My mom made me ___ the dishes.", ko:"엄마는 나에게 설거지를 시키셨다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to wash","wash","washing","washed","to washing"], a:1, exp:"사역동사 <b>make · have · let</b> 뒤에는 to가 없는 <b>동사원형</b>이 옵니다. 앞 문제(want, ask)와 꼭 구별하세요."},
+  {type:"n", hard:true, sent:"I saw him ___ the room.", ko:"나는 그가 방에 들어가는 것을 보았다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to enter","enter","to entering","enters","to be enter"], a:1, exp:"지각동사 <b>see · hear · watch · feel</b> 뒤에도 to가 없는 <b>동사원형</b>이 옵니다. (진행 중임을 강조할 때는 entering도 가능합니다.)"},
+  {type:"n", q:"밑줄 친 to부정사의 쓰임이 나머지 넷과 <b>다른</b> 것은?", opts:["I want **to be** a pilot.","**To ride** a bike is fun.","She has a book **to read**.","My hope is **to see** you.","He decided **to go** home."], a:2, eng:true, exp:"③은 a book을 꾸미는 <b>형용사적 용법</b>이고, 나머지는 모두 주어·목적어·보어로 쓰인 명사적 용법입니다."},
+  {type:"n", sent:"___ is important to keep your promise.", ko:"약속을 지키는 것은 중요하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["That","It","This","What","There"], a:1, exp:"to부정사가 주어로 길어지면 <b>가주어 It</b>을 앞에 세우고 진주어를 뒤로 보냅니다."},
+
+  {type:"a", sent:"I need a chair ___ .", ko:"나는 앉을 의자가 필요하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to sit","to sit on","sit on","to sitting","for sit"], a:1, exp:"sit <b>on</b> a chair(의자에 앉다)이므로, 꾸밈을 받는 명사가 앞으로 나가도 <b>전치사 on은 남습니다</b>."},
+  {type:"a", sent:"He has no friends ___ .", ko:"그는 함께 놀 친구가 없다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to play","to play with","play with","to playing","for playing"], a:1, exp:"play <b>with</b> friends이므로 with를 반드시 남겨야 합니다."},
+  {type:"a", sent:"Please give me some paper ___ .", ko:"쓸 종이 좀 주세요.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to write","to write on","write on","to writing","for write"], a:1, exp:"write <b>on</b> paper(종이 위에 쓰다). 전치사 on이 필요합니다."},
+  {type:"a", sent:"There is no water ___ .", ko:"마실 물이 없다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to drink","to drink with","to drinking","drink","for drink"], a:0, exp:"drink는 <b>타동사</b>라서 drink water가 됩니다. 전치사가 필요 없는 경우를 구별하세요."},
+  {type:"a", sent:"I want a big house ___ .", ko:"나는 살 큰 집을 원한다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to live","to live in","live in","to living","for live"], a:1, exp:"live <b>in</b> a house이므로 in을 남깁니다."},
+  {type:"a", hard:true, sent:"You **are to finish** your homework by six.", ko:"너는 여섯 시까지 숙제를 끝내야 한다.", q:"밑줄 친 부분의 의미로 알맞은 것은?", opts:["의무 (~해야 한다)","가능 (~할 수 있다)","운명 (~할 운명이다)","의도 (~하려고 한다)","예정 (~할 예정이다)"], a:0, exp:"<b>be to 용법</b> 중 의무입니다. 여기서는 must/should로 바꿔 쓸 수 있습니다."},
+  {type:"a", sent:"She was the last person ___ the room.", ko:"그녀가 그 방을 마지막으로 나간 사람이었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["leave","to leave","leaving","left","to leaving"], a:1, exp:"<b>the last + 명사 + to부정사</b> = 가장 마지막에 ~한 (사람)"},
+  {type:"a", q:"밑줄 친 부분의 용법이 나머지와 <b>다른</b> 것은?", opts:["Give me something **to eat**.","I have a plan **to tell** you.","He is the man **to trust**.","She ran **to catch** the train.","There's no time **to lose**."], a:3, eng:true, exp:"④는 달린 <b>목적</b>을 나타내는 부사적 용법이고, 나머지는 모두 앞의 명사를 꾸미는 형용사적 용법입니다."},
+
+  {type:"v", hard:true, sent:"He grew up **to be** a famous scientist.", ko:"그는 자라서 유명한 과학자가 되었다.", q:"밑줄 친 to부정사의 용법으로 알맞은 것은?", opts:["목적","감정의 원인","판단의 근거","결과","형용사 수식"], a:3, exp:"grow up / live / wake up 뒤의 to부정사는 흔히 <b>결과</b>를 나타냅니다. ‘자라서 ~가 되었다’"},
+  {type:"v", hard:true, sent:"He must be a fool **to believe** such a story.", ko:"그런 이야기를 믿다니 그는 바보임에 틀림없다.", q:"밑줄 친 to부정사의 용법으로 알맞은 것은?", opts:["목적","감정의 원인","판단의 근거","결과","형용사 수식"], a:2, exp:"must be(~임에 틀림없다)와 함께 쓰여 그렇게 <b>판단한 근거</b>를 나타냅니다. ‘~하다니’"},
+  {type:"v", hard:true, sent:"He is too tired ___ any more.", ko:"그는 너무 피곤해서 더는 걸을 수 없다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to walk","walk","to walking","not to walk","walking"], a:0, exp:"<b>too + 형용사 + to V</b> = 너무 …해서 ~할 수 없다. 이미 부정의 뜻이 들어 있어 not을 쓰지 않습니다."},
+  {type:"v", hard:true, sent:"She is smart enough ___ the problem.", ko:"그녀는 그 문제를 풀 만큼 충분히 똑똑하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to solve","solve","solving","for solve","to solving"], a:0, exp:"<b>형용사 + enough + to V</b> = ~할 만큼 충분히 …하다. enough는 형용사 <b>뒤</b>에 옵니다."},
+  {type:"v", hard:true, sent:"He studied hard ___ pass the exam.", ko:"그는 시험에 합격하기 위해 열심히 공부했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["in order to","in order","so that","for to","to not"], a:0, exp:"목적을 분명히 할 때 <b>in order to V</b> 또는 <b>so as to V</b>를 씁니다. so that 뒤에는 절이 옵니다."},
+  {type:"v", hard:true, sent:"He is so young that he can't drive.<br>= He is ___ young ___ drive.", ko:"그는 너무 어려서 운전할 수 없다.",
+   q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?", opts:["too / to","so / to","very / to","enough / to","too / not to"], a:0,
+   full:"He is **too** young **to** drive.", fullko:"그는 너무 어려서 운전할 수 없다.",
+   exp:"<b>so ~ that … can't</b> = <b>too ~ to</b>. 둘 다 ‘너무 …해서 ~할 수 없다’입니다."},
+  {type:"v", sent:"I was disappointed ___ the result.", ko:"나는 그 결과를 듣고 실망했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["hear","to hear","hearing","heard","to hearing"], a:1, exp:"감정을 나타내는 말 뒤에서 <b>감정의 원인</b>을 나타내는 부사적 용법입니다."},
+  {type:"v", q:"밑줄 친 부분의 쓰임이 나머지와 <b>다른</b> 것은?", opts:["I got up early **to catch** the bus.","She went to Paris **to study** art.","He was surprised **to see** me.","We stopped **to take** a rest.","I called you **to say** thank you."], a:2, eng:true, exp:"③은 놀란 <b>감정의 원인</b>이고, 나머지는 모두 <b>목적</b>을 나타냅니다."}
+];
+
+var L4 = [
+  /* 의미상의 주어 8 */
+  {tag:"의미상의 주어", sent:"It is difficult ___ me to solve this problem.", ko:"내가 이 문제를 푸는 것은 어렵다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["of","for","to","by","with"], a:1, exp:"difficult · easy · hard · important · necessary처럼 <b>일의 성질</b>을 말하는 형용사 뒤에는 <b>for + 목적격</b>을 씁니다."},
+  {tag:"의미상의 주어", sent:"It was very kind ___ you to help me.", ko:"저를 도와주시다니 정말 친절하시군요.", q:"빈칸에 알맞은 것을 고르세요.", opts:["for","of","to","at","in"], a:1, exp:"kind · nice · wise · foolish · rude처럼 <b>사람의 성격</b>을 말하는 형용사 뒤에는 <b>of + 목적격</b>을 씁니다."},
+  {tag:"의미상의 주어", sent:"It is dangerous ___ children to swim here.", ko:"아이들이 여기에서 수영하는 것은 위험하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["of","for","to","with","by"], a:1, exp:"dangerous는 <b>일의 성질</b>을 말하므로 for를 씁니다. ‘아이들이 위험한 사람’이라는 뜻이 아닙니다."},
+  {tag:"의미상의 주어", sent:"It was foolish ___ him to believe the lie.", ko:"그 거짓말을 믿다니 그는 어리석었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["for","of","to","from","on"], a:1, exp:"foolish는 <b>사람의 성격</b>을 말합니다. ‘He was foolish’로 바꿔 말이 되면 of입니다."},
+  {tag:"의미상의 주어", hard:true, q:"밑줄 친 부분이 어법상 <b>어색한</b> 것은?", opts:["It is easy **for** me to run fast.","It is wise **of** you to say so.","It is important **for** us to sleep well.","It is kind **for** you to invite me.","It was rude **of** him to shout."], a:3, eng:true, exp:"kind는 사람의 성격을 나타내므로 <b>of you</b>가 되어야 합니다."},
+  {tag:"의미상의 주어", sent:"It is necessary ___ us to wear a helmet.", ko:"우리가 헬멧을 쓰는 것은 필요하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["of","for","to","in","about"], a:1, exp:"necessary는 일의 성질을 말하므로 <b>for</b>입니다."},
+  {tag:"의미상의 주어", sent:"It is impossible ___ him to finish it in a day.", ko:"그가 그것을 하루 만에 끝내는 것은 불가능하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["of","for","to","by","at"], a:1, exp:"impossible도 일의 성질이므로 <b>for</b>를 씁니다."},
+  {tag:"의미상의 주어", hard:true, sent:"It was nice **of her** to bring the cake.", ko:"케이크를 가져오다니 그녀는 다정했다.", q:"밑줄 친 부분이 문장에서 하는 일은?", opts:["to bring이라는 행동을 한 사람을 나타낸다","It이 가리키는 대상을 나타낸다","케이크를 받은 사람을 나타낸다","시간을 나타내는 부사구이다","nice를 꾸미는 형용사구이다"], a:0, exp:"<b>의미상의 주어</b>는 to부정사가 나타내는 행동을 실제로 한 사람입니다. 케이크를 가져온 사람은 her(그녀)입니다."},
+
+  /* 의문사 + to부정사 6 */
+  {tag:"의문사 + to부정사", sent:"I don't know what ___ .", ko:"나는 무엇을 해야 할지 모르겠다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["do","to do","doing","to doing","did"], a:1, exp:"<b>의문사 + to부정사</b>는 ‘무엇을 ~해야 할지’라는 뜻의 명사 덩어리로, 목적어 자리에 옵니다."},
+  {tag:"의문사 + to부정사", sent:"Please tell me how ___ this machine.", ko:"이 기계를 어떻게 사용하는지 알려 주세요.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use","to use","using","to using","used"], a:1, exp:"<b>how to V</b> = ~하는 방법, 어떻게 ~할지"},
+  {tag:"의문사 + to부정사", sent:"We haven't decided when ___ .", ko:"우리는 언제 출발할지 정하지 않았다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["start","to start","starting","to starting","started"], a:1, exp:"<b>when to V</b> = 언제 ~할지"},
+  {tag:"의문사 + to부정사", sent:"He asked me where ___ .", ko:"그는 나에게 어디로 가야 할지 물었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["go","to go","going","to going","went"], a:1, exp:"<b>where to V</b> = 어디로[어디에서] ~할지"},
+  {tag:"의문사 + to부정사", hard:true, sent:"I don't know what I should say.<br>= I don't know what ___ .", ko:"나는 무슨 말을 해야 할지 모르겠다.", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?", opts:["to say","saying","say","to saying","said"],
+   a:0, full:"I don't know what **to say**.", fullko:"나는 무슨 말을 해야 할지 모르겠다.",
+   exp:"<b>의문사 + 주어 + should + 동사원형</b>은 <b>의문사 + to부정사</b>로 바꿔 쓸 수 있습니다."},
+  {tag:"의문사 + to부정사", hard:true, q:"다음 중 <b>쓸 수 없는</b> 표현은?", opts:["what to do","how to swim","when to leave","why to go","where to sit"], a:3, eng:true, exp:"의문사 + to부정사에서 <b>why</b>는 쓰지 않습니다. 이유를 말할 때는 why + 주어 + 동사로 씁니다."},
+
+  /* 심화 종합 6 */
+  {tag:"심화 종합", sent:"He promised ___ late again.", ko:"그는 다시는 늦지 않겠다고 약속했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["not to be","to not be","to be not","not being","don't be"], a:0, exp:"to부정사의 부정은 <b>not + to + 동사원형</b>입니다."},
+  {tag:"심화 종합", hard:true, sent:"A: Will you join us?<br>B: I'd love ___ .", ko:"A: 우리와 함께할래? B: 정말 그러고 싶어.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","to do","doing","do","too"],
+   a:0, full:"I'd love **to**.", fullko:"정말 그러고 싶어.",
+   exp:"앞에 나온 말(join us)이 반복될 때는 <b>to만 남기는</b> 대부정사를 씁니다."},
+  {tag:"심화 종합", hard:true, sent:"He seems ___ tired today.", ko:"그는 오늘 피곤해 보인다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["be","to be","being","to being","is"], a:1, exp:"<b>seem to V</b> = ~인 것 같다, ~해 보인다. It seems that he is tired.로 바꿔 쓸 수 있습니다."},
+  {tag:"심화 종합", hard:true, sent:"She is too weak to lift the box.<br>= She is ___ weak ___ she can't lift the box.", ko:"그녀는 너무 약해서 그 상자를 들 수 없다.", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?", opts:["so / that","too / that","very / so","enough / that","so / to"],
+   a:0, full:"She is **so** weak **that** she can't lift the box.", fullko:"그녀는 너무 약해서 그 상자를 들 수 없다.",
+   exp:"<b>too ~ to V</b> = <b>so ~ that … can't</b>. 뒤 문장에는 반드시 can't가 들어갑니다."},
+  {tag:"심화 종합", hard:true, sent:"He is rich enough to buy the car.<br>= He is ___ rich ___ he can buy the car.", ko:"그는 그 차를 살 만큼 부유하다.", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?", opts:["so / that","too / that","very / that","enough / that","so / to"],
+   a:0, full:"He is **so** rich **that** he can buy the car.", fullko:"그는 그 차를 살 수 있을 만큼 부유하다.",
+   exp:"<b>형용사 + enough + to V</b> = <b>so ~ that … can</b>. 이때는 can이 들어갑니다."},
+  {tag:"심화 종합", hard:true, sent:"___ tell the truth, I don't like this plan.", ko:"사실대로 말하면, 나는 이 계획이 마음에 들지 않는다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["To","Telling","Told","For","Tell"],
+   a:0, full:"**To** tell the truth, I don't like this plan.", fullko:"사실대로 말하면, 나는 이 계획이 마음에 들지 않는다.",
+   exp:"<b>To tell the truth</b>(사실대로 말하면)처럼 문장 전체를 꾸미는 <b>독립부정사</b>입니다. To be honest, Strange to say도 같은 무리입니다."}
+];
+
+var LEVELS = {
+  1:{name:"기본 개념", desc:"품사부터 to부정사 첫걸음까지 · 중1~중2", qs:L1},
+  2:{name:"해당 학년", desc:"세 가지 용법 기본기 · 명사적 9 · 형용사적 8 · 부사적 8", qs:L2},
+  3:{name:"기출 문제", desc:"학교 시험 최다 빈출 유형 · 고난도 10문항 포함 · 중2~중3", qs:L3},
+  4:{name:"고난도", desc:"의미상의 주어 · 의문사 + to부정사 · 심화 종합 · 중3", qs:L4}
+};
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_toinf_v1", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+function typeName(t){return t==="n"?"명사적":t==="a"?"형용사적":t==="v"?"부사적":"";}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = S.active && S.active!==k;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  if(S.active) h+='<p class="lockmsg">'+S.active+'단계를 진행 중입니다. 이 단계를 오답까지 모두 마무리해야 다른 단계를 고를 수 있습니다.</p>';
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 개념 화면 ===================== */
+function figFan(){
+  return '<svg class="fig" viewBox="0 0 520 88" role="img" aria-label="to부정사가 명사·형용사·부사 세 역할로 나뉘는 그림">'+
+    '<defs>'+
+      '<marker id="an" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--rn)"/></marker>'+
+      '<marker id="aa" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--ra)"/></marker>'+
+      '<marker id="av" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--rv)"/></marker>'+
+    '</defs>'+
+    '<path d="M260 6 C 260 48, 88 42, 88 78" fill="none" stroke="var(--rn)" stroke-width="2.5" marker-end="url(#an)"/>'+
+    '<path d="M260 6 L 260 78" fill="none" stroke="var(--ra)" stroke-width="2.5" marker-end="url(#aa)"/>'+
+    '<path d="M260 6 C 260 48, 432 42, 432 78" fill="none" stroke="var(--rv)" stroke-width="2.5" marker-end="url(#av)"/>'+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>먼저 품사부터 잡고 갑니다</h2>'+
+  '<p class="lead">단어는 문장에서 맡은 <b>역할</b>이 정해져 있습니다. 세 가지만 확실히 구별하면 to부정사는 저절로 풀립니다.</p>'+
+  '<div class="trio">'+
+    '<div class="role r-n"><span class="t">명사</span><span class="m">이름을 나타내요</span><span class="e">book · music</span></div>'+
+    '<div class="role r-a"><span class="t">형용사</span><span class="m">명사를 꾸며요</span><span class="e">kind · smart</span></div>'+
+    '<div class="role r-v"><span class="t">부사</span><span class="m">동사를 꾸며요</span><span class="e">fast · slowly</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>자리를 보면 역할이 보입니다</span>'+
+    '<div class="ex">I like <u class="hl">music</u>.<span class="k">좋아하는 대상 = 명사 (목적어 자리)</span></div>'+
+    '<div class="ex">She is a <u class="hl a">smart</u> student.<span class="k">뒤의 명사를 꾸밈 = 형용사</span></div>'+
+    '<div class="ex">He runs <u class="hl v">fast</u>.<span class="k">동사를 꾸밈 = 부사</span></div>'+
+  '</div>'+
+  '<h2>to부정사는 ‘변신 카드’</h2>'+
+  '<p class="lead"><b>to + 동사원형</b> 한 덩어리가 문장에서 명사·형용사·부사 <b>셋 중 하나</b>로 변신합니다.</p>'+
+  '<span class="tobox">to + 동사원형</span>'+
+  figFan()+
+  '<div class="trio">'+
+    '<div class="role r-n"><span class="t">명사처럼</span><span class="m">~하는 것은 / 것을 / 것</span><span class="e">I want <b>to eat</b>.</span></div>'+
+    '<div class="role r-a"><span class="t">형용사처럼</span><span class="m">~할, ~하는</span><span class="e">work <b>to do</b></span></div>'+
+    '<div class="role r-v"><span class="t">부사처럼</span><span class="m">~하려고 / ~해서</span><span class="e">out <b>to play</b></span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">해석으로 구별하기</span>‘~하는 것’이면 명사, <b>앞의 명사를 꾸미면</b> 형용사, ‘~하려고 / ~해서’면 부사입니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>세 가지 용법, 자리로 구별합니다</h2>'+
+  '<p class="lead">해석이 헷갈릴 때는 <b>to부정사가 문장 어디에 서 있는지</b>를 보세요.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>① 명사적 용법 — 주어 · 목적어 · 보어 자리</span>'+
+    '<p>to부정사의 뜻은 늘 ‘~하는 <b>것</b>’입니다. 서 있는 자리에 따라 뒤에 붙는 조사만 <b>것은 · 것을 · 것</b>으로 달라집니다.</p>'+
+    '<div class="ex"><u class="hl">To read</u> books is fun.<span class="k">주어 → 책을 읽는 <b>것은</b> 재미있다</span></div>'+
+    '<div class="ex">I like <u class="hl">to read</u> books.<span class="k">목적어 → 책을 읽는 <b>것을</b> 좋아한다</span></div>'+
+    '<div class="ex">My hobby is <u class="hl">to read</u> books.<span class="k">보어 → 내 취미는 책을 읽는 <b>것</b>이다 (이다 = is)</span></div>'+
+    '<div class="tip"><span class="h">가주어 IT</span>주어가 길면 <b>It ~ to부정사</b>로 바꿉니다. It is not easy to get up early.</div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>② 형용사적 용법 — 명사 <b>바로 뒤</b></span>'+
+    '<p>‘~할, ~하는’으로 해석되며 앞의 명사를 뒤에서 꾸며 줍니다.</p>'+
+    '<div class="ex">I have work <u class="hl a">to do</u>.<span class="k">해야 할 일</span></div>'+
+    '<div class="ex">something <u class="hl a">to drink</u><span class="k">-thing 뒤에 옵니다</span></div>'+
+    '<div class="ex">It\'s time <u class="hl a">to go</u> to bed.<span class="k">잘 시간</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>③ 부사적 용법 — 빼도 문장이 되는 덧붙임</span>'+
+    '<p>목적 · 감정의 원인 · 형용사 수식으로 자주 나옵니다.</p>'+
+    '<div class="ex">He went out <u class="hl v">to buy</u> milk.<span class="k">목적 : 사기 위해</span></div>'+
+    '<div class="ex">I\'m glad <u class="hl v">to meet</u> you.<span class="k">감정의 원인 : 만나서</span></div>'+
+    '<div class="ex">This book is easy <u class="hl v">to read</u>.<span class="k">형용사 수식 : 읽기에 쉽다</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">출제 순서</span>명사적 9문항 → 형용사적 8문항 → 부사적 8문항, 모두 25문항입니다.</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>시험에 꼭 나오는 함정 네 가지</h2>'+
+  '<p class="lead">실전 25문항에는 <b>고난도 10문항</b>이 섞여 있습니다. 아래 네 가지만 잡으면 됩니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>① 전치사를 빠뜨리지 마세요 (최다 출제)</span>'+
+    '<p>원래 문장에 있던 전치사는 꾸밈을 받는 명사가 앞으로 나가도 그대로 남습니다.</p>'+
+    '<div class="swap"><span>sit <b>on</b> a chair</span><span class="ar">→</span><span class="good">a chair to sit on</span></div>'+
+    '<div class="swap"><span>live <b>in</b> a house</span><span class="ar">→</span><span class="good">a house to live in</span></div>'+
+    '<div class="swap"><span>write <b>on</b> paper</span><span class="ar">→</span><span class="good">paper to write on</span></div>'+
+    '<div class="swap"><span class="bad">water to drink with</span><span class="ar">→</span><span class="good">water to drink</span></div>'+
+    '<div class="tip"><span class="h">주의</span>drink water처럼 전치사 없이 바로 목적어를 받는 동사는 전치사를 붙이면 틀립니다.</div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>② too ~ to / enough to</span>'+
+    '<div class="ex"><b>too</b> + 형용사 + <b>to V</b><span class="k">너무 …해서 ~할 수 없다 (부정의 뜻이 이미 들어 있음)</span></div>'+
+    '<div class="ex">형용사 + <b>enough</b> + <b>to V</b><span class="k">~할 만큼 충분히 …하다 (enough는 형용사 뒤!)</span></div>'+
+    '<div class="ex">so ~ that … can\'t<span class="k">= too ~ to · 바꿔 쓰기 단골 문제</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>③ 부사적 용법의 숨은 뜻 : 결과 · 판단의 근거</span>'+
+    '<div class="ex">He grew up <u class="hl v">to be</u> a scientist.<span class="k">결과 : 자라서 ~가 되었다</span></div>'+
+    '<div class="ex">He must be a fool <u class="hl v">to believe</u> it.<span class="k">판단의 근거 : ~하다니</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>④ to가 붙는 동사 vs 안 붙는 동사</span>'+
+    '<div class="ex">want / tell / ask + 목적어 + <b>to V</b><span class="k">My mom wants me to wash the dishes.</span></div>'+
+    '<div class="ex">make / have / let + 목적어 + <b>동사원형</b><span class="k">My mom made me wash the dishes. (to 없음!)</span></div>'+
+    '<div class="ex">see / hear / watch + 목적어 + <b>동사원형</b><span class="k">I saw him enter the room. (to 없음!)</span></div>'+
+    '<div class="ex">부정은 <b>not to V</b><span class="k">He told me not to be late. (to not be ✕)</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">다음 단계 예고</span>의미상의 주어(It is kind <b>of</b> you / It is difficult <b>for</b> me)는 4단계에서 따로 다룹니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>중3 심화 — 여기까지 잡으면 끝입니다</h2>'+
+  '<p class="lead">3단계까지가 <b>to부정사의 자리와 용법</b>이었다면, 4단계는 <b>누가 하는가</b>와 <b>바꿔 쓰기</b>입니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>① 의미상의 주어 — for와 of 가르기</span>'+
+    '<p>to부정사의 행동을 실제로 <b>한 사람</b>을 앞에 밝혀 주는 자리입니다.</p>'+
+    '<div class="ex">It is difficult <b>for me</b> to read this.<span class="k">읽는 사람은 me · 일의 성질을 말하는 형용사 → for</span></div>'+
+    '<div class="ex">It is kind <b>of you</b> to help me.<span class="k">도와준 사람은 you · 사람의 성격을 말하는 형용사 → of</span></div>'+
+    '<div class="swap"><span>difficult · easy · hard<br>important · necessary · dangerous</span><span class="ar">→</span><span class="good">for</span></div>'+
+    '<div class="swap"><span>kind · nice · wise<br>foolish · rude · careless</span><span class="ar">→</span><span class="good">of</span></div>'+
+    '<div class="tip"><span class="h">가르는 방법</span>‘<b>You are kind.</b>’처럼 <b>사람 + be동사 + 그 형용사</b>가 말이 되면 <b>of</b>, 안 되면 <b>for</b>입니다. (You are difficult ✕ → for)</div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>② 의문사 + to부정사</span>'+
+    '<p>덩어리 전체가 <b>명사</b>처럼 쓰여 목적어 자리에 들어갑니다.</p>'+
+    '<div class="ex">what <b>to do</b><span class="k">무엇을 해야 할지</span></div>'+
+    '<div class="ex">how <b>to use</b> it<span class="k">어떻게 사용하는지, ~하는 방법</span></div>'+
+    '<div class="ex">when <b>to start</b> / where <b>to go</b><span class="k">언제 출발할지 / 어디로 갈지</span></div>'+
+    '<div class="swap"><span>what I should say</span><span class="ar">=</span><span class="good">what to say</span></div>'+
+    '<div class="tip"><span class="h">주의</span><b>why</b>는 to부정사와 함께 쓰지 않습니다. (why to go ✕)</div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>③ 바꿔 쓰기 — so ~ that 전환</span>'+
+    '<div class="swap"><span>too weak <b>to</b> lift it</span><span class="ar">=</span><span class="good">so weak that … can\'t lift it</span></div>'+
+    '<div class="swap"><span>rich enough <b>to</b> buy it</span><span class="ar">=</span><span class="good">so rich that … can buy it</span></div>'+
+    '<div class="tip"><span class="h">한 끗 차이</span>too ~ to는 <b>can\'t</b>, enough to는 <b>can</b>. 이 하나로 정답이 갈립니다.</div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>④ 알아 두면 좋은 네 가지</span>'+
+    '<div class="ex">부정은 <b>not to V</b><span class="k">He promised not to be late again.</span></div>'+
+    '<div class="ex">대부정사 — 앞말이 반복되면 <b>to만</b><span class="k">A: Will you join us?  B: I\'d love to.</span></div>'+
+    '<div class="ex">독립부정사 — 문장 전체를 꾸밈<span class="k">To tell the truth, … / To be honest, … / Strange to say, …</span></div>'+
+    '<div class="ex"><b>seem to V</b> = ~인 것 같다<span class="k">He seems to be tired. = It seems that he is tired.</span></div>'+
+  '</div>';
+}
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 문제 ===================== */
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=L.qs.map(function(_,i){return i;});
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || (typeName(q.type)? typeName(q.type)+" 용법" : "");
+  $("qtag").textContent = tag + (q.hard? " · 고난도":"");
+  $("qtag").className = "chip plain";
+
+  var h="";
+  h+='<p class="ask">'+q.q+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent){
+    h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+    if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  }
+  h+='<div class="opts">';
+  q.opts.forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(i+1)+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
+  S.answered=false;S.picked=-1;
+
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){ answer(+this.dataset.i); });
+  });
+  show("quiz");
+}
+
+function buildFull(q){
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
+
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
+
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
+  }else{
+    if(!ok) S.retryWrong.push(S.list[S.i]);
+  }
+
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+
+      (ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>')+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
+function next(){
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
+}
+
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+function praise(p){
+  if(p===100) return ["영어 지존이에요!","이 단계는 완벽합니다. 다음 단계로 가 볼까요?"];
+  if(p>=90) return ["아주 훌륭해요!","몇 문제만 다시 보면 완벽합니다."];
+  if(p>=75) return ["잘했어요!","틀린 문제의 해설을 꼼꼼히 읽어 보세요."];
+  if(p>=60) return ["조금만 더 노력해요","개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+  return ["천천히 다시 해봐요","개념부터 다시 보면 금방 오릅니다. 포기하지 마세요."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  var L=LEVELS[S.level], total=L.qs.length;
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+         '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>';
+  if(S.byType.n[1]+S.byType.a[1]+S.byType.v[1]===0) bd+='<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  else bd='<div class="bd n"><div class="t">명사적</div><div class="v">'+S.byType.n[0]+'/'+S.byType.n[1]+'</div></div>'+
+          '<div class="bd a"><div class="t">형용사적</div><div class="v">'+S.byType.a[0]+'/'+S.byType.a[1]+'</div></div>'+
+          '<div class="bd v3"><div class="t">부사적</div><div class="v">'+S.byType.v[0]+'/'+S.byType.v[1]+'</div></div>';
+  $("rbreak").innerHTML=bd;
+
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g,""));
+      w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  show("result");
+  openPraise(S.score, total, S.correct, S.wrong.length);
+}
+
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+}
+
+function renderRetryResult(){
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+}
+
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+  }else{
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
+  }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
+}
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
+  show("rank");
+}
+
+/* ===================== 시작 배선 ===================== */
+function goHome(){
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
+}
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+refreshStart();
+</script>
+
+<script src="/kkt.js"></script>
+</body></html>
