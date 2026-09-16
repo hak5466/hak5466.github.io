@@ -98,6 +98,7 @@
     "usedto": familyA("USED TO GAME"),
     "sothat": familyA("SO~THAT GAME"),
     "sothat-purpose": familyA("SO THAT 목적 GAME"),
+    "verbtype": familyA("동사 뽀개기"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
 
