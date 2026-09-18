@@ -98,7 +98,7 @@
     "usedto": familyA("USED TO GAME"),
     "sothat": familyA("SO~THAT GAME"),
     "sothat-purpose": familyA("SO THAT 목적 GAME"),
-    "form5": familyA("5형식 뽀개기"),
+    "form5b": familyA("5형식 뽀개기 (중2)"),
     "noun": familyA("[대]명사 뽀개기"),
     "verbtype": familyA("동사 뽀개기"),
     "sense": familyA("감각동사 GAME"),
@@ -158,6 +158,35 @@
           hit: hit,
           total: (hit !== null && miss !== null) ? hit + miss : null,
           wrongs: wrongs
+        };
+      }
+    },
+
+    "form5": {
+      game: "지각·사역동사 클리닉",
+      nameSel: "#studentNameInput",
+      levelWatch: function () {
+        var m = tx("#app").match(/(초급|중급|고급)\s*·\s*\d+\s*\/\s*\d+/);
+        return m ? m[1] : null;
+      },
+      read: function () {
+        var big = $("#app .banner .big");
+        if (!vis(big)) return null;
+        var m = (big.textContent || "").match(/(\d+)\s*\/\s*(\d+)\s*\((\d+)/);
+        if (!m) return null;
+        var desc = tx("#app .banner .desc");
+        var lv = (lastLevel || desc).match(/(초급|기본|중급|고급)/);
+        var wrongs = $$("#app .final-item").map(function (w, i) {
+          return {
+            no: String(i + 1),
+            q: tx(".fs", w),
+            mine: "",
+            ans: tx(".fi-ans", w).replace(/^정답\s*:\s*/, "")
+          };
+        });
+        return {
+          level: lv ? lv[1] : tx("#app .banner .badge"),
+          score: +m[3], hit: +m[1], total: +m[2], wrongs: wrongs
         };
       }
     },
@@ -278,6 +307,7 @@
     "pumsa-lab":      { box: "#screen-result .result-card", before: "#btn-retry" },
     "verb1":          { box: "#resultCard",    before: "#missTitle" },
     "verb2":          { box: "#resultCard",    before: ".retry-row" },
+    "form5":          { box: "#app .banner",   before: null },
     "perfect":        { box: "#result",        before: ".breakdown" },
     "perfect2":       { box: "#banner .banner", before: null },
     "jokjipge":       { box: "#summary",       before: null }
