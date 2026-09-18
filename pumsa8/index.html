@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+</style>
 </head>
 <body>
 <title>꾸메땅 도전 8품사 GAME</title>
@@ -319,6 +325,7 @@ table.rank.postab td{padding:9px 8px}
       </div>
       <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
     </div>
+    <div id="resumeBar" class="hide"></div>
     <div class="levels" id="levelPick"></div>
     <div class="actions">
       <button class="btn ghost" id="openRank">순위 보기</button>
@@ -674,7 +681,7 @@ function drawLevels(){
   var xc=$("nextCard");
   if(xc) xc.addEventListener("click",renderNext);
 }
-function refreshStart(){ drawRail(); drawLevels(); }
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
 
 function pickLevel(k){
   var nm=($("nameIn").value||"").trim();
@@ -782,6 +789,7 @@ function startQuiz(){
   S.correct=0;S.wrong=[];
   S.round=1;S.retryWrong=[];
   S.active=S.level; S.resume="quiz"; S.mode="level";
+  clearProg();
   renderQ();
 }
 function curQ(){
@@ -818,6 +826,7 @@ function renderQ(){
   }
   $("qbody").innerHTML=h;
   $("qexp").innerHTML="";
+  saveProg();
   S.answered=false;S.picked=-1;
 
   if(q.kind==="mc"){
@@ -979,6 +988,7 @@ function openPraise(score,correct,wrong){
 function closePraise(){ $("praiseBox").classList.add("hide"); }
 
 function renderResult(){
+  clearProg();
   var L=LEVELS[S.level], total=L.qs.length;
   S.score=Math.round(S.correct/total*100);
   var pr=praise(S.score);
@@ -1061,6 +1071,7 @@ function wireActions(){
 }
 
 function renderRetryResult(){
+  clearProg();
   var done=S.list.length, still=S.retryWrong.length, got=done-still;
   $("rtitle").textContent="오답 복습 결과";
   $("rscore").textContent=got;
@@ -1391,6 +1402,56 @@ $("cardHome").addEventListener("click",function(){
 });
 $("toQuiz").addEventListener("click",startQuiz);
 $("learnBack").addEventListener("click",goHome);
+
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
+function saveProg(){
+  try{
+    if(!S.level || !S.list || !S.list.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  var p = loadProg();
+  if(!p) return;
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
+}
+function progBanner(){
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
+}
+
 
 refreshStart();
 </script>

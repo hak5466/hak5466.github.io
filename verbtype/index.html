@@ -265,6 +265,21 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 .lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
 .lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
 .lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
 </style>
 
 <div class="wrap">
@@ -292,6 +307,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
       </div>
       <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
     </div>
+    <div id="resumeBar" class="hide"></div>
     <div class="levels" id="levelPick"></div>
     <div class="actions">
       <button class="btn ghost" id="openRank">순위 보기</button>
@@ -926,7 +942,7 @@ function drawLevels(){
     b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
   });
 }
-function refreshStart(){ drawRail(); drawLevels(); }
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
 
 function pickLevel(k){
   var nm=($("nameIn").value||"").trim();
@@ -948,6 +964,7 @@ function pickLevel(k){
 (function shuffleAll(){
   [L1,L2,L3,L4].forEach(function(bank){
     bank.forEach(function(q){
+      if(!q.opts) return;
       var idx = q.opts.map(function(_,i){ return i; });
       for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
       q.opts = idx.map(function(k){ return q.opts[k]; });
@@ -965,6 +982,7 @@ function startQuiz(){
   S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
   S.round=1;S.retryWrong=[];
   S.active=S.level; S.resume="quiz";
+  clearProg();
   renderQ();
 }
 function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
@@ -983,8 +1001,12 @@ function renderQ(){
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
-  h+='<div class="opts">';
-  q.opts.forEach(function(o,i){
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
     var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
     h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
        '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
@@ -994,6 +1016,7 @@ function renderQ(){
                  '<button class="btn" id="checkBtn">확인</button></div>';
   $("qbody").innerHTML=h;
   $("qexp").innerHTML="";
+  saveProg();
   S.answered=false;S.picked=-1;
 
   Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
@@ -1008,6 +1031,11 @@ function renderQ(){
     });
   });
   if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
   show("quiz");
 }
 
@@ -1015,6 +1043,8 @@ function buildFull(q){
   if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
   if(!q.sent) return null;
   if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1058,6 +1088,20 @@ function answerMulti(){
   finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
 }
 
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
 function finishAnswer(q, ok, ansHtml){
   if(S.round===1){
     if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
@@ -1091,7 +1135,7 @@ document.addEventListener("keydown",function(e){
   if($("quiz").classList.contains("hide")) return;
   if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
   var n=parseInt(e.key,10);
-  if(!S.answered&&!curQ().multi&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
 });
 
 /* ===================== 결과 ===================== */
@@ -1122,6 +1166,7 @@ function openPraise(score,total,correct,wrong){
 function closePraise(){ $("praiseBox").classList.add("hide"); }
 
 function renderResult(){
+  clearProg();
   var L=LEVELS[S.level], total=L.qs.length;
   S.score=Math.round(S.correct/total*100);
   var pr=praise(S.score);
@@ -1148,9 +1193,10 @@ function renderResult(){
   $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
   $("rbreak").innerHTML=bd;
 
+  var isAdmin = (S.name==="꾸메땅");
   var r=loadR(), hadScore=null;
   for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
-  if(hadScore===null){
+  if(hadScore===null && !isAdmin){
     var d=new Date();
     r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
     saveR(r);
@@ -1167,7 +1213,7 @@ function renderResult(){
       var q=L.qs[qi];
       var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
-         '<div class="a">정답 <b>'+esc(q.multi
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
             : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
     });
@@ -1183,6 +1229,11 @@ function renderResult(){
     S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
   });
   wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
   show("result");
   openPraise(S.score, total, S.correct, S.wrong.length);
 }
@@ -1221,6 +1272,7 @@ function wireActions(){
 }
 
 function renderRetryResult(){
+  clearProg();
   var done=S.list.length, still=S.retryWrong.length, got=done-still;
   if(!still){ S.finished[S.level]=true; S.active=0; }
   $("rtitle").textContent="오답 복습 결과";
@@ -1331,7 +1383,57 @@ document.addEventListener("keydown",function(e){
 $("toQuiz").addEventListener("click",startQuiz);
 $("learnBack").addEventListener("click",goHome);
 
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
+function saveProg(){
+  try{
+    if(!S.level || !S.list || !S.list.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  var p = loadProg();
+  if(!p) return;
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
+}
+function progBanner(){
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
+}
+
 refreshStart();
+
 </script>
 <script src="/kkt.js"></script>
 </body></html>

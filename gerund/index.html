@@ -195,6 +195,13 @@ table.rank tr.me .who{color:var(--accent)}
 .rowbtn{font-family:inherit;font-size:15px;font-weight:700;color:var(--no);background:transparent;border:1px solid var(--line);border-radius:7px;padding:4px 10px;cursor:pointer}
 .rowbtn:hover{border-color:var(--no)}
 .subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px;margin-bottom:10px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+.resumebar.hide{display:none}
 </style>
 
 </head>
@@ -224,6 +231,7 @@ table.rank tr.me .who{color:var(--accent)}
       </div>
       <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</span>
     </div>
+    <div id="resumeBar" class="resumebar hide"></div>
     <div class="levels" id="levelPick"></div>
     <div class="actions">
       <button class="btn ghost" id="openRank">순위 보기</button>
@@ -792,6 +800,7 @@ function drawHome(){
 
 /* ---------- 문제 ---------- */
 function render(){
+  saveProg();
   const idx = order[pos];
   const q = Q[idx];
   locked = false;
@@ -947,6 +956,7 @@ function showResult(){
   a += '<button class="btn'+(wrong.length?' ghost':'')+'" id="againLv">이 단계 다시 풀기</button>';
   if(curLv < 2) a += '<button class="btn'+(wrong.length?' ghost':'')+'" id="nextLv">'+LV[curLv+1]+' 단계로 →</button>';
   a += '<button class="btn ghost" id="home">단계 선택으로</button>';
+  clearProg();
   el("ractions").innerHTML = a;
   if(el("retry")) el("retry").addEventListener("click", startWrongOnly);
   el("againLv").addEventListener("click", ()=>startLevel(curLv));
@@ -1152,6 +1162,7 @@ function show(which){
 }
 
 function startLevel(lv){
+  clearProg();
   curLv = lv; retryMode = false;
   bumpRun(lv);
   order = idxOf(lv); pos = 0;
@@ -1170,11 +1181,62 @@ function startWrongOnly(){
 function goHome(){
   show("start");
   drawHome();
+  progBanner();
 }
+/* ---------- 이어서 풀기 ---------- */
+function escR(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+const PKEY = "gerund40.prog";
+function saveProg(){
+  try{
+    if(!order || !order.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name: myName, lv: curLv, order: order, pos: pos,
+      done: Array.from(done), correct: Array.from(correct),
+      retry: !!retryMode, t: Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    const p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.order || !p.order.length) return null;
+    if(p.pos >= p.order.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  const p = loadProg();
+  if(!p) return;
+  myName = p.name || myName;
+  curLv = p.lv; order = p.order; pos = p.pos;
+  done = new Set(p.done || []); correct = new Set(p.correct || []);
+  retryMode = !!p.retry; locked = false;
+  try{ el("nameIn").value = myName; }catch(e){}
+  show("quiz");
+  render();
+}
+function progBanner(){
+  const box = el("resumeBar");
+  if(!box) return;
+  const p = loadProg();
+  const typed = ((el("nameIn") && el("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ box.className = "resumebar hide"; box.innerHTML = ""; return; }
+  box.className = "resumebar";
+  box.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + escR(p.name || "") + '</b> 님, <b>' + (p.lv + 1) + '단계 ' + (p.pos + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost" id="resumeNo">처음부터 하기</button></div>';
+  el("resumeGo").addEventListener("click", resumeProg);
+  el("resumeNo").addEventListener("click", ()=>{ clearProg(); progBanner(); });
+}
+
 
 /* ---------- 시작 ---------- */
 loadLocal();
 drawHome();
+progBanner();
 
 el("saveName").addEventListener("click", ()=>{
   const v = el("nameIn").value.trim().slice(0,12);

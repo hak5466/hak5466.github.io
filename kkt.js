@@ -99,6 +99,7 @@
     "sothat": familyA("SO~THAT GAME"),
     "sothat-purpose": familyA("SO THAT 목적 GAME"),
     "form5b": familyA("5형식 뽀개기 (중2)"),
+    "ph": familyA("파닉스 뽀개기"),
     "noun": familyA("[대]명사 뽀개기"),
     "verbtype": familyA("동사 뽀개기"),
     "sense": familyA("감각동사 GAME"),
