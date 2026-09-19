@@ -1,0 +1,1392 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>꾸메땅 영문법 GAME · 형용사 뽀개기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --card:#FFFFFF;
+  --ink:#15201D;
+  --muted:#54615D;
+  --line:#E1E5DD;
+  --line-strong:#C9D1C8;
+  --accent:#0F6E5C;
+  --accent-soft:#E1F0EA;
+  --mark:#F3D74B;
+  --ok:#1C7A5B;
+  --ok-soft:#E3F1EA;
+  --no:#BC443A;
+  --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
+  --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+    --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+    --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+  --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+  --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:19px;line-height:1.62;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:720px;margin:0 auto;padding:24px 14px 72px;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){ .wrap{padding:28px 18px 72px} }
+h1,h2,h3{margin:0;text-wrap:balance}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7vw,39px);letter-spacing:-.02em;line-height:1.08}
+h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
+.sub{color:var(--muted);font-size:16.5px}
+
+.rail{display:flex;gap:10px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
+.seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
+.seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
+.seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+@media (min-width:600px){ .card{padding:24px} }
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
+
+
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
+.btn:hover{opacity:.88}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:19.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
+.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:21px;line-height:1.2}
+.role .m{font-size:15px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:18px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:17.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+#qlevel{font-size:17px;font-weight:800;padding:5px 13px}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
+
+.exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+.verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
+.verdict.ok{color:var(--ok)}
+.verdict.no{color:var(--no)}
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
+.full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
+.full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
+.full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
+.full .kr{font-size:18.5px;line-height:1.6}
+
+/* ---------- 결과 ---------- */
+.score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
+.score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+.bd .t{font-size:14px;color:var(--muted);font-weight:600}
+.bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
+.wrongs{display:flex;flex-direction:column;gap:10px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.wrong .top{display:flex;gap:8px;align-items:baseline}
+.wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
+.wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
+.wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
+.submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tablewrap{overflow-x:auto}
+table.rank{width:100%;border-collapse:collapse;font-size:17.5px}
+table.rank th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
+table.rank tr.top .pos{color:var(--accent)}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
+table.rank .when{color:var(--muted);font-size:15px}
+table.rank tr.me{background:var(--accent-soft)}
+table.rank tr.me .who{color:var(--accent)}
+.empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
+.toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-4 · 형용사 뽀개기</span></h1>
+    <p class="sub">형용사 완전정복 80문제 · 네 단계 각 20문제 / 1·2단계는 어린 아이도 할 수 있고, 3·4단계에서 영어 낱말 쓰기까지 나아갑니다.</p>
+  </header>
+
+  <div class="rail" id="rail" aria-hidden="true">
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+  </div>
+
+  <!-- 시작 -->
+  <section class="card" id="start">
+    <h2>단계를 골라 도전해 보세요</h2>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
+    <div class="namebar">
+      <span class="h">이름</span>
+      <div class="row">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <button class="btn small" id="saveName">저장</button>
+      </div>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
+    </div>
+    <div id="resumeBar" class="hide"></div>
+    <div class="levels" id="levelPick"></div>
+    <div class="actions">
+      <button class="btn ghost" id="openRank">순위 보기</button>
+    </div>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+  </section>
+
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
+    <div class="actions">
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
+    </div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="card hide" id="quiz">
+    <div class="qhead">
+      <span class="qnum" id="qnum">1 / 20</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
+    </div>
+    <div class="qbody" id="qbody"></div>
+    <div id="qexp"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="card hide" id="result">
+    <h2 id="rtitle">1단계 결과</h2>
+    <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
+    <div id="rsubmit"></div>
+    <div id="rwrong"></div>
+    <div class="actions" id="ractions"></div>
+  </section>
+
+  <!-- 순위 -->
+  <section class="card hide" id="rank">
+    <div class="subhead">
+      <h2>도전 순위</h2>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
+    </div>
+    <div id="rankToast"></div>
+    <div class="tabs" id="rankTabs">
+      <button class="tab on" data-t="all">종합</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rankHome">단계 선택으로</button>
+    </div>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
+  </section>
+
+  <p class="foot">꾸메땅 영문법 GAME · 형용사 뽀개기</p>
+</div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ===================== 문제 은행 ===================== */
+
+/* ---------- LEVEL 1 : 한글로 개념 잡기 20 (개념 8 · 모두 고르기 6 · 구별 6) ---------- */
+var L1 = [
+  {type:"n", tag:"개념", q:"<b>형용사</b>는 무엇을 나타내는 말일까요?",
+   opts:["어떠한지 — 성질이나 상태","무엇을 하는지 — 움직임","누구인지 — 이름","언제인지 — 때","어디인지 — 장소"], a:0,
+   exp:"형용사는 <b>‘어떠한’</b>을 말해 주는 말입니다. 크다, 예쁘다, 뜨겁다 — 모두 형용사입니다."},
+
+  {type:"n", tag:"개념", q:"형용사가 하는 <b>첫 번째 일</b>은 무엇일까요?",
+   opts:["명사를 꾸며 준다","동사를 꾸며 준다","문장을 이어 준다","개수를 센다","소리를 흉내 낸다"], a:0,
+   exp:"‘<u>큰</u> 개’처럼 명사 <b>앞</b>에서 꾸며 줍니다. 어떤 개인지 알려 주는 것이지요."},
+
+  {type:"n", tag:"개념", q:"형용사가 하는 <b>두 번째 일</b>은 무엇일까요?",
+   opts:["be동사 뒤에서 주어를 설명해 준다","동사 앞에 붙는다","명사를 대신한다","이름을 붙인다","때를 알려 준다"], a:0,
+   exp:"‘그 개는 <u>크다</u>’처럼 be동사 뒤에서 주어가 어떠한지를 설명합니다. 이 자리를 <b>보어</b>라고 합니다."},
+
+  {type:"n", tag:"개념", q:"우리말에서 형용사를 찾는 가장 쉬운 방법은?",
+   opts:["‘어떤?’ 하고 물어보면 답이 되는 말","‘무엇을 했니?’의 답이 되는 말","‘누가?’의 답이 되는 말","맨 앞에 오는 말","맨 뒤에 오는 말"], a:0,
+   exp:"‘<b>어떤</b> 개?’ → ‘큰 개’. 이렇게 물어서 답이 되면 그 말이 형용사입니다."},
+
+  {type:"n", tag:"개념", q:"‘<b>큰 개가 빠르게 달린다</b>’에서 형용사는?",
+   opts:["큰","개","빠르게","달린다","가"], a:0,
+   exp:"‘큰’이 명사 ‘개’를 꾸며 주므로 <b>형용사</b>입니다. ‘빠르게’는 동사를 꾸며 주는 부사입니다."},
+
+  {type:"n", tag:"개념", q:"형용사와 <b>부사</b>는 무엇이 다를까요?",
+   opts:["형용사는 명사를, 부사는 주로 동사를 꾸민다","형용사는 뒤에, 부사는 앞에 온다","형용사는 길고 부사는 짧다","둘은 같은 말이다","부사가 형용사를 대신한다"], a:0,
+   exp:"‘<u>예쁜</u> 꽃’은 형용사, ‘<u>예쁘게</u> 웃는다’는 부사입니다. <b>무엇을 꾸미는지</b>가 다릅니다."},
+
+  {type:"n", tag:"개념", q:"영어에서 형용사는 명사의 어느 쪽에 놓일까요?",
+   opts:["명사 앞","명사 뒤","문장 맨 끝","동사 앞","아무 데나"], a:0,
+   exp:"영어는 <b>형용사 + 명사</b> 차례입니다. a <b>big</b> dog (큰 개). 우리말과 차례가 같아서 어렵지 않습니다."},
+
+  {type:"n", tag:"개념", q:"형용사 앞에 <b>a</b>나 <b>the</b>가 붙을 때 차례로 알맞은 것은?",
+   opts:["a + 형용사 + 명사","형용사 + a + 명사","a + 명사 + 형용사","명사 + a + 형용사","형용사 + 명사 + a"], a:0,
+   exp:"<b>a big dog</b>가 맞습니다. big a dog(✕) 처럼 순서를 바꾸지 않습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>형용사</b>를 모두 고르세요. (여러 개)",
+   opts:["크다","예쁘다","뜨겁다","달리다","학교"], ans:[0,1,2],
+   exp:"크다 · 예쁘다 · 뜨겁다는 ‘어떠한’을 말하므로 형용사입니다. 달리다는 동사, 학교는 명사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>형용사</b>를 모두 고르세요. (여러 개)",
+   opts:["새로운","작은","슬픈","빠르게","먹다"], ans:[0,1,2],
+   exp:"새로운 · 작은 · 슬픈이 형용사입니다. ‘빠르게’는 부사, ‘먹다’는 동사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"형용사가 놓일 수 있는 자리를 모두 고르세요. (여러 개)",
+   opts:["명사 바로 앞","be동사 바로 뒤","문장 맨 앞의 주어 자리","동사 바로 앞","명사 대신"], ans:[0,1],
+   exp:"형용사는 <b>명사 앞</b>과 <b>be동사 뒤</b> 두 자리에 놓입니다. 주어 자리에는 명사가 옵니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 형용사가 <b>명사를 꾸며 주는</b> 말을 모두 고르세요. (여러 개)",
+   opts:["빨간 사과","높은 산","착한 친구","빨리 달린다","크게 웃는다"], ans:[0,1,2],
+   exp:"빨간 · 높은 · 착한이 각각 사과 · 산 · 친구를 꾸며 줍니다. 빨리와 크게는 동사를 꾸미는 부사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 형용사가 <b>주어를 설명해 주는</b> 말을 모두 고르세요. (여러 개)",
+   opts:["그 개는 크다.","날씨가 춥다.","나는 행복하다.","나는 밥을 먹는다.","새가 난다."], ans:[0,1,2],
+   exp:"크다 · 춥다 · 행복하다가 주어의 상태를 설명합니다. 먹는다와 난다는 동작이므로 동사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 설명 중 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
+   opts:["형용사는 ‘어떠한’을 나타낸다","형용사는 명사를 꾸민다","형용사는 be동사 뒤에 온다","형용사는 동사를 꾸민다","형용사는 이름을 나타낸다"], ans:[0,1,2],
+   exp:"동사를 꾸미는 것은 부사, 이름을 나타내는 것은 명사입니다."},
+
+  {type:"v", tag:"구별", sent:"**예쁜** 꽃이 피었다.", q:"밑줄 친 말은 무엇일까요?",
+   opts:["형용사","명사","동사","부사","접속사"], a:0,
+   exp:"‘꽃’이라는 명사를 꾸며 주므로 <b>형용사</b>입니다."},
+
+  {type:"v", tag:"구별", sent:"꽃이 **예쁘게** 피었다.", q:"밑줄 친 말은 무엇일까요?",
+   opts:["부사","형용사","명사","동사","접속사"], a:0,
+   exp:"‘피었다’라는 동사를 꾸며 주므로 <b>부사</b>입니다. ‘예쁜’과 ‘예쁘게’를 나란히 놓고 보면 차이가 또렷합니다."},
+
+  {type:"v", tag:"구별", q:"다음 중 형용사가 <b>없는</b> 문장은?",
+   opts:["나는 학교에 간다.","나는 큰 가방이 있다.","오늘은 춥다.","그는 친절하다.","이 책은 재미있다."], a:0,
+   exp:"‘나는 학교에 간다’에는 ‘어떠한’을 말하는 말이 없습니다. 나머지에는 큰 · 춥다 · 친절하다 · 재미있다가 있습니다."},
+
+  {type:"v", tag:"구별", q:"‘<b>작은 새가 높이 난다</b>’에서 형용사와 부사를 바르게 가른 것은?",
+   opts:["형용사 — 작은 / 부사 — 높이","형용사 — 높이 / 부사 — 작은","둘 다 형용사","둘 다 부사","형용사 — 새 / 부사 — 난다"], a:0,
+   exp:"‘작은’은 명사 ‘새’를, ‘높이’는 동사 ‘난다’를 꾸며 줍니다."},
+
+  {type:"v", tag:"구별", q:"다음 중 형용사를 <b>두 자리 모두</b>에 쓴 문장은?",
+   opts:["큰 개가 순하다.","개가 달린다.","큰 개다.","개는 순하다.","개가 빨리 달린다."], a:0,
+   exp:"‘큰’은 명사를 꾸미고 ‘순하다’는 주어를 설명합니다. 형용사의 <b>두 가지 일</b>이 한 문장에 다 들어 있습니다."},
+
+  {type:"v", tag:"정리", q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["형용사는 동사를 꾸며 준다.","형용사는 ‘어떠한’을 나타낸다.","영어에서 형용사는 명사 앞에 온다.","형용사는 be동사 뒤에도 온다.","‘예쁜’은 형용사이고 ‘예쁘게’는 부사이다."], a:0,
+   exp:"동사를 꾸미는 것은 <b>부사</b>입니다. 형용사는 명사를 꾸밉니다."}
+];
+
+/* ---------- LEVEL 2 : 쉬운 영어 단어로 20 (뜻 7 · 모두 고르기 6 · 반대말 7) ---------- */
+var L2 = [
+  {type:"n", tag:"뜻", word:"big", q:"<b>big</b>의 뜻으로 알맞은 것은?",
+   opts:["큰","작은","빠른","느린","새로운"], a:0,
+   exp:"big은 <b>큰</b>입니다. a big dog (큰 개)"},
+
+  {type:"n", tag:"뜻", word:"small", q:"<b>small</b>의 뜻으로 알맞은 것은?",
+   opts:["작은","큰","높은","낮은","오래된"], a:0,
+   exp:"small은 <b>작은</b>입니다. a small cat (작은 고양이)"},
+
+  {type:"n", tag:"뜻", word:"happy", q:"<b>happy</b>의 뜻으로 알맞은 것은?",
+   opts:["행복한","슬픈","화난","바쁜","졸린"], a:0,
+   exp:"happy는 <b>행복한</b>입니다. I am happy. (나는 행복하다.)"},
+
+  {type:"n", tag:"뜻", word:"tall", q:"<b>tall</b>의 뜻으로 알맞은 것은?",
+   opts:["키가 큰","짧은","넓은","무거운","따뜻한"], a:0,
+   exp:"tall은 <b>키가 큰</b>입니다. a tall tree (키 큰 나무)"},
+
+  {type:"n", tag:"뜻", word:"new", q:"<b>new</b>의 뜻으로 알맞은 것은?",
+   opts:["새로운","오래된","좋은","나쁜","조용한"], a:0,
+   exp:"new는 <b>새로운</b>입니다. a new bag (새 가방)"},
+
+  {type:"n", tag:"뜻", word:"hot", q:"<b>hot</b>의 뜻으로 알맞은 것은?",
+   opts:["뜨거운","차가운","달콤한","짠","가벼운"], a:0,
+   exp:"hot은 <b>뜨거운</b>입니다. hot soup (뜨거운 수프)"},
+
+  {type:"n", tag:"뜻", word:"kind", q:"<b>kind</b>의 뜻으로 알맞은 것은?",
+   opts:["친절한","용감한","게으른","똑똑한","조용한"], a:0,
+   exp:"kind는 <b>친절한</b>입니다. She is kind. (그녀는 친절하다.)"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 중 <b>형용사</b>를 모두 고르세요. (여러 개)",
+   opts:["big","small","happy","run","school"], ans:[0,1,2],
+   exp:"big · small · happy가 형용사입니다. run은 동사, school은 명사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 중 <b>형용사</b>를 모두 고르세요. (여러 개)",
+   opts:["tall","new","cold","eat","book"], ans:[0,1,2],
+   exp:"tall · new · cold가 형용사입니다. eat은 동사, book은 명사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>기분</b>을 나타내는 형용사를 모두 고르세요. (여러 개)",
+   opts:["happy","sad","angry","tall","long"], ans:[0,1,2],
+   exp:"happy(행복한) · sad(슬픈) · angry(화난)는 기분을 나타냅니다. tall과 long은 크기와 길이입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>크기나 길이</b>를 나타내는 형용사를 모두 고르세요. (여러 개)",
+   opts:["big","small","long","happy","kind"], ans:[0,1,2],
+   exp:"big · small · long이 크기와 길이를 나타냅니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 중 <b>어순이 바른</b> 것을 모두 고르세요. (여러 개)",
+   opts:["a big dog","a new bag","a tall tree","big a dog","dog a big"], ans:[0,1,2],
+   exp:"영어는 <b>a + 형용사 + 명사</b> 차례입니다. big a dog(✕)"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"be동사 뒤에 올 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["happy","cold","kind","run","eat"], ans:[0,1,2],
+   exp:"be동사 뒤에는 <b>형용사</b>가 옵니다. I am happy.(○) / I am run.(✕)"},
+
+  {type:"v", tag:"반대말", word:"big", q:"<b>big</b>의 반대말은?",
+   opts:["small","tall","new","hot","kind"], a:0, eng:true,
+   exp:"big(큰) ↔ <b>small</b>(작은)"},
+
+  {type:"v", tag:"반대말", word:"hot", q:"<b>hot</b>의 반대말은?",
+   opts:["cold","warm","big","long","happy"], a:0, eng:true,
+   exp:"hot(뜨거운) ↔ <b>cold</b>(차가운)"},
+
+  {type:"v", tag:"반대말", word:"new", q:"<b>new</b>의 반대말은?",
+   opts:["old","young","small","short","sad"], a:0, eng:true,
+   exp:"new(새로운) ↔ <b>old</b>(오래된)"},
+
+  {type:"v", tag:"반대말", word:"happy", q:"<b>happy</b>의 반대말은?",
+   opts:["sad","angry","kind","busy","tired"], a:0, eng:true,
+   exp:"happy(행복한) ↔ <b>sad</b>(슬픈)"},
+
+  {type:"v", tag:"반대말", word:"long", q:"<b>long</b>의 반대말은?",
+   opts:["short","tall","big","fast","good"], a:0, eng:true,
+   exp:"long(긴) ↔ <b>short</b>(짧은). short는 ‘키가 작은’이라는 뜻으로도 씁니다."},
+
+  {type:"v", tag:"반대말", sent:"I have a ___ bag. (새 가방)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["new","old","run","book","fast"], a:0, eng:true,
+   ko:"나는 새 가방이 있다.",
+   exp:"‘새’는 <b>new</b>입니다. a + 형용사 + 명사 차례를 지켰습니다."},
+
+  {type:"v", tag:"반대말", sent:"The soup is ___ . (뜨겁다)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["hot","hotly","heat","hotter than","a hot"], a:0, eng:true,
+   ko:"그 수프는 뜨겁다.",
+   exp:"be동사 뒤에는 <b>형용사</b>가 옵니다. hotly는 부사라 쓸 수 없습니다."}
+];
+
+/* ---------- LEVEL 3 : 한글과 영어를 섞어서 20 (두 자리 7 · 어순 6 · 수량 7) ---------- */
+var L3 = [
+  {type:"n", tag:"두 자리", sent:"She is a ___ girl. (친절한 소녀)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["kind","kindly","kindness","kinder than","a kind"], a:0, eng:true,
+   ko:"그녀는 친절한 소녀이다.",
+   exp:"명사 girl을 꾸며 주는 자리이므로 형용사 <b>kind</b>입니다. kindly는 부사, kindness는 명사입니다."},
+
+  {type:"n", tag:"두 자리", sent:"She is ___ . (친절하다)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["kind","kindly","kindness","a kind","kinds"], a:0, eng:true,
+   ko:"그녀는 친절하다.",
+   exp:"be동사 뒤에서 주어를 설명하는 자리도 <b>형용사</b>입니다. 같은 kind가 두 자리에 모두 쓰입니다."},
+
+  {type:"n", tag:"두 자리", q:"밑줄 친 형용사가 <b>명사를 꾸며 주는</b> 문장은?",
+   opts:["I have a **red** car.","My car is **red**.","The sky is **blue**.","He is **happy**.","It is **cold**."], a:0, eng:true,
+   exp:"첫 번째만 명사 car 앞에서 꾸며 줍니다. 나머지는 모두 be동사 뒤에서 주어를 설명합니다."},
+
+  {type:"n", tag:"두 자리", q:"밑줄 친 형용사가 <b>주어를 설명하는</b> 문장은?",
+   opts:["The book is **easy**.","an **easy** book","a **big** dog","the **new** bag","a **tall** boy"], a:0, eng:true,
+   exp:"첫 번째만 be동사 뒤에서 주어 the book을 설명합니다. 나머지는 명사를 꾸며 줍니다."},
+
+  {type:"n", tag:"두 자리", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He is a tall.","He is tall.","He is a tall boy.","She is kind.","She is a kind girl."], a:0, eng:true,
+   exp:"a 뒤에는 <b>명사</b>가 있어야 합니다. He is a tall <u>boy</u>. 또는 He is tall. 로 써야 합니다."},
+
+  {type:"n", tag:"두 자리", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["The soup is hotly.","The soup is hot.","It is a hot soup.","The water is cold.","It is cold water."], a:0, eng:true,
+   exp:"be동사 뒤에 <b>부사</b>는 올 수 없습니다. hotly → hot"},
+
+  {type:"n", tag:"두 자리", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The dog is big. = It is a ___ dog.</span>",
+   opts:["big","bigly","bigger","biggest","a big"], a:0, eng:true,
+   exp:"be동사 뒤의 형용사를 그대로 명사 앞으로 옮기면 됩니다. <b>a big dog</b>"},
+
+  {type:"a", tag:"어순", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘작은 고양이’</span>",
+   opts:["a small cat","small a cat","cat a small","a cat small","small cat a"], a:0, eng:true,
+   exp:"<b>a + 형용사 + 명사</b> 차례입니다."},
+
+  {type:"a", tag:"어순", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그 오래된 책’</span>",
+   opts:["the old book","old the book","the book old","book the old","a old book"], a:0, eng:true,
+   exp:"the도 a와 같은 자리입니다. <b>the + 형용사 + 명사</b>"},
+
+  {type:"a", tag:"어순", sent:"I see a ___ ___ .", q:"‘큰 새’가 되도록 알맞게 짝지은 것은?",
+   opts:["big – bird","bird – big","big – birds","a big – bird","bird – a big"], a:0, eng:true,
+   ko:"나는 큰 새를 본다.",
+   exp:"a <b>big bird</b>. 형용사가 먼저, 명사가 나중입니다."},
+
+  {type:"a", tag:"어순", q:"형용사 두 개를 쓸 때 바른 것은?<br><span class=\"eng\">‘작고 하얀 개’</span>",
+   opts:["a small white dog","a white small dog 도 되지만 위가 더 자연스럽다","small white a dog","a dog small white","white a small dog"], a:0, eng:true,
+   exp:"크기를 먼저, 색깔을 나중에 씁니다. <b>a small white dog</b>"},
+
+  {type:"a", tag:"어순", q:"다음 중 어순이 <b>바른</b> 것은?",
+   opts:["a good student","student a good","good a student","a student good","good student a"], a:0, eng:true,
+   exp:"a + good(형용사) + student(명사) 차례입니다."},
+
+  {type:"a", tag:"어순", multi:true, eng:true, q:"어순이 <b>바른</b> 것을 모두 고르세요. (여러 개)",
+   opts:["a cold day","the long river","a happy boy","day a cold","long the river"], ans:[0,1,2],
+   exp:"a·the 다음에 형용사, 그다음 명사입니다."},
+
+  {type:"v", tag:"수량", word:"many", q:"<b>many</b> 뒤에는 어떤 명사가 올까요?",
+   opts:["셀 수 있는 명사의 복수형","셀 수 없는 명사","동사","형용사","아무것도 안 온다"], a:0,
+   exp:"many는 <b>셀 수 있는</b> 것에 씁니다. many books(○) · many water(✕)"},
+
+  {type:"v", tag:"수량", word:"much", q:"<b>much</b> 뒤에는 어떤 명사가 올까요?",
+   opts:["셀 수 없는 명사","셀 수 있는 명사의 복수형","사람 이름","동사","형용사"], a:0,
+   exp:"much는 <b>셀 수 없는</b> 것에 씁니다. much water(○) · much books(✕)"},
+
+  {type:"v", tag:"수량", sent:"I have ___ books. (많은 책)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["many","much","a","one","a lot"], a:0, eng:true,
+   ko:"나는 책이 많다.",
+   exp:"books는 셀 수 있는 복수이므로 <b>many</b>입니다."},
+
+  {type:"v", tag:"수량", sent:"There is ___ water. (많은 물)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["much","many","a","two","few"], a:0, eng:true,
+   ko:"물이 많이 있다.",
+   exp:"water는 셀 수 없으므로 <b>much</b>입니다."},
+
+  {type:"v", tag:"수량", q:"<b>a lot of</b>에 대한 설명으로 알맞은 것은?",
+   opts:["셀 수 있는 것과 셀 수 없는 것에 모두 쓴다","셀 수 있는 것에만 쓴다","셀 수 없는 것에만 쓴다","동사 앞에만 쓴다","쓰지 않는 말이다"], a:0, eng:true,
+   exp:"a lot of는 <b>둘 다</b> 됩니다. a lot of books(○) · a lot of water(○) — 헷갈릴 때 쓰면 편합니다."},
+
+  {type:"v", tag:"수량", multi:true, eng:true, q:"<b>many</b>와 함께 쓸 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["books","friends","apples","water","money"], ans:[0,1,2],
+   exp:"books · friends · apples는 셀 수 있습니다. water와 money는 셀 수 없어서 much를 씁니다."},
+
+  {type:"v", tag:"수량", q:"다음 중 어법상 <b>틀린</b> 것은?",
+   opts:["many water","many books","much water","a lot of books","a lot of water"], a:0, eng:true,
+   exp:"water는 셀 수 없으므로 many를 쓸 수 없습니다. <b>much water</b> 또는 a lot of water 입니다."}
+];
+
+/* ---------- LEVEL 4 : 직접 써 보기 20 (낱말 쓰기 8 · 반대말 쓰기 6 · 문장 채우기 6) ---------- */
+var L4 = [
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"big", q:"‘큰’을 영어로 써 보세요.",
+   exp:"<b>big</b>입니다. a big dog (큰 개)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"small", q:"‘작은’을 영어로 써 보세요.",
+   exp:"<b>small</b>입니다. a small cat (작은 고양이)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"happy", q:"‘행복한’을 영어로 써 보세요.",
+   exp:"<b>happy</b>입니다. I am happy."},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"tall", q:"‘키가 큰’을 영어로 써 보세요.",
+   exp:"<b>tall</b>입니다. a tall tree (키 큰 나무)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"new", q:"‘새로운’을 영어로 써 보세요.",
+   exp:"<b>new</b>입니다. a new bag (새 가방)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"cold", q:"‘차가운’을 영어로 써 보세요.",
+   exp:"<b>cold</b>입니다. cold water (차가운 물)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"kind", q:"‘친절한’을 영어로 써 보세요.",
+   exp:"<b>kind</b>입니다. She is kind."},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"long", q:"‘긴’을 영어로 써 보세요.",
+   exp:"<b>long</b>입니다. a long river (긴 강)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"small", alt:["little"], q:"<b>big</b>의 반대말을 영어로 써 보세요.",
+   exp:"big(큰) ↔ <b>small</b>(작은). little도 됩니다."},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"cold", q:"<b>hot</b>의 반대말을 영어로 써 보세요.",
+   exp:"hot(뜨거운) ↔ <b>cold</b>(차가운)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"old", q:"<b>new</b>의 반대말을 영어로 써 보세요.",
+   exp:"new(새로운) ↔ <b>old</b>(오래된)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"sad", q:"<b>happy</b>의 반대말을 영어로 써 보세요.",
+   exp:"happy(행복한) ↔ <b>sad</b>(슬픈)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"short", q:"<b>long</b>의 반대말을 영어로 써 보세요.",
+   exp:"long(긴) ↔ <b>short</b>(짧은)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"bad", q:"<b>good</b>의 반대말을 영어로 써 보세요.",
+   exp:"good(좋은) ↔ <b>bad</b>(나쁜)"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"hot", q:"빈칸에 알맞은 형용사를 써 보세요.<br><span class=\"eng\">The soup is ___ . (그 수프는 뜨겁다)</span>",
+   exp:"be동사 뒤에는 형용사가 옵니다. <b>hot</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"tall", q:"빈칸에 알맞은 형용사를 써 보세요.<br><span class=\"eng\">He is a ___ boy. (그는 키 큰 소년이다)</span>",
+   exp:"명사 boy를 꾸며 주는 자리입니다. <b>tall</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"many", q:"빈칸에 알맞은 말을 써 보세요.<br><span class=\"eng\">I have ___ books. (책이 많다)</span>",
+   exp:"books는 셀 수 있으므로 <b>many</b>입니다."},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"much", q:"빈칸에 알맞은 말을 써 보세요.<br><span class=\"eng\">There is ___ water. (물이 많다)</span>",
+   exp:"water는 셀 수 없으므로 <b>much</b>입니다."},
+
+  {type:"v", tag:"문장 채우기", hard:true, write:true, ans:"a small white dog", alt:["a white small dog"], q:"우리말에 맞게 영어로 써 보세요.<br><span class=\"eng\">‘작고 하얀 개’ (a 로 시작해서)</span>",
+   exp:"<b>a small white dog</b>입니다. 크기를 먼저, 색깔을 나중에 씁니다."},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["형용사 뒤에는 늘 a가 붙는다.","형용사는 명사를 앞에서 꾸민다.","be동사 뒤에는 형용사가 온다.","many는 셀 수 있는 것에 쓴다.","much는 셀 수 없는 것에 쓴다."], a:0,
+   exp:"a는 형용사 <b>앞</b>에 붙습니다. <b>a</b> big dog(○) · big <u>a</u> dog(✕)"}
+];
+
+var LEVELS = {
+  1:{name:"기본1 · 어떠한지를 말하는 말", desc:"형용사가 무엇인지 · 하는 일 두 가지 · 한글로 먼저 · 초등도 가능", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
+  2:{name:"기본2 · 쉬운 영어 단어로", desc:"big · small · happy · tall · new · hot 과 반대말", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"반대말"}},
+  3:{name:"기본3 · 한글과 영어 섞기", desc:"두 자리 가리기 · a + 형용사 + 명사 어순 · many 와 much", qs:L3, typeLabels:{n:"두 자리",a:"어순",v:"수량"}},
+  4:{name:"기본4 · 직접 써 보기", desc:"형용사와 반대말을 영어로 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"낱말 쓰기",a:"반대말 쓰기",v:"문장 채우기"}}
+};
+
+/* ===================== 개념 화면 ===================== */
+function figAdj(){
+  return '<svg class="fig" viewBox="0 0 560 128" role="img" aria-label="형용사가 하는 두 가지 일을 보여 주는 그림">'+
+    '<rect x="20" y="10" width="240" height="46" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
+    '<text x="140" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">a big dog</text>'+
+    '<text x="140" y="78" text-anchor="middle" font-size="15" fill="var(--muted)">명사를 꾸며 준다</text>'+
+    '<text x="140" y="102" text-anchor="middle" font-size="14" fill="var(--muted)">큰 개</text>'+
+    '<rect x="300" y="10" width="240" height="46" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
+    '<text x="420" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="var(--ra)" font-family="Newsreader, serif">The dog is big.</text>'+
+    '<text x="420" y="78" text-anchor="middle" font-size="15" fill="var(--muted)">주어를 설명해 준다</text>'+
+    '<text x="420" y="102" text-anchor="middle" font-size="14" fill="var(--muted)">그 개는 크다</text>'+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · 어떠한지를 말하는 말</h2>'+
+  '<p class="lead">‘개’라고만 하면 어떤 개인지 알 수 없지요. <b>큰</b> 개, <b>작은</b> 개, <b>하얀</b> 개 — 이렇게 <b>어떠한지</b>를 말해 주는 말이 <b>형용사</b>입니다.</p>'+
+  figAdj()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>형용사가 하는 일은 두 가지</span>'+
+    '<div class="ex">큰 개가 있다.<span class="k">명사 ‘개’를 꾸며 줍니다</span></div>'+
+    '<div class="ex">그 개는 크다.<span class="k">주어 ‘개’가 어떠한지를 설명합니다</span></div>'+
+    '<p>같은 ‘큰’이 자리만 바뀌었습니다. 영어도 똑같습니다. a <b>big</b> dog / The dog is <b>big</b>.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>찾는 방법</span>'+
+    '<p><b>‘어떤?’</b> 하고 물어보세요. 답이 되는 말이 형용사입니다.</p>'+
+    '<div class="ex">어떤 개? → <u class="hl a">큰</u> 개<span class="k">큰 = 형용사</span></div>'+
+    '<div class="ex">어떤 꽃? → <u class="hl a">예쁜</u> 꽃<span class="k">예쁜 = 형용사</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>부사와 헷갈리지 마세요</span>'+
+    '<div class="swap"><span>예쁜 꽃</span><span class="ar">↔</span><span class="good">예쁘게 웃는다</span></div>'+
+    '<p>‘예쁜’은 <b>명사</b>를 꾸미니 형용사, ‘예쁘게’는 <b>동사</b>를 꾸미니 부사입니다. <b>무엇을 꾸미는지</b>만 보면 됩니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>형용사는 <b>‘어떠한’</b>을 말하고, <b>명사 앞</b>과 <b>be동사 뒤</b> 두 자리에 놓입니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · 쉬운 영어 단어로</h2>'+
+  '<p class="lead">자주 쓰는 형용사부터 익힙니다. 대부분 <b>반대말끼리 짝</b>으로 외우면 두 배로 빨리 외워집니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>크기와 길이</span>'+
+    '<div class="swap"><span>big 큰</span><span class="ar">↔</span><span class="good">small 작은</span></div>'+
+    '<div class="swap"><span>tall 키 큰</span><span class="ar">↔</span><span class="good">short 키 작은</span></div>'+
+    '<div class="swap"><span>long 긴</span><span class="ar">↔</span><span class="good">short 짧은</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>기분과 느낌</span>'+
+    '<div class="swap"><span>happy 행복한</span><span class="ar">↔</span><span class="good">sad 슬픈</span></div>'+
+    '<div class="swap"><span>hot 뜨거운</span><span class="ar">↔</span><span class="good">cold 차가운</span></div>'+
+    '<div class="swap"><span>new 새로운</span><span class="ar">↔</span><span class="good">old 오래된</span></div>'+
+    '<div class="swap"><span>good 좋은</span><span class="ar">↔</span><span class="good">bad 나쁜</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>영어에서 놓는 자리</span>'+
+    '<div class="ex">a <u class="hl v">big</u> dog<span class="k">a + 형용사 + 명사</span></div>'+
+    '<div class="ex">The dog is <u class="hl v">big</u>.<span class="k">be동사 + 형용사</span></div>'+
+    '<p>a를 형용사 앞에 두는 것을 잊지 마세요. <b>a big dog</b>(○) · big a dog(✕)</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">외우는 요령</span>반대말 짝으로 소리 내어 외우세요. big-small, hot-cold, new-old, happy-sad.</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 한글과 영어 섞기</h2>'+
+  '<p class="lead">두 자리를 가려내고, 어순을 맞추고, 수를 나타내는 말까지 익힙니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>두 자리 가려내기</span>'+
+    '<div class="ex">She is a <u class="hl">kind</u> girl.<span class="k">명사 girl 을 꾸밈</span></div>'+
+    '<div class="ex">She is <u class="hl">kind</u>.<span class="k">주어 She 를 설명</span></div>'+
+    '<p>뒤에 <b>명사가 있으면</b> 꾸미는 자리, <b>없으면</b> 설명하는 자리입니다.</p>'+
+    '<div class="ex">He is a tall. (✕)<span class="k">a 뒤에 명사가 없습니다 → a tall <b>boy</b></span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>형용사 두 개를 쓸 때</span>'+
+    '<div class="ex">a <u class="hl a">small white</u> dog<span class="k">크기 → 색깔 차례</span></div>'+
+    '<p>여러 개를 붙일 때는 <b>크기·모양 → 색깔</b> 차례가 자연스럽습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>많다고 말할 때 — many와 much</span>'+
+    '<div class="swap"><span>셀 수 있는 것</span><span class="ar">→</span><span class="good">many books</span></div>'+
+    '<div class="swap"><span>셀 수 없는 것</span><span class="ar">→</span><span class="good">much water</span></div>'+
+    '<p>헷갈리면 <b>a lot of</b>를 쓰세요. a lot of books 도 a lot of water 도 모두 됩니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">가릴 때</span>뒤에 명사가 있는지, 그 명사가 셀 수 있는지 — 이 두 가지만 보면 3단계는 끝입니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 직접 써 보기</h2>'+
+  '<p class="lead">마지막입니다. 고르는 대신 <b>직접 씁니다.</b> 우리말을 보고 형용사를 쓰고, 반대말도 써 보고, 문장 빈칸도 채웁니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>이렇게 답합니다</span>'+
+    '<div class="ex">‘큰’을 영어로<span class="k">칸에 <b>big</b> 이라고 씁니다</span></div>'+
+    '<div class="ex">big의 반대말<span class="k">칸에 <b>small</b> 이라고 씁니다</span></div>'+
+    '<p>대문자로 써도 되고 앞뒤 빈칸이 있어도 괜찮습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>문장 빈칸을 채울 때</span>'+
+    '<div class="ex">The soup is ___ .<span class="k">be동사 뒤 → 형용사 <b>hot</b></span></div>'+
+    '<div class="ex">He is a ___ boy.<span class="k">명사 앞 → 형용사 <b>tall</b></span></div>'+
+    '<p>빈칸 <b>뒤에 명사가 있는지</b> 먼저 보세요. 그러면 어떤 말이 들어갈지 정해집니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마지막 한마디</span>틀려도 괜찮습니다. 쓴 뒤에 정답과 견주어 보는 것만으로도 훨씬 오래 남습니다.</div>';
+}
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_adj_v1", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
+
+/* ===================== 문제 ===================== */
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=L.qs.map(function(_,i){return i;});
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  clearProg();
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || "";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
+
+  var h="";
+  h+='<p class="ask">'+q.q+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
+  saveProg();
+  S.answered=false;S.picked=-1;
+
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
+  });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
+  show("quiz");
+}
+
+function buildFull(q){
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
+
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
+
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
+
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
+  }else{
+    if(!ok) S.retryWrong.push(S.list[S.i]);
+  }
+
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
+function next(){
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
+}
+
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+var LVCHEER = {
+  1:"형용사가 하는 두 가지 일을 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
+  2:"반대말 짝으로 외우니 훨씬 빠르지요? 3단계에서는 자리와 어순을 익힙니다.",
+  3:"명사 앞인지 be동사 뒤인지, many인지 much인지. 이제 헷갈리지 않을 거예요.",
+  4:"형용사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
+};
+function praise(p){
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  clearProg();
+  var L=LEVELS[S.level], total=L.qs.length;
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var tl=L.typeLabels||{};
+  var keys=Object.keys(tl).filter(function(k){ return S.byType[k] && S.byType[k][1]>0; });
+  var bd;
+  if(keys.length<2){
+    bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+       '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>'+
+       '<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  }else{
+    bd=keys.map(function(k){
+      var cls = k==="v" ? "v3" : k;
+      return '<div class="bd '+cls+'"><div class="t">'+esc(tl[k])+'</div><div class="v">'+S.byType[k][0]+'/'+S.byType[k][1]+'</div></div>';
+    }).join('');
+  }
+  $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
+  $("rbreak").innerHTML=bd;
+
+  var isAdmin = (S.name==="꾸메땅");
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null && !isAdmin){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
+  show("result");
+  openPraise(S.score, total, S.correct, S.wrong.length);
+}
+
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
+}
+
+function renderRetryResult(){
+  clearProg();
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  if(!still){ S.finished[S.level]=true; S.active=0; }
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").style.gridTemplateColumns = "repeat(3,1fr)";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+}
+
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+  }else{
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
+  }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
+}
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
+  show("rank");
+}
+
+/* ===================== 시작 배선 ===================== */
+function goHome(){
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
+}
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
+function saveProg(){
+  try{
+    if(!S.level || !S.list || !S.list.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  var p = loadProg();
+  if(!p) return;
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
+}
+function progBanner(){
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
+}
+
+refreshStart();
+
+</script>
+<script src="/kkt.js"></script>
+</body></html>
