@@ -1,4 +1,12 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
 <title>꾸메땅 영문법 GAME · 전치사 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,8 +292,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-8 · 전치사 뽀개기</span></h1>
-    <p class="sub">전치사 완전정복 80문제 · 네 단계 각 20문제 / 1·2단계는 어린 아이도 할 수 있고, 3·4단계에서 영어 낱말 쓰기까지 나아갑니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 전치사 뽀개기</span></h1>
+    <p class="sub">in · on · under · 때의 at · on · in · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -384,91 +392,95 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
-
-/* ---------- LEVEL 1 : 한글로 개념 잡기 20 (개념 7 · 모두 고르기 6 · 구별 7) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"명사 앞에 놓여 <b>어디에 · 언제</b>인지를 알려 주는 말을 무엇이라고 할까요?",
+  {type:"n", tag:"한글로 이해", q:"명사 앞에 놓여 <b>어디에 · 언제</b>인지를 알려 주는 말을 무엇이라고 할까요?",
    opts:["전치사","감탄사","접속사","동사","부사"], a:0,
    exp:"명사 <b>앞(前)</b>에 놓이는 말이라서 <b>전치사</b>라고 합니다. ‘책상 위에’의 ‘위에’가 그렇습니다."},
 
-  {type:"n", tag:"개념", sent:"고양이가 상자 안에 있다.", q:"‘상자’와 짝이 되어 자리를 알려 주는 말은?",
+  {type:"n", tag:"한글로 이해", sent:"고양이가 상자 안에 있다.", q:"‘상자’와 짝이 되어 자리를 알려 주는 말은?",
    opts:["안에","고양이","상자","있다","가"], a:0,
    exp:"<b>안에</b>가 어디인지를 알려 줍니다. 영어로는 in the box 입니다."},
 
-  {type:"n", tag:"개념", q:"전치사에 대한 설명으로 <b>맞는</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"전치사에 대한 설명으로 <b>맞는</b> 것은?",
    opts:["뒤에 반드시 명사가 따라온다","혼자서도 문장이 된다","동사를 꾸며 주기만 한다","반드시 문장 맨 앞에 온다","뒤에 동사가 따라온다"], a:0,
    exp:"전치사는 <b>명사와 짝</b>입니다. in the box, on the desk 처럼 늘 뒤에 명사가 옵니다."},
 
-  {type:"n", tag:"개념", q:"“고양이가 상자 ___ 있다.”의 빈칸이 바뀌면 무엇이 달라지나요?",
+  {type:"n", tag:"한글로 이해", q:"“고양이가 상자 ___ 있다.”의 빈칸이 바뀌면 무엇이 달라지나요?",
    opts:["고양이가 있는 자리가 달라진다","고양이의 이름이 달라진다","문장이 과거가 된다","동사가 바뀐다","주어가 바뀐다"], a:0,
    exp:"안에 · 위에 · 아래에 — <b>전치사 하나만 바뀌어도</b> 그림이 완전히 달라집니다."},
 
-  {type:"n", tag:"개념", sent:"나는 아홉 시에 일어난다.", q:"‘아홉 시에’의 ‘에’가 알려 주는 것은?",
+  {type:"n", tag:"한글로 이해", sent:"나는 아홉 시에 일어난다.", q:"‘아홉 시에’의 ‘에’가 알려 주는 것은?",
    opts:["언제인지","어디인지","누구인지","어떻게인지","왜인지"], a:0,
    exp:"전치사는 <b>자리</b>뿐 아니라 <b>때</b>도 알려 줍니다."},
 
-  {type:"n", tag:"개념", q:"다음 중 전치사가 알려 줄 수 있는 것이 <b>아닌</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"다음 중 전치사가 알려 줄 수 있는 것이 <b>아닌</b> 것은?",
    opts:["동사의 과거형","어디에 있는지","언제 일어난 일인지","어디로 가는지","누구와 함께인지"], a:0,
    exp:"동사를 과거로 바꾸는 일은 전치사가 하지 않습니다."},
 
-  {type:"n", tag:"개념", q:"‘책상 위에’를 영어로 옮길 때 <b>차례</b>가 바른 것은?",
+  {type:"n", tag:"한글로 이해", q:"‘책상 위에’를 영어로 옮길 때 <b>차례</b>가 바른 것은?",
    opts:["전치사 → 명사 (on the desk)","명사 → 전치사 (the desk on)","명사만 쓴다 (the desk)","전치사만 쓴다 (on)","동사 → 전치사 (is on)"], a:0,
    exp:"우리말은 ‘책상 위에’지만 영어는 <b>on the desk</b>처럼 전치사가 <b>앞</b>에 옵니다. 차례가 반대입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>자리</b>를 알려 주는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>자리</b>를 알려 주는 말을 모두 고르세요. (여러 개)",
    opts:["위에","안에","아래에","빨리","그리고"], ans:[0,1,2],
    exp:"위에 · 안에 · 아래에가 자리를 알려 줍니다. ‘빨리’는 부사, ‘그리고’는 접속사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>때</b>를 알려 주는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>때</b>를 알려 주는 말을 모두 고르세요. (여러 개)",
    opts:["아홉 시에","월요일에","봄에","책상 위에","가방 안에"], ans:[0,1,2],
    exp:"시각 · 요일 · 계절은 모두 때입니다. 뒤 두 개는 자리를 알려 줍니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>방향</b>을 알려 주는 말을 모두 고르세요. (여러 개)",
-   opts:["학교로","집에서","서울까지","책상 위에","친구와"], ans:[0,1,2],
-   exp:"어디로 가고 어디서 오는지가 방향입니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"전치사에 대한 설명으로 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"전치사에 대한 설명으로 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
    opts:["뒤에 명사가 온다","자리를 알려 준다","때를 알려 준다","혼자서도 문장이 된다","동사의 모양을 바꾼다"], ans:[0,1,2],
    exp:"전치사는 <b>명사와 짝</b>을 이루어야 뜻이 생깁니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"‘상자 ___ ’ 에 넣어 자리를 말할 수 있는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘상자 ___ ’ 에 넣어 자리를 말할 수 있는 말을 모두 고르세요. (여러 개)",
    opts:["안에","위에","옆에","빨리","그러나"], ans:[0,1,2],
    exp:"안에 · 위에 · 옆에는 모두 자리를 나타냅니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>함께</b>나 <b>도구</b>를 알려 주는 말을 모두 고르세요. (여러 개)",
-   opts:["친구와","연필로","엄마랑","어제","여기"], ans:[0,1,2],
-   exp:"누구와 함께인지, 무엇으로 하는지도 전치사가 알려 줍니다."},
-
-  {type:"v", tag:"구별", sent:"공이 상자 ___ 있다. (상자 속)", q:"빈칸에 알맞은 말은?",
-   opts:["안에","위에","아래에","옆에","뒤에"], a:0,
-   exp:"상자 속이므로 <b>안에</b>입니다. 영어로는 in the box 입니다."},
-
-  {type:"v", tag:"구별", sent:"책이 책상 ___ 있다. (책상에 닿아 있음)", q:"빈칸에 알맞은 말은?",
-   opts:["위에","안에","아래에","뒤에","옆에"], a:0,
-   exp:"면에 닿아 있으므로 <b>위에</b>입니다. 영어로는 on the desk 입니다."},
-
-  {type:"v", tag:"구별", sent:"고양이가 의자 ___ 숨었다. (의자 밑)", q:"빈칸에 알맞은 말은?",
-   opts:["아래에","위에","안에","앞에","옆에"], a:0,
-   exp:"밑이므로 <b>아래에</b>입니다. 영어로는 under the chair 입니다."},
-
-  {type:"v", tag:"구별", sent:"나는 아홉 시 ___ 일어난다.", q:"빈칸에 알맞은 말은?",
-   opts:["에","에서","까지","와","로"], a:0,
-   exp:"시각을 말할 때는 <b>~에</b>입니다. 영어로는 at nine 입니다."},
-
-  {type:"v", tag:"구별", sent:"나는 학교 ___ 간다.", q:"빈칸에 알맞은 말은?",
-   opts:["에","에서","위에","와","아래에"], a:0,
-   exp:"가는 방향이므로 <b>~에(으로)</b>입니다. 영어로는 to school 입니다."},
-
-  {type:"v", tag:"구별", q:"다음 중 자리를 알려 주는 말이 <b>없는</b> 문장은?",
-   opts:["나는 학생이다.","공이 상자 안에 있다.","책이 책상 위에 있다.","고양이가 의자 아래에 있다.","가방이 문 옆에 있다."], a:0,
-   exp:"첫 문장에는 자리를 알려 주는 말이 없습니다."},
-
-  {type:"v", tag:"구별", hard:true, q:"전치사를 <b>잘못</b> 쓴 것은?",
+  {type:"n", tag:"한글로 이해", hard:true, q:"전치사를 <b>잘못</b> 쓴 것은?",
    opts:["나는 빨리에 달린다.","나는 학교에 간다.","공이 상자 안에 있다.","나는 친구와 논다.","나는 아홉 시에 일어난다."], a:0,
-   exp:"‘빨리’는 부사라서 전치사가 붙지 않습니다. 전치사 뒤에는 <b>명사</b>가 와야 합니다."}
+   exp:"‘빨리’는 부사라서 전치사가 붙지 않습니다. 전치사 뒤에는 <b>명사</b>가 와야 합니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>~ 안에</b>’를 영어로 하면?",
+   opts:["in","on","under","to","with"], a:0, eng:true,
+   exp:"안에 <b>in</b>. in the box(상자 안에)"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>~ 위에</b>(닿아서)’를 영어로 하면?",
+   opts:["on","in","under","to","with"], a:0, eng:true,
+   exp:"닿아 있는 위 <b>on</b>. on the desk(책상 위에)"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>~ 아래에</b>’를 영어로 하면?",
+   opts:["under","on","in","to","with"], a:0, eng:true,
+   exp:"아래에 <b>under</b>. under the chair(의자 아래에)"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>전치사</b>를 모두 고르세요. (여러 개)",
+   opts:["in","on","under","run","happy"], ans:[0,1,2],
+   exp:"in · on · under는 명사 앞에서 자리를 알려 주는 전치사입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The cat is ___ the box.", q:"‘고양이가 상자 안에 있다’가 되도록 알맞은 것은?",
+   opts:["in","on","under","to","with"], a:0, eng:true,
+   ko:"고양이가 상자 안에 있다.",
+   exp:"상자 속이므로 <b>in</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The book is ___ the desk.", q:"‘책이 책상 위에 있다’가 되도록 알맞은 것은?",
+   opts:["on","in","under","to","with"], a:0, eng:true,
+   ko:"책이 책상 위에 있다.",
+   exp:"책상에 닿아 있는 위이므로 <b>on</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I go ___ school.", q:"‘나는 학교에 간다’가 되도록 알맞은 것은?",
+   opts:["to","on","under","with","at"], a:0, eng:true,
+   ko:"나는 학교에 간다.",
+   exp:"가는 방향 ‘~로, ~에’는 <b>to</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I play ___ my friend.", q:"‘나는 친구와 논다’가 되도록 알맞은 것은?",
+   opts:["with","to","on","in","under"], a:0, eng:true,
+   ko:"나는 친구와 논다.",
+   exp:"‘~와 함께’는 <b>with</b>입니다."}
 ];
 
 /* ---------- LEVEL 2 : 쉬운 영어 단어로 20 (뜻 7 · 모두 고르기 6 · 구별 7) ---------- */
@@ -729,7 +741,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 자리와 때를 알려 주는 말", desc:"전치사가 무엇인지 · 명사 앞자리 · 한글로 먼저 · 초등도 가능", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
+  1:{name:"기본1 · 자리와 때를 알려 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 전치사가 무엇인지 · 명사 앞자리 · in · on · under · to · with · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 쉬운 영어 단어로", desc:"in · on · under · behind · next to · to · with", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"구별"}},
   3:{name:"기본3 · 한글과 영어 섞기", desc:"때의 at·on·in · 자리의 in·at·on · 목적격 · by와 with", qs:L3, typeLabels:{n:"때",a:"자리",v:"가려내기"}},
   4:{name:"기본4 · 직접 써 보기", desc:"전치사를 직접 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"낱말 쓰기",a:"때 쓰기",v:"문장 채우기"}}
@@ -773,6 +785,7 @@ function learn1(){
     '<div class="swap"><span>책상 위에</span><span class="ar">↔</span><span class="good">on the desk</span></div>'+
     '<p>우리말은 <b>명사가 먼저</b>, 영어는 <b>전치사가 먼저</b>입니다. 이 점만 조심하면 됩니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex"><u class="hl a">in</u> the box · <u class="hl a">on</u> the desk · <u class="hl a">under</u> the chair<span class="k">안에 · 위에 · 아래에</span></div><div class="ex">I go <u class="hl a">to</u> school. · I play <u class="hl a">with</u> my friend.<span class="k">~로 · ~와 함께</span></div><p>전치사 뒤에는 늘 <b>명사</b>가 옵니다.</p></div>'+
   '<div class="tip"><span class="h">1단계에서 챙길 것</span>전치사는 <b>명사 앞</b>에 놓여 <b>어디에·언제·어디로·누구와</b>를 알려 줍니다.</div>';
 }
 
@@ -845,6 +858,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">마지막 한마디</span>틀려도 괜찮습니다. 쓴 뒤에 정답과 견주어 보는 것만으로도 훨씬 오래 남습니다.</div>';
 }
+
+var LVCHEER = {
+  1:"자리와 때를 알려 주는 말을 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
+  2:"in·on·under 가 그림처럼 떠오르지요? 3단계에서는 때의 at·on·in 을 가려냅니다.",
+  3:"at·on·in 을 가려낼 수 있게 되었어요. 마지막 단계만 남았습니다.",
+  4:"전치사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -971,7 +991,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -1019,6 +1039,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1113,12 +1134,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"자리와 때를 알려 주는 말을 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
-  2:"in·on·under 가 그림처럼 떠오르지요? 3단계에서는 때의 at·on·in 을 가려냅니다.",
-  3:"at·on·in 을 가려낼 수 있게 되었어요. 마지막 단계만 남았습니다.",
-  4:"전치사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1185,7 +1200,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

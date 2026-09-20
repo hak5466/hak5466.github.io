@@ -1,5 +1,5 @@
 /* 꾸메땅 영문법 게임 · 결과 보내기 (공용)
-   게임 14개가 이 파일 하나를 함께 씁니다.
+   모든 게임이 이 파일 하나를 함께 씁니다.
    ENDPOINT 가 비어 있으면 아무 것도 하지 않습니다. */
 (function () {
   "use strict";
@@ -93,12 +93,12 @@
     "gerund": familyA("동명사 GAME"),
     "relpron": familyA("관계대명사 GAME"),
     "toinf": familyA("TO부정사 GAME"),
-    "toinf-basic": familyA("TO부정사 기본 GAME"),
+    "toinf-basic": familyA("TO부정사 기본"),
     "pumsa8": familyA("8품사 GAME"),
     "usedto": familyA("USED TO GAME"),
     "sothat": familyA("SO~THAT GAME"),
     "sothat-purpose": familyA("SO THAT 목적 GAME"),
-    "form5b": familyA("5형식 뽀개기 (중2)"),
+    "form5b": familyA("5형식 뽀개기"),
     "ph": familyA("파닉스 뽀개기"),
     "adj": familyA("형용사 뽀개기"),
     "conj": familyA("접속사 뽀개기"),
@@ -107,8 +107,10 @@
     "prep": familyA("전치사 뽀개기"),
     "noun": familyA("[대]명사 뽀개기"),
     "verbtype": familyA("동사 뽀개기"),
+    "verbuse": familyA("일반동사 문장 활용"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
+    "perfect": familyA("현재완료 GAME"),
 
     "phonics": {
       game: "파닉스 자음 뒤집기",
@@ -168,34 +170,6 @@
       }
     },
 
-    "form5": {
-      game: "지각·사역동사 클리닉",
-      nameSel: "#studentNameInput",
-      levelWatch: function () {
-        var m = tx("#app").match(/(초급|중급|고급)\s*·\s*\d+\s*\/\s*\d+/);
-        return m ? m[1] : null;
-      },
-      read: function () {
-        var big = $("#app .banner .big");
-        if (!vis(big)) return null;
-        var m = (big.textContent || "").match(/(\d+)\s*\/\s*(\d+)\s*\((\d+)/);
-        if (!m) return null;
-        var desc = tx("#app .banner .desc");
-        var lv = (lastLevel || desc).match(/(초급|기본|중급|고급)/);
-        var wrongs = $$("#app .final-item").map(function (w, i) {
-          return {
-            no: String(i + 1),
-            q: tx(".fs", w),
-            mine: "",
-            ans: tx(".fi-ans", w).replace(/^정답\s*:\s*/, "")
-          };
-        });
-        return {
-          level: lv ? lv[1] : tx("#app .banner .badge"),
-          score: +m[3], hit: +m[1], total: +m[2], wrongs: wrongs
-        };
-      }
-    },
 
     "verb2": {
       game: "일반동사 완전정복",
@@ -213,45 +187,6 @@
     },
 
 
-    "perfect": {
-      game: "현재완료 게임",
-      nameSel: "#nameIn",
-      read: function () {
-        var box = $("#result");
-        if (!vis(box)) return null;
-        if (tx("#result .of") !== "/ 100점") return null;
-        var score = num(tx("#result .score .big"));
-        if (score === null) return null;
-        var bd = $$("#result .breakdown .bd");
-        var hit = bd[0] ? num(tx(".v", bd[0])) : null;
-        var miss = bd[1] ? num(tx(".v", bd[1])) : null;
-        return {
-          level: tx("#result h2").replace(/\s*결과.*$/, "").trim(),
-          score: score, hit: hit,
-          total: (hit !== null && miss !== null) ? hit + miss : null,
-          wrongs: []
-        };
-      }
-    },
-
-    "perfect2": {
-      game: "현재완료 클리닉",
-      nameSel: "#studentName",
-      read: function () {
-        var big = $("#banner .big");
-        if (!vis(big)) return null;
-        var stillRetry = $$("#banner button").some(function (b) {
-          return /다시 풀기/.test(b.textContent || "");
-        });
-        if (stillRetry) return null;                            /* 마지막 회차만 보냄 */
-        var r = ratio(big.textContent);
-        if (!r) return null;
-        var wrongs = $$(".final-item").map(function (w, i) {
-          return { no: tx(".fs", w) || String(i + 1), q: tx(".fi-kr", w), mine: "", ans: tx("strong", w) };
-        });
-        return { level: "20문항", score: pct(r[0], r[1]), hit: r[0], total: r[1], wrongs: wrongs };
-      }
-    },
 
     "jokjipge": {
       game: "문법 족집게 퀴즈",
@@ -313,9 +248,6 @@
     "pumsa-lab":      { box: "#screen-result .result-card", before: "#btn-retry" },
     "verb1":          { box: "#resultCard",    before: "#missTitle" },
     "verb2":          { box: "#resultCard",    before: ".retry-row" },
-    "form5":          { box: "#app .banner",   before: null },
-    "perfect":        { box: "#result",        before: ".breakdown" },
-    "perfect2":       { box: "#banner .banner", before: null },
     "jokjipge":       { box: "#summary",       before: null }
   };
   var MOUNT_KEY = MOUNT[slug] ? slug : "familyA";

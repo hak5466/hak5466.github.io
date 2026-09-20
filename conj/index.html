@@ -1,4 +1,12 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
 <title>꾸메땅 영문법 GAME · 접속사 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,13 +292,15 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-5 · 접속사 뽀개기</span></h1>
-    <p class="sub">접속사 완전정복 40문제 · 두 단계 각 20문제 / 1단계는 한글로 개념을 잡고, 2단계는 쉬운 영어 낱말로 익힙니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · 접속사 뽀개기</span></h1>
+    <p class="sub">and · but · or · so · because · when · if · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
     <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
     <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
   </div>
 
   <!-- 시작 -->
@@ -357,6 +367,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
       <button class="tab on" data-t="all">종합</button>
       <button class="tab" data-t="1">1단계</button>
       <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
     </div>
     <div id="rankBody"></div>
     <div class="actions">
@@ -380,91 +392,95 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
-
-/* ---------- LEVEL 1 : 한글로 개념 잡기 20 (개념 7 · 모두 고르기 6 · 구별 7) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"낱말과 낱말, 문장과 문장을 <b>이어 주는 말</b>을 무엇이라고 할까요?",
+  {type:"n", tag:"한글로 이해", q:"낱말과 낱말, 문장과 문장을 <b>이어 주는 말</b>을 무엇이라고 할까요?",
    opts:["접속사","명사","동사","형용사","감탄사"], a:0,
    exp:"이어 주는 일을 맡은 말이 <b>접속사</b>입니다. ‘그리고, 그러나, 그래서’가 모두 접속사입니다."},
 
-  {type:"n", tag:"개념", sent:"나는 사과와 배를 좋아한다.", q:"두 낱말을 이어 주는 말은 무엇인가요?",
+  {type:"n", tag:"한글로 이해", sent:"나는 사과와 배를 좋아한다.", q:"두 낱말을 이어 주는 말은 무엇인가요?",
    opts:["와","나는","사과","배","좋아한다"], a:0,
    exp:"‘사과<b>와</b> 배’에서 <b>와</b>가 두 낱말을 이어 줍니다."},
 
-  {type:"n", tag:"개념", q:"접속사가 하는 일로 알맞은 것은?",
+  {type:"n", tag:"한글로 이해", q:"접속사가 하는 일로 알맞은 것은?",
    opts:["말과 말을 이어 준다","사람이나 물건의 이름을 말한다","움직임을 나타낸다","어떠한지를 꾸며 준다","놀라는 느낌을 나타낸다"], a:0,
    exp:"접속사는 <b>이어 주는 일</b>만 합니다. 이름은 명사, 움직임은 동사, 꾸미는 말은 형용사입니다."},
 
-  {type:"n", tag:"개념", sent:"비가 와서 집에 있었다.", q:"앞뒤 두 내용은 어떤 관계인가요?",
+  {type:"n", tag:"한글로 이해", sent:"비가 와서 집에 있었다.", q:"앞뒤 두 내용은 어떤 관계인가요?",
    opts:["앞이 까닭, 뒤가 결과","서로 반대되는 내용","둘 중 하나를 고르는 것","시간이 거꾸로 된 것","아무 관계가 없다"], a:0,
    exp:"비가 온 것이 <b>까닭</b>, 집에 있은 것이 <b>결과</b>입니다. ‘~해서, 그래서’가 이런 관계를 이어 줍니다."},
 
-  {type:"n", tag:"개념", sent:"추웠지만 밖에 나갔다.", q:"앞뒤 두 내용은 어떤 관계인가요?",
+  {type:"n", tag:"한글로 이해", sent:"추웠지만 밖에 나갔다.", q:"앞뒤 두 내용은 어떤 관계인가요?",
    opts:["서로 반대되는 내용","앞이 까닭, 뒤가 결과","둘을 나란히 더한 것","둘 중 하나를 고르는 것","같은 말을 두 번 한 것"], a:0,
    exp:"추우면 안 나갈 것 같은데 나갔습니다. 이렇게 <b>반대</b>되는 내용은 ‘그러나, 하지만, ~지만’이 이어 줍니다."},
 
-  {type:"n", tag:"개념", q:"접속사에 대한 설명으로 <b>맞는</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"접속사에 대한 설명으로 <b>맞는</b> 것은?",
    opts:["혼자서는 쓰이지 않고 앞뒤를 이어 준다","문장 맨 앞에만 올 수 있다","반드시 이름을 나타낸다","느낌표와 함께만 쓴다","한 문장에 한 번만 쓸 수 있다"], a:0,
    exp:"접속사는 <b>이어 줄 것이 앞뒤에 있어야</b> 쓸 수 있습니다. 혼자 있으면 아무 뜻이 되지 않습니다."},
 
-  {type:"n", tag:"개념", q:"“나는 밥을 먹었다. 나는 학교에 갔다.”를 자연스럽게 한 문장으로 이으려면?",
-   opts:["밥을 먹고 나서 학교에 갔다","밥을 먹었다 학교에 갔다","밥을 학교에 먹었다","학교를 밥에 갔다","밥을 먹었다 밥을 먹었다"], a:0,
-   exp:"이어 주는 말을 넣으면 두 문장이 <b>하나로 매끄럽게</b> 이어집니다. ‘~고 나서’가 시간 차례를 알려 줍니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>이어 주는 말</b>을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>이어 주는 말</b>을 모두 고르세요. (여러 개)",
    opts:["그리고","그러나","그래서","사과","예쁘다"], ans:[0,1,2],
    exp:"그리고 · 그러나 · 그래서가 접속사입니다. ‘사과’는 명사, ‘예쁘다’는 형용사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>반대되는 내용</b>을 이을 때 쓰는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>반대되는 내용</b>을 이을 때 쓰는 말을 모두 고르세요. (여러 개)",
    opts:["그러나","하지만","그렇지만","그리고","그래서"], ans:[0,1,2],
    exp:"그러나 · 하지만 · 그렇지만은 앞뒤가 <b>뒤집힐 때</b> 씁니다. 그리고는 더할 때, 그래서는 까닭일 때입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>까닭</b>을 말할 때 쓰는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>까닭</b>을 말할 때 쓰는 말을 모두 고르세요. (여러 개)",
    opts:["왜냐하면","~때문에","그래서","또는","그러나"], ans:[0,1,2],
    exp:"왜냐하면 · ~때문에 · 그래서는 모두 <b>까닭과 결과</b>를 이어 줍니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>둘 중 하나</b>를 고를 때 쓰는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>둘 중 하나</b>를 고를 때 쓰는 말을 모두 고르세요. (여러 개)",
    opts:["또는","혹은","~이나","그래서","하지만"], ans:[0,1,2],
    exp:"또는 · 혹은 · ~이나는 <b>골라 쓰라</b>는 뜻입니다. 사과 <b>또는</b> 배."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>때</b>를 나타내며 이어 주는 말을 모두 고르세요. (여러 개)",
-   opts:["~할 때","~한 뒤에","~하기 전에","그러나","또는"], ans:[0,1,2],
-   exp:"언제 일어난 일인지 알려 주며 이어 주는 말입니다. <b>비가 올 때</b> 우산을 쓴다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"접속사가 <b>이어 줄 수 있는 것</b>을 모두 고르세요. (여러 개)",
-   opts:["낱말과 낱말","문장과 문장","말 덩어리와 말 덩어리","글자와 글자","숫자와 그림"], ans:[0,1,2],
-   exp:"사과와 배(낱말), 비가 왔다 그래서 집에 있었다(문장)처럼 <b>같은 크기끼리</b> 이어 줍니다."},
-
-  {type:"v", tag:"구별", sent:"나는 우유 ___ 빵을 샀다.", q:"빈칸에 알맞은 이어 주는 말은?",
+  {type:"n", tag:"한글로 이해", sent:"나는 우유 ___ 빵을 샀다.", q:"빈칸에 알맞은 이어 주는 말은?",
    opts:["와","그러나","왜냐하면","그런데도","또는 아니면"], a:0,
    exp:"두 가지를 <b>모두</b> 샀으므로 더해 주는 ‘와’입니다."},
 
-  {type:"v", tag:"구별", sent:"열심히 공부했다. ___ 시험을 잘 봤다.", q:"빈칸에 알맞은 이어 주는 말은?",
+  {type:"n", tag:"한글로 이해", sent:"열심히 공부했다. ___ 시험을 잘 봤다.", q:"빈칸에 알맞은 이어 주는 말은?",
    opts:["그래서","그러나","또는","그런데도","만약"], a:0,
    exp:"앞이 까닭, 뒤가 결과이므로 <b>그래서</b>입니다."},
 
-  {type:"v", tag:"구별", sent:"열심히 공부했다. ___ 시험을 못 봤다.", q:"빈칸에 알맞은 이어 주는 말은?",
-   opts:["그러나","그래서","그리고","왜냐하면","또는"], a:0,
-   exp:"기대와 <b>반대</b>되는 결과이므로 ‘그러나’입니다. 같은 앞 문장이라도 뒤가 바뀌면 이어 주는 말도 바뀝니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>그리고</b>’를 영어로 하면?",
+   opts:["and","but","or","so","if"], a:0, eng:true,
+   exp:"그리고 <b>and</b>. milk and bread(우유와 빵)"},
 
-  {type:"v", tag:"구별", sent:"물 ___ 주스를 드릴까요?", q:"빈칸에 알맞은 이어 주는 말은?",
-   opts:["또는","그래서","그러나","왜냐하면","~할 때"], a:0,
-   exp:"둘 중 하나를 고르라는 물음이므로 <b>또는</b>입니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>그러나</b>’를 영어로 하면?",
+   opts:["but","and","or","so","when"], a:0, eng:true,
+   exp:"그러나 <b>but</b>. small but strong(작지만 힘세다)"},
 
-  {type:"v", tag:"구별", sent:"나는 집에 있었다. ___ 비가 왔기 때문이다.", q:"빈칸에 알맞은 이어 주는 말은?",
-   opts:["왜냐하면","그래서","그리고","또는","하지만"], a:0,
-   exp:"뒤에 까닭이 오므로 <b>왜냐하면</b>입니다. ‘그래서’는 뒤에 결과가 올 때 씁니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>또는</b>’을 영어로 하면?",
+   opts:["or","and","but","so","because"], a:0, eng:true,
+   exp:"또는 <b>or</b>. tea or coffee(차 또는 커피)"},
 
-  {type:"v", tag:"구별", sent:"___ 내일 비가 오면 소풍을 안 간다.", q:"빈칸에 알맞은 이어 주는 말은?",
-   opts:["만약","그래서","그러나","또는","왜냐하면"], a:0,
-   exp:"아직 일어나지 않은 일을 말할 때는 <b>만약 ~라면</b>을 씁니다."},
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>이어 주는 말</b>(접속사)을 모두 고르세요. (여러 개)",
+   opts:["and","but","or","cat","big"], ans:[0,1,2],
+   exp:"and · but · or가 접속사입니다. cat은 명사, big은 형용사입니다."},
 
-  {type:"v", tag:"구별", hard:true, q:"다음 중 이어 주는 말이 <b>어울리지 않는</b> 문장은?",
-   opts:["배가 고프다. 또는 밥을 먹었다.","배가 고프다. 그래서 밥을 먹었다.","배가 고프다. 하지만 참았다.","밥을 먹었다. 그리고 물을 마셨다.","밥을 먹었다. 왜냐하면 배가 고팠기 때문이다."], a:0,
-   exp:"까닭과 결과인데 ‘또는’을 쓰면 뜻이 통하지 않습니다. <b>그래서</b>가 맞습니다."}
+  {type:"a", tag:"쉬운 영어", sent:"I like cats ___ dogs.", q:"‘나는 고양이와 개를 좋아한다’가 되도록 알맞은 것은?",
+   opts:["and","but","or","so","because"], a:0, eng:true,
+   ko:"나는 고양이와 개를 좋아한다.",
+   exp:"둘을 더할 때는 <b>and</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"It is small ___ cute.", q:"‘작지만 귀엽다’가 되도록 알맞은 것은?",
+   opts:["but","and","or","so","if"], a:0, eng:true,
+   ko:"그것은 작지만 귀엽다.",
+   exp:"‘~지만’처럼 뒤집을 때는 <b>but</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"Milk ___ juice?", q:"‘우유 또는 주스?’가 되도록 알맞은 것은?",
+   opts:["or","and","but","so","because"], a:0, eng:true,
+   ko:"우유 아니면 주스?",
+   exp:"둘 중 하나를 고를 때는 <b>or</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I was hungry, ___ I ate bread.", q:"‘배가 고파서 빵을 먹었다’가 되도록 알맞은 것은?",
+   opts:["so","but","or","because","if"], a:0, eng:true,
+   ko:"나는 배가 고파서 빵을 먹었다.",
+   exp:"까닭 → 결과로 이을 때는 <b>so</b>(그래서)입니다."}
 ];
 
 /* ---------- LEVEL 2 : 쉬운 영어로 20 (뜻 7 · 모두 고르기 6 · 문장 채우기 7) ---------- */
@@ -556,9 +572,196 @@ var L2 = [
    exp:"앞 문장은 까닭 → 결과라서 <b>so</b>, 뒤 문장은 결과 → 까닭이라서 <b>because</b>입니다. 같은 뜻이라도 차례에 따라 쓰는 말이 달라집니다."}
 ];
 
+/* ---------- LEVEL 3 : 중1 학교 시험형 20 (빈칸 7 · 고치기 6 · 대화와 문장 잇기 7) ---------- */
+var L3 = [
+  {type:"n", tag:"빈칸", sent:"I was sick, ___ I went to the hospital.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so","but","or","because","if"], a:0, eng:true,
+   ko:"나는 아파서 병원에 갔다.",
+   exp:"아팠다(까닭) → 병원에 갔다(결과). 결과를 이어 줄 때는 <b>so</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"She didn't come to school ___ she had a cold.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["because","so","but","or","and"], a:0, eng:true,
+   ko:"그녀는 감기에 걸려서 학교에 오지 않았다.",
+   exp:"뒤에 <b>까닭</b>이 오므로 because입니다."},
+
+  {type:"n", tag:"빈칸", sent:"Hurry up, ___ you will be late.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["or","and","so","but","because"], a:0, eng:true,
+   ko:"서둘러, 그렇지 않으면 늦을 거야.",
+   exp:"<b>명령문 + or</b> = ~해라, 그렇지 않으면 …"},
+
+  {type:"n", tag:"빈칸", sent:"Study hard, ___ you will pass the test.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["and","or","but","because","if"], a:0, eng:true,
+   ko:"열심히 공부해라, 그러면 시험에 합격할 것이다.",
+   exp:"<b>명령문 + and</b> = ~해라, 그러면 …"},
+
+  {type:"n", tag:"빈칸", sent:"___ I got home, my mom was cooking.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["When","So","But","Or","And"], a:0, eng:true,
+   ko:"내가 집에 왔을 때 엄마는 요리를 하고 계셨다.",
+   exp:"‘~할 때’는 <b>When</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"___ you are tired, take a rest.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["If","So","But","Or","And"], a:0, eng:true,
+   ko:"피곤하면 쉬어라.",
+   exp:"‘만약 ~라면’은 <b>If</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"I like math, ___ my brother doesn't.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["but","so","or","because","if"], a:0, eng:true,
+   ko:"나는 수학을 좋아하지만, 남동생은 그렇지 않다.",
+   exp:"서로 반대되는 내용이므로 <b>but</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I stayed home **so** it was cold.</span>",
+   opts:["because","but","or","and","if"], a:0, eng:true,
+   exp:"뒤에 까닭(추웠다)이 오므로 <b>because</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"둘 중 하나를 고르도록 밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">Do you want milk **and** juice?</span>",
+   opts:["or","but","so","because","when"], a:0, eng:true,
+   exp:"둘 중 하나를 고를 때는 <b>or</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He is rich, **so** he is not happy.</span>",
+   opts:["but","or","because","if","when"], a:0, eng:true,
+   exp:"부자인데 행복하지 않다 — 반대되는 내용이라 <b>but</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"흐름이 자연스러운 문장은?",
+   opts:["It was hot, so I opened the window.","It was hot, but I opened the window.","It was hot, or I opened the window.","It was hot because I opened the window.","It was hot, so I wore a coat."], a:0, eng:true,
+   exp:"더웠다(까닭) → 창문을 열었다(결과). <b>so</b>로 이어집니다."},
+
+  {type:"a", tag:"고치기", q:"흐름이 <b>어색한</b> 문장은?",
+   opts:["I like pizza, so I don't eat it.","I like pizza, so I eat it often.","I like pizza, but my sister doesn't.","I eat pizza when I am hungry.","Do you want pizza or pasta?"], a:0, eng:true,
+   exp:"좋아해서 안 먹는다는 흐름은 어색합니다. so 앞뒤는 까닭과 결과가 맞아야 합니다."},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"흐름이 자연스러운 문장을 모두 고르세요. (여러 개)",
+   opts:["I was tired, so I went to bed early.","I went to bed early because I was tired.","If you are tired, go to bed.","I was tired because I went to bed early.","I was tired, or I went to bed early."], ans:[0,1,2],
+   exp:"so는 결과, because는 까닭, if는 조건을 잇습니다."},
+
+  {type:"v", tag:"대화와 문장 잇기", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">I like dogs. I like cats, too.</span>",
+   opts:["I like dogs and cats.","I like dogs but cats.","I like dogs so cats.","I like dogs because cats.","I like dogs if cats."], a:0, eng:true,
+   exp:"둘을 더하므로 <b>and</b>입니다."},
+
+  {type:"v", tag:"대화와 문장 잇기", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">It rained. We didn't go out.</span>",
+   opts:["It rained, so we didn't go out.","It rained, but we didn't go out.","It rained because we didn't go out.","It rained, or we didn't go out.","It rained if we didn't go out."], a:0, eng:true,
+   exp:"비가 왔다(까닭) → 나가지 않았다(결과) — <b>so</b>"},
+
+  {type:"v", tag:"대화와 문장 잇기", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Why were you late?<br>B: ___ I missed the bus.</span>",
+   opts:["Because","So","But","Or","If"], a:0, eng:true,
+   exp:"Why(왜)에는 <b>Because</b>로 까닭을 답합니다."},
+
+  {type:"v", tag:"대화와 문장 잇기", q:"대답으로 알맞은 것은?<br><span class=\"eng\">A: Would you like tea or coffee?<br>B: ___</span>",
+   opts:["Coffee, please.","Yes, please.","No, I don't.","Yes, I do.","Both of them are no."], a:0, eng:true,
+   exp:"or로 둘 중 하나를 물으면 Yes/No가 아니라 <b>하나를 골라</b> 답합니다."},
+
+  {type:"v", tag:"대화와 문장 잇기", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘나는 배가 고팠지만 먹지 않았다.’</span>",
+   opts:["I was hungry, but I didn't eat.","I was hungry, so I didn't eat.","I was hungry, and I ate.","I was hungry because I didn't eat.","I was hungry or I didn't eat."], a:0, eng:true,
+   exp:"‘~지만’은 <b>but</b>입니다."},
+
+  {type:"v", tag:"대화와 문장 잇기", hard:true, q:"다음 글에서 흐름상 <b>어색한</b> 것은?<br><span class=\"eng\">I got up late, ⓐso I missed the bus. I ran to school, ⓑbut I was late. My teacher was angry ⓒbecause I was late. I said sorry ⓓand sat down. I will get up early, ⓔor I won't be late again.</span>",
+   opts:["ⓔ","ⓐ","ⓑ","ⓒ","ⓓ"], a:0, eng:true,
+   exp:"일찍 일어나면 늦지 않는다 — 결과를 잇는 <b>so</b>가 알맞습니다."},
+
+  {type:"v", tag:"대화와 문장 잇기", hard:true, q:"빈칸에 공통으로 알맞은 것은?<br><span class=\"eng\">• ___ I was young, I lived in Busan.<br>• Call me ___ you get home.</span>",
+   opts:["When","If","Because","So","But"], a:0, eng:true,
+   exp:"‘어렸을 때’ · ‘집에 도착하면(도착할 때)’ — 둘 다 때를 나타내는 <b>when</b>입니다."}
+];
+
+/* ---------- LEVEL 4 : 전 학년 아우르기 20 (짝을 이루는 접속사 7 · 때와 조건 6 · 종합 7) ---------- */
+var L4 = [
+  {type:"n", tag:"짝을 이루는 접속사", sent:"___ Tom and Jerry are my friends.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Both","Either","Neither","Not","Not only"], a:0, eng:true,
+   ko:"Tom과 Jerry 둘 다 내 친구이다.",
+   exp:"<b>both A and B</b> = A와 B 둘 다"},
+
+  {type:"n", tag:"짝을 이루는 접속사", sent:"You can have ___ tea or coffee.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["either","both","neither","not only","so"], a:0, eng:true,
+   ko:"너는 차와 커피 중 하나를 마실 수 있다.",
+   exp:"<b>either A or B</b> = A와 B 중 하나"},
+
+  {type:"n", tag:"짝을 이루는 접속사", sent:"She is not only smart ___ kind.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["but also","and also","or also","so also","and not"], a:0, eng:true,
+   ko:"그녀는 똑똑할 뿐만 아니라 친절하기도 하다.",
+   exp:"<b>not only A but also B</b> = A뿐만 아니라 B도"},
+
+  {type:"n", tag:"짝을 이루는 접속사", sent:"Both he and I ___ students.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","am","be","was"], a:0, eng:true,
+   ko:"그와 나 둘 다 학생이다.",
+   exp:"both A and B가 주어면 둘이므로 <b>복수</b>로 받습니다."},
+
+  {type:"n", tag:"짝을 이루는 접속사", hard:true, sent:"Either you or he ___ to go.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["has","have","having","to have","are"], a:0, eng:true,
+   ko:"너나 그 둘 중 한 사람은 가야 한다.",
+   exp:"either A or B가 주어면 동사를 <b>B(가까운 쪽)</b>에 맞춥니다. he → has"},
+
+  {type:"n", tag:"짝을 이루는 접속사", sent:"I think ___ he is honest.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","which","and","so"], a:0, eng:true,
+   ko:"나는 그가 정직하다고 생각한다.",
+   exp:"‘~라고, ~라는 것’을 이끄는 접속사 <b>that</b>입니다. 흔히 생략하기도 합니다."},
+
+  {type:"n", tag:"짝을 이루는 접속사", multi:true, eng:true, q:"짝이 바르게 된 표현을 모두 고르세요. (여러 개)",
+   opts:["both A and B","either A or B","not only A but also B","both A or B","either A and B"], ans:[0,1,2],
+   exp:"both는 and, either는 or, not only는 but also와 짝입니다."},
+
+  {type:"a", tag:"때와 조건", sent:"I will wait ___ you come back.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["until","unless","though","because","so"], a:0, eng:true,
+   ko:"네가 돌아올 때까지 기다릴게.",
+   exp:"<b>until</b> = ~할 때까지"},
+
+  {type:"a", tag:"때와 조건", sent:"___ it was raining, we played soccer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Although","Because","If","So","Unless"], a:0, eng:true,
+   ko:"비가 오고 있었지만 우리는 축구를 했다.",
+   exp:"<b>although</b> = 비록 ~이지만"},
+
+  {type:"a", tag:"때와 조건", sent:"You will be late ___ you hurry.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["unless","if","until","because","although"], a:0, eng:true,
+   ko:"서두르지 않으면 너는 늦을 것이다.",
+   exp:"<b>unless</b> = if ~ not (~하지 않으면)"},
+
+  {type:"a", tag:"때와 조건", hard:true, sent:"If it ___ tomorrow, I will stay home.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["rains","will rain","rain","rained","raining"], a:0, eng:true,
+   ko:"내일 비가 오면 나는 집에 있을 것이다.",
+   exp:"때와 조건을 나타내는 if · when 절에서는 앞으로의 일도 <b>현재형</b>으로 씁니다."},
+
+  {type:"a", tag:"때와 조건", hard:true, sent:"As soon as I ___ home, I will call you.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["get","will get","got","getting","to get"], a:0, eng:true,
+   ko:"집에 도착하자마자 너에게 전화할게.",
+   exp:"as soon as(~하자마자)도 때를 나타내므로 <b>현재형</b>입니다."},
+
+  {type:"a", tag:"때와 조건", multi:true, eng:true, q:"뜻이 같은 짝을 모두 고르세요. (여러 개)",
+   opts:["Unless you hurry = If you don't hurry","Study hard, and you will pass. = If you study hard, you will pass.","Hurry up, or you will miss the bus. = If you don't hurry up, you will miss the bus.","Although he is rich = Because he is rich","both A and B = either A or B"], ans:[0,1,2],
+   exp:"although(~이지만)와 because(~ 때문에)는 뜻이 다릅니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["When he will come, I will tell him.","When he comes, I will tell him.","If you need help, call me.","I don't know if he will come.","Although it was late, we kept working."], a:0, eng:true,
+   exp:"때를 나타내는 when 절은 현재형입니다. When he <b>comes</b>. 넷째의 if는 ‘~인지’라서 will을 씁니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"밑줄 친 if의 뜻이 <b>나머지와 다른</b> 것은?",
+   opts:["I wonder **if** she likes me.","**If** you are hungry, eat this.","I'll go out **if** it stops raining.","**If** you see him, say hello.","You can stay **if** you want."], a:0, eng:true,
+   exp:"첫째 if는 ‘<b>~인지</b>’입니다. 나머지는 ‘만약 ~라면’입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 공통으로 알맞은 것은?<br><span class=\"eng\">• ___ I was reading, my brother was watching TV.<br>• She likes sports, ___ her sister likes books.</span>",
+   opts:["while","when","because","unless","until"], a:0, eng:true,
+   exp:"<b>while</b>은 ‘~하는 동안’과 ‘~인 반면’ 두 뜻이 있습니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">He is not only a singer but also an actor.<br>= He is an actor ___ a singer.</span>",
+   opts:["as well as","and also","but also","or not","as long as"], a:0, eng:true,
+   exp:"not only A but also B = <b>B as well as A</b>. 차례가 바뀌는 것을 조심하세요."},
+
+  {type:"v", tag:"종합", hard:true, sent:"Neither Mina nor I ___ tired.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["am","is","are","be","being"], a:0, eng:true,
+   ko:"미나도 나도 피곤하지 않다.",
+   exp:"neither A nor B도 동사를 <b>B(가까운 쪽)</b>에 맞춥니다. I → am"},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 글에서 흐름상 <b>어색한</b> 것은?<br><span class=\"eng\">ⓐAlthough I was tired, I finished my homework ⓑbecause I had to hand it in today. ⓒIf I don't finish it, my teacher will be upset. ⓓUnless I finish it, my teacher will be happy. ⓔWhen I finished it, I felt good.</span>",
+   opts:["ⓓ","ⓐ","ⓑ","ⓒ","ⓔ"], a:0, eng:true,
+   exp:"unless는 ‘~하지 않으면’입니다. 끝내지 않으면 선생님이 기뻐하신다는 흐름은 어색합니다."},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["때와 조건을 나타내는 부사절에서는 앞으로의 일을 will로 쓴다.","명령문 + and는 ‘그러면’이다.","명령문 + or는 ‘그렇지 않으면’이다.","unless는 if ~ not과 뜻이 같다.","both A and B가 주어면 복수로 받는다."], a:0,
+   exp:"때와 조건의 부사절은 앞으로의 일도 <b>현재형</b>으로 씁니다."}
+];
+
 var LEVELS = {
-  1:{name:"기본1 · 이어 주는 말", desc:"접속사가 무엇인지 · 더하기 · 뒤집기 · 까닭 · 고르기 · 한글로 먼저", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
-  2:{name:"기본2 · 쉬운 영어로", desc:"and · but · or · so · because · when · if", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"문장 채우기"}}
+  1:{name:"기본1 · 이어 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 더하기 · 뒤집기 · 까닭 · 고르기 · and · but · or · so · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 영어로 넓히기", desc:"and · but · or · so · because · when · if 뜻과 쓰임 · so와 because 자리", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"문장 채우기"}},
+  3:{name:"기본3 · 중1 학교 시험형", desc:"빈칸 채우기 · 흐름 고치기 · 명령문 + and/or · 대화 완성", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 문장 잇기"}},
+  4:{name:"기본4 · 전 학년 아우르기", desc:"both · either · not only · until · although · unless · 부사절의 현재형", qs:L4, typeLabels:{n:"짝을 이루는 접속사",a:"때와 조건",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
@@ -598,6 +801,7 @@ function learn1(){
     '<div class="ex">열심히 공부했다. <u class="hl v">그러나</u> 못 봤다.<span class="k">기대와 반대</span></div>'+
     '<p>같은 앞 문장이라도 뒤가 바뀌면 이어 주는 말이 바뀝니다. <b>뒤를 먼저 읽어 보세요.</b></p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">cats <u class="hl a">and</u> dogs<span class="k">더하기 — 그리고</span></div><div class="ex">small <u class="hl a">but</u> cute<span class="k">뒤집기 — 그러나</span></div><div class="ex">milk <u class="hl a">or</u> juice<span class="k">고르기 — 또는</span></div><div class="ex">I was hungry, <u class="hl a">so</u> I ate.<span class="k">까닭 → 결과 — 그래서</span></div></div>'+
   '<div class="tip"><span class="h">1단계에서 챙길 것</span>접속사는 <b>앞뒤를 이어 주는 말</b>이고, 더하기·뒤집기·까닭·고르기 네 가지 일을 합니다.</div>';
 }
 
@@ -626,14 +830,63 @@ function learn2(){
   '<div class="tip"><span class="h">외우는 요령</span>and 그리고 · but 그러나 · or 또는 · so 그래서 — 이 네 개를 소리 내어 외우면 나머지는 저절로 붙습니다.</div>';
 }
 
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 중1 학교 시험형</h2>'+
+  '<p class="lead">학교 시험에 나오는 모양입니다. 앞뒤 내용이 어떤 관계인지 보고 알맞은 접속사를 고릅니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>앞뒤 관계를 먼저 봅니다</span>'+
+    '<div class="ex">I was sick, <u class="hl">so</u> I went to the hospital.<span class="k">까닭 → 결과</span></div>'+
+    '<div class="ex">I went to the hospital <u class="hl">because</u> I was sick.<span class="k">결과 → 까닭</span></div>'+
+    '<div class="ex">He is rich, <u class="hl">but</u> he is not happy.<span class="k">반대되는 내용</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>명령문 + and · or</span>'+
+    '<div class="ex">Study hard, <u class="hl a">and</u> you will pass.<span class="k">~해라, 그러면</span></div>'+
+    '<div class="ex">Hurry up, <u class="hl a">or</u> you will be late.<span class="k">~해라, 그렇지 않으면</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>or로 물으면 하나를 골라 답합니다</span>'+
+    '<div class="ex">A: Tea or coffee?<br>B: Coffee, please.<span class="k">Yes · No로 답하지 않습니다</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>빈칸 앞뒤를 우리말로 풀어 ‘그래서 · 왜냐하면 · 그러나 · 또는’ 가운데 어느 것이 자연스러운지 봅니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
+  '<p class="lead">마지막입니다. 짝을 이루는 접속사와 때 · 조건 · 양보를 나타내는 접속사를 익힙니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>짝을 이루는 접속사</span>'+
+    '<div class="ex">both A and B<span class="k">A와 B 둘 다 — 복수로 받음</span></div>'+
+    '<div class="ex">either A or B · neither A nor B<span class="k">둘 중 하나 · 둘 다 아닌 — 동사는 B에 맞춤</span></div>'+
+    '<div class="ex">not only A but also B = B as well as A<span class="k">A뿐만 아니라 B도</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>때 · 조건 · 양보</span>'+
+    '<div class="ex">until · as soon as · while<span class="k">~할 때까지 · ~하자마자 · ~하는 동안(~인 반면)</span></div>'+
+    '<div class="ex">unless = if ~ not · although<span class="k">~하지 않으면 · 비록 ~이지만</span></div>'+
+    '<div class="swap"><span class="bad">If it will rain tomorrow</span><span class="ar">→</span><span class="good">If it rains tomorrow</span></div>'+
+    '<p>때와 조건을 나타내는 절에서는 앞으로의 일도 <b>현재형</b>입니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마지막 한마디</span>접속사는 앞뒤의 <b>관계</b>를 말해 줍니다. 관계를 먼저 읽으면 답이 보입니다.</div>';
+}
+
+var LVCHEER = {
+  1:"이어 주는 말 네 가지를 한글과 영어로 익혔어요. 2단계에서는 영어로 넓혀 봅니다.",
+  2:"and · but · or · so · because까지 해냈습니다. 3단계는 학교 시험형입니다.",
+  3:"흐름에 맞는 접속사를 고르는 눈이 생겼어요. 마지막 단계만 남았습니다.",
+  4:"짝을 이루는 접속사와 부사절까지 해냈습니다. 접속사는 이제 든든합니다!"
+};
+
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
-  $("learnBody").innerHTML = S.level===1?learn1():learn2();
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
   show("learn");
 }
 
 /* ===================== 상태 ===================== */
-var RKEY="kkumettang_conj_v1", NKEY="kkumettang_name";
+var RKEY="kkumettang_conj_v2", NKEY="kkumettang_name";
 var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
        correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
        round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
@@ -667,7 +920,7 @@ function best(level){
   return null;
 }
 function drawRail(){
-  [1,2].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var b=best(k);
     $("f"+k).style.width=(b==null?0:b)+"%";
     $("p"+k).textContent=(b==null?"":" "+b);
@@ -675,7 +928,7 @@ function drawRail(){
 }
 function drawLevels(){
   var h="";
-  [1,2].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var L=LEVELS[k], b=best(k);
     var locked = false;
     var here = S.active===k;
@@ -716,7 +969,7 @@ function pickLevel(k){
 /* ===================== 보기 섞기 ===================== */
 /* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
 (function shuffleAll(){
-  [L1,L2].forEach(function(bank){
+  [L1,L2,L3,L4].forEach(function(bank){
     bank.forEach(function(q){
       if(!q.opts) return;
       var idx = q.opts.map(function(_,i){ return i; });
@@ -751,7 +1004,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -799,6 +1052,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -893,10 +1147,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"이어 주는 말 네 가지를 모두 익혔어요. 2단계에서는 영어 낱말로 만나 봅니다.",
-  2:"and · but · or · so 까지 해냈습니다. 이제 긴 문장도 무섭지 않아요!"
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -963,7 +1213,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
@@ -992,7 +1242,7 @@ function renderResult(){
 
 function levelRowHTML(){
   var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
-  [1,2].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var on = (k===S.level);
     var lock = false;
     h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
@@ -1003,8 +1253,8 @@ function levelRowHTML(){
 function actionsHTML(remain, retryLabel){
   var ac="";
   if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
-  else if(S.level<2) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
-  ac+='<button class="btn '+(remain||S.level<2?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
       '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
   return ac;
 }

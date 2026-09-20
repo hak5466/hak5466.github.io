@@ -1,11 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
-.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
-.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
-.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
-.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
-.resumebar .row .btn{flex:1 1 130px}
-</style></head><body>
-<title>꾸메땅 도전 SO THAT 목적 GAME</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · SO THAT 목적 GAME</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -112,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -202,13 +204,6 @@ u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(-
 .opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
 .opt.pick-no .res{color:var(--no)}
 
-.shortrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.shortrow input[type=text]{font-family:"Newsreader",serif;font-size:22px;border-radius:11px}
-.shortrow .btn{flex:none}
-.shortrow.pick-ok input[type=text]{border-color:var(--ok);background:var(--ok-soft)}
-.shortrow.pick-no input[type=text]{border-color:var(--no);background:var(--no-soft)}
-.shorthint{font-size:15px;color:var(--muted)}
-
 .exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
@@ -265,12 +260,40 @@ table.rank tr.me{background:var(--accent-soft)}
 table.rank tr.me .who{color:var(--accent)}
 .empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
 .toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
 </style>
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 도전 <span class="mark">SO THAT 목적 GAME</span></h1>
-    <p class="sub">to부정사 목적 · so that · in order to·that · so as to 완전정복 80문제 · 기본1~4 각 20문제 / 사지선다형과 단답형이 함께 나오고, 문제마다 완성 문장과 해석, 해설이 함께 나옵니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · SO THAT 목적 GAME</span></h1>
+    <p class="sub">목적과 결과 가리기 · in order to · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -297,7 +320,7 @@ table.rank tr.me .who{color:var(--accent)}
     <div class="actions">
       <button class="btn ghost" id="openRank">순위 보기</button>
     </div>
-    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르거나 직접 입력한 뒤 Enter로 채점, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
   </section>
 
   <!-- 개념 -->
@@ -327,6 +350,7 @@ table.rank tr.me .who{color:var(--accent)}
     <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
     <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
     <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
     <div id="rsubmit"></div>
     <div id="rwrong"></div>
     <div class="actions" id="ractions"></div>
@@ -353,7 +377,7 @@ table.rank tr.me .who{color:var(--accent)}
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 도전 SO THAT 목적 GAME · 목적·결과 표현편</p>
+  <p class="foot">꾸메땅 영문법 GAME · SO THAT 목적 GAME</p>
 </div>
 
 
@@ -368,34 +392,73 @@ table.rank tr.me .who{color:var(--accent)}
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : 목적 표현 기초 20 (to부정사 목적 10 · so that 목적 10, 쉬움) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"to부정사 목적", sent:"He got up early ___ catch the first train.", ko:"그는 첫 기차를 타기 위해 일찍 일어났다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so that","in order","for to"], a:0, exp:"‘~하기 위해서’라는 목적은 <b>to + 동사원형</b>으로 간단히 나타냅니다."},
-  {type:"n", tag:"to부정사 목적", sent:"She studies hard ___ pass the exam.", ko:"그녀는 시험에 합격하기 위해 열심히 공부한다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to pass","to passing","passed","for pass"], a:0, exp:"목적을 나타내는 to부정사 뒤에는 <b>동사원형</b>이 옵니다."},
-  {type:"n", tag:"to부정사 목적", sent:"They went to the market ___ buy vegetables.", ko:"그들은 채소를 사기 위해 시장에 갔다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so","that","so that"], a:0, exp:"동사 하나만으로 목적을 나타낼 때는 <b>to</b> + 동사원형이 가장 간단합니다."},
-  {type:"n", tag:"to부정사 목적", sent:"I turned on the radio ___ listen to the news.", ko:"나는 뉴스를 듣기 위해 라디오를 켰다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so","for","that"], a:0, exp:"‘듣기 위해’는 <b>to listen</b>으로 나타냅니다."},
-  {type:"n", tag:"to부정사 목적", mode:"short", q:"다음 문장의 빈칸에 목적을 나타내는 말을 쓰세요.<br><span class=\"eng\">He saved money ___ buy a new bike.</span>", ko:"그는 새 자전거를 사기 위해 돈을 모았다.", ans:["to buy"], exp:"목적을 나타낼 때는 <b>to + 동사원형</b>을 씁니다. 정답은 to buy."},
-  {type:"n", tag:"to부정사 목적", sent:"She wore a coat ___ keep warm.", ko:"그녀는 따뜻하게 지내기 위해 코트를 입었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so","that","so as"], a:0, exp:"‘따뜻하게 지내기 위해’는 <b>to keep</b>으로 나타냅니다."},
-  {type:"n", tag:"to부정사 목적", q:"다음 우리말을 영어로 옮길 때 가장 알맞은 것은?<br><span class=\"eng\">‘우리는 교통 체증을 피하기 위해 일찍 떠났다.’</span>", opts:["We left early to avoid the traffic.","We left early so avoid the traffic.","We left early for avoid the traffic.","We left early avoid the traffic."], a:0, eng:true, exp:"목적은 <b>to + 동사원형</b>으로 나타내며, so·for는 이 자리에 단독으로 쓰지 않습니다."},
-  {type:"n", tag:"to부정사 목적", mode:"short", q:"빈칸에 목적을 나타내는 말을 쓰세요.<br><span class=\"eng\">He came here ___ see you.</span>", ko:"그는 너를 보기 위해 여기에 왔다.", ans:["to see"], exp:"정답은 to see입니다."},
-  {type:"n", tag:"to부정사 목적", sent:"I opened the window ___ let in fresh air.", ko:"나는 신선한 공기를 들이기 위해 창문을 열었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so","in order","that"], a:0, exp:"‘들이기 위해’는 <b>to let in</b>으로 나타냅니다."},
-  {type:"n", tag:"to부정사 목적", q:"밑줄 친 부분이 나타내는 것으로 알맞은 것은?<br><span class=\"eng\">She ran fast **to catch** the bus.</span>", opts:["목적","결과","이유","조건"], a:0, eng:true, exp:"‘버스를 잡기 위해’라는 <b>목적</b>을 나타냅니다."},
+  {type:"n", tag:"한글로 이해", q:"‘<b>~하기 위해서, ~하려고</b>’가 나타내는 것은?",
+   opts:["목적","결과","원인","시간","장소"], a:0,
+   exp:"무엇을 <b>하려고</b> 하는지, 곧 <b>목적</b>입니다."},
 
-  {type:"a", tag:"so that 목적", sent:"He studies hard so that he ___ pass the exam.", ko:"그는 시험에 합격할 수 있도록 열심히 공부한다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["can","to","that","so"], a:0, exp:"so that 뒤에는 <b>조동사(can/will 등) + 동사원형</b>이 옵니다."},
-  {type:"a", tag:"so that 목적", sent:"She left early ___ she wouldn't be late.", ko:"그녀는 늦지 않도록 일찍 떠났다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"뒤에 <b>주어+조동사</b>가 있는 완전한 문장이 오므로 so that이 알맞습니다."},
-  {type:"a", tag:"so that 목적", sent:"I wrote it down so that I ___ forget it.", ko:"나는 잊지 않도록 그것을 적어 두었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["wouldn't","don't","won't","didn't"], a:0, exp:"주절이 과거(wrote)이면 so that절의 조동사도 과거형 <b>wouldn't</b>를 씁니다."},
-  {type:"a", tag:"so that 목적", mode:"short", q:"빈칸에 알맞은 접속사를 쓰세요.<br><span class=\"eng\">Please speak slowly ___ everyone can understand.</span>", ko:"모두가 이해할 수 있도록 천천히 말해 주세요.", ans:["so that"], exp:"정답은 so that입니다."},
-  {type:"a", tag:"so that 목적", sent:"He saved money so that he ___ buy a car.", ko:"그는 차를 살 수 있도록 돈을 모았다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["could","can","to","would to"], a:0, exp:"주절이 과거(saved)이면 could를 씁니다."},
-  {type:"a", tag:"so that 목적", sent:"Turn on the light ___ we can see.", ko:"우리가 볼 수 있도록 불을 켜라.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as to"], a:0, exp:"완전한 문장(we can see)이 이어지므로 so that이 알맞습니다."},
-  {type:"a", tag:"so that 목적", q:"다음 중 so that 뒤에 올 수 <b>없는</b> 것은?", opts:["can","will","to","could"], a:2, eng:true, exp:"so that 뒤에는 <b>조동사 + 동사원형</b>이 옵니다. to는 이 자리에 올 수 없습니다."},
-  {type:"a", tag:"so that 목적", mode:"short", q:"빈칸에 알맞은 접속사를 쓰세요.<br><span class=\"eng\">I set an alarm ___ I would wake up early.</span>", ko:"나는 일찍 일어날 수 있도록 알람을 맞췄다.", ans:["so that"], exp:"정답은 so that입니다."},
-  {type:"a", tag:"so that 목적", q:"다음 두 문장을 so that으로 자연스럽게 연결한 것은?<br><span class=\"eng\">He whispered. + No one could hear him.</span>", opts:["He whispered so that no one could hear him.","He whispered so no one that could hear him.","He whispered that so no one could hear him.","He whispered so that no one hear him."], a:0, eng:true, exp:"so that 뒤에는 <b>주어 + 조동사 + 동사원형</b>이 그대로 이어집니다."},
-  {type:"a", tag:"so that 목적", sent:"She studied hard ___ she could get a good grade.", ko:"그녀는 좋은 성적을 받을 수 있도록 열심히 공부했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","that","so"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."}
+  {type:"n", tag:"한글로 이해", sent:"나는 첫차를 타려고 일찍 일어났다.", q:"<b>목적</b>에 해당하는 부분은?",
+   opts:["첫차를 타려고","일찍","일어났다","나는","첫차를"], a:0,
+   exp:"‘~하려고’가 붙은 <b>첫차를 타려고</b>가 목적입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘<b>너무 ~해서 …하다</b>’가 나타내는 것은?",
+   opts:["결과","목적","장소","시간","허락"], a:0,
+   exp:"‘너무 ~해서’ 뒤에 일어난 일, 곧 <b>결과</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"목적과 결과의 차이로 알맞은 것은?",
+   opts:["목적은 하려는 일, 결과는 일어난 일","목적은 일어난 일, 결과는 하려는 일","둘은 같은 뜻이다","목적은 과거, 결과는 미래","목적은 장소, 결과는 시간"], a:0,
+   exp:"목적은 <b>앞으로 하려는 일</b>, 결과는 <b>이미 일어난 일</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>목적</b>을 나타내는 우리말을 모두 고르세요. (여러 개)",
+   opts:["시험에 붙으려고 공부했다","늦지 않도록 일찍 나섰다","감기에 걸리지 않게 옷을 입었다","너무 피곤해서 잠이 들었다","비가 와서 집에 있었다"], ans:[0,1,2],
+   exp:"‘~하려고 · ~하도록 · ~하지 않게’가 목적입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>결과</b>를 나타내는 우리말을 모두 고르세요. (여러 개)",
+   opts:["너무 추워서 떨었다","너무 바빠서 점심을 못 먹었다","너무 기뻐서 울었다","만나려고 전화했다","사려고 돈을 모았다"], ans:[0,1,2],
+   exp:"‘너무 ~해서’ 일어난 일이 결과입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"<b>목적</b>을 나타내는 영어 표현이 <b>아닌</b> 것은?",
+   opts:["so ~ that (너무 ~해서)","to + 동사원형","in order to","so that + 주어 + can","so as to"], a:0,
+   exp:"so + 형용사 + that은 <b>결과</b>입니다. 나머지는 모두 목적입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~하도록, ~하기 위해서’를 문장으로 이어 줄 때 쓰는 말은?",
+   opts:["so that","because","but","or","although"], a:0,
+   exp:"<b>so that</b> + 주어 + can = ~할 수 있도록"},
+
+  {type:"n", tag:"한글로 이해", q:"목적의 so that 뒤에 오는 모양은?",
+   opts:["주어 + can(could) + 동사원형","to + 동사원형","-ing","형용사 하나","명사 하나"], a:0,
+   exp:"so that 뒤에는 <b>주어 + can(could) + 동사원형</b>이 자주 옵니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["so that은 늘 결과를 나타낸다.","to부정사로 목적을 나타낼 수 있다.","so that 뒤에는 주어와 동사가 온다.","목적은 ‘~하려고, ~하기 위해’로 풀이한다.","in order to도 목적을 나타낸다."], a:0,
+   exp:"so와 that이 붙은 <b>so that</b>은 목적입니다. so + 형용사 + that이 결과입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"He got up early ___ catch the first train.", ko:"그는 첫 기차를 타기 위해 일찍 일어났다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so that","in order","for to"], a:0, exp:"‘~하기 위해서’라는 목적은 <b>to + 동사원형</b>으로 간단히 나타냅니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She studies hard ___ pass the exam.", ko:"그녀는 시험에 합격하기 위해 열심히 공부한다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to pass","to passing","passed","for pass"], a:0, exp:"목적을 나타내는 to부정사 뒤에는 <b>동사원형</b>이 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"They went to the market ___ buy vegetables.", ko:"그들은 채소를 사기 위해 시장에 갔다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so","that","so that"], a:0, exp:"동사 하나만으로 목적을 나타낼 때는 <b>to</b> + 동사원형이 가장 간단합니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She wore a coat ___ keep warm.", ko:"그녀는 따뜻하게 지내기 위해 코트를 입었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so","that","so as"], a:0, exp:"‘따뜻하게 지내기 위해’는 <b>to keep</b>으로 나타냅니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I opened the window ___ let in fresh air.", ko:"나는 신선한 공기를 들이기 위해 창문을 열었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so","in order","that"], a:0, exp:"‘들이기 위해’는 <b>to let in</b>으로 나타냅니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"밑줄 친 부분이 나타내는 것으로 알맞은 것은?<br><span class=\"eng\">She ran fast **to catch** the bus.</span>", opts:["목적","결과","이유","조건"], a:0, eng:true, exp:"‘버스를 잡기 위해’라는 <b>목적</b>을 나타냅니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"He studies hard so that he ___ pass the exam.", ko:"그는 시험에 합격할 수 있도록 열심히 공부한다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["can","to","that","so"], a:0, exp:"so that 뒤에는 <b>조동사(can/will 등) + 동사원형</b>이 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She left early ___ she wouldn't be late.", ko:"그녀는 늦지 않도록 일찍 떠났다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"뒤에 <b>주어+조동사</b>가 있는 완전한 문장이 오므로 so that이 알맞습니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"He saved money so that he ___ buy a car.", ko:"그는 차를 살 수 있도록 돈을 모았다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["could","can","to","would to"], a:0, exp:"주절이 과거(saved)이면 could를 씁니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She studied hard ___ she could get a good grade.", ko:"그녀는 좋은 성적을 받을 수 있도록 열심히 공부했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","that","so"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."}
 ];
 
 /* ---------- LEVEL 2 : 목적 vs 결과 20 (so~that 결과 7 · so that 목적 7 · 구별·전환 6) ---------- */
@@ -404,14 +467,14 @@ var L2 = [
   {type:"n", tag:"so~that 결과", sent:"He ran so fast that he ___ the bus.", ko:"그는 너무 빨리 달려서 버스를 탔다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["caught","catch","to catch","catching"], a:0, exp:"that절은 완전한 문장이므로 주어에 맞는 <b>동사(과거형)</b>가 옵니다."},
   {type:"n", tag:"so~that 결과", q:"다음 중 결과(너무 ~해서 …하다)를 나타내는 문장은?", opts:["He studied hard so that he could pass.","It was so hot that we couldn't sleep.","She left early so that she wouldn't be late.","I wrote it down so that I wouldn't forget."], a:1, eng:true, exp:"so 바로 뒤에 형용사(hot)가 있으므로 <b>결과</b>입니다. 나머지는 so 바로 뒤에 that이 오는 <b>목적</b>입니다."},
   {type:"n", tag:"so~that 결과", sent:"The music was so loud ___ we couldn't talk.", ko:"음악이 너무 시끄러워서 우리는 이야기할 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so that","so as","in order"], a:0, exp:"so + 형용사(loud) + <b>that</b>의 결과 구문입니다."},
-  {type:"n", tag:"so~that 결과", mode:"short", q:"빈칸에 알맞은 말을 쓰세요.<br><span class=\"eng\">She was so tired ___ she fell asleep.</span>", ko:"그녀는 너무 피곤해서 잠들었다.", ans:["that"], exp:"정답은 that입니다."},
+  {type:"n", tag:"so~that 결과", write:true, q:"빈칸에 알맞은 말을 쓰세요.<br><span class=\"eng\">She was so tired ___ she fell asleep.</span>", ko:"그녀는 너무 피곤해서 잠들었다.", ans:"that", exp:"정답은 that입니다."},
   {type:"n", tag:"so~that 결과", sent:"It was so dark ___ we couldn't see anything.", ko:"너무 어두워서 우리는 아무것도 볼 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so that","to","in order that"], a:0, exp:"so + 형용사(dark) + <b>that</b>의 결과 구문입니다."},
   {type:"n", tag:"so~that 결과", q:"다음 중 밑줄 친 so that의 쓰임이 <b>결과</b>인 것은?", opts:["He is **so** kind **that** everyone likes him.","He worked hard **so that** he could succeed.","We saved money **so that** we could travel.","I closed the door **so that** the cat wouldn't escape."], a:0, eng:true, exp:"so 바로 뒤에 형용사(kind)가 있으므로 <b>결과</b>입니다. 나머지는 so 바로 뒤에 바로 that이 오는 목적입니다."},
 
   {type:"a", tag:"so that 목적", sent:"He studies hard so that he ___ pass.", ko:"그는 합격할 수 있도록 열심히 공부한다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["can","so","that","to"], a:0, exp:"so that 뒤에는 <b>조동사</b>가 옵니다."},
   {type:"a", tag:"so that 목적", q:"다음 문장을 to부정사를 이용해 같은 뜻으로 바꾼 것은?<br><span class=\"eng\">He studies hard so that he can pass the exam.</span>", opts:["He studies hard to pass the exam.","He studies hard so pass the exam.","He studies hard for passing the exam.","He studies so hard that pass the exam."], a:0, eng:true, exp:"주어가 같을 때 so that + can은 <b>to + 동사원형</b>으로 간단히 바꿀 수 있습니다."},
   {type:"a", tag:"so that 목적", sent:"I saved money ___ I could buy a laptop.", ko:"나는 노트북을 살 수 있도록 돈을 모았다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","that","so"], a:0, exp:"완전한 문장(I could buy)이 이어지므로 so that이 알맞습니다."},
-  {type:"a", tag:"so that 목적", mode:"short", q:"다음 문장을 to부정사 목적 표현으로 바꿔 빈칸에 쓰세요.<br><span class=\"eng\">She turned off the TV so that she could focus. → She turned off the TV ___ focus.</span>", ko:"그녀는 집중하기 위해 텔레비전을 껐다.", ans:["to focus"], exp:"주어가 같으므로 so that she could는 <b>to</b>로 바꿀 수 있습니다."},
+  {type:"a", tag:"so that 목적", write:true, q:"다음 문장을 to부정사 목적 표현으로 바꿔 빈칸에 쓰세요.<br><span class=\"eng\">She turned off the TV so that she could focus. → She turned off the TV ___ focus.</span>", ko:"그녀는 집중하기 위해 텔레비전을 껐다.", ans:"to focus", exp:"주어가 같으므로 so that she could는 <b>to</b>로 바꿀 수 있습니다."},
   {type:"a", tag:"so that 목적", q:"다음 중 밑줄 친 so that의 쓰임이 <b>목적</b>인 것은?", opts:["He whispered **so that** no one could hear.","She was **so** sad **that** she cried.","The box was **so** heavy **that** I couldn't lift it.","It was **so** dark **that** we stayed home."], a:0, eng:true, exp:"①은 so 바로 뒤에 that이 오는 <b>목적</b>이고, 나머지는 모두 so+형용사+that의 <b>결과</b>입니다."},
   {type:"a", tag:"so that 목적", sent:"We left the porch light on ___ he could find the house.", ko:"그가 집을 찾을 수 있도록 우리는 현관 등을 켜 두었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","that","so"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
   {type:"a", tag:"so that 목적", sent:"He whispered ___ nobody would notice.", ko:"그는 아무도 눈치채지 못하도록 속삭였다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","that","so"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
@@ -419,7 +482,7 @@ var L2 = [
   {type:"v", tag:"구별·전환", q:"다음 두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">He works out every day to stay healthy.<br>= He works out every day ___ he can stay healthy.</span>", opts:["so that","so","such that","in order"], a:0, exp:"주어가 같은 to부정사 목적문은 <b>so that + 주어 + can</b>으로 풀어 쓸 수 있습니다."},
   {type:"v", tag:"구별·전환", q:"다음 문장은 목적/결과 중 무엇인가요?<br><span class=\"eng\">The soup was so hot that I burned my tongue.</span>", opts:["결과","목적","이유","조건"], a:0, eng:true, exp:"so 바로 뒤에 형용사(hot)가 있으므로 결과입니다."},
   {type:"v", tag:"구별·전환", q:"다음 문장은 목적/결과 중 무엇인가요?<br><span class=\"eng\">He studied all night so that he wouldn't fail.</span>", opts:["목적","결과","이유","조건"], a:0, eng:true, exp:"so 바로 뒤에 that이 오므로 목적입니다."},
-  {type:"v", tag:"구별·전환", mode:"short", q:"다음 문장이 목적인지 결과인지 한 단어로 쓰세요.(목적 또는 결과)<br><span class=\"eng\">It was so windy that the tree fell down.</span>", ans:["결과"], exp:"so 바로 뒤에 형용사(windy)가 있으므로 결과입니다."},
+  {type:"v", tag:"구별·전환", write:true, q:"다음 문장이 목적인지 결과인지 한 단어로 쓰세요.(목적 또는 결과)<br><span class=\"eng\">It was so windy that the tree fell down.</span>", ans:"결과", exp:"so 바로 뒤에 형용사(windy)가 있으므로 결과입니다."},
   {type:"v", tag:"구별·전환", q:"다음 중 어법상 <b>틀린</b> 문장은?", opts:["It was so cold that we stayed home.","He ran so that he could catch the bus.","It was so that cold we stayed home.","She studied hard so that she could pass."], a:2, eng:true, exp:"so 뒤에 형용사가 오려면 that이 형용사 <b>뒤</b>에 와야 합니다. so that cold(✕) → so cold that(○)"},
   {type:"v", tag:"구별·전환", q:"so 바로 뒤에 오는 말로 문장의 종류를 알 수 있습니다. 알맞게 짝지은 것은?<br>① so + 형용사 + that&nbsp;&nbsp;② so that (형용사 없이 바로)", opts:["①결과 - ②목적","①목적 - ②결과","①과 ② 모두 결과","①과 ② 모두 목적"], a:0, exp:"so 바로 뒤에 <b>형용사/부사</b>가 있으면 결과, so 바로 뒤에 <b>that</b>이 바로 오면 목적입니다."}
 ];
@@ -430,14 +493,14 @@ var L3 = [
   {type:"n", tag:"기출", q:"다음 문장을 in order to를 이용해 바꾼 것으로 알맞은 것은?<br><span class=\"eng\">He exercises every day to stay fit.</span>", opts:["He exercises every day in order to stay fit.","He exercises every day in order that stay fit.","He exercises every day in order stay fit.","He exercises every day so as stay fit."], a:0, eng:true, exp:"to부정사 목적은 <b>in order to + 동사원형</b>으로 바꿀 수 있습니다."},
   {type:"n", tag:"기출", sent:"She spoke clearly ___ everyone could understand.", ko:"모두가 이해할 수 있도록 그녀는 또렷이 말했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
   {type:"n", tag:"기출", q:"다음 문장에서 so as to가 알맞게 쓰인 것은?", opts:["He left early so as to catch the train.","He left early so as catch the train.","He left early so as to catching the train.","He left early so as that catch the train."], a:0, eng:true, exp:"<b>so as to + 동사원형</b>은 in order to와 같은 뜻의 목적 표현입니다."},
-  {type:"n", tag:"기출", mode:"short", q:"빈칸에 알맞은 말을 쓰세요.<br><span class=\"eng\">He whispered ___ nobody would hear him.</span>", ko:"그는 아무도 듣지 못하도록 속삭였다.", ans:["so that"], exp:"정답은 so that입니다."},
+  {type:"n", tag:"기출", write:true, q:"빈칸에 알맞은 말을 쓰세요.<br><span class=\"eng\">He whispered ___ nobody would hear him.</span>", ko:"그는 아무도 듣지 못하도록 속삭였다.", ans:"so that", exp:"정답은 so that입니다."},
   {type:"n", tag:"기출", sent:"It was so difficult ___ nobody could solve it.", ko:"너무 어려워서 아무도 풀 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so that","in order that","so as"], a:0, exp:"so + 형용사(difficult) + <b>that</b>의 결과 구문입니다."},
   {type:"n", tag:"기출", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: Why are you saving money?<br>B: I'm saving money ___ buy a new computer.</span>", opts:["to","so that","so","in order that"], a:0, exp:"동사 하나로 목적을 나타낼 때는 to부정사가 알맞습니다."},
   {type:"n", tag:"기출", q:"다음 문장을 우리말로 옳게 옮긴 것은?<br><span class=\"eng\">He studied hard in order to pass the exam.</span>", opts:["그는 시험에 합격하기 위해 열심히 공부했다.","그는 너무 열심히 공부해서 시험에 합격했다.","그는 시험에 합격했지만 열심히 공부하지 않았다.","그는 시험에 합격할 만큼 충분히 공부했다."], a:0, eng:true, exp:"in order to는 <b>목적</b>(~하기 위해)을 나타냅니다."},
   {type:"n", tag:"기출", sent:"We hurried ___ we wouldn't miss the train.", ko:"우리는 기차를 놓치지 않도록 서둘렀다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
   {type:"n", tag:"기출", q:"다음 중 밑줄 친 부분과 바꿔 쓸 수 있는 것은?<br><span class=\"eng\">He got up early **so that** he could catch the bus.</span>", opts:["in order that he could catch the bus","in order to could catch the bus","so as could catch the bus","that he could catch the bus"], a:0, eng:true, exp:"<b>in order that + 주어 + 조동사</b>는 so that과 같은 뜻의 격식체 표현입니다."},
   {type:"n", tag:"기출", sent:"She practiced every day ___ she could win the contest.", ko:"그녀는 대회에서 이길 수 있도록 매일 연습했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
-  {type:"n", tag:"기출", mode:"short", q:"빈칸에 목적을 나타내는 말을 쓰세요.<br><span class=\"eng\">He exercises every day ___ stay healthy.</span>", ko:"그는 건강을 유지하기 위해 매일 운동한다.", ans:["to stay"], exp:"정답은 to stay입니다."},
+  {type:"n", tag:"기출", write:true, q:"빈칸에 목적을 나타내는 말을 쓰세요.<br><span class=\"eng\">He exercises every day ___ stay healthy.</span>", ko:"그는 건강을 유지하기 위해 매일 운동한다.", ans:"to stay", exp:"정답은 to stay입니다."},
   {type:"n", tag:"기출", q:"다음 두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She locked the door so that no one could enter.<br>= She locked the door ___ ___ prevent anyone from entering.</span>", opts:["in order to","so that to","in order that","so as that"], a:0, exp:"주어가 같으므로 <b>in order to + 동사원형</b>으로 바꿀 수 있습니다."},
   {type:"n", tag:"기출", sent:"He wore gloves ___ keep his hands warm.", ko:"그는 손을 따뜻하게 유지하기 위해 장갑을 꼈다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["to","so that","in order that","so"], a:0, exp:"동사 하나로 목적을 나타낼 때는 to부정사가 알맞습니다."},
   {type:"n", tag:"기출", q:"다음 대화에서 어법상 알맞은 것을 고르세요.<br><span class=\"eng\">A: Why do you wake up so early?<br>B: I wake up early ___ I can exercise before school.</span>", opts:["so that","so as","in order","so"], a:0, eng:true, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
@@ -454,12 +517,12 @@ var L4 = [
   {type:"n", tag:"기본", sent:"He locked the door ___ no one could get in.", ko:"아무도 들어올 수 없도록 그는 문을 잠갔다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
   {type:"n", tag:"기본", q:"다음 문장을 to부정사로 바꾼 것으로 알맞은 것은?<br><span class=\"eng\">She turned down the music so that she could hear the phone.</span>", opts:["She turned down the music to hear the phone.","She turned down the music for hear the phone.","She turned down the music so hear the phone.","She turned down the music hearing the phone."], a:0, eng:true, exp:"주어가 같으므로 so that she could는 <b>to + 동사원형</b>으로 바꿀 수 있습니다."},
   {type:"n", tag:"기본", sent:"He studied every night ___ he wouldn't fall behind.", ko:"그는 뒤처지지 않도록 매일 밤 공부했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
-  {type:"n", tag:"기본", mode:"short", q:"빈칸에 알맞은 말을 쓰세요.<br><span class=\"eng\">She closed the window ___ the cold air wouldn't come in.</span>", ko:"그녀는 찬 공기가 들어오지 않도록 창문을 닫았다.", ans:["so that"], exp:"정답은 so that입니다."},
+  {type:"n", tag:"기본", write:true, q:"빈칸에 알맞은 말을 쓰세요.<br><span class=\"eng\">She closed the window ___ the cold air wouldn't come in.</span>", ko:"그녀는 찬 공기가 들어오지 않도록 창문을 닫았다.", ans:"so that", exp:"정답은 so that입니다."},
   {type:"n", tag:"기본", q:"다음 문장의 의미로 알맞은 것은?<br><span class=\"eng\">It was so quiet that I could hear my own heartbeat.</span>", opts:["너무 조용해서 내 심장 소리가 들릴 정도였다.","조용히 하려고 나는 심장 소리를 들었다.","나는 심장 소리를 듣기 위해 조용히 했다.","너무 시끄러워서 심장 소리를 들을 수 없었다."], a:0, eng:true, exp:"so + 형용사(quiet) + that은 <b>결과</b>를 나타냅니다."},
   {type:"n", tag:"기본", sent:"He wrote the address down ___ he wouldn't get lost.", ko:"길을 잃지 않도록 그는 주소를 적어 두었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
   {type:"n", tag:"기본", q:"다음 문장을 so as to로 바꾼 것으로 알맞은 것은?<br><span class=\"eng\">She got up early to catch the first bus.</span>", opts:["She got up early so as to catch the first bus.","She got up early so as catching the first bus.","She got up early so as catch the first bus.","She got up early so as to catching the first bus."], a:0, eng:true, exp:"<b>so as to + 동사원형</b>은 to부정사 목적과 같은 뜻입니다."},
   {type:"n", tag:"기본", sent:"We packed light ___ we could move quickly.", ko:"우리는 빨리 움직일 수 있도록 짐을 가볍게 쌌다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
-  {type:"n", tag:"기본", mode:"short", q:"빈칸에 목적을 나타내는 말을 쓰세요.<br><span class=\"eng\">He raised his hand ___ ask a question.</span>", ko:"그는 질문하기 위해 손을 들었다.", ans:["to ask"], exp:"정답은 to ask입니다."},
+  {type:"n", tag:"기본", write:true, q:"빈칸에 목적을 나타내는 말을 쓰세요.<br><span class=\"eng\">He raised his hand ___ ask a question.</span>", ko:"그는 질문하기 위해 손을 들었다.", ans:"to ask", exp:"정답은 to ask입니다."},
   {type:"n", tag:"기본", sent:"The teacher spoke loudly ___ everyone in the back could hear.", ko:"뒤에 있는 모두가 들을 수 있도록 선생님은 크게 말씀하셨다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
 
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 두 문장의 뜻 차이를 바르게 설명한 것은?<br><span class=\"eng\">① He ran fast so that he could catch the train.<br>② He ran so fast that he caught the train.</span>", opts:["①목적(탈 수 있도록) - ②결과(실제로 탔다)","①과 ②는 같은 뜻이다","①결과 - ②목적","①과 ② 모두 결과이다"], a:0, exp:"①은 so 바로 뒤에 that(목적), ②는 so+부사(fast)+that(결과)로 <b>실제로 일어난 일</b>을 나타냅니다."},
@@ -467,7 +530,7 @@ var L4 = [
   {type:"a", tag:"함정·고난도", hard:true, sent:"He is such a fast runner ___ no one can beat him.", ko:"그는 너무 빨리 달려서 아무도 그를 이길 수 없다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so that","in order that","so as"], a:0, exp:"such + a + 명사 + <b>that</b>도 결과를 나타냅니다. that만 필요합니다."},
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 문장에서 밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He worked hard so that <u>succeed</u>.</span>", opts:["so that he could succeed","so that succeeding","so as succeed","in order succeed"], a:0, eng:true, exp:"so that 뒤에는 반드시 <b>주어 + 조동사 + 동사원형</b>이 와야 합니다."},
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: Why did you whisper?<br>B: I whispered ___ I wouldn't wake the baby.</span>", opts:["so that","so","to","that"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."},
-  {type:"a", tag:"함정·고난도", hard:true, mode:"short", q:"빈칸에 알맞은 접속사를 쓰세요.<br><span class=\"eng\">She practiced hard ___ she could win first place.</span>", ko:"그녀는 1등을 할 수 있도록 열심히 연습했다.", ans:["so that"], exp:"정답은 so that입니다."},
+  {type:"a", tag:"함정·고난도", hard:true, write:true, q:"빈칸에 알맞은 접속사를 쓰세요.<br><span class=\"eng\">She practiced hard ___ she could win first place.</span>", ko:"그녀는 1등을 할 수 있도록 열심히 연습했다.", ans:"so that", exp:"정답은 so that입니다."},
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 중 결과(너무 ~해서)를 나타내는 문장은?", opts:["It was so late that we had to go home.","We left early so that we wouldn't be late.","He whispered so that no one would hear.","She saved money so that she could travel."], a:0, eng:true, exp:"so 바로 뒤에 형용사(late)가 오면 <b>결과</b>입니다."},
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">He spoke so as not to offend anyone.</span>", opts:["그는 누구도 기분 상하지 않게 하려고 말했다.","그는 너무 무례하게 말해서 아무도 기분 좋지 않았다.","그는 누군가의 기분을 상하게 하려고 말했다.","그는 아무 말도 하지 않았다."], a:0, eng:true, exp:"<b>so as not to</b>는 ‘~하지 않으려고’라는 목적의 부정입니다."},
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 중 어법상 <b>알맞은</b> 문장은?", opts:["He ran fast so as catch the bus.","He ran fast so as to catch the bus.","He ran fast in order catch the bus.","He ran fast so that catch the bus."], a:1, eng:true, exp:"so as 뒤에는 반드시 <b>to + 동사원형</b>이 옵니다."},
@@ -475,94 +538,13 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 목적 표현 기초", desc:"to부정사 목적 10 · so that 목적 10 · 쉬움", qs:L1, typeLabels:{n:"to부정사 목적",a:"so that 목적"}},
+  1:{name:"기본1 · 목적과 결과", desc:"한글로 이해 10 · 쉬운 영어 10 · ~하려고와 너무 ~해서 · to부정사 목적 · so that 목적 · 쉬운 영어 문장 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 목적 vs 결과", desc:"so~that 결과 · so that 목적 구별 · 섞어서 20문제", qs:L2, typeLabels:{n:"so~that 결과",a:"so that 목적",v:"구별·전환"}},
   3:{name:"기본3 · 기출문제", desc:"중2 기출 유형 16 · 고난도 4 · in order that·so as to", qs:L3, typeLabels:{n:"기출",a:"고난도"}},
   4:{name:"기본4 · 심화", desc:"중등 전학년 아우름 · 함정·고난도 다수", qs:L4, typeLabels:{n:"기본",a:"함정·고난도"}}
 };
 
 /* ===================== 상태 ===================== */
-var RKEY="kkumettang_sothatpurpose_v1", NKEY="kkumettang_name";
-var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
-       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
-       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
-       active:0,resume:"quiz",finished:{}};
-
-function $(id){return document.getElementById(id);}
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
-function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
-function normAns(s){ return String(s||"").toLowerCase().trim().replace(/[.,!?~'"]+$/,"").replace(/\s+/g," "); }
-
-function fmt(s,c){
-  if(!s) return "";
-  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
-                  .replace(/___/g,'<span class="blank"></span>');
-}
-function fmtFull(s){
-  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
-}
-
-/* ===================== 화면 전환 ===================== */
-var SCREENS=["start","learn","quiz","result","rank"];
-function show(id){
-  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
-  window.scrollTo({top:0,behavior:"instant"});
-}
-
-/* ===================== 시작 화면 ===================== */
-function best(level){
-  var r=loadR();
-  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
-  return null;
-}
-function drawRail(){
-  [1,2,3,4].forEach(function(k){
-    var b=best(k);
-    $("f"+k).style.width=(b==null?0:b)+"%";
-    $("p"+k).textContent=(b==null?"":" "+b);
-  });
-}
-function drawLevels(){
-  var h="";
-  [1,2,3,4].forEach(function(k){
-    var L=LEVELS[k], b=best(k);
-    var locked = S.active && S.active!==k;
-    var here = S.active===k;
-    var right;
-    if(locked) right='<span class="best lock">잠김</span>';
-    else if(here) right='<span class="best go">이어서 풀기</span>';
-    else if(b==null) right='<span class="best"><em>미도전</em></span>';
-    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
-    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
-        '<span class="rank">'+k+'</span>'+
-        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
-        '<span class="desc">'+esc(L.desc)+'</span></span>'+
-        right+
-      '</button>';
-  });
-  if(S.active) h+='<p class="lockmsg">'+S.active+'단계를 진행 중입니다. 이 단계를 오답까지 모두 마무리해야 다른 단계를 고를 수 있습니다.</p>';
-  $("levelPick").innerHTML=h;
-  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
-    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
-  });
-}
-function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
-
-function pickLevel(k){
-  var nm=($("nameIn").value||"").trim();
-  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
-  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
-  if(S.active && S.active!==k) return;
-  if(S.active===k){
-    if(S.resume==="learn") renderLearn();
-    else if(S.resume==="result") show("result");
-    else renderQ();
-    return;
-  }
-  S.level=k;
-  renderLearn();
-}
 
 /* ===================== 개념 화면 ===================== */
 function figFan(){
@@ -597,6 +579,7 @@ function learn1(){
     '<div class="ex">He got up early <u class="hl a">so that</u> he could catch the train.<span class="k">so that 뒤에는 주어+조동사(can/could/will/would)가 옵니다.</span></div>'+
     '<p>주어가 다르거나, 조동사의 뜻(can/will 등)을 분명히 밝히고 싶을 때 씁니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">He got up early <u class="hl a">to</u> catch the train.<span class="k">기차를 타려고 — 목적</span></div><div class="ex">Turn on the light <u class="hl a">so that</u> we can see.<span class="k">볼 수 있도록 — 목적</span></div></div>'+
   '<div class="tip"><span class="h">시제 일치</span>주절이 현재면 <b>can/will</b>, 주절이 과거면 <b>could/would</b>를 씁니다.</div>';
 }
 
@@ -656,11 +639,114 @@ function learn4(){
   '<div class="tip"><span class="h">총정리</span>목적(~하기 위해) = to V · so that + can/could · in order to·that · so as to. 결과(너무 ~해서) = so/such ~ that.</div>';
 }
 
+var LVCHEER = {
+  1:"목적과 결과를 가려내는 눈이 생겼어요. 2단계에서는 둘을 섞어 봅니다.",
+  2:"so that 목적과 so~that 결과를 구별했습니다. 3단계는 기출 문제입니다.",
+  3:"in order to와 so as to까지 해냈어요. 마지막 단계만 남았습니다.",
+  4:"목적 표현을 전 학년 수준으로 끝냈습니다. 정말 멋집니다!"
+};
+
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
   $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
   show("learn");
 }
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_sothatpurpose_v2", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
 
 /* ===================== 문제 ===================== */
 function startQuiz(){
@@ -687,35 +773,42 @@ function renderQ(){
   var h="";
   h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
-  else if(q.sent){
-    h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
-    if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
-  }
-  if(q.mode==="short"){
-    if(q.ko && !q.sent) h+='<p class="ko">'+esc(q.ko)+'</p>';
-    h+='<div class="shortrow" id="shortRow"><input type="text" id="shortIn" autocomplete="off" placeholder="영어로 입력하세요"><button class="btn" id="shortSubmit">확인</button></div>'+
-       '<p class="shorthint">직접 타이핑해서 답을 입력한 뒤 확인 버튼(또는 Enter)을 누르세요.</p>';
-  } else {
-    h+='<div class="opts">';
-    q.opts.forEach(function(o,i){
-      var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
-      h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(i+1)+'</span>'+
-         '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
-    });
-    h+='</div>';
-  }
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
   $("qbody").innerHTML=h;
   $("qexp").innerHTML="";
   saveProg();
   S.answered=false;S.picked=-1;
 
-  if(q.mode==="short"){
-    $("shortSubmit").addEventListener("click",submitShort);
-    $("shortIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); submitShort(); } });
-  } else {
-    Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
-      b.addEventListener("click",function(){ answer(+this.dataset.i); });
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
     });
+  });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
   }
   show("quiz");
 }
@@ -724,23 +817,20 @@ function buildFull(q){
   if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
   if(!q.sent) return null;
   if(q.sent.indexOf("___")>=0){
-    var fillWord = q.mode==="short" ? q.ans[0] : q.opts[q.a];
-    if(/[A-Za-z]/.test(fillWord))
-      return {en:q.sent.replace("___",'<span class="hl">'+fillWord+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
   }
   return {en:fmtFull(q.sent), kr:q.ko||""};
 }
 
-function answerText(q){
-  if(q.mode==="short") return esc(q.ans[0]);
-  return (q.a+1)+"번 · "+fmt(q.opts[q.a]);
-}
-
 function answer(pick){
   if(S.answered) return;
   var q=curQ(), ok=(pick===q.a);
-  S.picked=pick;
+  S.answered=true;S.picked=pick;
 
   var btns=$("qbody").querySelectorAll(".opt");
   Array.prototype.forEach.call(btns,function(b,i){
@@ -748,23 +838,46 @@ function answer(pick){
     if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
     if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
   });
-  showExplanation(ok);
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
 }
 
-function submitShort(){
+function answerMulti(){
   if(S.answered) return;
   var q=curQ();
-  var typed=($("shortIn").value||"");
-  var ok=q.ans.some(function(a){ return normAns(a)===normAns(typed); });
-  $("shortIn").disabled=true; $("shortSubmit").disabled=true;
-  $("shortRow").classList.add(ok?"pick-ok":"pick-no");
-  showExplanation(ok);
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
 }
 
-function showExplanation(ok){
-  var q=curQ();
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
   S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
 
+function finishAnswer(q, ok, ansHtml){
   if(S.round===1){
     if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
     if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
@@ -774,8 +887,7 @@ function showExplanation(ok){
 
   var f=buildFull(q), last=(S.i+1>=S.list.length);
   var h='<div class="exp">'+
-    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+
-      (ok?"":'<span class="ans">정답 '+answerText(q)+'</span>')+'</div>'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
     (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
         (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
     '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
@@ -797,20 +909,16 @@ function next(){
 document.addEventListener("keydown",function(e){
   if($("quiz").classList.contains("hide")) return;
   if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
-  var q=curQ();
-  if(!S.answered&&q.opts){
-    var n=parseInt(e.key,10);
-    if(n>=1&&n<=q.opts.length){ e.preventDefault(); answer(n-1); }
-  }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
 });
 
 /* ===================== 결과 ===================== */
 function praise(p){
-  if(p===100) return ["영어 지존이에요!","이 단계는 완벽합니다. 다음 단계로 가 볼까요?"];
-  if(p>=90) return ["아주 훌륭해요!","몇 문제만 다시 보면 완벽합니다."];
-  if(p>=75) return ["잘했어요!","틀린 문제의 해설을 꼼꼼히 읽어 보세요."];
-  if(p>=60) return ["조금만 더 노력해요","개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
-  return ["천천히 다시 해봐요","개념부터 다시 보면 금방 오릅니다. 포기하지 마세요."];
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
 }
 
 function openPraise(score,total,correct,wrong){
@@ -854,9 +962,10 @@ function renderResult(){
   $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
   $("rbreak").innerHTML=bd;
 
+  var isAdmin = (S.name==="꾸메땅");
   var r=loadR(), hadScore=null;
   for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
-  if(hadScore===null){
+  if(hadScore===null && !isAdmin){
     var d=new Date();
     r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
     saveR(r);
@@ -871,26 +980,43 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
-      var ansShown = q.mode==="short" ? q.ans[0] : q.opts[q.a].replace(/\*\*/g,"");
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
-         '<div class="a">정답 <b>'+esc(ansShown)+'</b></div></div>';
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
     });
     w+='</div>';
     $("rwrong").innerHTML=w;
   } else $("rwrong").innerHTML="";
 
   if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
   $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
   var rb=$("retryBtn");
   if(rb) rb.addEventListener("click",function(){
     S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
   });
   wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
   show("result");
   openPraise(S.score, total, S.correct, S.wrong.length);
 }
 
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
 function actionsHTML(remain, retryLabel){
   var ac="";
   if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
@@ -904,6 +1030,14 @@ function wireActions(){
   if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
   $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
   $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
 }
 
 function renderRetryResult(){
@@ -922,6 +1056,7 @@ function renderRetryResult(){
   $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
     '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
   $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
   var ac="";
   if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
   ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
@@ -933,6 +1068,10 @@ function renderRetryResult(){
   });
   $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
   $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
   show("result");
   document.querySelector("#result .of").textContent="/ "+done+"문제";
 }
@@ -1031,7 +1170,7 @@ function loadProg(){
     var p = JSON.parse(localStorage.getItem(PKEY) || "null");
     if(!p || !p.list || !p.list.length) return null;
     if(p.i >= p.list.length) return null;
-    if(Date.now() - (p.t || 0) > 1209600000) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
     return p;
   }catch(e){ return null; }
 }
@@ -1062,8 +1201,8 @@ function progBanner(){
   $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
 }
 
-
 refreshStart();
+
 </script>
 <script src="/kkt.js"></script>
 </body></html>

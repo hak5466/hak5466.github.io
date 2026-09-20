@@ -1,4 +1,12 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
 <title>꾸메땅 영문법 GAME · 감탄사 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,13 +292,15 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-6 · 감탄사 뽀개기</span></h1>
-    <p class="sub">감탄사 완전정복 40문제 · 두 단계 각 20문제 / 1단계는 한글로 개념을 잡고, 2단계는 쉬운 영어 낱말로 익힙니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · 감탄사 뽀개기</span></h1>
+    <p class="sub">Wow · Ouch · Oops · 감탄문 What·How · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
     <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
     <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
   </div>
 
   <!-- 시작 -->
@@ -357,6 +367,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
       <button class="tab on" data-t="all">종합</button>
       <button class="tab" data-t="1">1단계</button>
       <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
     </div>
     <div id="rankBody"></div>
     <div class="actions">
@@ -380,91 +392,91 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
-
-/* ---------- LEVEL 1 : 한글로 개념 잡기 20 (개념 7 · 모두 고르기 6 · 구별 7) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"놀람·기쁨·아픔 같은 <b>느낌</b>을 나타내는 말을 무엇이라고 할까요?",
+  {type:"n", tag:"한글로 이해", q:"놀람·기쁨·아픔 같은 <b>느낌</b>을 나타내는 말을 무엇이라고 할까요?",
    opts:["감탄사","접속사","명사","동사","형용사"], a:0,
    exp:"느낌이 그대로 터져 나오는 말이 <b>감탄사</b>입니다. ‘아!’, ‘와!’, ‘앗!’이 모두 감탄사입니다."},
 
-  {type:"n", tag:"개념", sent:"와, 정말 예쁘다!", q:"밑줄 칠 감탄사는 무엇인가요?",
+  {type:"n", tag:"한글로 이해", sent:"와, 정말 예쁘다!", q:"밑줄 칠 감탄사는 무엇인가요?",
    opts:["와","정말","예쁘다","쉼표","느낌표"], a:0,
    exp:"<b>와</b>가 감탄사입니다. ‘정말’은 꾸미는 말, ‘예쁘다’는 형용사입니다."},
 
-  {type:"n", tag:"개념", q:"감탄사의 자리로 알맞은 것은?",
+  {type:"n", tag:"한글로 이해", q:"감탄사의 자리로 알맞은 것은?",
    opts:["보통 문장 맨 앞에 따로 떨어져 나온다","반드시 문장 가운데에 온다","주어 자리에만 온다","동사 뒤에만 온다","문장 끝에만 온다"], a:0,
    exp:"감탄사는 보통 <b>문장 맨 앞</b>에 오고, 뒤에 쉼표나 느낌표를 붙입니다. 아, 미안해요!"},
 
-  {type:"n", tag:"개념", sent:"아, 배고프다.", q:"‘아’를 빼면 어떻게 될까요?",
+  {type:"n", tag:"한글로 이해", sent:"아, 배고프다.", q:"‘아’를 빼면 어떻게 될까요?",
    opts:["느낌만 빠지고 문장은 그대로 말이 된다","문장이 아예 말이 되지 않는다","뜻이 반대가 된다","주어가 사라진다","동사가 사라진다"], a:0,
    exp:"감탄사는 문장 짜임에 <b>끼어들지 않습니다.</b> 빼도 문장은 멀쩡하고, 느낌만 사라집니다."},
 
-  {type:"n", tag:"개념", q:"감탄사 뒤에 자주 오는 문장 부호끼리 바르게 묶은 것은?",
+  {type:"n", tag:"한글로 이해", q:"감탄사 뒤에 자주 오는 문장 부호끼리 바르게 묶은 것은?",
    opts:["쉼표( , )와 느낌표( ! )","마침표만","물음표만","따옴표만","아무 부호도 오지 않는다"], a:0,
    exp:"아<b>,</b> 미안해요. / 와<b>!</b> 처럼 쉼표나 느낌표를 씁니다."},
 
-  {type:"n", tag:"개념", q:"다음 중 감탄사에 대한 설명으로 <b>맞는</b> 것은?",
-   opts:["짧은 한마디만으로도 뜻이 통한다","반드시 다른 말과 함께 써야 한다","사람이나 물건의 이름을 나타낸다","앞뒤를 이어 주는 일을 한다","명사를 꾸며 준다"], a:0,
-   exp:"‘앗!’ 한마디만 해도 놀랐다는 것이 전해집니다. 이어 주는 일은 접속사, 꾸미는 일은 형용사가 합니다."},
-
-  {type:"n", tag:"개념", sent:"앗! 뜨거워.", q:"‘앗’이 나타내는 느낌으로 알맞은 것은?",
+  {type:"n", tag:"한글로 이해", sent:"앗! 뜨거워.", q:"‘앗’이 나타내는 느낌으로 알맞은 것은?",
    opts:["놀람이나 갑작스러움","기쁨","고마움","슬픔","반가움"], a:0,
    exp:"갑자기 놀랐을 때 나오는 말입니다. 기쁠 때는 ‘와!’, 아플 때는 ‘아야!’를 씁니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>감탄사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>감탄사</b>를 모두 고르세요. (여러 개)",
    opts:["와","앗","어머","학교","달린다"], ans:[0,1,2],
    exp:"와 · 앗 · 어머가 감탄사입니다. ‘학교’는 명사, ‘달린다’는 동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>놀랐을 때</b> 쓰는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>놀랐을 때</b> 쓰는 말을 모두 고르세요. (여러 개)",
    opts:["앗","어머","헉","고마워","잘 가"], ans:[0,1,2],
    exp:"앗 · 어머 · 헉은 놀람을 나타냅니다. ‘고마워’와 ‘잘 가’는 인사말입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>기쁠 때</b> 쓰는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>기쁠 때</b> 쓰는 말을 모두 고르세요. (여러 개)",
    opts:["와","야호","만세","아야","어이쿠"], ans:[0,1,2],
    exp:"와 · 야호 · 만세는 기쁨을, 아야와 어이쿠는 아픔이나 실수를 나타냅니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>아프거나 실수했을 때</b> 쓰는 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>아프거나 실수했을 때</b> 쓰는 말을 모두 고르세요. (여러 개)",
    opts:["아야","아이쿠","이런","야호","만세"], ans:[0,1,2],
    exp:"아야 · 아이쿠 · 이런은 아픔이나 난처함을 나타냅니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"감탄사에 대한 설명으로 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
-   opts:["느낌을 그대로 나타낸다","보통 문장 앞에 온다","빼도 문장은 말이 된다","주어 노릇을 한다","명사를 꾸며 준다"], ans:[0,1,2],
-   exp:"감탄사는 문장 짜임 밖에 있는 말이라 주어도 되지 않고, 꾸미지도 않습니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>부를 때</b> 쓰는 말을 모두 고르세요. (여러 개)",
-   opts:["야","저기요","이봐","아야","야호"], ans:[0,1,2],
-   exp:"누군가를 부르는 말도 감탄사에 넣습니다. 아야는 아픔, 야호는 기쁨입니다."},
-
-  {type:"v", tag:"구별", sent:"___ , 정말 멋지다!", q:"빈칸에 알맞은 감탄사는?",
+  {type:"n", tag:"한글로 이해", sent:"___ , 정말 멋지다!", q:"빈칸에 알맞은 감탄사는?",
    opts:["와","아야","이런","저기요","글쎄"], a:0,
    exp:"멋진 것을 보고 감탄하는 자리이므로 <b>와</b>입니다."},
 
-  {type:"v", tag:"구별", sent:"___ ! 손을 데었어.", q:"빈칸에 알맞은 감탄사는?",
+  {type:"n", tag:"한글로 이해", sent:"___ ! 손을 데었어.", q:"빈칸에 알맞은 감탄사는?",
    opts:["아야","야호","만세","반가워","글쎄"], a:0,
    exp:"아플 때 나오는 말은 <b>아야</b>입니다."},
 
-  {type:"v", tag:"구별", sent:"___ , 컵을 깨뜨렸네.", q:"빈칸에 알맞은 감탄사는?",
-   opts:["이런","야호","만세","와","그래서"], a:0,
-   exp:"실수했을 때 나오는 말은 <b>이런</b>입니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>와!</b>’를 영어로 하면?",
+   opts:["Wow!","Ouch!","Oops!","Hey!","Bye!"], a:0, eng:true,
+   exp:"놀라거나 감탄할 때 <b>Wow!</b>"},
 
-  {type:"v", tag:"구별", sent:"___ ! 우리가 이겼다!", q:"빈칸에 알맞은 감탄사는?",
-   opts:["만세","아야","어이쿠","죄송해요","그러나"], a:0,
-   exp:"크게 기쁠 때 <b>만세</b>를 외칩니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>아야!</b>’를 영어로 하면?",
+   opts:["Ouch!","Wow!","Hurray!","Hello!","Well,"], a:0, eng:true,
+   exp:"아플 때 <b>Ouch!</b>"},
 
-  {type:"v", tag:"구별", q:"다음 중 감탄사가 <b>들어 있지 않은</b> 문장은?",
-   opts:["나는 학교에 간다.","와, 눈이 온다!","앗, 미안해요.","어머, 벌써 왔네.","야호, 방학이다!"], a:0,
-   exp:"첫 문장에는 느낌을 나타내는 말이 없습니다. 나머지에는 와 · 앗 · 어머 · 야호가 들어 있습니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>이런!</b>’(작은 실수를 했을 때)을 영어로 하면?",
+   opts:["Oops!","Wow!","Hurray!","Hi!","Yay!"], a:0, eng:true,
+   exp:"작은 실수를 했을 때 <b>Oops!</b>"},
 
-  {type:"v", tag:"구별", q:"밑줄 친 말이 <b>감탄사가 아닌</b> 것은?",
-   opts:["나는 **정말** 기쁘다.","**와**, 예쁘다!","**앗**, 뜨거워!","**어머**, 놀라라.","**야호**, 신난다!"], a:0,
-   exp:"‘정말’은 뒤의 말을 꾸며 주는 부사입니다. 감탄사는 문장 앞에 따로 떨어져 나옵니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>만세!</b>’를 영어로 하면?",
+   opts:["Hurray!","Ouch!","Oops!","Oh no!","Shh!"], a:0, eng:true,
+   exp:"기뻐서 외칠 때 <b>Hurray!</b>"},
 
-  {type:"v", tag:"구별", hard:true, q:"감탄사를 <b>잘못</b> 쓴 문장은?",
-   opts:["나는 와 학교에 간다.","와, 학교에 간다!","아야, 다쳤어.","이런, 늦었네.","야호, 끝났다!"], a:0,
-   exp:"감탄사는 문장 <b>가운데</b>에 끼어들지 않습니다. 앞에 놓고 쉼표를 붙여 ‘와, 나는 학교에 간다.’로 써야 자연스럽습니다."}
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>감탄사</b>를 모두 고르세요. (여러 개)",
+   opts:["Wow","Ouch","Oops","desk","run"], ans:[0,1,2],
+   exp:"Wow · Ouch · Oops는 느낌을 나타내는 감탄사입니다. desk는 명사, run은 동사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>Wow!</b>가 알맞은 때는?",
+   opts:["멋진 선물을 받았을 때","발가락을 찧었을 때","컵을 떨어뜨렸을 때","조용히 하라고 할 때","잠깐 생각할 때"], a:0,
+   exp:"Wow!는 놀라움이나 감탄을 나타냅니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>Ouch!</b>가 알맞은 때는?",
+   opts:["넘어져서 무릎이 아플 때","시험에 합격했을 때","맛있는 것을 먹을 때","친구를 부를 때","인사할 때"], a:0,
+   exp:"Ouch!는 <b>아픔</b>을 나타냅니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>Hey!</b>가 알맞은 때는?",
+   opts:["멀리 있는 친구를 부를 때","아플 때","실수했을 때","슬플 때","배부를 때"], a:0,
+   exp:"Hey!는 누군가를 <b>부를 때</b> 씁니다."}
 ];
 
 /* ---------- LEVEL 2 : 쉬운 영어로 20 (뜻 7 · 모두 고르기 6 · 문장 채우기 7) ---------- */
@@ -556,9 +568,189 @@ var L2 = [
    exp:"감탄사는 문장 가운데에 들어가지 않습니다. <b>Oops, he is late.</b> 처럼 앞에 놓습니다."}
 ];
 
+/* ---------- LEVEL 3 : 감탄문 학교 시험형 20 (What 감탄문 7 · How 감탄문 6 · 시험형 7) ---------- */
+var L3 = [
+  {type:"n", tag:"What 감탄문", sent:"___ a nice day it is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","How","Who","When","Why"], a:0, eng:true,
+   ko:"정말 좋은 날이구나!",
+   exp:"뒤에 <b>a + 형용사 + 명사</b>가 오면 What 감탄문입니다."},
+
+  {type:"n", tag:"What 감탄문", sent:"What ___ big dog!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["a","an","the","many","so"], a:0, eng:true,
+   ko:"정말 큰 개구나!",
+   exp:"셀 수 있는 명사 하나 앞에는 <b>a</b>를 씁니다. What a big dog!"},
+
+  {type:"n", tag:"What 감탄문", sent:"What ___ old house!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["an","a","the","how","very"], a:0, eng:true,
+   ko:"정말 오래된 집이구나!",
+   exp:"old는 모음 소리로 시작하므로 <b>an</b>입니다."},
+
+  {type:"n", tag:"What 감탄문", sent:"What beautiful flowers ___ !", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["they are","are they","it is","is it","they is"], a:0, eng:true,
+   ko:"정말 아름다운 꽃들이구나!",
+   exp:"감탄문 끝은 <b>주어 + 동사</b> 차례입니다. flowers(복수) → they are"},
+
+  {type:"n", tag:"What 감탄문", q:"What 감탄문의 차례로 알맞은 것은?",
+   opts:["What + (a/an) + 형용사 + 명사 + 주어 + 동사!","What + 형용사 + 주어 + 동사!","What + 주어 + 동사 + 형용사!","What + 동사 + 주어 + 형용사!","What + 명사 + 동사 + 주어!"], a:0,
+   exp:"What 뒤에는 <b>명사가 들어간 덩어리</b>가 옵니다."},
+
+  {type:"n", tag:"What 감탄문", sent:"___ delicious cookies they are!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","How","What a","How a","So"], a:0, eng:true,
+   ko:"정말 맛있는 쿠키들이구나!",
+   exp:"복수 명사 cookies 앞에는 a를 쓰지 않습니다. <b>What</b> + 형용사 + 복수 명사"},
+
+  {type:"n", tag:"What 감탄문", sent:"What ___ exciting game it was!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["an","a","the","how","so"], a:0, eng:true,
+   ko:"정말 신나는 경기였어!",
+   exp:"exciting은 모음 소리로 시작하므로 <b>an</b>입니다."},
+
+  {type:"a", tag:"How 감탄문", sent:"___ fast he runs!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["How","What","What a","Who","So"], a:0, eng:true,
+   ko:"그는 정말 빨리 달리는구나!",
+   exp:"뒤에 명사 없이 <b>형용사나 부사</b>만 오면 How 감탄문입니다."},
+
+  {type:"a", tag:"How 감탄문", sent:"How ___ the baby is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["cute","a cute","cute baby","a cute baby","the cute"], a:0, eng:true,
+   ko:"그 아기는 정말 귀엽구나!",
+   exp:"How 뒤에는 <b>형용사만</b> 옵니다. How cute"},
+
+  {type:"a", tag:"How 감탄문", q:"How 감탄문의 차례로 알맞은 것은?",
+   opts:["How + 형용사(부사) + 주어 + 동사!","How + a + 형용사 + 명사!","How + 주어 + 동사 + 형용사!","How + 동사 + 주어!","How + 명사 + 형용사!"], a:0,
+   exp:"How 뒤에는 형용사나 부사, 끝에 <b>주어 + 동사</b>입니다."},
+
+  {type:"a", tag:"How 감탄문", sent:"How tall ___ !", q:"‘그는 정말 키가 크구나!’가 되도록 알맞은 것은?",
+   opts:["he is","is he","he","he tall is","is"], a:0, eng:true,
+   ko:"그는 정말 키가 크구나!",
+   exp:"감탄문 끝은 물음처럼 뒤집지 않고 <b>he is</b>입니다."},
+
+  {type:"a", tag:"How 감탄문", sent:"___ smart she is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["How","What","What a","Very","So a"], a:0, eng:true,
+   ko:"그녀는 정말 똑똑하구나!",
+   exp:"형용사 smart만 있으므로 <b>How</b>입니다."},
+
+  {type:"a", tag:"How 감탄문", multi:true, eng:true, q:"어법상 <b>옳은</b> 감탄문을 모두 고르세요. (여러 개)",
+   opts:["What a tall boy he is!","How tall the boy is!","What pretty dolls they are!","How a tall boy he is!","What tall the boy is!"], ans:[0,1,2],
+   exp:"명사가 있으면 What, 형용사만 있으면 How입니다."},
+
+  {type:"v", tag:"시험형", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">He is a very kind boy.<br>= What ___ he is!</span>",
+   opts:["a kind boy","kind a boy","a boy kind","kind boy","an kind boy"], a:0, eng:true,
+   exp:"What + <b>a + 형용사 + 명사</b> + 주어 + 동사. very는 빠집니다."},
+
+  {type:"v", tag:"시험형", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The movie is very interesting.<br>= How ___ the movie is!</span>",
+   opts:["interesting","an interesting","interesting movie","interestingly","the interesting"], a:0, eng:true,
+   exp:"How + <b>형용사</b> + 주어 + 동사."},
+
+  {type:"v", tag:"시험형", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**How** a wonderful day it is!</span>",
+   opts:["What","Who","So","Very","That"], a:0, eng:true,
+   exp:"뒤에 a wonderful day(명사)가 있으므로 <b>What</b>입니다."},
+
+  {type:"v", tag:"시험형", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">What **an** big apple it is!</span>",
+   opts:["a","the","how","so","very"], a:0, eng:true,
+   exp:"big은 자음 소리로 시작하므로 <b>a</b>입니다."},
+
+  {type:"v", tag:"시험형", q:"대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: I got a new bike!<br>B: ___ ! It looks great.</span>",
+   opts:["Wow","Ouch","Oops","Oh no","Well"], a:0, eng:true,
+   exp:"멋진 새 자전거에 감탄하는 <b>Wow</b>입니다."},
+
+  {type:"v", tag:"시험형", hard:true, q:"빈칸에 들어갈 말이 <b>나머지와 다른</b> 것은?",
+   opts:["___ fast the car is!","___ a beautiful song!","___ big eyes you have!","___ an old tree it is!","___ nice shoes!"], a:0, eng:true,
+   exp:"첫째만 명사 없이 형용사만 있어 <b>How</b>입니다. 나머지는 모두 What입니다."},
+
+  {type:"v", tag:"시험형", hard:true, q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘그것은 정말 재미있는 책이구나!’</span>",
+   opts:["What a fun book it is!","How a fun book it is!","What fun a book it is!","What a fun book is it!","How fun book it is!"], a:0, eng:true,
+   exp:"What + a + 형용사 + 명사 + <b>주어 + 동사</b>입니다."}
+];
+
+/* ---------- LEVEL 4 : 전 학년 아우르기 20 (감탄문 바꿔 쓰기 7 · 상황과 대화 6 · 종합 7) ---------- */
+var L4 = [
+  {type:"n", tag:"바꿔 쓰기", q:"감탄문으로 바르게 바꾼 것은?<br><span class=\"eng\">She is a very good singer.</span>",
+   opts:["What a good singer she is!","How a good singer she is!","What good a singer she is!","What a good singer is she!","How good singer she is!"], a:0, eng:true,
+   exp:"명사 singer가 있으므로 <b>What a good singer</b> + she is!"},
+
+  {type:"n", tag:"바꿔 쓰기", q:"감탄문으로 바르게 바꾼 것은?<br><span class=\"eng\">The river is very long.</span>",
+   opts:["How long the river is!","What long the river is!","How the river is long!","What a long the river is!","How long river is!"], a:0, eng:true,
+   exp:"형용사 long만 있으므로 <b>How long</b> + the river is!"},
+
+  {type:"n", tag:"바꿔 쓰기", q:"감탄문을 평서문으로 바르게 바꾼 것은?<br><span class=\"eng\">What a small world it is!</span>",
+   opts:["It is a very small world.","It is not a small world.","Is it a small world?","It was a small world.","A world is small very."], a:0, eng:true,
+   exp:"감탄의 뜻은 <b>very</b>로 살려 평서문으로 바꿉니다."},
+
+  {type:"n", tag:"바꿔 쓰기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">How well she dances!</span>",
+   opts:["그녀는 정말 춤을 잘 추는구나!","그녀는 춤을 어떻게 추니?","그녀는 춤을 잘 추지 못한다.","그녀가 춤추는 방법","그녀는 춤을 추고 싶어 한다."], a:0,
+   exp:"How + 부사(well) + 주어 + 동사 — 감탄문입니다."},
+
+  {type:"n", tag:"바꿔 쓰기", hard:true, sent:"___ useful information it is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","What a","How","How a","What an"], a:0, eng:true,
+   ko:"정말 쓸모 있는 정보구나!",
+   exp:"information은 <b>셀 수 없는 명사</b>라 a를 쓰지 않습니다. What useful information"},
+
+  {type:"n", tag:"바꿔 쓰기", hard:true, sent:"___ lovely weather!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","What a","How","How a","So"], a:0, eng:true,
+   ko:"정말 좋은 날씨구나!",
+   exp:"weather도 셀 수 없는 명사라 <b>What</b> + 형용사 + 명사입니다."},
+
+  {type:"n", tag:"바꿔 쓰기", multi:true, eng:true, q:"빈칸에 <b>What</b>이 들어가는 문장을 모두 고르세요. (여러 개)",
+   opts:["___ a cute puppy!","___ big feet you have!","___ good news!","___ cute the puppy is!","___ fast you swim!"], ans:[0,1,2],
+   exp:"명사(puppy · feet · news)가 있으면 What입니다. 형용사·부사만 있으면 How입니다."},
+
+  {type:"a", tag:"상황과 대화", q:"친구가 실수로 내 발을 밟았을 때 할 말은?",
+   opts:["Ouch!","Hurray!","Wow!","Yummy!","Bravo!"], a:0, eng:true,
+   exp:"아플 때 <b>Ouch!</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"맛있는 음식을 먹을 때 할 말은?",
+   opts:["Yummy!","Ouch!","Oops!","Oh no!","Shh!"], a:0, eng:true,
+   exp:"맛있을 때 <b>Yummy!</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"도서관에서 조용히 하라고 할 때 할 말은?",
+   opts:["Shh!","Wow!","Hurray!","Yay!","Ouch!"], a:0, eng:true,
+   exp:"조용히 하라고 할 때 <b>Shh!</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: I lost my wallet.<br>B: ___ ! That's too bad.</span>",
+   opts:["Oh no","Hurray","Wow","Yay","Yummy"], a:0, eng:true,
+   exp:"안타까울 때 <b>Oh no!</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: We won first prize!<br>B: ___ ! Congratulations!</span>",
+   opts:["Hurray","Ouch","Oops","Oh no","Shh"], a:0, eng:true,
+   exp:"함께 기뻐할 때 <b>Hurray!</b>"},
+
+  {type:"a", tag:"상황과 대화", multi:true, q:"감탄사와 쓰임이 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["Ouch – 아플 때","Oops – 작은 실수를 했을 때","Shh – 조용히 하라고 할 때","Hurray – 슬플 때","Yummy – 아플 때"], ans:[0,1,2],
+   exp:"Hurray는 기쁠 때, Yummy는 맛있을 때 씁니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["What a beautiful flowers they are!","What beautiful flowers they are!","How beautiful the flowers are!","What a beautiful flower it is!","How beautiful it is!"], a:0, eng:true,
+   exp:"복수 명사 flowers 앞에는 <b>a를 쓰지 않습니다</b>."},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["What an honest boy he is!","How honest he is!","What honest boys they are!","What a honest boy he is!","How an honest boy he is!"], ans:[0,1,2],
+   exp:"honest는 h 소리가 나지 않아 모음 소리로 시작합니다. 그래서 <b>an</b> honest입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">How fast the train runs!<br>= What a ___ train it is!</span>",
+   opts:["fast","fastly","faster","speed","quickly"], a:0, eng:true,
+   exp:"명사 train을 꾸미는 형용사 <b>fast</b>입니다. fastly라는 말은 없습니다."},
+
+  {type:"v", tag:"종합", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">What a surprise!</span>",
+   opts:["정말 놀랍구나!","무엇이 놀라운가?","놀라운 것은 무엇인가?","놀라지 마!","놀라게 해 줘."], a:0,
+   exp:"주어와 동사를 뺀 짧은 What 감탄문입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ ___ a lovely garden!<br>ⓑ ___ lovely the garden is!</span>",
+   opts:["What – How","How – What","What – What","How – How","What a – How"], a:0, eng:true,
+   exp:"ⓐ 명사가 있어 <b>What</b>, ⓑ 형용사만 있어 <b>How</b>입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">ⓐWow! ⓑWhat a big cake! ⓒHow delicious it looks! ⓓWhat kind you are! ⓔThank you so much.</span>",
+   opts:["ⓓ","ⓐ","ⓑ","ⓒ","ⓔ"], a:0, eng:true,
+   exp:"kind 뒤에 명사가 없으므로 <b>How</b> kind you are!가 되어야 합니다."},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["What 감탄문에서 셀 수 없는 명사 앞에는 a를 쓴다.","What 뒤에는 명사가 들어간 말이 온다.","How 뒤에는 형용사나 부사가 온다.","감탄문 끝의 주어와 동사는 뺄 수 있다.","감탄사는 문장 맨 앞에 자주 온다."], a:0,
+   exp:"셀 수 없는 명사와 복수 명사 앞에는 <b>a를 쓰지 않습니다</b>."}
+];
+
 var LEVELS = {
-  1:{name:"기본1 · 느낌을 나타내는 말", desc:"감탄사가 무엇인지 · 놀람 · 기쁨 · 아픔 · 부름 · 한글로 먼저", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
-  2:{name:"기본2 · 쉬운 영어로", desc:"Wow · Ouch · Oops · Hurray · Oh · Well · Hey", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"문장 채우기"}}
+  1:{name:"기본1 · 느낌을 나타내는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 놀람 · 기쁨 · 아픔 · 부름 · Wow · Ouch · Oops · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 영어로 넓히기", desc:"Wow · Ouch · Oops · Hurray · Oh · Well · Hey 뜻과 쓰임", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"문장 채우기"}},
+  3:{name:"기본3 · 감탄문 학교 시험형", desc:"What 감탄문 · How 감탄문 · 바꿔 쓰기와 고치기", qs:L3, typeLabels:{n:"What 감탄문",a:"How 감탄문",v:"시험형"}},
+  4:{name:"기본4 · 전 학년 아우르기", desc:"셀 수 없는 명사 · 평서문과 바꾸기 · 상황에 맞는 감탄사", qs:L4, typeLabels:{n:"바꿔 쓰기",a:"상황과 대화",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
@@ -596,6 +788,7 @@ function learn1(){
     '<div class="swap"><span>나는 정말 기쁘다</span><span class="ar">↔</span><span class="good">와, 나는 기쁘다</span></div>'+
     '<p>‘정말’은 뒤의 말을 <b>꾸며 주는</b> 부사입니다. 감탄사는 꾸미지 않고 <b>앞에 따로</b> 떨어져 나옵니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="swap"><span>와! · 아야! · 이런! · 만세!</span><span class="ar">→</span><span class="good">Wow! · Ouch! · Oops! · Hurray!</span></div><div class="ex"><u class="hl a">Wow</u>, it is beautiful!<span class="k">감탄사 뒤에는 쉼표나 느낌표</span></div></div>'+
   '<div class="tip"><span class="h">1단계에서 챙길 것</span>감탄사는 <b>느낌을 나타내는 말</b>이고, 보통 <b>문장 맨 앞</b>에 오며, <b>빼도 문장은 말이 됩니다.</b></div>';
 }
 
@@ -626,14 +819,62 @@ function learn2(){
   '<div class="tip"><span class="h">마지막 한마디</span>느낌을 먼저 정하고 낱말을 고르세요. 아프면 Ouch, 실수하면 Oops, 기쁘면 Hurray 입니다.</div>';
 }
 
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 감탄문 학교 시험형</h2>'+
+  '<p class="lead">감탄사 한마디에서 한 걸음 더 나아가, ‘정말 ~하구나!’라고 말하는 <b>감탄문</b>을 배웁니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>명사가 있으면 What</span>'+
+    '<div class="ex"><u class="hl">What</u> a nice day it is!<span class="k">What + a + 형용사 + 명사 + 주어 + 동사</span></div>'+
+    '<div class="ex"><u class="hl">What</u> an old house!<span class="k">모음 소리 앞은 an</span></div>'+
+    '<div class="ex"><u class="hl">What</u> beautiful flowers they are!<span class="k">복수 명사 앞에는 a 없음</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>형용사 · 부사만 있으면 How</span>'+
+    '<div class="ex"><u class="hl a">How</u> cute the baby is!<span class="k">How + 형용사 + 주어 + 동사</span></div>'+
+    '<div class="ex"><u class="hl a">How</u> fast he runs!<span class="k">How + 부사 + 주어 + 동사</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>바꿔 쓰기</span>'+
+    '<div class="swap"><span>He is a very kind boy.</span><span class="ar">→</span><span class="good">What a kind boy he is!</span></div>'+
+    '<div class="swap"><span>The movie is very fun.</span><span class="ar">→</span><span class="good">How fun the movie is!</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>빈칸 뒤에 <b>명사가 있는지</b>만 보면 What과 How가 가려집니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
+  '<p class="lead">마지막입니다. a를 쓰지 않는 명사, 평서문과 바꿔 쓰기, 상황에 맞는 감탄사까지 한 번에 정리합니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>a를 쓰지 않는 명사</span>'+
+    '<div class="ex">What useful information!<span class="k">셀 수 없는 명사 — information · weather · news · advice</span></div>'+
+    '<div class="ex">What big feet you have!<span class="k">복수 명사</span></div>'+
+    '<div class="ex">What <u class="hl">an</u> honest boy!<span class="k">h 소리가 나지 않으면 an</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>상황에 맞는 감탄사</span>'+
+    '<div class="ex">Ouch! · Oops! · Oh no!<span class="k">아플 때 · 실수했을 때 · 안타까울 때</span></div>'+
+    '<div class="ex">Hurray! · Yummy! · Shh!<span class="k">기쁠 때 · 맛있을 때 · 조용히 하라고 할 때</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마지막 한마디</span>What 뒤에는 <b>명사 덩어리</b>, How 뒤에는 <b>형용사·부사</b>. 끝은 늘 <b>주어 + 동사</b>입니다.</div>';
+}
+
+var LVCHEER = {
+  1:"느낌을 나타내는 말을 한글과 영어로 익혔어요. 2단계에서는 영어로 넓혀 봅니다.",
+  2:"Wow · Ouch · Oops를 상황에 맞게 골랐습니다. 3단계는 감탄문 시험형입니다.",
+  3:"What과 How 감탄문을 가려냈어요. 마지막 단계만 남았습니다.",
+  4:"감탄사와 감탄문을 모두 해냈습니다. 정말 멋지구나!"
+};
+
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
-  $("learnBody").innerHTML = S.level===1?learn1():learn2();
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
   show("learn");
 }
 
 /* ===================== 상태 ===================== */
-var RKEY="kkumettang_interj_v1", NKEY="kkumettang_name";
+var RKEY="kkumettang_interj_v2", NKEY="kkumettang_name";
 var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
        correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
        round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
@@ -667,7 +908,7 @@ function best(level){
   return null;
 }
 function drawRail(){
-  [1,2].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var b=best(k);
     $("f"+k).style.width=(b==null?0:b)+"%";
     $("p"+k).textContent=(b==null?"":" "+b);
@@ -675,7 +916,7 @@ function drawRail(){
 }
 function drawLevels(){
   var h="";
-  [1,2].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var L=LEVELS[k], b=best(k);
     var locked = false;
     var here = S.active===k;
@@ -716,7 +957,7 @@ function pickLevel(k){
 /* ===================== 보기 섞기 ===================== */
 /* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
 (function shuffleAll(){
-  [L1,L2].forEach(function(bank){
+  [L1,L2,L3,L4].forEach(function(bank){
     bank.forEach(function(q){
       if(!q.opts) return;
       var idx = q.opts.map(function(_,i){ return i; });
@@ -751,7 +992,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -799,6 +1040,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -893,10 +1135,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"느낌을 나타내는 말이 무엇인지 알게 되었어요. 2단계에서는 영어로 만나 봅니다.",
-  2:"Wow! 감탄사까지 끝냈습니다. 정말 훌륭합니다!"
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -963,7 +1201,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
@@ -992,7 +1230,7 @@ function renderResult(){
 
 function levelRowHTML(){
   var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
-  [1,2].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var on = (k===S.level);
     var lock = false;
     h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
@@ -1003,8 +1241,8 @@ function levelRowHTML(){
 function actionsHTML(remain, retryLabel){
   var ac="";
   if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
-  else if(S.level<2) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
-  ac+='<button class="btn '+(remain||S.level<2?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
       '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
   return ac;
 }

@@ -1,5 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
-<title>꾸메땅 영문법 GAME · 8품사-1·2 [대]명사 뽀개기</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · [대]명사 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,8 +292,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-1·2 · [대]명사 뽀개기</span></h1>
-    <p class="sub">명사 · 대명사 · 인칭대명사 완전정복 80문제 · 네 단계 각 20문제 / 1단계는 우리말로, 2단계부터 영어로 넓혀 갑니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · [대]명사 뽀개기</span></h1>
+    <p class="sub">명사 · 대명사 · 인칭대명사 · 지시대명사 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -369,7 +377,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 영문법 GAME · 8품사-1·2 [대]명사 뽀개기</p>
+  <p class="foot">꾸메땅 영문법 GAME · [대]명사 뽀개기</p>
 </div>
 
 
@@ -384,92 +392,96 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : 명사와 대명사를 한글로 20 (개념 7 · 모두 고르기 5 · 구별 8) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"<b>명사</b>는 무엇을 나타내는 말일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>명사</b>는 무엇을 나타내는 말일까요?",
    opts:["사람 · 동물 · 물건 · 장소의 이름","무엇을 하는지를 나타내는 말","어떠한지를 꾸며 주는 말","언제인지를 알려 주는 말","두 문장을 이어 주는 말"], a:0,
    exp:"명사는 <b>이름을 나타내는 말</b>입니다. 친구, 강아지, 연필, 학교 — 모두 명사입니다. 세상에 있는 것에는 거의 다 이름이 있으니 명사가 가장 많습니다."},
 
-  {type:"n", tag:"개념", q:"다음 중 <b>명사</b>인 것은?",
-   opts:["사과","예쁘다","빨리","그리고","달린다"], a:0,
-   exp:"‘사과’는 물건의 이름이므로 <b>명사</b>입니다. 예쁘다는 형용사, 빨리는 부사, 그리고는 접속사, 달린다는 동사입니다."},
-
-  {type:"n", tag:"개념", q:"<b>대명사</b>는 어떤 말일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>대명사</b>는 어떤 말일까요?",
    opts:["명사를 대신해서 가리키는 말","명사를 꾸며 주는 말","명사의 개수를 세는 말","명사 앞에 붙는 말","명사를 이어 주는 말"], a:0,
    exp:"대명사의 <b>대(代)</b>는 ‘대신하다’라는 뜻입니다. 명사 자리에 대신 들어가서 그것을 가리켜 주는 말입니다."},
 
-  {type:"n", tag:"개념", q:"대명사를 쓰는 까닭으로 알맞은 것은?",
+  {type:"n", tag:"한글로 이해", q:"대명사를 쓰는 까닭으로 알맞은 것은?",
    opts:["같은 이름을 되풀이하지 않으려고","문장을 길게 만들려고","이름을 감추려고","개수를 세려고","소리를 예쁘게 하려고"], a:0,
    exp:"‘민수는 민수의 가방을 민수 책상에 두었다’는 답답하지요. ‘민수는 <b>그의</b> 가방을 <b>자기</b> 책상에 두었다’처럼 대명사를 쓰면 말이 훨씬 매끄러워집니다."},
 
-  {type:"n", tag:"개념", q:"<b>인칭대명사</b>는 무엇을 가리키는 말일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>인칭대명사</b>는 무엇을 가리키는 말일까요?",
    opts:["사람이나 사물을 나 · 너 · 그처럼 가리키는 말","물건의 개수를 가리키는 말","장소만 가리키는 말","때만 가리키는 말","소리를 흉내 내는 말"], a:0,
    exp:"<b>인칭(人稱)</b>은 ‘사람을 부르는 방법’이라는 뜻입니다. 나·너·그·그녀·우리·너희·그들처럼 누구를 가리키는지에 따라 나누어 씁니다."},
 
-  {type:"n", tag:"개념", q:"인칭대명사는 몇 가지 인칭으로 나눌까요?",
-   opts:["세 가지 (1인칭 · 2인칭 · 3인칭)","두 가지","네 가지","다섯 가지","나누지 않는다"], a:0,
-   exp:"말하는 나는 <b>1인칭</b>, 듣는 너는 <b>2인칭</b>, 그 밖의 사람이나 사물은 <b>3인칭</b>입니다. 이 세 가지만 알면 됩니다."},
-
-  {type:"n", tag:"개념", q:"명사와 대명사의 관계를 바르게 말한 것은?",
+  {type:"n", tag:"한글로 이해", q:"명사와 대명사의 관계를 바르게 말한 것은?",
    opts:["대명사는 앞에 나온 명사를 대신한다","명사는 대명사를 꾸며 준다","둘은 아무 관계가 없다","대명사가 먼저 나오고 명사가 뒤따른다","명사는 대명사의 개수를 센다"], a:0,
    exp:"보통 <b>명사가 먼저</b> 나오고, 그다음부터 <b>대명사</b>가 그 자리를 대신합니다. ‘나는 강아지를 키운다. <u>그것은</u> 귀엽다.’"},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>명사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>명사</b>를 모두 고르세요. (여러 개)",
    opts:["사과","학교","강아지","예쁘다","빨리"], ans:[0,1,2],
    exp:"사과(물건) · 학교(장소) · 강아지(동물)는 모두 이름이므로 <b>명사</b>입니다. 예쁘다는 형용사, 빨리는 부사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>대명사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>대명사</b>를 모두 고르세요. (여러 개)",
    opts:["나","너","그것","사과","학교"], ans:[0,1,2],
    exp:"나 · 너 · 그것은 이름 대신 가리키는 말이므로 <b>대명사</b>입니다. 사과와 학교는 이름 그 자체라 명사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>1인칭</b>(말하는 사람)을 모두 고르세요. (여러 개)",
-   opts:["나","우리","너","그","그들"], ans:[0,1],
-   exp:"말하는 사람 자신이 1인칭입니다. 혼자면 <b>나</b>, 여럿이면 <b>우리</b>입니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>2인칭</b>(듣는 사람)을 모두 고르세요. (여러 개)",
-   opts:["너","너희","나","그녀","그것"], ans:[0,1],
-   exp:"내 말을 듣는 상대가 2인칭입니다. 혼자면 <b>너</b>, 여럿이면 <b>너희</b>입니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>3인칭</b>을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>3인칭</b>을 모두 고르세요. (여러 개)",
    opts:["그","그녀","그들","나","너"], ans:[0,1,2],
    exp:"말하는 나도 아니고 듣는 너도 아니면 모두 <b>3인칭</b>입니다. 그 · 그녀 · 그것 · 그들이 여기 들어갑니다."},
 
-  {type:"v", tag:"구별", sent:"**연필**이 책상 위에 있다.", q:"밑줄 친 말은 무엇일까요?",
-   opts:["명사","대명사","동사","형용사","부사"], a:0,
-   exp:"‘연필’은 물건의 이름이므로 <b>명사</b>입니다."},
-
-  {type:"v", tag:"구별", sent:"나는 강아지를 키운다. **그것은** 아주 귀엽다.", q:"밑줄 친 말은 무엇일까요?",
+  {type:"n", tag:"한글로 이해", sent:"나는 강아지를 키운다. **그것은** 아주 귀엽다.", q:"밑줄 친 말은 무엇일까요?",
    opts:["대명사","명사","동사","형용사","부사"], a:0,
    exp:"앞에 나온 ‘강아지’를 대신 가리키므로 <b>대명사</b>입니다."},
 
-  {type:"v", tag:"구별", sent:"나는 강아지를 키운다. **그것은** 아주 귀엽다.", q:"밑줄 친 말이 대신하는 것은?",
+  {type:"n", tag:"한글로 이해", sent:"나는 강아지를 키운다. **그것은** 아주 귀엽다.", q:"밑줄 친 말이 대신하는 것은?",
    opts:["강아지","나","키운다","귀엽다","아주"], a:0,
    exp:"‘그것’은 앞 문장의 <b>강아지</b>를 대신합니다. 대명사를 만나면 ‘무엇을 대신하나’를 앞에서 찾는 습관을 들이세요."},
 
-  {type:"v", tag:"구별", q:"‘<b>우리</b>는 같은 반이다.’에서 밑줄 친 말은 몇 인칭일까요?",
-   opts:["1인칭","2인칭","3인칭","인칭이 없다","명사이다"], a:0,
-   exp:"말하는 사람이 자기를 포함해서 말하므로 <b>1인칭</b>입니다."},
-
-  {type:"v", tag:"구별", q:"‘<b>너희</b>는 어디에 가니?’에서 밑줄 친 말은 몇 인칭일까요?",
-   opts:["2인칭","1인칭","3인칭","인칭이 없다","명사이다"], a:0,
-   exp:"내 말을 듣는 상대를 가리키므로 <b>2인칭</b>입니다."},
-
-  {type:"v", tag:"구별", q:"‘<b>그들은</b> 축구를 한다.’에서 밑줄 친 말은 몇 인칭일까요?",
-   opts:["3인칭","1인칭","2인칭","인칭이 없다","명사이다"], a:0,
-   exp:"나도 너도 아닌 다른 사람들이므로 <b>3인칭</b>입니다."},
-
-  {type:"v", tag:"구별", q:"다음 중 대명사가 <b>쓰이지 않은</b> 문장은?",
+  {type:"n", tag:"한글로 이해", q:"다음 중 대명사가 <b>쓰이지 않은</b> 문장은?",
    opts:["민수는 학교에 간다.","그는 학교에 간다.","우리는 학교에 간다.","그들은 학교에 간다.","너는 학교에 가니?"], a:0,
    exp:"첫 번째는 ‘민수’라는 이름, 곧 <b>명사</b>를 그대로 썼습니다. 나머지는 모두 대명사입니다."},
 
-  {type:"v", tag:"정리", q:"다음 설명 중 <b>틀린</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
    opts:["대명사는 명사보다 종류가 훨씬 많다.","명사는 사람·동물·물건·장소의 이름이다.","대명사는 명사를 대신하는 말이다.","인칭은 1인칭·2인칭·3인칭으로 나뉜다.","‘그것’은 사물을 가리키는 대명사이다."], a:0,
-   exp:"명사는 세상의 이름만큼 많지만, 대명사는 <b>몇 개 안 됩니다.</b> 그래서 오히려 외우기 쉽습니다."}
+   exp:"명사는 세상의 이름만큼 많지만, 대명사는 <b>몇 개 안 됩니다.</b> 그래서 오히려 외우기 쉽습니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 중 <b>명사</b>(이름)는?",
+   opts:["apple","run","happy","big","slowly"], a:0, eng:true,
+   exp:"apple(사과)은 물건의 <b>이름</b>이라 명사입니다. run은 동사, happy · big은 형용사, slowly는 부사입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>명사</b>를 모두 고르세요. (여러 개)",
+   opts:["dog","school","book","eat","pretty"], ans:[0,1,2],
+   exp:"개 · 학교 · 책은 이름이라 명사입니다. eat(먹다)는 동사, pretty(예쁜)는 형용사입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>대명사</b>를 모두 고르세요. (여러 개)",
+   opts:["I","we","they","desk","run"], ans:[0,1,2],
+   exp:"I(나) · we(우리) · they(그들)는 이름 대신 쓰는 대명사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>나</b>’를 영어로 하면?",
+   opts:["I","you","he","she","it"], a:0, eng:true,
+   exp:"‘나’는 <b>I</b>입니다. 문장 어디에 있든 늘 대문자로 씁니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>그녀</b>’를 영어로 하면?",
+   opts:["she","he","it","we","they"], a:0, eng:true,
+   exp:"그녀 <b>she</b> · 그 he · 그것 it"},
+
+  {type:"a", tag:"쉬운 영어", sent:"Tom is my friend. ___ is kind.", q:"빈칸에 알맞은 말은?",
+   opts:["He","She","It","They","We"], a:0, eng:true,
+   ko:"Tom은 내 친구다. 그는 친절하다.",
+   exp:"Tom(남자 한 명)을 대신하는 말은 <b>He</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"My mom is a cook. ___ cooks well.", q:"빈칸에 알맞은 말은?",
+   opts:["She","He","It","They","I"], a:0, eng:true,
+   ko:"우리 엄마는 요리사다. 그녀는 요리를 잘한다.",
+   exp:"엄마(여자 한 명)를 대신하는 말은 <b>She</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I have two dogs. ___ are cute.", q:"빈칸에 알맞은 말은?",
+   opts:["They","It","He","She","We"], a:0, eng:true,
+   ko:"나는 개 두 마리가 있다. 그들은 귀엽다.",
+   exp:"개 <b>두 마리</b>를 대신하므로 <b>They</b>입니다."}
 ];
 
 /* ---------- LEVEL 2 : 영어 단어로 구별 20 (모두 고르기 5 · 인칭 7 · 대신하기 8) ---------- */
@@ -730,7 +742,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 이름과 대신하는 말", desc:"명사 · 대명사 · 인칭대명사를 우리말로 알기 · 초등도 가능", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
+  1:{name:"기본1 · 이름과 대신하는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 명사 · 대명사 · 인칭대명사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 영어로 가리기", desc:"쉬운 영어 단어로 명사와 대명사 구별 · I·you·he·she·it·we·they", qs:L2, typeLabels:{n:"모두 고르기",a:"인칭",v:"대신하기"}},
   3:{name:"기본3 · 학교 문제", desc:"지시대명사 this·that·these·those와 주격·소유격·목적격", qs:L3, typeLabels:{n:"지시대명사",a:"격",v:"모두 고르기·판별"}},
   4:{name:"기본4 · 명사 총정리", desc:"셀 수 있는 명사와 부정대명사까지 한 번에", qs:L4, typeLabels:{n:"셀 수 있는 명사",a:"부정대명사",v:"종합·고난도"}}
@@ -777,6 +789,7 @@ function learn1(){
     '</div>'+
     '<p><b>인칭(人稱)</b>은 ‘사람을 부르는 방법’이라는 뜻입니다. 나인지, 너인지, 그 밖인지 — 세 가지뿐입니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">apple · dog · school<span class="k">명사 — 이름</span></div><div class="ex">Tom is my friend. <u class="hl a">He</u> is kind.<span class="k">대명사 — Tom 대신 He</span></div><div class="swap"><span>나 · 너 · 그 · 그녀 · 그것</span><span class="ar">→</span><span class="good">I · you · he · she · it</span></div></div>'+
   '<div class="tip"><span class="h">가리는 방법</span>이름을 그대로 부르면 <b>명사</b>, 이름 대신 가리키면 <b>대명사</b>입니다. 그리고 대명사를 만나면 <b>앞에서 무엇을 대신하는지</b> 꼭 찾아보세요.</div>';
 }
 
@@ -852,6 +865,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">한눈에 정리</span>이름이면 <b>명사</b>, 나·너·그면 <b>인칭대명사</b>, 이것·저것이면 <b>지시대명사</b>, 누군가·무언가면 <b>부정대명사</b>입니다. 여기까지 오면 명사는 다 본 셈입니다.</div>';
 }
+
+var LVCHEER = {
+  1:"이름과 대신하는 말을 가려낼 수 있게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
+  2:"인칭대명사 일곱 개가 이제 네 것이 되었어요. 3단계에서는 시험 문제로 확인해 봅니다.",
+  3:"this와 these, I와 my와 me까지. 시험지에서도 헷갈리지 않을 거예요.",
+  4:"명사와 대명사를 끝까지 해냈습니다. 이제 이름이 나오면 종류가 먼저 보일 거예요."
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -978,7 +998,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -1026,6 +1046,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1120,12 +1141,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"이름과 대신하는 말을 가려낼 수 있게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
-  2:"인칭대명사 일곱 개가 이제 네 것이 되었어요. 3단계에서는 시험 문제로 확인해 봅니다.",
-  3:"this와 these, I와 my와 me까지. 시험지에서도 헷갈리지 않을 거예요.",
-  4:"명사와 대명사를 끝까지 해냈습니다. 이제 이름이 나오면 종류가 먼저 보일 거예요."
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1192,7 +1207,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

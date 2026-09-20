@@ -1,11 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
-.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
-.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
-.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
-.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
-.resumebar .row .btn{flex:1 1 130px}
-</style></head><body>
-<title>꾸메땅 도전 USED TO GAME</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · USED TO GAME</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -66,7 +68,7 @@ h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
 .sub{color:var(--muted);font-size:16.5px}
 
 .rail{display:flex;gap:10px;align-items:flex-end}
-.seg{display:flex;flex-direction:column;gap:7px}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
 .seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
 .seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
 .seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
@@ -112,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -178,9 +180,6 @@ u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(-
 .chip.v{background:var(--rv-soft);color:var(--rv)}
 .chip.hard{background:var(--mark);color:#15201D}
 #qlevel{font-size:17px;font-weight:800;padding:5px 13px}
-.lvtabs{display:flex;gap:6px}
-.lvtabs button{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:16px;padding:5px 13px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
-.lvtabs button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 .qbody{display:flex;flex-direction:column;gap:14px}
 .ask{font-size:20px;font-weight:700;color:var(--ink)}
 .ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
@@ -261,18 +260,47 @@ table.rank tr.me{background:var(--accent-soft)}
 table.rank tr.me .who{color:var(--accent)}
 .empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
 .toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
 </style>
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 도전 <span class="mark">USED TO GAME</span></h1>
-    <p class="sub">used to 완전정복 50문제 · 세 단계를 한 계단씩 · 문제마다 완성 문장과 해석, 해설이 함께 나옵니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · USED TO GAME</span></h1>
+    <p class="sub">used to · would · be used to · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
-    <div class="seg"><span class="lab">1 기본<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
-    <div class="seg"><span class="lab">2 구별<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
-    <div class="seg"><span class="lab">3 실전<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
   </div>
 
   <!-- 시작 -->
@@ -292,7 +320,7 @@ table.rank tr.me .who{color:var(--accent)}
     <div class="actions">
       <button class="btn ghost" id="openRank">순위 보기</button>
     </div>
-    <p class="foot">PC에서는 숫자 키 1~4로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
   </section>
 
   <!-- 개념 -->
@@ -308,9 +336,8 @@ table.rank tr.me .who{color:var(--accent)}
   <!-- 문제 -->
   <section class="card hide" id="quiz">
     <div class="qhead">
-      <span class="qnum" id="qnum">1 / 21</span>
+      <span class="qnum" id="qnum">1 / 20</span>
       <span class="chip" id="qlevel">1단계</span>
-      <span class="lvtabs" id="lvtabs" hidden></span>
       <span class="chip plain" id="qtag"></span>
     </div>
     <div class="qbody" id="qbody"></div>
@@ -323,6 +350,7 @@ table.rank tr.me .who{color:var(--accent)}
     <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
     <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
     <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
     <div id="rsubmit"></div>
     <div id="rwrong"></div>
     <div class="actions" id="ractions"></div>
@@ -340,6 +368,7 @@ table.rank tr.me .who{color:var(--accent)}
       <button class="tab" data-t="1">1단계</button>
       <button class="tab" data-t="2">2단계</button>
       <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
     </div>
     <div id="rankBody"></div>
     <div class="actions">
@@ -348,7 +377,7 @@ table.rank tr.me .who{color:var(--accent)}
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 도전 USED TO GAME · used to 완전정복편</p>
+  <p class="foot">꾸메땅 영문법 GAME · USED TO GAME</p>
 </div>
 
 
@@ -363,86 +392,499 @@ table.rank tr.me .who{color:var(--accent)}
   </div>
 </div>
 
+
 <script>
 "use strict";
 
-/* ===================== 문제 은행 ===================== */
-
-/* ---------- 1단계 : 기본 문형 20 (평서 8 · 부정 6 · 의문+응답 6) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"평서문", sent:"I ___ play the piano every day when I was young.", ko:"나는 어렸을 때 매일 피아노를 치곤 했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","uses to","was used to"], a:1, exp:"과거의 습관을 나타낼 때는 주어에 상관없이 언제나 <b>used to + 동사원형</b>을 씁니다."},
-  {type:"n", tag:"평서문", sent:"She ___ live right next door to us.", ko:"그녀는 우리 바로 옆집에 살았었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","is used to","was used to"], a:1, exp:"지금은 그렇지 않은 <b>과거의 상태</b>를 나타냅니다. used to + 동사원형."},
-  {type:"n", tag:"평서문", sent:"My grandfather ___ tell us scary stories at night.", ko:"할아버지는 밤에 우리에게 무서운 이야기를 들려주시곤 했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","uses to","would use to"], a:1, exp:"과거의 반복된 습관은 <b>used to + 동사원형</b>으로 나타냅니다."},
-  {type:"n", tag:"평서문", sent:"We ___ go camping every summer as a family.", ko:"우리는 가족끼리 매년 여름 캠핑을 가곤 했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","uses to","have used to"], a:1, exp:"used to + 동사원형은 과거의 규칙적인 습관을 나타냅니다."},
-  {type:"n", tag:"평서문", sent:"He ___ be very shy, but he's outgoing now.", ko:"그는 예전에 매우 수줍음이 많았지만, 지금은 외향적이다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","is used to","was used to"], a:1, exp:"지금과 대조되는 과거의 성격(상태)이므로 used to가 알맞습니다."},
-  {type:"n", tag:"평서문", sent:"There ___ be a big oak tree in front of the school.", ko:"학교 앞에는 예전에 큰 참나무 한 그루가 있었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","uses to","is used to"], a:1, exp:"<b>There used to be ~</b>는 ‘예전에 ~가 있었다’라는 뜻의 자주 쓰이는 표현입니다."},
-  {type:"n", tag:"평서문", sent:"They ___ have a small bookshop on this street.", ko:"그들은 이 거리에 작은 서점을 가지고 있었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","uses to","are used to"], a:1, exp:"used to + 동사원형(have) = 예전에 가지고 있었다."},
-  {type:"n", tag:"평서문", sent:"I ___ believe that dragons were real.", ko:"나는 용이 실제로 있다고 믿었었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["use to","used to","using to","was used to"], a:1, exp:"used to + 동사원형(believe)으로 과거의 생각·믿음을 나타냅니다."},
+  {type:"n", tag:"한글로 이해", q:"<b>used to</b>가 나타내는 뜻으로 알맞은 것은?",
+   opts:["예전에는 ~했지만 지금은 아니다","지금도 날마다 ~한다","앞으로 ~할 것이다","~해야 한다","~할 수 있다"], a:0,
+   exp:"used to는 <b>예전에는 ~했다(지금은 아니다)</b>라는 뜻입니다. 지난 일과 지금을 견주는 말입니다."},
 
-  {type:"a", tag:"부정문", sent:"I ___ like carrots, but I love them now.", ko:"나는 예전에 당근을 안 좋아했는데, 지금은 정말 좋아한다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["didn't use to","doesn't use to","didn't used to","wasn't used to"], a:0, exp:"부정문은 <b>didn't use to + 동사원형</b>입니다. use에는 -d를 붙이지 않습니다 (didn't used to는 흔한 오답입니다)."},
-  {type:"a", tag:"부정문", sent:"She ___ eat vegetables when she was little.", ko:"그녀는 어렸을 때 채소를 먹지 않았었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["didn't use to","doesn't use to","didn't used to","isn't used to"], a:0, exp:"didn't use to + 동사원형이 올바른 부정형입니다."},
-  {type:"a", tag:"부정문", sent:"We ___ have a car, so we always walked to school.", ko:"우리는 예전에 차가 없어서 늘 학교까지 걸어갔다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["didn't use to","don't use to","didn't used to","weren't used to"], a:0, exp:"과거에 차를 소유하지 않았던 것이므로 didn't use to have가 맞습니다."},
-  {type:"a", tag:"부정문", sent:"He ___ speak any English at all before he moved here.", ko:"그는 이곳으로 이사 오기 전에는 영어를 전혀 하지 못했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["didn't use to","doesn't use to","didn't used to","not use to"], a:0, exp:"didn't use to + 동사원형으로 과거에 하지 않았던 일을 나타냅니다."},
-  {type:"a", tag:"부정문", sent:"They ___ go to that restaurant very often.", ko:"그들은 그 식당에 자주 가지 않았었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["didn't use to","didn't used to","doesn't use to","aren't used to"], a:0, exp:"didn't use to가 표준적인 부정형입니다."},
-  {type:"a", tag:"부정문", sent:"I ___ get up early, but I always do now.", ko:"나는 예전에 일찍 일어나지 않았었는데, 지금은 늘 그런다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["didn't use to","didn't used to","don't use to","wasn't used to"], a:0, exp:"과거 습관의 부정은 <b>didn't use to + 동사원형</b>입니다."},
+  {type:"n", tag:"한글로 이해", q:"used to 뒤에 오는 동사의 모양은?",
+   opts:["동사원형","-ing를 붙인 모양","과거형","s를 붙인 모양","과거분사"], a:0,
+   exp:"<b>used to + 동사원형</b>입니다. used to play · used to be · used to live"},
 
-  {type:"v", tag:"의문·응답", sent:"___ play any sports when you were little?", ko:"너는 어렸을 때 운동을 하곤 했니?", q:"빈칸에 알맞은 것을 고르세요.", opts:["Did you use to","Did you used to","Do you use to","Were you used to"], a:0, exp:"의문문은 <b>Did + 주어 + use to + 동사원형 ~?</b>입니다. Did를 이미 썼으므로 use에는 -d를 붙이지 않습니다."},
-  {type:"v", tag:"의문·응답", sent:"___ live in Seoul before?", ko:"그녀는 예전에 서울에 살았니?", q:"빈칸에 알맞은 것을 고르세요.", opts:["Did she use to","Did she used to","Does she use to","Was she used to"], a:0, exp:"Did she use to + 동사원형이 올바른 의문문 형태입니다."},
-  {type:"v", tag:"의문·응답", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Did you use to be afraid of the dark?<br>B: Yes, I ___.</span>", opts:["did","was","used","am"], a:0, exp:"Did로 물었으므로 <b>did</b>로 대답합니다. Yes, I did."},
-  {type:"v", tag:"의문·응답", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Did your family use to travel a lot?<br>B: No, we ___.</span>", opts:["didn't","weren't","don't","aren't"], a:0, exp:"Did로 물었으므로 부정 대답도 <b>didn't</b>로 합니다. No, we didn't."},
-  {type:"v", tag:"의문·응답", sent:"___ there use to be a park here?", ko:"여기에 예전에 공원이 있었니?", q:"빈칸에 알맞은 것을 고르세요.", opts:["Did","Was","Is","Does"], a:0, exp:"There used to be ~의 의문문은 <b>Did there use to be ~?</b>입니다."},
-  {type:"v", tag:"의문·응답", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What sport did you use to play?<br>B: I ___ play soccer every day.</span>", opts:["used to","use to","uses to","would to"], a:0, exp:"대답 문장에서는 <b>used to</b>(과거형)를 그대로 씁니다. Did로 물었어도 대답 문장 자체는 used to + 동사원형입니다."}
+  {type:"n", tag:"한글로 이해", q:"used to는 언제의 일을 말할까요?",
+   opts:["과거","현재","미래","과거와 미래","때와 상관없음"], a:0,
+   exp:"used to는 <b>과거</b>의 일을 말합니다. 그래서 used(과거형) 모양을 하고 있습니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 어렸을 때 날마다 공원에 가곤 했다.", q:"이 문장이 말하는 것은?",
+   opts:["과거에 되풀이하던 습관","지금 하고 있는 일","앞으로의 계획","딱 한 번 있었던 일","해야 하는 일"], a:0,
+   exp:"‘~하곤 했다’는 <b>과거에 되풀이하던 습관</b>입니다. I used to go to the park every day."},
+
+  {type:"n", tag:"한글로 이해", sent:"이 자리에 예전에는 서점이 있었다.", q:"이 문장이 말하는 것은?",
+   opts:["과거의 상태","과거에 되풀이한 행동","지금의 상태","앞으로의 일","딱 한 번 있었던 일"], a:0,
+   exp:"‘있었다’는 행동이 아니라 <b>과거의 상태</b>입니다. There used to be a bookstore here."},
+
+  {type:"n", tag:"한글로 이해", q:"used to를 쓴 문장에 숨어 있는 뜻은?",
+   opts:["지금은 그렇지 않다","지금도 그렇다","앞으로도 그럴 것이다","그런 적이 한 번도 없다","오늘 처음 했다"], a:0,
+   exp:"used to에는 <b>지금은 그렇지 않다</b>는 느낌이 담겨 있습니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"used to로 말하기 알맞은 우리말을 모두 고르세요. (여러 개)",
+   opts:["예전에는 안경을 썼다(지금은 안 쓴다)","어릴 때 자주 울곤 했다","전에는 이 마을에 살았다","내일 소풍을 간다","지금 숙제를 하고 있다"], ans:[0,1,2],
+   exp:"앞 셋은 모두 지난 일입니다. 내일 일과 지금 하는 일에는 used to를 쓰지 않습니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"과거의 <b>상태</b>를 말하는 우리말을 모두 고르세요. (여러 개)",
+   opts:["예전에는 키가 작았다","예전에는 여기에 나무가 있었다","전에는 머리가 길었다","주말마다 낚시를 가곤 했다","아침마다 달리기를 하곤 했다"], ans:[0,1,2],
+   exp:"작았다 · 있었다 · 길었다는 <b>상태</b>입니다. 뒤의 둘은 되풀이한 <b>행동</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"과거에 <b>되풀이한 행동</b>(습관)을 모두 고르세요. (여러 개)",
+   opts:["일요일마다 할머니 댁에 가곤 했다","밤마다 일기를 쓰곤 했다","여름이면 바다에서 수영하곤 했다","예전에는 뚱뚱했다","그 집은 예전에 파란색이었다"], ans:[0,1,2],
+   exp:"‘~하곤 했다’로 끝나는 셋이 습관입니다. 뚱뚱했다 · 파란색이었다는 상태입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘지금은 그렇지 않다’는 느낌이 담긴 우리말을 모두 고르세요. (여러 개)",
+   opts:["예전에는 고양이를 키웠다","전에는 매운 음식을 못 먹었다","어릴 때는 겁이 많았다","나는 지금 고양이를 키운다","나는 매운 음식을 좋아한다"], ans:[0,1,2],
+   exp:"‘예전에는 · 전에는 · 어릴 때는’이 붙은 셋이 used to로 옮기기 좋은 문장입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 예전에 피아노를 치곤 했다.", q:"이 문장에 대한 설명으로 알맞은 것은?",
+   opts:["지금은 피아노를 치지 않는다는 느낌이 있다","지금도 날마다 피아노를 친다","앞으로 피아노를 배울 것이다","피아노를 친 적이 한 번도 없다","지금 피아노를 치는 중이다"], a:0,
+   exp:"‘예전에 ~하곤 했다’에는 <b>지금은 하지 않는다</b>는 뜻이 숨어 있습니다. I used to play the piano."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["used to 뒤에는 -ing가 온다.","used to는 과거의 습관을 말한다.","used to는 과거의 상태를 말한다.","used to에는 ‘지금은 아니다’라는 느낌이 있다.","used to 뒤에는 동사원형이 온다."], a:0,
+   exp:"used to 뒤에는 <b>동사원형</b>입니다. used to playing(✕) · used to play(○)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"나는 예전에 채소를 싫어했다. 지금은 잘 먹는다.", q:"앞 문장을 영어로 옮길 때 가장 알맞은 표현은?",
+   opts:["used to","will","can","must","should"], a:0, eng:true,
+   exp:"예전과 지금이 다르므로 <b>used to</b>가 알맞습니다. I used to hate vegetables."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"used to 뒤에 올 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["live","play","be","living","played"], ans:[0,1,2],
+   exp:"used to 뒤에는 <b>동사원형</b>만 옵니다. living(✕) · played(✕)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"우리 아빠는 예전에 커피를 많이 드셨지만 지금은 끊으셨다.", q:"‘예전에 커피를 많이 드셨다’를 영어로 할 때 알맞은 동사 모양은?",
+   opts:["used to drink","use to drink","used to drinking","used to drank","is used to drink"], a:0, eng:true,
+   exp:"<b>used to + 동사원형</b>입니다. My dad used to drink a lot of coffee."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>예전에 ~하곤 했다</b>’를 영어로 하면?",
+   opts:["used to","use to","will","can","must"], a:0, eng:true,
+   exp:"예전에 ~하곤 했다 = <b>used to</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I used to ___ in Busan.", q:"‘나는 예전에 부산에 살았다’가 되도록 알맞은 것은?",
+   opts:["live","living","lived","lives","to live"], a:0, eng:true,
+   ko:"나는 예전에 부산에 살았다.",
+   exp:"used to 뒤에는 <b>동사원형</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She used to ___ shy.", q:"‘그녀는 예전에 수줍음이 많았다’가 되도록 알맞은 것은?",
+   opts:["be","is","was","being","been"], a:0, eng:true,
+   ko:"그녀는 예전에 수줍음이 많았다.",
+   exp:"be동사도 원형 <b>be</b>로 씁니다. used to be"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He ___ to walk to school.", q:"‘그는 예전에 걸어서 학교에 다녔다’가 되도록 알맞은 것은?",
+   opts:["used","uses","use","using","is used"], a:0, eng:true,
+   ko:"그는 예전에 걸어서 학교에 다녔다.",
+   exp:"주어가 누구든 <b>used</b> to입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<span class=\"eng\">I used to play the piano.</span>의 뜻은?",
+   opts:["나는 예전에 피아노를 쳤다(지금은 안 친다)","나는 지금 피아노를 친다","나는 피아노를 칠 것이다","나는 피아노를 쳐 본 적이 없다","나는 피아노를 치고 있다"], a:0,
+   exp:"used to에는 <b>지금은 아니다</b>라는 뜻이 숨어 있습니다."}
 ];
 
-/* ---------- 2단계 : 구별하기 20 (used to 7 · would 7 · be used to 6) ---------- */
+/* ---------- LEVEL 2 : 넓히기와 함정 20 (모양 7 · 모두 고르기 6 · 함정 7) ---------- */
 var L2 = [
-  {type:"n", sent:"My father ___ own a small bakery.", ko:"아버지는 예전에 작은 빵집을 소유하고 계셨다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","is used to","was used to"], a:1, exp:"own(소유하다)은 <b>상태동사</b>라 would를 쓸 수 없습니다. 상태의 습관은 used to만 가능합니다."},
-  {type:"n", sent:"There ___ be a lake behind my house.", ko:"우리 집 뒤에는 예전에 호수가 있었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","are used to","have used to"], a:1, exp:"There is/are 구문처럼 상태를 나타낼 때는 would가 아니라 <b>used to</b>를 씁니다."},
-  {type:"n", sent:"I ___ be afraid of the dark, but not anymore.", ko:"나는 예전에 어둠을 무서워했지만, 이제는 아니다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","am used to","get used to"], a:1, exp:"afraid는 상태를 나타내므로 would는 쓸 수 없습니다. used to가 알맞습니다."},
-  {type:"n", sent:"She ___ like broccoli when she was a kid.", ko:"그녀는 어렸을 때 브로콜리를 좋아했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","is used to","was used to"], a:1, exp:"like(좋아하다)는 상태동사이므로 would 대신 <b>used to</b>를 씁니다."},
-  {type:"n", sent:"We ___ have a cat named Nabi.", ko:"우리는 예전에 나비라는 고양이를 키웠다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","are used to","get used to"], a:1, exp:"have(소유)는 상태동사라 would는 쓸 수 없습니다."},
-  {type:"n", sent:"This street ___ be much quieter.", ko:"이 거리는 예전에 훨씬 더 조용했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","is used to","gets used to"], a:1, exp:"be동사(상태)에는 would를 쓸 수 없으므로 used to가 정답입니다."},
-  {type:"n", sent:"He ___ know every song by that band.", ko:"그는 그 밴드의 모든 노래를 알고 있었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","is used to","was used to"], a:1, exp:"know(알다)는 상태동사이므로 would가 아니라 used to를 씁니다."},
+  {type:"n", tag:"모양", sent:"I ___ play soccer after school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to","use to","am used to","used","using to"], a:0, eng:true,
+   ko:"나는 방과 후에 축구를 하곤 했다.",
+   exp:"과거의 습관은 <b>used to + 동사원형</b>입니다."},
 
-  {type:"a", sent:"Every Saturday, my mom ___ take us to the park.", ko:"토요일마다 엄마는 우리를 공원에 데려가시곤 했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","use to","is used to","get used to"], a:0, exp:"take(데려가다)는 반복되는 <b>동작</b>이므로 would로 과거의 습관을 나타낼 수 있습니다."},
-  {type:"a", sent:"When I was small, I ___ climb that tree every day.", ko:"어렸을 때 나는 매일 저 나무를 오르곤 했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","use to","am used to","get used to"], a:0, exp:"climb은 동작동사라 반복되는 습관을 나타내는 would가 가능합니다."},
-  {type:"a", q:"다음 중 밑줄 친 used to를 would로 바꿔 쓸 수 <b>없는</b> 것은?", opts:["I **used to** play badminton after school.","She **used to** write in her diary every night.","He **used to** have long hair.","We **used to** go fishing on Sundays."], a:2, eng:true, exp:"have(가지고 있다=상태)는 would로 바꿀 수 없습니다. 나머지는 모두 반복되는 동작이라 would로 바꿔 쓸 수 있습니다."},
-  {type:"a", q:"다음 중 used to를 would로 바꿔 쓸 수 <b>있는</b> 것은?", opts:["I used to be very quiet.","My uncle used to like fishing.","She used to know the answer.","We used to visit our grandma every weekend."], a:3, eng:true, exp:"visit(방문하다)은 반복되는 동작이므로 would로 바꿀 수 있습니다. 나머지는 모두 상태동사(be, like, know)라 would를 쓸 수 없습니다."},
-  {type:"a", sent:"They ___ tell each other secrets when they were friends.", ko:"그들은 친구였을 때 서로 비밀을 이야기하곤 했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","use to","is used to","used to being"], a:0, exp:"tell은 동작동사이므로 would로 반복된 습관을 나타낼 수 있습니다."},
-  {type:"a", q:"다음 중 어법상 <b>알맞은</b> 것은?", opts:["I would have a bike.","I would like pizza.","I would visit my aunt every summer.","I would be short."], a:2, eng:true, exp:"have, like, be는 상태동사라 would와 함께 쓸 수 없습니다. visit은 동작동사이므로 would와 함께 쓸 수 있습니다."},
-  {type:"a", q:"다음 중 어법상 <b>알맞지 않은</b> 것은?", opts:["I used to swim every morning.","I would swim every morning.","I would have a swimming pool.","I used to have a swimming pool."], a:2, eng:true, exp:"have(소유)는 상태동사이므로 would와 함께 쓸 수 없습니다. used to have는 가능합니다."},
+  {type:"n", tag:"모양", sent:"She ___ long hair.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to have","used to having","use to had","is used to have","used having"], a:0, eng:true,
+   ko:"그녀는 예전에 머리가 길었다.",
+   exp:"과거의 상태도 <b>used to + 동사원형</b>으로 씁니다."},
 
-  {type:"v", sent:"I ___ the noise now. It doesn't bother me.", ko:"나는 이제 그 소음에 익숙하다. 더 이상 신경 쓰이지 않는다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["used to","would","am used to","use to"], a:2, exp:"현재 <b>익숙한 상태</b>를 나타낼 때는 be used to(am/is/are used to)를 씁니다. used to(~하곤 했다)와 혼동하지 마세요."},
-  {type:"v", sent:"She ___ living in a big city now.", ko:"그녀는 이제 대도시에 사는 것에 익숙하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["used to","is used to","would","use to"], a:1, exp:"be used to 뒤에는 <b>동명사(-ing)</b>나 명사가 옵니다. is used to living이 맞습니다."},
-  {type:"v", sent:"He is slowly ___ his new school.", ko:"그는 새 학교에 서서히 익숙해지고 있다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["used to","being used to","getting used to","would use to"], a:2, exp:"‘~에 익숙해지다’라는 <b>변화</b>를 나타낼 때는 get used to를 씁니다."},
-  {type:"v", sent:"We ___ getting up early for practice.", ko:"우리는 (그 당시) 연습을 위해 일찍 일어나는 것에 익숙했다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["used to","were used to","would","use to"], a:1, exp:"be used to는 be동사 시제를 자유롭게 바꿀 수 있습니다. 과거에 익숙했던 상태는 were used to입니다."},
-  {type:"v", q:"밑줄 친 두 표현의 뜻이 바르게 짝지어진 것은?<br><span class=\"eng\">① I <u>used to</u> get up at 6.  ② I am <u>used to</u> getting up at 6.</span>", opts:["①과거 습관 - ②현재 익숙함","①현재 익숙함 - ②과거 습관","①과 ② 모두 과거 습관","①과 ② 모두 현재 익숙함"], a:0, exp:"① used to + 동사원형은 ‘~하곤 했다’(과거 습관), ② be used to + -ing는 ‘~에 익숙하다’(현재 상태)입니다."},
-  {type:"v", q:"다음 중 밑줄 친 부분이 어법상 <b>알맞은</b> 것은?", opts:["I am used to **wake** up early.","I am used to **waking** up early.","I used to **waking** up early.","I get used **to wake** up early."], a:1, eng:true, exp:"be used to 뒤에는 동사원형이 아니라 <b>동명사(-ing)</b>가 옵니다. am used to waking이 정답입니다."}
+  {type:"n", tag:"모양", sent:"He ___ like vegetables.", q:"‘예전에는 좋아하지 않았다’가 되도록 알맞은 것은?",
+   opts:["didn't use to","didn't used to","doesn't used to","wasn't use to","used not like"], a:0, eng:true,
+   ko:"그는 예전에 채소를 좋아하지 않았다.",
+   exp:"did가 과거를 맡으니 뒤는 원형 <b>use</b>가 됩니다. didn't <b>use</b> to (didn't used to ✕)"},
+
+  {type:"n", tag:"모양", sent:"___ you use to live in Seoul?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Did","Do","Were","Are","Have"], a:0, eng:true,
+   ko:"너는 예전에 서울에 살았니?",
+   exp:"의문문은 <b>Did + 주어 + use to + 동사원형 ~?</b>입니다."},
+
+  {type:"n", tag:"모양", sent:"When I was young, I ___ go fishing with my dad.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["would","will","am used to","was used to","use to"], a:0, eng:true,
+   ko:"어렸을 때 나는 아빠와 낚시하러 가곤 했다.",
+   exp:"과거에 되풀이한 <b>행동</b>은 <b>would</b>로도 말할 수 있습니다. would go = used to go"},
+
+  {type:"n", tag:"모양", sent:"I am used to ___ up early.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["getting","get","got","to get","gets"], a:0, eng:true,
+   ko:"나는 일찍 일어나는 데 익숙하다.",
+   exp:"<b>be used to</b>의 to는 전치사라서 뒤에 <b>-ing</b>나 명사가 옵니다."},
+
+  {type:"n", tag:"모양", q:"빈칸에 알맞은 것을 고르세요.<br><span class=\"eng\">A: Did you use to wear glasses?<br>B: Yes, I ___ .</span>",
+   opts:["did","used","do","was","use"], a:0, eng:true,
+   exp:"Did로 물었으니 <b>Yes, I did.</b> / No, I didn't.로 답합니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"used to 자리에 <b>would</b>를 써도 되는 문장을 모두 고르세요. (여러 개)",
+   opts:["I used to swim in the river every summer.","He used to visit us on Sundays.","We used to play cards at night.","There used to be a tree here.","She used to be shy."], ans:[0,1,2],
+   exp:"would는 되풀이한 <b>행동</b>에만 씁니다. 상태(be · there be)에는 쓸 수 없습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I used to live in Busan.","She didn't use to cook.","Did he use to play the guitar?","I use to live in Busan.","She didn't used to cook."], ans:[0,1,2],
+   exp:"긍정문은 used to, 부정문과 의문문은 did 뒤라서 <b>use to</b>입니다. 현재형 use to는 없습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>be used to</b> 뒤에 올 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["living alone","the noise","driving at night","live alone","drove at night"], ans:[0,1,2],
+   exp:"be used to 뒤에는 <b>-ing</b>나 <b>명사</b>가 옵니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"‘<b>~하곤 했다</b>’는 뜻이 되는 것을 모두 고르세요. (여러 개)",
+   opts:["used to walk","would walk","used to take","am used to walking","was used to walk"], ans:[0,1,2],
+   exp:"used to와 would가 ‘~하곤 했다’입니다. am used to walking은 ‘걷는 데 익숙하다’입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"과거의 상태를 말하고 있어 <b>would로 바꿀 수 없는</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["There used to be a park here.","I used to have a dog.","He used to be a teacher.","I used to go jogging.","She used to read comics."], ans:[0,1,2],
+   exp:"be(있다 · ~이다)와 have(가지고 있다)는 <b>상태</b>입니다. 상태에는 would를 쓰지 않습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>틀린</b> 것을 모두 고르세요. (여러 개)",
+   opts:["I used to playing tennis.","He use to be quiet.","Did she used to live here?","I'm used to living here.","We used to be friends."], ans:[0,1,2],
+   exp:"used to 뒤는 원형, 긍정문은 use가 아니라 used, did 뒤는 use입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["There would be a big tree here.","There used to be a big tree here.","I would go there every day.","I used to go there every day.","He used to be tall."], a:0, eng:true,
+   exp:"‘나무가 있었다’는 상태입니다. 상태에는 would를 쓰지 않고 <b>used to</b>를 씁니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"두 빈칸에 알맞은 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ I used to ___ in Busan.<br>ⓑ Now I'm used to ___ in Seoul.</span>",
+   opts:["live – living","living – live","live – live","living – living","lived – living"], a:0, eng:true,
+   exp:"ⓐ used to 뒤에는 <b>원형</b>, ⓑ be used to 뒤에는 <b>-ing</b>입니다. 예전에는 부산에 살았고, 지금은 서울 생활에 익숙합니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"뜻이 <b>나머지와 다른</b> 하나는?",
+   opts:["She is used to living alone.","She used to live alone.","She would often visit me.","She used to visit me often.","He used to walk to school."], a:0, eng:true,
+   exp:"첫 문장만 ‘혼자 사는 데 <b>익숙하다</b>’입니다. 나머지는 모두 ‘~하곤 했다 · 예전에 ~했다’입니다."},
+
+  {type:"v", tag:"함정", sent:"He ___ to be a soccer player, but now he is a coach.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used","uses","use","was used","is used"], a:0, eng:true,
+   full:"He **used to be** a soccer player, but now he is a coach.", fullko:"그는 예전에 축구 선수였지만 지금은 코치이다.",
+   exp:"예전과 지금을 견주고 있으니 <b>used to be</b>입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Did you used to play the piano?","Did you use to play the piano?","I didn't use to play the piano.","I used to play the piano.","I would play the piano after dinner."], a:0, eng:true,
+   exp:"did가 과거를 맡으므로 뒤는 원형 <b>use</b>입니다. Did you <b>use</b> to ~?"},
+
+  {type:"v", tag:"함정", sent:"My grandma ___ tell me stories every night.", q:"빈칸에 들어갈 수 <b>없는</b> 것은?",
+   opts:["is used to","used to","would","didn't use to","would always"], a:0, eng:true,
+   full:"My grandma **used to** tell me stories every night.", fullko:"할머니는 밤마다 나에게 이야기를 들려주시곤 했다.",
+   exp:"is used to 뒤에는 -ing가 와야 하므로 tell이 올 수 없습니다. 나머지는 모두 어법상 맞습니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I lived in Jeju before, but I don't live there now.<br>= I ___ live in Jeju.</span>",
+   opts:["used to","am used to","would","use to","was used to"], a:0, eng:true,
+   exp:"사는 것은 <b>상태</b>라서 would가 아니라 <b>used to</b>입니다."}
 ];
 
-/* ---------- 3단계 : 실전 문제 10 (생각 필요 6 · 고난도 4) ---------- */
+/* ---------- LEVEL 3 : 중2 학교 시험형 20 (빈칸 7 · 고치기 6 · 대화와 서술형 7) ---------- */
 var L3 = [
-  {type:"n", tag:"생각 필요", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: You look tired. What's wrong?<br>B: I just moved to Seoul, and I'm still not ___ the noise at night.</span>", opts:["used to","use to","would use to","used to be"], a:0, exp:"‘아직 ~에 익숙하지 않다’는 <b>be used to</b>(현재 상태)로 표현합니다. not used to + 명사(the noise)."},
-  {type:"n", tag:"생각 필요", sent:"When Mina was young, she ___ very long hair, but she has short hair now.", ko:"미나는 어렸을 때 머리가 매우 길었지만, 지금은 짧다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would have","used to have","is used to having","would used to have"], a:1, exp:"have(가지고 있다)는 상태동사이므로 would를 쓸 수 없습니다. 과거의 상태는 used to have로 나타냅니다."},
-  {type:"n", tag:"생각 필요", q:"다음 중 어법상 <b>틀린</b> 문장은?", opts:["I used to play tennis.","I would play tennis every weekend.","I used to having short hair.","I am used to getting up early."], a:2, eng:true, exp:"used to 뒤에는 동사원형이 와야 합니다. used to having(✕) → <b>used to have</b>(○). -ing 형태는 be used to 뒤에서만 씁니다."},
-  {type:"n", tag:"생각 필요", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: How is your new school?<br>B: It was hard at first, but I'm ___ it now.</span>", opts:["getting used to","get used to","used to get","would get used to"], a:0, exp:"‘점점 익숙해지고 있다’는 <b>현재진행형 be동사 + getting used to</b>로 나타냅니다."},
-  {type:"n", tag:"생각 필요", q:"다음 우리말을 영어로 옮길 때 가장 알맞은 것은? <br><span class=\"eng\">‘그는 예전에 매일 신문을 읽곤 했다.’</span>", opts:["He used to read the newspaper every day.","He would used to read the newspaper every day.","He is used to reading the newspaper every day.","He used to reading the newspaper every day."], a:0, eng:true, exp:"과거의 습관은 <b>used to + 동사원형</b>으로 나타냅니다. ①이 형태와 뜻 모두 정확합니다."},
-  {type:"n", tag:"생각 필요", q:"다음 중 우리말 해석이 <b>잘못된</b> 것은?", opts:["I used to swim every day. — 나는 매일 수영을 하곤 했다.","I am used to swimming every day. — 나는 매일 수영하는 것에 익숙하다.","I would swim every day. — 나는 매일 수영을 하곤 했다.","I get used to swimming every day. — 나는 매일 수영을 하곤 했다."], a:3, eng:true, exp:"get used to는 ‘~에 익숙해지다’라는 <b>변화</b>를 뜻합니다. ‘~하곤 했다’로 해석한 ④가 잘못되었습니다."},
+  {type:"n", tag:"빈칸", sent:"There ___ be a bakery on this corner.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to","would","was used to","use to","is used to"], a:0, eng:true,
+   ko:"이 모퉁이에 예전에는 빵집이 있었다.",
+   exp:"‘있었다’는 상태이므로 <b>used to</b>입니다. There would be(✕)"},
 
-  {type:"a", tag:"고난도", sent:"I ___ hate vegetables, but I'm used to eating them every day now.", ko:"나는 예전에 채소를 싫어했지만, 이제는 매일 먹는 것에 익숙하다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["would","used to","am used to","get used to"], a:1, exp:"hate(싫어하다)는 상태동사이므로 would를 쓸 수 없습니다. 문장 뒤쪽에 이미 ‘am used to eating’(현재 익숙함)이 나와 있으므로, 빈칸은 <b>과거의 상태</b>를 나타내는 used to가 정답입니다. 한 문장 안에서 used to와 be used to를 함께 확인하는 문제입니다."},
-  {type:"a", tag:"고난도", q:"다음 문장과 의미가 <b>같도록</b> 바꿔 쓴 것으로 가장 알맞은 것은?<br><span class=\"eng\">In the past, my brother often lied to me, but he doesn't anymore.</span>", opts:["My brother is used to lying to me.","My brother used to lie to me.","My brother would used to lie to me.","My brother gets used to lying to me."], a:1, eng:true, exp:"‘예전에는 자주 ~했지만 지금은 아니다’는 <b>used to + 동사원형</b>으로 바꿔 씁니다. 보기 중 형태가 정확한 것은 used to lie뿐입니다."},
-  {type:"a", tag:"고난도", q:"다음 글의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">Jiho moved to Canada two years ago. At first, everything felt strange, but he studied hard every day. Now he ___ speaking English, and he even dreams in English.</span>", opts:["used to","would","is used to","was used to"], a:2, exp:"‘지금은 영어로 말하는 것이 익숙하다’는 <b>현재의 상태</b>이므로 is used to(be used to + -ing)가 정답입니다. 과거에서 현재로 이어지는 글의 흐름을 놓치지 않아야 합니다."},
-  {type:"a", tag:"고난도", q:"다음 중 어법상 올바른 문장은 <b>모두 몇 개</b>인가?<br><span class=\"eng\">ⓐ I used to walk to school.<br>ⓑ I didn't used to walk to school.<br>ⓒ Did you use to walk to school?<br>ⓓ I am used to walk to school.</span>", opts:["1개","2개","3개","4개"], a:1, exp:"ⓐ, ⓒ만 올바릅니다. ⓑ는 didn't use to(use에 -d 없음)여야 하고, ⓓ는 am used to walk이 아니라 am used to <b>walking</b>이어야 합니다."}
+  {type:"n", tag:"빈칸", sent:"My brother ___ afraid of dogs, but he isn't anymore.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to be","would be","was used to be","used to being","is used to be"], a:0, eng:true,
+   ko:"남동생은 예전에 개를 무서워했지만 지금은 아니다.",
+   exp:"과거의 상태 <b>used to be</b>입니다. not anymore(더는 아니다)가 힌트입니다."},
+
+  {type:"n", tag:"빈칸", sent:"Minsu is used to ___ English every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["speaking","speak","spoke","speaks","to speak"], a:0, eng:true,
+   ko:"민수는 날마다 영어로 말하는 데 익숙하다.",
+   exp:"be used to 뒤에는 <b>-ing</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"Every Sunday, my family ___ have lunch at Grandma's house.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["would","will","is used to","was used to","uses to"], a:0, eng:true,
+   ko:"일요일마다 우리 가족은 할머니 댁에서 점심을 먹곤 했다.",
+   exp:"되풀이한 행동이므로 <b>would</b>가 알맞습니다. used to를 써도 됩니다."},
+
+  {type:"n", tag:"빈칸", sent:"I ___ drink milk, but now I love it.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["didn't use to","don't use to","didn't used to","wasn't used to","used not"], a:0, eng:true,
+   ko:"나는 예전에 우유를 마시지 않았지만, 지금은 아주 좋아한다.",
+   exp:"부정문은 <b>didn't use to + 동사원형</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"___ your father use to play baseball?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Did","Does","Was","Is","Used"], a:0, eng:true,
+   ko:"너희 아버지는 예전에 야구를 하셨니?",
+   exp:"used to의 의문문은 <b>Did</b>로 시작하고 use to가 뒤따릅니다."},
+
+  {type:"n", tag:"빈칸", sent:"I'm not used to ___ chopsticks.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["using","use","used","uses","to use"], a:0, eng:true,
+   ko:"나는 젓가락을 쓰는 데 익숙하지 않다.",
+   exp:"be used to의 부정은 be동사 뒤에 not을 넣습니다. 그 뒤에는 그대로 <b>-ing</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I used to **playing** the violin.</span>",
+   opts:["play","played","plays","to play","be playing"], a:0, eng:true,
+   exp:"used to 뒤에는 원형 <b>play</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She is used to **get** up at six.</span>",
+   opts:["getting","got","gets","to get","be get"], a:0, eng:true,
+   exp:"be used to 뒤에는 <b>getting</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">Did you **used** to have a pet?</span>",
+   opts:["use","uses","using","be used","been used"], a:0, eng:true,
+   exp:"did 뒤라서 원형 <b>use</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">There **would** be a big pond in the park.</span>",
+   opts:["used to","was used to","is used to","use to","would to"], a:0, eng:true,
+   exp:"‘있었다’는 상태라서 would가 아니라 <b>used to</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["He used to be a shy boy.","He used to being a shy boy.","He use to be a shy boy.","He is used to be a shy boy.","He was used to be a shy boy."], a:0, eng:true,
+   exp:"과거의 상태는 <b>used to be</b>입니다."},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I'm used to drive on the left.","She didn't used to like fish.","There would be a church here.","I used to walk to school.","He's used to working late."], ans:[0,1,2],
+   exp:"be used to 뒤는 -ing, didn't 뒤는 use, 상태에는 would를 쓰지 않습니다."},
+
+  {type:"v", tag:"대화와 서술형", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Do you play the piano?<br>B: Not anymore. But I ___ play it when I was little.</span>",
+   opts:["used to","am used to","use to","was used to","would to"], a:0, eng:true,
+   exp:"지금은 안 치지만 어릴 때 쳤으니 <b>used to</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Is it hard to live in a new country?<br>B: Not really. I ___ it now.</span>",
+   opts:["am used to","used to","use to","would","was use to"], a:0, eng:true,
+   exp:"‘이제는 <b>익숙하다</b>’는 뜻이므로 <b>am used to</b> + 명사(it)입니다."},
+
+  {type:"v", tag:"대화와 서술형", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘우리 할아버지는 예전에 선생님이셨다.’</span>",
+   opts:["My grandfather used to be a teacher.","My grandfather used to being a teacher.","My grandfather was used to be a teacher.","My grandfather is used to be a teacher.","My grandfather use to be a teacher."], a:0, eng:true,
+   exp:"과거의 상태 <b>used to be</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘나는 혼자 있는 데 익숙하지 않다.’</span>",
+   opts:["I'm not used to being alone.","I didn't use to be alone.","I'm not used to be alone.","I used not to being alone.","I'm not use to being alone."], a:0, eng:true,
+   exp:"be used to의 부정 <b>I'm not used to</b> 뒤에 <b>being</b>이 옵니다."},
+
+  {type:"v", tag:"대화와 서술형", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">Mina often went to the library after school, but she doesn't now.<br>= Mina ___ go to the library after school.</span>",
+   opts:["used to","is used to","uses to","was used to","use to"], a:0, eng:true,
+   exp:"예전에 자주 했지만 지금은 안 하므로 <b>used to</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", hard:true, q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">When I was young, I ⓐused to live in the country. I ⓑwould swim in the river. There ⓒwould be many fish in it. Now I ⓓam used to living in the city. I ⓔdon't miss it much.</span>",
+   opts:["ⓒ","ⓐ","ⓑ","ⓓ","ⓔ"], a:0, eng:true,
+   exp:"물고기가 ‘있었다’는 상태라서 ⓒ는 <b>used to</b>가 되어야 합니다."},
+
+  {type:"v", tag:"대화와 서술형", hard:true, q:"밑줄 친 used의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["This room is **used** for meetings.","I **used** to be shy.","He **used** to jog.","We **used** to be close.","She **used** to wear a cap."], a:0, eng:true,
+   exp:"첫째는 ‘사용되다’(use의 수동태)입니다. 나머지는 모두 ‘~하곤 했다 · 예전에 ~였다’입니다."}
+];
+
+/* ---------- LEVEL 4 : 전 학년 아우르기 20 (쓰임 가리기 7 · 바꿔 쓰기 6 · 종합 7) ---------- */
+var L4 = [
+  {type:"n", tag:"쓰임 가리기", sent:"Wood is used to ___ paper.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["make","making","made","makes","being made"], a:0, eng:true,
+   ko:"나무는 종이를 만드는 데 쓰인다.",
+   exp:"<b>be used to + 동사원형</b>은 ‘~하는 데 쓰이다’입니다. 수동태 is used에 목적을 나타내는 to부정사가 붙은 것입니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 부분의 쓰임이 같은 것끼리 묶은 것은?<br><span class=\"eng\">ⓐ I **used to** live here.<br>ⓑ This pen **is used to** sign papers.<br>ⓒ She **is used to** living here.<br>ⓓ He **used to** be quiet.</span>",
+   opts:["ⓐ, ⓓ","ⓐ, ⓑ","ⓑ, ⓒ","ⓐ, ⓒ","ⓒ, ⓓ"], a:0, eng:true,
+   exp:"ⓐ와 ⓓ는 ‘예전에 ~했다’, ⓑ는 ‘~하는 데 쓰이다’, ⓒ는 ‘~에 익숙하다’입니다."},
+
+  {type:"n", tag:"쓰임 가리기", sent:"I'm getting used to ___ in Korea.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["living","live","lived","to live","be living"], a:0, eng:true,
+   ko:"나는 한국 생활에 익숙해지고 있다.",
+   exp:"<b>get used to</b>는 ‘~에 익숙해지다’입니다. 이 to도 전치사라서 뒤에 <b>-ing</b>가 옵니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">I used to wear glasses.</span>",
+   opts:["예전에는 안경을 썼지만 지금은 쓰지 않는다.","지금 안경을 쓰고 있다.","안경을 쓰는 데 익숙하다.","안경을 써 본 적이 한 번 있다.","안경을 쓰는 데 쓰였다."], a:0,
+   exp:"used to + 동사원형은 <b>예전에는 ~했다</b>입니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">She is used to wearing glasses.</span>",
+   opts:["그녀는 안경 쓰는 데 익숙하다.","그녀는 예전에 안경을 썼다.","그녀는 안경을 쓰곤 했다.","그녀는 안경을 쓰는 데 쓰인다.","그녀는 안경을 쓸 것이다."], a:0,
+   exp:"be used to + -ing는 <b>~하는 데 익숙하다</b>입니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 to의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["I'm used **to** waiting.","I used **to** wait.","I want **to** wait.","I decided **to** wait.","I hope **to** wait."], a:0, eng:true,
+   exp:"be used to의 to는 <b>전치사</b>라서 뒤에 -ing가 옵니다. 나머지 to는 모두 뒤에 동사원형이 옵니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, multi:true, eng:true, q:"to가 <b>전치사</b>여서 뒤에 -ing나 명사가 오는 표현을 모두 고르세요. (여러 개)",
+   opts:["be used to","look forward to","get used to","used to","want to"], ans:[0,1,2],
+   exp:"be used to · get used to · look forward to 뒤에는 <b>-ing</b>입니다. used to와 want to 뒤에는 원형입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">He was a big eater, but he isn't now.<br>= He ___ a big eater.</span>",
+   opts:["used to be","would be","is used to being","used to being","use to be"], a:0, eng:true,
+   exp:"과거의 상태이므로 would가 아니라 <b>used to be</b>입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">Living alone is not new to me.<br>= I ___ living alone.</span>",
+   opts:["am used to","used to","use to","would","am use to"], a:0, eng:true,
+   exp:"‘새롭지 않다’는 곧 <b>익숙하다</b>입니다. I <b>am used to</b> living alone."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I didn't like math before, but I like it now.<br>= I ___ like math.</span>",
+   opts:["didn't use to","am not used to","didn't used to","wasn't used to","don't use to"], a:0, eng:true,
+   exp:"예전에 ‘하지 않았다’는 <b>didn't use to</b>입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"우리말을 영어로 바르게 옮긴 것은?<br><span class=\"eng\">‘나는 예전에 여기 살았지만 지금은 살지 않는다.’</span>",
+   opts:["I used to live here.","I have lived here.","I am used to living here.","I have been living here.","I live here."], a:0, eng:true,
+   exp:"현재완료 have lived는 <b>지금도</b> 산다는 뜻이 됩니다. 지금은 아니라면 <b>used to</b>입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"우리말을 영어로 바르게 옮긴 것은?<br><span class=\"eng\">‘이 상자는 장난감을 보관하는 데 쓰인다.’</span>",
+   opts:["This box is used to keep toys.","This box used to keep toys.","This box is used to keeping toys.","This box uses to keep toys.","This box would keep toys."], a:0, eng:true,
+   exp:"‘~하는 데 쓰이다’는 <b>be used to + 동사원형</b>입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"뜻이 같은 짝을 모두 고르세요. (여러 개)",
+   opts:["I used to swim here. = I would swim here.","I'm used to cold weather. = Cold weather is not new to me.","He used to be thin. = He was thin before, but he isn't now.","I used to cook. = I'm used to cooking.","She would be quiet. = She used to be quiet."], ans:[0,1,2],
+   exp:"used to와 be used to는 뜻이 다릅니다. 상태(be quiet)는 would로 바꿀 수 없습니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I'm used to get up late on Sundays.","I used to get up late on Sundays.","I would get up late on Sundays.","I'm used to getting up early now.","I didn't use to get up early."], a:0, eng:true,
+   exp:"be used to 뒤에는 <b>-ing</b>입니다. I'm used to <b>getting</b> up."},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Salt is used to keep food fresh.","She is used to working at night.","We used to be neighbors.","He would be my neighbor when I was young.","I'm used to work at night."], ans:[0,1,2],
+   exp:"~하는 데 쓰이다 · ~에 익숙하다 · 예전에 ~였다, 세 짜임이 모두 바릅니다. 상태에 would(✕), be used to 뒤 원형(✕)"},
+
+  {type:"v", tag:"종합", hard:true, sent:"My mom ___ drink a lot of coffee. But she stopped two years ago, and she has felt better since then.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to","is used to","has used to","uses to","was used to"], a:0, eng:true,
+   full:"My mom **used to** drink a lot of coffee. But she stopped two years ago, and she has felt better since then.",
+   fullko:"엄마는 예전에 커피를 많이 드셨다. 하지만 2년 전에 끊으셨고, 그 뒤로 몸이 더 좋아지셨다.",
+   exp:"끊기 전의 습관이므로 <b>used to</b>입니다. 뒤 문장의 has felt는 ‘그 뒤로 지금까지’를 말하는 현재완료입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 <b>used to</b>가 들어갈 수 <b>없는</b> 문장은?",
+   opts:["Did you ___ walk to school?","There ___ be a theater here.","We ___ play together.","She ___ be my best friend.","He ___ collect stamps."], a:0, eng:true,
+   exp:"did 뒤에는 <b>use to</b>가 옵니다. Did you use to walk to school?"},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 문장을 의문문으로 바르게 바꾼 것은?<br><span class=\"eng\">She used to live in Canada.</span>",
+   opts:["Did she use to live in Canada?","Did she used to live in Canada?","Is she used to live in Canada?","Does she use to live in Canada?","Was she used to live in Canada?"], a:0, eng:true,
+   exp:"<b>Did + 주어 + use to + 동사원형 ~?</b>입니다."},
+
+  {type:"v", tag:"종합", hard:true, sent:"You used to play the drums, ___ ?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["didn't you","don't you","weren't you","hadn't you","wasn't you"], a:0, eng:true,
+   ko:"너 예전에 드럼 쳤었지, 그렇지?",
+   exp:"used to는 과거의 일반동사처럼 다룹니다. 그래서 되묻는 말은 <b>didn't you</b>입니다."},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["would는 과거의 상태도 나타낼 수 있다.","used to는 과거의 습관과 상태를 모두 나타낸다.","be used to 뒤에는 -ing나 명사가 온다.","be used to + 동사원형은 ‘~하는 데 쓰이다’이다.","used to의 부정문은 didn't use to로 쓴다."], a:0,
+   exp:"would는 되풀이한 <b>행동</b>에만 씁니다. 상태에는 used to만 됩니다."}
 ];
 
 var LEVELS = {
-  1:{name:"기본 문형", desc:"평서문 · 부정문 · 의문문과 대답", qs:L1, typeLabels:{n:"평서문",a:"부정문",v:"의문·응답"}},
-  2:{name:"구별하기", desc:"used to · would · be used to 구별", qs:L2, typeLabels:{n:"used to",a:"would",v:"be used to"}},
-  3:{name:"실전 문제", desc:"생각이 필요한 문제와 고난도 문제", qs:L3, typeLabels:{n:"생각 필요",a:"고난도"}}
+  1:{name:"기본1 · used to가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 예전에는 ~했다 · 습관과 상태 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 넓히기와 함정", desc:"부정문과 의문문 · would · be used to + -ing · 함정 문제", qs:L2, typeLabels:{n:"모양",a:"모두 고르기",v:"함정"}},
+  3:{name:"기본3 · 중2 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 서술형"}},
+  4:{name:"기본4 · 전 학년 아우르기", desc:"be used to + 동사원형 · get used to · 현재완료와 견주기", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
 };
 
+/* ===================== 개념 화면 ===================== */
+function figUsedto(){
+  return '<svg class="fig" viewBox="0 0 560 150" role="img" aria-label="예전에는 되풀이했지만 지금은 하지 않는 일을 보여 주는 그림">'+
+    '<line x1="30" y1="62" x2="530" y2="62" stroke="var(--line-strong)" stroke-width="3" stroke-linecap="round"/>'+
+    '<rect x="40" y="30" width="270" height="64" rx="14" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
+    '<circle cx="85" cy="62" r="9" fill="var(--rn)"/><circle cx="145" cy="62" r="9" fill="var(--rn)"/>'+
+    '<circle cx="205" cy="62" r="9" fill="var(--rn)"/><circle cx="265" cy="62" r="9" fill="var(--rn)"/>'+
+    '<text x="175" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="var(--rn)">예전 — 되풀이했다</text>'+
+    '<rect x="380" y="30" width="130" height="64" rx="14" fill="var(--card)" stroke="var(--no)" stroke-width="1.5" stroke-dasharray="6 5"/>'+
+    '<text x="445" y="71" text-anchor="middle" font-size="26" font-weight="800" fill="var(--no)">✕</text>'+
+    '<text x="445" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="var(--no)">지금 — 안 한다</text>'+
+    '<text x="280" y="142" text-anchor="middle" font-size="15" fill="var(--muted)" font-family="Newsreader, serif">I used to play the piano.</text>'+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · used to가 뭐예요?</h2>'+
+  '<p class="lead"><b>used to</b>는 ‘<b>예전에는 ~했다</b>’라는 말입니다. 그 속에는 ‘<b>지금은 그렇지 않다</b>’는 뜻이 숨어 있습니다.</p>'+
+  figUsedto()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>만드는 법은 하나뿐</span>'+
+    '<div class="swap"><span>used to + 동사원형</span><span class="ar">→</span><span class="good">used to play · used to be</span></div>'+
+    '<p>주어가 I든 he든 모양은 <b>used to</b> 그대로입니다. 뒤에는 늘 <b>원형</b>이 옵니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>두 가지 뜻</span>'+
+    '<div class="ex">나는 주말마다 <u class="hl a">낚시를 가곤 했다</u>.<span class="k">과거의 습관(되풀이한 행동) — I used to go fishing.</span></div>'+
+    '<div class="ex">이 자리에 예전에는 <u class="hl a">서점이 있었다</u>.<span class="k">과거의 상태 — There used to be a bookstore.</span></div>'+
+    '<p>되풀이한 <b>행동</b>이든, 그때의 <b>상태</b>든 모두 used to로 말합니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>닮은꼴을 조심하세요</span>'+
+    '<div class="swap"><span>used to + 원형</span><span class="ar">↔</span><span class="good">be used to + -ing</span></div>'+
+    '<p>앞에 <b>be동사</b>가 붙으면 ‘<b>~에 익숙하다</b>’라는 전혀 다른 말이 됩니다. 2단계에서 자세히 배웁니다.</p>'+
+  '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">I <u class="hl a">used to</u> live in Busan.<span class="k">예전에 부산에 살았다</span></div><div class="ex">She <u class="hl a">used to</u> be shy.<span class="k">예전에 수줍음이 많았다</span></div></div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span><b>used to + 동사원형</b> = 예전에는 ~했다(지금은 아니다) — 습관도, 상태도 됩니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · 넓히기와 함정</h2>'+
+  '<p class="lead">이제 영어 문장으로 넓혀 봅니다. 부정문과 의문문, 그리고 닮은 두 표현 <b>would</b>와 <b>be used to</b>를 함께 익힙니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>부정문과 의문문은 did를 씁니다</span>'+
+    '<div class="swap"><span>I didn’t used to ✕</span><span class="ar">→</span><span class="good">I didn’t use to like it.</span></div>'+
+    '<div class="swap"><span>Did you used to ✕</span><span class="ar">→</span><span class="good">Did you use to live here?</span></div>'+
+    '<p>did가 과거를 맡으니 뒤는 원형 <b>use</b>가 됩니다. 대답도 Yes, I did. / No, I didn’t.입니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>would는 행동에만</span>'+
+    '<div class="ex">I <u class="hl a">would</u> go fishing with my dad.<span class="k">되풀이한 행동 — used to로 바꿔도 됩니다</span></div>'+
+    '<div class="swap"><span class="bad">There would be a tree.</span><span class="ar">→</span><span class="good">There used to be a tree.</span></div>'+
+    '<p>있었다 · 이었다 · 가지고 있었다 같은 <b>상태</b>에는 would를 쓰지 않습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>be used to는 ‘익숙하다’</span>'+
+    '<div class="ex">I <u class="hl v">am used to</u> getting up early.<span class="k">일찍 일어나는 데 익숙하다</span></div>'+
+    '<p>이 to는 <b>전치사</b>입니다. 그래서 뒤에 <b>-ing</b>나 명사가 옵니다. be used to the noise · be used to living alone</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">외우는 한 줄</span>used to + <b>원형</b> · be used to + <b>-ing</b> · would는 <b>행동</b>에만.</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 중2 학교 시험형</h2>'+
+  '<p class="lead">학교 시험에 그대로 나오는 모양입니다. 빈칸을 채우고, 틀린 곳을 고치고, 대화와 서술형을 풉니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>빈칸 앞뒤를 봅니다</span>'+
+    '<div class="ex">There <u class="hl">used to</u> be a bakery here.<span class="k">상태 → would는 안 됩니다</span></div>'+
+    '<div class="ex">He isn’t afraid of dogs <u class="hl">anymore</u>.<span class="k">not anymore(더는 아니다)가 보이면 used to를 떠올립니다</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>고치는 문제 세 가지</span>'+
+    '<div class="swap"><span>used to playing</span><span class="ar">✕</span><span class="good">used to play</span></div>'+
+    '<div class="swap"><span>is used to get up</span><span class="ar">✕</span><span class="good">is used to getting up</span></div>'+
+    '<div class="swap"><span>Did you used to</span><span class="ar">✕</span><span class="good">Did you use to</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>대화에서는 뜻을 봅니다</span>'+
+    '<div class="ex">A: Do you play the piano?<br>B: Not anymore. I <u class="hl v">used to</u> play it.<span class="k">지금은 안 친다 → used to</span></div>'+
+    '<div class="ex">B: I <u class="hl v">am used to</u> it now.<span class="k">이제는 익숙하다 → be used to</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>앞에 be동사가 있는지, 뒤에 원형인지 -ing인지 — 이 두 곳을 먼저 봅니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
+  '<p class="lead">마지막입니다. 모양이 닮은 세 표현을 한눈에 가리고, 수동태와 현재완료 같은 다른 학년 문법과 견주어 봅니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>닮은꼴 세 가지</span>'+
+    '<div class="ex">I <u class="hl">used to</u> live here.<span class="k">used to + 원형 — 예전에는 ~했다</span></div>'+
+    '<div class="ex">I <u class="hl a">am used to</u> living here.<span class="k">be used to + -ing — ~에 익숙하다</span></div>'+
+    '<div class="ex">Wood <u class="hl v">is used to</u> make paper.<span class="k">be used to + 원형 — ~하는 데 쓰이다(수동태)</span></div>'+
+    '<p>‘익숙해지다’는 <b>get used to + -ing</b>입니다. I’m getting used to it.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>to가 전치사인 표현</span>'+
+    '<div class="swap"><span>be used to · get used to</span><span class="ar">+</span><span class="good">-ing</span></div>'+
+    '<div class="swap"><span>look forward to</span><span class="ar">+</span><span class="good">-ing</span></div>'+
+    '<p>to를 보자마자 원형을 쓰지 말고, 앞말을 먼저 확인하세요.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>현재완료와 견주기</span>'+
+    '<div class="swap"><span>I used to live here.</span><span class="ar">↔</span><span class="good">I have lived here for ten years.</span></div>'+
+    '<p>used to는 <b>지금은 아니다</b>, 현재완료 have lived는 <b>지금도 산다</b>입니다. 되묻는 말은 You used to ~, <b>didn’t you</b>?</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마지막 한마디</span>be동사가 없으면 ‘예전에’, 있으면 뒤를 보고 ‘익숙하다’인지 ‘쓰이다’인지 가립니다.</div>';
+}
+
+var LVCHEER = {
+  1:"used to가 ‘예전에는 ~했다’라는 것을 알게 되었어요. 2단계에서는 would와 be used to를 만납니다.",
+  2:"used to + 원형, be used to + -ing — 이 한 줄을 잡았습니다. 3단계는 중2 학교 시험형입니다.",
+  3:"시험지의 함정을 피하는 눈이 생겼어요. 마지막 단계만 남았습니다.",
+  4:"닮은꼴 세 가지와 현재완료까지 가려냈습니다. used to는 이제 든든합니다!"
+};
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
 /* ===================== 상태 ===================== */
-var RKEY="kkumettang_usedto_v1", NKEY="kkumettang_name_basic";
+var RKEY="kkumettang_usedto_v2", NKEY="kkumettang_name";
 var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
        correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
        round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
@@ -470,15 +912,13 @@ function show(id){
 }
 
 /* ===================== 시작 화면 ===================== */
-var REVIEWER_NAME="꾸메땅학생";
-function isReviewer(){ return S.name===REVIEWER_NAME; }
 function best(level){
   var r=loadR();
   for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
   return null;
 }
 function drawRail(){
-  [1,2,3].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var b=best(k);
     $("f"+k).style.width=(b==null?0:b)+"%";
     $("p"+k).textContent=(b==null?"":" "+b);
@@ -486,9 +926,9 @@ function drawRail(){
 }
 function drawLevels(){
   var h="";
-  [1,2,3].forEach(function(k){
+  [1,2,3,4].forEach(function(k){
     var L=LEVELS[k], b=best(k);
-    var locked = S.active && S.active!==k && !isReviewer();
+    var locked = false;
     var here = S.active===k;
     var right;
     if(locked) right='<span class="best lock">잠김</span>';
@@ -502,8 +942,6 @@ function drawLevels(){
         right+
       '</button>';
   });
-  if(S.active && !isReviewer()) h+='<p class="lockmsg">'+S.active+'단계를 진행 중입니다. 이 단계를 오답까지 모두 마무리해야 다른 단계를 고를 수 있습니다.</p>';
-  else if(S.active && isReviewer()) h+='<p class="lockmsg" style="color:var(--accent)">검수 계정은 단계 잠금 없이 자유롭게 이동할 수 있습니다.</p>';
   $("levelPick").innerHTML=h;
   Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
     b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
@@ -515,8 +953,7 @@ function pickLevel(k){
   var nm=($("nameIn").value||"").trim();
   if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
   S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
-  if(S.active && S.active!==k && !isReviewer()) return;
-  if(isReviewer()){ S.level=k; startQuiz(); return; }
+  if(S.active && S.active!==k) return;
   if(S.active===k){
     if(S.resume==="learn") renderLearn();
     else if(S.resume==="result") show("result");
@@ -527,88 +964,20 @@ function pickLevel(k){
   renderLearn();
 }
 
-/* ===================== 개념 화면 ===================== */
-function figFan(){
-  return '<svg class="fig" viewBox="0 0 520 88" role="img" aria-label="used to가 세 가지 개념으로 나뉘는 그림">'+
-    '<defs>'+
-      '<marker id="an" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--rn)"/></marker>'+
-      '<marker id="aa" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--ra)"/></marker>'+
-      '<marker id="av" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--rv)"/></marker>'+
-    '</defs>'+
-    '<path d="M260 6 C 260 48, 88 42, 88 78" fill="none" stroke="var(--rn)" stroke-width="2.5" marker-end="url(#an)"/>'+
-    '<path d="M260 6 L 260 78" fill="none" stroke="var(--ra)" stroke-width="2.5" marker-end="url(#aa)"/>'+
-    '<path d="M260 6 C 260 48, 432 42, 432 78" fill="none" stroke="var(--rv)" stroke-width="2.5" marker-end="url(#av)"/>'+
-  '</svg>';
-}
-
-function learn1(){
-  return ''+
-  '<h2>1단계 · used to 기본 문형</h2>'+
-  '<p class="lead">used to는 <b>‘예전에는 ~했다, ~그랬다(지금은 아니다)’</b>는 뜻으로 과거의 습관이나 상태를 나타냅니다. 형태는 딱 세 가지만 기억하면 됩니다.</p>'+
-  '<div class="trio">'+
-    '<div class="role r-n"><span class="t">평서문</span><span class="m">used to + 동사원형</span><span class="e">I <b>used to</b> swim.<br>나는 수영을 하곤 했다.</span></div>'+
-    '<div class="role r-a"><span class="t">부정문</span><span class="m">didn\'t use to + 동사원형</span><span class="e">I <b>didn\'t use to</b> swim.<br>나는 수영을 하지 않았었다.</span></div>'+
-    '<div class="role r-v"><span class="t">의문문</span><span class="m">Did + 주어 + use to ~?</span><span class="e"><b>Did</b> you <b>use to</b> swim?<br>너는 수영을 하곤 했니?</span></div>'+
-  '</div>'+
-  '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>대답도 used to 없이 did로만</span>'+
-    '<div class="ex">A: Did you use to swim?<span class="k">B: Yes, I did. / No, I didn\'t.</span></div>'+
-    '<div class="tip"><span class="h">꼭 지키기</span>부정문·의문문에서는 use에 <b>-d를 붙이지 않습니다.</b> didn\'t use to (○) · didn\'t used to (✕)</div>'+
-  '</div>'+
-  '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>‘지금은 다르다’는 대조가 숨어 있어요</span>'+
-    '<div class="ex">I <u class="hl">used to</u> be short.<span class="k">나는 (예전엔) 키가 작았다 → 지금은 아니다(커졌다)</span></div>'+
-    '<p>used to는 <b>과거와 현재가 다를 때</b> 씁니다. 지금도 계속되는 습관에는 쓰지 않습니다.</p>'+
-  '</div>';
-}
-
-function learn2(){
-  return ''+
-  '<h2>2단계 · used to vs would vs be used to</h2>'+
-  '<p class="lead">겉모습이 비슷한 세 표현을 정확히 구별해야 합니다.</p>'+
-  '<div class="trio">'+
-    '<div class="role r-n"><span class="t">used to</span><span class="m">과거의 습관·상태</span><span class="e">동작·상태 동사 모두 가능</span></div>'+
-    '<div class="role r-a"><span class="t">would</span><span class="m">과거의 반복 동작</span><span class="e">동작동사만 가능</span></div>'+
-    '<div class="role r-v"><span class="t">be used to</span><span class="m">~에 익숙하다(현재)</span><span class="e">be + used to + -ing/명사</span></div>'+
-  '</div>'+
-  figFan()+
-  '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>would가 못 쓰이는 동사</span>'+
-    '<div class="swap"><span class="good">I used to have a dog.</span><span class="ar">≠</span><span class="bad">I would have a dog.</span></div>'+
-    '<p>have(소유), be, like, know 같은 <b>상태동사</b>에는 would를 쓸 수 없습니다. 눈에 보이는 동작을 반복했다는 뜻일 때만 would로 바꿀 수 있습니다. (visit, play, tell 등)</p>'+
-  '</div>'+
-  '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>be used to는 전혀 다른 뜻</span>'+
-    '<div class="ex">I <u class="hl">used to</u> get up early.<span class="k">~하곤 했다 (과거 습관)</span></div>'+
-    '<div class="ex">I am <u class="hl v">used to</u> getting up early.<span class="k">~에 익숙하다 (현재 상태)</span></div>'+
-    '<div class="tip"><span class="h">꼭 지키기</span>be used to 뒤에는 동사원형이 아니라 <b>-ing(동명사)</b>가 옵니다. get used to는 ‘~에 익숙해지다’라는 변화를 나타냅니다.</div>'+
-  '</div>';
-}
-
-function learn3(){
-  return ''+
-  '<h2>3단계 · 실전 문제</h2>'+
-  '<p class="lead">이제 배운 내용을 실전 문제로 확인합니다. 아래 <b>판단 순서</b>를 기억하세요.</p>'+
-  '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>① 상태동사인가?</span>'+
-    '<p>be, have(소유), like, know, own처럼 <b>상태</b>를 나타내는 동사라면 would는 쓸 수 없고 <b>used to</b>만 가능합니다.</p>'+
-  '</div>'+
-  '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>② 반복되는 동작인가?</span>'+
-    '<p>play, visit, tell처럼 눈에 보이는 동작을 반복했다면 <b>would</b>와 <b>used to</b> 둘 다 쓸 수 있습니다.</p>'+
-  '</div>'+
-  '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>③ ‘익숙하다/익숙해지다’인가?</span>'+
-    '<p>지금의 상태를 말한다면 <b>be used to + -ing</b>, 익숙해지는 변화를 말한다면 <b>get used to + -ing</b>입니다.</p>'+
-  '</div>'+
-  '<div class="tip"><span class="h">함정 주의</span>didn\'t <b>used</b> to(✕), be used to + <b>동사원형</b>(✕)처럼 형태 오류가 자주 나옵니다. 꼼꼼히 살펴보세요.</div>';
-}
-
-function renderLearn(){
-  $("lvnum").textContent="LEVEL "+S.level;
-  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():learn3();
-  show("learn");
-}
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
 
 /* ===================== 문제 ===================== */
 function startQuiz(){
@@ -628,47 +997,50 @@ function renderQ(){
   $("qnum").textContent=(S.i+1)+" / "+n;
   $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
   $("qlevel").className = "chip"+(c?" "+c:"");
-  var tabsEl=$("lvtabs");
-  if(isReviewer()){
-    $("qlevel").hidden=true;
-    tabsEl.hidden=false;
-    tabsEl.innerHTML=[1,2,3].map(function(k){
-      return '<button type="button" class="'+(k===S.level?"on":"")+'" data-lv="'+k+'">'+k+'단계</button>';
-    }).join("");
-    Array.prototype.forEach.call(tabsEl.querySelectorAll("button"),function(b){
-      b.addEventListener("click",function(){ S.level=+this.dataset.lv; startQuiz(); });
-    });
-  } else {
-    $("qlevel").hidden=false;
-    tabsEl.hidden=true;
-    tabsEl.innerHTML="";
-  }
   var tag = q.tag || "";
-  $("qtag").textContent = tag;
-  $("qtag").className = "chip plain";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
-  else if(q.sent){
-    h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
-    if(q.ko && !q.hideKo) h+='<p class="ko">'+esc(q.ko)+'</p>';
-  }
-  h+='<div class="opts">';
-  q.opts.forEach(function(o,i){
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
     var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
-    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(i+1)+'</span>'+
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
        '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
   });
   h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
   $("qbody").innerHTML=h;
   $("qexp").innerHTML="";
   saveProg();
   S.answered=false;S.picked=-1;
 
   Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
-    b.addEventListener("click",function(){ answer(+this.dataset.i); });
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
   });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
   show("quiz");
 }
 
@@ -676,6 +1048,9 @@ function buildFull(q){
   if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
   if(!q.sent) return null;
   if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -694,7 +1069,46 @@ function answer(pick){
     if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
     if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
   });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
 
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
   if(S.round===1){
     if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
     if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
@@ -704,8 +1118,7 @@ function answer(pick){
 
   var f=buildFull(q), last=(S.i+1>=S.list.length);
   var h='<div class="exp">'+
-    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+
-      (ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>')+'</div>'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
     (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
         (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
     '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
@@ -728,16 +1141,15 @@ document.addEventListener("keydown",function(e){
   if($("quiz").classList.contains("hide")) return;
   if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
   var n=parseInt(e.key,10);
-  if(!S.answered&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
 });
 
 /* ===================== 결과 ===================== */
 function praise(p){
-  if(p===100) return ["영어 지존이에요!","이 단계는 완벽합니다. 다음 단계로 가 볼까요?"];
-  if(p>=90) return ["아주 훌륭해요!","몇 문제만 다시 보면 완벽합니다."];
-  if(p>=75) return ["잘했어요!","틀린 문제의 해설을 꼼꼼히 읽어 보세요."];
-  if(p>=60) return ["조금만 더 노력해요","개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
-  return ["천천히 다시 해봐요","개념부터 다시 보면 금방 오릅니다. 포기하지 마세요."];
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
 }
 
 function openPraise(score,total,correct,wrong){
@@ -781,9 +1193,10 @@ function renderResult(){
   $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
   $("rbreak").innerHTML=bd;
 
+  var isAdmin = (S.name==="꾸메땅");
   var r=loadR(), hadScore=null;
   for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
-  if(hadScore===null){
+  if(hadScore===null && !isAdmin){
     var d=new Date();
     r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
     saveR(r);
@@ -798,30 +1211,48 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
-         '<div class="a">정답 <b>'+esc(q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
     });
     w+='</div>';
     $("rwrong").innerHTML=w;
   } else $("rwrong").innerHTML="";
 
   if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
   $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
   var rb=$("retryBtn");
   if(rb) rb.addEventListener("click",function(){
     S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
   });
   wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
   show("result");
   openPraise(S.score, total, S.correct, S.wrong.length);
 }
 
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
 function actionsHTML(remain, retryLabel){
   var ac="";
   if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
-  else if(S.level<3) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
-  ac+='<button class="btn '+(remain||S.level<3?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
       '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
   return ac;
 }
@@ -830,6 +1261,14 @@ function wireActions(){
   if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
   $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
   $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
 }
 
 function renderRetryResult(){
@@ -848,6 +1287,7 @@ function renderRetryResult(){
   $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
     '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
   $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
   var ac="";
   if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
   ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
@@ -859,6 +1299,10 @@ function renderRetryResult(){
   });
   $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
   $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
   show("result");
   document.querySelector("#result .of").textContent="/ "+done+"문제";
 }
@@ -957,7 +1401,7 @@ function loadProg(){
     var p = JSON.parse(localStorage.getItem(PKEY) || "null");
     if(!p || !p.list || !p.list.length) return null;
     if(p.i >= p.list.length) return null;
-    if(Date.now() - (p.t || 0) > 1209600000) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
     return p;
   }catch(e){ return null; }
 }
@@ -988,9 +1432,8 @@ function progBanner(){
   $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
 }
 
-
 refreshStart();
-</script>
 
+</script>
 <script src="/kkt.js"></script>
 </body></html>

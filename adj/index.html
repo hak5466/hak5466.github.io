@@ -1,4 +1,12 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
 <title>꾸메땅 영문법 GAME · 형용사 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,8 +292,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-4 · 형용사 뽀개기</span></h1>
-    <p class="sub">형용사 완전정복 80문제 · 네 단계 각 20문제 / 1·2단계는 어린 아이도 할 수 있고, 3·4단계에서 영어 낱말 쓰기까지 나아갑니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · 형용사 뽀개기</span></h1>
+    <p class="sub">어떠한지를 말하는 말 · 어순과 many·much · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -384,92 +392,95 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : 한글로 개념 잡기 20 (개념 8 · 모두 고르기 6 · 구별 6) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"<b>형용사</b>는 무엇을 나타내는 말일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>형용사</b>는 무엇을 나타내는 말일까요?",
    opts:["어떠한지 — 성질이나 상태","무엇을 하는지 — 움직임","누구인지 — 이름","언제인지 — 때","어디인지 — 장소"], a:0,
    exp:"형용사는 <b>‘어떠한’</b>을 말해 주는 말입니다. 크다, 예쁘다, 뜨겁다 — 모두 형용사입니다."},
 
-  {type:"n", tag:"개념", q:"형용사가 하는 <b>첫 번째 일</b>은 무엇일까요?",
+  {type:"n", tag:"한글로 이해", q:"형용사가 하는 <b>첫 번째 일</b>은 무엇일까요?",
    opts:["명사를 꾸며 준다","동사를 꾸며 준다","문장을 이어 준다","개수를 센다","소리를 흉내 낸다"], a:0,
    exp:"‘<u>큰</u> 개’처럼 명사 <b>앞</b>에서 꾸며 줍니다. 어떤 개인지 알려 주는 것이지요."},
 
-  {type:"n", tag:"개념", q:"형용사가 하는 <b>두 번째 일</b>은 무엇일까요?",
+  {type:"n", tag:"한글로 이해", q:"형용사가 하는 <b>두 번째 일</b>은 무엇일까요?",
    opts:["be동사 뒤에서 주어를 설명해 준다","동사 앞에 붙는다","명사를 대신한다","이름을 붙인다","때를 알려 준다"], a:0,
    exp:"‘그 개는 <u>크다</u>’처럼 be동사 뒤에서 주어가 어떠한지를 설명합니다. 이 자리를 <b>보어</b>라고 합니다."},
 
-  {type:"n", tag:"개념", q:"우리말에서 형용사를 찾는 가장 쉬운 방법은?",
+  {type:"n", tag:"한글로 이해", q:"우리말에서 형용사를 찾는 가장 쉬운 방법은?",
    opts:["‘어떤?’ 하고 물어보면 답이 되는 말","‘무엇을 했니?’의 답이 되는 말","‘누가?’의 답이 되는 말","맨 앞에 오는 말","맨 뒤에 오는 말"], a:0,
    exp:"‘<b>어떤</b> 개?’ → ‘큰 개’. 이렇게 물어서 답이 되면 그 말이 형용사입니다."},
 
-  {type:"n", tag:"개념", q:"‘<b>큰 개가 빠르게 달린다</b>’에서 형용사는?",
-   opts:["큰","개","빠르게","달린다","가"], a:0,
-   exp:"‘큰’이 명사 ‘개’를 꾸며 주므로 <b>형용사</b>입니다. ‘빠르게’는 동사를 꾸며 주는 부사입니다."},
-
-  {type:"n", tag:"개념", q:"형용사와 <b>부사</b>는 무엇이 다를까요?",
+  {type:"n", tag:"한글로 이해", q:"형용사와 <b>부사</b>는 무엇이 다를까요?",
    opts:["형용사는 명사를, 부사는 주로 동사를 꾸민다","형용사는 뒤에, 부사는 앞에 온다","형용사는 길고 부사는 짧다","둘은 같은 말이다","부사가 형용사를 대신한다"], a:0,
    exp:"‘<u>예쁜</u> 꽃’은 형용사, ‘<u>예쁘게</u> 웃는다’는 부사입니다. <b>무엇을 꾸미는지</b>가 다릅니다."},
 
-  {type:"n", tag:"개념", q:"영어에서 형용사는 명사의 어느 쪽에 놓일까요?",
+  {type:"n", tag:"한글로 이해", q:"영어에서 형용사는 명사의 어느 쪽에 놓일까요?",
    opts:["명사 앞","명사 뒤","문장 맨 끝","동사 앞","아무 데나"], a:0,
    exp:"영어는 <b>형용사 + 명사</b> 차례입니다. a <b>big</b> dog (큰 개). 우리말과 차례가 같아서 어렵지 않습니다."},
 
-  {type:"n", tag:"개념", q:"형용사 앞에 <b>a</b>나 <b>the</b>가 붙을 때 차례로 알맞은 것은?",
-   opts:["a + 형용사 + 명사","형용사 + a + 명사","a + 명사 + 형용사","명사 + a + 형용사","형용사 + 명사 + a"], a:0,
-   exp:"<b>a big dog</b>가 맞습니다. big a dog(✕) 처럼 순서를 바꾸지 않습니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>형용사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>형용사</b>를 모두 고르세요. (여러 개)",
    opts:["크다","예쁘다","뜨겁다","달리다","학교"], ans:[0,1,2],
    exp:"크다 · 예쁘다 · 뜨겁다는 ‘어떠한’을 말하므로 형용사입니다. 달리다는 동사, 학교는 명사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>형용사</b>를 모두 고르세요. (여러 개)",
-   opts:["새로운","작은","슬픈","빠르게","먹다"], ans:[0,1,2],
-   exp:"새로운 · 작은 · 슬픈이 형용사입니다. ‘빠르게’는 부사, ‘먹다’는 동사입니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"형용사가 놓일 수 있는 자리를 모두 고르세요. (여러 개)",
-   opts:["명사 바로 앞","be동사 바로 뒤","문장 맨 앞의 주어 자리","동사 바로 앞","명사 대신"], ans:[0,1],
-   exp:"형용사는 <b>명사 앞</b>과 <b>be동사 뒤</b> 두 자리에 놓입니다. 주어 자리에는 명사가 옵니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 형용사가 <b>명사를 꾸며 주는</b> 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 형용사가 <b>명사를 꾸며 주는</b> 말을 모두 고르세요. (여러 개)",
    opts:["빨간 사과","높은 산","착한 친구","빨리 달린다","크게 웃는다"], ans:[0,1,2],
    exp:"빨간 · 높은 · 착한이 각각 사과 · 산 · 친구를 꾸며 줍니다. 빨리와 크게는 동사를 꾸미는 부사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 형용사가 <b>주어를 설명해 주는</b> 말을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 형용사가 <b>주어를 설명해 주는</b> 말을 모두 고르세요. (여러 개)",
    opts:["그 개는 크다.","날씨가 춥다.","나는 행복하다.","나는 밥을 먹는다.","새가 난다."], ans:[0,1,2],
    exp:"크다 · 춥다 · 행복하다가 주어의 상태를 설명합니다. 먹는다와 난다는 동작이므로 동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 설명 중 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
-   opts:["형용사는 ‘어떠한’을 나타낸다","형용사는 명사를 꾸민다","형용사는 be동사 뒤에 온다","형용사는 동사를 꾸민다","형용사는 이름을 나타낸다"], ans:[0,1,2],
-   exp:"동사를 꾸미는 것은 부사, 이름을 나타내는 것은 명사입니다."},
-
-  {type:"v", tag:"구별", sent:"**예쁜** 꽃이 피었다.", q:"밑줄 친 말은 무엇일까요?",
+  {type:"n", tag:"한글로 이해", sent:"**예쁜** 꽃이 피었다.", q:"밑줄 친 말은 무엇일까요?",
    opts:["형용사","명사","동사","부사","접속사"], a:0,
    exp:"‘꽃’이라는 명사를 꾸며 주므로 <b>형용사</b>입니다."},
 
-  {type:"v", tag:"구별", sent:"꽃이 **예쁘게** 피었다.", q:"밑줄 친 말은 무엇일까요?",
+  {type:"n", tag:"한글로 이해", sent:"꽃이 **예쁘게** 피었다.", q:"밑줄 친 말은 무엇일까요?",
    opts:["부사","형용사","명사","동사","접속사"], a:0,
    exp:"‘피었다’라는 동사를 꾸며 주므로 <b>부사</b>입니다. ‘예쁜’과 ‘예쁘게’를 나란히 놓고 보면 차이가 또렷합니다."},
 
-  {type:"v", tag:"구별", q:"다음 중 형용사가 <b>없는</b> 문장은?",
-   opts:["나는 학교에 간다.","나는 큰 가방이 있다.","오늘은 춥다.","그는 친절하다.","이 책은 재미있다."], a:0,
-   exp:"‘나는 학교에 간다’에는 ‘어떠한’을 말하는 말이 없습니다. 나머지에는 큰 · 춥다 · 친절하다 · 재미있다가 있습니다."},
-
-  {type:"v", tag:"구별", q:"‘<b>작은 새가 높이 난다</b>’에서 형용사와 부사를 바르게 가른 것은?",
-   opts:["형용사 — 작은 / 부사 — 높이","형용사 — 높이 / 부사 — 작은","둘 다 형용사","둘 다 부사","형용사 — 새 / 부사 — 난다"], a:0,
-   exp:"‘작은’은 명사 ‘새’를, ‘높이’는 동사 ‘난다’를 꾸며 줍니다."},
-
-  {type:"v", tag:"구별", q:"다음 중 형용사를 <b>두 자리 모두</b>에 쓴 문장은?",
-   opts:["큰 개가 순하다.","개가 달린다.","큰 개다.","개는 순하다.","개가 빨리 달린다."], a:0,
-   exp:"‘큰’은 명사를 꾸미고 ‘순하다’는 주어를 설명합니다. 형용사의 <b>두 가지 일</b>이 한 문장에 다 들어 있습니다."},
-
-  {type:"v", tag:"정리", q:"다음 설명 중 <b>틀린</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
    opts:["형용사는 동사를 꾸며 준다.","형용사는 ‘어떠한’을 나타낸다.","영어에서 형용사는 명사 앞에 온다.","형용사는 be동사 뒤에도 온다.","‘예쁜’은 형용사이고 ‘예쁘게’는 부사이다."], a:0,
-   exp:"동사를 꾸미는 것은 <b>부사</b>입니다. 형용사는 명사를 꾸밉니다."}
+   exp:"동사를 꾸미는 것은 <b>부사</b>입니다. 형용사는 명사를 꾸밉니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 중 <b>형용사</b>는?",
+   opts:["big","run","dog","slowly","and"], a:0, eng:true,
+   exp:"big(큰)은 ‘어떠한지’를 말하는 형용사입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>형용사</b>를 모두 고르세요. (여러 개)",
+   opts:["happy","tall","new","eat","cat"], ans:[0,1,2],
+   exp:"행복한 · 키가 큰 · 새로운은 형용사입니다. eat은 동사, cat은 명사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>작은</b>’을 영어로 하면?",
+   opts:["small","big","old","long","happy"], a:0, eng:true,
+   exp:"작은 <b>small</b> ↔ 큰 big"},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>hot</b>(뜨거운)의 반대말은?",
+   opts:["cold","big","new","sad","tall"], a:0, eng:true,
+   exp:"hot(뜨거운) ↔ <b>cold</b>(차가운)"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘큰 개’를 바른 차례로 쓴 것은?",
+   opts:["a big dog","a dog big","big a dog","dog a big","big dog a"], a:0, eng:true,
+   exp:"영어도 우리말처럼 <b>a + 형용사 + 명사</b> 차례입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<span class=\"eng\">a red apple</span>에서 red가 꾸며 주는 말은?",
+   opts:["apple","a","red","아무것도 꾸미지 않는다","문장 전체"], a:0,
+   exp:"red(빨간)는 바로 뒤의 명사 <b>apple</b>을 꾸밉니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The cat is ___ .", q:"‘그 고양이는 작다’가 되도록 알맞은 것은?",
+   opts:["small","smally","a small","smalls","the small"], a:0, eng:true,
+   ko:"그 고양이는 작다.",
+   exp:"be동사 뒤에서 주어를 설명하는 형용사 <b>small</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I am ___ .", q:"‘나는 행복하다’가 되도록 알맞은 것은?",
+   opts:["happy","happily","happiness","a happy","happys"], a:0, eng:true,
+   ko:"나는 행복하다.",
+   exp:"am 뒤에서 나를 설명하는 형용사 <b>happy</b>입니다."}
 ];
 
 /* ---------- LEVEL 2 : 쉬운 영어 단어로 20 (뜻 7 · 모두 고르기 6 · 반대말 7) ---------- */
@@ -599,7 +610,7 @@ var L3 = [
 
   {type:"a", tag:"어순", sent:"I see a ___ ___ .", q:"‘큰 새’가 되도록 알맞게 짝지은 것은?",
    opts:["big – bird","bird – big","big – birds","a big – bird","bird – a big"], a:0, eng:true,
-   ko:"나는 큰 새를 본다.",
+   ko:"나는 큰 새를 본다.", full:"I see a **big bird**.", fullko:"나는 큰 새를 본다.",
    exp:"a <b>big bird</b>. 형용사가 먼저, 명사가 나중입니다."},
 
   {type:"a", tag:"어순", q:"형용사 두 개를 쓸 때 바른 것은?<br><span class=\"eng\">‘작고 하얀 개’</span>",
@@ -710,7 +721,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 어떠한지를 말하는 말", desc:"형용사가 무엇인지 · 하는 일 두 가지 · 한글로 먼저 · 초등도 가능", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
+  1:{name:"기본1 · 어떠한지를 말하는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 형용사가 하는 일 두 가지 · 쉬운 형용사와 반대말 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 쉬운 영어 단어로", desc:"big · small · happy · tall · new · hot 과 반대말", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"반대말"}},
   3:{name:"기본3 · 한글과 영어 섞기", desc:"두 자리 가리기 · a + 형용사 + 명사 어순 · many 와 much", qs:L3, typeLabels:{n:"두 자리",a:"어순",v:"수량"}},
   4:{name:"기본4 · 직접 써 보기", desc:"형용사와 반대말을 영어로 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"낱말 쓰기",a:"반대말 쓰기",v:"문장 채우기"}}
@@ -752,6 +763,7 @@ function learn1(){
     '<div class="swap"><span>예쁜 꽃</span><span class="ar">↔</span><span class="good">예쁘게 웃는다</span></div>'+
     '<p>‘예쁜’은 <b>명사</b>를 꾸미니 형용사, ‘예쁘게’는 <b>동사</b>를 꾸미니 부사입니다. <b>무엇을 꾸미는지</b>만 보면 됩니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">a <u class="hl a">big</u> dog<span class="k">명사 앞에서 꾸미기 — 큰 개</span></div><div class="ex">The dog is <u class="hl a">big</u>.<span class="k">be동사 뒤에서 설명하기 — 그 개는 크다</span></div><div class="swap"><span>big · hot · happy</span><span class="ar">↔</span><span class="good">small · cold · sad</span></div></div>'+
   '<div class="tip"><span class="h">1단계에서 챙길 것</span>형용사는 <b>‘어떠한’</b>을 말하고, <b>명사 앞</b>과 <b>be동사 뒤</b> 두 자리에 놓입니다.</div>';
 }
 
@@ -824,6 +836,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">마지막 한마디</span>틀려도 괜찮습니다. 쓴 뒤에 정답과 견주어 보는 것만으로도 훨씬 오래 남습니다.</div>';
 }
+
+var LVCHEER = {
+  1:"형용사가 하는 두 가지 일을 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
+  2:"반대말 짝으로 외우니 훨씬 빠르지요? 3단계에서는 자리와 어순을 익힙니다.",
+  3:"명사 앞인지 be동사 뒤인지, many인지 much인지. 이제 헷갈리지 않을 거예요.",
+  4:"형용사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -950,7 +969,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -998,6 +1017,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1092,12 +1112,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"형용사가 하는 두 가지 일을 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
-  2:"반대말 짝으로 외우니 훨씬 빠르지요? 3단계에서는 자리와 어순을 익힙니다.",
-  3:"명사 앞인지 be동사 뒤인지, many인지 much인지. 이제 헷갈리지 않을 거예요.",
-  4:"형용사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1164,7 +1178,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

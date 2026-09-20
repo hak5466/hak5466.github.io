@@ -1,5 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
-<title>꾸메땅 도전 감각동사 GAME</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · 감각동사 GAME</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -253,6 +261,7 @@ table.rank tr.me .who{color:var(--accent)}
 .empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
 .toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
 
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
 .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
 .opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
 .multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
@@ -283,8 +292,8 @@ table.rank tr.me .who{color:var(--accent)}
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 도전 <span class="mark">감각동사 GAME</span></h1>
-    <p class="sub">look · sound · smell · taste · feel 완전정복 80문제 · 네 단계 각 20문제 / 문제에는 답을 알려 주는 힌트를 두지 않고, 답을 고른 뒤에 완성 문장과 해설이 나옵니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 감각동사 GAME</span></h1>
+    <p class="sub">look · sound · smell · taste · feel · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -368,7 +377,7 @@ table.rank tr.me .who{color:var(--accent)}
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 도전 감각동사 GAME · 중1 감각동사편</p>
+  <p class="foot">꾸메땅 영문법 GAME · 감각동사 GAME</p>
 </div>
 
 
@@ -383,90 +392,91 @@ table.rank tr.me .who{color:var(--accent)}
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : 감각동사가 무엇인지 20 (개념 6 · 모두 고르기 4 · 단어 10) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"‘감각동사’는 어떤 것을 말할 때 쓰는 동사일까요?",
+  {type:"n", tag:"한글로 이해", q:"‘감각동사’는 어떤 것을 말할 때 쓰는 동사일까요?",
    opts:["눈·귀·코·혀·피부로 느낀 것을 말할 때 쓰는 동사","달리다, 먹다처럼 몸의 움직임을 말하는 동사","어제, 오늘처럼 때를 말하는 동사","사람의 이름을 대신해서 부르는 말","두 문장을 하나로 이어 주는 말"], a:0,
    exp:"감각동사는 우리 몸의 다섯 감각 — 보고(눈), 듣고(귀), 냄새 맡고(코), 맛보고(혀), 만져서 느낀(피부) 것을 말할 때 쓰는 동사입니다. 그래서 다섯 개를 한 묶음으로 외웁니다."},
 
-  {type:"n", tag:"개념", q:"다음 중 <b>감각동사</b>를 써서 말하는 상황이 <b>아닌</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"다음 중 <b>감각동사</b>를 써서 말하는 상황이 <b>아닌</b> 것은?",
    opts:["케이크에서 단 맛이 난다","밖에서 시끄러운 소리가 들린다","나는 학교에 걸어간다","꽃에서 좋은 향기가 난다","손에 닿은 물이 차갑게 느껴진다"], a:2,
    exp:"‘학교에 걸어간다’는 몸의 움직임이라 일반동사(walk, go)를 씁니다. 나머지는 혀·귀·코로 느낀 것이라 감각동사(taste, sound, smell)를 씁니다."},
 
-  {type:"n", tag:"개념", q:"감각동사는 기본으로 몇 개를 외우면 될까요?",
+  {type:"n", tag:"한글로 이해", q:"감각동사는 기본으로 몇 개를 외우면 될까요?",
    opts:["다섯 개","두 개","열 개","스무 개","세 개"], a:0,
    exp:"look(보이다), sound(들리다), smell(냄새가 나다), taste(맛이 나다), feel(느껴지다) — 다섯 개입니다. 감각이 다섯 가지이니 동사도 다섯 개라고 기억하면 쉽습니다."},
 
-  {type:"n", tag:"개념", q:"다음 두 우리말 중 <b>감각동사</b>를 쓰는 쪽은 어느 것일까요?<br><span class=\"eng\">① 그것은 예쁘다&nbsp;&nbsp;&nbsp;② 그것은 예뻐 <u>보인다</u></span>",
+  {type:"n", tag:"한글로 이해", q:"다음 두 우리말 중 <b>감각동사</b>를 쓰는 쪽은 어느 것일까요?<br><span class=\"eng\">① 그것은 예쁘다&nbsp;&nbsp;&nbsp;② 그것은 예뻐 <u>보인다</u></span>",
    opts:["②번","①번","둘 다 쓴다","둘 다 쓰지 않는다","①번과 ②번의 뜻이 같다"], a:0,
    exp:"‘예쁘다’는 그냥 사실을 말하는 것이라 be동사(is)를 씁니다. ‘예뻐 보인다’는 <b>눈으로 보니 그렇게 느껴진다</b>는 뜻이라 감각동사 look을 씁니다. 감각동사에는 늘 ‘~해 보인다, ~하게 들린다’처럼 <b>느낌</b>이 담겨 있습니다."},
 
-  {type:"n", tag:"개념", q:"감각동사가 하는 일을 가장 잘 설명한 것은?",
+  {type:"n", tag:"한글로 이해", q:"감각동사가 하는 일을 가장 잘 설명한 것은?",
    opts:["느낀 것이 어떠한지를 뒤에 붙여서 말해 준다","동작이 언제 일어났는지를 알려 준다","두 문장을 하나로 이어 준다","사람 수가 몇 명인지 알려 준다","장소가 어디인지를 알려 준다"], a:0,
    exp:"감각동사는 혼자 쓰이지 않고 <b>뒤에 ‘어떠한지’를 붙여</b> 완성됩니다. ‘맛이 난다’로 끝내지 않고 ‘<b>단</b> 맛이 난다’처럼 말하지요. 뒤에 무엇이 오는지는 2단계에서 배웁니다."},
 
-  {type:"n", tag:"개념", q:"다음 우리말에서 감각동사에 해당하는 부분은?<br><span class=\"eng\">그 노래는 슬프게 <u>들린다</u>.</span>",
+  {type:"n", tag:"한글로 이해", q:"다음 우리말에서 감각동사에 해당하는 부분은?<br><span class=\"eng\">그 노래는 슬프게 <u>들린다</u>.</span>",
    opts:["들린다","노래는","슬프게","그","‘슬프게’와 ‘들린다’ 둘 다"], a:0,
    exp:"‘들린다’가 귀로 느낀 것을 말하는 감각동사입니다. 영어로는 sound를 씁니다. 앞의 ‘슬프게’는 어떻게 들리는지를 알려 주는 말입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
    opts:["보이다","들리다","달리다","냄새가 나다","먹다"], ans:[0,1,3],
    exp:"보이다(look) · 들리다(sound) · 냄새가 나다(smell)가 감각동사입니다. 달리다(run), 먹다(eat)는 몸을 움직이는 일반동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
    opts:["맛이 나다","공부하다","느껴지다","마시다","보이다"], ans:[0,2,4],
    exp:"맛이 나다(taste) · 느껴지다(feel) · 보이다(look)가 감각동사입니다. 공부하다(study), 마시다(drink)는 일반동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 영어 단어 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 영어 단어 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
    opts:["look","run","sound","eat","smell"], ans:[0,2,4],
    exp:"look · sound · smell이 감각동사입니다. run(달리다), eat(먹다)은 동작을 나타내는 일반동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 영어 단어 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 영어 단어 중 <b>감각동사</b>를 모두 고르세요. (여러 개)",
    opts:["taste","feel","jump","read","look"], ans:[0,1,4],
    exp:"taste · feel · look이 감각동사입니다. jump(뛰다), read(읽다)는 일반동사입니다. 이렇게 다섯 개(look, sound, smell, taste, feel)를 눈에 익혀 두세요."},
 
-  {type:"v", tag:"단어", q:"‘~하게 보이다’를 뜻하는 감각동사는?",
+  {type:"a", tag:"쉬운 영어", q:"‘~하게 보이다’를 뜻하는 감각동사는?",
    opts:["look","sound","smell","taste","feel"], a:0, eng:true,
    exp:"눈으로 본 느낌은 <b>look</b>입니다. She looks happy. (그녀는 행복해 보인다.)"},
 
-  {type:"v", tag:"단어", q:"‘~하게 들리다’를 뜻하는 감각동사는?",
+  {type:"a", tag:"쉬운 영어", q:"‘~하게 들리다’를 뜻하는 감각동사는?",
    opts:["sound","feel","look","taste","smell"], a:0, eng:true,
    exp:"귀로 들은 느낌은 <b>sound</b>입니다. It sounds nice. (그것은 좋게 들린다.) 명사 sound(소리)와 같은 모양이라 함께 기억하면 쉽습니다."},
 
-  {type:"v", tag:"단어", q:"‘~한 냄새가 나다’를 뜻하는 감각동사는?",
+  {type:"a", tag:"쉬운 영어", q:"‘~한 냄새가 나다’를 뜻하는 감각동사는?",
    opts:["smell","taste","feel","sound","look"], a:0, eng:true,
    exp:"코로 맡은 느낌은 <b>smell</b>입니다. The flowers smell sweet. (꽃에서 달콤한 냄새가 난다.)"},
 
-  {type:"v", tag:"단어", q:"‘~한 맛이 나다’를 뜻하는 감각동사는?",
+  {type:"a", tag:"쉬운 영어", q:"‘~한 맛이 나다’를 뜻하는 감각동사는?",
    opts:["taste","smell","look","feel","sound"], a:0, eng:true,
    exp:"혀로 본 느낌은 <b>taste</b>입니다. This soup tastes good. (이 수프는 맛이 좋다.) 명사 taste(맛)와 같은 모양입니다."},
 
-  {type:"v", tag:"단어", q:"‘~하게 느껴지다, 기분이 ~하다’를 뜻하는 감각동사는?",
+  {type:"a", tag:"쉬운 영어", q:"‘~하게 느껴지다, 기분이 ~하다’를 뜻하는 감각동사는?",
    opts:["feel","look","sound","smell","taste"], a:0, eng:true,
    exp:"손으로 만진 느낌과 마음의 기분을 모두 <b>feel</b>로 말합니다. The blanket feels soft. (담요가 부드럽다.) / I feel happy. (나는 기분이 좋다.)"},
 
-  {type:"v", tag:"단어", q:"<b>sound</b>의 뜻으로 알맞은 것은?",
+  {type:"a", tag:"쉬운 영어", q:"<b>sound</b>의 뜻으로 알맞은 것은?",
    opts:["~하게 들리다","~하게 보이다","~한 맛이 나다","~한 냄새가 나다","~하게 느껴지다"], a:0,
    exp:"sound = 귀로 들어서 그렇게 느껴진다는 뜻입니다. That sounds strange. (그거 이상하게 들린다.)"},
 
-  {type:"v", tag:"단어", q:"<b>taste</b>의 뜻으로 알맞은 것은?",
+  {type:"a", tag:"쉬운 영어", q:"<b>taste</b>의 뜻으로 알맞은 것은?",
    opts:["~한 맛이 나다","~하게 느껴지다","~하게 들리다","~하게 보이다","~한 냄새가 나다"], a:0,
    exp:"taste = 혀로 맛을 봐서 그렇게 느껴진다는 뜻입니다. It tastes sweet. (그것은 단맛이 난다.)"},
 
-  {type:"v", tag:"단어", q:"<b>smell</b>의 뜻으로 알맞은 것은?",
+  {type:"a", tag:"쉬운 영어", q:"<b>smell</b>의 뜻으로 알맞은 것은?",
    opts:["~한 냄새가 나다","~하게 보이다","~하게 느껴지다","~한 맛이 나다","~하게 들리다"], a:0,
    exp:"smell = 코로 맡아서 그렇게 느껴진다는 뜻입니다. It smells good. (좋은 냄새가 난다.)"},
 
-  {type:"v", tag:"단어", q:"<b>feel</b>의 뜻으로 알맞은 것은?",
+  {type:"a", tag:"쉬운 영어", q:"<b>feel</b>의 뜻으로 알맞은 것은?",
    opts:["~하게 느껴지다, 기분이 ~하다","~한 냄새가 나다","~하게 들리다","~한 맛이 나다","~하게 보이다"], a:0,
    exp:"feel은 손으로 만진 느낌과 마음의 기분을 모두 나타냅니다. I feel tired. (나는 피곤하다.)"},
 
-  {type:"v", tag:"단어", q:"<b>look</b>의 뜻으로 알맞은 것은?",
+  {type:"a", tag:"쉬운 영어", q:"<b>look</b>의 뜻으로 알맞은 것은?",
    opts:["~하게 보이다","~하게 들리다","~한 맛이 나다","~하게 느껴지다","~한 냄새가 나다"], a:0,
    exp:"look = 눈으로 봐서 그렇게 느껴진다는 뜻입니다. You look great today. (너 오늘 멋져 보인다.) 이제 다섯 개를 모두 배웠습니다."}
 ];
@@ -752,7 +762,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 감각동사가 뭐예요?", desc:"한글로 먼저 이해하고 영어 단어 다섯 개 익히기 · 초등도 가능", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"단어"}},
+  1:{name:"기본1 · 감각동사가 뭐예요?", desc:"한글로 이해 8 · 쉬운 영어 12 · 한글로 감각 다섯 가지 · 영어 낱말 look · sound · smell · taste · feel · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 뒤에 무엇이 오나", desc:"감각동사 + 형용사 10 · 감각동사 + like + 명사 10 · 중1", qs:L2, typeLabels:{n:"뒤에 형용사",a:"like + 명사"}},
   3:{name:"기본3 · 학교 기출문제", desc:"-s 붙이기 · 부정문 · 의문문 · 판별 · 서술형 · 중1 시험 유형", qs:L3, typeLabels:{n:"형태",a:"부정·의문",v:"판별·서술형"}},
   4:{name:"기본4 · 중3까지 심화", desc:"seem · taste of · feel like · 지각동사 구별 · 고난도", qs:L4, typeLabels:{n:"확장 표현",a:"지각동사 구별",v:"고난도"}}
@@ -798,6 +808,7 @@ function learn1(){
     '<div class="role r-a"><span class="t">feel</span><span class="m">~하게 느껴지다</span><span class="e">I feel tired.</span></div>'+
   '</div>'+
   '<div class="tip"><span class="h">한 가지만 더</span>‘예쁘다’는 그냥 사실이라 <b>is</b>를 쓰고, ‘예뻐 <b>보인다</b>’는 눈으로 느낀 것이라 <b>looks</b>를 씁니다. 감각동사에는 늘 ‘~해 보인다, ~하게 들린다’처럼 <b>느낌</b>이 들어 있어요. 알겠지요?</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="swap"><span>보이다 · 들리다 · 냄새나다</span><span class="ar">→</span><span class="good">look · sound · smell</span></div><div class="swap"><span>맛이 나다 · 느껴지다</span><span class="ar">→</span><span class="good">taste · feel</span></div><div class="ex">You <u class="hl a">look</u> happy.<span class="k">너는 행복해 보인다</span></div></div>'+
   '<div class="tip"><span class="h">이 단계에서 할 일</span>감각동사가 무엇인지 우리말로 확인하고, 다섯 개를 <b>모두 고르기</b> 문제로 찾아낸 뒤, 영어 단어와 뜻을 짝지어 봅니다. 뒤에 무엇이 오는지는 2단계에서 배웁니다.</div>';
 }
 
@@ -867,6 +878,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">마지막 함정</span>감각동사는 <b>수동태로 쓰지 않습니다.</b> The flower is smelled sweet.(✕) → The flower smells sweet.(○) 주어가 스스로 그렇게 느껴진다는 뜻이기 때문입니다.</div>';
 }
+
+var LVCHEER = {
+  1:"감각동사 다섯 개가 이제 네 것이 되었어요. 2단계에서는 그 뒤에 무엇이 오는지 배웁니다.",
+  2:"형용사냐 명사냐, 이 하나만 보면 됩니다. 이제 시험 문제로 확인해 볼까요?",
+  3:"시험지에서 감각동사를 만나도 더는 당황하지 않습니다. 마지막 한 단계 남았어요.",
+  4:"감각동사를 중3 수준까지 끝냈습니다. 여기까지 온 것만으로도 정말 멋집니다."
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -993,7 +1011,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -1041,6 +1059,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1135,12 +1154,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"감각동사 다섯 개가 이제 네 것이 되었어요. 2단계에서는 그 뒤에 무엇이 오는지 배웁니다.",
-  2:"형용사냐 명사냐, 이 하나만 보면 됩니다. 이제 시험 문제로 확인해 볼까요?",
-  3:"시험지에서 감각동사를 만나도 더는 당황하지 않습니다. 마지막 한 단계 남았어요.",
-  4:"감각동사를 중3 수준까지 끝냈습니다. 여기까지 온 것만으로도 정말 멋집니다."
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1207,7 +1220,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

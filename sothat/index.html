@@ -1,11 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
-.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
-.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
-.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
-.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
-.resumebar .row .btn{flex:1 1 130px}
-</style></head><body>
-<title>꾸메땅 도전 SO~THAT GAME</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · SO~THAT GAME</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -112,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -258,12 +260,40 @@ table.rank tr.me{background:var(--accent-soft)}
 table.rank tr.me .who{color:var(--accent)}
 .empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
 .toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
 </style>
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 도전 <span class="mark">SO~THAT GAME</span></h1>
-    <p class="sub">so~that · too~to · enough to 완전정복 80문제 · 기본1 20 · 기본2 20 · 기본3(기출) 20 · 기본4(심화) 20 / 문제마다 완성 문장과 해석, 해설이 함께 나옵니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · SO~THAT GAME</span></h1>
+    <p class="sub">so~that · too~to · enough to · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -320,6 +350,7 @@ table.rank tr.me .who{color:var(--accent)}
     <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
     <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
     <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
     <div id="rsubmit"></div>
     <div id="rwrong"></div>
     <div class="actions" id="ractions"></div>
@@ -346,7 +377,7 @@ table.rank tr.me .who{color:var(--accent)}
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 도전 SO~THAT GAME · so~that·too~to·enough to편</p>
+  <p class="foot">꾸메땅 영문법 GAME · SO~THAT GAME</p>
 </div>
 
 
@@ -361,35 +392,73 @@ table.rank tr.me .who{color:var(--accent)}
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : so ~ that 20 (긍정문 9 · 부정문 6 · 어순·응용 5) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"긍정문", sent:"He is so tall ___ he can touch the ceiling.", ko:"그는 너무 키가 커서 천장에 닿을 수 있다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","too","which"], a:0, exp:"‘너무 ~해서 …하다’는 <b>so + 형용사/부사 + that + 주어 + 동사</b>로 나타냅니다."},
-  {type:"n", tag:"긍정문", sent:"It was ___ cold that we couldn't go outside.", ko:"너무 추워서 우리는 밖에 나갈 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so","such","too","very"], a:0, exp:"뒤에 형용사(cold) <b>하나</b>만 오므로 so가 알맞습니다. such는 뒤에 (a/an +) 형용사 + <b>명사</b>가 와야 합니다."},
-  {type:"n", tag:"긍정문", sent:"She spoke so quietly ___ nobody could hear her.", ko:"그녀는 너무 조용히 말해서 아무도 들을 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","as","than"], a:0, exp:"so + 부사(quietly) 뒤에는 결과를 이끄는 <b>that</b>절이 옵니다."},
-  {type:"n", tag:"긍정문", sent:"The movie was so boring ___ I fell asleep.", ko:"그 영화는 너무 지루해서 나는 잠이 들었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","too","for"], a:0, exp:"so + 형용사 + that + 주어 + 동사 : 결과를 나타내는 접속사 that."},
-  {type:"n", tag:"긍정문", sent:"He ran so fast that he ___ the race.", ko:"그는 너무 빨리 달려서 경주에서 이겼다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["won","win","to win","winning"], a:0, exp:"that절은 완전한 문장이므로 <b>주어 + 동사(과거형)</b>가 그대로 옵니다."},
-  {type:"n", tag:"긍정문", sent:"The soup was so hot that I ___ my tongue.", ko:"그 수프는 너무 뜨거워서 나는 혀를 데었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["burned","burn","to burn","burning"], a:0, exp:"that절 안에는 주어에 맞는 <b>동사(과거형)</b>가 옵니다. burned my tongue."},
-  {type:"n", tag:"긍정문", sent:"They were so excited ___ they couldn't sleep.", ko:"그들은 너무 흥분해서 잠을 잘 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","as","too"], a:0, exp:"so + 형용사(excited) + <b>that</b> + 주어 + 동사(결과)."},
-  {type:"n", tag:"긍정문", sent:"He is so smart that he can solve ___ problem.", ko:"그는 너무 똑똑해서 어떤 문제든 풀 수 있다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["any","some","no","every one"], a:0, exp:"‘어떤 것이든’이라는 뜻으로 긍정문에서는 <b>any</b>를 씁니다."},
-  {type:"n", tag:"긍정문", sent:"It was so windy that the tree ___ down.", ko:"바람이 너무 세게 불어서 그 나무가 쓰러졌다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["fell","fall","falls","falling"], a:0, exp:"that절 안의 동사는 문맥상 과거시제 <b>fell</b>이 알맞습니다."},
+  {type:"n", tag:"한글로 이해", sent:"너무 추워서 밖에 나갈 수 없었다.", q:"‘너무 추워서’가 나타내는 것은?",
+   opts:["까닭(원인)","결과","목적","시간","장소"], a:0,
+   exp:"‘너무 추워서’는 <b>까닭</b>, ‘나갈 수 없었다’는 그 <b>결과</b>입니다."},
 
-  {type:"a", tag:"부정문", sent:"He was so angry that he ___ speak.", ko:"그는 너무 화가 나서 말을 할 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","can't","didn't","not"], a:0, exp:"주절이 과거(was)이므로 결과절도 과거 부정형 <b>couldn't</b>를 씁니다."},
-  {type:"a", tag:"부정문", sent:"It was so dark that we ___ see anything.", ko:"너무 어두워서 우리는 아무것도 볼 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","don't","aren't","won't"], a:0, exp:"과거의 결과이므로 <b>couldn't</b> + 동사원형이 알맞습니다."},
-  {type:"a", tag:"부정문", sent:"The room was so small that we ___ fit the bed in it.", ko:"방이 너무 작아서 우리는 침대를 그 안에 넣을 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","didn't","weren't","not"], a:0, exp:"‘~할 수 없었다’는 <b>couldn't + 동사원형</b>으로 나타냅니다."},
-  {type:"a", tag:"부정문", sent:"She was so nervous that she ___ say a word.", ko:"그녀는 너무 긴장해서 한 마디도 할 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","can't","doesn't","isn't"], a:0, exp:"과거 시제 일치 : was ~ that + 주어 + <b>couldn't</b> + 동사원형."},
-  {type:"a", tag:"부정문", sent:"He speaks so fast that I can't ___ him.", ko:"그는 너무 빨리 말해서 나는 그를 이해할 수 없다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["understand","understands","understood","to understand"], a:0, exp:"can't 뒤에는 <b>동사원형</b>이 옵니다. can't understand."},
-  {type:"a", tag:"부정문", sent:"The music was so loud that we ___ talk to each other.", ko:"음악이 너무 시끄러워서 우리는 서로 이야기할 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","didn't","weren't able","don't"], a:0, exp:"과거의 불가능한 결과는 <b>couldn't + 동사원형</b>으로 나타냅니다."},
+  {type:"n", tag:"한글로 이해", q:"‘너무 ~해서 …하다’ 문장의 앞부분과 뒷부분은 어떤 관계일까요?",
+   opts:["원인 → 결과","결과 → 원인","목적 → 수단","조건 → 가정","서로 관계없음"], a:0,
+   exp:"앞은 <b>원인</b>, 뒤는 그래서 일어난 <b>결과</b>입니다."},
 
-  {type:"v", tag:"어순·응용", q:"다음 우리말을 영어로 옮길 때 어순이 <b>알맞은</b> 것은?<br><span class=\"eng\">‘그 시험은 너무 어려워서 많은 학생들이 떨어졌다.’</span>", opts:["The test was so difficult that many students failed.","The test was so that difficult many students failed.","The test was difficult so that many students failed.","The test so was difficult that many students failed."], a:0, eng:true, exp:"올바른 어순은 <b>be동사 + so + 형용사 + that + 주어 + 동사</b>입니다."},
-  {type:"v", tag:"어순·응용", q:"다음 중 어법상 <b>틀린</b> 문장은?", opts:["She was so kind that everyone liked her.","He was so happy that he smiled.","It was so hot day that we stayed inside.","The story was so sad that she cried."], a:2, eng:true, exp:"so 뒤에는 <b>형용사/부사만</b> 옵니다. ‘so + 형용사 + 명사’(so hot day)는 쓸 수 없고, <b>such a hot day</b>로 고쳐야 합니다."},
-  {type:"v", tag:"어순·응용", sent:"I was so tired ___ I went to bed early.", ko:"나는 너무 피곤해서 일찍 잠자리에 들었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","too","because of"], a:0, exp:"결과를 이끄는 접속사는 <b>that</b>입니다. because of 뒤에는 명사(구)가 옵니다."},
-  {type:"v", tag:"어순·응용", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The box was very heavy. I couldn't lift it.<br>= The box was ___ heavy ___ I couldn't lift it.</span>", opts:["so / that","such / that","too / to","so / as"], a:0, exp:"‘너무 …해서 ~할 수 없었다’는 <b>so + 형용사 + that + 주어 + couldn't</b>로 연결합니다."},
-  {type:"v", tag:"어순·응용", q:"밑줄 친 that의 쓰임이 나머지와 <b>다른</b> 것은?", opts:["I know **that** he is honest.","He is so honest **that** everyone trusts him.","She was so shy **that** she couldn't speak.","It was so late **that** we had to go home."], a:0, eng:true, exp:"①의 that은 <b>know의 목적어절</b>을 이끄는 접속사이고, 나머지는 모두 so ~ <b>that</b>(결과)의 that입니다."}
+  {type:"n", tag:"한글로 이해", sent:"그는 너무 배가 고파서 밥을 세 그릇 먹었다.", q:"<b>결과</b>에 해당하는 부분은?",
+   opts:["밥을 세 그릇 먹었다","너무","배가 고파서","그는","너무 배가"], a:0,
+   exp:"배가 고팠던 까닭으로 일어난 일, <b>밥을 세 그릇 먹었다</b>가 결과입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘너무 어려서 운전할 수 없다’와 뜻이 같은 것은?",
+   opts:["운전하기에는 너무 어리다","운전할 만큼 나이가 많다","운전하려고 어리다","어리지만 운전한다","운전해서 어리다"], a:0,
+   exp:"‘~하기에는 너무 …하다’는 영어로 <b>too ~ to</b>입니다. 2단계에서 배웁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘키가 충분히 커서 선반에 손이 닿는다’와 뜻이 같은 것은?",
+   opts:["선반에 닿을 만큼 키가 크다","선반에 닿기에는 너무 작다","키가 작아서 닿지 않는다","선반을 사려고 키가 크다","키가 크지만 닿지 않는다"], a:0,
+   exp:"‘~할 만큼 충분히 …하다’는 영어로 <b>enough to</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘<b>너무 ~해서 …하다</b>’ 문장을 모두 고르세요. (여러 개)",
+   opts:["너무 졸려서 일찍 잤다","너무 더워서 창문을 열었다","너무 늦어서 버스를 놓쳤다","나는 학교에 간다","그는 키가 크다"], ans:[0,1,2],
+   exp:"원인과 결과가 함께 들어 있는 셋입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"결과가 ‘<b>~할 수 없었다</b>’인 문장을 모두 고르세요. (여러 개)",
+   opts:["너무 어두워서 아무것도 볼 수 없었다","너무 시끄러워서 잘 수 없었다","너무 무거워서 들 수 없었다","너무 맛있어서 다 먹었다","너무 빨라서 1등을 했다"], ans:[0,1,2],
+   exp:"결과가 ‘할 수 없었다’이면 영어로 that 뒤에 <b>couldn't</b>를 씁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"so ~ that에서 <b>so 뒤</b>에 오는 말은?",
+   opts:["형용사나 부사","명사만","동사원형","to부정사","주어"], a:0,
+   exp:"so 뒤에는 ‘너무 어떠한지’를 말하는 <b>형용사나 부사</b>가 옵니다. so cold · so fast"},
+
+  {type:"n", tag:"한글로 이해", q:"so ~ that에서 <b>that 뒤</b>에 오는 것은?",
+   opts:["주어 + 동사(결과 문장)","형용사 하나","to + 동사원형","명사 하나","아무것도 없다"], a:0,
+   exp:"that 뒤에는 결과를 말하는 <b>주어 + 동사</b>가 옵니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["so ~ that의 that 뒤에는 원인이 온다.","so 뒤에는 형용사나 부사가 온다.","that 뒤에는 결과가 온다.","‘너무 ~해서 …하다’로 풀이한다.","결과가 부정이면 can't나 couldn't를 쓴다."], a:0,
+   exp:"that 뒤에는 <b>결과</b>가 옵니다. 원인은 so 뒤의 형용사·부사입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"He is so tall ___ he can touch the ceiling.", ko:"그는 너무 키가 커서 천장에 닿을 수 있다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","too","which"], a:0, exp:"‘너무 ~해서 …하다’는 <b>so + 형용사/부사 + that + 주어 + 동사</b>로 나타냅니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"It was ___ cold that we couldn't go outside.", ko:"너무 추워서 우리는 밖에 나갈 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["so","such","too","very"], a:0, exp:"뒤에 형용사(cold) <b>하나</b>만 오므로 so가 알맞습니다. such는 뒤에 (a/an +) 형용사 + <b>명사</b>가 와야 합니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The movie was so boring ___ I fell asleep.", ko:"그 영화는 너무 지루해서 나는 잠이 들었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","too","for"], a:0, exp:"so + 형용사 + that + 주어 + 동사 : 결과를 나타내는 접속사 that."},
+
+  {type:"a", tag:"쉬운 영어", sent:"He ran so fast that he ___ the race.", ko:"그는 너무 빨리 달려서 경주에서 이겼다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["won","win","to win","winning"], a:0, exp:"that절은 완전한 문장이므로 <b>주어 + 동사(과거형)</b>가 그대로 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"He was so angry that he ___ speak.", ko:"그는 너무 화가 나서 말을 할 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","can't","didn't","not"], a:0, exp:"주절이 과거(was)이므로 결과절도 과거 부정형 <b>couldn't</b>를 씁니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"It was so dark that we ___ see anything.", ko:"너무 어두워서 우리는 아무것도 볼 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","don't","aren't","won't"], a:0, exp:"과거의 결과이므로 <b>couldn't</b> + 동사원형이 알맞습니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She was so nervous that she ___ say a word.", ko:"그녀는 너무 긴장해서 한 마디도 할 수 없었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["couldn't","can't","doesn't","isn't"], a:0, exp:"과거 시제 일치 : was ~ that + 주어 + <b>couldn't</b> + 동사원형."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 우리말을 영어로 옮길 때 어순이 <b>알맞은</b> 것은?<br><span class=\"eng\">‘그 시험은 너무 어려워서 많은 학생들이 떨어졌다.’</span>", opts:["The test was so difficult that many students failed.","The test was so that difficult many students failed.","The test was difficult so that many students failed.","The test so was difficult that many students failed."], a:0, eng:true, exp:"올바른 어순은 <b>be동사 + so + 형용사 + that + 주어 + 동사</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I was so tired ___ I went to bed early.", ko:"나는 너무 피곤해서 일찍 잠자리에 들었다.", q:"빈칸에 알맞은 것을 고르세요.", opts:["that","so","too","because of"], a:0, exp:"결과를 이끄는 접속사는 <b>that</b>입니다. because of 뒤에는 명사(구)가 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The box was very heavy. I couldn't lift it.<br>= The box was ___ heavy ___ I couldn't lift it.</span>", opts:["so / that","such / that","too / to","so / as"], a:0, exp:"‘너무 …해서 ~할 수 없었다’는 <b>so + 형용사 + that + 주어 + couldn't</b>로 연결합니다."}
 ];
 
 /* ---------- LEVEL 2 : too~to 10 · enough to 10 ---------- */
@@ -468,93 +537,13 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · so~that", desc:"so ~ that 결과구문만 · 20문제 · 중2", qs:L1, typeLabels:{n:"긍정문",a:"부정문",v:"어순·응용"}},
+  1:{name:"기본1 · 너무 ~해서 …하다", desc:"한글로 이해 10 · 쉬운 영어 10 · 원인과 결과 · so ~ that 모양 · 쉬운 영어 문장 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · too/enough", desc:"too ~ to 10 · enough to 10 · 중2", qs:L2, typeLabels:{n:"too~to",a:"enough to"}},
   3:{name:"기본3 · 기출문제", desc:"학교 기출 유형 · 1·2단계 복습 + 함정문제 · 중2과정", qs:L3, typeLabels:{n:"형태 확인",a:"전환 연습",v:"함정 어법"}},
   4:{name:"기본4 · 심화", desc:"중3까지 아우르는 심화 · 기본 13 · 고난도 7", qs:L4, typeLabels:{n:"기본",a:"고난도"}}
 };
 
 /* ===================== 상태 ===================== */
-var RKEY="kkumettang_sothat_v1", NKEY="kkumettang_name";
-var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
-       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
-       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
-       active:0,resume:"quiz",finished:{}};
-
-function $(id){return document.getElementById(id);}
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
-function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
-
-function fmt(s,c){
-  if(!s) return "";
-  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
-                  .replace(/___/g,'<span class="blank"></span>');
-}
-function fmtFull(s){
-  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
-}
-
-/* ===================== 화면 전환 ===================== */
-var SCREENS=["start","learn","quiz","result","rank"];
-function show(id){
-  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
-  window.scrollTo({top:0,behavior:"instant"});
-}
-
-/* ===================== 시작 화면 ===================== */
-function best(level){
-  var r=loadR();
-  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
-  return null;
-}
-function drawRail(){
-  [1,2,3,4].forEach(function(k){
-    var b=best(k);
-    $("f"+k).style.width=(b==null?0:b)+"%";
-    $("p"+k).textContent=(b==null?"":" "+b);
-  });
-}
-function drawLevels(){
-  var h="";
-  [1,2,3,4].forEach(function(k){
-    var L=LEVELS[k], b=best(k);
-    var locked = S.active && S.active!==k;
-    var here = S.active===k;
-    var right;
-    if(locked) right='<span class="best lock">잠김</span>';
-    else if(here) right='<span class="best go">이어서 풀기</span>';
-    else if(b==null) right='<span class="best"><em>미도전</em></span>';
-    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
-    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
-        '<span class="rank">'+k+'</span>'+
-        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
-        '<span class="desc">'+esc(L.desc)+'</span></span>'+
-        right+
-      '</button>';
-  });
-  if(S.active) h+='<p class="lockmsg">'+S.active+'단계를 진행 중입니다. 이 단계를 오답까지 모두 마무리해야 다른 단계를 고를 수 있습니다.</p>';
-  $("levelPick").innerHTML=h;
-  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
-    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
-  });
-}
-function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
-
-function pickLevel(k){
-  var nm=($("nameIn").value||"").trim();
-  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
-  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
-  if(S.active && S.active!==k) return;
-  if(S.active===k){
-    if(S.resume==="learn") renderLearn();
-    else if(S.resume==="result") show("result");
-    else renderQ();
-    return;
-  }
-  S.level=k;
-  renderLearn();
-}
 
 /* ===================== 개념 화면 ===================== */
 function figFan(){
@@ -584,6 +573,7 @@ function learn1(){
     '<div class="ex">He is <u class="hl">so</u> tall <u class="hl">that</u> he can touch the ceiling.<span class="k">그는 너무 커서 천장에 닿을 수 있다.</span></div>'+
     '<div class="ex">It was <u class="hl">so</u> cold <u class="hl">that</u> we couldn\'t go outside.<span class="k">너무 추워서 우리는 밖에 나갈 수 없었다.</span></div>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">It was <u class="hl a">so</u> cold <u class="hl a">that</u> we stayed home.<span class="k">너무 추워서 집에 있었다</span></div><div class="ex">He ran <u class="hl a">so</u> fast <u class="hl a">that</u> he won.<span class="k">너무 빨리 달려서 이겼다</span></div></div>'+
   '<div class="tip"><span class="h">so vs such</span>뒤에 <b>형용사 하나</b>만 오면 so, <b>(a/an+) 형용사+명사</b>가 오면 such를 씁니다. so cold(○) · such a cold day(○) · such cold(✕)</div>';
 }
 
@@ -642,11 +632,114 @@ function learn4(){
   '<div class="tip"><span class="h">한눈에 정리</span>결과(너무 ~해서) = so/such ~ that · too ~ to · enough to. 목적(~하기 위해) = so that + can/could · in order to · so as to.</div>';
 }
 
+var LVCHEER = {
+  1:"원인과 결과, so ~ that의 모양을 잡았어요. 2단계에서는 too~to와 enough to를 만납니다.",
+  2:"too~to와 enough to를 가려냈습니다. 3단계는 학교 기출 문제입니다.",
+  3:"바꿔 쓰기와 함정까지 해냈어요. 마지막 단계만 남았습니다.",
+  4:"중3 심화까지 끝냈습니다. so~that은 이제 든든합니다!"
+};
+
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
   $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
   show("learn");
 }
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_sothat_v2", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
 
 /* ===================== 문제 ===================== */
 function startQuiz(){
@@ -671,27 +764,45 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
-  else if(q.sent){
-    h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
-    if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
-  }
-  h+='<div class="opts">';
-  q.opts.forEach(function(o,i){
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
     var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
-    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(i+1)+'</span>'+
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
        '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
   });
   h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
   $("qbody").innerHTML=h;
   $("qexp").innerHTML="";
   saveProg();
   S.answered=false;S.picked=-1;
 
   Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
-    b.addEventListener("click",function(){ answer(+this.dataset.i); });
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
   });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
   show("quiz");
 }
 
@@ -699,6 +810,9 @@ function buildFull(q){
   if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
   if(!q.sent) return null;
   if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -717,7 +831,46 @@ function answer(pick){
     if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
     if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
   });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
 
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
   if(S.round===1){
     if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
     if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
@@ -727,8 +880,7 @@ function answer(pick){
 
   var f=buildFull(q), last=(S.i+1>=S.list.length);
   var h='<div class="exp">'+
-    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+
-      (ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>')+'</div>'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
     (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
         (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
     '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
@@ -751,16 +903,15 @@ document.addEventListener("keydown",function(e){
   if($("quiz").classList.contains("hide")) return;
   if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
   var n=parseInt(e.key,10);
-  if(!S.answered&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
 });
 
 /* ===================== 결과 ===================== */
 function praise(p){
-  if(p===100) return ["영어 지존이에요!","이 단계는 완벽합니다. 다음 단계로 가 볼까요?"];
-  if(p>=90) return ["아주 훌륭해요!","몇 문제만 다시 보면 완벽합니다."];
-  if(p>=75) return ["잘했어요!","틀린 문제의 해설을 꼼꼼히 읽어 보세요."];
-  if(p>=60) return ["조금만 더 노력해요","개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
-  return ["천천히 다시 해봐요","개념부터 다시 보면 금방 오릅니다. 포기하지 마세요."];
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
 }
 
 function openPraise(score,total,correct,wrong){
@@ -804,9 +955,10 @@ function renderResult(){
   $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
   $("rbreak").innerHTML=bd;
 
+  var isAdmin = (S.name==="꾸메땅");
   var r=loadR(), hadScore=null;
   for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
-  if(hadScore===null){
+  if(hadScore===null && !isAdmin){
     var d=new Date();
     r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
     saveR(r);
@@ -821,25 +973,43 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
-         '<div class="a">정답 <b>'+esc(q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
     });
     w+='</div>';
     $("rwrong").innerHTML=w;
   } else $("rwrong").innerHTML="";
 
   if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
   $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
   var rb=$("retryBtn");
   if(rb) rb.addEventListener("click",function(){
     S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
   });
   wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
   show("result");
   openPraise(S.score, total, S.correct, S.wrong.length);
 }
 
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
 function actionsHTML(remain, retryLabel){
   var ac="";
   if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
@@ -853,6 +1023,14 @@ function wireActions(){
   if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
   $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
   $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
 }
 
 function renderRetryResult(){
@@ -871,6 +1049,7 @@ function renderRetryResult(){
   $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
     '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
   $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
   var ac="";
   if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
   ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
@@ -882,6 +1061,10 @@ function renderRetryResult(){
   });
   $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
   $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
   show("result");
   document.querySelector("#result .of").textContent="/ "+done+"문제";
 }
@@ -980,7 +1163,7 @@ function loadProg(){
     var p = JSON.parse(localStorage.getItem(PKEY) || "null");
     if(!p || !p.list || !p.list.length) return null;
     if(p.i >= p.list.length) return null;
-    if(Date.now() - (p.t || 0) > 1209600000) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
     return p;
   }catch(e){ return null; }
 }
@@ -1011,8 +1194,8 @@ function progBanner(){
   $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
 }
 
-
 refreshStart();
+
 </script>
 <script src="/kkt.js"></script>
 </body></html>
