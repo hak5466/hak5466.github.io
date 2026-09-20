@@ -1,4 +1,12 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
 <title>꾸메땅 영문법 GAME · 부사 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,8 +292,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-7 · 부사 뽀개기</span></h1>
-    <p class="sub">부사 완전정복 80문제 · 네 단계 각 20문제 / 1·2단계는 어린 아이도 할 수 있고, 3·4단계에서 영어 낱말 쓰기까지 나아갑니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 부사 뽀개기</span></h1>
+    <p class="sub">어떻게 · 언제 · 어디서 · 얼마나 · -ly 만들기 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -384,91 +392,94 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
-
-/* ---------- LEVEL 1 : 한글로 개념 잡기 20 (개념 7 · 모두 고르기 6 · 구별 7) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"<b>어떻게 · 언제 · 어디서 · 얼마나</b>를 말해 주는 말을 무엇이라고 할까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>어떻게 · 언제 · 어디서 · 얼마나</b>를 말해 주는 말을 무엇이라고 할까요?",
    opts:["부사","명사","접속사","감탄사","전치사"], a:0,
    exp:"움직임이나 모습을 더 자세히 말해 주는 말이 <b>부사</b>입니다. ‘빨리, 어제, 여기, 아주’가 모두 부사입니다."},
 
-  {type:"n", tag:"개념", sent:"그는 빨리 달린다.", q:"‘달린다’를 꾸며 주는 말은 무엇인가요?",
+  {type:"n", tag:"한글로 이해", sent:"그는 빨리 달린다.", q:"‘달린다’를 꾸며 주는 말은 무엇인가요?",
    opts:["빨리","그는","달린다","그","는"], a:0,
    exp:"<b>빨리</b>가 ‘어떻게 달리는지’를 말해 줍니다. 동사를 꾸며 주는 말이 부사입니다."},
 
-  {type:"n", tag:"개념", q:"부사가 꾸며 줄 수 있는 것으로 알맞은 것은?",
+  {type:"n", tag:"한글로 이해", q:"부사가 꾸며 줄 수 있는 것으로 알맞은 것은?",
    opts:["동사·형용사·다른 부사","명사만","숫자만","이름만","아무것도 꾸미지 않는다"], a:0,
    exp:"부사는 <b>명사만 빼고</b> 여러 가지를 꾸밉니다. 명사를 꾸미는 일은 형용사가 맡습니다."},
 
-  {type:"n", tag:"개념", q:"‘예쁜 꽃’과 ‘예쁘게 웃는다’의 차이로 알맞은 것은?",
+  {type:"n", tag:"한글로 이해", q:"‘예쁜 꽃’과 ‘예쁘게 웃는다’의 차이로 알맞은 것은?",
    opts:["앞은 명사를 꾸미고, 뒤는 동사를 꾸민다","둘 다 명사를 꾸민다","둘 다 동사를 꾸민다","앞은 동사를, 뒤는 명사를 꾸민다","차이가 없다"], a:0,
    exp:"‘예쁜’은 명사를 꾸미니 <b>형용사</b>, ‘예쁘게’는 동사를 꾸미니 <b>부사</b>입니다."},
 
-  {type:"n", tag:"개념", sent:"아주 큰 집", q:"‘아주’는 무엇을 꾸며 주나요?",
+  {type:"n", tag:"한글로 이해", sent:"아주 큰 집", q:"‘아주’는 무엇을 꾸며 주나요?",
    opts:["형용사 ‘큰’","명사 ‘집’","동사","자기 자신","아무것도 꾸미지 않는다"], a:0,
    exp:"‘아주’는 <b>형용사 ‘큰’</b>을 더 세게 만들어 줍니다. 부사는 형용사도 꾸밉니다."},
 
-  {type:"n", tag:"개념", q:"부사에 대한 설명으로 <b>맞는</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"부사에 대한 설명으로 <b>맞는</b> 것은?",
    opts:["빼도 문장은 말이 되고, 뜻만 덜 자세해진다","빼면 문장이 말이 되지 않는다","반드시 문장 맨 앞에 온다","반드시 주어 자리에 온다","명사 앞에만 온다"], a:0,
    exp:"‘그는 달린다’만 해도 문장입니다. 부사는 <b>더 자세하게</b> 해 줄 뿐입니다."},
 
-  {type:"n", tag:"개념", sent:"나는 어제 학교에 갔다.", q:"‘어제’가 알려 주는 것은?",
+  {type:"n", tag:"한글로 이해", sent:"나는 어제 학교에 갔다.", q:"‘어제’가 알려 주는 것은?",
    opts:["언제 갔는지","어디로 갔는지","어떻게 갔는지","누가 갔는지","얼마나 갔는지"], a:0,
    exp:"<b>어제</b>는 때를 알려 주는 부사입니다. 부사는 어떻게·언제·어디서·얼마나를 말해 줍니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 <b>부사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>부사</b>를 모두 고르세요. (여러 개)",
    opts:["빨리","조용히","아주","학교","예쁜"], ans:[0,1,2],
    exp:"빨리 · 조용히 · 아주가 부사입니다. ‘학교’는 명사, ‘예쁜’은 형용사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>어떻게</b>를 말해 주는 부사를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>어떻게</b>를 말해 주는 부사를 모두 고르세요. (여러 개)",
    opts:["천천히","조용히","열심히","어제","여기"], ans:[0,1,2],
    exp:"천천히 · 조용히 · 열심히는 방법을, 어제는 때를, 여기는 곳을 말해 줍니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>언제</b>를 말해 주는 부사를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>언제</b>를 말해 주는 부사를 모두 고르세요. (여러 개)",
    opts:["어제","오늘","지금","여기","빨리"], ans:[0,1,2],
    exp:"어제 · 오늘 · 지금은 때를 알려 줍니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>어디서</b>를 말해 주는 부사를 모두 고르세요. (여러 개)",
-   opts:["여기","거기","밖에서","지금","아주"], ans:[0,1,2],
-   exp:"여기 · 거기 · 밖에서는 곳을 알려 줍니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>얼마나</b>를 말해 주는 부사를 모두 고르세요. (여러 개)",
-   opts:["아주","너무","조금","어제","조용히"], ans:[0,1,2],
-   exp:"아주 · 너무 · 조금은 정도를 말해 줍니다. 뒤에 오는 말을 세게 또는 약하게 만듭니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"부사가 <b>꾸며 줄 수 있는</b> 것을 모두 고르세요. (여러 개)",
-   opts:["동사","형용사","다른 부사","명사","숫자"], ans:[0,1,2],
-   exp:"명사를 꾸미는 것은 형용사입니다. 부사는 <b>명사만 빼고</b> 꾸밉니다."},
-
-  {type:"v", tag:"구별", q:"밑줄 친 말이 <b>부사</b>인 것은?",
+  {type:"n", tag:"한글로 이해", q:"밑줄 친 말이 <b>부사</b>인 것은?",
    opts:["그는 **빨리** 달린다.","**빠른** 자동차","**예쁜** 꽃","**큰** 집","**착한** 아이"], a:0,
    exp:"‘빨리’는 동사 ‘달린다’를 꾸미므로 부사입니다. 나머지는 모두 명사를 꾸미는 형용사입니다."},
 
-  {type:"v", tag:"구별", q:"밑줄 친 말이 <b>형용사</b>인 것은?",
-   opts:["**조용한** 교실","**조용히** 말한다","**천천히** 걷는다","**열심히** 공부한다","**빨리** 달린다"], a:0,
-   exp:"‘조용한’만 명사 ‘교실’을 꾸미므로 형용사입니다. 나머지는 모두 동사를 꾸미는 부사입니다."},
-
-  {type:"v", tag:"구별", sent:"그는 ___ 걷는다.", q:"빈칸에 알맞은 말은?",
-   opts:["천천히","천천한","느린","조용한","예쁜"], a:0,
-   exp:"동사 ‘걷는다’를 꾸미는 자리이므로 <b>부사</b>가 옵니다."},
-
-  {type:"v", tag:"구별", sent:"그것은 ___ 자동차이다.", q:"빈칸에 알맞은 말은?",
-   opts:["빠른","빨리","천천히","조용히","아주"], a:0,
-   exp:"명사 ‘자동차’를 꾸미는 자리이므로 <b>형용사</b>가 옵니다."},
-
-  {type:"v", tag:"구별", sent:"그 아이는 ___ 똑똑하다.", q:"빈칸에 알맞은 말은?",
-   opts:["아주","아주한","똑똑히","예쁜","학교"], a:0,
-   exp:"형용사 ‘똑똑하다’를 더 세게 해 주는 자리이므로 정도를 나타내는 부사 <b>아주</b>입니다."},
-
-  {type:"v", tag:"구별", q:"다음 중 부사가 <b>들어 있지 않은</b> 문장은?",
+  {type:"n", tag:"한글로 이해", q:"다음 중 부사가 <b>들어 있지 않은</b> 문장은?",
    opts:["그는 학생이다.","그는 빨리 달린다.","나는 어제 왔다.","여기 앉으세요.","아주 맛있다."], a:0,
    exp:"첫 문장에는 꾸며 주는 말이 없습니다. 나머지에는 빨리 · 어제 · 여기 · 아주가 들어 있습니다."},
 
-  {type:"v", tag:"구별", hard:true, sent:"그는 ___ 빨리 달린다.", q:"빈칸에 알맞은 말은?",
-   opts:["아주","아주한","빠른","달리는","빨리한"], a:0,
-   exp:"‘아주’가 부사 ‘빨리’를 꾸밉니다. 부사는 <b>다른 부사</b>도 꾸며 줍니다."}
+  {type:"a", tag:"쉬운 영어", q:"다음 중 <b>부사</b>는?",
+   opts:["slowly","slow","happy","cat","big"], a:0, eng:true,
+   exp:"slowly(천천히)는 ‘어떻게’를 말하는 부사입니다. slow는 형용사(느린)입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>부사</b>를 모두 고르세요. (여러 개)",
+   opts:["very","here","now","dog","pretty"], ans:[0,1,2],
+   exp:"아주(얼마나) · 여기(어디서) · 지금(언제)은 부사입니다. dog는 명사, pretty는 형용사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>slow</b>(느린)를 부사로 바꾸면?",
+   opts:["slowly","slowy","slowely","slowness","slows"], a:0, eng:true,
+   exp:"형용사에 <b>-ly</b>를 붙이면 부사가 됩니다. slow → slowly(천천히)"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>아주</b>’를 영어로 하면?",
+   opts:["very","many","fast","here","now"], a:0, eng:true,
+   exp:"아주 <b>very</b>. very big(아주 큰)"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>여기</b>’를 영어로 하면?",
+   opts:["here","there","now","then","very"], a:0, eng:true,
+   exp:"여기 <b>here</b> · 거기 there"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He runs ___ .", q:"‘그는 빨리 달린다’가 되도록 알맞은 것은?",
+   opts:["fast","fastly","a fast","fasts","the fast"], a:0, eng:true,
+   ko:"그는 빨리 달린다.",
+   exp:"fast는 모양 그대로 부사로도 씁니다. fastly라는 말은 없습니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"It is ___ big.", q:"‘그것은 아주 크다’가 되도록 알맞은 것은?",
+   opts:["very","veryly","many","a very","verys"], a:0, eng:true,
+   ko:"그것은 아주 크다.",
+   exp:"형용사 big을 꾸미는 부사 <b>very</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She sings **well**.", q:"밑줄 친 well이 알려 주는 것은?",
+   opts:["어떻게","언제","어디서","얼마나","누가"], a:0,
+   ko:"그녀는 노래를 잘한다.",
+   exp:"well(잘)은 노래를 <b>어떻게</b> 부르는지 알려 줍니다."}
 ];
 
 /* ---------- LEVEL 2 : 쉬운 영어 단어로 20 (뜻 7 · 모두 고르기 6 · 구별 7) ---------- */
@@ -717,7 +728,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 더 자세히 말해 주는 말", desc:"부사가 무엇인지 · 어떻게·언제·어디서·얼마나 · 한글로 먼저 · 초등도 가능", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
+  1:{name:"기본1 · 더 자세히 말해 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 어떻게 · 언제 · 어디서 · 얼마나 · -ly 맛보기 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 쉬운 영어 단어로", desc:"fast · slowly · well · very · here · now · always", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"구별"}},
   3:{name:"기본3 · 한글과 영어 섞기", desc:"-ly 만들기 · 빈도부사 자리 · 형용사와 부사 가려내기", qs:L3, typeLabels:{n:"만들기",a:"자리",v:"가려내기"}},
   4:{name:"기본4 · 직접 써 보기", desc:"형용사를 부사로 바꾸어 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"부사로 바꾸기",a:"낱말 쓰기",v:"문장 채우기"}}
@@ -761,6 +772,7 @@ function learn1(){
     '<div class="ex">그는 빨리 달린다.<span class="k">더 자세해졌습니다</span></div>'+
     '<p>부사는 꼭 있어야 하는 말이 아닙니다. 그래서 <b>빼 보면</b> 부사인지 아닌지 금세 알 수 있습니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">He runs <u class="hl a">fast</u>.<span class="k">어떻게 — 빨리</span></div><div class="ex">It is <u class="hl a">very</u> big.<span class="k">얼마나 — 아주</span></div><div class="swap"><span>slow · quiet</span><span class="ar">→</span><span class="good">slowly · quietly</span></div></div>'+
   '<div class="tip"><span class="h">1단계에서 챙길 것</span>부사는 <b>어떻게·언제·어디서·얼마나</b>를 말해 주고, <b>명사만 빼고</b> 꾸며 줍니다.</div>';
 }
 
@@ -833,6 +845,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">마지막 한마디</span>틀려도 괜찮습니다. 쓴 뒤에 정답과 견주어 보는 것만으로도 훨씬 오래 남습니다.</div>';
 }
+
+var LVCHEER = {
+  1:"어떻게·언제·어디서·얼마나를 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
+  2:"fast와 well 두 개만 조심하면 됩니다. 3단계에서는 -ly 만들기를 익혀요.",
+  3:"형용사인지 부사인지 가려낼 수 있게 되었어요. 마지막 단계만 남았습니다.",
+  4:"부사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -959,7 +978,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -1007,6 +1026,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1101,12 +1121,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"어떻게·언제·어디서·얼마나를 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
-  2:"fast와 well 두 개만 조심하면 됩니다. 3단계에서는 -ly 만들기를 익혀요.",
-  3:"형용사인지 부사인지 가려낼 수 있게 되었어요. 마지막 단계만 남았습니다.",
-  4:"부사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1173,7 +1187,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#0F6E5C">
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
 <script src="/theme.js"></script>
-<title>꾸메땅 영문법 GAME · 동명사 GAME</title>
+<title>꾸메땅 영문법 GAME · 일반동사 문장 활용</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -292,8 +292,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · 동명사 GAME</span></h1>
-    <p class="sub">동명사 -ing · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 일반동사 문장 활용</span></h1>
+    <p class="sub">모양 · 부정 · 의문 · 과거 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -377,7 +377,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 영문법 GAME · 동명사 GAME</p>
+  <p class="foot">꾸메땅 영문법 GAME · 일반동사 문장 활용</p>
 </div>
 
 
@@ -398,489 +398,492 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 /* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"한글로 이해", q:"동사에 <b>-ing</b>를 붙여 명사처럼 쓰는 말을 무엇이라고 할까요?",
-   opts:["동명사","조동사","형용사","전치사","접속사"], a:0,
-   exp:"<b>동사 + -ing</b>로 명사 노릇을 하는 말을 동명사라고 합니다. 동사(動) + 명사(名)를 합친 이름입니다."},
+  {type:"n", tag:"한글로 이해", q:"동사 가운데 <b>be동사를 뺀 나머지</b>를 무엇이라고 할까요?",
+   opts:["일반동사","조동사","명사","형용사","전치사"], a:0,
+   exp:"먹다 · 달리다 · 좋아하다처럼 <b>움직임이나 마음</b>을 나타내는 동사가 일반동사입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"동명사를 우리말로 풀이할 때 알맞은 것은?",
-   opts:["~하는 것, ~하기","~할","~하려고","~했다","~해라"], a:0,
-   exp:"동명사는 <b>~하는 것 · ~하기</b>로 풀이합니다. swimming 수영하기 · reading 읽는 것"},
+  {type:"n", tag:"한글로 이해", q:"be동사와 일반동사의 차이로 알맞은 것은?",
+   opts:["be동사는 ‘이다·있다’, 일반동사는 움직임이나 마음을 나타낸다","둘은 뜻이 같다","be동사만 과거형이 있다","일반동사는 주어가 필요 없다","be동사는 문장 끝에만 온다"], a:0,
+   exp:"나는 <b>학생이다</b>(be동사) / 나는 <b>달린다</b>(일반동사). 하는 일이 다릅니다."},
 
-  {type:"n", tag:"한글로 이해", q:"동명사를 만드는 방법은?",
-   opts:["동사원형 + -ing","to + 동사원형","동사원형 + -ed","동사원형 + -s","be + 동사원형"], a:0,
-   exp:"<b>동사원형 + -ing</b>입니다. read → reading · play → playing"},
+  {type:"n", tag:"한글로 이해", sent:"나는 축구를 좋아한다.", q:"이 문장의 동사는 어느 쪽인가요?",
+   opts:["일반동사","be동사","조동사","형용사","전치사"], a:0,
+   exp:"‘좋아한다’는 마음을 나타내는 <b>일반동사</b>입니다. 영어로는 I like soccer."},
 
-  {type:"n", tag:"한글로 이해", sent:"수영하는 것은 재미있다.", q:"‘수영하는 것’은 문장에서 어느 자리에 있나요?",
-   opts:["주어(~은, ~는)","동사","꾸며 주는 말","이어 주는 말","감탄하는 말"], a:0,
-   exp:"문장의 <b>주어</b>입니다. <b>Swimming</b> is fun."},
+  {type:"n", tag:"한글로 이해", q:"일반동사가 <b>모양이 바뀌는</b> 까닭으로 알맞은 것은?",
+   opts:["주어가 누구인지, 때가 언제인지에 따라 달라지기 때문","길이를 맞추기 위해","발음을 예쁘게 하려고","뜻을 반대로 만들려고","모양은 바뀌지 않는다"], a:0,
+   exp:"영어는 <b>주어</b>와 <b>때</b>에 따라 동사 모양이 달라집니다. play / plays / played"},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 그림 그리기를 즐긴다.", q:"‘그림 그리기’는 문장에서 어느 자리에 있나요?",
-   opts:["목적어(~을, ~를)","주어","동사","꾸며 주는 말","장소"], a:0,
-   exp:"무엇을 즐기는지 알려 주는 <b>목적어</b>입니다. I enjoy <b>drawing</b> pictures."},
+  {type:"n", tag:"한글로 이해", q:"‘그는 축구를 한다’에서 동사에 <b>s</b>가 붙는 까닭은?",
+   opts:["주어가 그 사람 한 명이기 때문","문장이 길기 때문","과거이기 때문","의문문이기 때문","좋아하는 일이기 때문"], a:0,
+   exp:"He · She · It처럼 <b>한 사람이나 한 개</b>가 주어이고 지금 일이면 동사에 s를 붙입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"내 취미는 우표 모으기이다.", q:"‘우표 모으기’는 문장에서 어느 자리에 있나요?",
-   opts:["보어(주어가 무엇인지 설명)","주어","동사","장소","시간"], a:0,
-   exp:"주어 ‘내 취미’가 무엇인지 설명하는 <b>보어</b>입니다. My hobby is <b>collecting</b> stamps."},
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>일반동사</b>가 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["나는 밥을 먹는다.","그는 축구를 한다.","우리는 학교에 간다.","나는 학생이다.","고양이가 상자 안에 있다."], ans:[0,1,2],
+   exp:"먹는다 · 한다 · 간다가 일반동사입니다. ‘학생이다’와 ‘있다’는 be동사로 말합니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"<b>~하는 것 · ~하기</b>로 풀이되는 말을 모두 고르세요. (여러 개)",
-   opts:["노래하는 것","달리기","책 읽기","빠르게","그러나"], ans:[0,1,2],
-   exp:"셋 다 이름 노릇을 합니다. ‘빠르게’는 부사, ‘그러나’는 접속사입니다."},
+  {type:"n", tag:"한글로 이해", multi:true, q:"동사에 <b>s를 붙여야 하는</b> 주어를 모두 고르세요. (여러 개)",
+   opts:["그는","그녀는","우리 언니는","나는","그들은"], ans:[0,1,2],
+   exp:"한 사람·한 개를 가리키는 주어에만 붙입니다. ‘나는’과 ‘그들은’에는 붙이지 않습니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"동명사가 들어갈 수 있는 자리를 모두 고르세요. (여러 개)",
-   opts:["주어","목적어","보어","동사","접속사"], ans:[0,1,2],
-   exp:"동명사는 명사처럼 <b>주어 · 목적어 · 보어</b> 자리에 옵니다. 전치사 뒤에도 옵니다."},
+  {type:"n", tag:"한글로 이해", multi:true, q:"동사에 <b>s를 붙이지 않는</b> 주어를 모두 고르세요. (여러 개)",
+   opts:["나는","너는","그들은","그는","우리 형은"], ans:[0,1,2],
+   exp:"I · You · They에는 동사를 그대로 씁니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"<b>주어 자리</b>에 있는 ‘~하는 것’을 모두 고르세요. (여러 개)",
-   opts:["**걷기**는 건강에 좋다.","**일찍 일어나는 것**은 어렵다.","**영어 배우기**는 재미있다.","나는 **걷기**를 좋아한다.","내 꿈은 **가수가 되는 것**이다."], ans:[0,1,2],
-   exp:"‘~은, ~는’이 붙은 앞 셋이 주어입니다. 넷째는 목적어, 다섯째는 보어입니다."},
+  {type:"n", tag:"한글로 이해", multi:true, q:"일반동사에 대한 설명으로 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
+   opts:["주어에 따라 모양이 바뀐다","때에 따라 모양이 바뀐다","아니라고 말할 때 도우미가 필요하다","be동사와 나란히 쓴다","한 문장에 두 개씩 써야 한다"], ans:[0,1,2],
+   exp:"be동사와 일반동사는 <b>함께 쓰지 않습니다.</b> I am play.(✕) · I play.(○)"},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"동명사에 대한 설명으로 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
-   opts:["동사에 -ing를 붙여 만든다","명사처럼 쓰인다","주어 자리에 오면 하나로 센다(단수)","문장의 진짜 동사가 된다","to 뒤에만 쓸 수 있다"], ans:[0,1,2],
-   exp:"동명사는 동사가 아니라 <b>명사 노릇</b>을 합니다. 주어일 때는 is처럼 단수로 받습니다."},
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>일반동사</b>인 낱말을 모두 고르세요. (여러 개)",
+   opts:["달리다","좋아하다","공부하다","예쁜","학교"], ans:[0,1,2],
+   exp:"‘예쁜’은 형용사, ‘학교’는 명사입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"‘~하는 것 · ~하기’로 풀이되지 <b>않는</b> 것은?",
-   opts:["그는 지금 달리고 있다","달리기는 즐겁다","나는 달리기를 좋아한다","내 취미는 달리기다","그는 달리기를 멈췄다"], a:0,
-   exp:"‘달리고 있다’는 지금 하는 중인 일(진행형)입니다. 나머지는 모두 ‘달리기’라는 이름입니다."},
+  {type:"n", tag:"한글로 이해", sent:"그는 날마다 책을 읽는다. → 그는 날마다 책을 ___ .", q:"‘아니다’로 바꾸면?",
+   opts:["읽지 않는다","읽었다","읽을 것이다","읽는다","읽어라"], a:0,
+   exp:"‘~하지 않는다’가 부정입니다. 영어로는 He <b>doesn't</b> read books."},
 
   {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["동명사는 문장의 진짜 동사 노릇을 한다.","동명사는 동사원형에 -ing를 붙인다.","동명사는 주어 자리에 올 수 있다.","동명사는 목적어 자리에 올 수 있다.","동명사는 ‘~하는 것’으로 풀이한다."], a:0,
-   exp:"동명사는 동사 모양을 빌렸지만 <b>명사 노릇</b>을 합니다. 진짜 동사는 따로 있습니다."},
+   opts:["모든 주어 뒤에서 동사에 s를 붙인다.","일반동사는 움직임이나 마음을 나타낸다.","be동사와 일반동사는 함께 쓰지 않는다.","지난 일은 동사를 과거형으로 바꾼다.","아니라고 말할 때는 도우미가 필요하다."], a:0,
+   exp:"s는 <b>He · She · It</b>처럼 한 사람·한 개가 주어일 때만 붙입니다."},
 
-  {type:"a", tag:"쉬운 영어", multi:true, q:"우리말을 동명사로 바르게 옮긴 것을 모두 고르세요. (여러 개)",
-   opts:["읽기 – reading","먹기 – eating","놀기 – playing","자기 – sleep","가기 – went"], ans:[0,1,2],
-   exp:"동명사는 <b>-ing</b> 모양입니다. sleep은 원형, went는 과거형입니다."},
+  {type:"a", tag:"쉬운 영어", q:"‘<b>먹다</b>’를 영어로 하면?",
+   opts:["eat","drink","sleep","run","sing"], a:0, eng:true,
+   exp:"먹다 <b>eat</b> · 마시다 drink · 자다 sleep"},
 
-  {type:"a", tag:"쉬운 영어", q:"두 문장에서 <b>~하는 것</b>(동명사)으로 쓰인 playing은?<br><span class=\"eng\">ⓐ He is playing soccer now.<br>ⓑ His hobby is playing soccer.</span>",
-   opts:["ⓑ","ⓐ","둘 다","둘 다 아니다","알 수 없다"], a:0,
-   exp:"ⓐ는 ‘지금 <b>하고 있다</b>’(진행형), ⓑ는 ‘축구 <b>하기</b>’(동명사)입니다."},
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>일반동사</b>를 모두 고르세요. (여러 개)",
+   opts:["read","swim","like","is","are"], ans:[0,1,2],
+   exp:"읽다 · 수영하다 · 좋아하다는 일반동사입니다. is · are는 be동사입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I enjoy ___ games.", q:"‘나는 게임하는 것을 즐긴다’가 되도록 알맞은 것은?",
-   opts:["playing","play","to play","played","plays"], a:0, eng:true,
-   ko:"나는 게임하는 것을 즐긴다.",
-   exp:"enjoy 뒤에는 <b>동명사</b>가 옵니다. I enjoy <b>playing</b> games."},
+  {type:"a", tag:"쉬운 영어", sent:"I ___ soccer.", q:"‘나는 축구를 한다’가 되도록 알맞은 것은?",
+   opts:["play","plays","playing","am play","is play"], a:0, eng:true,
+   ko:"나는 축구를 한다.",
+   exp:"주어 I 뒤에는 동사 그대로 <b>play</b>입니다."},
 
-  {type:"a", tag:"쉬운 영어", q:"<b>read</b>를 동명사로 바꾸면?",
-   opts:["reading","readed","to reading","reads","readding"], a:0, eng:true,
-   exp:"동사원형 + -ing = <b>reading</b>(읽기)"},
+  {type:"a", tag:"쉬운 영어", sent:"He ___ soccer.", q:"‘그는 축구를 한다’가 되도록 알맞은 것은?",
+   opts:["plays","play","playing","is play","do play"], a:0, eng:true,
+   ko:"그는 축구를 한다.",
+   exp:"주어가 he(그 한 명)이면 동사에 <b>s</b>를 붙입니다. plays"},
 
-  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>동명사</b>를 모두 고르세요. (여러 개)",
-   opts:["reading","swimming","playing","read","played"], ans:[0,1,2],
-   exp:"-ing 모양이 동명사입니다. read는 원형, played는 과거형입니다."},
+  {type:"a", tag:"쉬운 영어", sent:"She ___ milk every day.", q:"‘그녀는 날마다 우유를 마신다’가 되도록 알맞은 것은?",
+   opts:["drinks","drink","drinking","is drink","drinkes"], a:0, eng:true,
+   ko:"그녀는 날마다 우유를 마신다.",
+   exp:"주어 She → <b>drinks</b>"},
 
-  {type:"a", tag:"쉬운 영어", sent:"___ is fun.", q:"‘수영하기는 재미있다’가 되도록 알맞은 것은?",
-   opts:["Swimming","Swim","Swims","Swam","Swimed"], a:0, eng:true,
-   ko:"수영하기는 재미있다.",
-   exp:"주어 자리에는 이름 노릇을 하는 <b>Swimming</b>이 옵니다."},
+  {type:"a", tag:"쉬운 영어", sent:"I ___ like carrots.", q:"‘나는 당근을 좋아하지 않는다’가 되도록 알맞은 것은?",
+   opts:["don't","doesn't","am not","isn't","not"], a:0, eng:true,
+   ko:"나는 당근을 좋아하지 않는다.",
+   exp:"일반동사를 아니라고 할 때는 도우미 <b>don't</b>를 씁니다. 주어가 I라서 don't입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"My hobby is ___ .", q:"‘내 취미는 요리하기이다’가 되도록 알맞은 것은?",
-   opts:["cooking","cook","cooks","cooked","to cooking"], a:0, eng:true,
-   ko:"내 취미는 요리하기이다.",
-   exp:"보어 자리의 동명사 <b>cooking</b>입니다."},
+  {type:"a", tag:"쉬운 영어", sent:"___ you like pizza?", q:"‘너는 피자를 좋아하니?’가 되도록 알맞은 것은?",
+   opts:["Do","Does","Are","Is","Am"], a:0, eng:true,
+   ko:"너는 피자를 좋아하니?",
+   exp:"일반동사로 물을 때는 맨 앞에 도우미 <b>Do</b>를 세웁니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I like ___ .", q:"‘나는 춤추는 것을 좋아한다’가 되도록 알맞은 것은?",
-   opts:["dancing","dance","dances","danced","to dancing"], a:0, eng:true,
-   ko:"나는 춤추는 것을 좋아한다.",
-   exp:"like 뒤의 목적어 <b>dancing</b>입니다. (to dance도 됩니다)"}
+  {type:"a", tag:"쉬운 영어", sent:"I played soccer ___ .", q:"빈칸에 어울리는 말은?",
+   opts:["yesterday","tomorrow","now","every day","next week"], a:0, eng:true,
+   ko:"나는 어제 축구를 했다.",
+   exp:"played는 지난 일(과거형)이므로 <b>yesterday</b>와 어울립니다."}
 ];
 
-/* ---------- LEVEL 2 : 넓히기와 함정 20 (모양 7 · 모두 고르기 6 · 함정 7) ---------- */
+/* ---------- LEVEL 2 : 넓히기와 함정 20 (모양 만들기 7 · 모두 고르기 6 · 함정 7) ---------- */
 var L2 = [
-  {type:"n", tag:"모양", q:"swim의 동명사를 바르게 쓴 것은?",
-   opts:["swimming","swiming","swimeing","swimmed","swims"], a:0, eng:true,
-   exp:"‘짧은 모음 + 자음 하나’로 끝나면 자음을 한 번 더 쓰고 -ing를 붙입니다. <b>swimming</b> · running · sitting"},
+  {type:"n", tag:"모양 만들기", word:"play", q:"<b>He</b> 뒤에 올 알맞은 모양은?",
+   opts:["plays","play","playing","played","to play"], a:0, eng:true,
+   exp:"He는 한 사람이므로 <b>plays</b>입니다."},
 
-  {type:"n", tag:"모양", q:"동명사의 철자가 <b>틀린</b> 것은?",
-   opts:["makeing","coming","writing","dancing","having"], a:0, eng:true,
-   exp:"e로 끝나면 <b>e를 빼고</b> -ing를 붙입니다. make → <b>making</b>"},
+  {type:"n", tag:"모양 만들기", word:"watch", q:"<b>She</b> 뒤에 올 알맞은 모양은?",
+   opts:["watches","watchs","watch","watching","watched"], a:0, eng:true,
+   exp:"-ch로 끝나면 <b>es</b>를 붙입니다. watch → watches"},
 
-  {type:"n", tag:"모양", q:"lie(눕다)의 -ing 모양은?",
-   opts:["lying","lieing","liing","lyeing","lain"], a:0, eng:true,
-   exp:"-ie로 끝나면 ie를 <b>y</b>로 바꾸고 -ing를 붙입니다. lie → lying · die → dying · tie → tying"},
+  {type:"n", tag:"모양 만들기", word:"study", q:"<b>My sister</b> 뒤에 올 알맞은 모양은?",
+   opts:["studies","studys","study","studying","studied"], a:0, eng:true,
+   exp:"자음 + y로 끝나면 y를 i로 바꾸고 es를 붙입니다. study → <b>studies</b>"},
 
-  {type:"n", tag:"모양", sent:"I enjoy ___ to music.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["listening","listen","to listen","listened","listens"], a:0, eng:true,
-   ko:"나는 음악 듣는 것을 즐긴다.",
-   exp:"enjoy 뒤에는 <b>동명사</b>입니다."},
+  {type:"n", tag:"모양 만들기", word:"play", q:"<b>My brother</b> 뒤에 올 알맞은 모양은?",
+   opts:["plays","plaies","play","playes","playing"], a:0, eng:true,
+   exp:"모음(a) + y이므로 y를 그대로 두고 s만 붙입니다. play → <b>plays</b>"},
 
-  {type:"n", tag:"모양", sent:"She finished ___ the dishes.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["washing","wash","to wash","washed","washes"], a:0, eng:true,
-   ko:"그녀는 설거지를 끝냈다.",
-   exp:"finish 뒤에는 <b>동명사</b>입니다."},
+  {type:"n", tag:"모양 만들기", word:"go", q:"<b>He</b> 뒤에 올 알맞은 모양은?",
+   opts:["goes","gos","go","going","went"], a:0, eng:true,
+   exp:"-o로 끝나면 es를 붙입니다. go → <b>goes</b>, do → does"},
 
-  {type:"n", tag:"모양", sent:"___ English is fun.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["Learning","Learn","Learns","Learned","Be learn"], a:0, eng:true,
-   ko:"영어를 배우는 것은 재미있다.",
-   exp:"주어 자리이므로 동사를 명사로 바꾼 <b>Learning</b>이 옵니다."},
+  {type:"n", tag:"모양 만들기", word:"have", q:"<b>She</b> 뒤에 올 알맞은 모양은?",
+   opts:["has","haves","have","having","had"], a:0, eng:true,
+   exp:"have는 통째로 바뀝니다. <b>has</b>"},
 
-  {type:"n", tag:"모양", sent:"He is good at ___ pictures.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["drawing","draw","to draw","draws","drew"], a:0, eng:true,
-   ko:"그는 그림을 잘 그린다.",
-   exp:"at 같은 <b>전치사 뒤</b>에는 동명사가 옵니다. be good at -ing = ~을 잘하다"},
+  {type:"n", tag:"모양 만들기", q:"다음 중 <b>s를 붙이는 규칙</b>이 바르게 짝지어진 것은?",
+   opts:["teach → teaches","teach → teachs","fly → flys","do → dos","have → haves"], a:0, eng:true,
+   exp:"-ch로 끝나면 es입니다. fly → flies, do → does, have → has"},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"뒤에 <b>동명사만</b> 오는 동사를 모두 고르세요. (여러 개)",
-   opts:["enjoy","finish","mind","want","hope"], ans:[0,1,2],
-   exp:"enjoy · finish · mind는 동명사와 짝입니다. want · hope는 to부정사와 짝입니다."},
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>He</b> 뒤에 바르게 쓴 것을 모두 고르세요. (여러 개)",
+   opts:["likes","goes","studies","like","study"], ans:[0,1,2],
+   exp:"He 뒤에는 s나 es가 붙은 모양이 옵니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"뒤에 <b>to부정사만</b> 오는 동사를 모두 고르세요. (여러 개)",
-   opts:["want","decide","plan","enjoy","give up"], ans:[0,1,2],
-   exp:"want · decide · plan은 앞으로 할 일이라 <b>to</b>와 짝입니다. enjoy · give up은 동명사와 짝입니다."},
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>They</b> 뒤에 바르게 쓴 것을 모두 고르세요. (여러 개)",
+   opts:["like","go","study","likes","goes"], ans:[0,1,2],
+   exp:"They는 여럿이므로 동사를 그대로 씁니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"뒤에 동명사와 to부정사가 <b>둘 다</b> 오는 동사를 모두 고르세요. (여러 개)",
-   opts:["like","love","start","enjoy","want"], ans:[0,1,2],
-   exp:"like · love · start · begin · hate는 둘 다 됩니다. I like reading. = I like to read."},
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>don't</b>를 쓰는 주어를 모두 고르세요. (여러 개)",
+   opts:["I","You","They","He","She"], ans:[0,1,2],
+   exp:"He · She · It에는 <b>doesn't</b>를 씁니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
-   opts:["I enjoy reading.","She wants to read.","He likes reading.","I enjoy to read.","She wants reading."], ans:[0,1,2],
-   exp:"enjoy + 동명사, want + to부정사, like는 둘 다 됩니다."},
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법에 <b>맞는</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I don't like it.","He doesn't like it.","They don't like it.","He don't like it.","I doesn't like it."], ans:[0,1,2],
+   exp:"주어에 맞는 도우미를 골라야 합니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>전치사 뒤</b>라서 동명사가 와야 하는 것을 모두 고르세요. (여러 개)",
-   opts:["I'm interested in ___ .","Thank you for ___ me.","How about ___ out?","I want ___ out.","I decided ___ ."], ans:[0,1,2],
-   exp:"in · for · about은 전치사라서 뒤에 <b>-ing</b>가 옵니다. want · decide 뒤에는 to부정사가 옵니다."},
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"묻는 말로 <b>바르게</b> 만든 것을 모두 고르세요. (여러 개)",
+   opts:["Do you like it?","Does he like it?","Do they like it?","Does you like it?","Do he likes it?"], ans:[0,1,2],
+   exp:"Do·Does 뒤에는 늘 <b>동사원형</b>이 옵니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>틀린</b> 것을 모두 고르세요. (여러 개)",
-   opts:["Read books is fun.","I finished to do my homework.","He gave up to eat snacks.","Reading books is fun.","I finished doing my homework."], ans:[0,1,2],
-   exp:"주어 자리는 Reading, finish와 give up 뒤에는 <b>동명사</b>입니다."},
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>Does</b> 뒤에 올 수 있는 모양을 모두 고르세요. (여러 개)",
+   opts:["like","go","study","likes","goes"], ans:[0,1,2],
+   exp:"Does가 이미 s 노릇을 하므로 동사는 원형으로 씁니다."},
 
-  {type:"v", tag:"함정", hard:true, sent:"Playing computer games ___ fun.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","be","were","being"], a:0, eng:true,
-   ko:"컴퓨터 게임을 하는 것은 재미있다.",
-   exp:"주어는 games가 아니라 <b>Playing</b>(하는 것)입니다. 동명사 주어는 단수라서 <b>is</b>입니다."},
+  {type:"v", tag:"함정", hard:true, sent:"He doesn't ___ soccer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["play","plays","played","playing","to play"], a:0, eng:true,
+   ko:"그는 축구를 하지 않는다.",
+   exp:"doesn't 뒤에는 <b>동사원형</b>입니다. doesn't plays(✕)"},
+
+  {type:"v", tag:"함정", hard:true, sent:"Does she ___ English?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["study","studies","studied","studying","to study"], a:0, eng:true,
+   ko:"그녀는 영어를 공부하니?",
+   exp:"Does 뒤에도 <b>동사원형</b>입니다. Does she studies(✕)"},
 
   {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
-   opts:["Making friends are not easy.","Making friends is not easy.","It is not easy to make friends.","To make friends is not easy.","I like making friends."], a:0, eng:true,
-   exp:"friends에 속지 마세요. 주어는 Making이라 <b>is</b>입니다."},
+   opts:["He don't go to school.","He doesn't go to school.","They don't go to school.","I don't go to school.","She doesn't go to school."], a:0, eng:true,
+   exp:"He에는 <b>doesn't</b>를 씁니다."},
 
-  {type:"v", tag:"함정", hard:true, sent:"Would you mind ___ the window?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["opening","open","to open","opened","opens"], a:0, eng:true,
-   ko:"창문 좀 열어 주시겠어요?",
-   exp:"mind 뒤에는 <b>동명사</b>입니다. Would you mind -ing? = ~해 주시겠어요?"},
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I am like pizza.","I like pizza.","I am happy.","He likes pizza.","He is happy."], a:0, eng:true,
+   exp:"be동사와 일반동사는 나란히 쓰지 않습니다. I <b>like</b> pizza."},
 
-  {type:"v", tag:"함정", hard:true, q:"밑줄 친 부분이 어법상 <b>어색한</b> 것은?",
-   opts:["I hope **seeing** you soon.","I enjoy **seeing** you.","I finished **reading** the book.","I love **reading** books.","I started **learning** Chinese."], a:0, eng:true,
-   exp:"hope는 <b>to부정사</b>와 짝입니다. I hope <b>to see</b> you soon."},
+  {type:"v", tag:"함정", sent:"My mother ___ dinner every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["makes","make","making","to make","is make"], a:0, eng:true,
+   ko:"어머니는 날마다 저녁을 만드신다.",
+   exp:"My mother는 한 사람이므로 <b>makes</b>입니다."},
 
-  {type:"v", tag:"함정", sent:"Thank you for ___ me.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["helping","help","to help","helped","helps"], a:0, eng:true,
-   ko:"도와줘서 고마워.",
-   exp:"for는 전치사라서 뒤에 <b>helping</b>이 옵니다."},
+  {type:"v", tag:"함정", sent:"My parents ___ dinner every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["make","makes","making","to make","is make"], a:0, eng:true,
+   ko:"부모님은 날마다 저녁을 만드신다.",
+   exp:"My parents는 두 분이므로 s를 붙이지 않습니다. 앞 문제와 나란히 보아 두세요."},
 
-  {type:"v", tag:"함정", hard:true, q:"밑줄 친 -ing의 쓰임이 <b>나머지와 다른</b> 것은?",
-   opts:["She is **singing** now.","**Singing** is fun.","I like **singing**.","My hobby is **singing**.","She is good at **singing**."], a:0, eng:true,
-   exp:"첫째는 ‘지금 노래하고 있다’(진행형)입니다. 나머지는 모두 ‘노래하기’(동명사)입니다."},
-
-  {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">I want ___ a cookie, but I should give up ___ sweets.</span>",
-   opts:["to eat – eating","eating – to eat","to eat – to eat","eating – eating","eat – eating"], a:0, eng:true,
-   exp:"want는 <b>to부정사</b>, give up은 <b>동명사</b>와 짝입니다."}
+  {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ He ___ TV every night. ⓑ He ___ ___ TV on Mondays.</span>",
+   opts:["watches – doesn't watch","watch – doesn't watches","watches – don't watch","watch – doesn't watch","watches – doesn't watches"], a:0, eng:true,
+   exp:"그냥 쓸 때는 <b>watches</b>, 도우미 뒤에서는 <b>watch</b>입니다."}
 ];
 
-/* ---------- LEVEL 3 : 중2 학교 시험형 20 (빈칸 7 · 고치기 6 · 대화와 배열 7) ---------- */
+/* ---------- LEVEL 3 : 중1 학교 시험형 20 (빈칸 7 · 고치기 6 · 대화와 배열 7) ---------- */
 var L3 = [
-  {type:"n", tag:"빈칸", sent:"I'm looking forward to ___ you.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["seeing","see","to see","saw","be seen"], a:0, eng:true,
-   ko:"너를 만나기를 고대하고 있어.",
-   exp:"look forward to의 to는 <b>전치사</b>입니다. 그래서 <b>seeing</b>이 옵니다."},
+  {type:"n", tag:"빈칸", sent:"My father ___ to work by bus.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["goes","go","going","is go","to go"], a:0, eng:true,
+   ko:"아버지는 버스로 출근하신다.",
+   exp:"My father는 한 사람이고 늘 하는 일이므로 <b>goes</b>입니다."},
 
-  {type:"n", tag:"빈칸", sent:"How about ___ a walk?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["taking","take","to take","took","takes"], a:0, eng:true,
-   ko:"산책하는 게 어때?",
-   exp:"How about -ing? = ~하는 게 어때? about이 전치사입니다."},
+  {type:"n", tag:"빈칸", sent:"Tom and I ___ soccer after school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["play","plays","playing","is play","to play"], a:0, eng:true,
+   ko:"톰과 나는 방과 후에 축구를 한다.",
+   exp:"Tom and I는 둘이므로 <b>play</b>입니다. 주어가 길 때는 몇 명인지 먼저 세어 보세요."},
 
-  {type:"n", tag:"빈칸", sent:"He kept ___ for an hour.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["walking","walk","to walk","walked","walks"], a:0, eng:true,
-   ko:"그는 한 시간 동안 계속 걸었다.",
-   exp:"keep -ing = 계속 ~하다. keep 뒤에는 <b>동명사</b>입니다."},
+  {type:"n", tag:"빈칸", sent:"She ___ have a brother.", q:"‘그녀는 남동생이 없다’가 되도록 알맞은 것은?",
+   opts:["doesn't","don't","isn't","not","aren't"], a:0, eng:true,
+   ko:"그녀는 남동생이 없다.",
+   exp:"She에는 <b>doesn't</b>입니다. 뒤의 have는 원형 그대로입니다."},
 
-  {type:"n", tag:"빈칸", sent:"We went ___ last weekend.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["skiing","ski","skied","to skiing","skis"], a:0, eng:true,
-   ko:"우리는 지난 주말에 스키를 타러 갔다.",
-   exp:"<b>go -ing</b> = ~하러 가다. go shopping · go fishing · go camping"},
+  {type:"n", tag:"빈칸", sent:"___ your sister like music?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Does","Do","Is","Are","Did"], a:0, eng:true,
+   ko:"네 언니는 음악을 좋아하니?",
+   exp:"your sister는 한 사람이므로 <b>Does</b>입니다."},
 
-  {type:"n", tag:"빈칸", sent:"She is busy ___ for the test.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["studying","study","to study","studied","studies"], a:0, eng:true,
-   ko:"그녀는 시험공부를 하느라 바쁘다.",
-   exp:"<b>be busy -ing</b> = ~하느라 바쁘다."},
+  {type:"n", tag:"빈칸", sent:"My brother ___ up at six every morning.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["gets","get","getting","is get","to get"], a:0, eng:true,
+   ko:"형은 아침 여섯 시에 일어난다.",
+   exp:"한 사람이 늘 하는 일이므로 <b>gets</b>입니다."},
 
-  {type:"n", tag:"빈칸", sent:"I don't feel like ___ out today.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["going","go","to go","went","goes"], a:0, eng:true,
-   ko:"나는 오늘 밖에 나가고 싶지 않다.",
-   exp:"<b>feel like -ing</b> = ~하고 싶다. like가 전치사입니다."},
+  {type:"n", tag:"빈칸", sent:"We ___ English on Mondays and Fridays.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["study","studies","studys","is study","to study"], a:0, eng:true,
+   ko:"우리는 월요일과 금요일에 영어를 공부한다.",
+   exp:"We는 여럿이므로 <b>study</b>입니다."},
 
-  {type:"n", tag:"빈칸", multi:true, eng:true, sent:"My dream is ___ around the world.", q:"빈칸에 들어갈 수 있는 것을 모두 고르세요. (여러 개)",
-   opts:["traveling","to travel","travel","traveled","travels"], ans:[0,1],
-   ko:"내 꿈은 세계를 여행하는 것이다.",
-   full:"My dream is **traveling** around the world. = My dream is **to travel** around the world.", fullko:"내 꿈은 세계를 여행하는 것이다.",
-   exp:"보어 자리에는 동명사와 to부정사가 <b>둘 다</b> 올 수 있습니다."},
+  {type:"n", tag:"빈칸", sent:"He ___ his homework after dinner.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["does","do","doing","is do","dos"], a:0, eng:true,
+   ko:"그는 저녁을 먹은 뒤에 숙제를 한다.",
+   exp:"do의 3인칭 단수형은 <b>does</b>입니다. dos(✕)"},
 
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I enjoy **to cook** for my family.</span>",
-   opts:["cooking","cook","cooked","cooks","to cooking"], a:0, eng:true,
-   exp:"enjoy 뒤에는 <b>cooking</b>입니다."},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She **have** two cats.</span>",
+   opts:["has","haves","having","had","is have"], a:0, eng:true,
+   exp:"She 뒤에서는 have가 <b>has</b>로 바뀝니다."},
 
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**Swim** in the sea is exciting.</span>",
-   opts:["Swimming","Swims","Swam","To swimming","Swum"], a:0, eng:true,
-   exp:"동사는 주어가 될 수 없습니다. 명사처럼 <b>Swimming</b>으로 바꿉니다."},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">My mom **watch** TV in the evening.</span>",
+   opts:["watches","watchs","watching","is watch","to watch"], a:0, eng:true,
+   exp:"-ch로 끝나므로 es를 붙입니다. <b>watches</b>"},
 
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">Collecting coins **are** my hobby.</span>",
-   opts:["is","be","were","being","am"], a:0, eng:true,
-   exp:"주어는 Collecting이라 단수입니다. <b>is</b>"},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He **don't** like carrots.</span>",
+   opts:["doesn't","isn't","not","aren't","didn't"], a:0, eng:true,
+   exp:"He에는 <b>doesn't</b>입니다."},
 
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He left without **say** goodbye.</span>",
-   opts:["saying","to say","said","says","to saying"], a:0, eng:true,
-   exp:"without은 전치사입니다. without -ing = ~하지 않고"},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">Does he **plays** the guitar?</span>",
+   opts:["play","played","playing","to play","plays 그대로"], a:0, eng:true,
+   exp:"Does 뒤에는 <b>동사원형</b>이 옵니다."},
 
   {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
-   opts:["I decided to join the club.","I decided joining the club.","I avoided to join the club.","I gave up to join the club.","I minded to join the club."], a:0, eng:true,
-   exp:"decide는 to부정사, avoid · give up · mind는 동명사와 짝입니다."},
+   opts:["My friends live in Busan.","My friends lives in Busan.","My friend live in Busan.","My friends is live in Busan.","My friends living in Busan."], a:0, eng:true,
+   exp:"My friends는 여럿이므로 <b>live</b>입니다."},
 
-  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
-   opts:["She gave up to learn the piano.","Would you mind to close the door?","I'm good at play tennis.","Keeping a diary is a good habit.","He started to learn Spanish."], ans:[0,1,2],
-   exp:"give up · mind 뒤와 전치사 at 뒤에는 모두 <b>동명사</b>입니다."},
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Does she have a pen?","He doesn't have a pen.","They have two pens.","Does she has a pen?","He don't have a pen."], ans:[0,1,2],
+   exp:"Does · doesn't 뒤에는 늘 have 원형입니다."},
 
-  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: What do you do in your free time?<br>B: I enjoy ___ .</span>",
-   opts:["baking cookies","bake cookies","to bake cookies","baked cookies","bakes cookies"], a:0, eng:true,
-   exp:"enjoy 뒤에는 <b>동명사</b>입니다."},
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Does your brother play tennis?<br>B: ___</span>",
+   opts:["Yes, he does.","Yes, he is.","Yes, he plays does.","Yes, he do.","Yes, he play."], a:0, eng:true,
+   exp:"Does로 물으면 <b>does</b>로 답합니다."},
 
-  {type:"v", tag:"대화와 배열", hard:true, q:"대답으로 알맞은 것은?<br><span class=\"eng\">A: Would you mind turning down the music?<br>B: ___</span>",
-   opts:["Not at all. I'll do it now.","Yes, of course. I'll do it now.","Yes, I don't.","I'm sorry, I can.","Not at all. I won't do it."], a:0, eng:true,
-   exp:"mind는 ‘꺼리다’라서, 들어줄 때는 <b>No · Not at all</b>(꺼리지 않아요)로 답합니다."},
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Do you and Mina go to the same school?<br>B: ___</span>",
+   opts:["No, we don't.","No, we doesn't.","No, I don't go we.","No, we aren't.","No, we didn't."], a:0, eng:true,
+   exp:"you and Mina는 여럿이므로 we와 <b>don't</b>로 답합니다."},
 
-  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘일찍 일어나는 것은 쉽지 않다.’</span>",
-   opts:["Getting up early is not easy.","Getting up early are not easy.","Get up early is not easy.","Early getting up is not easy.","Is not easy getting up early."], a:0, eng:true,
-   exp:"동명사 주어 <b>Getting up early</b> + 단수 동사 <b>is</b>입니다."},
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘그녀는 아침을 먹지 않는다’</span>",
+   opts:["She doesn't eat breakfast.","She don't eats breakfast.","She doesn't eats breakfast.","She isn't eat breakfast.","Doesn't she eat breakfast."], a:0, eng:true,
+   exp:"주어 + doesn't + 동사원형 차례입니다."},
 
-  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘초대해 주셔서 고맙습니다.’</span>",
-   opts:["Thank you for inviting me.","Thank you for invite me.","Thank you to invite me.","Thank you for invited me.","Thank you inviting for me."], a:0, eng:true,
-   exp:"Thank you for -ing = ~해 주셔서 고맙습니다."},
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘너는 우유를 좋아하니?’</span>",
+   opts:["Do you like milk?","Does you like milk?","You do like milk?","Do you likes milk?","Like you milk?"], a:0, eng:true,
+   exp:"Do + 주어 + 동사원형 ~ ? 차례입니다."},
 
-  {type:"v", tag:"대화와 배열", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">Let's play badminton.<br>= How about ___ badminton?</span>",
-   opts:["playing","play","to play","played","plays"], a:0, eng:true,
-   exp:"Let's ~ = How about -ing? 둘 다 ‘~하자’라는 제안입니다."},
+  {type:"v", tag:"대화와 배열", sent:"Sujin ___ a diary every night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["writes","write","writting","is write","to write"], a:0, eng:true,
+   ko:"수진이는 밤마다 일기를 쓴다.",
+   exp:"이름은 한 사람이므로 <b>writes</b>입니다."},
 
-  {type:"v", tag:"대화와 배열", hard:true, q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">My hobby is ⓐtaking pictures. I enjoy ⓑtaking pictures of flowers. I want ⓒbuying a new camera. ⓓSaving money is not easy, but I keep ⓔtrying.</span>",
-   opts:["ⓒ","ⓐ","ⓑ","ⓓ","ⓔ"], a:0, eng:true,
-   exp:"want는 to부정사와 짝입니다. ⓒ는 <b>to buy</b>가 되어야 합니다."},
+  {type:"v", tag:"대화와 배열", multi:true, eng:true, q:"빈칸에 <b>doesn't</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["He ___ like fish.","My sister ___ watch TV.","Mina ___ go to bed early.","They ___ like fish.","You ___ watch TV."], ans:[0,1,2],
+   exp:"He · My sister · Mina는 모두 한 사람입니다. They와 You에는 don't를 씁니다."},
 
-  {type:"v", tag:"대화와 배열", hard:true, q:"빈칸에 공통으로 알맞은 것은?<br><span class=\"eng\">• She is good at ___ .<br>• ___ is her favorite activity.</span>",
-   opts:["dancing","dance","to dance","danced","dances"], a:0, eng:true,
-   exp:"전치사 at 뒤와 주어 자리에 모두 올 수 있는 것은 <b>dancing</b>입니다."}
+  {type:"v", tag:"대화와 배열", hard:true, q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ Tom and Mike like soccer?<br>B: Yes, they do. But Tom ___ like baseball.</span>",
+   opts:["Do – doesn't","Does – doesn't","Do – don't","Does – don't","Do – isn't"], a:0, eng:true,
+   exp:"Tom and Mike는 둘이라 <b>Do</b>, Tom 혼자는 <b>doesn't</b>입니다. 주어를 끝까지 보세요."}
 ];
 
-/* ---------- LEVEL 4 : 전 학년 아우르기 20 (쓰임 가리기 7 · 바꿔 쓰기 6 · 종합 7) ---------- */
+/* ---------- LEVEL 4 : 전 학년 아우르기 20 (과거 7 · 때 가리기 6 · 종합 7) ---------- */
 var L4 = [
-  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 부분이 <b>동명사</b>인 것은?",
-   opts:["a **sleeping** bag","a **sleeping** baby","The baby is **sleeping**.","I saw him **sleeping**.","the **sleeping** cat"], a:0, eng:true,
-   exp:"sleeping bag은 ‘잠자기 위한 가방’(쓰임새)이라 동명사입니다. 나머지는 ‘자고 있는’ 현재분사입니다."},
+  {type:"n", tag:"과거", sent:"I ___ soccer yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["played","play","plays","am playing","will play"], a:0, eng:true,
+   ko:"나는 어제 축구를 했다.",
+   exp:"yesterday가 있으므로 과거형 <b>played</b>입니다."},
 
-  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 부분이 <b>현재분사</b>인 것은?",
-   opts:["the **running** boy","**running** shoes","**Running** is good.","I stopped **running**.","He is good at **running**."], a:0, eng:true,
-   exp:"the running boy는 ‘달리고 있는 소년’입니다. running shoes는 ‘달리기용 신발’이라 동명사입니다."},
+  {type:"n", tag:"과거", word:"study", q:"<b>study</b>의 과거형은?",
+   opts:["studied","studyed","studies","studing","study"], a:0, eng:true,
+   exp:"자음 + y이므로 y를 i로 바꾸고 ed를 붙입니다. <b>studied</b>"},
 
-  {type:"n", tag:"쓰임 가리기", sent:"I remember ___ him last year.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["meeting","to meet","meet","met","to meeting"], a:0, eng:true,
-   ko:"나는 작년에 그를 만났던 것을 기억한다.",
-   exp:"<b>remember -ing</b>는 지난 일을 기억하는 것, remember to는 앞으로 할 일을 기억하는 것입니다."},
+  {type:"n", tag:"과거", word:"stop", q:"<b>stop</b>의 과거형은?",
+   opts:["stopped","stoped","stopt","stopping","stops"], a:0, eng:true,
+   exp:"짧은 모음 + 자음으로 끝나면 자음을 한 번 더 쓰고 ed를 붙입니다. <b>stopped</b>"},
 
-  {type:"n", tag:"쓰임 가리기", sent:"Don't forget ___ the door when you go out.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["to lock","locking","lock","locked","to locking"], a:0, eng:true,
-   ko:"나갈 때 문 잠그는 것을 잊지 마.",
-   exp:"앞으로 할 일을 잊지 말라는 뜻이므로 <b>forget to</b>입니다."},
+  {type:"n", tag:"과거", multi:true, eng:true, q:"과거형이 <b>불규칙</b>하게 바뀌는 것을 모두 고르세요. (여러 개)",
+   opts:["go → went","eat → ate","have → had","play → played","walk → walked"], ans:[0,1,2],
+   exp:"go · eat · have는 모양이 아주 바뀝니다. 뒤 두 개는 ed만 붙입니다."},
 
-  {type:"n", tag:"쓰임 가리기", sent:"She stopped ___ junk food for her health.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["eating","to eat","eat","ate","to eating"], a:0, eng:true,
-   ko:"그녀는 건강을 위해 정크푸드 먹는 것을 그만두었다.",
-   exp:"<b>stop -ing</b> = ~하는 것을 그만두다."},
+  {type:"n", tag:"과거", sent:"She ___ to the library last night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["went","goes","go","gone","is going"], a:0, eng:true,
+   ko:"그녀는 어젯밤에 도서관에 갔다.",
+   exp:"last night은 지난 일이므로 <b>went</b>입니다."},
 
-  {type:"n", tag:"쓰임 가리기", sent:"On my way home, I stopped ___ some bread.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["to buy","buying","buy","bought","to buying"], a:0, eng:true,
-   ko:"집에 가는 길에 나는 빵을 사려고 멈춰 섰다.",
-   exp:"<b>stop to</b> = ~하려고 멈추다. 이 to부정사는 목적을 나타냅니다."},
+  {type:"n", tag:"과거", sent:"He ___ finish his homework.", q:"‘그는 숙제를 끝내지 못했다’가 되도록 알맞은 것은?",
+   opts:["didn't","doesn't","don't","wasn't","isn't"], a:0, eng:true,
+   ko:"그는 숙제를 끝내지 못했다.",
+   exp:"지난 일을 아니라고 할 때는 주어에 상관없이 <b>didn't</b>이고, 뒤에는 동사원형이 옵니다."},
 
-  {type:"n", tag:"쓰임 가리기", hard:true, multi:true, eng:true, q:"밑줄 친 부분이 <b>동명사</b>인 것을 모두 고르세요. (여러 개)",
-   opts:["a **waiting** room","**Seeing** is believing.","I'm tired of **waiting**.","The girl **waiting** there is Amy.","She is **waiting** for the bus."], ans:[0,1,2],
-   exp:"대기실(기다리기 위한 방) · 보는 것 · 기다리는 것이 동명사입니다. 뒤의 둘은 ‘기다리고 있는’ 현재분사입니다."},
+  {type:"n", tag:"과거", hard:true, sent:"___ you see the movie last week?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Did","Do","Does","Are","Were"], a:0, eng:true,
+   ko:"너는 지난주에 그 영화를 봤니?",
+   exp:"지난 일을 물을 때는 <b>Did</b>이고, 뒤의 동사는 원형입니다."},
 
-  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">To learn a new language is exciting.<br>= ___ a new language is exciting.</span>",
-   opts:["Learning","Learn","Learned","Learns","To learning"], a:0, eng:true,
-   exp:"주어 자리의 to부정사는 <b>동명사</b>로 바꿔 쓸 수 있습니다."},
+  {type:"a", tag:"때 가리기", q:"다음 중 <b>과거</b>를 나타내는 말이 <b>아닌</b> 것은?",
+   opts:["every day","yesterday","last year","two days ago","in 2020"], a:0, eng:true,
+   exp:"every day는 늘 하는 일이라 현재로 말합니다."},
 
-  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">It is fun to play with my dog.<br>= ___ with my dog is fun.</span>",
-   opts:["Playing","Play","Played","Plays","Being play"], a:0, eng:true,
-   exp:"가주어 It 문장을 동명사 주어로 바꾸면 <b>Playing</b> with my dog is fun.입니다."},
+  {type:"a", tag:"때 가리기", multi:true, eng:true, q:"<b>현재</b>로 말해야 하는 문장을 모두 고르세요. (여러 개)",
+   opts:["He ___ soccer every Sunday.","She always ___ breakfast.","They usually ___ early.","I ___ him yesterday.","We ___ there last week."], ans:[0,1,2],
+   exp:"every · always · usually는 늘 하는 일입니다."},
 
-  {type:"a", tag:"바꿔 쓰기", sent:"I couldn't help ___ at his joke.", q:"‘웃지 않을 수 없었다’가 되도록 빈칸에 알맞은 것은?",
-   opts:["laughing","laugh","laughed","laughs","to laughing"], a:0, eng:true,
-   ko:"나는 그의 농담에 웃지 않을 수 없었다.",
-   exp:"<b>cannot help -ing</b> = ~하지 않을 수 없다."},
+  {type:"a", tag:"때 가리기", sent:"My sister ___ the piano every day, but she ___ it yesterday.", q:"빈칸에 알맞게 짝지은 것은?",
+   opts:["plays – didn't play","plays – doesn't play","play – didn't play","plays – didn't played","play – doesn't play"], a:0, eng:true,
+   ko:"언니는 날마다 피아노를 치지만 어제는 치지 않았다.", full:"My sister **plays** the piano every day, but she **didn't play** it yesterday.", fullko:"언니는 날마다 피아노를 치지만 어제는 치지 않았다.",
+   exp:"앞은 늘 하는 일, 뒤는 어제 일입니다. didn't 뒤에는 <b>원형</b>입니다."},
 
-  {type:"a", tag:"바꿔 쓰기", hard:true, q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">As soon as she got home, she went to bed.<br>= On ___ home, she went to bed.</span>",
-   opts:["getting","get","got","to get","gets"], a:0, eng:true,
-   exp:"<b>On -ing</b> = ~하자마자. on이 전치사라서 뒤에 동명사가 옵니다."},
+  {type:"a", tag:"때 가리기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He didn't went home.","He didn't go home.","He went home.","He goes home every day.","He doesn't go home early."], a:0, eng:true,
+   exp:"didn't 뒤에는 동사원형입니다. didn't <b>go</b>"},
 
-  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I'm sorry that I am late.<br>= I'm sorry for ___ late.</span>",
-   opts:["being","be","been","to be","am"], a:0, eng:true,
-   exp:"전치사 for 뒤에는 be동사도 <b>being</b>이 됩니다."},
+  {type:"a", tag:"때 가리기", sent:"He ___ a car last year, but now he ___ a bike.", q:"빈칸에 알맞게 짝지은 것은?",
+   opts:["had – has","has – had","have – has","had – have","has – has"], a:0, eng:true,
+   ko:"그는 작년에는 차가 있었지만 지금은 자전거가 있다.", full:"He **had** a car last year, but now he **has** a bike.", fullko:"그는 작년에는 차가 있었지만 지금은 자전거가 있다.",
+   exp:"앞은 지난 일이라 <b>had</b>, 뒤는 지금 일이고 주어가 he라서 <b>has</b>입니다."},
 
-  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"뜻이 같은 짝을 모두 고르세요. (여러 개)",
-   opts:["Let's go out. = How about going out?","He is good at swimming. = He swims well.","She likes reading. = She likes to read.","I remember locking the door. = I remember to lock the door.","He stopped eating. = He stopped to eat."], ans:[0,1,2],
-   exp:"remember와 stop은 뒤에 -ing가 오느냐 to가 오느냐에 따라 <b>뜻이 달라집니다</b>."},
+  {type:"a", tag:"때 가리기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Did you eat lunch?","He didn't come.","They ate pizza.","Did you ate lunch?","He didn't came."], ans:[0,1,2],
+   exp:"Did와 didn't 뒤에는 늘 동사원형입니다."},
 
-  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
-   opts:["I forgot to bringing my umbrella.","I forgot to bring my umbrella.","I remember visiting this place.","Try pressing the button.","She stopped talking."], a:0, eng:true,
-   exp:"forget to 뒤에는 <b>원형</b>입니다. forgot to <b>bring</b>"},
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ She ___ a student. ⓑ She ___ English every day.</span>",
+   opts:["is – studies","is – study","studies – is","are – studies","is – is study"], a:0, eng:true,
+   exp:"ⓐ는 ‘~이다’라서 be동사, ⓑ는 움직임이라 일반동사입니다. 둘을 섞어 쓰지 않습니다."},
 
-  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
-   opts:["I'm used to living alone.","He is proud of being a doctor.","Not being honest is a problem.","I look forward to see you.","She avoided to meet him."], ans:[0,1,2],
-   exp:"be used to · be proud of 뒤에는 동명사, 동명사의 부정은 <b>not + -ing</b>입니다. look forward to <b>seeing</b> · avoided <b>meeting</b>"},
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["My brother doesn't like math, but he studies it hard.","My brother don't likes math, but he study it hard.","My brother doesn't likes math, but he studies it hard.","My brother isn't like math, but he studies it hard.","My brother doesn't like math, but he study it hard."], a:0, eng:true,
+   exp:"doesn't 뒤에는 원형 like, 그냥 쓸 때는 <b>studies</b>입니다."},
 
-  {type:"v", tag:"종합", hard:true, sent:"This book is worth ___ .", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["reading","to read","read","reads","to reading"], a:0, eng:true,
-   ko:"이 책은 읽을 만한 가치가 있다.",
-   exp:"<b>be worth -ing</b> = ~할 가치가 있다."},
+  {type:"v", tag:"종합", hard:true, sent:"Where ___ your father work?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["does","do","is","are","doing"], a:0, eng:true,
+   ko:"너희 아버지는 어디서 일하시니?",
+   exp:"의문사 뒤에도 <b>Does</b>를 세웁니다. your father는 한 사람입니다."},
 
-  {type:"v", tag:"종합", hard:true, sent:"I spent all day ___ my room.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["cleaning","to clean","clean","cleaned","for clean"], a:0, eng:true,
-   ko:"나는 방을 청소하느라 하루를 다 보냈다.",
-   exp:"<b>spend + 시간 + -ing</b> = ~하는 데 시간을 쓰다."},
+  {type:"v", tag:"종합", hard:true, sent:"What time ___ you get up?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["do","does","are","is","doing"], a:0, eng:true,
+   ko:"너는 몇 시에 일어나니?",
+   exp:"주어가 you이므로 <b>do</b>입니다."},
 
-  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ I'll never forget ___ the sea for the first time.<br>ⓑ Remember ___ your homework tomorrow.</span>",
-   opts:["seeing – to bring","to see – bringing","seeing – bringing","to see – to bring","see – bring"], a:0, eng:true,
-   exp:"ⓐ 지난 일을 잊지 못함 → <b>forget -ing</b>, ⓑ 앞으로 할 일 → <b>remember to</b>"},
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 것은?",
+   opts:["He can plays the piano.","He can play the piano.","He plays the piano.","He doesn't play the piano.","Does he play the piano?"], a:0, eng:true,
+   exp:"can 같은 조동사 뒤에도 <b>동사원형</b>이 옵니다. can play"},
 
-  {type:"v", tag:"종합", hard:true, q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘일찍 자지 않는 것은 건강에 나쁘다.’</span>",
-   opts:["Not going to bed early is bad for your health.","Going not to bed early is bad for your health.","Don't going to bed early is bad for your health.","No going to bed early are bad for your health.","Not go to bed early is bad for your health."], a:0, eng:true,
-   exp:"동명사를 부정할 때는 바로 앞에 <b>not</b>을 붙입니다. Not going ~"},
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"뒤에 <b>동사원형</b>이 오는 것을 모두 고르세요. (여러 개)",
+   opts:["does not","did not","can","he (3인칭 단수 현재)","she (3인칭 단수 현재)"], ans:[0,1,2],
+   exp:"도우미(does not · did not · can) 뒤에는 원형, 주어가 he·she일 때는 s가 붙은 모양입니다."},
 
   {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["enjoy, finish, mind 뒤에는 to부정사가 온다.","동명사 주어는 단수로 받는다.","전치사 뒤에는 동명사가 온다.","remember -ing는 지난 일을 기억하는 것이다.","like, love, start 뒤에는 둘 다 올 수 있다."], a:0,
-   exp:"enjoy · finish · mind 뒤에는 <b>동명사</b>가 옵니다."}
+   opts:["Did 뒤에는 과거형 동사를 쓴다.","doesn't 뒤에는 동사원형을 쓴다.","He 뒤에서는 동사에 s를 붙인다.","didn't는 주어와 상관없이 쓴다.","be동사와 일반동사는 나란히 쓰지 않는다."], a:0, eng:true,
+   exp:"Did 뒤에도 <b>동사원형</b>입니다. Did you <u>go</u>?(○) · Did you went?(✕)"}
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 동명사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 동사 + -ing = ~하는 것 · 주어·목적어·보어 자리 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · 넓히기와 함정", desc:"-ing 철자 · 동명사와 짝인 동사 · 전치사 뒤 · 단수 주어 함정", qs:L2, typeLabels:{n:"모양",a:"모두 고르기",v:"함정"}},
-  3:{name:"기본3 · 중2 학교 시험형", desc:"관용 표현 빈칸 · 틀린 곳 고치기 · 대화 완성과 배열", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"현재분사와 구별 · remember·forget·stop · 바꿔 쓰기", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
+  1:{name:"기본1 · 일반동사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · be동사와 다른 점 · 주어에 따라 바뀌는 까닭 · 쉬운 영어 문장 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 모양 만들기와 함정", desc:"s·es 붙이는 규칙 · don’t와 doesn’t · Do와 Does · 함정 문제", qs:L2, typeLabels:{n:"모양 만들기",a:"모두 고르기",v:"함정"}},
+  3:{name:"기본3 · 중1 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
+  4:{name:"기본4 · 전 학년 아우르기", desc:"과거형 · 현재와 과거 가리기 · 조동사와 의문사까지", qs:L4, typeLabels:{n:"과거",a:"때 가리기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
-function figGerund(){
-  return '<svg class="fig" viewBox="0 0 560 136" role="img" aria-label="동명사가 들어가는 세 자리를 보여 주는 그림">'+
-    '<rect x="14" y="14" width="168" height="44" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
-    '<text x="98" y="42" text-anchor="middle" font-size="17" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">Swimming is fun.</text>'+
-    '<text x="98" y="78" text-anchor="middle" font-size="14" fill="var(--muted)">수영하는 것은 — 주어</text>'+
-    '<rect x="196" y="14" width="168" height="44" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
-    '<text x="280" y="42" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ra)" font-family="Newsreader, serif">I enjoy swimming.</text>'+
-    '<text x="280" y="78" text-anchor="middle" font-size="14" fill="var(--muted)">수영하기를 — 목적어</text>'+
-    '<rect x="378" y="14" width="168" height="44" rx="12" fill="var(--rv-soft)" stroke="var(--rv)" stroke-width="1.5"/>'+
-    '<text x="462" y="42" text-anchor="middle" font-size="17" font-weight="700" fill="var(--rv)" font-family="Newsreader, serif">good at swimming</text>'+
-    '<text x="462" y="78" text-anchor="middle" font-size="14" fill="var(--muted)">수영하기를 — 전치사 뒤</text>'+
-    '<text x="280" y="114" text-anchor="middle" font-size="15" fill="var(--muted)">동사 모양, 명사 노릇</text>'+
+function figVerb(){
+  return '<svg class="fig" viewBox="0 0 560 128" role="img" aria-label="be동사와 일반동사를 견주는 그림">'+
+    '<rect x="20" y="10" width="240" height="46" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
+    '<text x="140" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="var(--ra)" font-family="Newsreader, serif">I am a student.</text>'+
+    '<text x="140" y="78" text-anchor="middle" font-size="15" fill="var(--muted)">be동사 — 이다 · 있다</text>'+
+    '<text x="140" y="102" text-anchor="middle" font-size="14" fill="var(--muted)">나는 학생이다</text>'+
+    '<rect x="300" y="10" width="240" height="46" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
+    '<text x="420" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">I run every day.</text>'+
+    '<text x="420" y="78" text-anchor="middle" font-size="15" fill="var(--muted)">일반동사 — 움직임 · 마음</text>'+
+    '<text x="420" y="102" text-anchor="middle" font-size="14" fill="var(--muted)">나는 날마다 달린다</text>'+
   '</svg>';
 }
 
 function learn1(){
   return ''+
-  '<h2>LEVEL 1 · 동명사가 뭐예요?</h2>'+
-  '<p class="lead">동사에 <b>-ing</b>를 붙이면 ‘<b>~하는 것 · ~하기</b>’라는 이름이 됩니다. 동사 모양을 하고 명사 노릇을 해서 <b>동명사</b>라고 부릅니다.</p>'+
-  figGerund()+
+  '<h2>LEVEL 1 · 일반동사가 뭐예요?</h2>'+
+  '<p class="lead">‘나는 학생<b>이다</b>’와 ‘나는 <b>달린다</b>’. 둘 다 동사가 들어 있지만 하는 일이 다릅니다. ‘이다·있다’는 <b>be동사</b>, 움직임과 마음을 나타내는 나머지가 모두 <b>일반동사</b>입니다.</p>'+
+  figVerb()+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>만드는 법</span>'+
-    '<div class="swap"><span>동사원형 + -ing</span><span class="ar">→</span><span class="good">reading · playing · swimming</span></div>'+
-    '<p>뜻은 <b>~하는 것, ~하기</b>입니다. read 읽다 → reading 읽기</p>'+
+    '<span class="bh"><i class="dot d-n"></i>함께 쓰지 않습니다</span>'+
+    '<div class="ex">I <u class="hl">am</u> a student.<span class="k">be동사만</span></div>'+
+    '<div class="ex">I <u class="hl">run</u> every day.<span class="k">일반동사만</span></div>'+
+    '<p>I am run.(✕) 처럼 둘을 나란히 쓰면 안 됩니다. 우리말로도 ‘나는 이다 달린다’는 말이 되지 않지요.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>명사가 가는 자리에 갑니다</span>'+
-    '<div class="ex"><u class="hl a">수영하는 것</u>은 재미있다.<span class="k">주어 — Swimming is fun.</span></div>'+
-    '<div class="ex">나는 <u class="hl a">수영하기</u>를 즐긴다.<span class="k">목적어 — I enjoy swimming.</span></div>'+
-    '<div class="ex">내 취미는 <u class="hl a">수영하기</u>이다.<span class="k">보어 — My hobby is swimming.</span></div>'+
+    '<span class="bh"><i class="dot d-a"></i>주어에 따라 모양이 바뀝니다</span>'+
+    '<div class="swap"><span>I · You · We · They</span><span class="ar">→</span><span class="good">play 그대로</span></div>'+
+    '<div class="swap"><span>He · She · It</span><span class="ar">→</span><span class="good">plays — s를 붙임</span></div>'+
+    '<p>주어가 <b>한 사람·한 개</b>이고 지금 일이면 동사에 s가 붙습니다. 이것만 챙기면 절반은 끝입니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>‘하고 있다’와 헷갈리지 마세요</span>'+
-    '<div class="swap"><span>He is playing now.</span><span class="ar">↔</span><span class="good">His hobby is playing.</span></div>'+
-    '<p>앞은 ‘지금 <b>하고 있다</b>’(진행형), 뒤는 ‘<b>하기</b>’(동명사)입니다. 우리말로 풀어 보면 바로 가려집니다.</p>'+
+    '<span class="bh"><i class="dot d-v"></i>아니라고 할 때, 물어볼 때</span>'+
+    '<div class="ex">나는 축구를 하지 않는다.<span class="k">동사 앞에 도우미를 넣습니다</span></div>'+
+    '<div class="ex">너는 축구를 하니?<span class="k">문장 앞에 도우미를 세웁니다</span></div>'+
+    '<p>영어도 똑같습니다. 그 도우미가 <b>do · does</b>입니다. 2단계에서 자세히 봅니다.</p>'+
   '</div>'+
-  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex"><u class="hl a">Swimming</u> is fun.<span class="k">주어 — 수영하기는</span></div><div class="ex">I like <u class="hl a">dancing</u>.<span class="k">목적어 — 춤추는 것을</span></div><div class="ex">My hobby is <u class="hl a">cooking</u>.<span class="k">보어 — 요리하기</span></div></div>'+
-  '<div class="tip"><span class="h">1단계에서 챙길 것</span><b>동사 + -ing</b> = ~하는 것 · ~하기. 주어로 오면 <b>하나</b>로 셉니다.</div>';
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">I <u class="hl a">play</u> soccer. · He <u class="hl a">plays</u> soccer.<span class="k">주어가 한 사람이면 s</span></div><div class="ex">I <u class="hl a">don’t</u> like carrots. · <u class="hl a">Do</u> you like pizza?<span class="k">아니라고 할 때, 물을 때는 도우미</span></div></div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>일반동사는 <b>움직임과 마음</b>을 나타내고, <b>주어</b>와 <b>때</b>에 따라 모양이 바뀝니다.</div>';
 }
 
 function learn2(){
   return ''+
-  '<h2>LEVEL 2 · 넓히기와 함정</h2>'+
-  '<p class="lead">이제 영어 문장으로 넓혀 봅니다. -ing 철자, 동명사와 짝인 동사, 전치사 뒤 자리를 익힙니다.</p>'+
+  '<h2>LEVEL 2 · 모양 만들기와 함정</h2>'+
+  '<p class="lead">이제 영어로 모양을 만들어 봅니다. 규칙은 몇 줄뿐인데, 시험에서 많이 틀리는 <b>함정</b>이 바로 여기 숨어 있습니다.</p>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>-ing 붙이는 규칙</span>'+
-    '<div class="swap"><span>make · write</span><span class="ar">→</span><span class="good">making · writing (e 빼기)</span></div>'+
-    '<div class="swap"><span>swim · run · sit</span><span class="ar">→</span><span class="good">swimming · running · sitting</span></div>'+
-    '<div class="swap"><span>lie · die</span><span class="ar">→</span><span class="good">lying · dying (ie → y)</span></div>'+
+    '<span class="bh"><i class="dot d-n"></i>s · es 붙이는 규칙</span>'+
+    '<div class="swap"><span>대부분</span><span class="ar">→</span><span class="good">read → reads</span></div>'+
+    '<div class="swap"><span>-s · -x · -ch · -sh · -o</span><span class="ar">→</span><span class="good">watch → watches · go → goes</span></div>'+
+    '<div class="swap"><span>자음 + y</span><span class="ar">→</span><span class="good">study → studies</span></div>'+
+    '<div class="swap"><span>모음 + y</span><span class="ar">→</span><span class="good">play → plays</span></div>'+
+    '<div class="swap"><span>have</span><span class="ar">→</span><span class="good">has</span></div>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>뒤에 오는 것이 정해진 동사</span>'+
-    '<div class="ex">enjoy · finish · mind · keep · give up · avoid<span class="k">+ 동명사만</span></div>'+
-    '<div class="ex">want · hope · decide · plan<span class="k">+ to부정사만</span></div>'+
-    '<div class="ex">like · love · start · begin · hate<span class="k">+ 둘 다</span></div>'+
+    '<span class="bh"><i class="dot d-a"></i>아니라고 할 때, 물어볼 때</span>'+
+    '<div class="ex">I <u class="hl a">don’t</u> play soccer.<span class="k">I · You · We · They</span></div>'+
+    '<div class="ex">He <u class="hl a">doesn’t</u> play soccer.<span class="k">He · She · It</span></div>'+
+    '<div class="ex"><u class="hl a">Do</u> you play soccer? / <u class="hl a">Does</u> he play soccer?</div>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>가장 많이 틀리는 두 곳</span>'+
-    '<div class="swap"><span>good at play</span><span class="ar">✕</span><span class="good">good at playing</span></div>'+
-    '<div class="swap"><span>Playing games are fun.</span><span class="ar">✕</span><span class="good">Playing games is fun.</span></div>'+
-    '<p>전치사(at · for · in · about) 뒤에는 <b>-ing</b>, 동명사 주어는 <b>단수</b>입니다.</p>'+
+    '<span class="bh"><i class="dot d-v"></i>가장 많이 틀리는 함정</span>'+
+    '<div class="swap"><span>He doesn’t plays.</span><span class="ar">✕</span><span class="good">He doesn’t play.</span></div>'+
+    '<div class="swap"><span>Does he plays?</span><span class="ar">✕</span><span class="good">Does he play?</span></div>'+
+    '<p><b>does가 이미 s 노릇</b>을 하고 있어서, 뒤의 동사는 원형으로 돌아갑니다. s는 한 번만 씁니다.</p>'+
   '</div>'+
-  '<div class="tip"><span class="h">외우는 한 줄</span>enjoy · finish · mind 뒤에는 <b>-ing</b>. 전치사 뒤에도 <b>-ing</b>.</div>';
+  '<div class="tip"><span class="h">외우는 한 줄</span>도우미가 앞에 서면 <b>동사는 원형</b>입니다.</div>';
 }
 
 function learn3(){
   return ''+
-  '<h2>LEVEL 3 · 중2 학교 시험형</h2>'+
-  '<p class="lead">학교 시험에 그대로 나오는 모양입니다. 동명사 관용 표현을 채우고, 틀린 곳을 고치고, 대화를 완성합니다.</p>'+
+  '<h2>LEVEL 3 · 중1 학교 시험형</h2>'+
+  '<p class="lead">학교 시험에 그대로 나오는 모양입니다. 빈칸을 채우고, 틀린 곳을 고치고, 대화를 완성합니다.</p>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>시험에 자주 나오는 관용 표현</span>'+
-    '<div class="ex">go <u class="hl">shopping</u> · go <u class="hl">fishing</u><span class="k">~하러 가다</span></div>'+
-    '<div class="ex">How about <u class="hl">taking</u> a walk?<span class="k">~하는 게 어때?</span></div>'+
-    '<div class="ex">be busy <u class="hl">studying</u> · feel like <u class="hl">going</u> out<span class="k">~하느라 바쁘다 · ~하고 싶다</span></div>'+
-    '<div class="ex">look forward to <u class="hl">seeing</u> you<span class="k">to가 전치사 — ~하기를 고대하다</span></div>'+
+    '<span class="bh"><i class="dot d-n"></i>주어부터 세어 보세요</span>'+
+    '<div class="ex">My father <u class="hl">goes</u> to work.<span class="k">한 사람 → s</span></div>'+
+    '<div class="ex">Tom and I <u class="hl">play</u> soccer.<span class="k">둘 → 그대로</span></div>'+
+    '<p>주어가 길면 <b>몇 명인지</b>부터 세어 보세요. 시험은 주어를 길게 만들어 헷갈리게 합니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>Would you mind -ing?</span>'+
-    '<div class="ex">A: Would you mind <u class="hl a">opening</u> the window?<span class="k">창문 좀 열어 주시겠어요?</span></div>'+
-    '<div class="ex">B: Not at all. / No, I don’t mind.<span class="k">들어줄 때는 No로 답합니다 — mind는 ‘꺼리다’</span></div>'+
+    '<span class="bh"><i class="dot d-a"></i>대답도 짝이 맞아야 합니다</span>'+
+    '<div class="swap"><span>Do you ~ ?</span><span class="ar">→</span><span class="good">Yes, I do. / No, I don\'t.</span></div>'+
+    '<div class="swap"><span>Does he ~ ?</span><span class="ar">→</span><span class="good">Yes, he does. / No, he doesn\'t.</span></div>'+
+    '<p>Does로 물으면 does로, Do로 물으면 do로 답합니다. is·are로 답하지 않습니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>고칠 곳을 찾는 눈</span>'+
-    '<div class="swap"><span>enjoy to cook</span><span class="ar">✕</span><span class="good">enjoy cooking</span></div>'+
-    '<div class="swap"><span>without say</span><span class="ar">✕</span><span class="good">without saying</span></div>'+
+    '<span class="bh"><i class="dot d-v"></i>배열 차례</span>'+
+    '<div class="ex">She doesn\'t eat breakfast.<span class="k">주어 + doesn\'t + 동사원형</span></div>'+
+    '<div class="ex">Do you like milk?<span class="k">Do + 주어 + 동사원형 ~ ?</span></div>'+
   '</div>'+
-  '<div class="tip"><span class="h">시험에서 볼 곳</span>빈칸 앞 동사가 무엇인지, 앞에 전치사가 있는지 — 이 두 곳이 거의 전부입니다.</div>';
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>주어가 몇인지, 도우미가 맞는지, 도우미 뒤가 원형인지 — 이 세 곳만 보면 됩니다.</div>';
 }
 
 function learn4(){
   return ''+
   '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
-  '<p class="lead">마지막입니다. 같은 -ing라도 동명사와 현재분사를 가려내고, 뒤에 무엇이 오느냐에 따라 뜻이 바뀌는 동사를 익힙니다.</p>'+
+  '<p class="lead">마지막입니다. 지난 일을 말하는 <b>과거형</b>까지 더하고, 현재와 과거를 가려내며, 조동사와 의문사가 섞인 문장도 다룹니다.</p>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>동명사와 현재분사</span>'+
-    '<div class="swap"><span>a sleeping bag</span><span class="ar">↔</span><span class="good">a sleeping baby</span></div>'+
-    '<p>앞은 ‘잠자기 <b>위한</b> 가방’(쓰임새 → 동명사), 뒤는 ‘잠자고 <b>있는</b> 아기’(현재분사)입니다.</p>'+
+    '<span class="bh"><i class="dot d-n"></i>과거형 만들기</span>'+
+    '<div class="swap"><span>대부분</span><span class="ar">→</span><span class="good">walk → walked</span></div>'+
+    '<div class="swap"><span>자음 + y</span><span class="ar">→</span><span class="good">study → studied</span></div>'+
+    '<div class="swap"><span>짧은 모음 + 자음</span><span class="ar">→</span><span class="good">stop → stopped</span></div>'+
+    '<div class="swap"><span>불규칙</span><span class="ar">→</span><span class="good">go → went · eat → ate · have → had</span></div>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>뜻이 바뀌는 동사</span>'+
-    '<div class="swap"><span>remember -ing</span><span class="ar">↔</span><span class="good">remember to</span></div>'+
-    '<p><b>-ing는 지난 일</b>(~했던 것을), <b>to는 앞으로 할 일</b>(~할 것을)입니다. forget도 같습니다.</p>'+
-    '<div class="swap"><span>stop eating</span><span class="ar">↔</span><span class="good">stop to eat</span></div>'+
-    '<p>stop -ing는 ‘~하기를 그만두다’, stop to는 ‘~하려고 멈추다’입니다.</p>'+
+    '<span class="bh"><i class="dot d-a"></i>과거의 도우미는 하나뿐</span>'+
+    '<div class="ex">He <u class="hl a">didn\'t</u> go home.<span class="k">주어가 누구든 didn\'t</span></div>'+
+    '<div class="ex"><u class="hl a">Did</u> you see the movie?<span class="k">뒤는 동사원형</span></div>'+
+    '<p>과거에서는 주어를 따지지 않습니다. 대신 <b>뒤가 원형</b>이라는 점은 그대로입니다. Did you went?(✕)</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>더 알아 둘 표현</span>'+
-    '<div class="ex">cannot help -ing<span class="k">~하지 않을 수 없다</span></div>'+
-    '<div class="ex">be worth -ing · spend 시간 -ing · On -ing<span class="k">~할 가치가 있다 · ~하느라 시간을 쓰다 · ~하자마자</span></div>'+
-    '<div class="ex">Not being honest is a problem.<span class="k">동명사의 부정은 not + -ing</span></div>'+
+    '<span class="bh"><i class="dot d-v"></i>때를 알려 주는 말을 먼저 찾으세요</span>'+
+    '<div class="swap"><span>every day · always · usually</span><span class="ar">→</span><span class="good">현재</span></div>'+
+    '<div class="swap"><span>yesterday · last week · ago</span><span class="ar">→</span><span class="good">과거</span></div>'+
+    '<p>문장에 이런 말이 보이면 동사 모양이 곧바로 정해집니다.</p>'+
   '</div>'+
-  '<div class="tip"><span class="h">마지막 한마디</span>-ing를 보면 ‘~하기’인지 ‘~하고 있는’인지 먼저 우리말로 풀어 보세요.</div>';
+  '<div class="tip"><span class="h">마지막 한마디</span>도우미(do · does · did · can) 뒤에는 <b>언제나 동사원형</b>입니다. 이 한 줄이 끝까지 갑니다.</div>';
 }
 
 var LVCHEER = {
-  1:"동사 + -ing가 ‘~하는 것’이 된다는 것을 알게 되었어요. 2단계에서는 짝이 되는 동사를 익힙니다.",
-  2:"enjoy 뒤, 전치사 뒤에는 -ing — 이 한 줄을 잡았습니다. 3단계는 중2 학교 시험형입니다.",
-  3:"관용 표현까지 척척 채웠어요. 마지막 단계만 남았습니다.",
-  4:"현재분사와 구별하고 remember·stop까지 해냈습니다. 동명사는 이제 든든합니다!"
+  1:"be동사와 일반동사를 가려낼 수 있게 되었어요. 2단계에서는 모양을 만들어 봅니다.",
+  2:"도우미 뒤에는 동사원형 — 이 한 줄을 잡았습니다. 3단계는 학교 시험형입니다.",
+  3:"주어를 세어 보는 습관이 붙었어요. 마지막 단계만 남았습니다.",
+  4:"과거형까지 해냈습니다. 일반동사는 이제 든든합니다!"
 };
 
 function renderLearn(){
@@ -890,7 +893,7 @@ function renderLearn(){
 }
 
 /* ===================== 상태 ===================== */
-var RKEY="kkumettang_gerund_v2", NKEY="kkumettang_name";
+var RKEY="kkumettang_verbuse_v1", NKEY="kkumettang_name";
 var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
        correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
        round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",

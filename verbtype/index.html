@@ -1,5 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
-<title>꾸메땅 영문법 GAME · 8품사-3 동사 뽀개기</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · 동사 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,8 +292,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">8품사-3 · 동사 뽀개기</span></h1>
-    <p class="sub">be동사 · 일반동사 · 조동사 완전정복 80문제 · 네 단계 각 20문제 / 1단계는 우리말로, 2단계부터 영어로 넓혀 갑니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 동사 뽀개기</span></h1>
+    <p class="sub">be동사 · 일반동사 · 조동사 구별 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -369,7 +377,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 영문법 GAME · 8품사-3 동사 뽀개기</p>
+  <p class="foot">꾸메땅 영문법 GAME · 동사 뽀개기</p>
 </div>
 
 
@@ -384,92 +392,97 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : 동사 세 가족을 한글로 20 (개념 6 · 모두 고르기 5 · 구별 9) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"<b>동사</b>는 문장에서 무엇을 말해 줄까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>동사</b>는 문장에서 무엇을 말해 줄까요?",
    opts:["무엇을 하는지, 어떠한지를 말해 준다","누구인지 이름을 말해 준다","몇 개인지 수를 말해 준다","언제인지 때만 말해 준다","어디인지 장소만 말해 준다"], a:0,
    exp:"동사는 <b>움직임이나 상태</b>를 말해 주는 말입니다. ‘먹는다, 달린다’처럼 하는 일을 말하기도 하고, ‘~이다, ~있다’처럼 어떤 상태인지를 말하기도 합니다."},
 
-  {type:"n", tag:"개념", q:"동사는 크게 <b>세 가족</b>으로 나뉩니다. 바르게 묶은 것은?",
+  {type:"n", tag:"한글로 이해", q:"동사는 크게 <b>세 가족</b>으로 나뉩니다. 바르게 묶은 것은?",
    opts:["be동사 · 일반동사 · 조동사","명사 · 동사 · 형용사","현재 · 과거 · 미래","주어 · 동사 · 목적어","단수 · 복수 · 소유"], a:0,
    exp:"동사는 <b>be동사</b>, <b>일반동사</b>, <b>조동사</b> 세 가족입니다. 이 세 가족만 가려낼 수 있으면 영어 문장의 절반은 읽힙니다."},
 
-  {type:"n", tag:"개념", q:"<b>be동사</b>는 우리말로 어떤 뜻일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>be동사</b>는 우리말로 어떤 뜻일까요?",
    opts:["~이다, ~있다","먹다, 마시다","~할 수 있다","빠르게, 천천히","그리고, 그러나"], a:0,
    exp:"be동사는 <b>‘~이다’</b>와 <b>‘~있다’</b> 두 가지 뜻입니다. ‘나는 학생<u>이다</u>’, ‘고양이가 상자 안에 <u>있다</u>’ — 둘 다 be동사입니다."},
 
-  {type:"n", tag:"개념", q:"<b>일반동사</b>는 어떤 것을 말할 때 쓸까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>일반동사</b>는 어떤 것을 말할 때 쓸까요?",
    opts:["먹다, 달리다처럼 움직임이나 행동","~이다처럼 무엇인지를 말할 때","동사 앞에서 뜻을 더해 줄 때","사람의 이름을 부를 때","물건의 개수를 셀 때"], a:0,
    exp:"일반동사는 <b>몸으로 하는 일</b>이나 <b>마음으로 하는 일</b>을 말합니다. 먹다(eat), 달리다(run), 좋아하다(like)처럼 종류가 가장 많은 가족입니다."},
 
-  {type:"n", tag:"개념", q:"<b>조동사</b>가 하는 일을 가장 잘 설명한 것은?",
+  {type:"n", tag:"한글로 이해", q:"<b>조동사</b>가 하는 일을 가장 잘 설명한 것은?",
    opts:["혼자 쓰지 못하고 동사 앞에서 뜻을 더해 준다","혼자서 문장을 완성한다","명사를 꾸며 준다","문장 맨 뒤에 붙어 마무리한다","두 문장을 이어 준다"], a:0,
    exp:"조동사는 <b>도울 조(助)</b> 자를 씁니다. 혼자서는 쓰지 못하고 다른 동사 <b>앞</b>에 붙어서 ‘~할 수 있다, ~할 것이다, ~해야만 한다’ 같은 뜻을 더해 줍니다."},
 
-  {type:"n", tag:"개념", q:"조동사 <b>뒤</b>에 오는 동사는 어떤 모양일까요?",
+  {type:"n", tag:"한글로 이해", q:"조동사 <b>뒤</b>에 오는 동사는 어떤 모양일까요?",
    opts:["아무것도 붙지 않은 그대로의 동사","-s가 붙은 동사","-ing가 붙은 동사","-ed가 붙은 동사","to가 앞에 붙은 동사"], a:0,
    exp:"조동사 뒤에는 <b>동사원형</b>, 곧 아무것도 붙지 않은 그대로의 동사가 옵니다. 이 규칙 하나가 시험에 가장 많이 나옵니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>be동사</b>의 뜻을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>be동사</b>의 뜻을 모두 고르세요. (여러 개)",
    opts:["~이다","~있다","먹다","~할 수 있다","달리다"], ans:[0,1],
    exp:"be동사의 뜻은 <b>‘~이다’</b>와 <b>‘~있다’</b> 두 개뿐입니다. 먹다·달리다는 일반동사, ‘~할 수 있다’는 조동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>조동사</b>의 뜻을 모두 고르세요. (여러 개)",
-   opts:["~할 수 있다","~할 것이다","~해야만 한다","~이다","노래하다"], ans:[0,1,2],
-   exp:"‘~할 수 있다(can)’, ‘~할 것이다(will)’, ‘~해야만 한다(must)’가 조동사의 뜻입니다. ‘~이다’는 be동사, ‘노래하다’는 일반동사입니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>일반동사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>일반동사</b>를 모두 고르세요. (여러 개)",
    opts:["먹다","달리다","좋아하다","~있다","~해야만 한다"], ans:[0,1,2],
    exp:"먹다·달리다·좋아하다는 모두 <b>일반동사</b>입니다. ‘~있다’는 be동사, ‘~해야만 한다’는 조동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>be동사</b>로 말해야 하는 문장을 모두 고르세요. (여러 개)",
-   opts:["나는 학생이다.","고양이가 상자 안에 있다.","나는 우유를 마신다.","그는 빨리 달린다.","나는 수영할 수 있다."], ans:[0,1],
-   exp:"‘학생<u>이다</u>’와 ‘상자 안에 <u>있다</u>’가 be동사입니다. 마신다·달린다는 일반동사, ‘수영할 수 있다’는 조동사가 들어간 말입니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>조동사</b>가 들어간 문장을 모두 고르세요. (여러 개)",
-   opts:["나는 수영할 수 있다.","나는 내일 갈 것이다.","너는 일찍 자야만 한다.","그녀는 내 동생이다.","새가 하늘을 난다."], ans:[0,1,2],
-   exp:"‘~할 수 있다, ~할 것이다, ~해야만 한다’에는 모두 조동사가 숨어 있습니다. ‘내 동생이다’는 be동사, ‘난다’는 일반동사입니다."},
-
-  {type:"v", tag:"구별", sent:"나는 학생**이다**.", q:"밑줄 친 말은 어느 동사일까요?",
+  {type:"n", tag:"한글로 이해", sent:"나는 학생**이다**.", q:"밑줄 친 말은 어느 동사일까요?",
    opts:["be동사","일반동사","조동사","명사","형용사"], a:0,
    exp:"‘~이다’이므로 <b>be동사</b>입니다. 영어로는 I <b>am</b> a student. 가 됩니다."},
 
-  {type:"v", tag:"구별", sent:"나는 밥을 **먹는다**.", q:"밑줄 친 말은 어느 동사일까요?",
+  {type:"n", tag:"한글로 이해", sent:"나는 밥을 **먹는다**.", q:"밑줄 친 말은 어느 동사일까요?",
    opts:["일반동사","be동사","조동사","명사","형용사"], a:0,
    exp:"‘먹다’는 몸으로 하는 행동이므로 <b>일반동사</b>입니다. 영어로는 I <b>eat</b> rice. 가 됩니다."},
 
-  {type:"v", tag:"구별", sent:"나는 피아노를 **칠 수 있다**.", q:"밑줄 친 말은 어느 동사일까요?",
+  {type:"n", tag:"한글로 이해", sent:"나는 피아노를 **칠 수 있다**.", q:"밑줄 친 말은 어느 동사일까요?",
    opts:["조동사가 들어 있다","be동사만 있다","조동사가 없다","명사이다","형용사이다"], a:0,
    exp:"‘~할 수 있다’는 <b>조동사 can</b>의 뜻입니다. 영어로는 I <b>can</b> play the piano. 가 됩니다. can 뒤의 play는 그대로의 동사입니다."},
 
-  {type:"v", tag:"구별", q:"다음 중 <b>be동사</b>를 써서 말하는 문장은?",
-   opts:["책상 위에 책이 있다.","그는 빨리 달린다.","나는 우유를 마신다.","우리는 내일 갈 것이다.","그녀는 노래를 좋아한다."], a:0,
-   exp:"‘~있다’는 be동사입니다. 영어로는 The book <b>is</b> on the desk. 입니다. 나머지는 일반동사이거나 조동사가 들어간 말입니다."},
-
-  {type:"v", tag:"구별", q:"다음 중 <b>일반동사</b>를 써서 말하는 문장은?",
-   opts:["그는 축구를 좋아한다.","나는 열두 살이다.","연필이 필통 안에 있다.","너는 손을 씻어야만 한다.","우리는 이길 것이다."], a:0,
-   exp:"‘좋아하다’는 마음으로 하는 일이지만 <b>일반동사</b>입니다. 영어로는 He <b>likes</b> soccer. 입니다."},
-
-  {type:"v", tag:"구별", q:"다음 중 <b>조동사</b>가 들어 있는 문장은?",
-   opts:["우리는 손을 씻어야만 한다.","그는 내 친구이다.","나는 책을 읽는다.","꽃이 정원에 있다.","아기가 웃는다."], a:0,
-   exp:"‘~해야만 한다’는 조동사 <b>must</b>의 뜻입니다. We <b>must</b> wash our hands. 처럼 씁니다."},
-
-  {type:"v", tag:"구별", sent:"내일 비가 **올 것이다**.", q:"밑줄 친 말은 어느 동사일까요?",
-   opts:["조동사가 들어 있다","be동사만 있다","일반동사만 있다","명사이다","형용사이다"], a:0,
-   exp:"‘~할 것이다’는 조동사 <b>will</b>의 뜻입니다. It <b>will</b> rain tomorrow. 처럼 씁니다."},
-
-  {type:"v", tag:"구별", q:"세 문장의 동사를 바르게 짝지은 것은?<br><span class=\"eng\">ⓐ 나는 행복하다.&nbsp;ⓑ 나는 달린다.&nbsp;ⓒ 나는 갈 것이다.</span>",
-   opts:["ⓐ be동사 – ⓑ 일반동사 – ⓒ 조동사","ⓐ 일반동사 – ⓑ be동사 – ⓒ 조동사","ⓐ 조동사 – ⓑ 일반동사 – ⓒ be동사","셋 다 일반동사","셋 다 be동사"], a:0,
-   exp:"ⓐ ‘행복하다’는 어떤 상태인지를 말하므로 be동사(I <b>am</b> happy), ⓑ ‘달리다’는 행동이므로 일반동사(I <b>run</b>), ⓒ ‘~할 것이다’는 조동사(I <b>will</b> go)입니다."},
-
-  {type:"v", tag:"정리", q:"다음 설명 중 <b>틀린</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
    opts:["조동사는 혼자서도 문장을 완성할 수 있다.","be동사는 ‘~이다, ~있다’로 해석한다.","일반동사는 움직임이나 행동을 말한다.","조동사 뒤에는 그대로의 동사가 온다.","동사는 문장에 꼭 있어야 한다."], a:0,
-   exp:"조동사는 <b>혼자 쓰지 못합니다.</b> 반드시 뒤에 다른 동사가 따라와야 합니다. I can.(✕) · I can swim.(○)"}
+   exp:"조동사는 <b>혼자 쓰지 못합니다.</b> 반드시 뒤에 다른 동사가 따라와야 합니다. I can.(✕) · I can swim.(○)"},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>am · is · are</b>는 어느 동사 가족일까요?",
+   opts:["be동사","일반동사","조동사","명사","형용사"], a:0,
+   exp:"am · is · are는 ‘~이다, ~있다’라는 <b>be동사</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I ___ a student.", q:"빈칸에 알맞은 말은?",
+   opts:["am","is","are","be","can"], a:0, eng:true,
+   ko:"나는 학생이다.",
+   exp:"I 뒤에는 <b>am</b>입니다. I am · You are · He is"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She ___ happy.", q:"빈칸에 알맞은 말은?",
+   opts:["is","am","are","be","do"], a:0, eng:true,
+   ko:"그녀는 행복하다.",
+   exp:"She 뒤에는 <b>is</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>일반동사</b>를 모두 고르세요. (여러 개)",
+   opts:["eat","run","like","is","can"], ans:[0,1,2],
+   exp:"먹다 · 달리다 · 좋아하다는 일반동사입니다. is는 be동사, can은 조동사입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>조동사</b>를 모두 고르세요. (여러 개)",
+   opts:["can","will","must","am","play"], ans:[0,1,2],
+   exp:"can(~할 수 있다) · will(~할 것이다) · must(~해야 한다)가 조동사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘<b>~할 수 있다</b>’를 영어로 하면?",
+   opts:["can","will","must","is","are"], a:0, eng:true,
+   exp:"<b>can</b> = ~할 수 있다. I can swim."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I can ___ .", q:"‘나는 수영할 수 있다’가 되도록 알맞은 것은?",
+   opts:["swim","swims","swimming","to swim","swam"], a:0, eng:true,
+   ko:"나는 수영할 수 있다.",
+   exp:"조동사 뒤에는 <b>그대로의 동사</b>(동사원형)가 옵니다. can swim"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I **play** soccer.", q:"밑줄 친 말은 어느 동사일까요?",
+   opts:["일반동사","be동사","조동사","명사","형용사"], a:0,
+   ko:"나는 축구를 한다.",
+   exp:"play(하다, 놀다)는 행동을 나타내는 <b>일반동사</b>입니다."}
 ];
 
 /* ---------- LEVEL 2 : 영어로 구별 20 (모두 고르기 5 · 뜻과 모양 7 · 문장 속 구별 8) ---------- */
@@ -735,7 +748,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 동사 세 가족", desc:"be동사 · 일반동사 · 조동사를 우리말로 가리기 · 초등도 가능", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"구별"}},
+  1:{name:"기본1 · 동사 세 가족", desc:"한글로 이해 12 · 쉬운 영어 8 · be동사 · 일반동사 · 조동사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 영어로 가리기", desc:"am·is·are·was·were / 일반동사 / can·will·must·may·should · 중1", qs:L2, typeLabels:{n:"모두 고르기",a:"뜻과 모양",v:"문장 속 구별"}},
   3:{name:"기본3 · 조동사의 다른 옷", desc:"be going to · be able to · have to · has to", qs:L3, typeLabels:{n:"짝 찾기",a:"모양 맞추기",v:"판별"}},
   4:{name:"기본4 · 동사 총정리", desc:"동사가 무엇인지 · 한글과 영어를 합쳐 아우르기", qs:L4, typeLabels:{n:"동사의 역할",a:"한글·영어 짝",v:"판별·고난도"}}
@@ -786,6 +799,7 @@ function learn1(){
     '<div class="ex">너는 일찍 <u class="hl v">자야만 한다</u>.<span class="k">~해야만 한다</span></div>'+
     '<p>조동사는 <b>도울 조(助)</b> 자를 씁니다. 반드시 다른 동사 앞에 붙어서 뜻을 더해 줍니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">I <u class="hl a">am</u> a student.<span class="k">be동사 — ~이다</span></div><div class="ex">I <u class="hl a">play</u> soccer.<span class="k">일반동사 — 행동</span></div><div class="ex">I <u class="hl a">can</u> swim.<span class="k">조동사 + 동사원형</span></div></div>'+
   '<div class="tip"><span class="h">가리는 방법</span>우리말 끝을 보세요. <b>‘~이다 · ~있다’</b>로 끝나면 be동사, <b>‘~할 수 있다 · ~할 것이다 · ~해야만 한다’</b>로 끝나면 조동사, 그 밖에 행동을 말하면 <b>일반동사</b>입니다.</div>';
 }
 
@@ -871,6 +885,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">마지막 한마디</span>문장을 만나면 <b>동사부터 찾으세요.</b> 그리고 ‘~이다·~있다’인지, 행동인지, 돕는 말인지 하나만 가려내면 됩니다. 여기까지 오면 8품사 다음 어법의 문이 열립니다.</div>';
 }
+
+var LVCHEER = {
+  1:"동사 세 가족을 우리말로 가려낼 수 있게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
+  2:"be동사 다섯 개, 조동사 다섯 개. 이제 문장을 보면 동사가 먼저 눈에 들어올 거예요.",
+  3:"can·will·must가 옷을 갈아입어도 알아보는군요. 마지막 한 단계 남았습니다.",
+  4:"동사가 무엇인지 끝까지 해냈습니다. 이제 어떤 문장을 만나도 동사부터 찾을 수 있어요."
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -997,7 +1018,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -1045,6 +1066,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1139,12 +1161,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"동사 세 가족을 우리말로 가려낼 수 있게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
-  2:"be동사 다섯 개, 조동사 다섯 개. 이제 문장을 보면 동사가 먼저 눈에 들어올 거예요.",
-  3:"can·will·must가 옷을 갈아입어도 알아보는군요. 마지막 한 단계 남았습니다.",
-  4:"동사가 무엇인지 끝까지 해냈습니다. 이제 어떤 문장을 만나도 동사부터 찾을 수 있어요."
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1211,7 +1227,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

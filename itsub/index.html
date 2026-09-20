@@ -1,5 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
-<title>꾸메땅 도전 비인칭주어 GAME</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · 비인칭주어 GAME</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -253,6 +261,7 @@ table.rank tr.me .who{color:var(--accent)}
 .empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
 .toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
 
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
 .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
 .opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
 .multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
@@ -283,8 +292,8 @@ table.rank tr.me .who{color:var(--accent)}
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 도전 <span class="mark">비인칭주어 GAME</span></h1>
-    <p class="sub">해석하지 않는 주어 it 완전정복 80문제 · 네 단계 각 20문제 / 문제에는 답을 알려 주는 힌트를 두지 않고, 답을 고른 뒤에 완성 문장과 해설이 나옵니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 비인칭주어 GAME</span></h1>
+    <p class="sub">해석하지 않는 주어 it · 시간 · 날씨 · 거리 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -368,7 +377,7 @@ table.rank tr.me .who{color:var(--accent)}
     <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 도전 비인칭주어 GAME · 중1 비인칭 주어편</p>
+  <p class="foot">꾸메땅 영문법 GAME · 비인칭주어 GAME</p>
 </div>
 
 
@@ -383,92 +392,93 @@ table.rank tr.me .who{color:var(--accent)}
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : it의 쓰임 20 (개념 5 · 쓰이는 경우 고르기 4 · 문장 속 구별 8 · 해석 3) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"<b>비인칭 주어</b>란 무엇일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>비인칭 주어</b>란 무엇일까요?",
    opts:["뜻 없이 자리만 채우는 주어라서 해석하지 않는 it","‘그것’이라고 해석하는 주어","사람 이름을 대신 부르는 말","문장 맨 뒤에 오는 말","동사를 꾸며 주는 말"], a:0,
    exp:"영어 문장에는 주어가 꼭 있어야 합니다. 그런데 날씨나 시간처럼 주어라고 할 것이 마땅히 없을 때, 빈자리를 채우려고 <b>it</b>을 놓습니다. 이 it은 뜻이 없어서 <b>‘그것’이라고 해석하지 않습니다.</b>"},
 
-  {type:"n", tag:"개념", q:"비인칭 주어 <b>it</b>은 우리말로 어떻게 해석할까요?",
+  {type:"n", tag:"한글로 이해", q:"비인칭 주어 <b>it</b>은 우리말로 어떻게 해석할까요?",
    opts:["해석하지 않는다","그것","이것","저것","그 사람"], a:0,
    exp:"비인칭 주어는 자리만 채우는 it이라 해석하지 않습니다. It is sunny.는 ‘<u>그것은</u> 화창하다’가 아니라 ‘<b>날씨가 화창하다</b>’입니다."},
 
-  {type:"n", tag:"개념", q:"대명사 <b>it</b>은 우리말로 어떻게 해석할까요?",
+  {type:"n", tag:"한글로 이해", q:"대명사 <b>it</b>은 우리말로 어떻게 해석할까요?",
    opts:["그것","해석하지 않는다","나는","우리는","거기에"], a:0,
    exp:"대명사 it은 앞에 나온 물건이나 동물을 대신 가리키는 말이라 <b>‘그것’</b>이라고 해석합니다. I have a dog. <b>It</b> is cute. (그것은 귀엽다.)"},
 
-  {type:"n", tag:"개념", q:"비인칭 주어와 대명사 it을 구별하는 가장 쉬운 방법은?",
+  {type:"n", tag:"한글로 이해", q:"비인칭 주어와 대명사 it을 구별하는 가장 쉬운 방법은?",
    opts:["‘그것은’을 넣어 보아 말이 되면 대명사, 어색하면 비인칭 주어","문장 길이를 세어 본다","맨 앞 글자가 대문자인지 본다","뒤에 물음표가 있는지 본다","단어 수가 짝수인지 본다"], a:0,
    exp:"‘그것은’을 넣어 보세요. ‘<u>그것은</u> 귀엽다’는 말이 되니 <b>대명사</b>, ‘<u>그것은</u> 화창하다’는 어색하니 <b>비인칭 주어</b>입니다. 이 방법 하나면 거의 다 가려집니다."},
 
-  {type:"n", tag:"개념", q:"비인칭 주어 it을 쓸 때 <b>뒤에 오는 동사</b>는 어떤 모양일까요?",
+  {type:"n", tag:"한글로 이해", q:"비인칭 주어 it을 쓸 때 <b>뒤에 오는 동사</b>는 어떤 모양일까요?",
    opts:["3인칭 단수처럼 is, was, takes 를 쓴다","복수처럼 are, were 를 쓴다","항상 동사원형을 쓴다","동사를 쓰지 않는다","아무 모양이나 써도 된다"], a:0,
    exp:"it은 3인칭 단수이므로 동사도 <b>is, was, takes, rains</b>처럼 3인칭 단수 모양을 씁니다. It <b>are</b> sunny.(✕) · It <b>is</b> sunny.(○)"},
 
-  {type:"a", tag:"쓰이는 경우", q:"다음 중 <b>비인칭 주어 it</b>을 쓰는 경우는?",
+  {type:"n", tag:"한글로 이해", q:"다음 중 <b>비인칭 주어 it</b>을 쓰는 경우는?",
    opts:["날씨를 말할 때","친구의 이름을 말할 때","좋아하는 음식을 말할 때","가족 수를 말할 때","장래 희망을 말할 때"], a:0,
    exp:"날씨는 주어라고 할 것이 따로 없어서 비인칭 주어 it을 씁니다. It is rainy. (비가 온다.) 이름·음식·가족·희망은 말하려는 대상이 분명하므로 그 대상을 주어로 씁니다."},
 
-  {type:"a", tag:"쓰이는 경우", q:"다음 중 비인칭 주어 it을 쓰는 경우가 <b>아닌</b> 것은?",
+  {type:"n", tag:"한글로 이해", q:"다음 중 비인칭 주어 it을 쓰는 경우가 <b>아닌</b> 것은?",
    opts:["책상 위에 있는 물건을 가리킬 때","요일을 말할 때","시간을 말할 때","거리를 말할 때","날짜를 말할 때"], a:0,
    exp:"물건을 가리킬 때의 it은 ‘그것’이라는 뜻이 있는 <b>대명사</b>입니다. 요일·시간·거리·날짜는 모두 비인칭 주어를 씁니다."},
 
-  {type:"a", tag:"쓰이는 경우", q:"비인칭 주어 it을 쓰는 경우를 바르게 묶은 것은?",
+  {type:"n", tag:"한글로 이해", q:"비인칭 주어 it을 쓰는 경우를 바르게 묶은 것은?",
    opts:["시간 · 요일 · 날짜 · 날씨 · 거리 · 명암","이름 · 나이 · 직업 · 취미","색깔 · 크기 · 모양 · 무게","나라 · 도시 · 학교 · 학년","기쁨 · 슬픔 · 놀람 · 화남"], a:0,
    exp:"비인칭 주어는 <b>시간, 요일, 날짜, 계절·월, 날씨, 거리, 명암(밝고 어두움), 기온</b>을 말할 때 씁니다. 여섯 가지만 먼저 확실히 외워 두세요."},
 
-  {type:"a", tag:"쓰이는 경우", q:"다음 중 비인칭 주어 it을 쓰는 경우를 고르세요.",
+  {type:"n", tag:"한글로 이해", q:"다음 중 비인칭 주어 it을 쓰는 경우를 고르세요.",
    opts:["방이 밝은지 어두운지 말할 때","가방이 누구 것인지 말할 때","동생이 몇 살인지 말할 때","무엇을 먹었는지 말할 때","어디에 사는지 말할 때"], a:0,
    exp:"밝고 어두움(명암)도 비인칭 주어를 씁니다. It is dark in here. (여기는 어둡다.) 나머지는 말하려는 대상이 분명하므로 그 대상을 주어로 씁니다."},
 
-  {type:"v", tag:"문장 속 구별", sent:"I have a new bike. **It** is very fast.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
-   opts:["앞에 나온 물건","날씨","시간","거리","요일"], a:0,
-   exp:"앞 문장의 a new bike를 가리키므로 <b>대명사</b>입니다. ‘그것은 매우 빠르다’로 해석됩니다."},
-
-  {type:"v", tag:"문장 속 구별", sent:"**It** is very cold today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+  {type:"a", tag:"쉬운 영어", sent:"**It** is very cold today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
    opts:["날씨","앞에 나온 물건","요일","거리","날짜"], a:0,
    exp:"‘그것은 춥다’는 어색하지요. 날씨를 나타내는 <b>비인칭 주어</b>이므로 해석하지 않고 ‘오늘은 매우 춥다’가 됩니다."},
 
-  {type:"v", tag:"문장 속 구별", sent:"**It** is seven o'clock.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+  {type:"a", tag:"쉬운 영어", sent:"**It** is seven o'clock.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
    opts:["시간","앞에 나온 물건","날씨","명암","거리"], a:0,
    exp:"시간을 나타내는 <b>비인칭 주어</b>입니다. ‘일곱 시다’로 해석하고 it은 해석하지 않습니다."},
 
-  {type:"v", tag:"문장 속 구별", sent:"Look at that cat. **It** is sleeping.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
-   opts:["앞에 나온 동물","시간","날씨","요일","거리"], a:0,
-   exp:"앞의 that cat을 가리키는 <b>대명사</b>입니다. ‘그것은 자고 있다’로 해석됩니다."},
-
-  {type:"v", tag:"문장 속 구별", sent:"**It** is Sunday today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+  {type:"a", tag:"쉬운 영어", sent:"**It** is Sunday today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
    opts:["요일","앞에 나온 물건","날씨","거리","명암"], a:0,
    exp:"요일을 나타내는 <b>비인칭 주어</b>입니다. ‘오늘은 일요일이다’로 해석합니다."},
 
-  {type:"v", tag:"문장 속 구별", sent:"**It** is five kilometers to the beach.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
-   opts:["거리","앞에 나온 물건","시간","날짜","날씨"], a:0,
-   exp:"거리를 나타내는 <b>비인칭 주어</b>입니다. ‘해변까지 5킬로미터다’로 해석합니다."},
-
-  {type:"v", tag:"문장 속 구별", sent:"**It** is getting dark outside.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
-   opts:["밝고 어두움","앞에 나온 물건","요일","거리","날짜"], a:0,
-   exp:"밝고 어두움(명암)을 나타내는 <b>비인칭 주어</b>입니다. ‘밖이 점점 어두워지고 있다’로 해석합니다."},
-
-  {type:"v", tag:"문장 속 구별", sent:"**It** is May 5th today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+  {type:"a", tag:"쉬운 영어", sent:"**It** is May 5th today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
    opts:["날짜","앞에 나온 물건","시간","거리","명암"], a:0,
    exp:"날짜를 나타내는 <b>비인칭 주어</b>입니다. ‘오늘은 5월 5일이다’로 해석합니다."},
 
-  {type:"v", tag:"문장 속 구별", q:"밑줄 친 It의 쓰임이 <b>나머지와 다른</b> 것은?",
-   opts:["I lost my pen. **It** was blue.","**It** is windy today.","**It** is Friday.","**It** is ten o'clock.","**It** is dark in the room."], a:0, eng:true,
-   exp:"첫 번째 문장의 It은 앞에 나온 my pen을 가리키는 <b>대명사</b>이고, 나머지는 모두 날씨·요일·시간·명암을 나타내는 비인칭 주어입니다."},
+  {type:"a", tag:"쉬운 영어", sent:"**It** is five kilometers to the beach.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["거리","앞에 나온 물건","시간","날짜","날씨"], a:0,
+   exp:"거리를 나타내는 <b>비인칭 주어</b>입니다. ‘해변까지 5킬로미터다’로 해석합니다."},
 
-  {type:"n", tag:"해석", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is Monday today.</span>",
+  {type:"a", tag:"쉬운 영어", sent:"**It** is getting dark outside.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["밝고 어두움","앞에 나온 물건","요일","거리","날짜"], a:0,
+   exp:"밝고 어두움(명암)을 나타내는 <b>비인칭 주어</b>입니다. ‘밖이 점점 어두워지고 있다’로 해석합니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I have a new bike. **It** is very fast.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["앞에 나온 물건","날씨","시간","거리","요일"], a:0,
+   exp:"앞 문장의 a new bike를 가리키므로 <b>대명사</b>입니다. ‘그것은 매우 빠르다’로 해석됩니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"Look at that cat. **It** is sleeping.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["앞에 나온 동물","시간","날씨","요일","거리"], a:0,
+   exp:"앞의 that cat을 가리키는 <b>대명사</b>입니다. ‘그것은 자고 있다’로 해석됩니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is Monday today.</span>",
    opts:["오늘은 월요일이다.","그것은 월요일이다.","그것은 오늘이다.","오늘 그것을 본다.","월요일에 그것이 있다."], a:0,
    exp:"비인칭 주어는 해석하지 않습니다. ‘<u>그것은</u> 월요일이다’처럼 옮기면 어색합니다."},
 
-  {type:"n", tag:"해석", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is snowing now.</span>",
+  {type:"a", tag:"쉬운 영어", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is snowing now.</span>",
    opts:["지금 눈이 오고 있다.","그것은 지금 눈이다.","그것이 지금 내린다.","지금 그것을 본다.","눈이 그것을 덮는다."], a:0,
-   exp:"날씨를 나타내는 비인칭 주어이므로 it을 해석하지 않고 ‘눈이 오고 있다’로 옮깁니다."}
+   exp:"날씨를 나타내는 비인칭 주어이므로 it을 해석하지 않고 ‘눈이 오고 있다’로 옮깁니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"밑줄 친 It의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["I lost my pen. **It** was blue.","**It** is windy today.","**It** is Friday.","**It** is ten o'clock.","**It** is dark in the room."], a:0, eng:true,
+   exp:"첫 번째 문장의 It은 앞에 나온 my pen을 가리키는 <b>대명사</b>이고, 나머지는 모두 날씨·요일·시간·명암을 나타내는 비인칭 주어입니다."}
 ];
 
 /* ---------- LEVEL 2 : 비인칭 주어와 해석 20 (시간·요일·날짜 7 · 날씨·계절 7 · 거리·명암 6) ---------- */
@@ -737,7 +747,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · it의 두 얼굴", desc:"‘그것’인 대명사와 해석하지 않는 비인칭 주어 구별 · 초등도 가능", qs:L1, typeLabels:{n:"개념·해석",a:"쓰이는 경우",v:"문장 속 구별"}},
+  1:{name:"기본1 · it의 두 얼굴", desc:"한글로 이해 9 · 쉬운 영어 11 · ‘그것’인 it과 해석하지 않는 it · 쉬운 영어 문장으로 가리기 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 여섯 가지 쓰임", desc:"시간 · 요일 · 날짜 · 월 · 날씨 · 거리 · 명암과 해석하는 법 · 중1", qs:L2, typeLabels:{n:"시간·요일·날짜",a:"날씨·계절",v:"거리·명암"}},
   3:{name:"기본3 · 학교 문제", desc:"묻고 답하기 · 어법 판별 · 쓰임 구별 · 서술형", qs:L3, typeLabels:{n:"묻고 답하기",a:"어법 판별",v:"구별·서술형"}},
   4:{name:"기본4 · 전체 어법", desc:"가주어 it · It takes · 세 가지 it 구별까지 아우르기", qs:L4, typeLabels:{n:"가주어",a:"It takes",v:"구별·고난도"}}
@@ -779,6 +789,7 @@ function learn1(){
     '<p>시간 · 요일 · 날짜 · 날씨 · 거리 · 명암(밝고 어두움). 여기에 <b>월과 계절, 기온</b>도 같은 무리입니다.</p>'+
   '</div>'+
   '<div class="tip"><span class="h">꼭 지키기</span>it은 <b>3인칭 단수</b>입니다. 그래서 동사도 is, was, takes, rains처럼 단수 모양을 씁니다. It <b>are</b> sunny.(✕)</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex"><u class="hl a">It</u> is cold.<span class="k">날씨 — 해석하지 않음: 춥다</span></div><div class="ex"><u class="hl a">It</u> is seven o’clock.<span class="k">시간 — 7시다</span></div><div class="ex">I have a bike. <u class="hl a">It</u> is fast.<span class="k">그것 — 앞의 자전거</span></div></div>'+
   '<div class="tip"><span class="h">이 단계에서 할 일</span>비인칭 주어가 무엇인지 우리말로 확인하고, 쓰는 경우를 다섯 개 보기에서 골라낸 뒤, 영어 문장 속 It이 둘 중 어느 쪽인지 가려 봅니다.</div>';
 }
 
@@ -852,6 +863,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">한눈에 정리</span>‘그것은’이 되면 <b>대명사</b>, 뒤에 to부정사가 따라오면 <b>가주어</b>, 나머지 시간·날씨·거리 같은 것이면 <b>비인칭 주어</b>입니다.</div>';
 }
+
+var LVCHEER = {
+  1:"it의 두 얼굴을 가려낼 수 있게 되었어요. 2단계에서는 여섯 가지 쓰임을 문장으로 익힙니다.",
+  2:"시간도 날씨도 거리도 모두 It is로 시작한다는 것, 이제 몸에 익었지요?",
+  3:"묻는 말만 보면 답이 보입니다. 시험지에서도 헷갈리지 않을 거예요.",
+  4:"대명사 · 비인칭 주어 · 가주어, 세 가지를 모두 끝냈습니다. 정말 훌륭합니다."
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -978,7 +996,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -1026,6 +1044,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1120,12 +1139,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"it의 두 얼굴을 가려낼 수 있게 되었어요. 2단계에서는 여섯 가지 쓰임을 문장으로 익힙니다.",
-  2:"시간도 날씨도 거리도 모두 It is로 시작한다는 것, 이제 몸에 익었지요?",
-  3:"묻는 말만 보면 답이 보입니다. 시험지에서도 헷갈리지 않을 거예요.",
-  4:"대명사 · 비인칭 주어 · 가주어, 세 가지를 모두 끝냈습니다. 정말 훌륭합니다."
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1192,7 +1205,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

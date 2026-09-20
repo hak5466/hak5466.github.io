@@ -1,4 +1,12 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
 <title>꾸메땅 영문법 GAME · 5형식 뽀개기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +114,7 @@ input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
 .nav{display:flex;justify-content:flex-end}
 
 .levels{display:flex;flex-direction:column;gap:10px}
@@ -284,8 +292,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 <div class="wrap">
   <header class="masthead">
-    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">5형식 뽀개기 · 지각 · 사역동사</span></h1>
-    <p class="sub">5형식 · 지각동사 · 사역동사 · 준사역 help·get 완전정복 80문제 · 네 단계 각 20문제 / 1단계는 우리말로, 2단계부터 영어로 넓혀 갑니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · 5형식 뽀개기</span></h1>
+    <p class="sub">지각 · 사역 · 준사역과 목적격보어 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -384,92 +392,95 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
   </div>
 </div>
 
+
 <script>
 "use strict";
 
 /* ===================== 문제 은행 ===================== */
 
-/* ---------- LEVEL 1 : 한글로 개념 → 영어 단어 모두 고르기 20 (개념 8 · 한글 모두 고르기 5 · 영어 단어 모두 고르기 6 · 정리 1) ---------- */
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"개념", q:"<b>5형식</b> 문장은 어떤 차례로 이루어질까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>5형식</b> 문장은 어떤 차례로 이루어질까요?",
    opts:["주어 + 동사 + 목적어 + 목적격보어","주어 + 동사","주어 + 동사 + 목적어","주어 + 동사 + 보어","동사 + 주어 + 목적어"], a:0,
    exp:"5형식은 <b>주어 + 동사 + 목적어 + 목적격보어</b>입니다. 목적어 뒤에 한 자리가 더 붙는 것이 3형식과 다른 점입니다."},
 
-  {type:"n", tag:"개념", q:"<b>목적격보어</b>가 하는 일은 무엇일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>목적격보어</b>가 하는 일은 무엇일까요?",
    opts:["목적어가 어떠한지, 무엇을 하는지 설명해 준다","주어가 누구인지 설명해 준다","동사가 언제 일어났는지 알려 준다","문장을 이어 준다","목적어의 개수를 센다"], a:0,
    exp:"목적격보어는 <b>목적어를 설명해 주는 자리</b>입니다. ‘나는 그를 보았다’에서 멈추지 않고 ‘그가 <u>달리는 것을</u> 보았다’처럼 한 마디를 더 붙여 줍니다."},
 
-  {type:"n", tag:"개념", q:"목적어와 목적격보어의 관계로 알맞은 것은?",
+  {type:"n", tag:"한글로 이해", q:"목적어와 목적격보어의 관계로 알맞은 것은?",
    opts:["목적어 = 목적격보어 의 관계로 이어진다","서로 아무 관계가 없다","목적격보어가 목적어를 꾸며 준다","둘은 늘 같은 단어이다","목적격보어가 주어를 설명한다"], a:0,
    exp:"‘나는 <u>그를</u> <u>행복하게</u> 만들었다’에서 <b>그 = 행복한</b> 관계입니다. 목적어와 목적격보어를 이어서 읽으면 작은 문장이 하나 생깁니다."},
 
-  {type:"n", tag:"개념", q:"<b>지각동사</b>는 어떤 동사일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>지각동사</b>는 어떤 동사일까요?",
    opts:["보고 · 듣고 · 느끼는 동사","시키는 동사","도와주는 동사","움직이는 동사","이어 주는 동사"], a:0,
    exp:"<b>지각(知覺)</b>은 ‘알아채다’라는 뜻입니다. 눈·귀·몸으로 알아채는 동사, 곧 보다·듣다·느끼다가 지각동사입니다."},
 
-  {type:"n", tag:"개념", q:"<b>사역동사</b>는 어떤 동사일까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>사역동사</b>는 어떤 동사일까요?",
    opts:["남에게 무엇을 하게 시키는 동사","직접 움직이는 동사","보고 듣는 동사","이름을 붙이는 동사","때를 나타내는 동사"], a:0,
    exp:"<b>사역(使役)</b>은 ‘시키다’라는 뜻입니다. ‘~하게 만들다, ~하게 하다, ~하게 놓아두다’가 모두 사역입니다."},
 
-  {type:"n", tag:"개념", q:"<b>준사역동사</b>는 왜 따로 부를까요?",
+  {type:"n", tag:"한글로 이해", q:"<b>준사역동사</b>는 왜 따로 부를까요?",
    opts:["시키는 뜻이지만 뒤에 오는 모양이 사역동사와 달라서","뜻이 정반대라서","목적어가 없어서","주어가 없어도 되어서","과거형이 없어서"], a:0,
    exp:"<b>help</b>와 <b>get</b>은 시키거나 돕는 뜻이지만 뒤에 오는 모양이 make·have·let과 달라서 <b>준사역동사</b>라고 따로 부릅니다."},
 
-  {type:"n", tag:"개념", q:"지각동사도 사역동사도 아니면서 5형식을 만드는 동사에는 어떤 것이 있을까요?",
-   opts:["‘바라다 · 말하다 · 부탁하다’, ‘부르다 · 유지하다 · 알게 되다’ 같은 동사","‘먹다 · 자다 · 걷다’ 같은 동사","‘~이다 · ~있다’ 같은 동사","‘그리고 · 그러나’ 같은 말","‘빨리 · 조용히’ 같은 말"], a:0,
-   exp:"want(바라다) · tell(말하다) · ask(부탁하다) 처럼 시키는 뜻이 담긴 동사, 그리고 call(부르다) · keep(유지하다) · find(알게 되다) 처럼 목적어를 설명해 주는 동사도 <b>5형식</b>을 만듭니다."},
-
-  {type:"n", tag:"개념", q:"‘바라다 · 말하다 · 부탁하다’ 같은 동사는 목적격보어 자리에 무엇을 데려올까요?",
+  {type:"n", tag:"한글로 이해", q:"‘바라다 · 말하다 · 부탁하다’ 같은 동사는 목적격보어 자리에 무엇을 데려올까요?",
    opts:["to부정사","동사원형","현재분사","부사","아무것도 오지 않는다"], a:0,
    exp:"want · tell · ask 는 <b>to부정사</b>를 데려옵니다. 지각동사와 사역동사만 동사원형을 쓴다는 점이 다릅니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>목적격보어</b> 자리에 올 수 있는 것을 모두 고르세요. (여러 개)",
-   opts:["명사","형용사","현재분사","과거분사","부사"], ans:[0,1,2,3],
-   exp:"목적격보어 자리에는 <b>명사 · 형용사 · 현재분사 · 과거분사</b>가 옵니다(동사원형과 to부정사도 옵니다). <b>부사</b>만은 올 수 없습니다."},
-
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>지각동사</b>의 뜻을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>지각동사</b>의 뜻을 모두 고르세요. (여러 개)",
    opts:["보다","듣다","느끼다","시키다","부르다"], ans:[0,1,2],
    exp:"보다 · 듣다 · 느끼다가 지각동사입니다. 시키다는 사역동사, 부르다는 그 밖의 5형식 동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>사역동사</b>의 뜻을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>사역동사</b>의 뜻을 모두 고르세요. (여러 개)",
    opts:["~하게 만들다","~하게 시키다","~하도록 놓아두다","보다","듣다"], ans:[0,1,2],
    exp:"make(~하게 만들다) · have(~하게 시키다) · let(~하도록 놓아두다) 세 개가 사역동사입니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>지각동사</b> 뒤 목적격보어 자리에 올 수 있는 것을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>지각동사</b> 뒤 목적격보어 자리에 올 수 있는 것을 모두 고르세요. (여러 개)",
    opts:["동사원형","현재분사","to부정사","부사","명사"], ans:[0,1],
    exp:"지각동사 뒤에는 <b>동사원형</b>이나 <b>현재분사(-ing)</b>가 옵니다. 진행 중임을 강조하고 싶으면 -ing를 씁니다. to부정사는 쓰지 않습니다."},
 
-  {type:"a", tag:"모두 고르기", multi:true, q:"<b>사역동사 make · have · let</b> 뒤에 올 수 있는 것을 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>사역동사 make · have · let</b> 뒤에 올 수 있는 것을 모두 고르세요. (여러 개)",
    opts:["동사원형","과거분사","to부정사","현재분사","부사"], ans:[0,1],
    exp:"사역동사 뒤에는 <b>동사원형</b>이 옵니다. 다만 목적어가 ‘당하는’ 쪽이면 <b>과거분사</b>가 옵니다. (have my hair cut — 머리를 깎게 하다)"},
 
-  {type:"v", tag:"영어 단어", multi:true, eng:true, q:"다음 중 <b>지각동사</b>를 모두 고르세요. (여러 개)",
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["목적격보어 자리에는 부사도 올 수 있다.","지각동사 뒤에는 동사원형이나 현재분사가 온다.","사역동사는 make · have · let 세 개이다.","help는 동사원형과 to부정사를 둘 다 쓸 수 있다.","목적어와 목적격보어는 서로 설명하는 관계이다."], a:0,
+   exp:"목적격보어 자리에 <b>부사는 올 수 없습니다.</b> 명사 · 형용사 · 분사 · 동사원형 · to부정사가 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 중 <b>지각동사</b>를 모두 고르세요. (여러 개)",
    opts:["see","hear","feel","make","get"], ans:[0,1,2],
    exp:"see(보다) · hear(듣다) · feel(느끼다)이 지각동사입니다. make와 get은 시키는 쪽입니다."},
 
-  {type:"v", tag:"영어 단어", multi:true, eng:true, q:"다음 중 <b>지각동사</b>를 모두 고르세요. (여러 개)",
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 중 <b>지각동사</b>를 모두 고르세요. (여러 개)",
    opts:["watch","listen to","look at","let","help"], ans:[0,1,2],
    exp:"watch(지켜보다) · listen to(귀 기울여 듣다) · look at(바라보다)도 눈과 귀로 알아채는 <b>지각동사</b>입니다."},
 
-  {type:"v", tag:"영어 단어", multi:true, eng:true, q:"다음 중 <b>사역동사</b>를 모두 고르세요. (여러 개)",
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 중 <b>사역동사</b>를 모두 고르세요. (여러 개)",
    opts:["make","have","let","see","want"], ans:[0,1,2],
    exp:"사역동사는 <b>make · have · let</b> 딱 세 개입니다. 이 셋만 외우면 됩니다."},
 
-  {type:"v", tag:"영어 단어", multi:true, eng:true, q:"다음 중 <b>준사역동사</b>를 모두 고르세요. (여러 개)",
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 중 <b>준사역동사</b>를 모두 고르세요. (여러 개)",
    opts:["help","get","make","hear","tell"], ans:[0,1],
    exp:"<b>help</b>와 <b>get</b>이 준사역동사입니다. help는 동사원형·to부정사 둘 다, get은 to부정사만 옵니다."},
 
-  {type:"v", tag:"영어 단어", multi:true, eng:true, q:"목적격보어로 <b>to부정사</b>를 데려오는 동사를 모두 고르세요. (여러 개)",
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"목적격보어로 <b>to부정사</b>를 데려오는 동사를 모두 고르세요. (여러 개)",
    opts:["want","tell","ask","make","hear"], ans:[0,1,2],
    exp:"want(바라다) · tell(말하다) · ask(부탁하다)는 <b>to부정사</b>를 데려옵니다. make와 hear는 동사원형을 데려옵니다."},
 
-  {type:"v", tag:"영어 단어", multi:true, eng:true, q:"목적격보어로 <b>명사나 형용사</b>를 데려오는 동사를 모두 고르세요. (여러 개)",
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"목적격보어로 <b>명사나 형용사</b>를 데려오는 동사를 모두 고르세요. (여러 개)",
    opts:["call","keep","find","see","let"], ans:[0,1,2],
    exp:"call(부르다) · keep(~한 상태로 두다) · find(~라고 알게 되다)는 뒤에 <b>명사나 형용사</b>가 옵니다. call him Tom · keep it clean · find it easy"},
 
-  {type:"v", tag:"정리", q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["목적격보어 자리에는 부사도 올 수 있다.","지각동사 뒤에는 동사원형이나 현재분사가 온다.","사역동사는 make · have · let 세 개이다.","help는 동사원형과 to부정사를 둘 다 쓸 수 있다.","목적어와 목적격보어는 서로 설명하는 관계이다."], a:0,
-   exp:"목적격보어 자리에 <b>부사는 올 수 없습니다.</b> 명사 · 형용사 · 분사 · 동사원형 · to부정사가 옵니다."}
+  {type:"a", tag:"쉬운 영어", sent:"I saw him ___ .", q:"‘나는 그가 춤추는 것을 보았다’가 되도록 알맞은 것은?",
+   opts:["dance","to dance","danced","dances","to dancing"], a:0, eng:true,
+   ko:"나는 그가 춤추는 것을 보았다.",
+   exp:"지각동사 see 뒤 목적격보어는 <b>동사원형</b>(또는 -ing)입니다. to를 붙이지 않습니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"Mom made me ___ my room.", q:"‘엄마는 내게 방을 청소하게 하셨다’가 되도록 알맞은 것은?",
+   opts:["clean","to clean","cleaned","cleans","cleaning"], a:0, eng:true,
+   ko:"엄마는 내게 방을 청소하게 하셨다.",
+   exp:"사역동사 make 뒤 목적격보어는 <b>동사원형</b>입니다."}
 ];
 
 /* ---------- LEVEL 2 : 뒤에 무엇이 오나 20 (지각 7 · 사역 6 · 준사역·일반 7) ---------- */
@@ -747,7 +758,7 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 5형식의 뼈대", desc:"목적격보어 자리와 5형식 동사 네 무리 · 한글로 이해한 뒤 영어 단어로", qs:L1, typeLabels:{n:"개념",a:"모두 고르기",v:"영어 단어·정리"}},
+  1:{name:"기본1 · 5형식의 뼈대", desc:"한글로 이해 12 · 쉬운 영어 8 · 목적격보어 자리 · 5형식 동사 네 무리 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 뒤에 무엇이 오나", desc:"지각동사 · 사역동사 · 준사역 help·get · 일반동사 섞어서 · 중2", qs:L2, typeLabels:{n:"지각동사",a:"사역동사",v:"준사역·일반"}},
   3:{name:"기본3 · 학교 기출", desc:"중2 시험에 나오는 어법 판별과 서술형 · 과거분사 보어까지", qs:L3, typeLabels:{n:"빈칸",a:"틀린 문장",v:"과거분사·서술형"}},
   4:{name:"기본4 · 5형식 전체", desc:"명사·형용사·과거분사 보어까지 아울러 5형식을 한 번에", qs:L4, typeLabels:{n:"명사·형용사 보어",a:"과거분사·혼합",v:"고난도"}}
@@ -798,6 +809,7 @@ function learn1(){
     '<div class="ex">그 밖의 5형식 동사<span class="k">want · tell · ask (바라다 · 말하다 · 부탁하다)<br>call · keep · find (부르다 · ~한 상태로 두다 · ~라고 알게 되다)</span></div>'+
     '<p>지각동사도 사역동사도 아니면서 5형식을 만드는 동사가 더 있습니다. 앞의 셋은 뒤에 <b>to부정사</b>, 뒤의 셋은 <b>명사나 형용사</b>를 데려옵니다.</p>'+
   '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">I saw him <u class="hl a">dance</u>.<span class="k">보다 + 누가 + 무엇을 하는지</span></div><div class="ex">Mom made me <u class="hl a">clean</u> my room.<span class="k">시키다 + 누구에게 + 무엇을</span></div><div class="ex">I want you <u class="hl a">to come</u>.<span class="k">바라다 + 누가 + to 동사원형</span></div></div>'+
   '<div class="tip"><span class="h">1단계에서 챙길 것</span>목적격보어 자리에 오는 것 <b>네 가지</b>(명사·형용사·현재분사·과거분사)와, 동사 <b>네 무리</b>(지각 · 사역 · 준사역 · 그 밖의 5형식 동사)의 이름입니다. 뒤에 무엇이 오는지는 2단계에서 합니다.</div>';
 }
 
@@ -886,6 +898,13 @@ function learn4(){
   '</div>'+
   '<div class="tip"><span class="h">마지막 한마디</span>목적어 뒤에 한 마디가 더 있으면 일단 5형식을 의심하고, 그 말이 <b>목적어와 =로 이어지는지</b> 확인하세요. 여기까지 오면 5형식은 끝입니다.</div>';
 }
+
+var LVCHEER = {
+  1:"5형식의 네 자리와 동사 세 무리를 알게 되었어요. 2단계에서는 뒤에 무엇이 오는지 가립니다.",
+  2:"지각은 원형과 -ing, 사역은 원형, help는 둘 다, get은 to. 네 줄이 몸에 익었지요?",
+  3:"to가 붙는지, 하는 쪽인지 당하는 쪽인지. 시험지에서도 흔들리지 않을 거예요.",
+  4:"5형식을 끝까지 해냈습니다. 목적어 뒤에 한 마디가 더 보이면 이제 바로 알아볼 거예요."
+};
 
 function renderLearn(){
   $("lvnum").textContent="LEVEL "+S.level;
@@ -1012,7 +1031,7 @@ function renderQ(){
   $("qtag").className = "chip plain"+(q.hard?" hard":"");
 
   var h="";
-  h+='<p class="ask">'+q.q+'</p>';
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
@@ -1060,6 +1079,7 @@ function buildFull(q){
   if(q.sent.indexOf("___")>=0){
     if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
     if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     if(/[A-Za-z]/.test(q.opts[q.a]))
       return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
     return null;
@@ -1154,12 +1174,6 @@ document.addEventListener("keydown",function(e){
 });
 
 /* ===================== 결과 ===================== */
-var LVCHEER = {
-  1:"5형식의 네 자리와 동사 세 무리를 알게 되었어요. 2단계에서는 뒤에 무엇이 오는지 가립니다.",
-  2:"지각은 원형과 -ing, 사역은 원형, help는 둘 다, get은 to. 네 줄이 몸에 익었지요?",
-  3:"to가 붙는지, 하는 쪽인지 당하는 쪽인지. 시험지에서도 흔들리지 않을 거예요.",
-  4:"5형식을 끝까지 해냈습니다. 목적어 뒤에 한 마디가 더 보이면 이제 바로 알아볼 거예요."
-};
 function praise(p){
   if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
   if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
@@ -1226,7 +1240,7 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

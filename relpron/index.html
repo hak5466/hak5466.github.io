@@ -1,10 +1,13 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>꾸메땅 관계대명사 게임</title>
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · 관계대명사 GAME</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -23,6 +26,9 @@
   --ok-soft:#E3F1EA;
   --no:#BC443A;
   --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
   --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
 }
 @media (prefers-color-scheme: dark){
@@ -30,6 +36,9 @@
     --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
     --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
     --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
   }
 }
@@ -37,6 +46,9 @@
   --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
   --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
   --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
 }
 
@@ -51,53 +63,49 @@ body{
 h1,h2,h3{margin:0;text-wrap:balance}
 
 .masthead{display:flex;flex-direction:column;gap:6px}
-.eyebrow{font-size:16px;font-weight:700;letter-spacing:.02em;color:var(--accent)}
-h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(33px,8.6vw,48px);letter-spacing:-.02em;line-height:1.08}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7vw,39px);letter-spacing:-.02em;line-height:1.08}
 h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
 .sub{color:var(--muted);font-size:16.5px}
 
-.rail{display:flex;gap:6px;align-items:flex-end}
-.seg{display:flex;flex-direction:column;gap:5px}
-.seg[data-w="20"]{flex:4}
-.seg[data-w="15"]{flex:3}
-.seg .lab{font-size:14px;letter-spacing:.02em;color:var(--muted);font-weight:600}
-.seg .bar{height:7px;border-radius:99px;background:var(--line);overflow:hidden}
+.rail{display:flex;gap:10px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
+.seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
+.seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
 .seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
-.seg.done .lab{color:var(--accent)}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
 
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
 @media (min-width:600px){ .card{padding:24px} }
-.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
-.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
-.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
-.ask{font-size:20px;font-weight:700;color:var(--ink)}
-.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(25px,7vw,32px);line-height:1.4;letter-spacing:.005em}
-.sent b{font-weight:500;border-bottom:2px solid var(--line-strong);padding:0 .5em;color:var(--muted)}
-.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
-.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
-.wordcard small{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:16px;color:var(--muted);font-weight:500;margin-top:6px}
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
 
-.opts{display:flex;flex-direction:column;gap:9px}
-.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;font-size:18px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
-.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
-.opt:active:not(:disabled){transform:translateY(1px)}
-.opt:disabled{cursor:default}
-.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:3px}
-.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
-.opt.long .txt{font-size:20.5px}
-.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
-.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
-.opt.reveal{border-color:var(--ok);border-style:dashed}
-.opt .res{margin-left:auto;font-size:15px;font-weight:700;flex:none;padding-left:8px}
-.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
-.opt.pick-no .res{color:var(--no)}
 
-.answer-row{display:flex;gap:8px}
-input[type=text]{flex:1;min-width:0;font-family:"Newsreader",serif;font-size:26px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
-input[type=text].ko-in{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px}
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
 input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
-input[type=text]:disabled{opacity:.75}
+
 .btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
 .btn:hover{opacity:.88}
 .btn:active{transform:translateY(1px)}
@@ -105,6 +113,96 @@ input[type=text]:disabled{opacity:.75}
 .btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
 .btn:disabled{opacity:.4;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:19.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
+.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:21px;line-height:1.2}
+.role .m{font-size:15px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:18px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:17.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+#qlevel{font-size:17px;font-weight:800;padding:5px 13px}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
 
 .exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
@@ -112,68 +210,38 @@ input[type=text]:disabled{opacity:.75}
 .verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
 .verdict.ok{color:var(--ok)}
 .verdict.no{color:var(--no)}
-.verdict .ans{font-family:"Newsreader",serif;font-size:23px;color:var(--ink);font-weight:500}
-
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
 .full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
 .full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
-.full .en{font-family:"Newsreader",serif;font-size:clamp(23px,6.4vw,29px);line-height:1.42}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
 .full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
 .full .kr{font-size:18.5px;line-height:1.6}
 
-.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:18px;line-height:1.6}
-.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
-ul.why{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
-ul.why li{display:flex;gap:10px;font-size:18px;line-height:1.6;align-items:flex-start}
-ul.why .sign{font-weight:800;flex:none;width:20px;text-align:center;font-size:17px;margin-top:1px}
-ul.why .sign.o{color:var(--ok)}
-ul.why .sign.x{color:var(--no)}
-.nav{display:flex;justify-content:flex-end}
-
-.lead{font-size:18px;color:var(--muted);line-height:1.7}
-.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
-.namebar .h{font-size:17px;font-weight:700}
-.namebar .row{display:flex;gap:8px}
-.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
-.levels{display:flex;flex-direction:column;gap:10px}
-.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
-.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
-.lvcard:active{transform:translateY(1px)}
-.lvcard .rank{font-weight:800;font-size:16px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
-.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
-.lvcard .name{font-weight:700;font-size:19.5px}
-.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
-.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
-.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums}
-.lvcard .best em{font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
-.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:13px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
-.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
-.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7.8vw,35px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
-.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+/* ---------- 결과 ---------- */
 .score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
 .score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
 .breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
 .bd .t{font-size:14px;color:var(--muted);font-weight:600}
 .bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
 .wrongs{display:flex;flex-direction:column;gap:10px}
-.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;font-size:17px;display:flex;flex-direction:column;gap:4px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
 .wrong .top{display:flex;gap:8px;align-items:baseline}
 .wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
 .wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
 .wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
 .wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions .btn{flex:1;min-width:140px;text-align:center;white-space:nowrap}
-h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
-h3{font-size:17.5px;font-weight:700}
-.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7}
-.hide{display:none !important}
-
-/* ---------- 순위 ---------- */
-.submit-box{display:flex;flex-direction:column;gap:10px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
 .submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
 .submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .tabs{display:flex;gap:6px;flex-wrap:wrap}
 .tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
 .tab:hover{border-color:var(--accent);color:var(--accent)}
@@ -185,1512 +253,1187 @@ table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:n
 table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
 table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
 table.rank tr.top .pos{color:var(--accent)}
-table.rank .who{font-weight:700;max-width:160px;overflow:hidden;text-overflow:ellipsis}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
 table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
 table.rank .when{color:var(--muted);font-size:15px}
 table.rank tr.me{background:var(--accent-soft)}
 table.rank tr.me .who{color:var(--accent)}
 .empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
 .toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
-.rowbtn{font-family:inherit;font-size:15px;font-weight:700;color:var(--no);background:transparent;border:1px solid var(--line);border-radius:7px;padding:4px 10px;cursor:pointer}
-.rowbtn:hover{border-color:var(--no)}
-.i-lead{font-size:18px;line-height:1.7;margin:0 0 2px}
-.i-ex{border:2px solid var(--accent);border-radius:12px;padding:13px 14px;display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
-.i-ex .en{font-family:"Newsreader",serif;font-size:clamp(19px,5.2vw,23px);line-height:1.45}
-.i-ex .en b{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
-.i-ex .en .ar{color:var(--accent);font-weight:700;padding:0 .2em}
-.i-ex .kr{font-size:17px;color:var(--muted);line-height:1.6}
-ul.i-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-ul.i-list li{font-size:17.5px;line-height:1.65;padding-left:20px;position:relative}
-ul.i-list li::before{content:"·";position:absolute;left:6px;color:var(--accent);font-weight:800}
-ul.i-list li b{color:var(--accent)}
-.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
-.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px;margin-bottom:10px}
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
 .resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
 .resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
 .resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
 .resumebar .row .btn{flex:1 1 130px}
-.resumebar.hide{display:none}
-</style>
 
-</head>
-<body>
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
+</style>
 
 <div class="wrap">
   <header class="masthead">
-    <span class="eyebrow">꾸메땅 도전 영문법게임</span>
-    <h1><span class="mark">관계대명사</span> 90제</h1>
-    <p class="sub">1~5단계 · 주격과 목적격, 계속적 용법, 소유격 whose / 단계마다 개념 설명을 먼저 읽고 풉니다.</p>
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중3 · 관계대명사 GAME</span></h1>
+    <p class="sub">who · which · that · whose · what · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중3 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
-    <div class="seg" data-w="20"><span class="lab">1단계<em class="pct" id="p0"></em></span><div class="bar"><div class="fill" id="f0"></div></div></div>
-    <div class="seg" data-w="20"><span class="lab">2단계<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
-    <div class="seg" data-w="20"><span class="lab">3단계<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
-    <div class="seg" data-w="15"><span class="lab">4단계<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
-    <div class="seg" data-w="15"><span class="lab">5단계<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
   </div>
 
-  <!-- 시작 화면 -->
+  <!-- 시작 -->
   <section class="card" id="start">
     <h2>단계를 골라 도전해 보세요</h2>
-    <p class="lead">단계를 고르면 <b>개념 설명</b>을 먼저 보여 줍니다. 한 번 시작한 단계는 끝까지 풀어야 하고, 그 단계를 마치면 어느 단계든 자유롭게 고를 수 있습니다. 100점 만점으로 채점합니다.</p>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
     <div class="namebar">
       <span class="h">이름</span>
       <div class="row">
-        <input type="text" class="ko-in" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
         <button class="btn small" id="saveName">저장</button>
       </div>
-      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다. 처음 도전한 점수가 올라가고, <b>다시 도전해 등록하면 그 점수로 바뀝니다.</b></span>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
     </div>
-    <div id="resumeBar" class="resumebar hide"></div>
+    <div id="resumeBar" class="hide"></div>
     <div class="levels" id="levelPick"></div>
     <div class="actions">
       <button class="btn ghost" id="openRank">순위 보기</button>
     </div>
-    <p class="foot">PC에서는 숫자 키 1~4로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
   </section>
 
-  <!-- 개념 설명 화면 -->
-  <section class="card hide" id="intro">
-    <div class="qhead"><span class="qnum" id="iNum">1단계</span><span class="chip" id="iChip">20문제</span></div>
-    <h2 id="iTitle">주격·목적격 만들기</h2>
-    <div id="iBody"></div>
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
     <div class="actions">
-      <button class="btn" id="iStart">문제 풀기</button>
-      <button class="btn ghost" id="iBack">단계 선택으로</button>
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
     </div>
   </section>
 
-  <!-- 문제 화면 -->
+  <!-- 문제 -->
   <section class="card hide" id="quiz">
     <div class="qhead">
       <span class="qnum" id="qnum">1 / 20</span>
-      <span class="chip" id="qlevel">기본</span>
-      <span class="chip plain" id="qtag">동명사 만들기</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
     </div>
-    <div id="qbody"></div>
+    <div class="qbody" id="qbody"></div>
     <div id="qexp"></div>
   </section>
 
-  <!-- 결과 화면 -->
+  <!-- 결과 -->
   <section class="card hide" id="result">
-    <h2 id="rtitle">기본 단계 결과</h2>
+    <h2 id="rtitle">1단계 결과</h2>
     <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
-    <div class="praise">
-      <span class="t" id="rpraise"></span>
-      <span class="s" id="rsub"></span>
-    </div>
-    <div class="breakdown">
-      <div class="bd"><div class="t">맞은 문제</div><div class="v" id="r0">0</div></div>
-      <div class="bd"><div class="t">틀린 문제</div><div class="v" id="r1">0</div></div>
-      <div class="bd"><div class="t">최고 점수</div><div class="v" id="r2">0</div></div>
-    </div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
     <div id="rsubmit"></div>
     <div id="rwrong"></div>
     <div class="actions" id="ractions"></div>
   </section>
 
-  <!-- 순위 화면 -->
+  <!-- 순위 -->
   <section class="card hide" id="rank">
     <div class="subhead">
       <h2>도전 순위</h2>
-      <button class="btn ghost small" id="manageBtn">기록 관리</button>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
     </div>
     <div id="rankToast"></div>
     <div class="tabs" id="rankTabs">
       <button class="tab on" data-t="all">종합</button>
-      <button class="tab" data-t="0">1단계</button>
-      <button class="tab" data-t="1">2단계</button>
-      <button class="tab" data-t="2">3단계</button>
-      <button class="tab" data-t="3">4단계</button>
-      <button class="tab" data-t="4">5단계</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
     </div>
     <div id="rankBody"></div>
     <div class="actions">
       <button class="btn ghost" id="rankHome">단계 선택으로</button>
     </div>
-    <p class="foot" id="rankNote"></p>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
   </section>
 
-  <p class="foot">꾸메땅 도전 영문법게임 · 관계대명사편</p>
+  <p class="foot">꾸메땅 영문법 GAME · 관계대명사 GAME</p>
 </div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
 
 <script>
 "use strict";
 
-const TPL = "";
-const RECKEY = "kkumettang.relpron.rank";
-const PENDKEY = "relpron90.pending";
-const DATA = (function(){ try{ return JSON.parse(localStorage.getItem(RECKEY)||"[]"); }catch(e){ return []; } })();
+/* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
+var L1 = [
+  {type:"n", tag:"한글로 이해", q:"관계대명사가 하는 두 가지 일로 알맞은 것은?",
+   opts:["두 문장을 잇고, 앞의 명사를 대신한다","동사를 과거로 바꾼다","문장을 의문문으로 만든다","명사를 복수로 만든다","형용사를 부사로 바꾼다"], a:0,
+   exp:"관계대명사는 <b>접속사 + 대명사</b> 노릇을 한꺼번에 합니다. 두 문장을 하나로 잇습니다."},
 
-const Q = [
-/* ===== LEVEL 1 : 명사 + 관계대명사 만들기 (주격 10 + 목적격 10) ===== */
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「노래하고 있는 소년」을 바르게 나타낸 것은?",
- full:"I know the boy {who is singing}.",ko:"나는 노래하고 있는 그 소년을 안다.",
- opts:["the boy who is singing","the boy which is singing","the boy who singing","the boy whose is singing"],ans:0,long:true,
- tip:"사람 뒤에는 who를 씁니다. 「명사 + who + 동사」로 뒤에서 앞의 명사를 꾸며 줍니다. the boy who is singing = 노래하고 있는 소년.",
- why:[["o","the boy who is singing — 정답. 사람(the boy) + who + is singing."],
-      ["x","the boy which is singing — which는 사물·동물에 씁니다."],
-      ["x","the boy who singing — be동사 is가 빠졌습니다."],
-      ["x","the boy whose is singing — whose는 「누구의」라는 소유격입니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「먹고 있는 소녀」를 바르게 나타낸 것은?",
- full:"The girl {who is eating} is my sister.",ko:"먹고 있는 그 소녀는 내 여동생이다.",
- opts:["the girl is eating","the girl who is eating","the girl which is eating","the girl who eating"],ans:1,long:true,
- tip:"두 문장을 하나로 붙이려면 관계대명사가 필요합니다. The girl is eating.(소녀가 먹고 있다) → the girl who is eating(먹고 있는 소녀).",
- why:[["x","the girl is eating — 이것은 「소녀가 먹고 있다」라는 문장이지, 명사를 꾸미는 말이 아닙니다."],
-      ["o","the girl who is eating — 정답. who가 두 부분을 이어 줍니다."],
-      ["x","the girl which is eating — 사람에는 which를 쓰지 않습니다."],
-      ["x","the girl who eating — is가 빠졌습니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「탁자 위에서 자고 있는 고양이」를 바르게 나타낸 것은?",
- full:"The cat {which is sleeping} on the table is mine.",ko:"탁자 위에서 자고 있는 그 고양이는 내 것이다.",
- opts:["the cat who is sleeping on the table","the cat which is sleeping on the table","the cat which sleeping on the table","the cat whose sleeping on the table"],ans:1,long:true,
- tip:"동물이나 사물 뒤에는 which를 씁니다. (that도 쓸 수 있습니다.)",
- why:[["x","the cat who is sleeping — who는 사람에게 씁니다."],
-      ["o","the cat which is sleeping on the table — 정답. 동물 + which + is sleeping."],
-      ["x","the cat which sleeping — be동사 is가 빠졌습니다."],
-      ["x","the cat whose sleeping — whose는 소유격이라 여기에 맞지 않습니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「빨리 달리는 개」를 바르게 나타낸 것은?",
- full:"I have a dog {which runs} fast.",ko:"나는 빨리 달리는 개를 한 마리 기른다.",
- opts:["the dog which run fast","the dog who runs fast","the dog which runs fast","the dog which running fast"],ans:2,long:true,
- tip:"관계대명사 뒤의 동사는 앞의 명사에 맞춥니다. the dog은 한 마리이므로 runs를 씁니다.",
- why:[["x","the dog which run fast — the dog이 단수이므로 runs를 써야 합니다."],
-      ["x","the dog who runs fast — 동물에는 보통 which를 씁니다."],
-      ["o","the dog which runs fast — 정답. 단수 명사에 맞춰 runs."],
-      ["x","the dog which running fast — running 앞에 is가 필요합니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「영어를 가르치시는 선생님」을 바르게 나타낸 것은?",
- full:"He is the teacher {who teaches} English.",ko:"그분이 영어를 가르치시는 선생님이다.",
- opts:["the teacher which teaches English","the teacher who teaches English","the teacher who teach English","the teacher whom teaches English"],ans:1,long:true,
- tip:"사람 + who + 동사. 선생님이 「가르치는」 주인공이므로 주격 who를 씁니다.",
- why:[["x","the teacher which teaches English — 사람에는 who를 씁니다."],
-      ["o","the teacher who teaches English — 정답."],
-      ["x","the teacher who teach English — the teacher가 단수이므로 teaches."],
-      ["x","the teacher whom teaches English — whom은 목적격이라 뒤에 「주어 + 동사」가 와야 합니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「부산에 사시는 나의 삼촌」을 바르게 나타낸 것은?",
- full:"My uncle {who lives} in Busan is a cook.",ko:"부산에 사시는 나의 삼촌은 요리사이다.",
- opts:["my uncle who lives in Busan","my uncle which lives in Busan","my uncle who live in Busan","my uncle whose lives in Busan"],ans:0,long:true,
- tip:"사람 + who + 동사. live in ~ = ~에 살다.",
- why:[["o","my uncle who lives in Busan — 정답. 단수 주어라서 lives."],
-      ["x","my uncle which lives in Busan — 사람에는 who."],
-      ["x","my uncle who live in Busan — lives로 써야 합니다."],
-      ["x","my uncle whose lives in Busan — whose 뒤에는 명사가 와야 합니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「아주 오래된 그 집」을 바르게 나타낸 것은?",
- full:"The house {which is} very old is my grandmother's.",ko:"아주 오래된 그 집은 우리 할머니 집이다.",
- opts:["the house who is very old","the house which is very old","the house which very old","the house whom is very old"],ans:1,long:true,
- tip:"사물 뒤에는 which를 씁니다. 「명사 + which + be동사 + 형용사」로 꾸며 줍니다.",
- why:[["x","the house who is very old — who는 사람에게만 씁니다."],
-      ["o","the house which is very old — 정답."],
-      ["x","the house which very old — be동사 is가 빠졌습니다."],
-      ["x","the house whom is very old — whom은 사람의 목적격입니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「매일 아침 오는 버스」를 바르게 나타낸 것은?",
- full:"The bus {which comes} every morning is always late.",ko:"매일 아침 오는 그 버스는 항상 늦는다.",
- opts:["the bus who comes every morning","the bus which come every morning","the bus which comes every morning","the bus whose comes every morning"],ans:2,long:true,
- tip:"사물 + which + 동사. the bus가 단수이므로 comes를 씁니다.",
- why:[["x","the bus who comes — 사물에는 which를 씁니다."],
-      ["x","the bus which come — 단수이므로 comes."],
-      ["o","the bus which comes every morning — 정답."],
-      ["x","the bus whose comes — whose 뒤에는 명사가 옵니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「축구를 하고 있는 소년들」을 바르게 나타낸 것은?",
- full:"The boys {who are playing} soccer are my classmates.",ko:"축구를 하고 있는 그 소년들은 우리 반 친구들이다.",
- opts:["the boys who is playing soccer","the boys who are playing soccer","the boys which are playing soccer","the boys who are play soccer"],ans:1,long:true,
- tip:"앞의 명사가 복수(the boys)이면 관계대명사 뒤의 be동사도 are를 씁니다.",
- why:[["x","the boys who is playing — the boys는 복수이므로 are."],
-      ["o","the boys who are playing soccer — 정답."],
-      ["x","the boys which are playing — 사람에는 who."],
-      ["x","the boys who are play soccer — play가 아니라 playing이어야 합니다."]]},
-{lv:0,tag:"주격 만들기",type:"mc",ask:"「문 앞에 서 있는 남자」를 바르게 나타낸 것은?",
- full:"The man {who is standing} at the door is my father.",ko:"문 앞에 서 있는 그 남자는 우리 아버지다.",
- opts:["the man who is standing at the door","the man which is standing at the door","the man who standing at the door","the man whom is standing at the door"],ans:0,long:true,
- tip:"사람 + who + be동사 + -ing. stand at the door = 문 앞에 서 있다.",
- why:[["o","the man who is standing at the door — 정답."],
-      ["x","the man which is standing — 사람에는 who."],
-      ["x","the man who standing — is가 빠졌습니다."],
-      ["x","the man whom is standing — whom 뒤에는 「주어 + 동사」가 옵니다."]]},
+  {type:"n", tag:"한글로 이해", sent:"나는 [피아노를 잘 치는] 친구가 있다.", q:"[ ] 부분이 꾸며 주는 말은?",
+   opts:["친구","나","피아노","잘","있다"], a:0,
+   exp:"‘피아노를 잘 치는’은 <b>친구</b>를 꾸밉니다. I have a friend <b>who plays the piano well</b>."},
 
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「개가 먹은 사과」를 바르게 나타낸 것은?",
- full:"The apple {which the dog ate} was red.",ko:"개가 먹은 그 사과는 빨간색이었다.",
- opts:["the apple which ate the dog","the apple which the dog ate","the apple who the dog ate","the apple which the dog ate it"],ans:1,long:true,
- tip:"「개가 사과를 먹었다」에서 사과는 먹힌 쪽(목적어)입니다. 목적어가 앞으로 나오면 「명사 + which + 주어 + 동사」가 됩니다.",
- why:[["x","the apple which ate the dog — 「개를 먹은 사과」가 되어 뜻이 반대입니다."],
-      ["o","the apple which the dog ate — 정답. which 뒤에 「주어(the dog) + 동사(ate)」."],
-      ["x","the apple who the dog ate — 사물에는 which를 씁니다."],
-      ["x","the apple which the dog ate it — it이 남아 있으면 안 됩니다. 목적어 자리는 비워 둡니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「내가 어제 만난 소년」을 바르게 나타낸 것은?",
- full:"The boy {whom I met} yesterday is very kind.",ko:"내가 어제 만난 그 소년은 아주 친절하다.",
- opts:["the boy which I met yesterday","the boy whom I met yesterday","the boy whom met I yesterday","the boy whom I met him yesterday"],ans:1,long:true,
- tip:"사람이 목적어일 때는 whom을 씁니다. whom 뒤에는 반드시 「주어 + 동사」가 옵니다.",
- why:[["x","the boy which I met yesterday — 사람에는 whom을 씁니다."],
-      ["o","the boy whom I met yesterday — 정답."],
-      ["x","the boy whom met I yesterday — 어순이 틀렸습니다. 「I met」이 맞습니다."],
-      ["x","the boy whom I met him yesterday — him이 남아 있으면 안 됩니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「그녀가 산 가방」을 바르게 나타낸 것은?",
- full:"The bag {which she bought} was very expensive.",ko:"그녀가 산 그 가방은 아주 비쌌다.",
- opts:["the bag which bought she","the bag who she bought","the bag which she bought","the bag which she bought it"],ans:2,long:true,
- tip:"사물이 목적어이면 「명사 + which + 주어 + 동사」. 목적어 자리는 비워 둡니다.",
- why:[["x","the bag which bought she — 「주어 + 동사」 순서가 틀렸습니다."],
-      ["x","the bag who she bought — 사물에는 which."],
-      ["o","the bag which she bought — 정답."],
-      ["x","the bag which she bought it — it을 또 쓰면 안 됩니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「우리가 어제 본 영화」를 바르게 나타낸 것은?",
- full:"The movie {which we saw} yesterday was funny.",ko:"우리가 어제 본 그 영화는 재미있었다.",
- opts:["the movie which we saw yesterday","the movie whom we saw yesterday","the movie which saw we yesterday","the movie which we saw it yesterday"],ans:0,long:true,
- tip:"목적격 관계대명사 which 뒤에 「we saw」가 오고, saw의 목적어 자리는 비어 있습니다.",
- why:[["o","the movie which we saw yesterday — 정답."],
-      ["x","the movie whom we saw — whom은 사람에게만 씁니다."],
-      ["x","the movie which saw we — 어순이 틀렸습니다."],
-      ["x","the movie which we saw it — it이 남으면 안 됩니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「엄마가 만드신 케이크」를 바르게 나타낸 것은?",
- full:"The cake {which my mom made} was delicious.",ko:"엄마가 만드신 그 케이크는 맛있었다.",
- opts:["the cake which made my mom","the cake which my mom made","the cake who my mom made","the cake whose my mom made"],ans:1,long:true,
- tip:"「엄마가 케이크를 만들었다」에서 케이크가 목적어입니다. 목적격은 「명사 + which + 주어 + 동사」.",
- why:[["x","the cake which made my mom — 「엄마를 만든 케이크」가 되어 뜻이 이상합니다."],
-      ["o","the cake which my mom made — 정답."],
-      ["x","the cake who my mom made — 사물에는 which."],
-      ["x","the cake whose my mom made — whose 뒤에는 명사가 옵니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「내가 가장 좋아하는 가수」를 바르게 나타낸 것은?",
- full:"The singer {whom I like} best is from Korea.",ko:"내가 가장 좋아하는 그 가수는 한국 출신이다.",
- opts:["the singer which I like best","the singer whom I like best","the singer whom likes me best","the singer whom I like him best"],ans:1,long:true,
- tip:"사람이 목적어이면 whom. like ~ best = ~을 가장 좋아하다.",
- why:[["x","the singer which I like best — 사람에는 whom."],
-      ["o","the singer whom I like best — 정답."],
-      ["x","the singer whom likes me best — 「나를 좋아하는 가수」가 되어 뜻이 반대입니다."],
-      ["x","the singer whom I like him best — him이 남으면 안 됩니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「그가 읽고 있는 책」을 바르게 나타낸 것은?",
- full:"The book {which he is reading} is mine.",ko:"그가 읽고 있는 그 책은 내 것이다.",
- opts:["the book which is reading he","the book who he is reading","the book which he is reading","the book which he is reading it"],ans:2,long:true,
- tip:"which 뒤에 「주어(he) + 동사(is reading)」가 오고, reading의 목적어 자리는 비어 있습니다.",
- why:[["x","the book which is reading he — 어순이 틀렸습니다."],
-      ["x","the book who he is reading — 사물에는 which."],
-      ["o","the book which he is reading — 정답."],
-      ["x","the book which he is reading it — it이 남으면 안 됩니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「아빠가 고치신 자전거」를 바르게 나타낸 것은?",
- full:"The bike {which my dad fixed} looks new.",ko:"아빠가 고치신 그 자전거는 새것처럼 보인다.",
- opts:["the bike which my dad fixed","the bike whom my dad fixed","the bike which fixed my dad","the bike my dad which fixed"],ans:0,long:true,
- tip:"목적격 관계대명사는 명사 바로 뒤에 옵니다. fix = 고치다.",
- why:[["o","the bike which my dad fixed — 정답."],
-      ["x","the bike whom my dad fixed — whom은 사람에게 씁니다."],
-      ["x","the bike which fixed my dad — 「아빠를 고친 자전거」가 되어 뜻이 이상합니다."],
-      ["x","the bike my dad which fixed — 관계대명사는 명사 바로 뒤에 와야 합니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「내가 어제 잃어버린 열쇠」를 바르게 나타낸 것은?",
- full:"I found the key {which I lost} yesterday.",ko:"나는 어제 잃어버린 그 열쇠를 찾았다.",
- opts:["the key who I lost yesterday","the key which lost I yesterday","the key which I lost yesterday","the key which I lost it yesterday"],ans:2,long:true,
- tip:"사물 + which + 주어 + 동사. lose - lost - lost = 잃어버리다.",
- why:[["x","the key who I lost — 사물에는 which."],
-      ["x","the key which lost I — 어순이 틀렸습니다."],
-      ["o","the key which I lost yesterday — 정답."],
-      ["x","the key which I lost it — it이 남으면 안 됩니다."]]},
-{lv:0,tag:"목적격 만들기",type:"mc",ask:"「그들이 방문한 도시」를 바르게 나타낸 것은?",
- full:"The city {which they visited} was very beautiful.",ko:"그들이 방문한 그 도시는 아주 아름다웠다.",
- opts:["the city which they visited","the city whom they visited","the city which visited they","the city which they visited there"],ans:0,long:true,
- tip:"visit는 「~을 방문하다」이므로 뒤에 목적어가 바로 옵니다. 그 목적어가 앞으로 나온 형태입니다.",
- why:[["o","the city which they visited — 정답."],
-      ["x","the city whom they visited — whom은 사람에게 씁니다."],
-      ["x","the city which visited they — 어순이 틀렸습니다."],
-      ["x","the city which they visited there — there가 남으면 안 됩니다."]]},
-/* ===== LEVEL 2 : 주격 10 + 목적격 10 (기본과 생략) ===== */
-{lv:1,tag:"주격",type:"mc",sent:"The girl ___ is playing the piano is my sister.",ko:"피아노를 치고 있는 그 소녀는 내 여동생이다.",
- full:"The girl {who} is playing the piano is my sister.",
- opts:["who","which","whom","whose"],ans:0,
- tip:"주어(The girl) 뒤에 관계대명사절이 끼어들고, 그 뒤에 문장의 진짜 동사(is)가 나옵니다. 사람이 「치고 있는」 주인공이므로 주격 who.",
- why:[["o","who — 정답. 사람 + 주격 관계대명사."],
-      ["x","which — 사물·동물에 씁니다."],
-      ["x","whom — 목적격이라 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["x","whose — 소유격이라 뒤에 명사가 와야 합니다."]]},
-{lv:1,tag:"주격",type:"mc",sent:"I have a friend ___ can speak Chinese.",ko:"나는 중국어를 할 수 있는 친구가 있다.",
- full:"I have a friend {who} can speak Chinese.",
- opts:["which","who","whom","whose"],ans:1,
- tip:"a friend(사람) 뒤에 동사 can speak가 바로 오므로 주격 who를 씁니다.",
- why:[["x","which — 사람에는 쓰지 않습니다."],
-      ["o","who — 정답. 뒤에 동사(can speak)가 바로 옵니다."],
-      ["x","whom — 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:1,tag:"주격",type:"mc",sent:"The book ___ is on the desk is mine.",ko:"책상 위에 있는 그 책은 내 것이다.",
- full:"The book {which} is on the desk is mine.",
- opts:["who","whom","which","whose"],ans:2,
- tip:"사물(The book) 뒤에는 which를 씁니다. that으로 바꿔 쓸 수도 있습니다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["x","whom — 사람의 목적격입니다."],
-      ["o","which — 정답. 사물 + 주격 관계대명사."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:1,tag:"주격",type:"mc",sent:"Look at the boy and his dog ___ are running together.",ko:"함께 달리고 있는 저 소년과 그의 개를 보아라.",
- full:"Look at the boy and his dog {that} are running together.",
- opts:["who","which","that","whose"],ans:2,
- tip:"앞의 명사가 「사람 + 동물」처럼 섞여 있으면 that을 씁니다.",
- why:[["x","who — 사람만 있을 때 씁니다."],
-      ["x","which — 사물·동물만 있을 때 씁니다."],
-      ["o","that — 정답. 사람과 동물이 함께 있으면 that."],
-      ["x","whose — 소유격입니다."]]},
-{lv:1,tag:"수 일치",type:"mc",sent:"The students who ___ hard get good grades.",ko:"열심히 공부하는 학생들은 좋은 성적을 받는다.",
- full:"The students who {study} hard get good grades.",
- opts:["study","studies","studying","to study"],ans:0,
- tip:"관계대명사 뒤의 동사는 앞의 명사에 맞춥니다. The students는 복수이므로 study.",
- why:[["o","study — 정답. 복수 명사(The students)에 맞춘 형태."],
-      ["x","studies — 단수일 때 쓰는 형태입니다."],
-      ["x","studying — 앞에 be동사가 없어 쓸 수 없습니다."],
-      ["x","to study — 관계대명사 뒤에는 동사가 와야 합니다."]]},
-{lv:1,tag:"수 일치",type:"mc",sent:"The man who ___ next to me is a doctor.",ko:"내 옆에 앉아 있는 그 남자는 의사이다.",
- full:"The man who {sits} next to me is a doctor.",
- opts:["sit","sits","sitting","are sitting"],ans:1,
- tip:"The man은 단수이므로 관계대명사 뒤의 동사도 sits가 됩니다. next to = ~ 옆에.",
- why:[["x","sit — 복수일 때 쓰는 형태입니다."],
-      ["o","sits — 정답. 단수 명사에 맞춘 형태."],
-      ["x","sitting — 앞에 is가 있어야 쓸 수 있습니다."],
-      ["x","are sitting — The man이 단수이므로 are를 쓸 수 없습니다."]]},
-{lv:1,tag:"주격 생략 불가",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"I know a girl {who} lives in Seoul.",ko:"나는 서울에 사는 소녀를 안다. (주격 관계대명사는 생략할 수 없습니다.)",
- opts:["I know a girl who lives in Seoul.","The cat which is sleeping is mine.","I know a girl lives in Seoul.","This is the pen that I like."],ans:2,long:true,
- tip:"주격 관계대명사는 생략할 수 없습니다. 생략할 수 있는 것은 목적격 관계대명사뿐입니다.",
- why:[["o","I know a girl who lives in Seoul. — 나는 서울에 사는 소녀를 안다. 맞는 문장입니다."],
-      ["o","The cat which is sleeping is mine. — 자고 있는 그 고양이는 내 것이다. 맞는 문장입니다."],
-      ["x","I know a girl lives in Seoul. — 주격 who가 빠져서 동사가 두 개(know, lives)인 이상한 문장이 되었습니다. 이 문장이 정답입니다."],
-      ["o","This is the pen that I like. — 이것은 내가 좋아하는 펜이다. 목적격이라 that을 생략해도 됩니다."]]},
-{lv:1,tag:"주격 + be동사 생략",type:"mc",sent:"The girl ___ under the tree is my cousin.",ko:"나무 아래에 앉아 있는 그 소녀는 내 사촌이다.",
- full:"The girl {sitting} under the tree is my cousin.",
- opts:["sits","sitting","who sitting","she sits"],ans:1,
- tip:"「주격 관계대명사 + be동사」는 함께 생략할 수 있습니다. The girl (who is) sitting under the tree.",
- why:[["x","sits — 문장의 동사가 두 개(sits, is)가 됩니다."],
-      ["o","sitting — 정답. who is가 함께 생략된 형태입니다."],
-      ["x","who sitting — who 뒤에 be동사 is가 필요합니다."],
-      ["x","she sits — 접속사 없이 문장을 이어 붙일 수 없습니다."]]},
-{lv:1,tag:"주격",type:"mc",sent:"This is the bus ___ goes to the museum.",ko:"이것이 박물관으로 가는 버스이다.",
- full:"This is the bus {which} goes to the museum.",
- opts:["who","which","whom","what"],ans:1,
- tip:"사물 + 주격 which. what은 앞에 꾸며 줄 명사가 있으면 쓸 수 없습니다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["o","which — 정답. 사물 + 주격 관계대명사."],
-      ["x","whom — 사람의 목적격입니다."],
-      ["x","what — 앞에 명사(the bus)가 있으면 what을 쓸 수 없습니다."]]},
-{lv:1,tag:"문장 합치기",type:"mc",ask:"다음 두 문장을 한 문장으로 바르게 합친 것은?  ·  I have a cat. + It has blue eyes.",
- full:"I have a cat {which has} blue eyes.",ko:"나는 파란 눈을 가진 고양이를 기른다.",
- opts:["I have a cat which has blue eyes.","I have a cat which it has blue eyes.","I have a cat who has blue eyes.","I have a cat which have blue eyes."],ans:0,long:true,
- tip:"뒤 문장의 주어 It이 관계대명사 which로 바뀌면서 두 문장이 하나가 됩니다.",
- why:[["o","I have a cat which has blue eyes. — 정답. It → which."],
-      ["x","which it has — It이 which로 바뀌었으므로 it을 또 쓰면 안 됩니다."],
-      ["x","who has blue eyes — 동물에는 보통 which를 씁니다."],
-      ["x","which have blue eyes — a cat이 단수이므로 has."]]},
+  {type:"n", tag:"한글로 이해", q:"관계대명사 앞에 있으면서 꾸밈을 받는 명사를 무엇이라고 할까요?",
+   opts:["선행사","주어","동사","보어","목적어"], a:0,
+   exp:"앞에 먼저(先) 나온 말이라서 <b>선행사</b>라고 합니다."},
 
-{lv:1,tag:"목적격",type:"mc",sent:"The boy ___ I met yesterday is very kind.",ko:"내가 어제 만난 그 소년은 아주 친절하다.",
- full:"The boy {whom} I met yesterday is very kind.",
- opts:["which","whom","whose","what"],ans:1,
- tip:"빈칸 뒤에 「주어(I) + 동사(met)」가 오고 met의 목적어가 비어 있으므로 목적격입니다. 사람이므로 whom.",
- why:[["x","which — 사물·동물에 씁니다."],
-      ["o","whom — 정답. 사람 + 목적격 관계대명사."],
-      ["x","whose — 뒤에 명사가 와야 합니다."],
-      ["x","what — 앞에 명사가 있으면 쓸 수 없습니다."]]},
-{lv:1,tag:"목적격",type:"mc",sent:"This is the cake ___ my mom made for me.",ko:"이것은 엄마가 나를 위해 만들어 주신 케이크이다.",
- full:"This is the cake {which} my mom made for me.",
- opts:["who","whom","which","whose"],ans:2,
- tip:"빈칸 뒤에 「주어 + 동사」가 오고 made의 목적어가 비어 있습니다. 사물이므로 which.",
- why:[["x","who — 사람의 주격입니다."],
-      ["x","whom — 사람의 목적격입니다."],
-      ["o","which — 정답. 사물 + 목적격 관계대명사."],
-      ["x","whose — 뒤에 명사가 옵니다."]]},
-{lv:1,tag:"생략",type:"mc",ask:"다음 문장에서 생략할 수 있는 것은?  ·  The movie which we watched last night was funny.",
- full:"The movie {(which)} we watched last night was funny.",ko:"우리가 어젯밤에 본 그 영화는 재미있었다.",
- opts:["which","we","was","last night"],ans:0,
- tip:"목적격 관계대명사는 생략할 수 있습니다. The movie we watched last night was funny.도 맞는 문장입니다.",
- why:[["o","which — 정답. 목적격 관계대명사라서 생략할 수 있습니다."],
-      ["x","we — 주어라서 생략할 수 없습니다."],
-      ["x","was — 문장의 동사라서 생략할 수 없습니다."],
-      ["x","last night — 뜻이 달라지므로 문법 생략과는 다릅니다."]]},
-{lv:1,tag:"생략",type:"mc",ask:"다음 문장에 생략된 관계대명사는?  ·  The girl I like is in my class.",
- full:"The girl {(whom)} I like is in my class.",ko:"내가 좋아하는 그 소녀는 우리 반에 있다.",
- opts:["who","whom","which","whose"],ans:1,
- tip:"명사(The girl) 뒤에 바로 「주어 + 동사」가 오면 목적격 관계대명사가 생략된 것입니다. 사람이므로 whom.",
- why:[["x","who — 주격이라 생략할 수 없습니다."],
-      ["o","whom — 정답. 사람의 목적격이라 생략되었습니다."],
-      ["x","which — 사물에 씁니다."],
-      ["x","whose — 소유격은 생략할 수 없습니다."]]},
-{lv:1,tag:"목적격",type:"mc",sent:"I lost the pen ___ my father gave me.",ko:"나는 아버지가 주신 그 펜을 잃어버렸다.",
- full:"I lost the pen {which} my father gave me.",
- opts:["who","which","whose","what"],ans:1,
- tip:"the pen(사물) 뒤에 「주어 + 동사」가 오므로 목적격 which입니다. that으로 바꾸거나 생략할 수도 있습니다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["o","which — 정답."],
-      ["x","whose — 뒤에 명사가 와야 합니다."],
-      ["x","what — 앞에 명사가 있으면 쓸 수 없습니다."]]},
-{lv:1,tag:"주격·목적격 구별",type:"mc",sent:"The man ___ is talking to my mom is my teacher.",ko:"우리 엄마에게 이야기하고 있는 그 남자는 우리 선생님이다.",
- full:"The man {who} is talking to my mom is my teacher.",
- opts:["who","whom","which","whose"],ans:0,
- tip:"빈칸 뒤에 동사(is talking)가 바로 오면 주격입니다.",
- why:[["o","who — 정답. 뒤에 동사가 바로 오므로 주격."],
-      ["x","whom — 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["x","which — 사람에는 쓰지 않습니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:1,tag:"주격·목적격 구별",type:"mc",sent:"The man ___ my mom is talking to is my teacher.",ko:"우리 엄마가 이야기하고 있는 그 남자는 우리 선생님이다.",
- full:"The man {whom} my mom is talking to is my teacher.",
- opts:["who","whom","which","whose"],ans:1,
- tip:"빈칸 뒤에 「주어(my mom) + 동사(is talking)」가 오고 to의 목적어가 비어 있으므로 목적격 whom입니다. 앞 문제와 비교해 보세요.",
- why:[["x","who — 주격이라 뒤에 동사가 바로 와야 합니다."],
-      ["o","whom — 정답. 뒤에 「주어 + 동사」가 오므로 목적격."],
-      ["x","which — 사람에는 쓰지 않습니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:1,tag:"어법 판단",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"This is the book {which I bought} yesterday.",ko:"이것은 내가 어제 산 책이다. (it을 빼야 합니다.)",
- opts:["This is the book which I bought yesterday.","I have a friend who lives in Jeju.","This is the book which I bought it yesterday.","The cake that she made was sweet."],ans:2,long:true,
- tip:"관계대명사가 이미 목적어 역할을 하므로 뒤에 it을 또 쓰면 안 됩니다.",
- why:[["o","This is the book which I bought yesterday. — 이것은 내가 어제 산 책이다. 맞는 문장입니다."],
-      ["o","I have a friend who lives in Jeju. — 나는 제주에 사는 친구가 있다. 맞는 문장입니다."],
-      ["x","This is the book which I bought it yesterday. — which가 이미 목적어이므로 it을 빼야 합니다. 이 문장이 정답입니다."],
-      ["o","The cake that she made was sweet. — 그녀가 만든 케이크는 달았다. 맞는 문장입니다."]]},
-{lv:1,tag:"목적격",type:"mc",sent:"The song ___ she is singing is very popular.",ko:"그녀가 부르고 있는 그 노래는 아주 인기가 있다.",
- full:"The song {which} she is singing is very popular.",
- opts:["who","whom","which","what"],ans:2,
- tip:"the song(사물) 뒤에 「주어 + 동사」가 오므로 목적격 which입니다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["x","whom — 사람의 목적격입니다."],
-      ["o","which — 정답."],
-      ["x","what — 앞에 명사가 있으면 쓸 수 없습니다."]]},
-{lv:1,tag:"생략",type:"mc",ask:"관계대명사를 생략할 수 있는 문장을 고르세요.",
- full:"The book {(which)} I read was fun.",ko:"내가 읽은 그 책은 재미있었다. (목적격이라 생략할 수 있습니다.)",
- opts:["The boy who is running is Tom.","The book which I read was fun.","The girl who lives here is kind.","The man who helped me is my uncle."],ans:1,long:true,
- tip:"생략할 수 있는 것은 목적격 관계대명사뿐입니다. 뒤에 「주어 + 동사」가 오면 목적격입니다.",
- why:[["x","The boy who is running is Tom. — 달리고 있는 소년은 톰이다. who 뒤에 동사가 와서 주격이므로 생략할 수 없습니다."],
-      ["o","The book which I read was fun. — 내가 읽은 책은 재미있었다. which 뒤에 「주어 + 동사」가 와서 목적격이므로 생략할 수 있습니다."],
-      ["x","The girl who lives here is kind. — 여기 사는 소녀는 친절하다. 주격이라 생략할 수 없습니다."],
-      ["x","The man who helped me is my uncle. — 나를 도와준 남자는 우리 삼촌이다. 주격이라 생략할 수 없습니다."]]},
-/* ===== LEVEL 3 : 학교 실전 문제 (주격 10 + 목적격 10) ===== */
-{lv:2,tag:"공통 관계대명사",type:"mc",ask:"빈칸에 공통으로 들어갈 말은?  ·  I have a friend ___ likes music.  /  This is the book ___ I bought.",
- full:"I have a friend {that} likes music. / This is the book {that} I bought.",ko:"나는 음악을 좋아하는 친구가 있다. / 이것은 내가 산 책이다.",
- opts:["who","which","that","whose"],ans:2,
- tip:"that은 사람에도 사물에도, 주격에도 목적격에도 쓸 수 있습니다.",
- why:[["x","who — 사람에만 쓰므로 두 번째 문장에 맞지 않습니다."],
-      ["x","which — 사물에만 쓰므로 첫 번째 문장에 맞지 않습니다."],
-      ["o","that — 정답. 사람·사물, 주격·목적격에 모두 쓸 수 있습니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:2,tag:"어법 판단",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"The girl {who I met} is kind.",ko:"내가 만난 그 소녀는 친절하다. (her를 빼야 합니다.)",
- opts:["I know a boy who plays the violin.","The cat which is sleeping is mine.","The girl who I met her is kind.","This is the book that I like."],ans:2,long:true,
- tip:"관계대명사가 목적어 역할을 하므로 뒤에 대명사(her)를 또 쓰면 안 됩니다.",
- why:[["o","I know a boy who plays the violin. — 나는 바이올린을 켜는 소년을 안다. 맞는 문장입니다."],
-      ["o","The cat which is sleeping is mine. — 자고 있는 고양이는 내 것이다. 맞는 문장입니다."],
-      ["x","The girl who I met her is kind. — her가 남아 있어 틀렸습니다. her를 빼야 합니다. 이 문장이 정답입니다."],
-      ["o","This is the book that I like. — 이것은 내가 좋아하는 책이다. 맞는 문장입니다."]]},
-{lv:2,tag:"수 일치",type:"mc",sent:"I like students who ___ questions in class.",ko:"나는 수업 시간에 질문하는 학생들을 좋아한다.",
- full:"I like students who {ask} questions in class.",
- opts:["ask","asks","asking","to ask"],ans:0,
- tip:"관계대명사 뒤의 동사는 꾸며 주는 명사(students, 복수)에 맞춥니다.",
- why:[["o","ask — 정답. students가 복수이므로 ask."],
-      ["x","asks — 단수 명사일 때 쓰는 형태입니다."],
-      ["x","asking — 앞에 be동사가 필요합니다."],
-      ["x","to ask — 관계대명사 뒤에는 동사가 옵니다."]]},
-{lv:2,tag:"문장 합치기",type:"mc",ask:"다음 두 문장을 한 문장으로 바르게 합친 것은?  ·  I have a dog. + It has short legs.",
- full:"I have a dog {which has} short legs.",ko:"나는 다리가 짧은 개를 기른다.",
- opts:["I have a dog who has short legs.","I have a dog which has short legs.","I have a dog which it has short legs.","I have a dog which have short legs."],ans:1,long:true,
- tip:"뒤 문장의 주어 It이 which로 바뀌어 두 문장이 이어집니다.",
- why:[["x","who has short legs — 동물에는 보통 which를 씁니다."],
-      ["o","which has short legs — 정답."],
-      ["x","which it has — it을 또 쓰면 안 됩니다."],
-      ["x","which have — a dog이 단수이므로 has."]]},
-{lv:2,tag:"주격 + be동사 생략",type:"mc",sent:"The boy ___ a red cap is my brother.",ko:"빨간 모자를 쓰고 있는 그 소년은 내 동생이다.",
- full:"The boy {wearing} a red cap is my brother.",
- opts:["wear","wearing","who wear","wears"],ans:1,
- tip:"The boy (who is) wearing a red cap. 「주격 관계대명사 + be동사」는 함께 생략할 수 있습니다.",
- why:[["x","wear — 문장에 동사가 두 개가 됩니다."],
-      ["o","wearing — 정답. who is가 생략된 형태입니다."],
-      ["x","who wear — who 뒤에 be동사가 필요하고, 단수라 wears여야 합니다."],
-      ["x","wears — 동사가 두 개(wears, is)가 되어 틀립니다."]]},
-{lv:2,tag:"문장의 진짜 동사",type:"mc",sent:"The man who lives next door ___ a science teacher.",ko:"옆집에 사는 그 남자는 과학 선생님이다.",
- full:"The man who lives next door {is} a science teacher.",
- opts:["is","are","be","being"],ans:0,
- tip:"who lives next door는 The man을 꾸며 주는 부분입니다. 문장의 진짜 주어는 The man(단수)이므로 is.",
- why:[["o","is — 정답. 주어 The man이 단수입니다."],
-      ["x","are — 복수 주어일 때 씁니다. door에 맞추면 안 됩니다."],
-      ["x","be — 원형은 이 자리에 올 수 없습니다."],
-      ["x","being — 문장의 동사가 될 수 없습니다."]]},
-{lv:2,tag:"that만 쓰는 경우",type:"mc",sent:"Look at the girl and the dog ___ are running on the street.",ko:"길에서 달리고 있는 저 소녀와 개를 보아라.",
- full:"Look at the girl and the dog {that} are running on the street.",
- opts:["who","which","that","whose"],ans:2,
- tip:"「사람 + 동물」이나 「사람 + 사물」이 함께 앞에 오면 that만 씁니다.",
- why:[["x","who — 사람만 있을 때 씁니다."],
-      ["x","which — 사물·동물만 있을 때 씁니다."],
-      ["o","that — 정답. 사람과 동물이 함께 있을 때는 that."],
-      ["x","whose — 소유격입니다."]]},
-{lv:2,tag:"주격",type:"mc",sent:"Do you know the man ___ helped us yesterday?",ko:"너는 어제 우리를 도와준 그 남자를 아니?",
- full:"Do you know the man {who} helped us yesterday?",
- opts:["who","whom","which","what"],ans:0,
- tip:"빈칸 뒤에 동사(helped)가 바로 오므로 주격입니다. 사람이므로 who.",
- why:[["o","who — 정답. 뒤에 동사가 바로 오는 주격."],
-      ["x","whom — 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["x","which — 사람에는 쓰지 않습니다."],
-      ["x","what — 앞에 명사가 있으면 쓸 수 없습니다."]]},
-{lv:2,tag:"주격",type:"mc",sent:"There is a student ___ wants to see you.",ko:"너를 만나고 싶어 하는 학생이 한 명 있다.",
- full:"There is a student {who} wants to see you.",
- opts:["who","whom","whose","which"],ans:0,
- tip:"a student(사람) 뒤에 동사 wants가 바로 오므로 주격 who입니다.",
- why:[["o","who — 정답."],
-      ["x","whom — 목적격이라 뒤에 「주어 + 동사」가 옵니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."],
-      ["x","which — 사람에는 쓰지 않습니다."]]},
-{lv:2,tag:"쓸 수 없는 것",type:"mc",ask:"빈칸에 들어갈 수 없는 것을 고르세요.  ·  This is the movie ___ made me cry.",
- full:"This is the movie {which} made me cry.",ko:"이것이 나를 울게 만든 영화이다.",
- opts:["which","that","who","which 또는 that"],ans:2,
- tip:"the movie는 사물이므로 who를 쓸 수 없습니다. 사물의 주격에는 which나 that을 씁니다.",
- why:[["x","which — 사물의 주격이므로 쓸 수 있습니다."],
-      ["x","that — 사람에도 사물에도 쓸 수 있습니다."],
-      ["o","who — 정답. 사람에게만 쓰므로 사물인 the movie에는 쓸 수 없습니다."],
-      ["x","which 또는 that — 둘 다 쓸 수 있는 말입니다."]]},
-{lv:2,tag:"전치사와 목적격",type:"mc",sent:"That is the girl ___ I told you about.",ko:"저 아이가 내가 너에게 말했던 그 소녀야.",
- full:"That is the girl {whom} I told you about.",
- opts:["which","whom","whose","what"],ans:1,
- tip:"about의 목적어 자리가 비어 있고 사람이므로 whom입니다. tell A about B = A에게 B에 대해 말하다.",
- why:[["x","which — 사물에 씁니다."],
-      ["o","whom — 정답. 전치사 about의 목적어 자리."],
-      ["x","whose — 뒤에 명사가 옵니다."],
-      ["x","what — 앞에 명사가 있으면 쓸 수 없습니다."]]},
-{lv:2,tag:"문장 합치기",type:"mc",ask:"다음 두 문장을 한 문장으로 바르게 합친 것은?  ·  This is the movie. + I watched it last week.",
- full:"This is the movie {which I watched} last week.",ko:"이것은 내가 지난주에 본 영화이다.",
- opts:["This is the movie which I watched it last week.","This is the movie whom I watched last week.","This is the movie which I watched last week.","This is the movie which watched I last week."],ans:2,long:true,
- tip:"뒤 문장의 목적어 it이 which로 바뀌어 앞으로 나옵니다. 원래 자리에는 아무것도 남기지 않습니다.",
- why:[["x","which I watched it — it이 남아 있어 틀립니다."],
-      ["x","whom I watched — whom은 사람에게 씁니다."],
-      ["o","which I watched last week — 정답."],
-      ["x","which watched I — 어순이 틀렸습니다."]]},
-{lv:2,tag:"생략",type:"mc",ask:"관계대명사가 생략된 자리로 알맞은 곳은?  ·  The cookies (①) my sister (②) baked (③) were (④) delicious.",
- full:"The cookies {(which)} my sister baked were delicious.",ko:"내 여동생이 구운 그 쿠키는 맛있었다.",
- opts:["①","②","③","④"],ans:0,
- tip:"목적격 관계대명사는 꾸며 주는 명사 바로 뒤에서 생략됩니다.",
- why:[["o","① — 정답. The cookies 바로 뒤에 which가 생략되었습니다."],
-      ["x","② — 주어와 동사 사이에는 들어갈 수 없습니다."],
-      ["x","③ — 동사 뒤에는 들어갈 수 없습니다."],
-      ["x","④ — 문장의 동사 앞뒤에는 들어갈 수 없습니다."]]},
-{lv:2,tag:"어법 판단",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"The man {whom I met} is a singer.",ko:"내가 만난 그 남자는 가수이다. (him을 빼야 합니다.)",
- opts:["The house which we lived in was old.","The man whom I met him is a singer.","I still keep the letter she sent me.","The boy that I helped said thank you."],ans:1,long:true,
- tip:"관계대명사 whom이 이미 목적어이므로 him을 또 쓰면 안 됩니다.",
- why:[["o","The house which we lived in was old. — 우리가 살던 그 집은 오래되었다. 맞는 문장입니다."],
-      ["x","The man whom I met him is a singer. — him이 남아 있어 틀렸습니다. 이 문장이 정답입니다."],
-      ["o","I still keep the letter she sent me. — 나는 그녀가 보낸 편지를 아직 간직하고 있다. 목적격이 생략된 맞는 문장입니다."],
-      ["o","The boy that I helped said thank you. — 내가 도와준 소년이 고맙다고 말했다. 맞는 문장입니다."]]},
-{lv:2,tag:"전치사와 목적격",type:"mc",sent:"The house ___ we lived in was very old.",ko:"우리가 살던 그 집은 아주 오래되었다.",
- full:"The house {which} we lived in was very old.",
- opts:["who","whom","which","whose"],ans:2,
- tip:"live in ~ = ~에 살다. in의 목적어 자리가 비어 있고 사물이므로 which입니다.",
- why:[["x","who — 사람의 주격입니다."],
-      ["x","whom — 사람의 목적격입니다."],
-      ["o","which — 정답."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:2,tag:"전치사와 목적격",type:"mc",sent:"This is the friend ___ I go to school with.",ko:"이 아이가 나와 함께 학교에 다니는 친구이다.",
- full:"This is the friend {whom} I go to school with.",
- opts:["which","whom","whose","what"],ans:1,
- tip:"with의 목적어 자리가 비어 있고 사람이므로 whom입니다.",
- why:[["x","which — 사물에 씁니다."],
-      ["o","whom — 정답."],
-      ["x","whose — 뒤에 명사가 옵니다."],
-      ["x","what — 앞에 명사가 있으면 쓸 수 없습니다."]]},
-{lv:2,tag:"생략",type:"mc",ask:"관계대명사를 생략할 수 없는 문장을 고르세요.",
- full:"The girl {who won} the prize is my friend.",ko:"상을 받은 그 소녀는 내 친구이다. (주격이라 생략할 수 없습니다.)",
- opts:["The pen which I lost was new.","The girl who won the prize is my friend.","This is the song that I like most.","The man whom we met was kind."],ans:1,long:true,
- tip:"뒤에 동사가 바로 오면 주격이라 생략할 수 없고, 「주어 + 동사」가 오면 목적격이라 생략할 수 있습니다.",
- why:[["x","The pen which I lost was new. — 내가 잃어버린 펜은 새것이었다. 목적격이라 생략할 수 있습니다."],
-      ["o","The girl who won the prize is my friend. — 상을 받은 소녀는 내 친구이다. who 뒤에 동사(won)가 와서 주격이므로 생략할 수 없습니다."],
-      ["x","This is the song that I like most. — 이것은 내가 가장 좋아하는 노래이다. 목적격이라 생략할 수 있습니다."],
-      ["x","The man whom we met was kind. — 우리가 만난 남자는 친절했다. 목적격이라 생략할 수 있습니다."]]},
-{lv:2,tag:"목적격",type:"mc",sent:"I still keep the letter ___ she sent me last year.",ko:"나는 그녀가 작년에 보낸 그 편지를 아직 간직하고 있다.",
- full:"I still keep the letter {which} she sent me last year.",
- opts:["who","which","whose","what"],ans:1,
- tip:"the letter(사물) 뒤에 「주어 + 동사」가 오므로 목적격 which입니다. 생략하거나 that으로 바꿔도 됩니다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["o","which — 정답."],
-      ["x","whose — 뒤에 명사가 옵니다."],
-      ["x","what — 앞에 명사가 있으면 쓸 수 없습니다."]]},
-{lv:2,tag:"주격·목적격 구별",type:"mc",ask:"두 빈칸에 알맞은 것을 순서대로 고르세요.  ·  The doctor ___ saved him is famous.  /  The doctor ___ he visited is famous.",
- full:"The doctor {who} saved him is famous. / The doctor {whom} he visited is famous.",ko:"그를 살린 그 의사는 유명하다. / 그가 찾아간 그 의사는 유명하다.",
- opts:["who – whom","whom – who","which – whom","who – which"],ans:0,long:true,
- tip:"빈칸 뒤에 동사가 바로 오면 주격 who, 「주어 + 동사」가 오면 목적격 whom입니다.",
- why:[["o","who – whom — 정답. 첫 문장은 뒤에 동사(saved), 둘째 문장은 「he visited」."],
-      ["x","whom – who — 순서가 반대입니다."],
-      ["x","which – whom — the doctor는 사람이라 which를 쓸 수 없습니다."],
-      ["x","who – which — 둘째 빈칸도 사람이라 which를 쓸 수 없습니다."]]},
-{lv:2,tag:"실전 종합",type:"mc",judge:true,fullLabel:"옳은 문장",ask:"어법상 옳은 문장을 고르세요.",
- full:"The bag {which I bought} was cheap.",ko:"내가 산 그 가방은 쌌다.",
- opts:["The bag which I bought it was cheap.","The bag which I bought was cheap.","The bag whom I bought was cheap.","The bag which bought I was cheap."],ans:1,long:true,
- tip:"목적격 관계대명사 뒤에는 「주어 + 동사」가 오고, 목적어 자리는 비워 둡니다.",
- why:[["x","which I bought it — it이 남아 있어 틀립니다."],
-      ["o","which I bought — 정답. 옳은 문장입니다."],
-      ["x","whom I bought — whom은 사람에게 씁니다."],
-      ["x","which bought I — 어순이 틀렸습니다."]]},
-/* ===== LEVEL 4 : 계속적 용법 (콤마가 있는 관계대명사) 15문제 ===== */
-{lv:3,tag:"that 불가",type:"mc",sent:"I met Jane, ___ is my old friend.",ko:"나는 제인을 만났는데, 그녀는 내 오랜 친구이다.",
- full:"I met Jane, {who} is my old friend.",
- opts:["that","who","which","whose"],ans:1,
- tip:"콤마(,) 뒤의 계속적 용법에는 that을 쓸 수 없습니다. 사람이면 who, 사물이면 which를 씁니다.",
- why:[["x","that — 계속적 용법에는 that을 쓸 수 없습니다."],
-      ["o","who — 정답. 사람 + 계속적 용법."],
-      ["x","which — 사물에 씁니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:3,tag:"앞 문장 전체",type:"mc",sent:"He passed the exam, ___ made his mom very happy.",ko:"그는 시험에 합격했고, 그것이 그의 어머니를 아주 기쁘게 했다.",
- full:"He passed the exam, {which} made his mom very happy.",
- opts:["who","which","that","what"],ans:1,
- tip:"「그가 시험에 합격한 일」 전체를 받을 때는 which를 씁니다. 이때 which는 앞 문장 전체를 가리킵니다.",
- why:[["x","who — 사람 한 명을 가리킬 때 씁니다."],
-      ["o","which — 정답. 앞 문장 전체를 받는 which."],
-      ["x","that — 계속적 용법에는 쓸 수 없습니다."],
-      ["x","what — 앞에 받을 말이 있으면 쓸 수 없습니다."]]},
-{lv:3,tag:"뜻 구별",type:"mc",ask:"「나에게는 아들이 둘 있는데, 그 둘 다 의사이다」에 알맞은 문장은?",
- full:"I have two sons, {who} are doctors.",ko:"나에게는 아들이 둘 있는데, 그 둘 다 의사이다.",
- opts:["I have two sons who are doctors.","I have two sons, who are doctors.","I have two sons that are doctors.","I have two sons, that are doctors."],ans:1,long:true,
- tip:"콤마가 없으면 「의사인 아들이 둘 있다(다른 아들도 있을 수 있음)」, 콤마가 있으면 「아들이 둘인데 그 둘 다 의사」라는 뜻이 됩니다.",
- why:[["x","two sons who are doctors — 콤마가 없어 「의사인 아들이 둘」이라는 뜻이 됩니다."],
-      ["o","two sons, who are doctors — 정답. 아들이 둘뿐이고 그 둘이 의사라는 뜻입니다."],
-      ["x","two sons that are doctors — 콤마가 없고 뜻도 다릅니다."],
-      ["x","two sons, that are doctors — 계속적 용법에는 that을 쓸 수 없습니다."]]},
-{lv:3,tag:"사물 계속적",type:"mc",sent:"Seoul, ___ is the capital of Korea, is a big city.",ko:"서울은, 한국의 수도인데, 큰 도시이다.",
- full:"Seoul, {which} is the capital of Korea, is a big city.",
- opts:["who","which","that","whose"],ans:1,
- tip:"도시·나라 같은 사물에는 which를 씁니다. 콤마 두 개 사이에 설명이 끼어든 형태입니다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["o","which — 정답."],
-      ["x","that — 계속적 용법에는 쓸 수 없습니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:3,tag:"생략 불가",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"I called Tom, {whom} I met last week.",ko:"나는 톰에게 전화했는데, 그는 내가 지난주에 만난 사람이다. (계속적 용법은 생략할 수 없습니다.)",
- opts:["I called Tom, whom I met last week.","She has a cat, which is very small.","I called Tom, I met last week.","He was late, which made me angry."],ans:2,long:true,
- tip:"계속적 용법에서는 목적격이라도 관계대명사를 생략할 수 없습니다.",
- why:[["o","I called Tom, whom I met last week. — 맞는 문장입니다."],
-      ["o","She has a cat, which is very small. — 그녀는 고양이를 기르는데, 아주 작다. 맞는 문장입니다."],
-      ["x","I called Tom, I met last week. — 계속적 용법에서 whom을 생략해 틀렸습니다. 이 문장이 정답입니다."],
-      ["o","He was late, which made me angry. — 그는 늦었고, 그것이 나를 화나게 했다. 맞는 문장입니다."]]},
-{lv:3,tag:"접속사로 바꾸기",type:"mc",ask:"다음 문장과 뜻이 같은 것은?  ·  I called Tom, who was at home.",
- full:"I called Tom, {and he} was at home.",ko:"나는 톰에게 전화했는데, 그는 집에 있었다.",
- opts:["I called Tom, and he was at home.","I called Tom, but he was at home.","I called Tom who was at home.","I called Tom, if he was at home."],ans:0,long:true,
- tip:"계속적 용법은 「접속사 + 대명사」로 바꿔 쓸 수 있습니다. who = and he.",
- why:[["o","and he was at home — 정답. 계속적 용법의 who는 「그리고 그는」으로 풀립니다."],
-      ["x","but he was at home — 「그러나」의 뜻은 문맥에 맞지 않습니다."],
-      ["x","I called Tom who was at home. — 콤마가 없어 「집에 있던 톰에게 전화했다」로 뜻이 달라집니다."],
-      ["x","if he was at home — 「만약」의 뜻은 맞지 않습니다."]]},
-{lv:3,tag:"사물 계속적",type:"mc",sent:"She gave me a book, ___ was very interesting.",ko:"그녀는 나에게 책을 한 권 주었는데, 그것은 아주 재미있었다.",
- full:"She gave me a book, {which} was very interesting.",
- opts:["who","whom","which","that"],ans:2,
- tip:"a book(사물)을 받으므로 which입니다. 계속적 용법에서는 that을 쓸 수 없습니다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["x","whom — 사람의 목적격입니다."],
-      ["o","which — 정답."],
-      ["x","that — 계속적 용법에는 쓸 수 없습니다."]]},
-{lv:3,tag:"사람 계속적",type:"mc",sent:"My father, ___ is fifty years old, still plays soccer.",ko:"우리 아버지는, 쉰 살이신데, 아직도 축구를 하신다.",
- full:"My father, {who} is fifty years old, still plays soccer.",
- opts:["who","which","that","whose"],ans:0,
- tip:"사람 + 계속적 용법이므로 who입니다. 콤마 사이의 설명을 빼고 읽으면 My father still plays soccer.가 됩니다.",
- why:[["o","who — 정답."],
-      ["x","which — 사물에 씁니다."],
-      ["x","that — 계속적 용법에는 쓸 수 없습니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:3,tag:"앞 문장 전체",type:"mc",sent:"He said he was sick, ___ was not true.",ko:"그는 아프다고 말했는데, 그것은 사실이 아니었다.",
- full:"He said he was sick, {which} was not true.",
- opts:["who","which","that","what"],ans:1,
- tip:"「그가 아프다고 말한 것」 전체를 받는 which입니다.",
- why:[["x","who — 사람 한 명을 가리킵니다."],
-      ["o","which — 정답. 앞 내용 전체를 받습니다."],
-      ["x","that — 계속적 용법에는 쓸 수 없습니다."],
-      ["x","what — 앞에 받을 내용이 있으면 쓸 수 없습니다."]]},
-{lv:3,tag:"사물 계속적",type:"mc",sent:"I visited Busan, ___ is famous for its beaches.",ko:"나는 부산을 방문했는데, 그곳은 해변으로 유명하다.",
- full:"I visited Busan, {which} is famous for its beaches.",
- opts:["who","that","which","whose"],ans:2,
- tip:"장소 이름을 받을 때도 which를 씁니다. be famous for ~ = ~로 유명하다.",
- why:[["x","who — 사람에게 씁니다."],
-      ["x","that — 계속적 용법에는 쓸 수 없습니다."],
-      ["o","which — 정답."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:3,tag:"뜻 구별",type:"mc",ask:"다음 문장의 알맞은 해석을 고르세요.  ·  I have a sister, who lives in Canada.",
- full:"I have a sister, {who} lives in Canada.",ko:"나에게는 여동생이 한 명 있는데, 그 애는 캐나다에 산다.",
- opts:["캐나다에 사는 여동생이 한 명 있다.(다른 여동생도 있을 수 있다)","여동생이 한 명 있는데, 그 애는 캐나다에 산다.","캐나다에 사는 여동생들이 있다.","여동생이 캐나다에 살고 싶어 한다."],ans:1,long:true,
- tip:"콤마가 있으면 「여동생이 한 명 있고, 덧붙여 설명하니 그 애는 캐나다에 산다」는 뜻입니다.",
- why:[["x","다른 여동생도 있을 수 있다 — 콤마가 없는 문장의 뜻입니다."],
-      ["o","여동생이 한 명 있는데, 그 애는 캐나다에 산다 — 정답. 계속적 용법의 해석입니다."],
-      ["x","여동생들이 있다 — a sister는 한 명입니다."],
-      ["x","살고 싶어 한다 — 그런 뜻은 없습니다."]]},
-{lv:3,tag:"어법 판단",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"This is my dog, {which} is three years old.",ko:"이 아이는 우리 개인데, 세 살이다. (계속적 용법에는 that을 쓸 수 없습니다.)",
- opts:["I know the man who lives here.","This is my dog, that is three years old.","She lost her phone, which was new.","Mr. Kim, who teaches math, is kind."],ans:1,long:true,
- tip:"콤마 뒤에는 that을 쓸 수 없습니다. which로 고쳐야 합니다.",
- why:[["o","I know the man who lives here. — 나는 여기 사는 남자를 안다. 맞는 문장입니다."],
-      ["x","This is my dog, that is three years old. — 콤마 뒤에 that을 써서 틀렸습니다. which로 고쳐야 합니다. 이 문장이 정답입니다."],
-      ["o","She lost her phone, which was new. — 그녀는 휴대전화를 잃어버렸는데, 새것이었다. 맞는 문장입니다."],
-      ["o","Mr. Kim, who teaches math, is kind. — 김 선생님은, 수학을 가르치시는데, 친절하시다. 맞는 문장입니다."]]},
-{lv:3,tag:"계속적 목적격",type:"mc",sent:"I met Mina, ___ I had not seen for a year.",ko:"나는 미나를 만났는데, 그 애를 일 년 동안 보지 못했었다.",
- full:"I met Mina, {whom} I had not seen for a year.",
- opts:["which","whom","that","whose"],ans:1,
- tip:"빈칸 뒤에 「주어 + 동사」가 오므로 목적격이고, 사람이므로 whom입니다. 계속적 용법이라 생략할 수 없습니다.",
- why:[["x","which — 사물에 씁니다."],
-      ["o","whom — 정답. 사람 + 목적격 + 계속적 용법."],
-      ["x","that — 계속적 용법에는 쓸 수 없습니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."]]},
-{lv:3,tag:"접속사로 바꾸기",type:"mc",ask:"다음 문장과 뜻이 같은 것은?  ·  She was kind to me, which I will never forget.",
- full:"She was kind to me, {and I} will never forget it.",ko:"그녀는 나에게 친절했고, 나는 그것을 결코 잊지 않을 것이다.",
- opts:["and I will never forget it","but I will never forget her","if I never forget it","that I will never forget"],ans:0,long:true,
- tip:"앞 문장 전체를 받는 which는 「and + it」으로 풀 수 있습니다.",
- why:[["o","and I will never forget it — 정답. which = and it."],
-      ["x","but I will never forget her — 「그러나」의 뜻이 아니고, 받는 대상도 사람이 아닙니다."],
-      ["x","if I never forget it — 「만약」의 뜻은 맞지 않습니다."],
-      ["x","that I will never forget — 계속적 용법을 that으로 바꿔 쓸 수 없습니다."]]},
-{lv:3,tag:"실전 종합",type:"mc",ask:"빈칸에 알맞은 것을 순서대로 고르세요.  ·  I like Jenny, ___ is very funny.  /  It rained a lot, ___ ruined our trip.",
- full:"I like Jenny, {who} is very funny. / It rained a lot, {which} ruined our trip.",ko:"나는 제니를 좋아하는데, 그 애는 아주 재미있다. / 비가 많이 왔는데, 그것이 우리 여행을 망쳤다.",
- opts:["who – which","which – who","that – which","who – that"],ans:0,long:true,
- tip:"사람을 받으면 who, 앞 문장 전체를 받으면 which입니다. 계속적 용법에는 that을 쓰지 않습니다.",
- why:[["o","who – which — 정답."],
-      ["x","which – who — 순서가 반대입니다."],
-      ["x","that – which — 계속적 용법에 that은 쓸 수 없습니다."],
-      ["x","who – that — 둘째 빈칸에 that을 쓸 수 없습니다."]]},
-/* ===== LEVEL 5 : 소유격 관계대명사 whose 15문제 ===== */
-{lv:4,tag:"소유격 기본",type:"mc",sent:"I know a boy ___ father is a doctor.",ko:"나는 아버지가 의사인 소년을 안다.",
- full:"I know a boy {whose} father is a doctor.",
- opts:["who","whom","whose","which"],ans:2,
- tip:"「~의 …」라는 뜻일 때 whose를 씁니다. whose 뒤에는 반드시 명사가 옵니다. (whose father = 그의 아버지)",
- why:[["x","who — 뒤에 동사가 바로 와야 합니다."],
-      ["x","whom — 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["o","whose — 정답. 뒤에 명사(father)가 옵니다."],
-      ["x","which — 뒤에 동사나 「주어 + 동사」가 옵니다."]]},
-{lv:4,tag:"소유격 기본",type:"mc",sent:"This is the house ___ roof is red.",ko:"이것은 지붕이 빨간 그 집이다.",
- full:"This is the house {whose} roof is red.",
- opts:["which","whose","who","that"],ans:1,
- tip:"사물의 소유격에도 whose를 씁니다. whose roof = 그것의 지붕.",
- why:[["x","which — 뒤에 명사가 오면 쓸 수 없습니다."],
-      ["o","whose — 정답. 사물에도 소유격 whose를 씁니다."],
-      ["x","who — 사람의 주격입니다."],
-      ["x","that — 뒤에 명사가 오면 쓸 수 없습니다."]]},
-{lv:4,tag:"문장 합치기",type:"mc",ask:"다음 두 문장을 한 문장으로 바르게 합친 것은?  ·  I have a friend. + His sister is a singer.",
- full:"I have a friend {whose sister} is a singer.",ko:"나는 누나가 가수인 친구가 있다.",
- opts:["I have a friend who sister is a singer.","I have a friend whose sister is a singer.","I have a friend whose his sister is a singer.","I have a friend which sister is a singer."],ans:1,long:true,
- tip:"뒤 문장의 소유격 His가 whose로 바뀝니다. His sister → whose sister.",
- why:[["x","who sister — who 뒤에는 명사가 올 수 없습니다."],
-      ["o","whose sister is a singer — 정답. His → whose."],
-      ["x","whose his sister — his를 또 쓰면 안 됩니다."],
-      ["x","which sister — which 뒤에는 명사가 올 수 없습니다."]]},
-{lv:4,tag:"어순",type:"mc",ask:"「머리가 긴 그 소녀」를 바르게 나타낸 것은?",
- full:"The girl {whose hair is} long is my sister.",ko:"머리가 긴 그 소녀는 내 여동생이다.",
- opts:["the girl whose is long hair","the girl whose hair is long","the girl who hair is long","the girl whose the hair is long"],ans:1,long:true,
- tip:"「whose + 명사 + 동사」 순서로 씁니다. whose 뒤의 명사에는 the를 붙이지 않습니다.",
- why:[["x","whose is long hair — whose 바로 뒤에 명사가 와야 합니다."],
-      ["o","whose hair is long — 정답."],
-      ["x","who hair is long — who 뒤에는 명사가 올 수 없습니다."],
-      ["x","whose the hair — whose 뒤의 명사에는 the를 쓰지 않습니다."]]},
-{lv:4,tag:"소유격 기본",type:"mc",sent:"I met a girl ___ name is Mina.",ko:"나는 이름이 미나인 소녀를 만났다.",
- full:"I met a girl {whose} name is Mina.",
- opts:["who","whose","whom","which"],ans:1,
- tip:"「이름이 ~인」은 whose name is ~로 씁니다.",
- why:[["x","who — 뒤에 동사가 와야 합니다."],
-      ["o","whose — 정답. 뒤에 명사(name)가 옵니다."],
-      ["x","whom — 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["x","which — 뒤에 명사가 오면 쓸 수 없습니다."]]},
-{lv:4,tag:"사물의 소유격",type:"mc",sent:"Look at the tree ___ leaves are turning red.",ko:"잎이 빨갛게 변하고 있는 저 나무를 보아라.",
- full:"Look at the tree {whose} leaves are turning red.",
- opts:["which","that","whose","who"],ans:2,
- tip:"나무 같은 사물의 「~의」에도 whose를 씁니다. leaf(잎)의 복수는 leaves입니다.",
- why:[["x","which — 뒤에 명사가 오면 쓸 수 없습니다."],
-      ["x","that — 뒤에 명사가 오면 쓸 수 없습니다."],
-      ["o","whose — 정답."],
-      ["x","who — 사람에게만 씁니다."]]},
-{lv:4,tag:"어법 판단",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"I have a friend {whose} eyes are blue.",ko:"나는 눈이 파란 친구가 있다. (whose 뒤에는 명사가 와야 합니다.)",
- opts:["I have a friend whose eyes are blue.","She is a girl whose dream is big.","I have a friend whose is tall.","This is a book whose cover is old."],ans:2,long:true,
- tip:"whose 뒤에는 반드시 명사가 옵니다. 「whose + 동사」는 쓸 수 없습니다.",
- why:[["o","I have a friend whose eyes are blue. — 나는 눈이 파란 친구가 있다. 맞는 문장입니다."],
-      ["o","She is a girl whose dream is big. — 그녀는 꿈이 큰 소녀이다. 맞는 문장입니다."],
-      ["x","I have a friend whose is tall. — whose 뒤에 명사가 없어 틀렸습니다. who is tall로 고쳐야 합니다. 이 문장이 정답입니다."],
-      ["o","This is a book whose cover is old. — 이것은 표지가 낡은 책이다. 맞는 문장입니다."]]},
-{lv:4,tag:"주격·소유격 구별",type:"mc",sent:"I know the man ___ lives next door.",ko:"나는 옆집에 사는 그 남자를 안다.",
- full:"I know the man {who} lives next door.",
- opts:["who","whose","whom","which"],ans:0,
- tip:"빈칸 뒤에 동사(lives)가 바로 오므로 주격 who입니다. 뒤에 명사가 오면 whose를 씁니다.",
- why:[["o","who — 정답. 뒤에 동사가 바로 옵니다."],
-      ["x","whose — 뒤에 명사가 와야 합니다."],
-      ["x","whom — 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["x","which — 사람에는 쓰지 않습니다."]]},
-{lv:4,tag:"주격·소유격 구별",type:"mc",sent:"I know the man ___ son lives next door.",ko:"나는 아들이 옆집에 사는 그 남자를 안다.",
- full:"I know the man {whose} son lives next door.",
- opts:["who","whose","whom","which"],ans:1,
- tip:"빈칸 뒤에 명사(son)가 오므로 소유격 whose입니다. 앞 문제와 비교해 보세요.",
- why:[["x","who — 뒤에 동사가 바로 와야 합니다."],
-      ["o","whose — 정답. 뒤에 명사(son)가 옵니다."],
-      ["x","whom — 뒤에 「주어 + 동사」가 와야 합니다."],
-      ["x","which — 뒤에 명사가 오면 쓸 수 없습니다."]]},
-{lv:4,tag:"소유격 기본",type:"mc",sent:"This is the book ___ cover is torn.",ko:"이것은 표지가 찢어진 그 책이다.",
- full:"This is the book {whose} cover is torn.",
- opts:["which","who","whose","whom"],ans:2,
- tip:"cover(표지)라는 명사가 뒤에 오므로 whose입니다. torn = 찢어진.",
- why:[["x","which — 뒤에 명사가 오면 쓸 수 없습니다."],
-      ["x","who — 사람에게 씁니다."],
-      ["o","whose — 정답."],
-      ["x","whom — 사람의 목적격입니다."]]},
-{lv:4,tag:"문장 합치기",type:"mc",ask:"다음 두 문장을 한 문장으로 바르게 합친 것은?  ·  I live in a house. + Its windows are big.",
- full:"I live in a house {whose windows} are big.",ko:"나는 창문이 큰 집에 산다.",
- opts:["I live in a house which windows are big.","I live in a house whose windows are big.","I live in a house whose its windows are big.","I live in a house who windows are big."],ans:1,long:true,
- tip:"소유격 Its가 whose로 바뀝니다. Its windows → whose windows.",
- why:[["x","which windows — which 뒤에는 명사가 올 수 없습니다."],
-      ["o","whose windows are big — 정답."],
-      ["x","whose its windows — its를 또 쓰면 안 됩니다."],
-      ["x","who windows — who 뒤에는 명사가 올 수 없습니다."]]},
-{lv:4,tag:"해석",type:"mc",ask:"다음의 알맞은 해석을 고르세요.  ·  the student whose bag is heavy",
- full:"The student {whose bag is} heavy is my friend.",ko:"가방이 무거운 그 학생은 내 친구이다.",
- opts:["가방이 무거운 학생","무거운 가방을 든 선생님","학생의 가방이 무겁다고 말했다","가방을 잃어버린 학생"],ans:0,long:true,
- tip:"whose는 「~의」라는 뜻이므로 「그 학생의 가방이 무겁다」 → 「가방이 무거운 학생」으로 풀립니다.",
- why:[["o","가방이 무거운 학생 — 정답."],
-      ["x","무거운 가방을 든 선생님 — student는 학생입니다."],
-      ["x","말했다 — 그런 뜻은 없습니다."],
-      ["x","가방을 잃어버린 학생 — lost가 없습니다."]]},
-{lv:4,tag:"소유격 기본",type:"mc",sent:"She has a cat ___ tail is very long.",ko:"그녀는 꼬리가 아주 긴 고양이를 기른다.",
- full:"She has a cat {whose} tail is very long.",
- opts:["who","which","whose","that"],ans:2,
- tip:"동물의 「~의」에도 whose를 씁니다. tail = 꼬리.",
- why:[["x","who — 사람에게 씁니다."],
-      ["x","which — 뒤에 명사가 오면 쓸 수 없습니다."],
-      ["o","whose — 정답."],
-      ["x","that — 뒤에 명사가 오면 쓸 수 없습니다."]]},
-{lv:4,tag:"실전 종합",type:"mc",ask:"빈칸에 알맞은 것을 순서대로 고르세요.  ·  the boy ___ is singing  /  the boy ___ voice is beautiful",
- full:"the boy {who} is singing / the boy {whose} voice is beautiful",ko:"노래하고 있는 그 소년 / 목소리가 아름다운 그 소년",
- opts:["who – whose","whose – who","who – whom","whom – whose"],ans:0,long:true,
- tip:"뒤에 동사가 오면 who, 뒤에 명사가 오면 whose입니다.",
- why:[["o","who – whose — 정답. is singing은 동사, voice는 명사입니다."],
-      ["x","whose – who — 순서가 반대입니다."],
-      ["x","who – whom — 둘째 빈칸 뒤에 명사가 오므로 whom을 쓸 수 없습니다."],
-      ["x","whom – whose — 첫 빈칸 뒤에 동사가 오므로 whom을 쓸 수 없습니다."]]},
-{lv:4,tag:"실전 종합",type:"mc",judge:true,ask:"어법상 어색한 문장을 고르세요.",
- full:"I have a friend {whose} birthday is today.",ko:"나는 오늘이 생일인 친구가 있다. (who's가 아니라 whose를 씁니다.)",
- opts:["I have a friend whose birthday is today.","The car whose color is red is mine.","I have a friend who's birthday is today.","Do you know the girl whose bike is new?"],ans:2,long:true,
- tip:"who's는 who is의 줄임말이라 뒤에 명사를 쓸 수 없습니다. 「~의」는 whose입니다.",
- why:[["o","I have a friend whose birthday is today. — 나는 오늘이 생일인 친구가 있다. 맞는 문장입니다."],
-      ["o","The car whose color is red is mine. — 색이 빨간 그 차는 내 것이다. 맞는 문장입니다."],
-      ["x","I have a friend who's birthday is today. — who's는 who is의 줄임말이라 틀렸습니다. whose로 고쳐야 합니다. 이 문장이 정답입니다."],
-      ["o","Do you know the girl whose bike is new? — 너는 자전거가 새것인 그 소녀를 아니? 맞는 문장입니다."]]},
+  {type:"n", tag:"한글로 이해", q:"영어에서 관계대명사가 이끄는 꾸밈말은 어디에 놓일까요?",
+   opts:["꾸밈을 받는 명사의 뒤","꾸밈을 받는 명사의 앞","문장 맨 앞","문장 맨 끝에만","아무 데나"], a:0,
+   exp:"우리말은 꾸밈말이 앞에 오지만, 영어는 명사 <b>뒤</b>에 옵니다. 잘 치는 친구 → a friend who plays well"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"꾸밈을 받는 명사(선행사)가 <b>사람</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["나를 도와준 **선생님**","공원에서 노는 **아이**","내 병을 고쳐 준 **의사**","내가 산 **책**","짖고 있는 **개**"], ans:[0,1,2],
+   exp:"선생님 · 아이 · 의사는 사람이라 <b>who</b>를 씁니다. 책과 개에는 which를 씁니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"꾸밈을 받는 명사(선행사)가 <b>사물</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["내가 어제 본 **영화**","엄마가 만든 **케이크**","벽에 걸린 **그림**","노래를 부르는 **소녀**","나를 부른 **남자**"], ans:[0,1,2],
+   exp:"영화 · 케이크 · 그림은 사물이라 <b>which</b>를 씁니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"관계대명사에 대한 설명으로 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
+   opts:["두 문장을 하나로 잇는다","앞의 명사를 뒤에서 꾸미는 말을 이끈다","선행사에 따라 who나 which를 고른다","문장 맨 앞에만 온다","동사의 때를 바꾼다"], ans:[0,1,2],
+   exp:"관계대명사는 선행사 <b>바로 뒤</b>에서 꾸밈말을 이끕니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 파란 눈을 가진 고양이가 있다.", q:"꾸밈을 받는 말(선행사)은?",
+   opts:["고양이","나","파란","눈","있다"], a:0,
+   exp:"‘파란 눈을 가진’이 <b>고양이</b>를 꾸밉니다. a cat which has blue eyes"},
+
+  {type:"n", tag:"한글로 이해", q:"관계대명사 <b>who</b>를 쓰는 것은?",
+   opts:["노래를 잘 부르는 가수","내가 읽은 책","엄마가 만든 빵","어제 산 신발","내가 본 영화"], a:0,
+   exp:"가수는 사람이라 <b>who</b>입니다. 나머지는 모두 사물이라 which입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"관계대명사 <b>which</b>를 쓰는 것은?",
+   opts:["내가 잃어버린 우산","나를 가르치는 선생님","옆집에 사는 아저씨","나를 도와준 친구","피아노를 치는 소녀"], a:0,
+   exp:"우산은 사물이라 <b>which</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘내가 어제 만난 소년’을 영어 차례로 바르게 풀어 쓴 것은?",
+   opts:["소년 + (그 소년을) 내가 어제 만났다","내가 + 어제 + 만난 + 소년","어제 + 소년 + 내가 + 만난","만난 + 소년 + 내가 + 어제","소년 + 어제 + 만난 + 내가"], a:0,
+   exp:"영어는 <b>명사를 먼저</b> 말하고 뒤에서 꾸밉니다. the boy who(m) I met yesterday"},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["관계대명사가 이끄는 말은 꾸미는 명사 앞에 온다.","관계대명사는 두 문장을 잇는다.","사람에는 who, 사물에는 which를 쓴다.","that은 사람과 사물 모두에 쓸 수 있다.","꾸밈을 받는 명사를 선행사라고 한다."], a:0,
+   exp:"영어에서는 꾸미는 말이 명사 <b>뒤</b>에 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"선행사가 <b>사람</b>일 때 쓰는 관계대명사는?",
+   opts:["who","which","what","where","when"], a:0, eng:true,
+   exp:"사람에는 <b>who</b>입니다. a boy who ~ · a teacher who ~"},
+
+  {type:"a", tag:"쉬운 영어", q:"선행사가 <b>사물이나 동물</b>일 때 쓰는 관계대명사는?",
+   opts:["which","who","whom","where","when"], a:0, eng:true,
+   exp:"사물과 동물에는 <b>which</b>입니다. a book which ~ · a dog which ~"},
+
+  {type:"a", tag:"쉬운 영어", q:"사람과 사물 <b>모두</b>에 쓸 수 있는 관계대명사는?",
+   opts:["that","who","which","whom","what"], a:0, eng:true,
+   exp:"<b>that</b>은 사람에도 사물에도 쓸 수 있습니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"관계대명사 <b>which</b>를 쓸 선행사를 모두 고르세요. (여러 개)",
+   opts:["a bag","the movie","a cat","a boy","my uncle"], ans:[0,1,2],
+   exp:"사물과 동물에 which를 씁니다. a boy · my uncle은 사람이라 who입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"선행사와 관계대명사가 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["a girl – who","a book – which","a dog – that","a man – which","a pencil – who"], ans:[0,1,2],
+   exp:"사람 who · 사물과 동물 which · 둘 다 that입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"두 문장을 이을 때 관계대명사가 <b>대신하는</b> 말은?<br><span class=\"eng\">I have a friend. She speaks English well.</span>",
+   opts:["She","I","a friend","English","well"], a:0, eng:true,
+   exp:"뒤 문장의 <b>She</b>가 관계대명사 who로 바뀌어 a friend 뒤에 붙습니다. I have a friend who speaks English well."},
+
+  {type:"a", tag:"쉬운 영어", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">I know the girl. She is singing.</span>",
+   opts:["I know the girl who is singing.","I know the girl which is singing.","I know the girl who she is singing.","I know the girl she who is singing.","I know who the girl she is singing."], a:0, eng:true,
+   exp:"She를 who로 바꾸어 the girl 뒤에 붙입니다. who가 She 노릇을 하니 she를 또 쓰지 않습니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I know a girl ___ sings well.", q:"‘나는 노래를 잘하는 소녀를 안다’가 되도록 알맞은 것은?",
+   opts:["who","which","what","where","when"], a:0, eng:true,
+   ko:"나는 노래를 잘하는 소녀를 안다.",
+   exp:"소녀는 사람이라 <b>who</b>입니다."}
 ];
 
-const LV = ["1단계","2단계","3단계","4단계","5단계"];
-const LVMAX = [20,20,20,15,15];
-const LVNAME = [
-  "주격·목적격 만들기",
-  "주격·목적격 기본과 생략",
-  "학교 실전 문제",
-  "계속적 용법",
-  "소유격 whose"
-];
-const LVDESC = [
-  "명사 뒤에 관계대명사 붙이는 법",
-  "수 일치와 생략, 중2 기본",
-  "중2~3 시험에 나오는 유형",
-  "콤마가 있는 관계대명사",
-  "「~의」를 나타내는 whose"
-];
-const LVINTRO = [
-/* 1 */ '<p class="i-lead">관계대명사는 <b>두 문장을 하나로 이어 주는 말</b>입니다. 앞의 명사를 뒤에서 꾸며 줍니다.</p>'+
-  '<div class="i-ex"><div class="en">The girl is eating. <span class="ar">→</span> the girl <b>who is eating</b></div><div class="kr">소녀가 먹고 있다. → 먹고 있는 소녀</div></div>'+
-  '<div class="i-ex"><div class="en">The dog ate the apple. <span class="ar">→</span> the apple <b>which the dog ate</b></div><div class="kr">개가 사과를 먹었다. → 개가 먹은 사과</div></div>'+
-  '<ul class="i-list"><li><b>사람</b>이면 who, <b>사물·동물</b>이면 which를 씁니다. (that은 둘 다 가능)</li>'+
-  '<li><b>주격</b>: 관계대명사 뒤에 <b>동사</b>가 바로 옵니다. — the girl who <b>is</b> eating</li>'+
-  '<li><b>목적격</b>: 관계대명사 뒤에 <b>주어 + 동사</b>가 옵니다. — the apple which <b>the dog ate</b></li>'+
-  '<li>목적어가 앞으로 나갔으므로 원래 자리에 it, him을 <b>또 쓰지 않습니다</b>.</li></ul>',
-/* 2 */ '<p class="i-lead">주격과 목적격을 문장 안에서 바르게 쓰는 연습입니다.</p>'+
-  '<div class="i-ex"><div class="en">The girl <b>who is playing the piano</b> is my sister.</div><div class="kr">피아노를 치고 있는 그 소녀는 내 여동생이다.</div></div>'+
-  '<ul class="i-list"><li>주어 뒤에 관계대명사절이 끼어들면, 문장의 <b>진짜 동사</b>가 그 뒤에 또 나옵니다.</li>'+
-  '<li>관계대명사 뒤의 동사는 <b>앞 명사의 수</b>에 맞춥니다. — The students who <b>study</b> / The man who <b>sits</b></li>'+
-  '<li><b>목적격</b>은 통째로 생략할 수 있습니다. — The book (which) I read</li>'+
-  '<li><b>주격은 생략할 수 없습니다.</b> 단, 「주격 + be동사」는 함께 생략합니다. — The girl (who is) sitting</li></ul>',
-/* 3 */ '<p class="i-lead">중2~3 학교 시험에 실제로 나오는 유형입니다. 다음 다섯 가지가 자주 나옵니다.</p>'+
-  '<ul class="i-list"><li>앞에 <b>사람과 동물(사물)이 함께</b> 오면 that을 씁니다.</li>'+
-  '<li>관계대명사 뒤에 <b>it, him이 남아 있으면 틀린 문장</b>입니다.</li>'+
-  '<li>전치사의 목적어 자리가 비어 있으면 <b>목적격</b>입니다. — the house which we lived <b>in</b></li>'+
-  '<li>생략할 수 있는 것은 <b>목적격뿐</b>입니다.</li>'+
-  '<li>긴 관계대명사절 뒤에 오는 <b>문장의 진짜 동사</b>를 찾는 문제가 나옵니다.</li></ul>',
-/* 4 */ '<p class="i-lead">관계대명사 앞에 <b>콤마(,)</b>가 있으면 계속적 용법입니다. 앞말을 <b>덧붙여 설명</b>합니다.</p>'+
-  '<div class="i-ex"><div class="en">I called Tom, <b>who</b> was at home. = I called Tom, <b>and he</b> was at home.</div><div class="kr">나는 톰에게 전화했는데, 그는 집에 있었다.</div></div>'+
-  '<ul class="i-list"><li>「접속사 + 대명사」로 풀립니다. — who = and he / which = and it</li>'+
-  '<li>계속적 용법에는 <b>that을 쓸 수 없습니다.</b></li>'+
-  '<li>목적격이라도 <b>생략할 수 없습니다.</b></li>'+
-  '<li>which는 <b>앞 문장 전체</b>를 받을 수 있습니다. — He was late, which made me angry.</li>'+
-  '<li>콤마가 없으면 「~한 …」으로 꾸며 주고, 콤마가 있으면 「~인데, …」로 덧붙입니다.</li></ul>',
-/* 5 */ '<p class="i-lead">whose는 <b>「~의」</b>라는 뜻의 소유격 관계대명사입니다.</p>'+
-  '<div class="i-ex"><div class="en">I have a friend. + <b>His</b> sister is a singer. <span class="ar">→</span> I have a friend <b>whose sister</b> is a singer.</div><div class="kr">나는 누나가 가수인 친구가 있다.</div></div>'+
-  '<ul class="i-list"><li>whose 뒤에는 <b>반드시 명사</b>가 옵니다. — whose father, whose name, whose roof</li>'+
-  '<li>사람·동물·사물 <b>모두 whose</b>를 씁니다.</li>'+
-  '<li>His, Her, Its, Their + 명사 → <b>whose + 명사</b>로 바뀝니다.</li>'+
-  '<li>whose 뒤의 명사에는 <b>the를 붙이지 않습니다.</b></li>'+
-  '<li>who\'s(= who is)와 헷갈리지 마세요.</li></ul>'
-];
-const PRAISE = [
-  {min:100, t:"당신이 지존이에요!", s:"만점입니다. 이 단계는 완벽하게 끝냈어요."},
-  {min:90,  t:"영어 고수 인정!", s:"실수 한두 개뿐이에요. 틀린 문제만 확인하면 만점입니다."},
-  {min:80,  t:"영어 고수 되기 일보 전!", s:"조금만 더 다듬으면 만점이에요."},
-  {min:50,  t:"와우.. 성장한 나를 칭찬해요.", s:"절반을 넘겼어요. 틀린 문제 해설을 한 번 더 읽어 보세요."},
-  {min:0,   t:"좀 더 노력해요.", s:"해설을 천천히 읽고, 틀린 문제만 다시 풀어 보세요."}
-];
-const MAXREC = 600;
-const KEY = "relpron90";
+/* ---------- LEVEL 2 : 넓히기와 함정 20 (모양 7 · 모두 고르기 6 · 함정 7) ---------- */
+var L2 = [
+  {type:"n", tag:"모양", sent:"I have a friend ___ lives in Canada.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["who","which","whose","what","where"], a:0, eng:true,
+   ko:"나는 캐나다에 사는 친구가 있다.",
+   exp:"선행사가 사람이고, 뒤에 동사 lives가 바로 오므로 <b>주격 who</b>입니다."},
 
-let curLv = 0, order = [], pos = 0;
-let done = new Set(), correct = new Set();
-let locked = false, retryMode = false, firstRun = true;
-let best = LVMAX.map(()=>null);
-let myName = "";
-let records = Array.isArray(DATA) ? DATA.slice() : [];
-let api = null;
-let canWrite = null;
-let rankTab = "all";
-let manage = false;
-let lastResult = null;
+  {type:"n", tag:"모양", sent:"This is the book ___ I read last week.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","who","whose","what","where"], a:0, eng:true,
+   ko:"이것은 내가 지난주에 읽은 책이다.",
+   exp:"선행사가 사물이고 뒤에 ‘주어 + 동사’가 오므로 <b>목적격 which</b>입니다."},
 
-const el = id => document.getElementById(id);
-const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const hl = s => esc(s).replace(/\{([^}]*)\}/g, (m,g)=>'<span class="hl">'+g+'</span>');
-const idxOf = lv => Q.map((q,i)=>({q,i})).filter(x=>x.q.lv===lv).map(x=>x.i);
-const plain = s => String(s).replace(/[{}]/g,"");
-const ls = {
-  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
-  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-};
-const ss = {
-  get(k){ try{ const v = sessionStorage.getItem(k); return v ? JSON.parse(v) : null; }catch(e){ return null; } },
-  set(k,v){ try{ sessionStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
-  del(k){ try{ sessionStorage.removeItem(k); }catch(e){} }
+  {type:"n", tag:"모양", sent:"The man ___ is standing there is my uncle.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["who","which","whose","what","where"], a:0, eng:true,
+   ko:"저기 서 있는 남자는 우리 삼촌이다.",
+   exp:"사람 선행사 + 동사 → <b>who</b>. 진짜 동사는 뒤의 is입니다."},
+
+  {type:"n", tag:"모양", sent:"I lost the umbrella ___ my mom bought for me.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","who","whose","what","whom"], a:0, eng:true,
+   ko:"나는 엄마가 사 주신 우산을 잃어버렸다.",
+   exp:"사물 선행사의 목적격은 which나 <b>that</b>입니다."},
+
+  {type:"n", tag:"모양", sent:"I have a friend ___ father is a pilot.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whose","who","which","that","what"], a:0, eng:true,
+   ko:"나는 아버지가 조종사인 친구가 있다.",
+   exp:"‘친구<b>의</b> 아버지’이므로 소유격 <b>whose</b>입니다. whose 뒤에는 명사가 옵니다."},
+
+  {type:"n", tag:"모양", sent:"This is ___ I want.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","which","that","who","whose"], a:0, eng:true,
+   ko:"이것이 내가 원하는 것이다.",
+   exp:"앞에 꾸밈을 받는 명사가 없고 ‘~하는 것’이므로 <b>what</b>입니다. what = the thing which"},
+
+  {type:"n", tag:"모양", sent:"The girl ___ I met yesterday was kind.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whom","which","whose","what","where"], a:0, eng:true,
+   ko:"내가 어제 만난 소녀는 친절했다.",
+   exp:"사람 선행사의 목적격은 <b>whom</b>입니다. who나 that을 써도 되고, 빼도 됩니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>who</b>가 들어갈 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["the boy ___ plays the drums","a woman ___ helped me","the doctor ___ works here","a pen ___ writes well","the cat ___ is sleeping"], ans:[0,1,2],
+   exp:"선행사가 사람인 셋에 who를 씁니다. 펜과 고양이에는 which를 씁니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>that</b>이 들어갈 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["the car ___ he bought","the teacher ___ I like","the dog ___ barks loudly","the boy ___ bag is red","This is ___ I need."], ans:[0,1,2],
+   exp:"that은 who · which 자리에 씁니다. 소유격 자리(whose)와 what 자리에는 쓸 수 없습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"밑줄 친 관계대명사를 <b>생략할 수 있는</b> 것을 모두 고르세요. (여러 개)",
+   opts:["the movie **which** I saw","the girl **whom** I love","the cake **that** Mom made","the boy **who** runs fast","the bus **which** goes downtown"], ans:[0,1,2],
+   exp:"뒤에 ‘주어 + 동사’가 오는 <b>목적격</b>은 생략할 수 있습니다. 주격(뒤에 바로 동사)은 생략할 수 없습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"밑줄 친 관계대명사가 <b>주격</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["a man **who** lives next door","a book **which** has many pictures","a girl **that** likes cats","the song **which** I love","the man **whom** I met"], ans:[0,1,2],
+   exp:"관계대명사 바로 뒤에 <b>동사</b>가 오면 주격입니다. 뒤에 I가 오는 둘은 목적격입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I have a cat which has blue eyes.","She is the girl who I told you about.","This is the house that Jack built.","I have a cat which have blue eyes.","She is the girl which I told you about."], ans:[0,1,2],
+   exp:"주격 뒤 동사는 선행사에 맞춥니다(a cat → has). 사람에는 which를 쓰지 않습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The boy who he is tall is my brother.","I like the song which it is popular.","This is the pen who I bought.","The movie which I saw was fun.","I know a girl whose name is Mina."], ans:[0,1,2],
+   exp:"관계대명사가 이미 대명사 노릇을 하니 he · it을 또 쓰지 않습니다. 펜(사물)에 who는 쓰지 않습니다."},
+
+  {type:"v", tag:"함정", hard:true, sent:"The boy who lives next door ___ very kind.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","be","am","being"], a:0, eng:true,
+   ko:"옆집에 사는 소년은 아주 친절하다.",
+   exp:"주어는 The boy(단수)입니다. 꾸밈말 who lives next door를 괄호로 묶고 보면 <b>is</b>가 보입니다."},
+
+  {type:"v", tag:"함정", hard:true, sent:"I have two friends who ___ in Busan.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["live","lives","living","is living","to live"], a:0, eng:true,
+   ko:"나는 부산에 사는 친구가 두 명 있다.",
+   exp:"주격 who 뒤의 동사는 <b>선행사</b>에 맞춥니다. two friends(복수) → <b>live</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["This is the book which I bought it yesterday.","This is the book which I bought yesterday.","This is the book I bought yesterday.","This is the book that I bought yesterday.","This is what I bought yesterday."], a:0, eng:true,
+   exp:"which가 이미 it 노릇을 하므로 <b>it을 또 쓰면 틀립니다</b>."},
+
+  {type:"v", tag:"함정", sent:"This is the cake ___ my sister made.", q:"빈칸에 들어갈 수 <b>없는</b> 것은?",
+   opts:["who","which","that","아무것도 쓰지 않는다"], a:0, eng:true,
+   full:"This is the cake **(which / that)** my sister made.", fullko:"이것은 언니가 만든 케이크이다.",
+   exp:"케이크는 사물이라 who는 안 됩니다. 목적격이라 <b>빼도</b> 됩니다."},
+
+  {type:"v", tag:"함정", hard:true, sent:"I know a boy ___ dream is to be an astronaut.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whose","who","who's","which","that"], a:0, eng:true,
+   ko:"나는 꿈이 우주 비행사가 되는 것인 소년을 안다.",
+   exp:"‘소년<b>의</b> 꿈’이므로 <b>whose</b>입니다. who's는 who is를 줄인 말이라 소리만 같습니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"밑줄 친 who의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["**Who** is that man?","I know a girl **who** can speak French.","The man **who** called you is my dad.","She has a son **who** is a doctor.","I thanked the boy **who** helped me."], a:0, eng:true,
+   exp:"첫째는 ‘누구’라고 묻는 <b>의문사</b>입니다. 나머지는 앞의 사람을 꾸미는 관계대명사입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ The girl ___ is dancing is my sister.<br>ⓑ The bike ___ I ride every day is old.</span>",
+   opts:["who – which","which – who","whose – which","who – whose","what – which"], a:0, eng:true,
+   exp:"ⓐ 사람 + 동사 → <b>who</b>, ⓑ 사물 + 주어·동사 → <b>which</b>"}
+];
+
+/* ---------- LEVEL 3 : 중3 학교 시험형 20 (빈칸 7 · 고치기 6 · 문장 잇기와 서술형 7) ---------- */
+var L3 = [
+  {type:"n", tag:"빈칸", sent:"I have an uncle, ___ lives in New York.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["who","that","which","whom","what"], a:0, eng:true,
+   ko:"나는 삼촌이 한 분 계신데, 그분은 뉴욕에 사신다.",
+   exp:"쉼표 뒤에 이어 설명하는 <b>계속적 용법</b>입니다. 계속적 용법에는 <b>that을 쓸 수 없습니다</b>."},
+
+  {type:"n", tag:"빈칸", sent:"He said nothing, ___ made me angry.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","that","what","who","it"], a:0, eng:true,
+   ko:"그는 아무 말도 하지 않았는데, 그것이 나를 화나게 했다.",
+   exp:"쉼표 뒤의 <b>which</b>는 앞 문장 전체(아무 말도 하지 않은 일)를 받을 수 있습니다."},
+
+  {type:"n", tag:"빈칸", sent:"This is the house in ___ I lived.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","that","who","what","whose"], a:0, eng:true,
+   ko:"이곳은 내가 살았던 집이다.",
+   exp:"전치사 바로 뒤에는 <b>which</b>(사람은 whom)를 씁니다. in that(✕)"},
+
+  {type:"n", tag:"빈칸", sent:"She is the only friend ___ I can trust.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","whose","which","where"], a:0, eng:true,
+   ko:"그녀는 내가 믿을 수 있는 유일한 친구다.",
+   exp:"선행사에 <b>the only</b>가 붙으면 that을 즐겨 씁니다. 사람이라 which는 안 됩니다."},
+
+  {type:"n", tag:"빈칸", sent:"___ I need is your help.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","That","Which","Who","Whose"], a:0, eng:true,
+   ko:"내가 필요한 것은 너의 도움이다.",
+   exp:"‘~하는 것’이면서 앞에 선행사가 없으므로 <b>What</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"Look at the boy and his dog ___ are running in the park.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","who","which","whom","whose"], a:0, eng:true,
+   ko:"공원에서 달리고 있는 소년과 그의 개를 봐.",
+   exp:"선행사가 <b>사람 + 동물</b>이면 who도 which도 아닌 <b>that</b>을 씁니다."},
+
+  {type:"n", tag:"빈칸", sent:"The boy ___ under the tree is Tom.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["sitting","sits","who sitting","is sitting","sat"], a:0, eng:true,
+   ko:"나무 아래 앉아 있는 소년은 Tom이다.",
+   exp:"The boy (who is) sitting — <b>주격 관계대명사 + be</b>는 함께 뺄 수 있습니다. 한쪽만 빼면 틀립니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I have a friend, **that** lives in Paris.</span>",
+   opts:["who","which","what","whom","whose"], a:0, eng:true,
+   exp:"쉼표 뒤 계속적 용법에는 that을 쓸 수 없습니다. 사람이니 <b>who</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">This is the town in **that** I was born.</span>",
+   opts:["which","who","what","where","whose"], a:0, eng:true,
+   exp:"전치사 뒤에는 that을 쓸 수 없습니다. in <b>which</b> (= where)"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">Tell me **that** you want for your birthday.</span>",
+   opts:["what","which","who","whose","whom"], a:0, eng:true,
+   exp:"앞에 선행사가 없고 ‘네가 원하는 것’이므로 <b>what</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">The book **who** is on the desk is mine.</span>",
+   opts:["which","whose","what","whom","where"], a:0, eng:true,
+   exp:"책은 사물이므로 <b>which</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["The people who live here are friendly.","The people who lives here are friendly.","The people which live here are friendly.","The people who live here is friendly.","The people live here who are friendly."], a:0, eng:true,
+   exp:"people은 복수라서 who <b>live</b> ~ <b>are</b>입니다."},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["This is the pen with that I wrote the letter.","I bought a shirt, that was on sale.","He is the tallest boy which I know.","Everything that he said was true.","I met a woman whose son is a singer."], ans:[0,1,2],
+   exp:"전치사 뒤 that(✕), 계속적 용법 that(✕), 최상급 + 사람에는 that이나 who입니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">I know a woman. Her son is a famous singer.</span>",
+   opts:["I know a woman whose son is a famous singer.","I know a woman who son is a famous singer.","I know a woman whose her son is a famous singer.","I know a woman which son is a famous singer.","I know a woman that her son is a famous singer."], a:0, eng:true,
+   exp:"Her가 <b>whose</b>로 바뀝니다. whose가 이미 ‘그녀의’ 노릇을 하니 her를 또 쓰지 않습니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">This is the house. My grandfather built it.</span>",
+   opts:["This is the house which my grandfather built.","This is the house which my grandfather built it.","This is the house who my grandfather built.","This is the house whose my grandfather built.","This is the house what my grandfather built."], a:0, eng:true,
+   exp:"it이 목적격 <b>which</b>로 바뀌고, it은 지웁니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", hard:true, q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">This is the chair. I sat on it.</span>",
+   opts:["This is the chair on which I sat.","This is the chair on that I sat.","This is the chair which I sat.","This is the chair on which I sat on.","This is the chair on who I sat."], a:0, eng:true,
+   exp:"on it → <b>on which</b>. 전치사를 앞으로 보냈으면 뒤에 또 쓰지 않습니다. (the chair which I sat on도 맞습니다)"},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘나는 그가 한 일을 믿을 수 없다.’</span>",
+   opts:["I can't believe what he did.","I can't believe which he did.","I can't believe the thing what he did.","I can't believe who he did.","I can't believe whose he did."], a:0, eng:true,
+   exp:"‘그가 한 것’ = <b>what he did</b>. what 앞에 the thing을 또 쓰지 않습니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Who is Minji?<br>B: She is the girl ___ won the speech contest.</span>",
+   opts:["who","which","whose","what","whom"], a:0, eng:true,
+   exp:"사람 선행사 + 동사 won → 주격 <b>who</b>입니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", hard:true, q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">I have a dog ⓐwhich is very smart. He can do tricks ⓑthat surprise people. My friend Jina, ⓒthat lives next door, loves him. ⓓWhat she likes most is his big eyes. He is the dog ⓔwhich everyone loves.</span>",
+   opts:["ⓒ","ⓐ","ⓑ","ⓓ","ⓔ"], a:0, eng:true,
+   exp:"쉼표 사이에 끼운 계속적 용법에는 that을 쓸 수 없습니다. ⓒ는 <b>who</b>가 되어야 합니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", hard:true, q:"밑줄 친 what의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["**What** is your name?","**What** I want is a rest.","This is **what** I need.","Show me **what** you have.","I believe **what** she said."], a:0, eng:true,
+   exp:"첫째는 ‘무엇’이라고 묻는 <b>의문사</b>입니다. 나머지는 ‘~하는 것’이라는 관계대명사입니다."}
+];
+
+/* ---------- LEVEL 4 : 전 학년 아우르기 20 (쓰임 가리기 7 · 바꿔 쓰기 6 · 종합 7) ---------- */
+var L4 = [
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 that이 <b>관계대명사</b>인 것은?",
+   opts:["This is the song **that** I like.","I know **that** you are busy.","**That** is my bike.","She said **that** she was tired.","I'm glad **that** you came."], a:0, eng:true,
+   exp:"앞에 명사 the song이 있고 뒤에 목적어가 빠져 있으니 관계대명사입니다. 나머지는 접속사이거나 ‘저것’입니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 부분을 <b>생략할 수 있는</b> 것은?",
+   opts:["The girl **whom** I met was kind.","The girl **who** helped me was kind.","I have a friend, **who** is a nurse.","This is the box **in which** I keep toys.","The boy **whose** bag is red is Tom."], a:0, eng:true,
+   exp:"목적격 관계대명사만 뺄 수 있습니다. 주격 · 계속적 용법 · 전치사 + 관계대명사 · whose는 뺄 수 없습니다."},
+
+  {type:"n", tag:"쓰임 가리기", sent:"This is the park ___ I play soccer every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["where","which","what","who","whose"], a:0, eng:true,
+   ko:"이곳은 내가 날마다 축구를 하는 공원이다.",
+   exp:"뒤 문장에 빠진 것 없이 완전하므로 장소의 관계부사 <b>where</b>입니다. where = in which"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"I remember the day ___ we first met.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["when","which","where","what","who"], a:0, eng:true,
+   ko:"나는 우리가 처음 만난 날을 기억한다.",
+   exp:"때를 나타내는 선행사 the day 뒤에는 관계부사 <b>when</b>입니다. when = on which"},
+
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 which가 가리키는 것은?<br><span class=\"eng\">He passed the test, **which** made his parents happy.</span>",
+   opts:["그가 시험에 합격한 일","the test","his parents","He","happy"], a:0,
+   exp:"쉼표 뒤의 which는 <b>앞 문장 전체</b>를 받을 수 있습니다. 합격한 일이 부모님을 기쁘게 했습니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"빈칸에 <b>which</b>가 들어갈 수 <b>없는</b> 것은?",
+   opts:["This is the place ___ I was born.","This is the place ___ I visited last year.","This is the book ___ I told you about.","I have a bag ___ is very light.","He broke the vase, ___ was very old."], a:0, eng:true,
+   exp:"I was born은 빠진 것이 없는 완전한 문장이라 관계부사 <b>where</b>가 와야 합니다. visited 뒤에는 목적어가 빠져 which가 됩니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, multi:true, eng:true, q:"괄호 안의 말을 <b>생략해도 되는</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The movie (which) we watched was boring.","The man (who) I was talking to is my coach.","The boy (who is) playing the guitar is my son.","I have a sister, (who) is a nurse.","The girl (who) lives next door is Amy."], ans:[0,1,2],
+   exp:"목적격과 ‘주격 + be’는 뺄 수 있습니다. 계속적 용법과 주격 혼자는 뺄 수 없습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I have a brother, who lives in Busan.<br>= I have a brother, ___ he lives in Busan.</span>",
+   opts:["and","but","so","or","because"], a:0, eng:true,
+   exp:"계속적 용법은 <b>접속사 + 대명사</b>로 풀어 쓸 수 있습니다. 여기서는 and he입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">This is the thing which I wanted.<br>= This is ___ I wanted.</span>",
+   opts:["what","that","which","who","whose"], a:0, eng:true,
+   exp:"the thing which = <b>what</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">This is the house where he lives.<br>= This is the house ___ which he lives.</span>",
+   opts:["in","to","for","with","of"], a:0, eng:true,
+   exp:"where = <b>in which</b>입니다. 관계부사는 ‘전치사 + which’로 바꿔 쓸 수 있습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The girl who is wearing glasses is Sora.<br>= The girl ___ glasses is Sora.</span>",
+   opts:["wearing","wears","wore","to wear","is wearing"], a:0, eng:true,
+   exp:"<b>who is</b>를 함께 빼면 wearing만 남습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장을 한 문장으로 만들 때 빈칸에 알맞은 것은?<br><span class=\"eng\">I met a man. His car was stolen.<br>= I met a man ___ car was stolen.</span>",
+   opts:["whose","who","which","that","what"], a:0, eng:true,
+   exp:"His → <b>whose</b>. 도둑맞은 차의 주인인 남자입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"뜻이 같은 짝을 모두 고르세요. (여러 개)",
+   opts:["the thing that I said = what I said","the place where I live = the place in which I live","the day when she left = the day on which she left","the man who I met = the man whose I met","the reason why he cried = the reason which he cried"], ans:[0,1,2],
+   exp:"관계부사는 ‘전치사 + which’와 같습니다. why = for which입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I don't know the way how he solved it.","I don't know how he solved it.","I don't know the way he solved it.","This is why I was late.","This is the reason why I was late."], a:0, eng:true,
+   exp:"<b>the way와 how는 함께 쓰지 않습니다</b>. 둘 중 하나만 씁니다."},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["What he said made me sad.","She is the first girl that came here.","I have a friend whose sister is a nurse.","This is the store which I bought this hat.","The man which is tall is my father."], ans:[0,1,2],
+   exp:"store 뒤 문장은 완전하므로 where(= at which)가 와야 합니다. 사람에는 which를 쓰지 않습니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 공통으로 알맞은 것은?<br><span class=\"eng\">• He is the best player ___ I have ever seen.<br>• Is there anything ___ I can do for you?</span>",
+   opts:["that","which","what","who","whose"], a:0, eng:true,
+   exp:"최상급(the best)과 -thing 뒤에는 <b>that</b>을 즐겨 씁니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"밑줄 친 who의 쓰임이 다음 문장과 <b>같은</b> 것은?<br><span class=\"eng\">I know the boy **who** is dancing.</span>",
+   opts:["The woman **who** lives here is kind.","**Who** is dancing?","I wonder **who** he is.","**Who** do you like?","Tell me **who** broke it."], a:0, eng:true,
+   exp:"앞의 사람 명사를 꾸미는 관계대명사는 첫째뿐입니다. 나머지는 ‘누구’라는 의문사입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">I have two sisters, who are teachers.</span>",
+   opts:["나는 언니가 둘 있는데, 둘 다 선생님이다.","나는 선생님인 언니가 둘 있다(다른 언니도 더 있을 수 있다).","나는 선생님 두 명을 알고 있다.","선생님인 두 언니가 나를 가르친다.","나는 선생님이 되고 싶은 언니가 둘 있다."], a:0,
+   exp:"쉼표가 있는 계속적 용법이라 ‘언니가 둘 있는데, 그들은’으로 이어 풀이합니다. 언니는 <b>딱 둘</b>입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ This is the museum ___ I visited last week.<br>ⓑ This is the museum ___ I saw the painting.</span>",
+   opts:["which – where","where – which","where – where","which – which","what – where"], a:0, eng:true,
+   exp:"ⓐ visited 뒤에 목적어가 빠져 <b>which</b>, ⓑ 뒤 문장이 완전하므로 <b>where</b>입니다."},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["계속적 용법에는 that을 쓸 수 있다.","전치사 바로 뒤에는 that을 쓸 수 없다.","what은 선행사를 품고 있어 앞에 명사가 없다.","목적격 관계대명사는 생략할 수 있다.","whose 뒤에는 명사가 온다."], a:0,
+   exp:"쉼표 뒤 계속적 용법에는 <b>that을 쓸 수 없습니다</b>. who나 which를 씁니다."}
+];
+
+var LEVELS = {
+  1:{name:"기본1 · 관계대명사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 두 문장 잇기 · 선행사 · 사람 who와 사물 which · 쉬운 영어 문장", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 넓히기와 함정", desc:"주격·목적격·소유격 · what · 생략 · 동사 맞추기 함정", qs:L2, typeLabels:{n:"모양",a:"모두 고르기",v:"함정"}},
+  3:{name:"기본3 · 중3 학교 시험형", desc:"계속적 용법 · 전치사 + which · that만 쓰는 경우 · 문장 잇기와 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"문장 잇기와 서술형"}},
+  4:{name:"기본4 · 전 학년 아우르기", desc:"접속사 that과 의문사 구별 · 관계부사 where·when · 바꿔 쓰기", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
 };
 
-/* ---------- 자기 자신을 새 버전으로 저장 ---------- */
-const PH = k => "__" + k + "__";
-function buildDoc(recs){
-  const data = JSON.stringify(recs);
-  const tpl = JSON.stringify(TPL).replace(/<\//g, "<\\/");
-  return TPL.replace(PH("DATA"), () => data).replace(PH("TPL"), () => tpl);
+/* ===================== 개념 화면 ===================== */
+function figRelpron(){
+  return '<svg class="fig" viewBox="0 0 560 170" role="img" aria-label="두 문장을 관계대명사로 이어 붙이는 그림">'+
+    '<rect x="14" y="12" width="250" height="44" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
+    '<text x="139" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">I have a friend.</text>'+
+    '<rect x="296" y="12" width="250" height="44" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
+    '<text x="421" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ra)" font-family="Newsreader, serif">She lives in Jeju.</text>'+
+    '<text x="421" y="76" text-anchor="middle" font-size="14" fill="var(--muted)">She → who</text>'+
+    '<path d="M280 84 L280 104" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"/>'+
+    '<path d="M272 98 L280 108 L288 98" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+
+    '<rect x="44" y="114" width="472" height="44" rx="12" fill="var(--card)" stroke="var(--accent)" stroke-width="2"/>'+
+    '<text x="280" y="142" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ink)" font-family="Newsreader, serif">I have a friend who lives in Jeju.</text>'+
+  '</svg>';
 }
 
-/* ---------- 내 기기에 남기는 기록 ---------- */
-function loadLocal(){
-  try{
-    const raw = ls.get(KEY+".best");
-    if(raw){ const v = JSON.parse(raw); if(Array.isArray(v) && v.length===LVMAX.length) best = v; }
-  }catch(e){}
-  myName = ls.get(KEY+".name") || "";
-}
-function saveBest(){ ls.set(KEY+".best", JSON.stringify(best)); }
-function getRuns(){
-  try{ return JSON.parse(ls.get(KEY+".runs") || "{}") || {}; }catch(e){ return {}; }
-}
-function bumpRun(lv){
-  const key = myName || "_";
-  const runs = getRuns();
-  if(!Array.isArray(runs[key])) runs[key] = LVMAX.map(()=>0);
-  runs[key][lv]++;
-  ls.set(KEY+".runs", JSON.stringify(runs));
-  firstRun = runs[key][lv] === 1;
-}
-
-function updateRail(playing){
-  for(let i=0;i<LVMAX.length;i++){
-    let w = best[i]==null ? 0 : best[i];
-    if(playing && i===curLv && !retryMode) w = done.size/LVMAX[i]*100;
-    el("f"+i).style.width = w+"%";
-    el("p"+i).textContent = best[i]==null ? "" : best[i]+"점";
-    el("f"+i).parentElement.parentElement.classList.toggle("done", best[i]===100);
-  }
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · 관계대명사가 뭐예요?</h2>'+
+  '<p class="lead">두 문장에 <b>같은 사람이나 물건</b>이 나오면 하나로 이을 수 있습니다. 이때 쓰는 말이 <b>관계대명사</b>입니다. 이어 주는 일(접속사)과 대신하는 일(대명사)을 한꺼번에 합니다.</p>'+
+  figRelpron()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>선행사를 먼저 찾습니다</span>'+
+    '<div class="ex">나는 [제주에 사는] <u class="hl">친구</u>가 있다.<span class="k">꾸밈을 받는 ‘친구’가 선행사</span></div>'+
+    '<p>꾸밈을 받는 명사를 <b>선행사</b>라고 합니다. 선행사가 사람인지 사물인지에 따라 관계대명사를 고릅니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>사람 · 사물 · 둘 다</span>'+
+    '<div class="swap"><span>사람</span><span class="ar">→</span><span class="good">who</span></div>'+
+    '<div class="swap"><span>사물 · 동물</span><span class="ar">→</span><span class="good">which</span></div>'+
+    '<div class="swap"><span>사람 · 사물 모두</span><span class="ar">→</span><span class="good">that</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>우리말과 차례가 반대입니다</span>'+
+    '<div class="swap"><span>제주에 사는 친구</span><span class="ar">↔</span><span class="good">a friend who lives in Jeju</span></div>'+
+    '<p>우리말은 꾸미는 말이 <b>앞</b>에, 영어는 명사 <b>뒤</b>에 옵니다.</p>'+
+  '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">a girl <u class="hl a">who</u> sings well<span class="k">노래를 잘하는 소녀 — 사람</span></div><div class="ex">a book <u class="hl a">which</u> I read<span class="k">내가 읽은 책 — 사물</span></div></div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>선행사를 찾고 → 사람이면 <b>who</b>, 사물이면 <b>which</b>, 둘 다 되는 <b>that</b>.</div>';
 }
 
-/* ---------- 홈 ---------- */
-function drawHome(){
-  let h="";
-  for(let i=0;i<LVMAX.length;i++){
-    const b = best[i]==null ? '<span class="best"><em>미도전</em></span>'
-            : '<span class="best">'+best[i]+'<em>점</em></span>';
-    h += '<button class="lvcard" data-lv="'+i+'">'+
-         '<span class="rank">'+(i+1)+'</span>'+
-         '<span class="body"><span class="name">'+LVNAME[i]+' <span>· '+LVMAX[i]+'문제</span></span>'+
-         '<span class="desc">'+LVDESC[i]+'</span></span>'+b+'</button>';
-  }
-  el("levelPick").innerHTML = h;
-  el("levelPick").querySelectorAll(".lvcard").forEach(b=>{
-    b.addEventListener("click", ()=>openIntro(+b.dataset.lv));
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · 넓히기와 함정</h2>'+
+  '<p class="lead">관계대명사 뒤에 무엇이 오는지 보면 주격 · 목적격 · 소유격이 가려집니다. 앞에 선행사가 없는 <b>what</b>도 함께 익힙니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>뒤를 보면 격이 보입니다</span>'+
+    '<div class="ex">a friend <u class="hl">who</u> lives in Canada<span class="k">뒤에 바로 동사 → 주격 (who · which · that)</span></div>'+
+    '<div class="ex">the book <u class="hl">which</u> I read<span class="k">뒤에 주어 + 동사 → 목적격 (whom · which · that) — 생략 가능</span></div>'+
+    '<div class="ex">a friend <u class="hl">whose</u> father is a pilot<span class="k">뒤에 명사 → 소유격 whose(~의)</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>선행사가 없으면 what</span>'+
+    '<div class="swap"><span>the thing which I want</span><span class="ar">=</span><span class="good">what I want</span></div>'+
+    '<p>what은 ‘<b>~하는 것</b>’이라는 뜻을 품고 있어서 앞에 명사를 쓰지 않습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>가장 많이 틀리는 세 곳</span>'+
+    '<div class="swap"><span>the book which I bought it</span><span class="ar">✕</span><span class="good">the book which I bought</span></div>'+
+    '<div class="swap"><span>two friends who lives</span><span class="ar">✕</span><span class="good">two friends who live</span></div>'+
+    '<div class="swap"><span>The boy who lives here are</span><span class="ar">✕</span><span class="good">The boy who lives here is</span></div>'+
+    '<p>대명사를 또 쓰지 않기, 주격 뒤 동사는 <b>선행사</b>에 맞추기, 진짜 동사는 <b>문장 주어</b>에 맞추기.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">외우는 한 줄</span>뒤에 동사면 주격, 주어면 목적격, 명사면 whose. 앞에 명사가 없으면 what.</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 중3 학교 시험형</h2>'+
+  '<p class="lead">중3 시험에 나오는 모양입니다. 쉼표가 있는 계속적 용법, 전치사 + which, that만 쓰는 경우를 익히고 문장 잇기를 풉니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>쉼표가 있으면 계속적 용법</span>'+
+    '<div class="ex">I have an uncle, <u class="hl">who</u> lives in New York.<span class="k">삼촌이 한 분 계신데, 그분은 — that은 쓸 수 없습니다</span></div>'+
+    '<div class="ex">He said nothing, <u class="hl">which</u> made me angry.<span class="k">which가 앞 문장 전체를 받습니다</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>전치사 뒤에는 which · whom</span>'+
+    '<div class="swap"><span>the house in that I lived</span><span class="ar">✕</span><span class="good">the house in which I lived</span></div>'+
+    '<p>전치사를 뒤에 남기면 the house which I lived <b>in</b>도 맞습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>that을 즐겨 쓰는 선행사</span>'+
+    '<div class="ex">the only · the first · the best<span class="k">the only friend that I can trust</span></div>'+
+    '<div class="ex">-thing · all · every<span class="k">everything that he said</span></div>'+
+    '<div class="ex">사람 + 동물<span class="k">the boy and his dog that are running</span></div>'+
+    '<p>‘주격 관계대명사 + be’는 함께 뺄 수 있습니다. The boy (who is) sitting there</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>쉼표가 있는지, 앞에 전치사가 있는지 — 둘 다 that을 쓸 수 없는 자리입니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
+  '<p class="lead">마지막입니다. 모양이 같은 that · who · what을 가려내고, 관계부사 where · when과 견주어 봅니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>같은 모양, 다른 쓰임</span>'+
+    '<div class="swap"><span>I know that you are busy.</span><span class="ar">↔</span><span class="good">the song that I like</span></div>'+
+    '<p>앞에 명사가 있고 뒤 문장에 빠진 것이 있으면 <b>관계대명사</b>, 뒤 문장이 완전하면 <b>접속사</b>입니다.</p>'+
+    '<div class="swap"><span>Who is that man?</span><span class="ar">↔</span><span class="good">the man who called you</span></div>'+
+    '<p>‘누구’라고 물으면 의문사, 앞의 사람을 꾸미면 관계대명사입니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>관계부사 = 전치사 + which</span>'+
+    '<div class="ex">the park <u class="hl a">where</u> I play soccer<span class="k">= in which · 장소</span></div>'+
+    '<div class="ex">the day <u class="hl a">when</u> we first met<span class="k">= on which · 때</span></div>'+
+    '<div class="ex">the reason <u class="hl a">why</u> I was late<span class="k">= for which · 까닭</span></div>'+
+    '<p>뒤 문장이 <b>완전하면</b> 관계부사, 목적어가 <b>빠져 있으면</b> which입니다. the way와 how는 함께 쓰지 않습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>계속적 용법 풀어 쓰기</span>'+
+    '<div class="swap"><span>a brother, who lives in Busan</span><span class="ar">=</span><span class="good">a brother, and he lives in Busan</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마지막 한마디</span>관계사 문제는 <b>뒤 문장에서 무엇이 빠졌는지</b>를 보면 거의 다 풀립니다.</div>';
+}
+
+var LVCHEER = {
+  1:"두 문장을 하나로 잇는 법을 알게 되었어요. 2단계에서는 주격·목적격·소유격을 가립니다.",
+  2:"뒤를 보고 격을 가리는 눈이 생겼습니다. 3단계는 중3 학교 시험형입니다.",
+  3:"계속적 용법과 전치사 + which까지 해냈어요. 마지막 단계만 남았습니다.",
+  4:"관계부사까지 가려냈습니다. 관계대명사는 이제 든든합니다!"
+};
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_relpron_v2", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
   });
-  el("nameIn").value = myName;
-  updateRail(false);
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
 }
 
-/* ---------- 문제 ---------- */
-function render(){
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
+
+/* ===================== 문제 ===================== */
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=L.qs.map(function(_,i){return i;});
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  clearProg();
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || "";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
+
+  var h="";
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
   saveProg();
-  const idx = order[pos];
-  const q = Q[idx];
-  locked = false;
-  el("qnum").textContent = (pos+1) + " / " + order.length;
-  el("qlevel").textContent = LV[q.lv];
-  el("qtag").textContent = q.tag;
-  el("qexp").innerHTML = "";
+  S.answered=false;S.picked=-1;
 
-  let html = "";
-  if(q.type === "in"){
-    html += '<div class="ask">다음 동사의 동명사형(-ing)을 쓰세요.</div>';
-    html += '<div class="wordcard">'+esc(q.word)+'<small>'+esc(q.ko)+'</small></div>';
-    html += '<div class="answer-row"><input type="text" id="ansIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="-ing 형태"><button class="btn" id="check">확인</button></div>';
-  }else{
-    if(q.ask) html += '<div class="ask">'+esc(q.ask)+'</div>';
-    if(q.sent){
-      html += '<p class="sent">'+esc(q.sent).replace("___","<b>&nbsp;?&nbsp;</b>")+'</p>';
-      html += '<p class="ko">'+esc(q.ko)+'</p>';
-    }
-    html += '<div class="opts">';
-    q.opts.forEach((o,i)=>{
-      html += '<button class="opt'+(q.long?' long':'')+'" data-i="'+i+'"><span class="key">'+(i+1)+'</span><span class="txt">'+esc(o)+'</span></button>';
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
     });
-    html += '</div>';
-  }
-  el("qbody").innerHTML = html;
-
-  if(q.type === "in"){
-    const inp = el("ansIn");
-    el("check").addEventListener("click", ()=>submitInput(idx));
-    inp.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); locked ? next() : submitInput(idx); }});
-    inp.focus({preventScroll:true});
-  }else{
-    el("qbody").querySelectorAll(".opt").forEach(b=>{
-      b.addEventListener("click", ()=>pick(idx, +b.dataset.i));
-    });
-  }
-  updateRail(true);
-}
-
-function submitInput(idx){
-  if(locked) return;
-  const q = Q[idx];
-  const inp = el("ansIn");
-  const val = inp.value.trim().toLowerCase();
-  if(!val){ inp.focus(); return; }
-  locked = true;
-  const ok = val === q.a;
-  inp.disabled = true;
-  el("check").disabled = true;
-  finish(idx, ok, q.a, ok ? "" : inp.value.trim());
-}
-
-function pick(idx, i){
-  if(locked) return;
-  locked = true;
-  const q = Q[idx];
-  const ok = i === q.ans;
-  el("qbody").querySelectorAll(".opt").forEach((b,bi)=>{
-    b.disabled = true;
-    if(bi === i) b.classList.add(ok ? "pick-ok" : "pick-no");
-    if(bi === q.ans){
-      if(!ok) b.classList.add("reveal");
-      b.insertAdjacentHTML("beforeend",'<span class="res">정답</span>');
-    }else if(bi === i){
-      b.insertAdjacentHTML("beforeend",'<span class="res">오답</span>');
-    }
   });
-  finish(idx, ok, q.judge ? ((q.ans+1)+"번") : q.opts[q.ans]);
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
+  show("quiz");
 }
 
-function finish(idx, ok, answerText, typed){
-  const q = Q[idx];
-  done.add(idx);
-  if(ok) correct.add(idx); else correct.delete(idx);
-  updateRail(true);
+function buildFull(q){
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
 
-  let h = '<div class="exp">';
-  h += '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"× 오답입니다")+
-       '<span class="ans">정답: '+esc(answerText)+'</span></div>';
-  if(typed) h += '<p class="ko">내가 쓴 답: '+esc(typed)+'</p>';
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
 
-  if(q.type === "in"){
-    h += '<div class="full"><span class="h">예문</span><div class="en">'+hl(q.ex)+'</div>'+
-         '<div class="kr">'+esc(q.exKo)+'</div></div>';
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
+
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
   }else{
-    h += '<div class="full"><span class="h">'+(q.fullLabel || (q.judge?"이렇게 고쳐야 합니다":"완성 문장"))+'</span>'+
-         '<div class="en">'+hl(q.full)+'</div><div class="kr">'+esc(q.ko)+'</div></div>';
+    if(!ok) S.retryWrong.push(S.list[S.i]);
   }
 
-  h += '<div class="tip"><span class="h">Point</span>'+esc(q.tip)+'</div>';
-  h += '<ul class="why">';
-  q.why.forEach(w=>{
-    h += '<li><span class="sign '+w[0]+'">'+(w[0]==="o"?"○":"×")+'</span><span>'+esc(w[1])+'</span></li>';
-  });
-  h += '</ul>';
-  const last = pos === order.length-1;
-  h += '<div class="nav"><button class="btn" id="next">'+(last?"결과 보기":"다음 문제 →")+'</button></div>';
-  h += '</div>';
-  el("qexp").innerHTML = h;
-  el("next").addEventListener("click", next);
-  el("next").focus({preventScroll:true});
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
 }
 
 function next(){
-  if(pos === order.length-1){ showResult(); return; }
-  pos++;
-  render();
-  el("quiz").scrollIntoView({behavior:"smooth", block:"start"});
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
 }
 
-/* ---------- 결과 ---------- */
-function showResult(){
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+function praise(p){
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  clearProg();
+  var L=LEVELS[S.level], total=L.qs.length;
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var tl=L.typeLabels||{};
+  var keys=Object.keys(tl).filter(function(k){ return S.byType[k] && S.byType[k][1]>0; });
+  var bd;
+  if(keys.length<2){
+    bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+       '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>'+
+       '<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  }else{
+    bd=keys.map(function(k){
+      var cls = k==="v" ? "v3" : k;
+      return '<div class="bd '+cls+'"><div class="t">'+esc(tl[k])+'</div><div class="v">'+S.byType[k][0]+'/'+S.byType[k][1]+'</div></div>';
+    }).join('');
+  }
+  $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
+  $("rbreak").innerHTML=bd;
+
+  var isAdmin = (S.name==="꾸메땅");
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null && !isAdmin){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
+      w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
   show("result");
-  const hit = correct.size;
-  const miss = LVMAX[curLv] - hit;
-  const score = Math.round(hit / LVMAX[curLv] * 100);
-  if(best[curLv]==null || score > best[curLv]){ best[curLv] = score; saveBest(); }
-  lastResult = {lv:curLv, score:score, hit:hit, full:!retryMode};
-
-  el("rtitle").textContent = LV[curLv] + " · " + LVNAME[curLv] + " 결과";
-  el("rscore").textContent = score;
-  el("r0").textContent = hit + "개";
-  el("r1").textContent = miss + "개";
-  el("r2").textContent = best[curLv] + "점";
-
-  const p = PRAISE.find(x => score >= x.min);
-  el("rpraise").textContent = p.t;
-  el("rsub").textContent = p.s;
-
-  drawSubmit();
-
-  const wrong = idxOf(curLv).filter(i=>!correct.has(i));
-  let h = "";
-  if(wrong.length){
-    h += '<h3>틀린 문제 '+wrong.length+'개</h3><div class="wrongs">';
-    wrong.forEach(i=>{
-      const q=Q[i];
-      const label = q.type==="in" ? q.word+" → ?" : plain(q.full);
-      const ans = q.type==="in" ? q.a : (q.judge ? (q.ans+1)+"번" : q.opts[q.ans]);
-      const mean = q.type==="in" ? q.ko : q.ko;
-      h += '<div class="wrong"><div class="top"><span class="no">Q'+(i+1)+'</span><span class="q">'+esc(label)+'</span></div>'+
-           '<div class="a">'+esc(mean)+'</div>'+
-           '<div class="a">정답 <b>'+esc(ans)+'</b> · '+esc(q.tip)+'</div></div>';
-    });
-    h += '</div>';
-  }
-  el("rwrong").innerHTML = h;
-
-  let a = '';
-  if(wrong.length) a += '<button class="btn" id="retry">틀린 '+wrong.length+'문제만 다시</button>';
-  a += '<button class="btn'+(wrong.length?' ghost':'')+'" id="againLv">이 단계 다시 풀기</button>';
-  if(curLv < LVMAX.length-1) a += '<button class="btn'+(wrong.length?' ghost':'')+'" id="nextLv">'+LV[curLv+1]+'로 →</button>';
-  a += '<button class="btn ghost" id="home">단계 선택으로</button>';
-  clearProg();
-  el("ractions").innerHTML = a;
-  if(el("retry")) el("retry").addEventListener("click", startWrongOnly);
-  el("againLv").addEventListener("click", ()=>startLevel(curLv));
-  if(el("nextLv")) el("nextLv").addEventListener("click", ()=>openIntro(curLv+1));
-  el("home").addEventListener("click", goHome);
-
-  updateRail(false);
+  openPraise(S.score, total, S.correct, S.wrong.length);
 }
 
-/* 결과 화면의 순위 등록 상자 */
-function drawSubmit(){
-  const box = el("rsubmit");
-  if(!lastResult || !api || canWrite === false){ box.innerHTML = ""; return; }
-  const lv = lastResult.lv;
-  const now = bestOf(myName, lv);
-  let h = '<div class="submit-box"><span class="h">순위 등록</span>';
-  if(!lastResult.full){
-    h += '<span class="note">틀린 문제만 다시 푼 기록은 순위에 올리지 않습니다. 「이 단계 다시 풀기」로 처음부터 풀면 점수를 바꿀 수 있습니다.</span>'+
-         '<div class="actions"><button class="btn ghost" id="seeRank">순위 보기</button></div>';
-  }else if(!myName){
-    h += '<span class="note">이름을 쓰고 등록하면 '+LV[lv]+' 점수 '+lastResult.score+'점이 순위에 올라갑니다.</span>'+
-         '<div class="answer-row"><input type="text" class="ko-in" id="subName" maxlength="12" placeholder="이름"><button class="btn" id="subBtn">등록</button></div>';
-  }else if(now != null){
-    h += '<span class="note">'+esc(myName)+' 님의 '+LV[lv]+' 순위 점수는 지금 <b>'+now+'점</b>입니다. 이번 <b>'+lastResult.score+'점</b>으로 바꿀 수 있습니다.</span>'+
-         '<div class="actions"><button class="btn" id="subBtn">'+lastResult.score+'점으로 바꾸기</button><button class="btn ghost" id="seeRank">순위 보기</button></div>';
-  }else{
-    h += '<span class="note">'+esc(myName)+' 님의 '+LV[lv]+' 점수 <b>'+lastResult.score+'점</b>을 순위에 올립니다.</span>'+
-         '<div class="actions"><button class="btn" id="subBtn">순위에 등록</button><button class="btn ghost" id="seeRank">순위 보기</button></div>';
-  }
-  h += '</div>';
-  box.innerHTML = h;
-  if(el("subBtn")) el("subBtn").addEventListener("click", ()=>{
-    const f = el("subName");
-    if(f){
-      const v = f.value.trim();
-      if(!v){ f.focus(); return; }
-      myName = v.slice(0,12);
-      ls.set(KEY+".name", myName);
-    }
-    submitScore();
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
   });
-  if(el("seeRank")) el("seeRank").addEventListener("click", ()=>openRank(String(lv)));
+  h+='</div></div>';
+  return h;
+}
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
 }
 
-function bestOf(name, lv){
-  if(!name) return null;
-  let b = null;
-  records.forEach(r=>{ if(r.name===name && r.lv===lv && (b==null || r.score>b)) b = r.score; });
-  return b;
+function renderRetryResult(){
+  clearProg();
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  if(!still){ S.finished[S.level]=true; S.active=0; }
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").style.gridTemplateColumns = "repeat(3,1fr)";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
 }
 
-/* ---------- 순위 등록 ---------- */
-function newId(){
-  return "r" + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
-}
-
-function submitScore(){
-  if(!api || !lastResult || !myName || !lastResult.full) return;
-  const lv = lastResult.lv;
-  const rec = {
-    id: newId(), name: myName, lv: lv,
-    score: lastResult.score, hit: lastResult.hit,
-    at: new Date().toISOString()
-  };
-  const btn = el("subBtn");
-  if(btn){ btn.disabled = true; btn.textContent = "등록 중..."; }
-  ss.set(KEY+".pending", {rec:rec, tries:1});
-  publish(mergeRecord(records, rec), rec, btn);
-}
-
-/* 한 이름의 한 단계는 기록 하나만 남기고, 다시 도전하면 새 점수로 바꿉니다. */
-function mergeRecord(list, rec){
-  let out = list.filter(r => !(r.name===rec.name && r.lv===rec.lv));
-  out.push(rec);
-  out.sort((a,b)=> (a.at<b.at?-1:a.at>b.at?1:0));
-  if(out.length > MAXREC) out = out.slice(out.length - MAXREC);
-  return out;
-}
-
-function publish(list, rec, btn){
-  records = list.slice();
-  try{ localStorage.setItem(RECKEY, JSON.stringify(records)); }catch(e){}
-  try{ ss.del(PENDKEY); }catch(e){}
-  if(btn){ btn.disabled=false; btn.textContent="순위에 등록"; }
-  if(rec){
-    myName = rec.name;
-    rankTab = String(rec.lv);
-    openRank();
-    el("rankToast").innerHTML = '<div class="toast">'+esc(rec.name)+' 님의 '+LV[rec.lv]+' 점수 '+rec.score+'점이 순위에 올랐습니다.</div>';
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
   }else{
-    drawRank();
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
   }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
 }
-
-/* ---------- 순위 화면 ---------- */
-function openRank(tab){
-  if(tab) rankTab = tab;
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
   show("rank");
-  drawRank();
 }
 
-function drawRank(){
-  el("rankTabs").querySelectorAll(".tab").forEach(b=>{
-    b.classList.toggle("on", b.dataset.t === rankTab);
-  });
-  el("manageBtn").classList.toggle("hide", !api || canWrite === false);
-  el("manageBtn").textContent = manage ? "관리 끝내기" : "기록 관리";
-
-  const body = el("rankBody");
-  if(!records.length){
-    body.innerHTML = '<p class="empty">아직 등록된 기록이 없습니다.<br>단계를 끝내고 순위에 등록해 보세요.</p>';
-  }else if(rankTab === "all"){
-    const by = {};
-    records.forEach(r=>{
-      if(!by[r.name]) by[r.name] = {name:r.name, s:LVMAX.map(()=>null), at:r.at};
-      const g = by[r.name];
-      if(g.s[r.lv]==null || r.score > g.s[r.lv]) g.s[r.lv] = r.score;
-      if(r.at < g.at) g.at = r.at;
-    });
-    const rows = Object.keys(by).map(k=>{
-      const g = by[k];
-      g.total = g.s.reduce((a,b)=>a+(b||0),0);
-      return g;
-    }).sort((a,b)=> b.total-a.total || (a.at<b.at?-1:1));
-    let h = '<div class="tablewrap"><table class="rank"><thead><tr>'+
-            '<th class="pos">순위</th><th>이름</th>';
-    for(let i=0;i<LVMAX.length;i++) h += '<th class="num">'+(i+1)+'</th>';
-    h += '<th class="num">합계</th></tr></thead><tbody>';
-    rows.forEach((g,i)=>{
-      h += '<tr class="'+(i<3?"top ":"")+(g.name===myName?"me":"")+'">'+
-           '<td class="pos">'+(i+1)+'</td>'+
-           '<td class="who">'+esc(g.name)+'</td>';
-      for(let k=0;k<LVMAX.length;k++) h += '<td class="num">'+(g.s[k]==null?"–":g.s[k])+'</td>';
-      h += '<td class="num pt">'+g.total+'</td></tr>';
-    });
-    h += '</tbody></table></div>';
-    body.innerHTML = h;
-  }else{
-    const lv = +rankTab;
-    const rows = records.filter(r=>r.lv===lv).sort((a,b)=> b.score-a.score || (a.at<b.at?-1:1));
-    if(!rows.length){
-      body.innerHTML = '<p class="empty">'+LV[lv]+' 단계에 등록된 기록이 아직 없습니다.</p>';
-    }else{
-      let h = '<div class="tablewrap"><table class="rank"><thead><tr>'+
-              '<th class="pos">순위</th><th>이름</th><th class="num">점수</th><th class="num">맞은 개수</th><th>날짜</th>'+
-              (manage?'<th></th>':'')+'</tr></thead><tbody>';
-      rows.forEach((r,i)=>{
-        h += '<tr class="'+(i<3?"top ":"")+(r.name===myName?"me":"")+'">'+
-             '<td class="pos">'+(i+1)+'</td>'+
-             '<td class="who">'+esc(r.name)+'</td>'+
-             '<td class="num pt">'+r.score+'</td>'+
-             '<td class="num">'+r.hit+' / '+LVMAX[lv]+'</td>'+
-             '<td class="when">'+fmt(r.at)+'</td>'+
-             (manage?'<td><button class="rowbtn" data-del="'+esc(r.id)+'">삭제</button></td>':'')+
-             '</tr>';
-      });
-      h += '</tbody></table></div>';
-      body.innerHTML = h;
-      if(manage){
-        body.querySelectorAll("[data-del]").forEach(b=>{
-          b.addEventListener("click", ()=>removeRecord(b.dataset.del));
-        });
-      }
-    }
-  }
-
-  el("rankNote").textContent = api
-    ? (false
-        ? "이 링크는 읽기 전용입니다. 순위는 볼 수 있지만 등록은 되지 않습니다."
-        : "한 사람의 한 단계는 기록 하나만 남습니다. 다시 도전해 등록하면 점수가 바뀝니다.")
-    : "순위는 이 기기(브라우저)에 저장됩니다.";
-}
-
-function fmt(iso){
-  try{
-    const d = new Date(iso);
-    return (d.getMonth()+1) + "월 " + d.getDate() + "일";
-  }catch(e){ return ""; }
-}
-
-function removeRecord(id){
-  records = records.filter(function(r){ return r.id!==id; });
-  try{ localStorage.setItem(RECKEY, JSON.stringify(records)); }catch(e){}
-  drawRank();
-  el("rankToast").innerHTML = '<div class="toast">기록을 지웠습니다.</div>';
-}
-
-/* ---------- 화면 전환 ---------- */
-function show(which){
-  ["start","intro","quiz","result","rank"].forEach(id=>{
-    el(id).classList.toggle("hide", id !== which);
-  });
-  el(which).scrollIntoView({behavior:"smooth", block:"start"});
-}
-
-function openIntro(lv){
-  curLv = lv;
-  el("iNum").textContent = LV[lv];
-  el("iChip").textContent = LVMAX[lv] + "문제";
-  el("iTitle").textContent = LVNAME[lv];
-  el("iBody").innerHTML = LVINTRO[lv];
-  show("intro");
-}
-function startLevel(lv){
-  clearProg();
-  curLv = lv; retryMode = false;
-  bumpRun(lv);
-  order = idxOf(lv); pos = 0;
-  done = new Set(); correct = new Set();
-  show("quiz");
-  render();
-}
-function startWrongOnly(){
-  const wrong = idxOf(curLv).filter(i=>!correct.has(i));
-  if(!wrong.length) return;
-  retryMode = true;
-  order = wrong; pos = 0; done = new Set();
-  show("quiz");
-  render();
-}
+/* ===================== 시작 배선 ===================== */
 function goHome(){
-  show("start");
-  drawHome();
-  progBanner();
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
 }
-/* ---------- 이어서 풀기 ---------- */
-function escR(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-const PKEY = "relpron.prog";
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
 function saveProg(){
   try{
-    if(!order || !order.length) return;
+    if(!S.level || !S.list || !S.list.length) return;
     localStorage.setItem(PKEY, JSON.stringify({
-      name: myName, lv: curLv, order: order, pos: pos,
-      done: Array.from(done), correct: Array.from(correct),
-      retry: !!retryMode, t: Date.now()
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
     }));
   }catch(e){}
 }
 function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
 function loadProg(){
   try{
-    const p = JSON.parse(localStorage.getItem(PKEY) || "null");
-    if(!p || !p.order || !p.order.length) return null;
-    if(p.pos >= p.order.length) return null;
-    if(Date.now() - (p.t || 0) > 1209600000) return null;
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
     return p;
   }catch(e){ return null; }
 }
 function resumeProg(){
-  const p = loadProg();
+  var p = loadProg();
   if(!p) return;
-  myName = p.name || myName;
-  curLv = p.lv; order = p.order; pos = p.pos;
-  done = new Set(p.done || []); correct = new Set(p.correct || []);
-  retryMode = !!p.retry; locked = false;
-  try{ el("nameIn").value = myName; }catch(e){}
-  show("quiz");
-  render();
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
 }
 function progBanner(){
-  const box = el("resumeBar");
-  if(!box) return;
-  const p = loadProg();
-  const typed = ((el("nameIn") && el("nameIn").value) || "").trim();
-  if(!p || (typed && p.name !== typed)){ box.className = "resumebar hide"; box.innerHTML = ""; return; }
-  box.className = "resumebar";
-  box.innerHTML = '<span class="h">이어서 풀기</span>' +
-    '<span class="note"><b>' + escR(p.name || "") + '</b> 님, <b>' + (p.lv + 1) + '단계 ' + (p.pos + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
     '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
-    '<button class="btn ghost" id="resumeNo">처음부터 하기</button></div>';
-  el("resumeGo").addEventListener("click", resumeProg);
-  el("resumeNo").addEventListener("click", ()=>{ clearProg(); progBanner(); });
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
 }
 
+refreshStart();
 
-/* ---------- 시작 ---------- */
-loadLocal();
-drawHome();
-progBanner();
-
-el("saveName").addEventListener("click", ()=>{
-  const v = el("nameIn").value.trim().slice(0,12);
-  myName = v;
-  ls.set(KEY+".name", v);
-  el("nameNote").innerHTML = v
-    ? (esc(v) + " 님으로 순위에 등록됩니다. 다시 도전해 등록하면 점수가 바뀝니다.")
-    : "이름을 저장하면 순위에 점수를 올릴 수 있습니다. 다시 도전해 등록하면 점수가 바뀝니다.";
-});
-el("nameIn").addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); el("saveName").click(); }});
-el("iStart").addEventListener("click", ()=>startLevel(curLv));
-el("iBack").addEventListener("click", goHome);
-el("openRank").addEventListener("click", ()=>openRank());
-el("rankHome").addEventListener("click", goHome);
-el("manageBtn").addEventListener("click", ()=>{ manage = !manage; drawRank(); });
-el("rankTabs").querySelectorAll(".tab").forEach(b=>{
-  b.addEventListener("click", ()=>{ rankTab = b.dataset.t; drawRank(); });
-});
-
-document.addEventListener("keydown", e=>{
-  if(el("quiz").classList.contains("hide")) return;
-  if(e.target.tagName === "INPUT") return;
-  if(!locked && /^[1-4]$/.test(e.key)){
-    const b = el("qbody").querySelector('.opt[data-i="'+(+e.key-1)+'"]');
-    if(b) b.click();
-  }else if(locked && (e.key==="Enter"||e.key===" ")){
-    e.preventDefault();
-    const n = el("next"); if(n) n.click();
-  }
-});
-
-/* 순위는 이 기기(브라우저)에 저장됩니다. */
-api = {};
-canWrite = null;
-
-function handlePending(){
-  const p = ss.get(KEY+".pending");
-  if(!p || !p.rec) return;
-  const landed = records.some(r => r.id === p.rec.id);
-  if(landed){
-    ss.del(KEY+".pending");
-    myName = p.rec.name;
-    rankTab = String(p.rec.lv);
-    openRank();
-    el("rankToast").innerHTML = '<div class="toast">'+esc(p.rec.name)+' 님의 '+LV[p.rec.lv]+' 점수 '+p.rec.score+'점이 순위에 등록되었습니다.</div>';
-    return;
-  }
-  if(!api || p.tries >= 3){ ss.del(KEY+".pending"); return; }
-  ss.set(KEY+".pending", {rec:p.rec, tries:p.tries+1});
-  setTimeout(()=>{ publish(mergeRecord(records, p.rec), p.rec, null); }, 400 + Math.floor(Math.random()*900));
-}
 </script>
-
 <script src="/kkt.js"></script>
-</body>
-</html>
+</body></html>
