@@ -913,7 +913,7 @@ function drawLevels(){
     else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
     h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
         '<span class="rank">'+k+'</span>'+
-        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+drawCount(L)+'문제</span></span>'+
         '<span class="desc">'+esc(L.desc)+'</span></span>'+
         right+
       '</button>';
@@ -956,9 +956,35 @@ function pickLevel(k){
 })();
 
 /* ===================== 문제 ===================== */
+/* 문제 뽑기: 종류(n·a·v) 비율을 지키고, 보스 문제는 하나만 그 종류의 맨 끝에 둡니다 */
+function drawCount(L){ return Math.min(20, L.qs.length); }
+function drawList(L){
+  var qs=L.qs, N=drawCount(L), T=["n","a","v"];
+  if(qs.length<=N) return qs.map(function(_,i){return i;});
+  var by={}, boss=[], cnt={}, sum=0;
+  T.forEach(function(t){ by[t]=[]; cnt[t]=0; });
+  qs.forEach(function(q,i){ if(q.tag==="보스 문제") boss.push(i); else if(by[q.type]) by[q.type].push(i); });
+  T.forEach(function(t){
+    var p=qs.filter(function(q){ return q.type===t; }).length;
+    cnt[t]=Math.round(p*N/qs.length); sum+=cnt[t];
+  });
+  while(sum>N){ var big=T.slice().sort(function(x,y){return cnt[y]-cnt[x];})[0]; cnt[big]--; sum--; }
+  while(sum<N){ var lot=T.slice().sort(function(x,y){return by[y].length-cnt[y]-(by[x].length-cnt[x]);})[0]; cnt[lot]++; sum++; }
+  var b = boss.length ? boss[Math.floor(Math.random()*boss.length)] : -1;
+  if(b>=0) cnt[qs[b].type]--;
+  var out=[];
+  T.forEach(function(t){
+    var pool=by[t].slice();
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=pool[i]; pool[i]=pool[j]; pool[j]=x; }
+    var got=pool.slice(0,Math.max(0,cnt[t])).sort(function(x,y){return x-y;});
+    if(b>=0 && qs[b].type===t) got.push(b);
+    out=out.concat(got);
+  });
+  return out;
+}
 function startQuiz(){
   var L=LEVELS[S.level];
-  S.list=L.qs.map(function(_,i){return i;});
+  S.list=drawList(L);
   S.i=0;S.picked=-1;S.answered=false;
   S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
   S.round=1;S.retryWrong=[];
@@ -1143,7 +1169,7 @@ function closePraise(){ $("praiseBox").classList.add("hide"); }
 
 function renderResult(){
   clearProg();
-  var L=LEVELS[S.level], total=L.qs.length;
+  var L=LEVELS[S.level], total=drawCount(L);
   S.score=Math.round(S.correct/total*100);
   var pr=praise(S.score);
 

@@ -761,6 +761,374 @@ var L4 = [
    exp:"뒤쪽 Jane을 앞으로 → <b>older than</b>. 마지막 보스까지 물리쳤습니다!"}
 ];
 
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"저울 퀴즈", sent:"우리 집 개는 옆집 개만큼 크다.", q:"두 개의 크기는 어떨까요?",
+   opts:["똑같다","우리 집 개가 더 크다","옆집 개가 더 크다","우리 집 개가 더 작다","알 수 없다"], a:0,
+   exp:"‘~만큼 크다’는 두 쪽이 <b>같은 정도</b>입니다. Our dog is as big as the dog next door."},
+
+  {type:"n", tag:"뜻 잡기", q:"as ~ as 문장을 우리말로 옮길 때 가장 알맞은 말은?",
+   opts:["~만큼","~보다","~ 중에서 가장","~ 때문에","~하는 동안"], a:0,
+   exp:"as ~ as는 ‘<b>~만큼</b>’으로 옮깁니다. ‘~보다’는 비교급 than입니다."},
+
+  {type:"n", tag:"뜻 잡기", multi:true, q:"as와 as 사이에 들어갈 수 <b>없는</b> 모양을 모두 고르세요. (여러 개)",
+   opts:["-er 모양(taller)","-est 모양(tallest)","more를 붙인 모양(more beautiful)","원래 모양(tall)","원래 모양(beautiful)"], ans:[0,1,2],
+   exp:"as와 as 사이에는 <b>원래 모양</b>만 옵니다. 비교급과 최상급은 들어갈 수 없습니다."},
+
+  {type:"n", tag:"자리 잡기", q:"‘그는 <b>아빠</b>만큼 키가 크다’에서 뒤의 as 다음에 오는 말은?",
+   opts:["아빠(his dad)","키(height)","크다(tall)","그(he)","만큼(as)"], a:0,
+   exp:"뒤의 as 다음에는 견주는 대상 <b>his dad</b>가 옵니다. He is as tall as his dad."},
+
+  {type:"n", tag:"저울 퀴즈", multi:true, q:"as ~ as로 말할 수 있는 짝을 모두 고르세요. (여러 개)",
+   opts:["민지 40kg – 수아 40kg","연필 15cm – 볼펜 15cm","형 170cm – 아빠 170cm","가방 3kg – 상자 5kg","A팀 10점 – B팀 8점"], ans:[0,1,2],
+   exp:"두 쪽의 수가 <b>똑같을 때</b> as ~ as를 씁니다. 다르면 비교급을 씁니다."},
+
+  {type:"n", tag:"뜻 잡기", q:"as ~ as를 ‘동등비교’라고 합니다. ‘동등’의 뜻은?",
+   opts:["같은 정도","더 많음","더 적음","가장 큼","반대"], a:0,
+   exp:"동등(同等) = <b>같은 정도</b>. 저울이 수평인 비교입니다."},
+
+  {type:"n", tag:"자리 잡기", q:"‘내 필통은 네 필통만큼 크다’에서 견주는 두 대상이 바르게 짝지어진 것은?",
+   opts:["내 필통 – 네 필통","내 필통 – 너","나 – 네 필통","내 필통 – 네 가방","내 키 – 네 필통"], a:0,
+   exp:"필통은 <b>필통</b>과 견줍니다. My pencil case is as big as yours."},
+
+  {type:"n", tag:"자리 잡기", q:"‘그녀는 가수만큼 노래를 <b>잘</b> 부른다’에서 ‘잘’에 알맞은 영어는?",
+   opts:["well","good","better","best","nice"], a:0,
+   exp:"동사 sing을 꾸미는 부사 <b>well</b>입니다. She sings as well as a singer."},
+
+  {type:"n", tag:"저울 퀴즈", sent:"사과 한 개 1,000원, 배 한 개 1,000원", q:"알맞은 말을 고르세요.",
+   opts:["사과는 배만큼 비싸다.","사과가 배보다 비싸다.","배가 사과보다 비싸다.","사과가 가장 싸다.","배는 사과보다 싸다."], a:0,
+   exp:"값이 같으니 <b>‘~만큼 비싸다’</b>입니다. An apple is as expensive as a pear."},
+
+  {type:"n", tag:"뜻 잡기", q:"as ~ as 문장은 보통 몇 개를 견줄까요?",
+   opts:["두 개","한 개","셋 이상","네 개","견주지 않는다"], a:0,
+   exp:"as ~ as는 <b>두 대상</b>을 견줍니다. 셋 이상 중 ‘가장’은 최상급입니다."},
+
+  {type:"n", tag:"자리 잡기", multi:true, q:"as와 as 사이에 <b>부사</b>를 쓰는 우리말을 모두 고르세요. (여러 개)",
+   opts:["형만큼 **빨리** 달린다","선생님만큼 **천천히** 말한다","엄마만큼 요리를 **잘**한다","형만큼 키가 **크다**","엄마만큼 **친절하다**"], ans:[0,1,2],
+   exp:"동사(달린다 · 말한다 · 한다)를 꾸미면 <b>부사</b>, ‘크다 · 친절하다’처럼 상태를 말하면 형용사입니다."},
+
+  {type:"n", tag:"보스 문제", hard:true, q:"as ~ as로 옮기기에 알맞지 <b>않은</b> 우리말은?",
+   opts:["민수가 반에서 가장 크다.","민수는 지호만큼 크다.","이 책은 저 책만큼 두껍다.","나는 너만큼 빨리 걷는다.","오늘은 어제만큼 덥다."], a:0,
+   exp:"‘가장’은 셋 이상 중 최고, 곧 <b>최상급</b>입니다. as ~ as는 ‘~만큼’일 때 씁니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"My sister is as ___ as my mom.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["pretty","prettier","prettiest","more pretty","prettily"], a:0, eng:true,
+   ko:"우리 언니는 엄마만큼 예쁘다.",
+   exp:"be동사 뒤, 원급 형용사 <b>pretty</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"He can swim as ___ as a fish.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["fast","faster","fastest","more fast","the fastest"], a:0, eng:true,
+   ko:"그는 물고기만큼 빨리 수영할 수 있다.",
+   exp:"as와 as 사이는 원급 <b>fast</b>입니다. fast는 형용사와 부사 모양이 같습니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"as big as an elephant", q:"<b>as big as an elephant</b>의 뜻으로 알맞은 것은?",
+   opts:["코끼리만큼 큰","코끼리보다 큰","가장 큰 코끼리","코끼리보다 작은","코끼리처럼 느린"], a:0, eng:true,
+   exp:"as big as ~ = ‘<b>~만큼 큰</b>’"},
+
+  {type:"a", tag:"쉬운 영어", sent:"This question is as ___ as that one.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["difficult","more difficult","most difficult","difficulty","difficultly"], a:0, eng:true,
+   ko:"이 문제는 저 문제만큼 어렵다.",
+   exp:"긴 낱말도 as와 as 사이에는 원래 모양 <b>difficult</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She dances as ___ as a dancer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["beautifully","beautiful","more beautiful","most beautiful","beautifuler"], a:0, eng:true,
+   ko:"그녀는 무용수만큼 아름답게 춤춘다.",
+   exp:"dances(동사)를 꾸미니 부사 <b>beautifully</b>입니다."},
+
+  {type:"a", tag:"키 재기", q:"상자 A 5kg, 상자 B 5kg입니다. 알맞은 문장은?",
+   opts:["Box A is as heavy as Box B.","Box A is heavier than Box B.","Box B is heavier than Box A.","Box A is the heaviest.","Box A is as heavier as Box B."], a:0, eng:true,
+   exp:"무게가 같으니 <b>as heavy as</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"바른 as ~ as 문장을 모두 고르세요. (여러 개)",
+   opts:["I am as busy as my dad.","This bag is as light as a feather.","She speaks as quietly as a mouse.","I am as busier as my dad.","She speaks as quiet than a mouse."], ans:[0,1,2],
+   exp:"as + <b>원급</b> + <b>as</b>, 동사를 꾸미면 부사(quietly)입니다."},
+
+  {type:"a", tag:"보스 문제", hard:true, sent:"Her English is as good as ___.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["her teacher's","her teacher","she teacher","her teachers","teacher her"], a:0, eng:true,
+   ko:"그녀의 영어는 선생님의 영어만큼 좋다.",
+   exp:"영어는 영어와 견줍니다. her teacher's (English) = <b>her teacher's</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"빈칸과 뜻", sent:"This coffee is as ___ as that tea.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["hot","hotter","hottest","more hot","hotly"], a:0, eng:true,
+   ko:"이 커피는 저 차만큼 뜨겁다.",
+   exp:"be동사 뒤, 원급 형용사 <b>hot</b>입니다."},
+
+  {type:"n", tag:"빈칸과 뜻", sent:"He answered as ___ as his friend.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["quickly","quicker","quickest","more quick","quickness"], a:0, eng:true,
+   ko:"그는 친구만큼 빠르게 대답했다.",
+   exp:"answered(동사)를 꾸미니 부사 <b>quickly</b>입니다."},
+
+  {type:"n", tag:"빈칸과 뜻", word:"not so cold as", q:"<b>not so cold as</b>의 뜻으로 알맞은 것은?",
+   opts:["~만큼 춥지 않은","~만큼 추운","~보다 더 추운","가장 추운","너무 추운"], a:0, eng:true,
+   exp:"부정문에서는 as 대신 so를 써도 됩니다. not so cold as = ‘<b>~만큼 춥지 않은</b>’"},
+
+  {type:"n", tag:"대결 판정", sent:"Mina is not as old as Sujin.", q:"누가 나이가 더 많을까요?",
+   opts:["Sujin","Mina","둘이 같다","알 수 없다","둘 다 어리다"], a:0, eng:true,
+   ko:"미나는 수진이만큼 나이가 많지 않다.",
+   exp:"not as ~ as는 <b>뒤쪽이 더합니다</b>. 수진이가 나이가 더 많습니다."},
+
+  {type:"n", tag:"대결 판정", sent:"This box is not as heavy as that box.", q:"더 가벼운 것은?",
+   opts:["이 상자","저 상자","둘이 같다","알 수 없다","둘 다 무겁다"], a:0,
+   ko:"이 상자는 저 상자만큼 무겁지 않다.",
+   exp:"이 상자가 저 상자만큼 무겁지 않으니 <b>이 상자가 더 가볍습니다</b>."},
+
+  {type:"n", tag:"빈칸과 뜻", sent:"I ___ get up as early as my mom.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["don't","am not","not","doesn't","isn't"], a:0, eng:true,
+   ko:"나는 엄마만큼 일찍 일어나지 않는다.",
+   exp:"일반동사 get up의 부정, 주어 I → <b>don't</b>"},
+
+  {type:"n", tag:"빈칸과 뜻", sent:"He ___ as tall as his brother.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["isn't","doesn't","don't","not","aren't"], a:0, eng:true,
+   ko:"그는 형만큼 키가 크지 않다.",
+   exp:"be동사 문장, 주어 He → <b>isn't</b>"},
+
+  {type:"n", tag:"빈칸과 뜻", sent:"Today is not ___ warm as yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["as","than","more","very","too"], a:0, eng:true,
+   ko:"오늘은 어제만큼 따뜻하지 않다.",
+   exp:"not <b>as</b> warm as. 부정문이라 so를 써도 됩니다."},
+
+  {type:"n", tag:"빈칸과 뜻", sent:"My brother didn't eat as ___ as I did.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["much","more","most","many","lot"], a:0, eng:true,
+   ko:"남동생은 나만큼 많이 먹지 않았다.",
+   exp:"‘많이’ 먹다는 <b>much</b>입니다. as와 as 사이는 원급입니다."},
+
+  {type:"n", tag:"빈칸과 뜻", q:"우리말을 영어로 바르게 옮긴 것은?<br>그는 아빠만큼 조심스럽게 운전하지 않는다.",
+   opts:["He doesn't drive as carefully as his dad.","He doesn't drive as careful as his dad.","He drives not as carefully as his dad.","He doesn't drive as more carefully as his dad.","He isn't drive as carefully as his dad."], a:0, eng:true,
+   exp:"일반동사 부정 <b>doesn't drive</b> + as carefully as. 동사를 꾸미니 부사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"‘Sam이 Ben보다 <b>덜하다</b>’는 뜻의 문장을 모두 고르세요. (여러 개)",
+   opts:["Sam is not as strong as Ben.","Sam isn't so strong as Ben.","Sam can't lift as much as Ben.","Sam is as strong as Ben.","Ben is not as strong as Sam."], ans:[0,1,2],
+   exp:"Sam이 앞에 있는 not as(so) ~ as가 Sam이 덜한 것입니다."},
+
+  {type:"a", tag:"대결 판정", multi:true, q:"<span class=\"eng\">The bus doesn't run as fast as the train.</span>과 맞는 말을 모두 고르세요. (여러 개)",
+   opts:["기차가 버스보다 빠르다.","버스가 기차보다 느리다.","둘의 빠르기는 같지 않다.","버스가 기차보다 빠르다.","둘이 똑같이 빠르다."], ans:[0,1,2],
+   exp:"버스가 기차만큼 빠르지 않으니 <b>기차가 더 빠르고, 버스가 더 느립니다</b>."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>바른</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["She doesn't sing as well as her sister.","I can't run as fast as you.","This isn't as easy as it looks.","She doesn't sing as good as her sister.","I can't run as faster as you."], ans:[0,1,2],
+   exp:"sing은 부사 well로 꾸미고, as와 as 사이는 원급입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"앞의 as를 <b>so</b>로 바꿔 써도 되는 문장을 모두 고르세요. (여러 개)",
+   opts:["He is not as tall as me.","It isn't as hot as last summer.","I didn't sleep as long as you.","He is as tall as me.","It is as hot as last summer."], ans:[0,1,2],
+   exp:"so ~ as는 <b>부정문</b>에서만 씁니다. not이 없는 문장은 as를 그대로 씁니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"두 쪽의 정도가 <b>같다</b>는 뜻의 문장을 모두 고르세요. (여러 개)",
+   opts:["Jin is as tall as Tom.","My score is as high as yours.","This pen writes as well as that one.","Jin is not as tall as Tom.","My score isn't as high as yours."], ans:[0,1,2],
+   exp:"not이 없는 as ~ as가 같은 정도입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["This car is as faster as that car.","This car is as fast as that car.","This car is not as fast as that car.","This car isn't so fast as that car.","This car can go as fast as that car."], a:0, eng:true,
+   exp:"as와 as 사이에는 비교급을 쓸 수 없습니다. <b>as fast as</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She speaks English as fluent as a native speaker.","She speaks English as fluently as a native speaker.","Her English is as fluent as a native speaker's.","She doesn't speak English as fluently as a native speaker.","She is as busy as a native speaker."], a:0, eng:true,
+   exp:"speaks를 꾸미니 부사 <b>fluently</b>가 맞습니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I am not as hungrier as you.","I am not as hungry as you.","I am not so hungry as you.","I am as hungry as you.","I'm not as hungry as you."], a:0, eng:true,
+   exp:"부정이어도 as와 as 사이는 원급 <b>hungry</b>입니다."},
+
+  {type:"v", tag:"보스 문제", hard:true, sent:"Her hair is as long as ___.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["her mom's","her mom","she mom's","her moms","mom her"], a:0, eng:true,
+   ko:"그녀의 머리는 엄마의 머리만큼 길다.",
+   exp:"머리는 머리와 견줍니다. her mom's (hair) = <b>her mom's</b>"},
+
+  {type:"v", tag:"보스 문제", hard:true, q:"밑줄 친 부분이 어법상 <b>바른</b> 것은?",
+   opts:["He **doesn't run** as fast as me.","He **not runs** as fast as me.","He **don't run** as fast as me.","He **doesn't runs** as fast as me.","He **isn't run** as fast as me."], a:0, eng:true,
+   exp:"주어 He, 일반동사 부정 → <b>doesn't + 동사원형</b>"}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", sent:"Mina is not as heavy as Jisu. = Jisu is ___ than Mina.", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?",
+   opts:["heavier","heavy","heaviest","more heavy","as heavy"], a:0, eng:true,
+   ko:"미나는 지수만큼 무겁지 않다. = 지수는 미나보다 무겁다.",
+   exp:"뒤쪽(Jisu)을 주어로 올리고 같은 낱말의 비교급 <b>heavier</b>"},
+
+  {type:"n", tag:"빈칸", sent:"Mina is not as heavy as Jisu. = Mina is ___ than Jisu.", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?",
+   opts:["lighter","heavier","light","lightest","more light"], a:0, eng:true,
+   ko:"미나는 지수만큼 무겁지 않다. = 미나는 지수보다 가볍다.",
+   exp:"자리를 그대로 두면 반대말 light의 비교급 <b>lighter</b>"},
+
+  {type:"n", tag:"빈칸", sent:"This movie is not as popular as that one. = That movie is ___ popular than this one.", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?",
+   opts:["more","most","as","very","less"], a:0, eng:true,
+   ko:"이 영화는 저 영화만큼 인기 있지 않다. = 저 영화가 이 영화보다 더 인기 있다.",
+   exp:"긴 낱말 popular의 비교급은 <b>more</b> popular"},
+
+  {type:"n", tag:"빈칸", sent:"My handwriting is not as good as yours. = My handwriting is ___ than yours.", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?",
+   opts:["worse","bad","worst","badder","more bad"], a:0, eng:true,
+   ko:"내 글씨는 네 글씨만큼 좋지 않다. = 내 글씨가 네 글씨보다 못하다.",
+   exp:"자리를 그대로 두면 good의 반대 bad → bad – <b>worse</b> – worst"},
+
+  {type:"n", tag:"쌍둥이 문장", q:"<span class=\"eng\">The Han River is not as long as the Nile.</span>과 뜻이 <b>같은</b> 문장은?",
+   opts:["The Nile is longer than the Han River.","The Han River is longer than the Nile.","The Nile is not as long as the Han River.","The Han River is as long as the Nile.","The Nile is shorter than the Han River."], a:0, eng:true,
+   exp:"한강이 나일강만큼 길지 않다 = <b>나일강이 한강보다 길다</b>."},
+
+  {type:"n", tag:"쌍둥이 문장", q:"<span class=\"eng\">My bag is lighter than yours.</span>와 뜻이 <b>같은</b> 문장은?",
+   opts:["Your bag is not as light as mine.","My bag is not as light as yours.","Your bag is lighter than mine.","My bag is as light as yours.","My bag is heavier than yours."], a:0, eng:true,
+   exp:"내 가방이 더 가볍다 = <b>네 가방은 내 가방만큼 가볍지 않다</b>."},
+
+  {type:"n", tag:"대결 판정", hard:true, q:"다음을 읽고, 키가 <b>가장 작은</b> 사람을 고르세요.<br><span class=\"eng\">Tom is not as tall as Jake. Jake is not as tall as Leo.</span>",
+   opts:["Tom","Jake","Leo","모두 같다","알 수 없다"], a:0,
+   exp:"Jake가 Tom보다 크고, Leo가 Jake보다 큽니다. <b>Tom</b> < Jake < Leo"},
+
+  {type:"n", tag:"키 재기", q:"연필 A 12cm, 연필 B 18cm입니다. 알맞은 문장은?",
+   opts:["Pencil A is not as long as Pencil B.","Pencil B is not as long as Pencil A.","Pencil A is longer than Pencil B.","Pencil A is as long as Pencil B.","Pencil B is shorter than Pencil A."], a:0, eng:true,
+   exp:"A가 더 짧으니 <b>Pencil A is not as long as Pencil B.</b>"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Jane is more young than Kate.","Kate is older than Jane.","Jane is younger than Kate.","Jane is not as old as Kate.","Jane isn't so old as Kate."], a:0, eng:true,
+   exp:"짧은 낱말은 -er을 붙입니다. more young(✕) → <b>younger</b>"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["This road isn't as wider as that road.","That road is wider than this road.","This road is narrower than that road.","This road isn't so wide as that road.","This road isn't as wide as that road."], a:0, eng:true,
+   exp:"as와 as 사이는 원급입니다. isn't as <b>wide</b> as"},
+
+  {type:"a", tag:"쌍둥이 문장", multi:true, eng:true, q:"<span class=\"eng\">Jake is not as fast as Leo.</span>와 뜻이 같은 문장을 모두 고르세요. (여러 개)",
+   opts:["Leo is faster than Jake.","Jake is slower than Leo.","Jake isn't so fast as Leo.","Jake is faster than Leo.","Leo is not as fast as Jake."], ans:[0,1,2],
+   exp:"뒤쪽(Leo)을 앞으로 → faster, 앞쪽(Jake) 그대로 → slower, not so ~ as도 같은 뜻입니다."},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"비교급이 <b>잘못</b> 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["It is more cheap than that.","He is more happier than me.","This is badder than that.","This is cheaper than that.","He is happier than me."], ans:[0,1,2],
+   exp:"cheap → <b>cheaper</b>, happy → <b>happier</b>(more를 겹쳐 쓰지 않기), bad → <b>worse</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">My score is not as **higher** as yours.</span>",
+   opts:["higher → high","higher → highest","higher → highly","higher → more high","고칠 필요 없음"], a:0, eng:true,
+   exp:"as와 as 사이는 원급 <b>high</b>입니다."},
+
+  {type:"a", tag:"보스 문제", hard:true, q:"<span class=\"eng\">The cat is smaller than the dog.</span>과 뜻이 <b>다른</b> 문장은?",
+   opts:["The dog is not as big as the cat.","The dog is bigger than the cat.","The cat is not as big as the dog.","The dog is not as small as the cat.","The cat isn't so big as the dog."], a:0, eng:true,
+   exp:"The dog is not as big as the cat은 ‘개가 고양이만큼 크지 않다’, 곧 고양이가 더 크다는 뜻이라 거꾸로입니다."},
+
+  {type:"v", tag:"서술형", write:true, ans:"taller", sent:"Jisu is ___ than Mina.",
+   q:"<span class=\"eng\">Mina is not as tall as Jisu.</span>와 뜻이 같도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"지수는 미나보다 키가 크다.",
+   exp:"tall – <b>taller</b> – tallest"},
+
+  {type:"v", tag:"서술형", write:true, ans:"shorter", sent:"Mina is ___ than Jisu.",
+   q:"<span class=\"eng\">Mina is not as tall as Jisu.</span>와 뜻이 같도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"미나는 지수보다 키가 작다.",
+   exp:"자리를 그대로 두면 반대말 short의 비교급 <b>shorter</b>"},
+
+  {type:"v", tag:"서술형", write:true, ans:"more expensive", sent:"Your phone is ___ than mine.",
+   q:"<span class=\"eng\">My phone is not as expensive as yours.</span>와 뜻이 같도록 빈칸에 알맞은 말을 써 보세요.",
+   ko:"네 전화기가 내 전화기보다 비싸다.",
+   exp:"긴 낱말 expensive → <b>more expensive</b>"},
+
+  {type:"v", tag:"서술형", write:true, ans:"better", sent:"Kate's English is ___ than Ann's.",
+   q:"<span class=\"eng\">Ann's English is not as good as Kate's.</span>와 뜻이 같도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"케이트의 영어가 앤의 영어보다 낫다.",
+   exp:"good – <b>better</b> – best"},
+
+  {type:"v", tag:"서술형", write:true, ans:"as bright as", alt:["so bright as"], sent:"This room is not ___ that room.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (bright)",
+   ko:"이 방은 저 방만큼 밝지 않다.",
+   exp:"not <b>as bright as</b>. 부정이라 not so bright as도 됩니다."},
+
+  {type:"v", tag:"보스 문제", hard:true, write:true, ans:"doesn't get up as early as", alt:["does not get up as early as","doesn't get up so early as","does not get up so early as"], sent:"My brother ___ me.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (get up · early)",
+   ko:"남동생은 나만큼 일찍 일어나지 않는다.",
+   exp:"일반동사 부정 <b>doesn't get up</b> + as early as"}
+];
+
+var X4 = [
+  {type:"n", tag:"쓰임 가리기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">This book is less interesting than that one.</span>",
+   opts:["이 책은 저 책보다 덜 재미있다.","이 책은 저 책보다 더 재미있다.","이 책은 저 책만큼 재미있다.","이 책이 가장 재미있다.","저 책은 이 책보다 덜 재미있다."], a:0,
+   exp:"less + 원급 + than = ‘~보다 <b>덜</b> …한’"},
+
+  {type:"n", tag:"쌍둥이 문장", q:"<span class=\"eng\">Jake is less tall than Leo.</span>와 뜻이 <b>같은</b> 문장은?",
+   opts:["Jake is not as tall as Leo.","Jake is taller than Leo.","Leo is less tall than Jake.","Jake is as tall as Leo.","Leo is not as tall as Jake."], a:0, eng:true,
+   exp:"less ~ than = <b>not as ~ as</b>"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"This bridge is three times as ___ as that one.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["long","longer","longest","length","more long"], a:0, eng:true,
+   ko:"이 다리는 저 다리보다 세 배 길다.",
+   exp:"배수 + as + <b>원급</b> + as. three times as long as"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"She has twice as ___ money as I do.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["much","many","more","most","lots"], a:0, eng:true,
+   ko:"그녀는 나보다 두 배 많은 돈을 가지고 있다.",
+   exp:"셀 수 없는 money이니 <b>much</b>입니다."},
+
+  {type:"n", tag:"쓰임 가리기", sent:"Come back as soon as you ___.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["can","possible","are","do","will"], a:0, eng:true,
+   ko:"할 수 있는 한 빨리 돌아와.",
+   exp:"as soon as you <b>can</b> = as soon as possible"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"Please speak as slowly as ___.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["possible","possibly","can","able","you"], a:0, eng:true,
+   ko:"가능한 한 천천히 말해 주세요.",
+   exp:"as ~ as <b>possible</b> = 가능한 한 ~하게"},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">No other mountain in South Korea is as high as Mt. Halla.</span>",
+   opts:["한라산이 남한에서 가장 높다.","한라산이 남한에서 가장 낮다.","한라산은 다른 산만큼 높다.","남한의 산은 모두 높이가 같다.","한라산보다 높은 산이 있다."], a:0,
+   exp:"‘어떤 산도 한라산만큼 높지 않다’ = 한라산이 <b>가장</b> 높다."},
+
+  {type:"n", tag:"대결 판정", q:"다음을 읽고, <b>가장 빠른</b> 사람을 고르세요.<br><span class=\"eng\">Amy is as fast as Ben. Chris is faster than Amy.</span>",
+   opts:["Chris","Amy","Ben","모두 같다","알 수 없다"], a:0,
+   exp:"Amy = Ben, Chris > Amy이니 <b>Chris</b>가 가장 빠릅니다."},
+
+  {type:"a", tag:"쌍둥이 문장", multi:true, eng:true, q:"<span class=\"eng\">Ben is not as heavy as Sam.</span>과 뜻이 같은 문장을 모두 고르세요. (여러 개)",
+   opts:["Sam is heavier than Ben.","Ben is lighter than Sam.","Ben is less heavy than Sam.","Ben is heavier than Sam.","Sam is less heavy than Ben."], ans:[0,1,2],
+   exp:"not as ~ as = 뒤쪽 비교급 = 앞쪽 반대말 비교급 = <b>less ~ than</b>"},
+
+  {type:"a", tag:"쌍둥이 문장", multi:true, eng:true, q:"두 문장의 뜻이 <b>같은</b> 짝을 모두 고르세요. (여러 개)",
+   opts:["The test was not as hard as I thought. = The test was less hard than I thought.","Tom is not as old as me. = I am older than Tom.","This room is as large as that one. = This room and that one are the same size.","She is not as tall as me. = She is taller than me.","It is less expensive than that. = It is more expensive than that."], ans:[0,1,2],
+   exp:"not as ~ as와 less ~ than은 같은 뜻, 뒤쪽을 앞으로 보내면 비교급입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"less", sent:"This car is ___ fast than that one.",
+   q:"<span class=\"eng\">This car is not as fast as that one.</span>과 뜻이 같도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"이 차는 저 차보다 덜 빠르다.",
+   exp:"not as ~ as = <b>less</b> ~ than"},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"as tall as", alt:["so tall as"], sent:"Leo is not ___ Jake.",
+   q:"<span class=\"eng\">Jake is taller than Leo.</span>와 뜻이 같도록 빈칸에 알맞은 말을 써 보세요.",
+   ko:"레오는 제이크만큼 키가 크지 않다.",
+   exp:"Jake가 더 크다 = Leo is not <b>as tall as</b> Jake."},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"you can", sent:"Drink water as often as ___.",
+   q:"<span class=\"eng\">Drink water as often as possible.</span>과 뜻이 같도록 빈칸에 두 낱말을 써 보세요.",
+   ko:"할 수 있는 한 자주 물을 마셔라.",
+   exp:"as ~ as possible = as ~ as + 주어 + <b>can</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"three times", sent:"His room is ___ as big as mine.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요.",
+   ko:"그의 방은 내 방보다 세 배 크다.",
+   exp:"세 배 = <b>three times</b>. 두 배만 twice를 씁니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["This road is less busier than that one.","This road is less busy than that one.","That road is busier than this one.","This road is not as busy as that one.","This road is as busy as that one."], a:0, eng:true,
+   exp:"less 뒤에는 <b>원급</b>입니다. less busy than"},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>바른</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["He earns twice as much as I do.","Answer as quickly as possible.","It is not so cold as yesterday.","She is as smarter as her brother.","No other girl is as prettier as Ann."], ans:[0,1,2],
+   exp:"as와 as 사이에는 언제나 원급입니다. as smart as, as pretty as"},
+
+  {type:"v", tag:"쌍둥이 문장", hard:true, q:"<span class=\"eng\">Nothing is as precious as time.</span>과 뜻이 <b>같은</b> 문장은?",
+   opts:["Time is the most precious thing.","Time is not as precious as other things.","Time is less precious than money.","Everything is as precious as time.","Time is not precious."], a:0, eng:true,
+   exp:"‘어떤 것도 시간만큼 귀하지 않다’ = 시간이 <b>가장</b> 귀하다."},
+
+  {type:"v", tag:"대결 판정", hard:true, q:"사과 1,000원, 배 1,500원, 귤 1,000원입니다. 맞지 <b>않는</b> 문장은?",
+   opts:["Apples are more expensive than tangerines.","Apples are as expensive as tangerines.","Pears are more expensive than apples.","Tangerines are less expensive than pears.","Apples are not as expensive as pears."], a:0, eng:true,
+   exp:"사과와 귤은 값이 같으니 <b>as expensive as</b>입니다."},
+
+  {type:"v", tag:"종합", write:true, ans:"less heavy than", sent:"My bag is ___ yours.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (heavy)",
+   ko:"내 가방은 네 가방보다 덜 무겁다.",
+   exp:"덜 ~한 = <b>less</b> + 원급 + <b>than</b>"},
+
+  {type:"v", tag:"보스 문제", hard:true, write:true, ans:"older than", sent:"Sam is ___ Ben.",
+   q:"<span class=\"eng\">Ben is not as old as Sam.</span>과 뜻이 같도록 빈칸에 알맞은 말을 써 보세요.",
+   ko:"샘은 벤보다 나이가 많다.",
+   exp:"뒤쪽 Sam을 앞으로 → <b>older than</b>"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
+
 var LEVELS = {
   1:{name:"기본1 · as ~ as는 저울의 수평", desc:"한글로 이해 12 · 쉬운 영어 8 · ~만큼 …한 · 사이에는 원급 · 형용사와 부사 자리 · 견주는 대상", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 넓히기와 부정", desc:"여러 형용사·부사 · not as(so) ~ as · 누가 더할까 대결 판정 · 함정", qs:L2, typeLabels:{n:"빈칸과 뜻",a:"모두 고르기",v:"함정"}},
@@ -953,7 +1321,7 @@ function drawLevels(){
     else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
     h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
         '<span class="rank">'+k+'</span>'+
-        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+L.qs.length+'문제</span></span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+drawCount(L)+'문제</span></span>'+
         '<span class="desc">'+esc(L.desc)+'</span></span>'+
         right+
       '</button>';
@@ -996,9 +1364,35 @@ function pickLevel(k){
 })();
 
 /* ===================== 문제 ===================== */
+/* 문제 뽑기: 종류(n·a·v) 비율을 지키고, 보스 문제는 하나만 그 종류의 맨 끝에 둡니다 */
+function drawCount(L){ return Math.min(20, L.qs.length); }
+function drawList(L){
+  var qs=L.qs, N=drawCount(L), T=["n","a","v"];
+  if(qs.length<=N) return qs.map(function(_,i){return i;});
+  var by={}, boss=[], cnt={}, sum=0;
+  T.forEach(function(t){ by[t]=[]; cnt[t]=0; });
+  qs.forEach(function(q,i){ if(q.tag==="보스 문제") boss.push(i); else if(by[q.type]) by[q.type].push(i); });
+  T.forEach(function(t){
+    var p=qs.filter(function(q){ return q.type===t; }).length;
+    cnt[t]=Math.round(p*N/qs.length); sum+=cnt[t];
+  });
+  while(sum>N){ var big=T.slice().sort(function(x,y){return cnt[y]-cnt[x];})[0]; cnt[big]--; sum--; }
+  while(sum<N){ var lot=T.slice().sort(function(x,y){return by[y].length-cnt[y]-(by[x].length-cnt[x]);})[0]; cnt[lot]++; sum++; }
+  var b = boss.length ? boss[Math.floor(Math.random()*boss.length)] : -1;
+  if(b>=0) cnt[qs[b].type]--;
+  var out=[];
+  T.forEach(function(t){
+    var pool=by[t].slice();
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=pool[i]; pool[i]=pool[j]; pool[j]=x; }
+    var got=pool.slice(0,Math.max(0,cnt[t])).sort(function(x,y){return x-y;});
+    if(b>=0 && qs[b].type===t) got.push(b);
+    out=out.concat(got);
+  });
+  return out;
+}
 function startQuiz(){
   var L=LEVELS[S.level];
-  S.list=L.qs.map(function(_,i){return i;});
+  S.list=drawList(L);
   S.i=0;S.picked=-1;S.answered=false;
   S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
   S.round=1;S.retryWrong=[];
@@ -1183,7 +1577,7 @@ function closePraise(){ $("praiseBox").classList.add("hide"); }
 
 function renderResult(){
   clearProg();
-  var L=LEVELS[S.level], total=L.qs.length;
+  var L=LEVELS[S.level], total=drawCount(L);
   S.score=Math.round(S.correct/total*100);
   var pr=praise(S.score);
 
