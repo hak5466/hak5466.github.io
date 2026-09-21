@@ -34,6 +34,8 @@
 | sothat-purpose | SO THAT 목적 GAME | 중2 |
 | perfect | 현재완료 GAME | 중3 |
 | relpron | 관계대명사 GAME | 중3 |
+| relwhat | 관계대명사 WHAT GAME | 중3 |
+| asas | AS ~ AS 뽀개기 | 중1~중3 |
 | phonics | 파닉스 자음 뒤집기 (카드 놀이) | 초등 |
 | pumsa-lab | 품사 표본실 (표본 놀이) | 초등 |
 | perfect2 | 현재완료 GAME으로 넘겨 주는 옛 주소 | |

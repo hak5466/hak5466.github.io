@@ -92,6 +92,8 @@
   var READERS = {
     "gerund": familyA("동명사 GAME"),
     "relpron": familyA("관계대명사 GAME"),
+    "relwhat": familyA("관계대명사 WHAT GAME"),
+    "asas": familyA("AS ~ AS 뽀개기"),
     "toinf": familyA("TO부정사 GAME"),
     "toinf-basic": familyA("TO부정사 기본"),
     "pumsa8": familyA("8품사 GAME"),
