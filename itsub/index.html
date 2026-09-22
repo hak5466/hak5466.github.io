@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 비인칭주어 GAME</span></h1>
-    <p class="sub">해석하지 않는 주어 it · 시간 · 날씨 · 거리 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">해석하지 않는 주어 it · 시간 · 날씨 · 거리 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -745,6 +745,355 @@ var L4 = [
    opts:["ⓐ와 ⓑ","ⓐ와 ⓒ","ⓑ와 ⓒ","ⓒ와 ⓓ","ⓐ와 ⓓ"], a:0,
    exp:"ⓐ 걸리는 시간과 ⓑ 계절은 모두 해석하지 않는 <b>비인칭 주어</b>입니다. ⓒ는 대명사, ⓓ는 가주어입니다."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘지금 비가 온다’를 영어로 말할 때 주어 자리에 오는 말은?",
+   opts:["It","Rain","That","There","This"], a:0,
+   exp:"날씨는 뜻 없는 주어 <b>It</b>으로 말합니다. It is raining now."},
+
+  {type:"n", tag:"한글로 이해", q:"영어에서 날씨나 시간을 말할 때도 주어 it을 쓰는 까닭은?",
+   opts:["영어 문장에는 주어 자리가 꼭 있어야 해서","날씨가 물건이라서","it이 ‘오늘’이라는 뜻이라서","시간을 강조하려고","it이 동사라서"], a:0,
+   exp:"우리말은 주어 없이 ‘덥다’라고 해도 되지만 영어는 <b>주어 자리</b>를 채워야 합니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 공을 샀다. 그것은 빨갛다.", q:"‘그것은’에 해당하는 it은 어느 쪽인가요?",
+   opts:["대명사 it","비인칭 주어 it","가주어 it","there","this"], a:0,
+   exp:"앞에 나온 ‘공’을 가리키므로 <b>대명사</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"오늘은 화요일이다.", q:"영어로 옮길 때 쓰는 it은 어느 쪽인가요?",
+   opts:["비인칭 주어 it","대명사 it","가주어 it","쓰지 않는다","there"], a:0,
+   exp:"요일 → <b>비인칭 주어</b>. It is Tuesday today."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 중 비인칭 주어 it을 쓰는 우리말은?",
+   opts:["여기서 역까지 2킬로미터이다.","그것은 내 가방이다.","나는 그것을 좋아한다.","그것은 고양이다.","그것을 나에게 줘."], a:0,
+   exp:"거리 → 비인칭 주어. It is two kilometers from here to the station."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 중 비인칭 주어 it을 쓰지 <b>않는</b> 우리말은?",
+   opts:["그것은 내 필통이다.","지금 아홉 시이다.","밖이 어둡다.","오늘은 3월 1일이다.","오늘은 바람이 분다."], a:0,
+   exp:"‘그것은’은 물건을 가리키는 <b>대명사</b> it입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"비인칭 주어 it을 쓰는 우리말을 모두 고르세요. (여러 개)",
+   opts:["오늘은 흐리다.","벌써 여름이다.","지금 세 시 반이다.","그것은 내 연필이다.","그것은 맛있다."], ans:[0,1,2],
+   exp:"날씨 · 계절 · 시간은 비인칭 주어, ‘그것은’은 대명사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘그것은’이라고 해석하는 it이 들어갈 우리말을 모두 고르세요. (여러 개)",
+   opts:["나는 모자를 샀다. 그것은 파랗다.","저 개를 봐. 그것은 자고 있다.","내 휴대 전화 어디 있니? 그것은 새것이다.","오늘은 춥다.","오늘은 일요일이다."], ans:[0,1,2],
+   exp:"앞에 나온 것을 가리키면 대명사, 날씨 · 요일은 비인칭 주어입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["비인칭 주어 it은 ‘그것은’이라고 해석한다.","비인칭 주어 it 뒤에는 is, was를 쓴다.","대명사 it은 앞에 나온 것을 가리킨다.","날씨를 말할 때 it을 쓴다.","거리를 말할 때 it을 쓴다."], a:0,
+   exp:"비인칭 주어 it은 <b>해석하지 않습니다</b>."},
+
+  {type:"a", tag:"쉬운 영어", sent:"**It** is sunny today.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["날씨","앞에 나온 물건","시간","거리","요일"], a:0,
+   exp:"‘오늘은 화창하다’ → 날씨의 <b>비인칭 주어</b>."},
+
+  {type:"a", tag:"쉬운 영어", sent:"**It** is three thirty.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["시간","날짜","거리","날씨","앞에 나온 물건"], a:0,
+   exp:"‘세 시 삼십 분이다’ → <b>시간</b>."},
+
+  {type:"a", tag:"쉬운 영어", sent:"**It** is Friday tomorrow.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["요일","날씨","시간","앞에 나온 물건","거리"], a:0,
+   exp:"‘내일은 금요일이다’ → <b>요일</b>."},
+
+  {type:"a", tag:"쉬운 영어", sent:"**It** is spring now.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["계절","앞에 나온 물건","거리","시간","요일"], a:0,
+   exp:"‘이제 봄이다’ → <b>계절</b>."},
+
+  {type:"a", tag:"쉬운 영어", sent:"**It** is too dark here.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["밝고 어두움","앞에 나온 물건","요일","날짜","거리"], a:0,
+   exp:"‘여기는 너무 어둡다’ → <b>명암</b>."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I have a puppy. **It** is very small.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["앞에 나온 동물","날씨","시간","거리","요일"], a:0,
+   exp:"앞의 a puppy를 가리키는 <b>대명사</b> → ‘그것은 매우 작다’."},
+
+  {type:"a", tag:"쉬운 영어", sent:"**It** is two kilometers to the park.", q:"밑줄 친 It이 가리키거나 나타내는 것은?",
+   opts:["거리","시간","날씨","앞에 나온 물건","요일"], a:0,
+   exp:"‘공원까지 2킬로미터이다’ → <b>거리</b>."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is hot today.</span>",
+   opts:["오늘은 덥다.","그것은 오늘 뜨겁다.","오늘 그것은 덥다.","그것은 오늘이다.","오늘은 뜨거운 것이다."], a:0,
+   exp:"날씨의 it은 해석하지 않습니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is nine o'clock.</span>",
+   opts:["아홉 시이다.","그것은 아홉 시이다.","그것은 아홉 개이다.","아홉 시에 그것이 있다.","그것은 시계이다."], a:0,
+   exp:"시간의 it은 해석하지 않습니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"비인칭 주어 It이 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["It is windy.","It is Monday.","It is ten o'clock.","It is my bag.","It is a cat."], ans:[0,1,2],
+   exp:"날씨 · 요일 · 시간은 비인칭 주어, my bag · a cat을 가리키는 it은 대명사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"밑줄 친 It의 쓰임이 나머지와 <b>다른</b> 것은?",
+   opts:["Where is my cap? **It** is on the bed.","**It** is cold outside.","**It** is six o'clock.","**It** is Sunday.","**It** is dark now."], a:0,
+   exp:"첫째는 my cap을 가리키는 대명사, 나머지는 비인칭 주어입니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"시간", sent:"___ is a quarter past eight.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","This","There","That","Time"], a:0, eng:true,
+   ko:"여덟 시 십오 분이다.",
+   exp:"시간은 <b>It</b>으로. a quarter past eight = 8시 15분"},
+
+  {type:"n", tag:"시간", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Do you have the time?<br>B: ___ almost noon.</span>",
+   opts:["It's","There's","This is","That's","Time is"], a:0,
+   exp:"Do you have the time? = 지금 몇 시예요? → <b>It's</b> almost noon."},
+
+  {type:"n", tag:"요일", sent:"___ Tuesday, so we have art class.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","Today's is","This's","They're"], a:0, eng:true,
+   ko:"화요일이라서 우리는 미술 수업이 있다.",
+   exp:"요일은 <b>It's</b>."},
+
+  {type:"n", tag:"날짜", sent:"___ October 9th, Hangeul Day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","That's","This's","They're"], a:0, eng:true,
+   ko:"10월 9일, 한글날이다.",
+   exp:"날짜는 <b>It's</b>."},
+
+  {type:"n", tag:"날짜", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What's the date tomorrow?<br>B: ___ July 17th.</span>",
+   opts:["It's","There's","This is","I'm","They're"], a:0,
+   exp:"날짜는 비인칭 주어 <b>It's</b>로 답합니다."},
+
+  {type:"n", tag:"월·계절", sent:"___ winter in Australia now.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","This's","They're","That"], a:0, eng:true,
+   ko:"지금 호주는 겨울이다.",
+   exp:"계절도 <b>It</b>으로 말합니다."},
+
+  {type:"n", tag:"월·계절", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It was August when we met.</span>",
+   opts:["우리가 만났을 때는 8월이었다.","그것은 우리가 만난 8월이었다.","우리는 8월을 만났다.","그것은 8월에 만났다.","우리는 그것을 8월에 만났다."], a:0,
+   exp:"달을 말하는 it은 해석하지 않습니다."},
+
+  {type:"a", tag:"날씨", sent:"___ snowing a lot now.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It's","There's","Snow is","This is","That's"], a:0, eng:true,
+   ko:"지금 눈이 많이 온다.",
+   exp:"날씨 → <b>It's</b> snowing."},
+
+  {type:"a", tag:"날씨", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What's the weather like?<br>B: ___ foggy.</span>",
+   opts:["It's","There's","Weather is","This is","They're"], a:0,
+   exp:"날씨를 묻는 말에는 <b>It's</b> + 날씨 형용사."},
+
+  {type:"a", tag:"날씨", sent:"It ___ a lot here in winter.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["snows","snow","snowy","is snow","snowing"], a:0, eng:true,
+   ko:"이곳은 겨울에 눈이 많이 온다.",
+   exp:"It 뒤 현재 → <b>snows</b>."},
+
+  {type:"a", tag:"날씨", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It is snow now.","It is snowy now.","It is snowing now.","It snows a lot.","It was snowy yesterday."], a:0,
+   exp:"snow는 명사 또는 동사 → is snow ✕. is snowy 또는 is snowing"},
+
+  {type:"a", tag:"날씨", sent:"___ will be rainy tomorrow.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","This","Rain","That"], a:0, eng:true,
+   ko:"내일은 비가 올 것이다.",
+   exp:"앞으로의 날씨도 <b>It</b> will be ~."},
+
+  {type:"a", tag:"날씨", multi:true, q:"날씨를 바르게 말한 문장을 모두 고르세요. (여러 개)",
+   opts:["It is cloudy.","It is raining.","It rains a lot.","It is rain.","There is rainy."], ans:[0,1,2],
+   exp:"It is rain ✕, There is rainy ✕"},
+
+  {type:"a", tag:"계절", sent:"___ gets warm in April.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","This","Spring","He"], a:0, eng:true,
+   ko:"4월에는 날씨가 따뜻해진다.",
+   exp:"It gets + 형용사: 날씨가 ~해지다"},
+
+  {type:"v", tag:"거리", sent:"___ is about 400 kilometers from Seoul to Busan.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","That","This","They"], a:0, eng:true,
+   ko:"서울에서 부산까지는 약 400킬로미터이다.",
+   exp:"거리 → <b>It</b> is ~ from A to B."},
+
+  {type:"v", tag:"거리", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Is the bus stop far?<br>B: No. ___ only a five-minute walk.</span>",
+   opts:["It's","There's","This is","They're","That"], a:0,
+   exp:"거리 → <b>It's</b> only a five-minute walk."},
+
+  {type:"v", tag:"거리", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is a long way to the top.</span>",
+   opts:["꼭대기까지는 먼 길이다.","그것은 꼭대기에 있는 긴 길이다.","그것은 멀리 있다.","꼭대기에 그것이 있다.","그것은 길다."], a:0,
+   exp:"거리의 it은 해석하지 않습니다."},
+
+  {type:"v", tag:"명암", sent:"___ is still light at seven in summer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","This","Light","That"], a:0, eng:true,
+   ko:"여름에는 일곱 시에도 여전히 밝다.",
+   exp:"명암 → <b>It</b>. 여기서 light는 ‘밝은’이라는 형용사입니다."},
+
+  {type:"v", tag:"명암", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It gets dark early in winter.</span>",
+   opts:["겨울에는 일찍 어두워진다.","그것은 겨울에 일찍 어둡다.","겨울은 어둡다.","그것은 어둠을 얻는다.","겨울에 그것이 어두워진다."], a:0,
+   exp:"명암의 it은 해석하지 않습니다."},
+
+  {type:"v", tag:"정리", q:"다음 중 it을 해석하지 <b>않는</b> 문장은?",
+   opts:["It is noisy in the classroom.","I found a coin. It was old.","I like this song. It is nice.","Where's my key? It's in my bag.","This is my cat. It is cute."], a:0,
+   exp:"‘교실 안이 시끄럽다’ → 상황을 나타내는 비인칭 주어입니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it now?<br>B: It's eleven fifteen.</span>",
+   opts:["What time","What day","How far","How long","What date"], a:0,
+   exp:"시간을 묻는 말 → <b>What time</b> is it?"},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it today?<br>B: It's November 11th.</span>",
+   opts:["What date","What time","How far","What weather","How long"], a:0,
+   exp:"날짜 → <b>What date</b> is it today? (What's the date today?도 씁니다)"},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What's the weather ___ in Jeju?<br>B: It's windy.</span>",
+   opts:["like","as","how","about","for"], a:0,
+   exp:"What's the weather <b>like</b>? = How's the weather?"},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 B의 대답으로 알맞은 것은?<br><span class=\"eng\">A: How far is it from here to the museum?</span>",
+   opts:["It's about three kilometers.","It's three o'clock.","It's Wednesday.","It's sunny.","There are three museums."], a:0,
+   exp:"How far → <b>거리</b>로 답합니다."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It's Friday today.</span>",
+   opts:["What day is it today?","What time is it?","What's the date today?","How's the weather?","How far is it?"], a:0,
+   exp:"요일 → <b>What day</b> is it today?"},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 중 대화가 <b>어색한</b> 것은?",
+   opts:["A: What time is it? B: It's Monday.","A: How's the weather? B: It's cloudy.","A: What's the date? B: It's May 1st.","A: How far is it? B: It's two miles.","A: What day is it? B: It's Tuesday."], a:0,
+   exp:"What time → 시간으로 답해야 합니다."},
+
+  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Was it rainy yesterday?<br>B: Yes, ___ .</span>",
+   opts:["it was","it is","there was","it did","it rained"], a:0,
+   exp:"Was it ~? → Yes, <b>it was</b>."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It is cloud today.","It is cloudy today.","It was hot yesterday.","It rains a lot in July.","It is getting cold."], a:0,
+   exp:"cloud는 명사 → It is <b>cloudy</b>."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["It is ten minutes to the station.","There is ten minutes to the station.","This is ten minutes to the station.","It are ten minutes to the station.","They are ten minutes to the station."], a:0,
+   exp:"거리 → <b>It is</b>."},
+
+  {type:"a", tag:"어법 판별", sent:"___ was very foggy this morning.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","This","Fog","They"], a:0, eng:true,
+   ko:"오늘 아침은 안개가 짙었다.",
+   exp:"날씨 → <b>It</b>."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 빈칸에 <b>It</b>이 들어가야 하는 것은?",
+   opts:["___ is Children's Day today.","___ are many kids in the park.","___ is a bank near here.","___ are two books on the desk.","___ is a lot of water in the cup."], a:0,
+   exp:"날짜 · 기념일 → It. ‘~이 있다’는 There is/are입니다."},
+
+  {type:"a", tag:"어법 판별", q:"다음 문장에서 틀린 부분을 바르게 고친 것은?<br><span class=\"eng\">There is Saturday today.</span>",
+   opts:["There → It","is → are","Saturday → Saturdays","today → yesterday","고칠 곳이 없다"], a:0,
+   exp:"요일 → <b>It</b> is Saturday today."},
+
+  {type:"a", tag:"어법 판별", q:"다음 중 어법상 알맞은 문장을 모두 고른 것은?<br><span class=\"eng\">ⓐ It is my turn.&nbsp;ⓑ It is snow.&nbsp;ⓒ It gets dark.&nbsp;ⓓ There is sunny.</span>",
+   opts:["ⓐ, ⓒ","ⓐ, ⓑ","ⓑ, ⓓ","ⓒ, ⓓ","ⓐ, ⓓ"], a:0,
+   exp:"ⓑ snow → snowy/snowing, ⓓ There → It"},
+
+  {type:"a", tag:"어법 판별", sent:"It ___ very cold last night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["was","is","were","be","are"], a:0, eng:true,
+   ko:"어젯밤은 매우 추웠다.",
+   exp:"last night → 과거 <b>was</b>."},
+
+  {type:"v", tag:"쓰임 구별", q:"밑줄 친 It의 쓰임이 나머지와 <b>다른</b> 것은?",
+   opts:["I got a letter. **It** was from Tom.","**It** is Tuesday.","**It** is windy.","**It** is five o'clock.","**It** is dark outside."], a:0,
+   exp:"첫째는 a letter를 가리키는 대명사입니다."},
+
+  {type:"v", tag:"쓰임 구별", q:"밑줄 친 it의 쓰임이 같은 것끼리 묶은 것은?<br><span class=\"eng\">ⓐ It is noon.&nbsp;ⓑ I lost it.&nbsp;ⓒ It is far.&nbsp;ⓓ It is his cap.</span>",
+   opts:["ⓐ와 ⓒ / ⓑ와 ⓓ","ⓐ와 ⓑ / ⓒ와 ⓓ","ⓐ와 ⓓ / ⓑ와 ⓒ","ⓐ와 ⓑ와 ⓒ / ⓓ","모두 같다"], a:0,
+   exp:"ⓐ 시간 ⓒ 거리 → 비인칭 주어, ⓑ ⓓ → 대명사"},
+
+  {type:"v", tag:"서술형", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘밖에 바람이 많이 분다.’</span>",
+   opts:["It is very windy outside.","There is very windy outside.","It is very wind outside.","Wind is very windy outside.","This is very windy outside."], a:0,
+   exp:"날씨 → It is + 형용사 windy"},
+
+  {type:"v", tag:"서술형", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘지금 몇 시니?’</span>",
+   opts:["What time is it now?","What time it is now?","What time is now?","What is time now?","How time is it now?"], a:0,
+   exp:"<b>What time is it</b> now?"},
+
+  {type:"v", tag:"서술형", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It was raining when I left home.</span>",
+   opts:["내가 집을 나설 때 비가 오고 있었다.","그것은 내가 집을 떠날 때 비였다.","내가 떠나서 비가 왔다.","그것은 집을 떠나고 있었다.","비가 나를 집에서 떠나게 했다."], a:0,
+   exp:"날씨의 it은 해석하지 않습니다."},
+
+  {type:"v", tag:"쓰임 구별", q:"다음 중 비인칭 주어 it이 쓰인 문장은 모두 몇 개인가요?<br><span class=\"eng\">ⓐ It is late.&nbsp;ⓑ I want it.&nbsp;ⓒ It is spring.&nbsp;ⓓ It is his.&nbsp;ⓔ It is far.</span>",
+   opts:["3개","1개","2개","4개","5개"], a:0,
+   exp:"ⓐ 시간 ⓒ 계절 ⓔ 거리 → 3개"}
+];
+
+var X4 = [
+  {type:"n", tag:"가주어", sent:"___ is fun to play board games.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","There","That","This","What"], a:0, eng:true,
+   ko:"보드게임을 하는 것은 재미있다.",
+   exp:"긴 주어 to play board games를 뒤로 보내고 <b>가주어 It</b>을 씁니다."},
+
+  {type:"n", tag:"가주어", q:"다음 문장에서 진짜 주어는 어느 것일까요?<br><span class=\"eng\">It is necessary to wear a helmet.</span>",
+   opts:["to wear a helmet","It","necessary","a helmet","wear"], a:0,
+   exp:"‘헬멧을 쓰는 것’이 진짜 주어입니다."},
+
+  {type:"n", tag:"가주어", sent:"It is very nice ___ her to say so.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["of","for","to","with","by"], a:0, eng:true,
+   ko:"그렇게 말해 주다니 그녀는 참 친절하다.",
+   exp:"nice처럼 사람의 성격을 말하는 형용사 → <b>of</b> + 사람"},
+
+  {type:"n", tag:"가주어", sent:"It is hard ___ children to wake up early.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["for","of","to","with","at"], a:0, eng:true,
+   ko:"아이들이 일찍 일어나는 것은 힘들다.",
+   exp:"hard는 성격이 아님 → <b>for</b> + 사람"},
+
+  {type:"n", tag:"가주어", q:"다음 두 문장이 같은 뜻이 되도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">To exercise every day is good. = ___ is good to exercise every day.</span>",
+   opts:["It","That","There","This","What"], a:0,
+   exp:"to부정사 주어 → 가주어 <b>It</b> ~ to ..."},
+
+  {type:"n", tag:"가주어", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It is careless for you to lose it.","It is careless of you to lose it.","It is easy for me to cook.","It is important to sleep well.","It is kind of him to help."], a:0,
+   exp:"careless(성격) → <b>of</b> you."},
+
+  {type:"n", tag:"가주어", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">It is not easy to learn a new language.</span>",
+   opts:["새로운 언어를 배우는 것은 쉽지 않다.","그것은 새 언어를 배우기 쉽지 않다.","새 언어는 그것을 배우기 쉽다.","그것은 쉬운 새 언어가 아니다.","쉬운 언어를 배우지 않는다."], a:0,
+   exp:"가주어 it은 해석하지 않고 to 이하를 주어로 해석합니다."},
+
+  {type:"a", tag:"It takes", sent:"It ___ an hour to clean my room yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["took","takes","taked","taking","take"], a:0, eng:true,
+   ko:"어제 내 방을 청소하는 데 한 시간이 걸렸다.",
+   exp:"yesterday → take의 과거 <b>took</b>."},
+
+  {type:"a", tag:"It takes", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: How long does it take to get to the airport?<br>B: ___ about an hour by taxi.</span>",
+   opts:["It takes","It's take","There takes","It took to","It is taking to"], a:0,
+   exp:"How long does it take ~? → <b>It takes</b> ~."},
+
+  {type:"a", tag:"It takes", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["It takes me ten minutes to walk home.","It takes ten minutes me to walk home.","It take me ten minutes to walk home.","There takes me ten minutes to walk home.","It takes me ten minutes walk home."], a:0,
+   exp:"It takes + 사람 + 시간 + to 동사원형"},
+
+  {type:"a", tag:"It takes", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그 다리를 짓는 데 3년이 걸렸다.’</span>",
+   opts:["It took three years to build the bridge.","It takes three years to build the bridge.","It took three years build the bridge.","There took three years to build the bridge.","It was took three years to build the bridge."], a:0,
+   exp:"과거 <b>took</b> + 시간 + to 동사원형"},
+
+  {type:"a", tag:"It takes", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It took me two days to read it.</span>",
+   opts:["How long did it take you to read it?","How far is it?","What time is it?","How long does it take?","When did you read it?"], a:0,
+   exp:"과거로 답했으므로 <b>How long did it take</b> you to read it?"},
+
+  {type:"a", tag:"It takes", multi:true, q:"어법상 알맞은 문장을 모두 고르세요. (여러 개)",
+   opts:["It takes time to make friends.","It took her a year to write it.","How long does it take?","It takes to walk ten minutes.","It taking an hour."], ans:[0,1,2],
+   exp:"It takes + (사람) + 시간 + to 동사원형"},
+
+  {type:"v", tag:"세 가지 구별", q:"밑줄 친 It의 쓰임이 나머지와 <b>다른</b> 것은?",
+   opts:["**It** is exciting to ride a roller coaster.","**It** is Thursday.","**It** is very humid.","**It** is five miles away.","**It** is getting dark."], a:0,
+   exp:"첫째는 to ride를 대신하는 <b>가주어</b>, 나머지는 비인칭 주어입니다."},
+
+  {type:"v", tag:"세 가지 구별", q:"밑줄 친 It이 <b>가주어</b>인 것은?",
+   opts:["**It** is good to help others.","**It** is my new watch.","**It** is late at night.","**It** is sunny.","I have a dog. **It** is brown."], a:0,
+   exp:"진짜 주어 to help others가 뒤에 있습니다."},
+
+  {type:"v", tag:"세 가지 구별", q:"다음 세 문장의 it을 바르게 짝지은 것은?<br><span class=\"eng\">ⓐ It is hard to say sorry.&nbsp;ⓑ I lost my umbrella, but I found it.&nbsp;ⓒ It is getting warmer.</span>",
+   opts:["ⓐ 가주어 – ⓑ 대명사 – ⓒ 비인칭 주어","ⓐ 비인칭 주어 – ⓑ 대명사 – ⓒ 가주어","ⓐ 대명사 – ⓑ 가주어 – ⓒ 비인칭 주어","ⓐ 가주어 – ⓑ 비인칭 주어 – ⓒ 대명사","모두 비인칭 주어"], a:0,
+   exp:"ⓐ to say sorry의 가주어, ⓑ umbrella를 가리킴, ⓒ 날씨"},
+
+  {type:"v", tag:"고난도", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It is easy of me to solve the puzzle.","It is kind of you to wait.","It is hard for me to swim.","It took me an hour to finish.","It is getting darker."], a:0,
+   exp:"easy는 성격 형용사가 아님 → <b>for</b> me."},
+
+  {type:"v", tag:"고난도", q:"빈칸 ⓐ와 ⓑ에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ took me a week ⓑ finish the puzzle.</span>",
+   opts:["ⓐ It – ⓑ to","ⓐ There – ⓑ to","ⓐ It – ⓑ for","ⓐ This – ⓑ to","ⓐ It – ⓑ ×"], a:0,
+   exp:"It took + 사람 + 시간 + <b>to</b> 동사원형"},
+
+  {type:"v", tag:"고난도", q:"다음 글의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">We went hiking yesterday. ___ was sunny, and it took us three hours to reach the top.</span>",
+   opts:["It","There","That","This","They"], a:0,
+   exp:"날씨 → 비인칭 주어 <b>It</b>."},
+
+  {type:"v", tag:"고난도", q:"다음 중 it의 쓰임이 같은 것끼리 묶인 것은?<br><span class=\"eng\">ⓐ It is fun to swim.&nbsp;ⓑ It is important to study.&nbsp;ⓒ It is cold.&nbsp;ⓓ I like it.</span>",
+   opts:["ⓐ와 ⓑ","ⓐ와 ⓒ","ⓑ와 ⓓ","ⓒ와 ⓓ","ⓐ와 ⓓ"], a:0,
+   exp:"ⓐ ⓑ는 가주어, ⓒ 비인칭 주어, ⓓ 대명사"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · it의 두 얼굴", desc:"한글로 이해 9 · 쉬운 영어 11 · ‘그것’인 it과 해석하지 않는 it · 쉬운 영어 문장으로 가리기 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

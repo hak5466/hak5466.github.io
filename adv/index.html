@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 부사 뽀개기</span></h1>
-    <p class="sub">어떻게 · 언제 · 어디서 · 얼마나 · -ly 만들기 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">어떻게 · 언제 · 어디서 · 얼마나 · -ly 만들기 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -726,6 +726,338 @@ var L4 = [
    opts:["부사는 명사를 꾸며 준다.","부사는 동사를 꾸며 준다.","부사는 형용사를 꾸며 준다.","부사는 다른 부사도 꾸며 준다.","부사를 빼도 문장은 말이 된다."], a:0,
    exp:"명사를 꾸미는 일은 <b>형용사</b>가 맡습니다. 부사는 명사만 빼고 꾸밉니다."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", sent:"그녀는 조용히 문을 닫았다.", q:"‘닫았다’를 꾸며 주는 말은 무엇인가요?",
+   opts:["조용히","그녀는","문을","닫았다","없다"], a:0,
+   exp:"어떻게 닫았는지 → <b>조용히</b>. 부사입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"우리는 여기에서 놀았다.", q:"‘여기에서’가 알려 주는 것은?",
+   opts:["어디서 놀았는지","언제 놀았는지","누가 놀았는지","무엇을 했는지","얼마나 놀았는지"], a:0,
+   exp:"곳을 알려 주는 부사 → here"},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 항상 아침을 먹는다.", q:"‘항상’이 알려 주는 것은?",
+   opts:["얼마나 자주 먹는지","어디서 먹는지","무엇을 먹는지","누가 먹는지","왜 먹는지"], a:0,
+   exp:"얼마나 자주 → 빈도부사 always"},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 너무 빨리 말한다.", q:"‘너무’는 무엇을 꾸며 주나요?",
+   opts:["부사 ‘빨리’","명사 ‘그’","동사만","문장 전체만","아무것도 꾸미지 않는다"], a:0,
+   exp:"부사는 다른 <b>부사</b>도 꾸밉니다. too fast"},
+
+  {type:"n", tag:"한글로 이해", q:"‘친절한 선생님’과 ‘친절하게 말한다’에서 부사는?",
+   opts:["친절하게","친절한","선생님","말한다","둘 다"], a:0,
+   exp:"동사 ‘말한다’를 꾸미는 <b>친절하게</b>가 부사입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그는 열심히 공부한다’에서 ‘열심히’를 빼면 어떻게 될까요?",
+   opts:["문장은 되지만 덜 자세해진다","문장이 되지 않는다","뜻이 반대가 된다","주어가 없어진다","동사가 없어진다"], a:0,
+   exp:"부사는 빼도 문장이 됩니다. ‘그는 공부한다.’"},
+
+  {type:"n", tag:"한글로 이해", q:"‘오늘’은 어떤 것을 말해 주는 부사일까요?",
+   opts:["언제","어디서","어떻게","얼마나 자주","누구"], a:0,
+   exp:"때를 알려 줍니다. today"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 부사를 모두 고르세요. (여러 개)",
+   opts:["천천히","자주","매우","천천한","느리다"], ans:[0,1,2],
+   exp:"‘천천한’과 ‘느리다’는 형용사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"어디서를 말해 주는 부사를 모두 고르세요. (여러 개)",
+   opts:["여기에","저기에","밖에","어제","빨리"], ans:[0,1,2],
+   exp:"here · there · outside"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"얼마나 자주를 말해 주는 부사를 모두 고르세요. (여러 개)",
+   opts:["항상","자주","가끔","빨리","여기"], ans:[0,1,2],
+   exp:"always · often · sometimes"},
+
+  {type:"n", tag:"한글로 이해", q:"밑줄 친 말이 부사인 것은?",
+   opts:["그는 **열심히** 일한다.","그는 **부지런한** 사람이다.","**큰** 나무가 있다.","그것은 **내** 책이다.","**빨간** 모자를 샀다."], a:0,
+   exp:"동사 ‘일한다’를 꾸미는 <b>열심히</b>가 부사입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 중 부사가 들어 있지 <b>않은</b> 문장은?",
+   opts:["이것은 내 가방이다.","그는 빨리 걷는다.","나는 오늘 바쁘다.","그녀는 아주 예쁘다.","우리는 자주 만난다."], a:0,
+   exp:"빨리 · 오늘 · 아주 · 자주가 부사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 중 부사는?",
+   opts:["quickly","quick","school","happy","sing"], a:0,
+   exp:"quick(빠른) + ly → <b>quickly</b>(빨리)"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"부사를 모두 고르세요. (여러 개)",
+   opts:["often","there","today","tall","book"], ans:[0,1,2],
+   exp:"tall은 형용사, book은 명사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"kind(친절한)를 부사로 바꾸면?",
+   opts:["kindly","kinds","kinder","kindness","kinded"], a:0,
+   exp:"kind + ly → <b>kindly</b>(친절하게)"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘항상’을 영어로 하면?",
+   opts:["always","never","often","now","here"], a:0,
+   exp:"항상 = <b>always</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘지금’을 영어로 하면?",
+   opts:["now","then","here","today","soon"], a:0,
+   exp:"지금 = <b>now</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She speaks ___ .", q:"‘그녀는 조용히 말한다’가 되도록 알맞은 것은?",
+   opts:["quietly","quiet","quiets","quieter","a quiet"], a:0, eng:true,
+   ko:"그녀는 조용히 말한다.",
+   exp:"동사 speaks를 꾸미는 부사 <b>quietly</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I am ___ happy.", q:"‘나는 아주 행복하다’가 되도록 알맞은 것은?",
+   opts:["very","much","many","well","good"], a:0, eng:true,
+   ko:"나는 아주 행복하다.",
+   exp:"형용사 happy를 꾸미는 <b>very</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"We play soccer **today**.", q:"밑줄 친 today가 알려 주는 것은?",
+   opts:["언제","어디서","어떻게","누가","무엇을"], a:0,
+   ko:"우리는 오늘 축구를 한다.",
+   exp:"today(오늘) → <b>언제</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"뜻", word:"often", q:"<b>often</b>의 뜻으로 알맞은 것은?",
+   opts:["자주","전혀","항상","지금","여기에"], a:0,
+   exp:"often = <b>자주</b>"},
+
+  {type:"n", tag:"뜻", word:"never", q:"<b>never</b>의 뜻으로 알맞은 것은?",
+   opts:["결코 ~않다","항상","가끔","자주","곧"], a:0,
+   exp:"never = <b>결코(전혀) ~않다</b>"},
+
+  {type:"n", tag:"뜻", word:"sometimes", q:"<b>sometimes</b>의 뜻으로 알맞은 것은?",
+   opts:["가끔","항상","전혀","지금","어제"], a:0,
+   exp:"sometimes = <b>가끔, 때때로</b>"},
+
+  {type:"n", tag:"뜻", word:"quietly", q:"<b>quietly</b>의 뜻으로 알맞은 것은?",
+   opts:["조용히","조용한","시끄럽게","빨리","천천한"], a:0,
+   exp:"quiet(조용한) + ly → <b>조용히</b>"},
+
+  {type:"n", tag:"뜻", word:"there", q:"<b>there</b>의 뜻으로 알맞은 것은?",
+   opts:["거기에","여기에","지금","언제나","아주"], a:0,
+   exp:"there = <b>거기에, 저기에</b>"},
+
+  {type:"n", tag:"뜻", word:"hard", q:"<b>hard</b>가 동사를 꾸밀 때의 뜻은? (He studies hard.)",
+   opts:["열심히","딱딱한","거의 ~않다","어려운","천천히"], a:0,
+   exp:"부사 hard = <b>열심히</b>. hardly(거의 ~않다)와 다릅니다."},
+
+  {type:"n", tag:"뜻", word:"soon", q:"<b>soon</b>의 뜻으로 알맞은 것은?",
+   opts:["곧","어제","자주","늦게","항상"], a:0,
+   exp:"soon = <b>곧</b>"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 부사를 모두 고르세요. (여러 개)",
+   opts:["quietly","soon","there","quiet","noise"], ans:[0,1,2],
+   exp:"quiet는 형용사, noise는 명사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"어떻게를 말해 주는 부사를 모두 고르세요. (여러 개)",
+   opts:["slowly","carefully","well","yesterday","here"], ans:[0,1,2],
+   exp:"yesterday는 때, here는 곳입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"때를 말해 주는 부사를 모두 고르세요. (여러 개)",
+   opts:["tomorrow","soon","then","there","fast"], ans:[0,1,2],
+   exp:"there는 곳, fast는 어떻게입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"-ly가 붙어 만들어진 부사를 모두 고르세요. (여러 개)",
+   opts:["happily","easily","carefully","friendly","lovely"], ans:[0,1,2],
+   exp:"friendly · lovely는 ly로 끝나지만 <b>형용사</b>입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"-ly를 붙이지 않고도 부사로 쓰는 낱말을 모두 고르세요. (여러 개)",
+   opts:["fast","hard","late","slow","kind"], ans:[0,1,2],
+   exp:"fast · hard · late는 모양 그대로 부사로도 씁니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"동사를 꾸밀 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["well","loudly","early","good","loud noise"], ans:[0,1,2],
+   exp:"good은 형용사, loud noise는 명사 덩어리입니다."},
+
+  {type:"v", tag:"구별", sent:"Please drive ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["carefully","careful","care","carefuls","a careful"], a:0, eng:true,
+   ko:"조심해서 운전해 주세요.",
+   exp:"동사 drive를 꾸미는 부사 <b>carefully</b>"},
+
+  {type:"v", tag:"구별", sent:"He studies ___ every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["hard","hardly","hards","harder than","a hard"], a:0, eng:true,
+   ko:"그는 매일 열심히 공부한다.",
+   exp:"‘열심히’ → <b>hard</b>. hardly는 ‘거의 ~않다’입니다."},
+
+  {type:"v", tag:"구별", sent:"The baby is sleeping ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["quietly","quiet","quietness","quiets","a quiet"], a:0, eng:true,
+   ko:"아기가 조용히 자고 있다.",
+   exp:"동사 sleeping을 꾸미는 <b>quietly</b>"},
+
+  {type:"v", tag:"구별", sent:"This soup is ___ hot.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["too","many","much of","a lot","good"], a:0, eng:true,
+   ko:"이 수프는 너무 뜨겁다.",
+   exp:"형용사 hot을 꾸미는 <b>too</b>(너무)"},
+
+  {type:"v", tag:"구별", sent:"I got up ___ this morning.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["early","earlily","earlier than","an early","earliness"], a:0, eng:true,
+   ko:"나는 오늘 아침 일찍 일어났다.",
+   exp:"early는 모양 그대로 부사(일찍)로도 씁니다."},
+
+  {type:"v", tag:"구별", q:"다음 중 부사가 들어 있지 <b>않은</b> 문장은?",
+   opts:["She has a lovely cat.","She smiles happily.","He came late.","We often meet.","It is very cold."], a:0,
+   exp:"lovely는 형용사(사랑스러운)입니다."},
+
+  {type:"v", tag:"구별", q:"다음 중 어법상 <b>틀린</b> 것은?",
+   opts:["She speaks very quiet.","He works hard every day.","She sings well.","They run fast.","I came home late."], a:0,
+   exp:"동사 speaks를 꾸미므로 부사 <b>quietly</b>를 씁니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"만들기", word:"careful", q:"careful(조심스러운)의 부사형은?",
+   opts:["carefully","carefuly","carefull","careful","carely"], a:0,
+   exp:"careful + ly → <b>carefully</b> (l이 두 개)"},
+
+  {type:"n", tag:"만들기", word:"heavy", q:"heavy(무거운, 심한)의 부사형은?",
+   opts:["heavily","heavyly","heavly","heavy","heavies"], a:0,
+   exp:"자음 + y → y를 i로 바꾸고 ly → <b>heavily</b>"},
+
+  {type:"n", tag:"만들기", word:"gentle", q:"gentle(부드러운)의 부사형은?",
+   opts:["gently","gentlely","gentley","gentle","gentily"], a:0,
+   exp:"-le로 끝나면 e를 빼고 y → <b>gently</b>"},
+
+  {type:"n", tag:"만들기", word:"loud", q:"loud(시끄러운)의 부사형은?",
+   opts:["loudly","loudy","loudily","loudely","louds"], a:0,
+   exp:"loud + ly → <b>loudly</b>"},
+
+  {type:"n", tag:"만들기", q:"형용사와 부사의 모양이 <b>같은</b> 낱말끼리 묶은 것은?",
+   opts:["early · late · fast","slow · slowly · slower","kind · kindly · kinder","happy · happily · happier","good · well · better"], a:0,
+   exp:"early · late · fast는 형용사와 부사가 같은 모양입니다."},
+
+  {type:"n", tag:"만들기", q:"다음 중 부사형이 <b>틀린</b> 것은?",
+   opts:["easy → easyly","sad → sadly","lucky → luckily","true → truly","good → well"], a:0,
+   exp:"easy → <b>easily</b>"},
+
+  {type:"n", tag:"만들기", multi:true, q:"부사로 바르게 바꾼 것을 모두 고르세요. (여러 개)",
+   opts:["quick → quickly","busy → busily","careful → carefully","fast → fastly","hard → hardly(열심히)"], ans:[0,1,2],
+   exp:"fast → fast, hard → hard(열심히)"},
+
+  {type:"a", tag:"자리", sent:"She ___ eats breakfast.", q:"‘그녀는 가끔 아침을 먹는다’가 되도록 알맞은 것은?",
+   opts:["sometimes","never","always","often","usually"], a:0, eng:true,
+   ko:"그녀는 가끔 아침을 먹는다.",
+   exp:"가끔 = <b>sometimes</b>, 일반동사 앞"},
+
+  {type:"a", tag:"자리", sent:"They are ___ kind to me.", q:"‘그들은 늘 나에게 친절하다’가 되도록 알맞은 것은?",
+   opts:["always","never","sometimes","hardly","soon"], a:0, eng:true,
+   ko:"그들은 늘 나에게 친절하다.",
+   exp:"be동사 뒤에 빈도부사 <b>always</b>"},
+
+  {type:"a", tag:"자리", q:"다음 중 어순이 바른 것은?",
+   opts:["He is never late.","He never is late.","Never he is late.","He is late never.","He late is never."], a:0,
+   exp:"be동사 뒤 → is never"},
+
+  {type:"a", tag:"자리", q:"다음 중 어순이 바른 것은?",
+   opts:["I usually walk to school.","I walk usually to school.","Usually I to school walk.","I walk to usually school.","I to school usually walk."], a:0,
+   exp:"일반동사 앞 → usually walk"},
+
+  {type:"a", tag:"자리", q:"very를 바르게 쓴 것은?",
+   opts:["very well","well very","slowly very","fast very","quietly very"], a:0,
+   exp:"very는 꾸미는 말 <b>앞</b>에 놓습니다. very well"},
+
+  {type:"a", tag:"자리", multi:true, q:"어순이 바른 것을 모두 고르세요. (여러 개)",
+   opts:["She often goes swimming.","We are always happy.","He usually gets up early.","She goes often swimming.","We always are happy."], ans:[0,1,2],
+   exp:"일반동사 앞, be동사 뒤"},
+
+  {type:"v", tag:"가려내기", sent:"The test was ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["easy","easily","ease","easyly","an easy"], a:0, eng:true,
+   ko:"시험은 쉬웠다.",
+   exp:"be동사 뒤에서 주어를 설명 → 형용사 <b>easy</b>"},
+
+  {type:"v", tag:"가려내기", sent:"I passed the test ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["easily","easy","ease","easyly","an easy"], a:0, eng:true,
+   ko:"나는 쉽게 시험에 통과했다.",
+   exp:"동사 passed를 꾸밈 → 부사 <b>easily</b>"},
+
+  {type:"v", tag:"가려내기", sent:"He is a ___ driver.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["careful","carefully","care","carefuly","cares"], a:0, eng:true,
+   ko:"그는 조심성 있는 운전자다.",
+   exp:"명사 driver를 꾸밈 → 형용사 <b>careful</b>"},
+
+  {type:"v", tag:"가려내기", sent:"He drives ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["carefully","careful","care","carefuly","a careful"], a:0, eng:true,
+   ko:"그는 조심해서 운전한다.",
+   exp:"동사 drives를 꾸밈 → 부사 <b>carefully</b>"},
+
+  {type:"v", tag:"가려내기", q:"밑줄 친 말이 <b>부사</b>인 문장은?",
+   opts:["She came home **late**.","It was a **late** night.","I took the **late** bus.","He is a **fast** swimmer.","It was a **hard** test."], a:0,
+   exp:"동사 came을 꾸미는 late(늦게)가 부사입니다."},
+
+  {type:"v", tag:"가려내기", multi:true, eng:true, q:"밑줄 친 말이 <b>부사</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["She works **hard**.","He got up **early**.","They sang **loudly**.","an **early** train","a **loud** voice"], ans:[0,1,2],
+   exp:"동사를 꾸미면 부사, 명사 앞이면 형용사입니다."},
+
+  {type:"v", tag:"가려내기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He speaks English very good.","He speaks English very well.","He is a good speaker.","His English is good.","He speaks slowly."], a:0,
+   exp:"동사를 꾸밀 때는 good이 아니라 <b>well</b>"}
+];
+
+var X4 = [
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"carefully", q:"careful(조심스러운)을 부사로 바꾸어 써 보세요.",
+   exp:"<b>carefully</b>입니다. l이 두 번 들어갑니다."},
+
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"loudly", q:"loud(시끄러운)를 부사로 바꾸어 써 보세요.",
+   exp:"<b>loudly</b>입니다."},
+
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"quickly", q:"quick(빠른)을 부사로 바꾸어 써 보세요.",
+   exp:"<b>quickly</b>입니다."},
+
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"sadly", q:"sad(슬픈)를 부사로 바꾸어 써 보세요.",
+   exp:"<b>sadly</b>입니다."},
+
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"busily", q:"busy(바쁜)를 부사로 바꾸어 써 보세요.",
+   exp:"y를 i로 바꾸고 ly → <b>busily</b>"},
+
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"late", q:"late(늦은)를 부사로 바꾸어 써 보세요.",
+   exp:"모양이 그대로 <b>late</b>(늦게)입니다. lately는 ‘최근에’라는 다른 뜻입니다."},
+
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"early", q:"early(이른)를 부사로 바꾸어 써 보세요.",
+   exp:"모양이 그대로 <b>early</b>(일찍)입니다."},
+
+  {type:"n", tag:"부사로 바꾸기", write:true, ans:"gently", q:"gentle(부드러운)을 부사로 바꾸어 써 보세요.",
+   exp:"e를 빼고 y → <b>gently</b>"},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"sometimes", q:"‘가끔, 때때로’를 영어로 써 보세요.",
+   exp:"<b>sometimes</b>입니다."},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"there", q:"‘거기에’를 영어로 써 보세요.",
+   exp:"<b>there</b>입니다."},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"today", q:"‘오늘’을 영어로 써 보세요.",
+   exp:"<b>today</b>입니다."},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"soon", q:"‘곧’을 영어로 써 보세요.",
+   exp:"<b>soon</b>입니다."},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"usually", q:"‘보통, 대개’를 영어로 써 보세요.",
+   exp:"<b>usually</b>입니다."},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"too", q:"‘너무’를 영어로 써 보세요. (예: 너무 뜨겁다)",
+   exp:"<b>too</b>입니다. too hot"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"quietly", sent:"Please talk ___ .", q:"빈칸에 알맞은 부사를 써 보세요.<br><span class=\"eng\">Please talk ___ . (조용히 말해 주세요)</span>",
+   ko:"조용히 말해 주세요.",
+   exp:"동사 talk를 꾸미는 <b>quietly</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"hard", sent:"She studies ___ .", q:"빈칸에 알맞은 부사를 써 보세요.<br><span class=\"eng\">She studies ___ . (그녀는 열심히 공부한다)</span>",
+   ko:"그녀는 열심히 공부한다.",
+   exp:"‘열심히’ → <b>hard</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"early", sent:"I went to bed ___ .", q:"빈칸에 알맞은 부사를 써 보세요.<br><span class=\"eng\">I went to bed ___ . (나는 일찍 잤다)</span>",
+   ko:"나는 일찍 잤다.",
+   exp:"‘일찍’ → <b>early</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"well", sent:"He plays the piano ___ .", q:"빈칸에 알맞은 부사를 써 보세요.<br><span class=\"eng\">He plays the piano ___ . (그는 피아노를 잘 친다)</span>",
+   ko:"그는 피아노를 잘 친다.",
+   exp:"‘잘’ → <b>well</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"She is never late", alt:["She is never late for school"], q:"우리말에 맞게 영어로 써 보세요.<br><span class=\"eng\">‘그녀는 결코 늦지 않는다’ (She 로 시작해서, late 사용)</span>",
+   exp:"<b>She is never late.</b> never는 be동사 뒤에 놓습니다."},
+
+  {type:"v", tag:"정리", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["빈도부사는 일반동사 앞, be동사 뒤에 놓는다.","부사는 명사를 꾸민다.","fast의 부사형은 fastly이다.","good의 부사형은 goodly이다.","hardly는 ‘열심히’라는 뜻이다."], a:0,
+   exp:"always · often · never는 일반동사 앞, be동사 뒤"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 더 자세히 말해 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 어떻게 · 언제 · 어디서 · 얼마나 · -ly 맛보기 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

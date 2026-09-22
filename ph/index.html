@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등 · 파닉스 뽀개기</span></h1>
-    <p class="sub">글자와 소리 · 매직 e · 낱말 쓰기 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 초등 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">글자와 소리 · 매직 e · 낱말 쓰기 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 초등 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -716,6 +716,326 @@ var L4 = [
    opts:["끝의 e는 늘 ‘에’ 소리를 낸다.","모음은 a e i o u 다섯 개이다.","sh는 한 소리 ‘쉬’를 낸다.","ph는 f와 같은 소리를 낸다.","알파벳의 이름과 소리는 다르다."], a:0,
    exp:"매직 e는 <b>소리를 내지 않습니다.</b> 자기는 조용히 있으면서 앞의 모음을 이름대로 읽게 해 줍니다."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"영어의 <b>모음</b> 다섯 글자를 바르게 모은 것은?",
+   opts:["a e i o u","a b c d e","b c d f g","a e i o y","m n o p q"], a:0,
+   exp:"모음은 <b>a · e · i · o · u</b> 다섯 글자입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"알파벳 <b>d</b>의 이름과 소리를 바르게 말한 것은?",
+   opts:["이름은 ‘디’, 소리는 ‘드’","이름은 ‘드’, 소리는 ‘디’","이름과 소리 모두 ‘디’","이름과 소리 모두 ‘드’","소리가 없다"], a:0,
+   exp:"이름은 <b>디</b>, 읽을 때 소리는 <b>드</b>입니다. dog → 드-아-그"},
+
+  {type:"n", tag:"한글로 이해", q:"처음 보는 낱말도 읽을 수 있게 되는 까닭은?",
+   opts:["글자마다 내는 소리를 알면 이어 읽을 수 있어서","모든 낱말을 외워서","그림을 보고 맞혀서","한글로 바꿔 써서","뜻을 먼저 알아서"], a:0,
+   exp:"글자의 <b>소리</b>를 알면 이어 붙여 읽을 수 있습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘펜(pen)’의 소리를 하나씩 나눈 것으로 알맞은 것은?",
+   opts:["프 – 에 – 느","피 – 이 – 엔","프 – 아 – 느","브 – 에 – 느","프 – 이 – 므"], a:0,
+   exp:"p ‘프’ + e ‘에’ + n ‘느’ → 펜"},
+
+  {type:"n", tag:"한글로 이해", q:"낱말 bag에서 모음은 몇 개일까요?",
+   opts:["한 개","두 개","세 개","없다","네 개"], a:0,
+   exp:"b · a · g 가운데 모음은 <b>a</b> 하나입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 중 알파벳의 <b>소리</b>를 바르게 말한 것은?",
+   opts:["t – 트","t – 티","m – 엠","s – 에스","b – 비"], a:0,
+   exp:"‘티 · 엠 · 에스 · 비’는 이름입니다. 소리는 트 · 므 · 스 · 브입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>‘ㅂ’ 소리</b>로 시작하는 것을 모두 고르세요. (여러 개)",
+   opts:["공 (ball)","버스 (bus)","가방 (bag)","물고기 (fish)","해 (sun)"], ans:[0,1,2],
+   exp:"ball · bus · bag은 모두 <b>b</b>로 시작해 ‘브’ 소리가 납니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>‘ㅅ’ 소리</b>로 시작하는 것을 모두 고르세요. (여러 개)",
+   opts:["해 (sun)","여섯 (six)","양말 (sock)","개 (dog)","펜 (pen)"], ans:[0,1,2],
+   exp:"sun · six · sock은 모두 <b>s</b>로 시작해 ‘스’ 소리가 납니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>모음</b>을 모두 고르세요. (여러 개)",
+   opts:["o","u","e","m","p"], ans:[0,1,2],
+   exp:"o · u · e는 모음입니다. m과 p는 자음입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>자음</b>을 모두 고르세요. (여러 개)",
+   opts:["t","p","n","a","o"], ans:[0,1,2],
+   exp:"a · o는 모음, 나머지는 자음입니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"d", q:"<b>d</b>는 어떤 소리가 날까요?",
+   opts:["드","브","트","그","므"], a:0,
+   exp:"d는 <b>‘드’</b> 소리입니다. dog, desk, duck"},
+
+  {type:"a", tag:"쉬운 영어", word:"p", q:"<b>p</b>는 어떤 소리가 날까요?",
+   opts:["프","브","드","스","느"], a:0,
+   exp:"p는 <b>‘프’</b> 소리입니다. pen, pig, pot"},
+
+  {type:"a", tag:"쉬운 영어", word:"t", q:"<b>t</b>는 어떤 소리가 날까요?",
+   opts:["트","드","프","크","르"], a:0,
+   exp:"t는 <b>‘트’</b> 소리입니다. ten, top, toy"},
+
+  {type:"a", tag:"쉬운 영어", word:"e", q:"<b>e</b>는 짧게 낼 때 어떤 소리가 날까요?",
+   opts:["에","이","아","오","우"], a:0,
+   exp:"e는 짧게 <b>‘에’</b> 소리입니다. pen, bed, ten"},
+
+  {type:"a", tag:"쉬운 영어", word:"o", q:"<b>o</b>는 짧게 낼 때 어떤 소리가 날까요?",
+   opts:["아","에","이","우","애"], a:0,
+   exp:"o는 짧게 <b>‘아’</b>에 가까운 소리입니다. dog, hot, box"},
+
+  {type:"a", tag:"쉬운 영어", word:"pig", q:"<b>pig</b>의 첫소리는?",
+   opts:["프","브","드","크","스"], a:0,
+   exp:"p는 <b>‘프’</b> 소리입니다. 프-이-그 → 피그"},
+
+  {type:"a", tag:"쉬운 영어", word:"hat", q:"<b>hat</b>의 끝소리는?",
+   opts:["트","흐","애","드","크"], a:0,
+   exp:"t로 끝나므로 <b>‘트’</b> 소리입니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"sun", q:"<b>sun</b>에서 가운데 있는 모음은?",
+   opts:["u","s","n","a","o"], a:0,
+   exp:"s · <b>u</b> · n. 가운데 모음은 u이고 ‘어’ 소리가 납니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘드-아-그’를 이어 읽으면 어떤 낱말일까요?",
+   opts:["dog","dig","dug","bag","god"], a:0,
+   exp:"d ‘드’ + o ‘아’ + g ‘그’ → <b>dog</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘므’ 소리로 시작하는 낱말은?",
+   opts:["map","nap","cap","tap","lap"], a:0,
+   exp:"m은 ‘므’ 소리 → <b>map</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"첫소리", word:"pig", q:"이 낱말의 <b>첫 글자</b>는 무엇일까요?",
+   opts:["p","b","d","g","i"], a:0, eng:true,
+   ko:"돼지",
+   exp:"pig의 첫 글자는 <b>p</b>이고 ‘프’ 소리가 납니다."},
+
+  {type:"n", tag:"첫소리", word:"bed", q:"이 낱말의 <b>첫 글자</b>는 무엇일까요?",
+   opts:["b","d","p","e","t"], a:0, eng:true,
+   ko:"침대",
+   exp:"bed의 첫 글자는 <b>b</b>이고 ‘브’ 소리가 납니다."},
+
+  {type:"n", tag:"첫소리", word:"ten", q:"이 낱말의 <b>첫 글자</b>는 무엇일까요?",
+   opts:["t","d","n","e","p"], a:0, eng:true,
+   ko:"열(10)",
+   exp:"ten의 첫 글자는 <b>t</b>이고 ‘트’ 소리가 납니다."},
+
+  {type:"n", tag:"첫소리", q:"‘드’ 소리로 시작하는 낱말은?",
+   opts:["duck","bus","pen","sun","hat"], a:0, eng:true,
+   exp:"d는 ‘드’ 소리 → <b>duck</b>(오리)"},
+
+  {type:"n", tag:"첫소리", q:"‘흐’ 소리로 시작하는 낱말은?",
+   opts:["hat","cat","bat","mat","rat"], a:0, eng:true,
+   exp:"h는 ‘흐’ 소리 → <b>hat</b>(모자)"},
+
+  {type:"n", tag:"첫소리", multi:true, q:"b로 시작하는 낱말을 모두 고르세요. (여러 개)",
+   opts:["bag","bed","box","dog","pen"], ans:[0,1,2], eng:true,
+   exp:"bag · bed · box는 b로 시작해 ‘브’ 소리가 납니다."},
+
+  {type:"n", tag:"첫소리", multi:true, q:"p로 시작하는 낱말을 모두 고르세요. (여러 개)",
+   opts:["pen","pig","pot","bus","ten"], ans:[0,1,2], eng:true,
+   exp:"pen · pig · pot은 p로 시작해 ‘프’ 소리가 납니다."},
+
+  {type:"a", tag:"끝소리", word:"cat", q:"이 낱말의 <b>끝 글자</b>는 무엇일까요?",
+   opts:["t","c","a","d","k"], a:0, eng:true,
+   ko:"고양이",
+   exp:"cat의 끝 글자는 <b>t</b>이고 ‘트’ 소리가 납니다."},
+
+  {type:"a", tag:"끝소리", word:"map", q:"이 낱말의 <b>끝 글자</b>는 무엇일까요?",
+   opts:["p","m","a","b","n"], a:0, eng:true,
+   ko:"지도",
+   exp:"map의 끝 글자는 <b>p</b>이고 ‘프’ 소리가 납니다."},
+
+  {type:"a", tag:"끝소리", word:"bed", q:"이 낱말의 <b>끝 글자</b>는 무엇일까요?",
+   opts:["d","b","e","t","p"], a:0, eng:true,
+   ko:"침대",
+   exp:"bed의 끝 글자는 <b>d</b>이고 ‘드’ 소리가 납니다."},
+
+  {type:"a", tag:"끝소리", q:"g 소리로 끝나는 낱말은?",
+   opts:["bag","bat","bad","ban","bam"], a:0, eng:true,
+   exp:"bag → b · a · <b>g</b>"},
+
+  {type:"a", tag:"끝소리", multi:true, q:"t로 끝나는 낱말을 모두 고르세요. (여러 개)",
+   opts:["cat","hot","sit","dog","bus"], ans:[0,1,2], eng:true,
+   exp:"cat · hot · sit은 t로 끝나 ‘트’ 소리가 납니다."},
+
+  {type:"a", tag:"끝소리", multi:true, q:"p로 끝나는 낱말을 모두 고르세요. (여러 개)",
+   opts:["cup","map","top","pen","pig"], ans:[0,1,2], eng:true,
+   exp:"cup · map · top은 p로 끝나 ‘프’ 소리가 납니다."},
+
+  {type:"v", tag:"가운뎃소리", sent:"s ___ n", q:"빈칸에 들어갈 글자는? (해)",
+   opts:["u","a","e","i","o"], a:0, eng:true,
+   exp:"s + <b>u</b> + n = sun. u는 짧게 ‘어’ 소리입니다."},
+
+  {type:"v", tag:"가운뎃소리", sent:"h ___ t", q:"빈칸에 들어갈 글자는? (모자)",
+   opts:["a","e","i","o","u"], a:0, eng:true,
+   exp:"h + <b>a</b> + t = hat"},
+
+  {type:"v", tag:"가운뎃소리", sent:"b ___ d", q:"빈칸에 들어갈 글자는? (침대)",
+   opts:["e","a","i","o","u"], a:0, eng:true,
+   exp:"b + <b>e</b> + d = bed. e는 짧게 ‘에’ 소리입니다."},
+
+  {type:"v", tag:"가운뎃소리", sent:"b ___ x", q:"빈칸에 들어갈 글자는? (상자)",
+   opts:["o","a","e","i","u"], a:0, eng:true,
+   exp:"b + <b>o</b> + x = box"},
+
+  {type:"v", tag:"가운뎃소리", sent:"s ___ x", q:"빈칸에 들어갈 글자는? (여섯)",
+   opts:["i","a","e","o","u"], a:0, eng:true,
+   exp:"s + <b>i</b> + x = six. i는 짧게 ‘이’ 소리입니다."},
+
+  {type:"v", tag:"가운뎃소리", q:"세 낱말의 가운데 글자가 모두 같은 것끼리 묶인 것은?",
+   opts:["pig · sit · six","pig · pot · pen","sun · sit · six","bed · bag · box","hot · hat · hit"], a:0, eng:true,
+   exp:"pig · sit · six는 모두 가운데 모음이 <b>i</b>입니다."},
+
+  {type:"v", tag:"가운뎃소리", q:"다음 중 소리를 이어 읽으면 pen이 되는 것은?",
+   opts:["프 – 에 – 느","브 – 에 – 느","프 – 이 – 느","프 – 애 – 느","프 – 에 – 므"], a:0,
+   exp:"p ‘프’ + e ‘에’ + n ‘느’ → pen"}
+];
+
+var X3 = [
+  {type:"n", tag:"두 글자 소리", word:"ck", q:"낱말 끝의 <b>ck</b>는 어떤 소리가 날까요?",
+   opts:["크","츠","쉬","스","흐"], a:0,
+   exp:"c와 k가 만나 한 소리 <b>‘크’</b>. duck, sock, back"},
+
+  {type:"n", tag:"두 글자 소리", word:"wh", q:"<b>wh</b>는 주로 어떤 소리가 날까요?",
+   opts:["우(w) 소리","흐 소리만","쉬","츠","소리가 없다"], a:0,
+   exp:"what, white, whale처럼 주로 <b>w</b>와 같은 ‘우’ 소리가 납니다."},
+
+  {type:"n", tag:"두 글자 소리", q:"sh와 ch 소리를 바르게 짝지은 것은?",
+   opts:["sh – 쉬, ch – 취","sh – 취, ch – 쉬","sh – 스, ch – 크","sh – 흐, ch – 츠","둘 다 쉬"], a:0,
+   exp:"ship(쉽) / chip(칩)"},
+
+  {type:"n", tag:"두 글자 소리", q:"phone, photo에서 ph는 어떤 글자와 같은 소리일까요?",
+   opts:["f","p","h","b","v"], a:0,
+   exp:"ph는 <b>f</b>와 같은 ‘프’ 소리입니다."},
+
+  {type:"n", tag:"두 글자 소리", multi:true, q:"th가 들어간 낱말을 모두 고르세요. (여러 개)",
+   opts:["three","bath","mother","ship","chair"], ans:[0,1,2], eng:true,
+   exp:"three · bath · mother에 th가 들어 있습니다."},
+
+  {type:"n", tag:"두 글자 소리", multi:true, q:"ck로 끝나는 낱말을 모두 고르세요. (여러 개)",
+   opts:["duck","sock","back","dog","cake"], ans:[0,1,2], eng:true,
+   exp:"duck · sock · back은 ck로 끝나 ‘크’ 소리가 납니다."},
+
+  {type:"n", tag:"두 글자 소리", q:"낱말과 소리가 <b>잘못</b> 짝지어진 것은?",
+   opts:["chair — ‘쉬’ 소리로 시작","shop — ‘쉬’ 소리로 시작","phone — ‘프’ 소리로 시작","three — th 소리로 시작","duck — ‘크’ 소리로 끝"], a:0,
+   exp:"chair는 <b>‘취’</b> 소리로 시작합니다."},
+
+  {type:"a", tag:"매직 e", q:"매직 e가 붙으면 앞의 모음은 어떻게 읽을까요?",
+   opts:["알파벳 이름대로 읽는다","소리를 내지 않는다","짧게 읽는다","두 번 읽는다","e와 같이 ‘에’로 읽는다"], a:0,
+   exp:"a → ‘에이’, i → ‘아이’, o → ‘오우’처럼 <b>이름대로</b> 읽습니다."},
+
+  {type:"a", tag:"매직 e", q:"tap 뒤에 e가 붙어 tape가 되면 소리는 어떻게 바뀔까요?",
+   opts:["탭 → 테이프","탭 → 타페","탭 → 탭에","탭 → 티프","바뀌지 않는다"], a:0,
+   exp:"a가 이름대로 ‘에이’ → <b>테이프</b>"},
+
+  {type:"a", tag:"매직 e", q:"not 뒤에 e가 붙으면?",
+   opts:["note — ‘노우트’","note — ‘낫에’","note — ‘니트’","note — ‘너트’","noet — ‘노에트’"], a:0,
+   exp:"o가 이름대로 ‘오우’ → <b>note</b>(메모)"},
+
+  {type:"a", tag:"매직 e", q:"cut 뒤에 e가 붙으면 소리는?",
+   opts:["큐트","컷에","쿠테","카이트","케이트"], a:0,
+   exp:"u가 이름대로 ‘유’ → <b>cute</b>(귀여운)"},
+
+  {type:"a", tag:"매직 e", multi:true, q:"끝의 e가 매직 e로 쓰인 낱말을 모두 고르세요. (여러 개)",
+   opts:["home","cute","lake","he","she"], ans:[0,1,2], eng:true,
+   exp:"home · cute · lake는 끝의 e가 앞 모음을 이름대로 읽게 합니다. he · she의 e는 스스로 소리를 냅니다."},
+
+  {type:"a", tag:"매직 e", q:"두 낱말의 소리 차이를 바르게 말한 것은?<br><span class=\"eng\">ⓐ hop&nbsp;&nbsp;ⓑ hope</span>",
+   opts:["ⓐ는 ‘합’, ⓑ는 ‘호우프’","ⓐ는 ‘호우프’, ⓑ는 ‘합’","둘 다 ‘합’","둘 다 ‘호우프’","ⓐ는 ‘힙’, ⓑ는 ‘헙’"], a:0,
+   exp:"e가 붙으면 o를 이름대로 ‘오우’로 읽습니다."},
+
+  {type:"a", tag:"매직 e", q:"다음 중 매직 e가 붙은 낱말이 <b>아닌</b> 것은?",
+   opts:["bed","bike","cake","rose","cube"], a:0,
+   exp:"bed의 e는 낱말 가운데 있는 모음입니다."},
+
+  {type:"v", tag:"짝짓기", word:"ship", q:"이 낱말의 뜻으로 알맞은 것은?",
+   opts:["배","양","가게","의자","물고기"], a:0, eng:true,
+   exp:"ship(쉽) = <b>배</b>"},
+
+  {type:"v", tag:"짝짓기", word:"cute", q:"이 낱말의 뜻으로 알맞은 것은?",
+   opts:["귀여운","자르다","컵","고양이","차갑다"], a:0, eng:true,
+   exp:"cute(큐트) = <b>귀여운</b>. cut은 ‘자르다’입니다."},
+
+  {type:"v", tag:"짝짓기", q:"‘오리’를 뜻하는 낱말은?",
+   opts:["duck","dock","dog","dark","deck"], a:0, eng:true,
+   exp:"<b>duck</b> — 끝의 ck가 ‘크’ 소리입니다."},
+
+  {type:"v", tag:"짝짓기", q:"‘호수’를 뜻하는 낱말은?",
+   opts:["lake","lack","like","lock","lick"], a:0, eng:true,
+   exp:"<b>lake</b> — 매직 e가 a를 ‘에이’로 읽게 합니다."},
+
+  {type:"v", tag:"짝짓기", q:"‘사진’을 뜻하는 낱말은?",
+   opts:["photo","potato","phone","foot","pot"], a:0, eng:true,
+   exp:"<b>photo</b> — ph가 ‘프’ 소리입니다."},
+
+  {type:"v", tag:"짝짓기", q:"소리와 낱말이 바르게 짝지어진 것은?",
+   opts:["‘칩’ — chip","‘쉽’ — chip","‘칩’ — ship","‘핍’ — ship","‘쉽’ — sip"], a:0,
+   exp:"ch는 ‘취’ 소리 → chip(칩)"}
+];
+
+var X4 = [
+  {type:"n", tag:"글자 채우기", write:true, ans:"a", q:"빈칸에 들어갈 <b>한 글자</b>를 써 보세요.<br><span class=\"eng\">h ___ t &nbsp;(모자)</span>",
+   exp:"h + <b>a</b> + t = hat"},
+
+  {type:"n", tag:"글자 채우기", write:true, ans:"e", q:"빈칸에 들어갈 <b>한 글자</b>를 써 보세요.<br><span class=\"eng\">b ___ d &nbsp;(침대)</span>",
+   exp:"b + <b>e</b> + d = bed"},
+
+  {type:"n", tag:"글자 채우기", write:true, ans:"o", q:"빈칸에 들어갈 <b>한 글자</b>를 써 보세요.<br><span class=\"eng\">b ___ x &nbsp;(상자)</span>",
+   exp:"b + <b>o</b> + x = box"},
+
+  {type:"n", tag:"글자 채우기", write:true, ans:"i", q:"빈칸에 들어갈 <b>한 글자</b>를 써 보세요.<br><span class=\"eng\">s ___ x &nbsp;(여섯)</span>",
+   exp:"s + <b>i</b> + x = six"},
+
+  {type:"n", tag:"글자 채우기", write:true, ans:"u", q:"빈칸에 들어갈 <b>한 글자</b>를 써 보세요.<br><span class=\"eng\">c ___ p &nbsp;(컵)</span>",
+   exp:"c + <b>u</b> + p = cup"},
+
+  {type:"n", tag:"글자 채우기", write:true, ans:"e", q:"빈칸에 들어갈 <b>한 글자</b>를 써 보세요.<br><span class=\"eng\">bik ___ &nbsp;(자전거)</span>",
+   exp:"bik + <b>e</b> = bike. 매직 e입니다."},
+
+  {type:"n", tag:"글자 채우기", write:true, ans:"ch", q:"빈칸에 들어갈 <b>두 글자</b>를 써 보세요.<br><span class=\"eng\">___ air &nbsp;(의자)</span>",
+   exp:"<b>ch</b> + air = chair"},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"pig", q:"‘돼지’를 영어로 써 보세요.",
+   exp:"<b>pig</b>입니다. 프-이-그"},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"hat", alt:["cap"], q:"‘모자’를 영어로 써 보세요.",
+   exp:"<b>hat</b>입니다. 챙 달린 모자는 cap이라고도 합니다."},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"bed", q:"‘침대’를 영어로 써 보세요.",
+   exp:"<b>bed</b>입니다. 브-에-드"},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"box", q:"‘상자’를 영어로 써 보세요.",
+   exp:"<b>box</b>입니다."},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"cup", q:"‘컵’을 영어로 써 보세요.",
+   exp:"<b>cup</b>입니다. 크-어-프"},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"map", q:"‘지도’를 영어로 써 보세요.",
+   exp:"<b>map</b>입니다. 므-애-프"},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"ten", q:"‘열(10)’을 영어로 써 보세요.",
+   exp:"<b>ten</b>입니다. 트-에-느"},
+
+  {type:"a", tag:"낱말 쓰기", write:true, ans:"duck", q:"‘오리’를 영어로 써 보세요. (끝은 ck)",
+   exp:"<b>duck</b>입니다. 끝의 ck가 ‘크’ 소리입니다."},
+
+  {type:"v", tag:"종합", write:true, ans:"cute", q:"‘귀여운’을 영어로 써 보세요. (매직 e)",
+   exp:"<b>cute</b>입니다. 끝의 e가 u를 ‘유’로 읽게 합니다."},
+
+  {type:"v", tag:"종합", write:true, ans:"lake", q:"‘호수’를 영어로 써 보세요. (매직 e)",
+   exp:"<b>lake</b>입니다."},
+
+  {type:"v", tag:"종합", write:true, ans:"ship", q:"‘배’를 영어로 써 보세요. (sh로 시작합니다)",
+   exp:"<b>ship</b>입니다. sh가 ‘쉬’ 소리입니다."},
+
+  {type:"v", tag:"종합", hard:true, write:true, ans:"photo", q:"‘사진’을 영어로 써 보세요. (ph로 시작합니다)",
+   exp:"<b>photo</b>입니다. ph가 ‘프’ 소리입니다."},
+
+  {type:"v", tag:"종합", q:"지금까지 배운 것 가운데 <b>맞는</b> 설명은?",
+   opts:["sh는 두 글자가 모여 한 소리 ‘쉬’를 낸다.","ph는 ‘프흐’처럼 두 소리를 낸다.","매직 e는 ‘에’ 소리를 크게 낸다.","모음은 여섯 개이다.","알파벳의 이름과 소리는 늘 같다."], a:0,
+   exp:"sh · ch · th · ph는 두 글자가 모여 <b>한 소리</b>를 냅니다."}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 글자와 소리", desc:"한글로 이해 8 · 쉬운 영어 12 · 파닉스가 무엇인지 · 모음과 자음 · 첫소리와 끝소리 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

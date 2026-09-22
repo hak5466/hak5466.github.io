@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · USED TO GAME</span></h1>
-    <p class="sub">used to · would · be used to · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">used to · would · be used to · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -750,6 +750,368 @@ var L4 = [
    opts:["would는 과거의 상태도 나타낼 수 있다.","used to는 과거의 습관과 상태를 모두 나타낸다.","be used to 뒤에는 -ing나 명사가 온다.","be used to + 동사원형은 ‘~하는 데 쓰이다’이다.","used to의 부정문은 didn't use to로 쓴다."], a:0,
    exp:"would는 되풀이한 <b>행동</b>에만 씁니다. 상태에는 used to만 됩니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘예전에 ~하곤 했다’와 ‘어제 ~했다’의 차이로 알맞은 것은?",
+   opts:["앞은 여러 번 되풀이한 습관, 뒤는 한 번 있었던 일","둘은 뜻이 같다","앞은 미래, 뒤는 과거","앞은 지금 하는 일, 뒤는 과거","앞은 명령, 뒤는 부탁"], a:0,
+   exp:"used to는 예전에 <b>자주 되풀이하던 일</b>이나 상태, 과거형은 그때 <b>한 번</b> 있었던 일도 말합니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"예전에 우리 동네에는 큰 연못이 있었다. (지금은 없다)", q:"이 문장이 말하는 것은?",
+   opts:["과거의 상태","과거의 습관","미래의 계획","지금의 상태","지금의 습관"], a:0,
+   exp:"연못이 ‘있었다’는 <b>상태</b>입니다. There used to be a big pond."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 초등학생 때 매일 줄넘기를 하곤 했다.", q:"이 문장이 말하는 것은?",
+   opts:["과거에 되풀이하던 습관","과거의 상태","지금의 습관","미래의 계획","지금의 상태"], a:0,
+   exp:"‘매일 ~하곤 했다’는 과거의 <b>습관</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"used to를 쓴 문장 ‘나는 예전에 고기를 먹지 않았다’에서 알 수 있는 지금의 모습은?",
+   opts:["지금은 고기를 먹는다","지금도 고기를 먹지 않는다","고기가 무엇인지 모른다","내일부터 고기를 먹는다","고기를 판다"], a:0,
+   exp:"used to에는 ‘<b>지금은 그렇지 않다</b>’는 뜻이 숨어 있습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘예전에 ~하곤 했다’(습관)를 나타낼 때 used to 말고 쓸 수 있는 말은?",
+   opts:["would","will","should","can","must"], a:0,
+   exp:"과거의 <b>습관</b>은 would로도 나타낼 수 있습니다. 상태에는 쓰지 않습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~하는 데 익숙하다’를 나타내는 말은?",
+   opts:["be used to + -ing","used to + 동사원형","would + 동사원형","use to + -ing","be use to + 동사원형"], a:0,
+   exp:"be used to + <b>-ing</b> = ~하는 데 익숙하다. used to + 동사원형(~하곤 했다)과 다릅니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"used to로 말하기 알맞은 우리말을 모두 고르세요. (여러 개)",
+   opts:["예전에는 머리가 짧았다(지금은 길다)","어릴 때 밤마다 동화책을 읽곤 했다","전에는 이 건물에 병원이 있었다","나는 지금 머리가 짧다","나는 내일 책을 읽을 것이다"], ans:[0,1,2],
+   exp:"지나간 습관이나 상태, 곧 ‘지금은 아닌’ 일에 used to를 씁니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"would로 바꿔 말할 수 <b>있는</b> 우리말을 모두 고르세요. (여러 개)",
+   opts:["방학마다 시골에 가곤 했다","저녁마다 산책하곤 했다","주말마다 낚시를 하곤 했다","예전에 키가 작았다","전에 여기에 우체국이 있었다"], ans:[0,1,2],
+   exp:"would는 되풀이한 <b>행동</b>에만 씁니다. 키 · 우체국이 있던 것은 상태라 used to만 됩니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘~하는 데 익숙하다’는 뜻의 우리말을 모두 고르세요. (여러 개)",
+   opts:["나는 일찍 일어나는 데 익숙하다","그는 매운 음식을 먹는 데 익숙하다","우리는 추운 날씨에 익숙하다","나는 예전에 일찍 일어나곤 했다","그는 예전에 매운 음식을 먹었다"], ans:[0,1,2],
+   exp:"‘익숙하다’는 <b>be used to</b>, ‘예전에 ~하곤 했다’는 used to입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"used to의 부정 ‘예전에는 ~하지 않았다’를 만드는 방법은?",
+   opts:["didn't use to + 동사원형","used not to -ing","don't used to","wasn't use to","didn't used to -ing"], a:0,
+   exp:"과거 부정 didn't 뒤에는 원형 <b>use</b> to가 옵니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 예전에 축구 선수였다. 지금은 코치다.", q:"이 문장에 대한 설명으로 알맞은 것은?",
+   opts:["과거의 상태로, used to be로 쓴다","과거의 습관으로, would로 쓴다","지금의 상태로, is로 쓴다","미래의 일로, will be로 쓴다","익숙함을 말해 be used to로 쓴다"], a:0,
+   exp:"‘선수였다’는 상태 → He <b>used to be</b> a soccer player."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["used to는 지금도 계속하는 일을 말한다.","used to 뒤에는 동사원형이 온다.","used to는 과거의 습관과 상태를 모두 나타낸다.","would는 과거의 습관만 나타낸다.","be used to 뒤에는 -ing나 명사가 온다."], a:0,
+   exp:"used to는 ‘예전에는 그랬지만 <b>지금은 아니다</b>’를 말합니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"We used to ___ in the river.", q:"‘우리는 예전에 강에서 수영하곤 했다’가 되도록 알맞은 것은?",
+   opts:["swim","swimming","swam","swims","to swim"], a:0, eng:true,
+   ko:"우리는 예전에 강에서 수영하곤 했다.",
+   exp:"used to + 동사원형 <b>swim</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"There used to ___ a big tree here.", q:"‘예전에 여기에 큰 나무가 있었다’가 되도록 알맞은 것은?",
+   opts:["be","is","was","been","being"], a:0, eng:true,
+   ko:"예전에 여기에 큰 나무가 있었다.",
+   exp:"There used to <b>be</b> ~ = 예전에 ~가 있었다"},
+
+  {type:"a", tag:"쉬운 영어", word:"I used to be shy.", q:"<b>I used to be shy.</b>의 뜻으로 알맞은 것은?",
+   opts:["나는 예전에 수줍음이 많았다.","나는 지금 수줍음이 많다.","나는 수줍음에 익숙하다.","나는 수줍어질 것이다.","나는 수줍음을 썼다."], a:0, eng:true,
+   exp:"used to be = 예전에 ~였다(지금은 아니다)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"My dad ___ to smoke.", q:"‘아빠는 예전에 담배를 피우셨다’가 되도록 알맞은 것은?",
+   opts:["used","use","uses","using","is used"], a:0, eng:true,
+   ko:"아빠는 예전에 담배를 피우셨다.",
+   exp:"긍정문에서는 <b>used</b> to"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"바른 used to 문장을 모두 고르세요. (여러 개)",
+   opts:["I used to like cartoons.","She used to live in Daegu.","They used to be friends.","I used to liking cartoons.","She use to live in Daegu."], ans:[0,1,2],
+   exp:"<b>used</b> to + <b>동사원형</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I ___ eat vegetables, but now I do.", q:"‘예전에는 채소를 먹지 않았다’가 되도록 알맞은 것은?",
+   opts:["didn't use to","used not to eating","don't use to","wasn't used to","didn't used"], a:0, eng:true,
+   ko:"나는 예전에는 채소를 먹지 않았지만 지금은 먹는다.",
+   exp:"부정 <b>didn't use to</b> + 동사원형"},
+
+  {type:"a", tag:"쉬운 영어", word:"She is used to cooking.", q:"<b>She is used to cooking.</b>의 뜻으로 알맞은 것은?",
+   opts:["그녀는 요리하는 데 익숙하다.","그녀는 예전에 요리하곤 했다.","그녀는 요리하는 데 쓰인다.","그녀는 요리할 것이다.","그녀는 요리를 싫어한다."], a:0, eng:true,
+   exp:"be used to + -ing = ~하는 데 <b>익숙하다</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"When I was a child, I ___ play with my cat every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["would","will","am used to","use","am"], a:0, eng:true,
+   ko:"어릴 때 나는 매일 고양이와 놀곤 했다.",
+   exp:"과거의 되풀이한 행동 → <b>would</b> (used to도 됩니다)"}
+];
+
+var X2 = [
+  {type:"n", tag:"모양", sent:"We ___ go camping every summer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to","use to","are used to","used to going","using to"], a:0, eng:true,
+   ko:"우리는 여름마다 캠핑을 가곤 했다.",
+   exp:"used to + 동사원형 go"},
+
+  {type:"n", tag:"모양", sent:"There ___ a playground near my house.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to be","would be","is used to be","used to being","use to be"], a:0, eng:true,
+   ko:"예전에 우리 집 근처에 놀이터가 있었다.",
+   exp:"상태(있었다)는 <b>used to be</b>. would는 상태에 쓰지 않습니다."},
+
+  {type:"n", tag:"모양", sent:"She ___ wear a uniform to school.", q:"‘예전에는 교복을 입지 않았다’가 되도록 알맞은 것은?",
+   opts:["didn't use to","didn't used to","used not to wearing","doesn't use to","isn't used"], a:0, eng:true,
+   ko:"그녀는 예전에는 학교에 교복을 입고 가지 않았다.",
+   exp:"부정 <b>didn't use to</b>"},
+
+  {type:"n", tag:"모양", sent:"He is used to ___ alone.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["living","live","lived","lives","to live"], a:0, eng:true,
+   ko:"그는 혼자 사는 데 익숙하다.",
+   exp:"be used to + <b>-ing</b>"},
+
+  {type:"n", tag:"모양", sent:"___ they use to play together?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Did","Do","Were","Are","Have"], a:0, eng:true,
+   ko:"그들은 예전에 함께 놀았니?",
+   exp:"의문문 <b>Did</b> + 주어 + use to ~?"},
+
+  {type:"n", tag:"모양", sent:"My grandpa ___ tell me funny stories at bedtime.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["would","will","is used to","use","was use to"], a:0, eng:true,
+   ko:"할아버지는 잘 때 재미있는 이야기를 해 주시곤 했다.",
+   exp:"과거의 습관 → <b>would</b>"},
+
+  {type:"n", tag:"모양", q:"빈칸에 알맞은 것을 고르세요.<br><span class=\"eng\">A: Did she use to have a dog?<br>B: No, she ___ .</span>",
+   opts:["didn't","wasn't","doesn't","isn't","used"], a:0, eng:true,
+   exp:"Did로 물으면 did로 답합니다. No, she <b>didn't</b>."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"used to 자리에 <b>would</b>를 써도 되는 문장을 모두 고르세요. (여러 개)",
+   opts:["We used to play hide-and-seek.","She used to read before bed.","He used to go jogging every morning.","There used to be a cinema here.","I used to be tall for my age."], ans:[0,1,2],
+   exp:"되풀이한 행동에만 would를 씁니다. 있었다 · 키가 컸다는 상태입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["There used to be a bank here.","Did you use to wear glasses?","I'm used to eating spicy food.","I'm used to eat spicy food.","Did you used to wear glasses?"], ans:[0,1,2],
+   exp:"be used to 뒤는 -ing, 의문문에서는 use to입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"be used to 뒤에 올 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["hot weather","working late","speaking in public","work late","speak in public"], ans:[0,1,2],
+   exp:"be used to 뒤에는 <b>명사</b>나 <b>-ing</b>가 옵니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"‘예전에 ~였다(지금은 아니다)’는 <b>상태</b>를 말하는 문장을 모두 고르세요. (여러 개)",
+   opts:["She used to have short hair.","This used to be a school.","I used to know his number.","I used to walk my dog.","He used to jog."], ans:[0,1,2],
+   exp:"have · be · know는 상태, walk · jog는 행동입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"‘~하는 데 익숙하다’는 뜻의 문장을 모두 고르세요. (여러 개)",
+   opts:["I'm used to the cold.","She is used to driving.","We are used to waking up early.","I used to drive.","We used to wake up early."], ans:[0,1,2],
+   exp:"be used to = 익숙하다, used to = 예전에 ~하곤 했다"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>틀린</b> 것을 모두 고르세요. (여러 개)",
+   opts:["He used to drives a taxi.","She didn't used to eat fish.","I am used to wake up early.","He used to drive a taxi.","I am used to waking up early."], ans:[0,1,2],
+   exp:"used to drive, didn't use to, be used to waking이 맞습니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I would be afraid of the dark.","I used to be afraid of the dark.","I would sleep with the light on.","I used to sleep with the light on.","I'm used to sleeping in the dark now."], a:0, eng:true,
+   exp:"be afraid(무서워했다)는 상태라 would로 쓸 수 없습니다. → used to be"},
+
+  {type:"v", tag:"함정", q:"두 빈칸에 알맞은 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ He used to ___ junk food.<br>ⓑ Now he is used to ___ healthy food.</span>",
+   opts:["eat – eating","eating – eat","eat – eat","eating – eating","ate – eating"], a:0, eng:true,
+   exp:"ⓐ used to + 동사원형, ⓑ be used to + <b>-ing</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"뜻이 <b>나머지와 다른</b> 하나는?",
+   opts:["He is used to working late.","He used to work late.","He would work late.","He worked late before, but he doesn't now.","He often worked late in the past."], a:0, eng:true,
+   exp:"is used to working은 ‘늦게까지 일하는 데 <b>익숙하다</b>’, 나머지는 예전 습관입니다."},
+
+  {type:"v", tag:"함정", sent:"This bag ___ to carry books.", q:"‘이 가방은 책을 나르는 데 쓰인다’가 되도록 알맞은 것은?",
+   opts:["is used","used","is used to","use","would"], a:0, eng:true,
+   ko:"이 가방은 책을 나르는 데 쓰인다.",
+   exp:"be used + to부정사 = ~하는 데 <b>쓰이다</b>(수동태). is used to carry"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She didn't used to like coffee.","She didn't use to like coffee.","She used to dislike coffee.","Did she use to like coffee?","She is used to drinking coffee."], a:0, eng:true,
+   exp:"didn't 뒤에는 원형 <b>use</b> to"},
+
+  {type:"v", tag:"함정", sent:"When we were kids, we ___ build sandcastles on the beach.", q:"빈칸에 들어갈 수 <b>없는</b> 것은?",
+   opts:["were used to","used to","would"], a:0, eng:true,
+   ko:"어렸을 때 우리는 바닷가에서 모래성을 쌓곤 했다.",
+   exp:"were used to 뒤에는 -ing가 와야 합니다. 동사원형 build 앞에는 used to · would"},
+
+  {type:"v", tag:"함정", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She had long hair before, but she doesn't now.<br>= She ___ long hair.</span>",
+   opts:["used to have","is used to having","would have","used to having","uses to have"], a:0, eng:true,
+   exp:"과거의 상태(지금은 아님) → <b>used to have</b>"}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", sent:"There ___ many fish in this river.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to be","would be","were used to","used to being","use to be"], a:0, eng:true,
+   ko:"예전에 이 강에는 물고기가 많았다.",
+   exp:"상태 → <b>used to be</b>"},
+
+  {type:"n", tag:"빈칸", sent:"I ___ scared of bugs, but I'm not now.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["used to be","used to being","am used to","would","was used"], a:0, eng:true,
+   ko:"나는 예전에 벌레를 무서워했지만 지금은 아니다.",
+   exp:"상태 → <b>used to be</b>"},
+
+  {type:"n", tag:"빈칸", sent:"He is not used to ___ in a big city.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["living","live","lived","to live","lives"], a:0, eng:true,
+   ko:"그는 대도시에 사는 데 익숙하지 않다.",
+   exp:"be (not) used to + <b>-ing</b>"},
+
+  {type:"n", tag:"빈칸", sent:"On rainy days, my mom ___ make pancakes for us.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["would","will","is used to","was used","uses"], a:0, eng:true,
+   ko:"비 오는 날이면 엄마는 우리에게 팬케이크를 만들어 주시곤 했다.",
+   exp:"과거의 습관 → <b>would</b>"},
+
+  {type:"n", tag:"빈칸", sent:"We ___ have a car, but now we have two.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["didn't use to","didn't used to","weren't used to","don't use to","used not having"], a:0, eng:true,
+   ko:"우리는 예전에 차가 없었지만 지금은 두 대가 있다.",
+   exp:"부정 <b>didn't use to</b>"},
+
+  {type:"n", tag:"빈칸", sent:"___ Mina use to play the flute?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Did","Does","Was","Is","Had"], a:0, eng:true,
+   ko:"미나는 예전에 플루트를 불었니?",
+   exp:"의문문 <b>Did</b> ~ use to?"},
+
+  {type:"n", tag:"빈칸", sent:"You'll soon get used to ___ to your new school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["going","go","went","to go","goes"], a:0, eng:true,
+   ko:"너는 곧 새 학교에 다니는 데 익숙해질 거야.",
+   exp:"get used to의 to는 전치사 → <b>going</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">We used to **went** to the beach every summer.</span>",
+   opts:["go","going","goes","gone","고칠 필요 없음"], a:0, eng:true,
+   exp:"used to + 동사원형 <b>go</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I'm used to **take** the subway.</span>",
+   opts:["taking","took","takes","taken","고칠 필요 없음"], a:0, eng:true,
+   exp:"be used to + <b>-ing</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He didn't **used** to like sports.</span>",
+   opts:["use","uses","using","be used","고칠 필요 없음"], a:0, eng:true,
+   exp:"didn't 뒤에는 원형 <b>use</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She **would** have a pet rabbit when she was young.</span>",
+   opts:["used to","is used to","was used","will","고칠 필요 없음"], a:0, eng:true,
+   exp:"have a pet(키웠다)은 상태 → <b>used to</b>"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["I used to have long hair.","I used to having long hair.","I would have long hair.","I am used to have long hair.","I use to have long hair."], a:0, eng:true,
+   exp:"과거의 상태 → used to + 동사원형 have"},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["There would be a pond here.","She is used to speak Japanese.","Did you used to live here?","There used to be a pond here.","She is used to speaking Japanese."], ans:[0,1,2],
+   exp:"상태는 used to, be used to 뒤는 -ing, 의문문은 use to입니다."},
+
+  {type:"v", tag:"대화와 서술형", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Do you still live in Gwangju?<br>B: No. I ___ live there, but I moved to Seoul.</span>",
+   opts:["used to","am used to","would","use to","was used to"], a:0, eng:true,
+   exp:"예전에 살았다(상태) → <b>used to</b> live"},
+
+  {type:"v", tag:"대화와 서술형", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Isn't it hard to get up at 6?<br>B: Not really. I ___ getting up early.</span>",
+   opts:["am used to","used to","would","use to","am use to"], a:0, eng:true,
+   exp:"익숙하다 → <b>am used to</b> getting"},
+
+  {type:"v", tag:"대화와 서술형", q:"우리말에 맞게 바르게 쓴 것은?<br>‘예전에 이 자리에는 작은 가게가 있었다.’",
+   opts:["There used to be a small shop here.","There would be a small shop here.","There is used to be a small shop here.","There used to being a small shop here.","There use to be a small shop here."], a:0, eng:true,
+   exp:"There <b>used to be</b> ~"},
+
+  {type:"v", tag:"대화와 서술형", q:"우리말에 맞게 바르게 쓴 것은?<br>‘나는 매운 음식을 먹는 데 익숙하지 않다.’",
+   opts:["I'm not used to eating spicy food.","I didn't use to eat spicy food.","I'm not used to eat spicy food.","I used not to eating spicy food.","I'm not use to eating spicy food."], a:0, eng:true,
+   exp:"be not used to + <b>-ing</b>"},
+
+  {type:"v", tag:"대화와 서술형", write:true, ans:"used to be", sent:"He ___ a quiet boy, but now he is very active.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (be)",
+   ko:"그는 예전에 조용한 소년이었지만 지금은 아주 활발하다.",
+   exp:"과거의 상태 → <b>used to be</b>"},
+
+  {type:"v", tag:"대화와 서술형", write:true, ans:"is used to working", sent:"My mom ___ at night.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (work)",
+   ko:"엄마는 밤에 일하는 데 익숙하시다.",
+   exp:"be used to + -ing → <b>is used to working</b>"},
+
+  {type:"v", tag:"대화와 서술형", hard:true, q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">My grandma ⓐ<b>used to</b> live in a small village. She ⓑ<b>would</b> get up early and feed the chickens. There ⓒ<b>would</b> be a big tree in front of her house. Now she lives with us, and she ⓓ<b>is used to</b> ⓔ<b>living</b> in the city.</span>",
+   opts:["ⓒ","ⓐ","ⓑ","ⓓ","ⓔ"], a:0, eng:true,
+   exp:"나무가 ‘있었다’는 상태라 would가 아니라 <b>used to</b>를 씁니다."}
+];
+
+var X4 = [
+  {type:"n", tag:"쓰임 가리기", sent:"This machine is used to ___ ice cream.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["make","making","made","makes","be made"], a:0, eng:true,
+   ko:"이 기계는 아이스크림을 만드는 데 쓰인다.",
+   exp:"be used to + 동사원형 = ~하는 데 <b>쓰이다</b>"},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 부분의 쓰임이 <b>같은</b> 것끼리 묶은 것은?<br><span class=\"eng\">ⓐ Glass is **used to** make bottles.<br>ⓑ I **used to** ride a bike.<br>ⓒ He is **used to** riding a bike.<br>ⓓ Paper is **used to** wrap gifts.</span>",
+   opts:["ⓐ, ⓓ","ⓐ, ⓑ","ⓑ, ⓒ","ⓒ, ⓓ","ⓑ, ⓓ"], a:0, eng:true,
+   exp:"ⓐ · ⓓ는 ‘~하는 데 쓰이다’(수동태 + to부정사)입니다."},
+
+  {type:"n", tag:"쓰임 가리기", sent:"It took time to get used to ___ on the left.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["driving","drive","drove","to drive","drives"], a:0, eng:true,
+   ko:"왼쪽으로 운전하는 데 익숙해지는 데 시간이 걸렸다.",
+   exp:"get used to + <b>-ing</b> = ~하는 데 익숙해지다"},
+
+  {type:"n", tag:"쓰임 가리기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">There used to be a library here.</span>",
+   opts:["예전에 여기에 도서관이 있었다(지금은 없다).","지금 여기에 도서관이 있다.","여기에 도서관이 생길 것이다.","도서관이 여기에 쓰인다.","도서관에 익숙하다."], a:0, eng:true,
+   exp:"There used to be = 예전에 ~가 있었다"},
+
+  {type:"n", tag:"쓰임 가리기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">I'm getting used to my new phone.</span>",
+   opts:["나는 새 휴대 전화에 익숙해지고 있다.","나는 예전에 새 휴대 전화를 썼다.","새 휴대 전화는 쓰인다.","나는 새 휴대 전화를 살 것이다.","나는 새 휴대 전화가 싫다."], a:0, eng:true,
+   exp:"get used to + 명사 = ~에 익숙해지다. 진행형이라 ‘익숙해지고 있다’"},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 to의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["She got used **to** the noise.","She used **to** sing.","She wants **to** sing.","Salt is used **to** keep food.","She decided **to** sing."], a:0, eng:true,
+   exp:"get used to의 to는 <b>전치사</b>(뒤에 명사 · -ing)입니다. 나머지는 to부정사입니다."},
+
+  {type:"n", tag:"쓰임 가리기", multi:true, q:"뒤에 <b>-ing</b>가 와야 하는 표현을 모두 고르세요. (여러 개)",
+   opts:["be used to","get used to","look forward to","used to","be used to(쓰이다)"], ans:[0,1,2], eng:true,
+   exp:"익숙하다 · 익숙해지다 · 고대하다의 to는 전치사라 -ing가 옵니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I often visited my grandparents when I was young, but I don't now.<br>= I ___ visit my grandparents.</span>",
+   opts:["used to","am used to","would be","was used to","use to"], a:0, eng:true,
+   exp:"예전에 자주 했지만 지금은 안 한다 → <b>used to</b> (would도 됩니다)"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">Getting up early is easy for me now.<br>= I ___ getting up early.</span>",
+   opts:["am used to","used to","would","use to","was use to"], a:0, eng:true,
+   exp:"지금 익숙하다 → <b>am used to</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">This street was quiet before, but it isn't now.<br>= This street ___ quiet.</span>",
+   opts:["used to be","would be","is used to be","used to being","was used"], a:0, eng:true,
+   exp:"과거의 상태 → <b>used to be</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"didn't use to", alt:["did not use to"], sent:"I ___ like carrots, but now I love them.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요.",
+   ko:"나는 예전에는 당근을 좋아하지 않았지만 지금은 아주 좋아한다.",
+   exp:"부정 <b>didn't use to</b> + 동사원형"},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"is used to cut", sent:"This tool ___ wood.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (cut)",
+   ko:"이 도구는 나무를 자르는 데 쓰인다.",
+   exp:"~하는 데 쓰이다 → <b>is used to cut</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"뜻이 <b>같은</b> 짝을 모두 고르세요. (여러 개)",
+   opts:["She used to cook every day. = She would cook every day.","I'm used to crowds. = Crowds don't bother me.","There used to be a well. = There was a well before, but not now.","I used to run. = I'm used to running.","He would be tall. = He used to be tall."], ans:[0,1,2],
+   exp:"used to(예전 습관)와 be used to(익숙하다)는 뜻이 다르고, would는 상태에 쓰지 않습니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She got used to live in Korea.","She got used to living in Korea.","She used to live in Japan.","Rice is used to make rice cakes.","She is used to Korean food."], a:0, eng:true,
+   exp:"get used to + <b>-ing</b> → living"},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Oil is used to cook food.","I'm getting used to the new rules.","We would go fishing on weekends.","There would be a bridge here.","He is used to drive at night."], ans:[0,1,2],
+   exp:"상태(bridge가 있었다)는 used to, be used to 뒤는 driving입니다."},
+
+  {type:"v", tag:"종합", sent:"When I was little, my dad ___ carry me on his back.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["would","is used to","was used","will","uses to"], a:0, eng:true,
+   ko:"내가 어렸을 때 아빠는 나를 업어 주시곤 했다.",
+   exp:"과거의 습관 → <b>would</b> (used to도 됩니다)"},
+
+  {type:"v", tag:"종합", q:"빈칸에 used to가 들어갈 수 <b>없는</b> 문장은?",
+   opts:["She ___ working hard.","She ___ work hard.","There ___ be a park.","He ___ play the drums.","We ___ live in a small house."], a:0, eng:true,
+   exp:"뒤에 -ing(working)가 오면 used to만으로는 안 되고 <b>is used to</b>처럼 be동사가 있어야 합니다. 나머지는 ‘예전에 ~하곤 했다’입니다."},
+
+  {type:"v", tag:"종합", q:"다음 문장을 부정문으로 바르게 바꾼 것은?<br><span class=\"eng\">He used to eat breakfast.</span>",
+   opts:["He didn't use to eat breakfast.","He didn't used to eat breakfast.","He used not to eating breakfast.","He wasn't used to eat breakfast.","He doesn't use to eat breakfast."], a:0, eng:true,
+   exp:"과거 부정 <b>didn't use to</b> + 동사원형"},
+
+  {type:"v", tag:"종합", sent:"She used to live in London, ___ ?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["didn't she","wasn't she","doesn't she","isn't she","did she"], a:0, eng:true,
+   ko:"그녀는 예전에 런던에 살았지, 그렇지 않니?",
+   exp:"used to는 과거 일반동사처럼 부가의문문에 <b>didn't</b>"},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["get used to 뒤에는 동사원형이 온다.","used to 뒤에는 동사원형이 온다.","be used to(익숙하다) 뒤에는 -ing가 온다.","would는 과거의 습관에만 쓴다.","be used to + 동사원형은 ‘~하는 데 쓰이다’이다."], a:0, eng:true,
+   exp:"get used to의 to는 전치사라서 <b>-ing</b>나 명사가 옵니다."}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · used to가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 예전에는 ~했다 · 습관과 상태 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

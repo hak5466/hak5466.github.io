@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중3 · 관계대명사 WHAT GAME</span></h1>
-    <p class="sub">what = ~하는 것 · 주어·목적어·보어·전치사 뒤 · what과 that 가리기 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중3 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">what = ~하는 것 · 주어·목적어·보어·전치사 뒤 · what과 that 가리기 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중3 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -755,6 +755,369 @@ var L4 = [
    ko:"어제 내가 한 일에 대해 미안해.",
    exp:"전치사 for 뒤에 ‘내가 한 것(일)’ = <b>what I did</b>"}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘그가 원하는 <b>것</b>’을 영어로 옮길 때 ‘것’을 따로 쓰지 않아도 되는 까닭은?",
+   opts:["what 안에 ‘것’이 들어 있어서","영어에는 ‘것’이 없어서","동사가 ‘것’을 품어서","주어가 ‘것’을 품어서","생략해도 되는 규칙이라서"], a:0,
+   exp:"what = <b>the thing which</b>. ‘것’(the thing)을 이미 품고 있습니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"관계대명사 what(~하는 것)을 쓰는 우리말을 모두 고르세요. (여러 개)",
+   opts:["엄마가 만든 것","내가 들은 것","그녀가 필요한 것","너는 무엇을 들었니?","무엇이 필요하니?"], ans:[0,1,2],
+   exp:"‘~한 것 · ~하는 것’은 관계대명사, ‘무엇을 ~니?’는 의문사입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"[엄마가 만드신 것]은 맛있다.", q:"[ ] 덩어리는 문장에서 어느 자리일까요?",
+   opts:["주어","목적어","보어","전치사 뒤","동사"], a:0,
+   exp:"‘~은’ 자리 → <b>주어</b>. What my mom made is delicious."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 [그녀가 준 것]을 아직 가지고 있다.", q:"[ ] 덩어리는 문장에서 어느 자리일까요?",
+   opts:["목적어","주어","보어","전치사 뒤","동사"], a:0,
+   exp:"‘~을’ 자리 → <b>목적어</b>. I still have what she gave me."},
+
+  {type:"n", tag:"한글로 이해", sent:"그것은 [내가 기대한 것]이 아니었다.", q:"[ ] 덩어리는 문장에서 어느 자리일까요?",
+   opts:["보어","주어","목적어","전치사 뒤","동사"], a:0,
+   exp:"‘그것 = 내가 기대한 것’, 주어를 설명 → <b>보어</b>. It wasn't what I expected."},
+
+  {type:"n", tag:"한글로 이해", sent:"우리는 [선생님이 말씀하신 것]에 귀를 기울였다.", q:"[ ] 덩어리는 문장에서 어느 자리일까요?",
+   opts:["전치사 뒤","주어","보어","동사","형용사"], a:0,
+   exp:"‘~에 귀를 기울이다’ = listen <b>to</b>, 전치사 뒤입니다. We listened to what the teacher said."},
+
+  {type:"n", tag:"한글로 이해", q:"what 덩어리가 문장에서 하는 일은 어떤 품사와 같을까요?",
+   opts:["명사","동사","형용사","부사","감탄사"], a:0,
+   exp:"what 덩어리는 <b>명사</b>처럼 주어 · 목적어 · 보어 · 전치사 뒤에 옵니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘이것이 내가 산 <b>가방</b>이다’처럼 꾸밈을 받는 명사가 있으면 무엇을 쓸까요?",
+   opts:["which(that)","what","who","where","when"], a:0,
+   exp:"선행사(가방)가 있으면 <b>which · that</b>. what은 선행사가 없을 때 씁니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"what 덩어리가 <b>주어</b> 자리에 있는 우리말을 모두 고르세요. (여러 개)",
+   opts:["**그가 한 말**은 사실이었다.","**내가 좋아하는 것**은 피자다.","**중요한 것**은 노력이다.","나는 **그가 한 말**을 믿는다.","이것이 **내가 좋아하는 것**이다."], ans:[0,1,2],
+   exp:"‘~은/는’이 붙으면 <b>주어</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"what 덩어리가 <b>보어</b> 자리에 있는 우리말을 모두 고르세요. (여러 개)",
+   opts:["이것이 **내가 찾던 것**이다.","그것은 **우리가 필요한 것**이다.","문제는 **그가 한 일**이다.","**그가 한 일**은 놀라웠다.","나는 **그가 한 일**을 안다."], ans:[0,1,2],
+   exp:"‘~이다’ 앞에서 주어를 설명하면 <b>보어</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘중요한 것은 너의 마음이다’에서 ‘중요한 것’처럼 what 바로 뒤에 동사가 올 수 있을까요?",
+   opts:["있다 (What matters ~)","없다","형용사만 올 수 있다","명사만 올 수 있다","전치사만 올 수 있다"], a:0,
+   exp:"what이 주어 노릇까지 하면 바로 뒤에 <b>동사</b>가 옵니다. What matters is your heart."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["what 앞에는 반드시 명사(선행사)가 있어야 한다.","what은 ‘~하는 것’으로 풀이한다.","what 덩어리는 주어가 될 수 있다.","what 덩어리는 전치사 뒤에 올 수 있다.","what = the thing which이다."], a:0,
+   exp:"what 앞에는 선행사를 <b>쓰지 않습니다</b>."},
+
+  {type:"a", tag:"쉬운 영어", sent:"___ she said was true.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","Who","Which","Where","When"], a:0, eng:true,
+   ko:"그녀가 말한 것은 사실이었다.",
+   exp:"주어 ‘그녀가 말한 것’ = <b>What</b> she said"},
+
+  {type:"a", tag:"쉬운 영어", sent:"Show me ___ you have.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","who","whose","where","when"], a:0, eng:true,
+   ko:"네가 가진 것을 나에게 보여 줘.",
+   exp:"목적어 ‘네가 가진 것’ = <b>what</b> you have"},
+
+  {type:"a", tag:"쉬운 영어", sent:"This is ___ I need.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","who","which","where","whose"], a:0, eng:true,
+   ko:"이것이 내가 필요한 것이다.",
+   exp:"보어 ‘내가 필요한 것’ = <b>what</b> I need"},
+
+  {type:"a", tag:"쉬운 영어", word:"what I heard", q:"<b>what I heard</b>의 뜻으로 알맞은 것은?",
+   opts:["내가 들은 것","나는 무엇을 들었니?","내가 들은 사람","내가 들은 곳","내가 들은 때"], a:0, eng:true,
+   exp:"what + 주어 + 동사 = ‘~가 …한 것’. <b>내가 들은 것</b>"},
+
+  {type:"a", tag:"쉬운 영어", word:"What did you hear?", q:"<b>What did you hear?</b>의 뜻으로 알맞은 것은?",
+   opts:["너는 무엇을 들었니?","네가 들은 것","네가 들은 사람","너는 언제 들었니?","너는 어디서 들었니?"], a:0, eng:true,
+   exp:"물음표와 did가 있는 <b>의문문</b>, what은 ‘무엇’입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"what 덩어리가 <b>보어</b> 자리에 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["This is **what I bought**.","That's **what she said**.","It's **what we need**.","**What I bought** is here.","I like **what I bought**."], ans:[0,1,2],
+   exp:"be동사 뒤에서 주어를 설명하면 <b>보어</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"Thank you for ___ you did.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","who","which","where","when"], a:0, eng:true,
+   ko:"네가 해 준 것에 대해 고마워.",
+   exp:"전치사 for 뒤에 ‘네가 한 것’ = <b>what</b> you did"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"what이 ‘~하는 것’(관계대명사)으로 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["I like **what** you made.","**What** he said is true.","This is **what** I want.","**What** is this?","**What** time is it?"], ans:[0,1,2],
+   exp:"물음표가 있는 What is this? · What time is it?은 의문사입니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"what · that 고르기", sent:"I know ___ she is from Canada.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","which","who","whose"], a:0, eng:true,
+   ko:"나는 그녀가 캐나다 출신이라는 것을 안다.",
+   exp:"뒤가 완전한 문장 → 접속사 <b>that</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"I know ___ she wants.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","that","which","who","whose"], a:0, eng:true,
+   ko:"나는 그녀가 원하는 것을 안다.",
+   exp:"wants의 목적어가 빠져 있고 앞에 명사가 없음 → <b>what</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"Here is the key ___ you lost.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","who","whose","where"], a:0, eng:true,
+   ko:"여기 네가 잃어버린 열쇠가 있다.",
+   exp:"앞에 명사 the key → 관계대명사 <b>that</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"Here is ___ you lost.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","that","which","who","where"], a:0, eng:true,
+   ko:"여기 네가 잃어버린 것이 있다.",
+   exp:"앞에 명사가 없음 → <b>what</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"___ you need now is sleep.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","That","Which","Who","It"], a:0, eng:true,
+   ko:"네가 지금 필요한 것은 잠이다.",
+   exp:"need의 목적어가 빠짐, 앞에 명사 없음 → <b>What</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"___ she won the prize surprised us.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["That","What","Which","Who","It"], a:0, eng:true,
+   ko:"그녀가 상을 탔다는 것이 우리를 놀라게 했다.",
+   exp:"she won the prize는 완전한 문장 → 접속사 <b>That</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"The truth is ___ I forgot your birthday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","which","who","whose"], a:0, eng:true,
+   ko:"사실은 내가 네 생일을 잊었다는 것이다.",
+   exp:"뒤가 완전 → 접속사 <b>that</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"___ made him angry was the noise.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","That","Which","Who","It"], a:0, eng:true,
+   ko:"그를 화나게 한 것은 소음이었다.",
+   exp:"made 앞 주어가 빠져 있음 → <b>What</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"She is the singer ___ everyone loves.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","whose","where","when"], a:0, eng:true,
+   ko:"그녀는 모두가 사랑하는 가수이다.",
+   exp:"앞에 명사 the singer → 관계대명사 <b>that</b>"},
+
+  {type:"n", tag:"what · that 고르기", sent:"Tell me ___ happened.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","that","which","who","where"], a:0, eng:true,
+   ko:"무슨 일이 일어났는지(일어난 일을) 말해 줘.",
+   exp:"happened 앞 주어가 빠짐 → <b>what</b>"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>what</b>이 들어갈 문장을 모두 고르세요. (여러 개)",
+   opts:["I can't believe ___ I saw.","___ matters most is health.","Do ___ you love.","This is the book ___ I love.","I'm sure ___ he will come."], ans:[0,1,2],
+   exp:"앞에 명사가 없고 뒤가 빠져 있으면 what입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>접속사 that</b>이 들어갈 문장을 모두 고르세요. (여러 개)",
+   opts:["I'm sure ___ he will come.","It is clear ___ she is right.","The problem is ___ we are late.","I'm sure ___ he wants.","This is the cap ___ he wants."], ans:[0,1,2],
+   exp:"뒤가 완전하면 접속사 that입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>관계대명사 that</b>이 들어갈 문장을 모두 고르세요. (여러 개)",
+   opts:["This is the cap ___ he wants.","I lost the pen ___ you gave me.","She has a dog ___ is very big.","I know ___ he wants.","I know ___ he is kind."], ans:[0,1,2],
+   exp:"앞에 명사가 있고 뒤가 빠져 있으면 관계대명사 that입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"밑줄 친 부분을 <b>what</b>으로 바꿔 쓸 수 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["**The thing that** I like is music.","I believe **the things that** he said.","That's **the thing which** I mean.","**The girl who** I like is Mina.","I think **that** he is kind."], ans:[0,1,2],
+   exp:"the thing(s) that/which = what. 사람(the girl who)이나 접속사 that은 바꿀 수 없습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"밑줄 친 that 뒤가 <b>빠진 것 있는(불완전한)</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["This is the house **that** Jack built.","The man **that** called me is my uncle.","I have a cat **that** likes fish.","I know **that** he is busy.","It's true **that** she left."], ans:[0,1,2],
+   exp:"뒤가 불완전하면 관계대명사, 완전하면 접속사입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["All what I want is peace.","All that I want is peace.","What I want is peace.","The only thing that I want is peace.","Peace is what I want."], a:0, eng:true,
+   exp:"all도 선행사라서 what을 쓸 수 없습니다. <b>All that</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It is strange what he left early.","It is strange that he left early.","What he did was strange.","I didn't know what he did.","That he left early is strange."], a:0, eng:true,
+   exp:"he left early는 완전한 문장 → 접속사 <b>that</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["That you need is love.","What you need is love.","The thing that you need is love.","Love is what you need.","I think that you need love."], a:0, eng:true,
+   exp:"need의 목적어가 빠지고 앞에 명사가 없으니 <b>What</b>"},
+
+  {type:"v", tag:"함정", hard:true, sent:"What she told me ___ very helpful.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["was","were","are","be","being"], a:0, eng:true,
+   ko:"그녀가 나에게 말해 준 것은 아주 도움이 되었다.",
+   exp:"what 덩어리 주어는 보통 단수 → <b>was</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"밑줄 친 what의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["**What** a nice idea!","**What** he said was nice.","I like **what** you said.","This is **what** I said.","Listen to **what** I say."], a:0, eng:true,
+   exp:"What a nice idea!는 <b>감탄문</b>입니다. 나머지는 관계대명사입니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", q:"두 빈칸에 공통으로 들어갈 말은?<br><span class=\"eng\">• ___ I want for dinner is pasta.<br>• Please do ___ you think is right.</span>",
+   opts:["What(what)","That(that)","Which(which)","Who(who)","It(it)"], a:0, eng:true,
+   exp:"두 문장 모두 앞에 명사가 없고 뒤가 빠져 있습니다. → <b>what</b>"},
+
+  {type:"n", tag:"빈칸", hard:true, q:"밑줄 친 what의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["**What** did you eat?","**What** you ate looks good.","That's **what** I ate.","I want **what** you ate.","Tell me about **what** you ate."], a:0, eng:true,
+   exp:"What did you eat?은 ‘무엇을’ 묻는 <b>의문사</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"We talked about ___ we saw at the museum.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","that","which","who","where"], a:0, eng:true,
+   ko:"우리는 박물관에서 본 것에 대해 이야기했다.",
+   exp:"전치사 about 뒤, 앞에 명사 없음 → <b>what</b>"},
+
+  {type:"n", tag:"빈칸", q:"우리말을 영어로 바르게 옮긴 것은?<br>그가 나에게 필요한 것은 휴식이다.",
+   opts:["What he needs is a rest.","That he needs is a rest.","Which he needs is a rest.","What does he need is a rest.","The thing what he needs is a rest."], a:0, eng:true,
+   exp:"‘그가 필요한 것’ = <b>What he needs</b>"},
+
+  {type:"n", tag:"빈칸", q:"(A), (B)에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">• I hope (A) you like it.<br>• I hope you like (B) I made.</span>",
+   opts:["that – what","what – that","that – that","what – what","which – what"], a:0, eng:true,
+   exp:"(A) you like it은 완전 → that, (B) made의 목적어가 빠짐 → what"},
+
+  {type:"n", tag:"빈칸", q:"(A), (B)에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">• (A) I bought is a cap.<br>• This is the cap (B) I bought.</span>",
+   opts:["What – that","That – what","What – what","That – that","Which – what"], a:0, eng:true,
+   exp:"(A) 앞에 명사 없음 → What, (B) 앞에 the cap → that"},
+
+  {type:"n", tag:"빈칸", hard:true, q:"빈칸에 들어갈 말이 <b>나머지와 다른</b> 것은?",
+   opts:["He is the boy ___ I told you about.","___ I told you is a secret.","Don't forget ___ I told you.","Is this ___ you ordered?","That's not ___ I meant."], a:0, eng:true,
+   exp:"선행사 the boy가 있으니 <b>who(m) · that</b>. 나머지는 what입니다."},
+
+  {type:"n", tag:"빈칸", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I don't understand the thing that he said.<br>= I don't understand ___ he said.</span>",
+   opts:["what","that","which","who","whose"], a:0, eng:true,
+   exp:"the thing that = <b>what</b>"},
+
+  {type:"a", tag:"고치기", hard:true, q:"다음 중 어법상 <b>어색한</b> 문장은?",
+   opts:["This is the song what I like best.","What I like best is this song.","I like what you sang.","This is the song that I like best.","She is interested in what I like."], a:0, eng:true,
+   exp:"선행사 the song이 있으니 <b>that · which</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**That** you said hurt my feelings.</span>",
+   opts:["That → What","That → Which","That → It","That → Who","고칠 필요 없음"], a:0, eng:true,
+   exp:"said의 목적어가 빠지고 앞에 명사 없음 → <b>What</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I'm sorry for **that** I did yesterday.</span>",
+   opts:["that → what","that → which","that → who","that → whom","고칠 필요 없음"], a:0, eng:true,
+   exp:"전치사 for 뒤, ‘내가 한 일’ → <b>what</b>"},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["What she cooked smelled great.","I know that you are tired.","This is the bag that I want.","This is the bag what I want.","I know what you are tired."], ans:[0,1,2],
+   exp:"선행사 뒤 what(✕), 완전한 문장 앞 what(✕)"},
+
+  {type:"a", tag:"고치기", hard:true, multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Everything what I said was true.","That I bought is expensive.","I think what she is smart.","What I bought is expensive.","I think that she is smart."], ans:[0,1,2],
+   exp:"everything 뒤는 that, 빠진 것이 있으면 what, 완전하면 that입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 that을 <b>what</b>으로 고쳐야 하는 문장은?",
+   opts:["Do **that** you want to do.","I heard **that** he moved.","This is the book **that** I read.","It is true **that** she won.","The fact is **that** I lied."], a:0, eng:true,
+   exp:"do의 목적어 ‘하고 싶은 것’, 앞에 명사 없음 → <b>what</b>"},
+
+  {type:"v", tag:"서술형", write:true, ans:"What I need", sent:"___ is your advice.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (need)",
+   ko:"내가 필요한 것은 너의 조언이다.",
+   exp:"주어 ‘내가 필요한 것’ = <b>What I need</b>"},
+
+  {type:"v", tag:"서술형", write:true, ans:"what you want", sent:"You can take ___.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (want)",
+   ko:"네가 원하는 것을 가져가도 돼.",
+   exp:"목적어 ‘네가 원하는 것’ = <b>what you want</b>"},
+
+  {type:"v", tag:"서술형", write:true, ans:"what I expected", sent:"The ending was not ___.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (expect)",
+   ko:"결말은 내가 기대한 것이 아니었다.",
+   exp:"보어 ‘내가 기대한 것’ = <b>what I expected</b>"},
+
+  {type:"v", tag:"서술형", write:true, ans:"what she said", sent:"Listen carefully to ___.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (say)",
+   ko:"그녀가 말한 것을 잘 들어라.",
+   exp:"전치사 to 뒤 ‘그녀가 말한 것’ = <b>what she said</b>"},
+
+  {type:"v", tag:"서술형", write:true, ans:"what", sent:"This is ___ I have been looking for.",
+   q:"<span class=\"eng\">This is the thing that I have been looking for.</span>와 뜻이 같도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"이것이 내가 찾던 것이다.",
+   exp:"the thing that = <b>what</b>"},
+
+  {type:"v", tag:"서술형", hard:true, write:true, ans:"that she is honest", sent:"Everyone knows ___.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (honest)",
+   ko:"모두가 그녀가 정직하다는 것을 안다.",
+   exp:"she is honest는 완전한 문장 → 접속사 <b>that</b>"}
+];
+
+var X4 = [
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"<span class=\"eng\">I bought **what** I needed.</span>의 what과 쓰임이 <b>같은</b> 것은?",
+   opts:["**What** she wrote was moving.","**What** is your plan?","**What** a big dog!","**What** do you need?","**What** kind of music do you like?"], a:0, eng:true,
+   exp:"‘그녀가 쓴 것’, <b>관계대명사</b>입니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"<span class=\"eng\">She is the girl **that** won the race.</span>의 that과 쓰임이 <b>같은</b> 것은?",
+   opts:["He has a car **that** is very fast.","I hope **that** you win.","**That** is my seat.","It was so hot **that** I swam.","The news **that** he won is true."], a:0, eng:true,
+   exp:"앞의 a car를 꾸미고 뒤에 주어가 빠진 <b>관계대명사</b>입니다."},
+
+  {type:"n", tag:"쓰임 가리기", sent:"I met a man ___ son is a famous actor.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whose","who","what","that","which"], a:0, eng:true,
+   ko:"나는 아들이 유명한 배우인 남자를 만났다.",
+   exp:"‘그의 아들’ → <b>whose</b>"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"This is the school ___ my mom teaches.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["where","which","what","that","when"], a:0, eng:true,
+   ko:"이곳은 엄마가 가르치시는 학교이다.",
+   exp:"my mom teaches(가르치다, 목적어 없이 완전) + 장소 → <b>where</b>"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"Seoul is ___ is called the heart of Korea.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","that","which","who","where"], a:0, eng:true,
+   ko:"서울은 이른바 한국의 심장이다.",
+   exp:"<b>what is called</b> = 이른바"},
+
+  {type:"n", tag:"쓰임 가리기", q:"두 빈칸에 공통으로 들어갈 말은?<br><span class=\"eng\">• She has a bird ___ can talk.<br>• He is the man ___ lives next door.</span>",
+   opts:["that","who","which","what","whose"], a:0, eng:true,
+   exp:"동물과 사람 모두 쓸 수 있는 <b>that</b>"},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"(A), (B), (C)에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">• I found the watch (A) I had lost.<br>• (B) I found was my old watch.<br>• I'm glad (C) I found it.</span>",
+   opts:["that – What – that","what – That – that","that – That – what","what – What – that","that – What – what"], a:0, eng:true,
+   exp:"(A) 선행사 → that, (B) 선행사 없음 → What, (C) 뒤가 완전 → that"},
+
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 부분과 바꿔 쓸 수 있는 것은?<br><span class=\"eng\">**The thing which** surprised me was his voice.</span>",
+   opts:["What","That","Which","Whose","Who"], a:0, eng:true,
+   exp:"the thing which = <b>what</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">I have a friend. He can speak three languages.</span>",
+   opts:["I have a friend who can speak three languages.","I have a friend what can speak three languages.","I have a friend which can speak three languages.","I have a friend whose can speak three languages.","I have a friend who he can speak three languages."], a:0, eng:true,
+   exp:"사람 선행사 + 주격 → <b>who</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">This is the park. We played there.</span>",
+   opts:["This is the park where we played.","This is the park which we played.","This is the park what we played.","This is the park where we played there.","This is the park who we played."], a:0, eng:true,
+   exp:"there(그곳에서)를 대신하는 <b>where</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"what", sent:"I'll give you ___ you want.",
+   q:"<span class=\"eng\">I'll give you the thing that you want.</span>과 뜻이 같도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"네가 원하는 것을 줄게.",
+   exp:"the thing that = <b>what</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"whose", sent:"I know a girl ___ father is a pilot.",
+   q:"<span class=\"eng\">I know a girl. Her father is a pilot.</span>을 한 문장으로 잇도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"나는 아버지가 조종사인 소녀를 안다.",
+   exp:"Her(그녀의) → <b>whose</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", write:true, ans:"That", sent:"___ she passed the test is amazing.",
+   q:"<span class=\"eng\">It is amazing that she passed the test.</span>와 뜻이 같도록 빈칸에 한 낱말을 써 보세요.",
+   ko:"그녀가 시험에 합격한 것은 놀랍다.",
+   exp:"진주어 that절을 앞으로 → <b>That</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"빈칸에 <b>What(what)</b>이 들어갈 문장을 모두 고르세요. (여러 개)",
+   opts:["___ you see is what you get.","___ a wonderful day!","___ are you doing?","This is the place ___ I was born.","I think ___ he is kind."], ans:[0,1,2],
+   exp:"관계대명사 · 감탄문 · 의문사 모두 what입니다. 장소는 where, 완전한 문장 앞은 that입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["What you need is more practice.","That you need is more practice.","The thing what you need is practice.","What do you need is practice.","You need is what practice."], a:0, eng:true,
+   exp:"‘네가 필요한 것’ = <b>What you need</b>"},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Anything what you say is fine.","Anything that you say is fine.","What you say is fine.","Everything you say is fine.","All that you say is fine."], a:0, eng:true,
+   exp:"anything도 선행사 → <b>that</b>(생략 가능)"},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["What matters is honesty.","The boy whose bike was stolen cried.","This is the town where I grew up.","This is the town which I grew up.","I know the reason what he cried."], ans:[0,1,2],
+   exp:"grew up은 완전 → where, the reason 뒤는 why입니다."},
+
+  {type:"v", tag:"종합", q:"우리말을 영어로 바르게 옮긴 것은?<br>그녀가 어제 산 것은 새 신발이었다.",
+   opts:["What she bought yesterday was new shoes.","That she bought yesterday was new shoes.","What did she buy yesterday was new shoes.","The thing what she bought yesterday was new shoes.","Which she bought yesterday was new shoes."], a:0, eng:true,
+   exp:"‘그녀가 산 것’ = <b>What she bought</b>"},
+
+  {type:"v", tag:"종합", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">What counts is not the result but the process.</span>",
+   opts:["중요한 것은 결과가 아니라 과정이다.","무엇이 결과와 과정을 세니?","결과가 과정보다 중요하다.","과정을 세는 것이 중요하다.","결과를 세지 마라."], a:0, eng:true,
+   exp:"What counts = ‘<b>중요한 것</b>’. not A but B = A가 아니라 B"},
+
+  {type:"v", tag:"종합", hard:true, write:true, ans:"what I said", sent:"Please forget ___ last night.",
+   q:"우리말에 맞게 빈칸에 알맞은 말을 써 보세요. (say)",
+   ko:"어젯밤 내가 한 말을 잊어 줘.",
+   exp:"목적어 ‘내가 한 말’ = <b>what I said</b>"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · what은 ‘~하는 것’", desc:"한글로 이해 12 · 쉬운 영어 8 · ‘무엇’과 ‘~하는 것’ · what = the thing which · 주어·목적어·보어·전치사 뒤 자리", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · 5형식 뽀개기</span></h1>
-    <p class="sub">지각 · 사역 · 준사역과 목적격보어 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">지각 · 사역 · 준사역과 목적격보어 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -756,6 +756,373 @@ var L4 = [
    opts:["I helped him move the box and kept the door open.","I helped him to moving the box and kept the door opened.","I helped him moving the box and kept the door openly.","I helped he move the box and kept the door open.","I helped him move the box and kept the door to open."], a:0, eng:true,
    exp:"help + 목적격 + 동사원형, keep + 목적어 + <b>형용사</b>입니다. -ing나 부사를 쓰지 않도록 조심하세요."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", sent:"나는 그가 노래하는 것을 들었다.", q:"이 문장에서 ‘목적어’는?",
+   opts:["그","나","노래하는 것","들었다","것"], a:0,
+   exp:"들은 대상 <b>그(him)</b>가 목적어, ‘노래하는’이 목적격보어입니다. I heard him sing."},
+
+  {type:"n", tag:"한글로 이해", sent:"엄마는 내가 방을 청소하게 하셨다.", q:"이 문장에서 ‘목적격보어’는?",
+   opts:["청소하게(clean)","엄마","나","방","하셨다"], a:0,
+   exp:"목적어 ‘나’가 하는 일 <b>청소하다</b>가 목적격보어입니다. Mom made me clean my room."},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 그를 행복하게 만들었다’에서 ‘행복하게’는 무엇을 설명할까요?",
+   opts:["목적어 ‘그’","주어 ‘나’","동사 ‘만들었다’","아무것도 아님","문장 전체"], a:0,
+   exp:"목적격보어는 <b>목적어</b>(그)가 어떤지 설명합니다. I made him happy."},
+
+  {type:"n", tag:"한글로 이해", q:"‘우리는 그 개를 맥스라고 부른다’에서 목적격보어의 종류는?",
+   opts:["명사","형용사","동사원형","to부정사","부사"], a:0,
+   exp:"‘맥스’는 이름, <b>명사</b>입니다. We call the dog Max."},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 그 영화가 지루하다고 생각했다’에서 목적격보어의 종류는?",
+   opts:["형용사","명사","동사원형","부사","전치사"], a:0,
+   exp:"‘지루한’은 상태, <b>형용사</b>입니다. I found the movie boring."},
+
+  {type:"n", tag:"한글로 이해", q:"‘let’이 가진 뜻으로 알맞은 것은?",
+   opts:["~하도록 놓아두다(허락)","~하도록 억지로 시키다","~해 달라고 부탁하다","~을 보다","~을 돕다"], a:0,
+   exp:"let = <b>~하게 두다</b>, 허락입니다. Let me go."},
+
+  {type:"n", tag:"한글로 이해", q:"‘make’가 사역동사일 때의 뜻으로 알맞은 것은?",
+   opts:["(억지로) ~하게 만들다","~하도록 허락하다","~을 보다","~을 돕다","~하기를 바라다"], a:0,
+   exp:"make = <b>~하게 만들다</b>(강제). He made me wait."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"목적격보어 자리에 <b>to부정사</b>가 오는 동사의 뜻을 모두 고르세요. (여러 개)",
+   opts:["원하다(want)","부탁하다(ask)","말하다·시키다(tell)","보다(see)","~하게 하다(make)"], ans:[0,1,2],
+   exp:"want · ask · tell은 to부정사, see(지각)와 make(사역)는 동사원형입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"목적격보어로 <b>형용사</b>를 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["문을 열린 채로 두다(keep ~ open)","그를 화나게 하다(make ~ angry)","그 책이 쉽다고 알다(find ~ easy)","그가 뛰는 것을 보다","그에게 기다리라고 말하다"], ans:[0,1,2],
+   exp:"open · angry · easy는 상태를 나타내는 형용사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>사역동사</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["선생님은 우리가 노래하게 하셨다","아빠는 내가 늦게까지 놀게 두셨다","나는 그에게 차를 고치게 했다","나는 그가 노래하는 것을 들었다","그는 내가 숙제하는 것을 도왔다"], ans:[0,1,2],
+   exp:"~하게 하다 · 두다(make · let · have)가 사역동사입니다. 들었다는 지각, 도왔다는 준사역입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"4형식 ‘그에게 책을 주었다’와 5형식 ‘그를 행복하게 했다’의 차이로 알맞은 것은?",
+   opts:["5형식은 뒤의 말이 목적어를 설명한다","4형식은 목적어가 없다","5형식은 목적어가 둘이다","둘은 똑같다","4형식은 동사가 없다"], a:0,
+   exp:"4형식은 ‘~에게 ~을’(목적어 둘), 5형식은 목적어 + <b>목적어를 설명하는 말</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["let 뒤 목적격보어에는 to부정사를 쓴다.","지각동사 뒤에는 동사원형이나 -ing가 온다.","사역동사 make 뒤에는 동사원형이 온다.","help 뒤에는 동사원형과 to부정사가 모두 온다.","want 뒤 목적격보어에는 to부정사를 쓴다."], a:0,
+   exp:"let은 사역동사라 <b>동사원형</b>: let me go"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 중 <b>사역동사가 쓰인</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Mom made me clean my room.","He let me use his pen.","I had him fix my bike.","I saw him cross the road.","She wants me to come."], ans:[0,1,2],
+   exp:"made · let · had가 사역동사입니다. saw는 지각동사, wants는 to부정사를 쓰는 동사입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"목적격보어로 <b>동사원형</b>을 쓸 수 있는 동사를 모두 고르세요. (여러 개)",
+   opts:["hear","let","make","want","tell"], ans:[0,1,2],
+   exp:"지각(hear) · 사역(let, make)은 동사원형, want · tell은 to부정사입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I heard her ___ a song.", q:"‘나는 그녀가 노래 부르는 것을 들었다’가 되도록 알맞은 것은?",
+   opts:["sing","to sing","sang","sings","sung"], a:0, eng:true,
+   ko:"나는 그녀가 노래 부르는 것을 들었다.",
+   exp:"지각동사 hear + 목적어 + <b>동사원형</b>(또는 -ing)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"Dad let me ___ his phone.", q:"‘아빠는 내가 전화기를 쓰게 해 주셨다’가 되도록 알맞은 것은?",
+   opts:["use","to use","used","uses","using to"], a:0, eng:true,
+   ko:"아빠는 내가 전화기를 쓰게 해 주셨다.",
+   exp:"let + 목적어 + <b>동사원형</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She wants me ___ early.", q:"‘그녀는 내가 일찍 오기를 원한다’가 되도록 알맞은 것은?",
+   opts:["to come","come","coming","came","comes"], a:0, eng:true,
+   ko:"그녀는 내가 일찍 오기를 원한다.",
+   exp:"want + 목적어 + <b>to부정사</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"The song makes me ___ .", q:"‘그 노래는 나를 행복하게 만든다’가 되도록 알맞은 것은?",
+   opts:["happy","happily","happiness","to happy","happier to"], a:0, eng:true,
+   ko:"그 노래는 나를 행복하게 만든다.",
+   exp:"목적격보어 자리에는 <b>형용사</b> happy (부사 happily ✕)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"We call our teacher ___ .", q:"‘우리는 우리 선생님을 스마일이라고 부른다’가 되도록 알맞은 것은?",
+   opts:["Smile","to smile","smiling","smiled","smilingly"], a:0, eng:true,
+   ko:"우리는 선생님을 스마일이라고 부른다.",
+   exp:"call + 목적어 + <b>명사</b>(이름)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I watched the birds ___ .", q:"‘나는 새들이 날아가는 것을 지켜보았다’가 되도록 알맞은 것은?",
+   opts:["fly","to fly","flew","flown","flies"], a:0, eng:true,
+   ko:"나는 새들이 날아가는 것을 지켜보았다.",
+   exp:"watch(지각) + 목적어 + <b>동사원형</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"지각동사", multi:true, sent:"I saw a cat ___ up the tree.", q:"빈칸에 알맞은 것을 모두 고르세요. (여러 개)",
+   opts:["climb","climbing","to climb","climbed","climbs"], ans:[0,1], eng:true,
+   ko:"나는 고양이가 나무에 올라가는 것을 보았다.",
+   exp:"지각동사 + 목적어 + <b>동사원형 / -ing</b>"},
+
+  {type:"n", tag:"지각동사", multi:true, sent:"She heard the dog ___ at night.", q:"빈칸에 알맞은 것을 모두 고르세요. (여러 개)",
+   opts:["bark","barking","to bark","barked","barks"], ans:[0,1], eng:true,
+   ko:"그녀는 밤에 개가 짖는 소리를 들었다.",
+   exp:"hear + 목적어 + 동사원형 / -ing"},
+
+  {type:"n", tag:"지각동사", sent:"I felt the ground ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["shake","to shake","shook","shaken","shakes"], a:0, eng:true,
+   ko:"나는 땅이 흔들리는 것을 느꼈다.",
+   exp:"feel + 목적어 + <b>동사원형</b>"},
+
+  {type:"n", tag:"지각동사", sent:"We watched the sun ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["rise","to rise","rose","risen","rises"], a:0, eng:true,
+   ko:"우리는 해가 뜨는 것을 지켜보았다.",
+   exp:"watch + 목적어 + <b>동사원형</b>"},
+
+  {type:"n", tag:"지각동사", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I heard him to call my name.","I heard him call my name.","I heard him calling my name.","I saw him leave.","I felt someone push me."], a:0, eng:true,
+   exp:"지각동사 뒤에는 to부정사를 쓰지 않습니다. heard him <b>call</b>"},
+
+  {type:"n", tag:"지각동사", sent:"Did you see the boy ___ the window?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["break","to break","broke","breaks","to breaking"], a:0, eng:true,
+   ko:"너는 그 소년이 창문을 깨는 것을 봤니?",
+   exp:"see + 목적어 + <b>동사원형</b>"},
+
+  {type:"n", tag:"지각동사", sent:"I listened to her ___ the violin.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["play","to play","played","plays","to playing"], a:0, eng:true,
+   ko:"나는 그녀가 바이올린 연주하는 것을 들었다.",
+   exp:"listen to(지각) + 목적어 + <b>동사원형</b>"},
+
+  {type:"a", tag:"사역동사", sent:"The teacher made us ___ the poem.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["memorize","to memorize","memorized","memorizes","memorizing to"], a:0, eng:true,
+   ko:"선생님은 우리에게 그 시를 외우게 하셨다.",
+   exp:"make + 목적어 + <b>동사원형</b>"},
+
+  {type:"a", tag:"사역동사", sent:"Please let me ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["know","to know","knew","known","knowing to"], a:0, eng:true,
+   ko:"나에게 알려 줘.",
+   exp:"let + 목적어 + <b>동사원형</b>. Let me know."},
+
+  {type:"a", tag:"사역동사", sent:"She had the waiter ___ the table.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["clean","to clean","cleaned","cleans","cleaning to"], a:0, eng:true,
+   ko:"그녀는 종업원에게 탁자를 치우게 했다.",
+   exp:"have + 사람 + <b>동사원형</b>"},
+
+  {type:"a", tag:"사역동사", multi:true, eng:true, q:"빈칸에 <b>동사원형</b>이 와야 하는 것을 모두 고르세요. (여러 개)",
+   opts:["Mom made me ___ .","Dad let me ___ .","I had him ___ .","I asked him ___ .","I told him ___ ."], ans:[0,1,2],
+   exp:"make · let · have는 동사원형, ask · tell은 to부정사입니다."},
+
+  {type:"a", tag:"사역동사", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He made me to laugh.","He made me laugh.","He let me laugh.","He had me laugh.","He helped me laugh."], a:0, eng:true,
+   exp:"사역동사 make 뒤에는 <b>동사원형</b>: made me laugh"},
+
+  {type:"a", tag:"사역동사", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br>‘엄마는 내가 친구 집에서 자게 해 주셨다.’",
+   opts:["Mom let me sleep at my friend's house.","Mom let me to sleep at my friend's house.","Mom let me sleeping at my friend's house.","Mom let me slept at my friend's house.","Mom let to me sleep at my friend's house."], a:0, eng:true,
+   exp:"let + 목적어 + <b>동사원형</b>"},
+
+  {type:"v", tag:"준사역·일반", multi:true, sent:"She helped the old man ___ the street.", q:"빈칸에 알맞은 것을 모두 고르세요. (여러 개)",
+   opts:["cross","to cross","crossing","crossed","crosses"], ans:[0,1], eng:true,
+   ko:"그녀는 할아버지가 길을 건너시도록 도왔다.",
+   exp:"help + 목적어 + <b>동사원형 / to부정사</b>"},
+
+  {type:"v", tag:"준사역·일반", sent:"I got my dad ___ me to school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to drive","drive","driving","drove","drives"], a:0, eng:true,
+   ko:"나는 아빠가 나를 학교까지 태워 주시게 했다.",
+   exp:"get + 사람 + <b>to부정사</b>"},
+
+  {type:"v", tag:"준사역·일반", sent:"The doctor told him ___ more water.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to drink","drink","drinking","drank","drinks"], a:0, eng:true,
+   ko:"의사는 그에게 물을 더 마시라고 말했다.",
+   exp:"tell + 목적어 + <b>to부정사</b>"},
+
+  {type:"v", tag:"준사역·일반", sent:"I expect you ___ your best.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to do","do","doing","did","does"], a:0, eng:true,
+   ko:"나는 네가 최선을 다하기를 기대한다.",
+   exp:"expect + 목적어 + <b>to부정사</b>"},
+
+  {type:"v", tag:"준사역·일반", q:"다음 중 빈칸에 to가 들어가야 하는 것은?",
+   opts:["She wants me ___ stay.","She made me ___ stay.","She let me ___ stay.","She saw me ___ stay.","She had me ___ stay."], a:0, eng:true,
+   exp:"want만 <b>to부정사</b>, 나머지는 동사원형입니다."},
+
+  {type:"v", tag:"준사역·일반", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["She asked me to close the door.","She asked me close the door.","She asked me closing the door.","She asked me closed the door.","She asked to me close the door."], a:0, eng:true,
+   exp:"ask + 목적어 + <b>to부정사</b>"},
+
+  {type:"v", tag:"준사역·일반", hard:true, q:"네 동사 뒤에 오는 목적격보어 모양을 바르게 짝지은 것은?<br><span class=\"eng\">ⓐ hear&nbsp; ⓑ let&nbsp; ⓒ get&nbsp; ⓓ ask</span>",
+   opts:["ⓐ 원형·-ing – ⓑ 원형 – ⓒ to부정사 – ⓓ to부정사","ⓐ to부정사 – ⓑ 원형 – ⓒ 원형 – ⓓ -ing","ⓐ 원형 – ⓑ to부정사 – ⓒ 원형 – ⓓ 원형","ⓐ -ing – ⓑ -ing – ⓒ to부정사 – ⓓ 원형","ⓐ 원형 – ⓑ 원형 – ⓒ 원형 – ⓓ 원형"], a:0, eng:true,
+   exp:"지각 hear(원형 · -ing), 사역 let(원형), get · ask(to부정사)"}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", sent:"I heard the phone ___ .", q:"빈칸에 알맞지 <b>않은</b> 것은?",
+   opts:["to ring","ring","ringing"], a:0, eng:true,
+   ko:"나는 전화가 울리는 것을 들었다.",
+   exp:"지각동사 뒤에는 동사원형 · -ing. <b>to ring</b>은 안 됩니다."},
+
+  {type:"n", tag:"빈칸", sent:"The joke made everyone ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["laugh","to laugh","laughed","laughs","to laughing"], a:0, eng:true,
+   ko:"그 농담은 모두를 웃게 했다.",
+   exp:"make + 목적어 + <b>동사원형</b>"},
+
+  {type:"n", tag:"빈칸", sent:"My mom asked me ___ the trash.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to take out","take out","taking out","took out","takes out"], a:0, eng:true,
+   ko:"엄마는 나에게 쓰레기를 내다 버리라고 부탁하셨다.",
+   exp:"ask + 목적어 + <b>to부정사</b>"},
+
+  {type:"n", tag:"빈칸", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Why are you so happy?<br>B: I saw my favorite singer ___ on TV.</span>",
+   opts:["dancing","to dance","danced","dances","to dancing"], a:0, eng:true,
+   exp:"지각동사 see + 목적어 + <b>-ing</b>(동사원형도 됩니다)"},
+
+  {type:"n", tag:"빈칸", sent:"The long walk made me ___ tired.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["feel","to feel","felt","feeling to","feels"], a:0, eng:true,
+   ko:"오래 걸어서 나는 피곤했다.",
+   exp:"make + 목적어 + <b>동사원형</b> feel"},
+
+  {type:"n", tag:"빈칸", sent:"She helped me ___ my bag.", q:"빈칸에 알맞지 <b>않은</b> 것은?",
+   opts:["packing","pack","to pack"], a:0, eng:true,
+   ko:"그녀는 내가 가방 싸는 것을 도와주었다.",
+   exp:"help 뒤에는 동사원형 · to부정사. <b>-ing</b>는 안 됩니다."},
+
+  {type:"n", tag:"빈칸", sent:"The teacher wants us ___ on time.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to be","be","being","been","are"], a:0, eng:true,
+   ko:"선생님은 우리가 제시간에 오기를 원하신다.",
+   exp:"want + 목적어 + <b>to be</b>"},
+
+  {type:"n", tag:"빈칸", q:"빈칸에 들어갈 말이 <b>나머지와 다른</b> 것은?",
+   opts:["He told me ___ sit down.","He made me ___ sit down.","He let me ___ sit down.","He had me ___ sit down.","He saw me ___ sit down."], a:0, eng:true,
+   exp:"tell만 <b>to</b>가 필요합니다. 나머지는 빈칸 없이 동사원형이 바로 옵니다."},
+
+  {type:"a", tag:"틀린 문장", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I watched them to play soccer.","I watched them play soccer.","I watched them playing soccer.","I heard them shout.","I saw them run."], a:0, eng:true,
+   exp:"지각동사 watch 뒤에 to부정사를 쓰지 않습니다."},
+
+  {type:"a", tag:"틀린 문장", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["My teacher had me to read aloud.","My teacher had me read aloud.","My teacher made me read aloud.","My teacher let me read aloud.","My teacher asked me to read aloud."], a:0, eng:true,
+   exp:"have(사역) + 사람 + <b>동사원형</b>"},
+
+  {type:"a", tag:"빈칸", sent:"I asked my friend ___ me his notes.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to lend","lend","lending","lent","lends"], a:0, eng:true,
+   ko:"나는 친구에게 공책을 빌려 달라고 부탁했다.",
+   exp:"ask + 목적어 + <b>to부정사</b>"},
+
+  {type:"a", tag:"틀린 문장", q:"다음 중 어법상 알맞은 문장을 모두 고른 것은?<br><span class=\"eng\">ⓐ She let me stay.&nbsp; ⓑ She wanted me stay.&nbsp; ⓒ She heard me sing.&nbsp; ⓓ She made me to cry.</span>",
+   opts:["ⓐ, ⓒ","ⓐ, ⓑ","ⓑ, ⓓ","ⓒ, ⓓ","ⓐ, ⓓ"], a:0, eng:true,
+   exp:"want me <b>to stay</b>, made me <b>cry</b>가 맞습니다."},
+
+  {type:"a", tag:"틀린 문장", q:"다음 중 빈칸에 to가 들어가지 <b>않는</b> 것은?",
+   opts:["Let him ___ go.","I want him ___ go.","I told him ___ go.","I asked him ___ go.","I got him ___ go."], a:0, eng:true,
+   exp:"let(사역) 뒤는 <b>동사원형</b>"},
+
+  {type:"a", tag:"틀린 문장", q:"다음 중 밑줄 친 부분이 <b>어색한</b> 것은?",
+   opts:["Keep your room **cleanly**.","Keep your room **clean**.","I found him **kind**.","They named the baby **Hana**.","The news made her **sad**."], a:0, eng:true,
+   exp:"목적격보어 자리에는 부사가 아니라 <b>형용사</b> clean"},
+
+  {type:"v", tag:"과거분사 기출", sent:"I had my watch ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["repaired","repair","to repair","repairing","repairs"], a:0, eng:true,
+   ko:"나는 시계를 수리 받았다.",
+   exp:"시계가 ‘수리되는’ 것 → have + 사물 + <b>과거분사</b>"},
+
+  {type:"v", tag:"과거분사 기출", sent:"She got her photo ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["taken","take","to take","taking","took"], a:0, eng:true,
+   ko:"그녀는 사진을 찍었다(찍힘을 받았다).",
+   exp:"사진이 ‘찍히는’ 것 → <b>과거분사</b> taken"},
+
+  {type:"v", tag:"과거분사 기출", q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ I had the mechanic ___ my car.<br>ⓑ I had my car ___ .</span>",
+   opts:["ⓐ check – ⓑ checked","ⓐ checked – ⓑ check","ⓐ to check – ⓑ checked","ⓐ check – ⓑ check","ⓐ checking – ⓑ to check"], a:0, eng:true,
+   exp:"사람이 하면 동사원형, 사물이 당하면 <b>과거분사</b>"},
+
+  {type:"v", tag:"서술형", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br>‘나는 누군가 문을 두드리는 소리를 들었다.’",
+   opts:["I heard someone knock on the door.","I heard someone to knock on the door.","I heard someone knocked on the door.","I heard to someone knock on the door.","I heard knock someone on the door."], a:0, eng:true,
+   exp:"hear + 목적어 + <b>동사원형</b>"},
+
+  {type:"v", tag:"서술형", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br>‘선생님은 우리에게 조용히 하라고 말씀하셨다.’",
+   opts:["The teacher told us to be quiet.","The teacher told us be quiet.","The teacher told us being quiet.","The teacher told to us be quiet.","The teacher made us to be quiet."], a:0, eng:true,
+   exp:"tell + 목적어 + <b>to부정사</b>"},
+
+  {type:"v", tag:"서술형", q:"두 문장이 같은 뜻이 되도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">She helped me find my key.<br>= She helped me ___ my key.</span>",
+   opts:["to find","finding","found","finds","for find"], a:0, eng:true,
+   exp:"help + 목적어 + 동사원형 = <b>to부정사</b>"}
+];
+
+var X4 = [
+  {type:"n", tag:"명사·형용사 보어", sent:"They named their puppy ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Coco","to Coco","Cocoly","being Coco","for Coco"], a:0, eng:true,
+   ko:"그들은 강아지 이름을 코코라고 지었다.",
+   exp:"name + 목적어 + <b>명사</b>"},
+
+  {type:"n", tag:"명사·형용사 보어", sent:"The students chose Mina ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["class president","to class president","class presidently","being class","for class president"], a:0, eng:true,
+   ko:"학생들은 미나를 반장으로 뽑았다.",
+   exp:"choose + 목적어 + <b>명사</b>"},
+
+  {type:"n", tag:"명사·형용사 보어", sent:"Warm clothes keep you ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["warm","warmly","warmth","to warm","warming"], a:0, eng:true,
+   ko:"따뜻한 옷은 너를 따뜻하게 지켜 준다.",
+   exp:"keep + 목적어 + <b>형용사</b>"},
+
+  {type:"n", tag:"명사·형용사 보어", sent:"I found the test ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["easy","easily","ease","to easy","easier to"], a:0, eng:true,
+   ko:"나는 그 시험이 쉽다는 것을 알았다.",
+   exp:"find + 목적어 + <b>형용사</b>"},
+
+  {type:"n", tag:"명사·형용사 보어", q:"다음 중 목적격보어가 <b>형용사</b>인 문장은?",
+   opts:["The news made him angry.","They call him Jun.","We elected her leader.","She named the cat Nabi.","They made him captain."], a:0, eng:true,
+   exp:"angry(화난)는 형용사입니다. 나머지는 명사 보어입니다."},
+
+  {type:"n", tag:"명사·형용사 보어", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Please keep the room quietly.","Please keep the room quiet.","I found the room quiet.","The rain made the road wet.","We painted the wall blue."], a:0, eng:true,
+   exp:"목적격보어 자리 → 형용사 <b>quiet</b>"},
+
+  {type:"n", tag:"과거분사 보어", sent:"Keep your eyes ___ .", q:"빈칸에 알맞은 것을 고르세요.<br>‘눈을 감고 있어라.’",
+   opts:["closed","close","closing","to close","closes"], a:0, eng:true,
+   exp:"눈이 ‘감긴’ 상태 → <b>과거분사</b> closed"},
+
+  {type:"a", tag:"혼합 판별", q:"다음 중 빈칸에 to가 들어가는 것은?",
+   opts:["I asked her ___ help me.","I let her ___ help me.","I made her ___ help me.","I saw her ___ help me.","I had her ___ help me."], a:0, eng:true,
+   exp:"ask만 <b>to부정사</b>"},
+
+  {type:"a", tag:"혼합 판별", q:"다음 중 빈칸에 to가 들어가지 <b>않는</b> 것은?",
+   opts:["I heard him ___ sing.","I wanted him ___ sing.","I told him ___ sing.","I asked him ___ sing.","I got him ___ sing."], a:0, eng:true,
+   exp:"지각동사 hear 뒤는 <b>동사원형</b>"},
+
+  {type:"a", tag:"혼합 판별", multi:true, eng:true, q:"다음 중 어법상 알맞은 문장을 모두 고르세요. (여러 개)",
+   opts:["I heard her singing.","She let me go.","He got me to help.","She made me to go.","I wanted him come."], ans:[0,1,2],
+   exp:"made me <b>go</b>, wanted him <b>to come</b>이 맞습니다."},
+
+  {type:"a", tag:"혼합 판별", multi:true, eng:true, q:"목적격보어 자리에 <b>to부정사</b>를 쓰는 동사를 모두 고르세요. (여러 개)",
+   opts:["want","ask","get","let","see"], ans:[0,1,2],
+   exp:"want · ask · get은 to부정사, let · see는 동사원형입니다."},
+
+  {type:"a", tag:"과거분사 보어", sent:"I got my computer ___ yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["fixed","fix","to fix","fixing","fixes"], a:0, eng:true,
+   ko:"나는 어제 컴퓨터를 고쳤다(수리 받았다).",
+   exp:"컴퓨터가 ‘고쳐지는’ 것 → <b>과거분사</b>"},
+
+  {type:"a", tag:"과거분사 보어", multi:true, eng:true, q:"빈칸에 <b>과거분사</b>가 들어가는 문장을 모두 고르세요. (여러 개)",
+   opts:["I had my shoes ___ . (clean)","She got her room ___ . (paint)","I heard the song ___ . (play)","I had him ___ my shoes. (clean)","She made me ___ . (smile)"], ans:[0,1,2],
+   exp:"사물이 당하는 일이면 과거분사(cleaned · painted · played)입니다."},
+
+  {type:"a", tag:"혼합 판별", q:"다음 중 <b>5형식이 아닌</b> 문장은?",
+   opts:["She sent me a letter.","She made me happy.","She let me go.","She called me Mimi.","She saw me dance."], a:0, eng:true,
+   exp:"sent me a letter는 ‘~에게 ~을’, <b>4형식</b>입니다."},
+
+  {type:"v", tag:"고난도", q:"빈칸 ⓐ와 ⓑ에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">I saw him ⓐ ___ the letter. Then I had the letter ⓑ ___ to my mom.</span>",
+   opts:["ⓐ read – ⓑ sent","ⓐ to read – ⓑ send","ⓐ reading – ⓑ send","ⓐ read – ⓑ to send","ⓐ reads – ⓑ sending"], a:0, eng:true,
+   exp:"ⓐ 지각동사 + 동사원형, ⓑ 편지가 ‘보내지는’ 것 → 과거분사 sent"},
+
+  {type:"v", tag:"고난도", q:"다음 중 어법상 알맞은 문장은 모두 몇 개인가요?<br><span class=\"eng\">ⓐ I heard my name called.&nbsp; ⓑ She let me to use it.&nbsp; ⓒ I got him to help.&nbsp; ⓓ He made me waited.</span>",
+   opts:["2개","1개","3개","4개","0개"], a:0, eng:true,
+   exp:"ⓐ · ⓒ가 맞습니다. let me <b>use</b>, made me <b>wait</b>"},
+
+  {type:"v", tag:"고난도", q:"다음 글의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">Mom was busy, so she asked me ___ the table. While I was doing it, I heard her ___ on the phone.</span>",
+   opts:["to set – talking","set – to talk","setting – talk","to set – to talk","set – talked"], a:0, eng:true,
+   exp:"ask + to부정사, 지각동사 hear + -ing"},
+
+  {type:"v", tag:"고난도", q:"다음 두 문장의 뜻 차이를 바르게 말한 것은?<br><span class=\"eng\">ⓐ I had the painter paint my room.<br>ⓑ I had my room painted.</span>",
+   opts:["ⓐ는 누가 칠했는지 밝히고, ⓑ는 밝히지 않는다","ⓐ는 내가 칠했고, ⓑ는 남이 칠했다","ⓐ는 과거, ⓑ는 미래이다","둘 다 내가 직접 칠했다","ⓑ가 틀린 문장이다"], a:0, eng:true,
+   exp:"둘 다 남에게 시킨 것, ⓐ는 칠한 사람(the painter)을 밝힙니다."},
+
+  {type:"v", tag:"고난도", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I felt my heart to beat fast.","I felt my heart beat fast.","I felt my heart beating fast.","The coffee kept me awake.","They elected him mayor."], a:0, eng:true,
+   exp:"지각동사 feel 뒤에 to부정사를 쓰지 않습니다."},
+
+  {type:"v", tag:"고난도", q:"우리말을 영어로 바르게 옮긴 것은?<br>‘아빠는 내가 늦게까지 TV를 보게 해 주셨고, 나는 머리를 잘랐다(잘림을 받았다).’",
+   opts:["Dad let me watch TV late, and I had my hair cut.","Dad let me to watch TV late, and I had my hair cut.","Dad let me watch TV late, and I had my hair to cut.","Dad let me watching TV late, and I had cut my hair to.","Dad let to me watch TV late, and I had my hair cutting."], a:0, eng:true,
+   exp:"let + 동사원형, have + 사물 + <b>과거분사</b>(cut – cut – cut)"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 5형식의 뼈대", desc:"한글로 이해 12 · 쉬운 영어 8 · 목적격보어 자리 · 5형식 동사 네 무리 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

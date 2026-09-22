@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 감각동사 GAME</span></h1>
-    <p class="sub">look · sound · smell · taste · feel · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">look · sound · smell · taste · feel · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -760,6 +760,374 @@ var L4 = [
    opts:["A: You look like happy today.","A: How does it taste?","B: It tastes like strawberries.","B: I feel like having pizza.","B: It sounds like a good idea."], a:0, eng:true,
    exp:"happy는 형용사이므로 like를 붙이면 안 됩니다. You look <b>happy</b> today.가 맞습니다. 나머지는 모두 뒤에 명사나 동명사가 와서 like가 바르게 쓰였습니다."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"다음 우리말에서 감각동사에 해당하는 부분은?<br><span class=\"eng\">이 빵은 달콤한 맛이 난다.</span>",
+   opts:["맛이 난다","이 빵은","달콤한","빵","이"], a:0,
+   exp:"혀로 느낀 것 → ‘<b>맛이 난다</b>’가 감각동사입니다. This bread tastes sweet."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 우리말에서 감각동사에 해당하는 부분은?<br><span class=\"eng\">너는 오늘 피곤해 보인다.</span>",
+   opts:["보인다","너는","오늘","피곤해","너"], a:0,
+   exp:"눈으로 본 것 → ‘<b>보인다</b>’. You look tired today."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그 이불은 부드럽게 느껴진다’는 어느 감각으로 느낀 것일까요?",
+   opts:["피부","눈","귀","코","혀"], a:0,
+   exp:"만져서 느낀 것 → <b>피부</b>. The blanket feels soft."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그 꽃은 좋은 냄새가 난다’는 어느 감각으로 느낀 것일까요?",
+   opts:["코","눈","귀","혀","피부"], a:0,
+   exp:"냄새 → <b>코</b>. The flower smells good."},
+
+  {type:"n", tag:"한글로 이해", q:"감각동사 뒤에 오는 말은 주로 무엇을 나타낼까요?",
+   opts:["느낀 것이 어떤 상태인지","언제 느꼈는지","어디에서 느꼈는지","누가 느꼈는지","몇 번 느꼈는지"], a:0,
+   exp:"‘행복해 · 달콤한 · 부드럽게’처럼 <b>어떤 상태인지</b>를 붙여 말합니다."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 중 감각동사를 쓰지 <b>않는</b> 우리말은?",
+   opts:["나는 매일 우유를 마신다.","그 노래는 신나게 들린다.","이 수프는 짠맛이 난다.","그는 슬퍼 보인다.","이 방은 이상한 냄새가 난다."], a:0,
+   exp:"‘마신다’는 느낌을 말하는 동사가 아닙니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"감각동사를 쓰는 우리말을 모두 고르세요. (여러 개)",
+   opts:["그 영화는 재미있게 들린다.","나는 기분이 좋다.","이 사과는 신맛이 난다.","나는 사과를 먹는다.","그는 공원에 간다."], ans:[0,1,2],
+   exp:"들린다(sound) · 기분이 ~하다(feel) · 맛이 난다(taste)"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"눈, 귀로 느낀 것을 말할 때 쓰는 감각동사를 모두 고르세요. (여러 개)",
+   opts:["보이다","들리다","맛이 나다","냄새가 나다","느껴지다"], ans:[0,1],
+   exp:"눈 → 보이다(look), 귀 → 들리다(sound)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"You look ___ .", q:"‘너는 행복해 보인다’가 되도록 알맞은 것은?",
+   opts:["happy","happily","sad","tired","like"], a:0, eng:true,
+   ko:"너는 행복해 보인다.",
+   exp:"look + <b>형용사</b> → You look happy."},
+
+  {type:"a", tag:"쉬운 영어", sent:"It ___ good.", q:"‘그것은 좋은 냄새가 난다’가 되도록 알맞은 것은?",
+   opts:["smells","looks","sounds","tastes","feels"], a:0, eng:true,
+   ko:"그것은 좋은 냄새가 난다.",
+   exp:"냄새가 나다 → <b>smells</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"The song ___ sad.", q:"‘그 노래는 슬프게 들린다’가 되도록 알맞은 것은?",
+   opts:["sounds","looks","smells","tastes","feels"], a:0, eng:true,
+   ko:"그 노래는 슬프게 들린다.",
+   exp:"들리다 → <b>sounds</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"This candy ___ sweet.", q:"‘이 사탕은 달콤한 맛이 난다’가 되도록 알맞은 것은?",
+   opts:["tastes","looks","sounds","smells","feels"], a:0, eng:true,
+   ko:"이 사탕은 달콤한 맛이 난다.",
+   exp:"맛이 나다 → <b>tastes</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I ___ cold.", q:"‘나는 추운 느낌이 든다’가 되도록 알맞은 것은?",
+   opts:["feel","look","sound","smell","taste"], a:0, eng:true,
+   ko:"나는 추운 느낌이 든다.",
+   exp:"느껴지다, 기분이 ~하다 → <b>feel</b>"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"감각동사 뒤에 올 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["happy","sweet","soft","happily","sweetly"], ans:[0,1,2],
+   exp:"감각동사 뒤에는 <b>형용사</b>. happily · sweetly는 부사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘그것은 이상하게 들린다’를 영어로 바르게 쓴 것은?",
+   opts:["It sounds strange.","It looks strange.","It sounds strangely.","It smells strange.","It strange sounds."], a:0,
+   exp:"들리다 → sounds, 뒤에는 형용사 <b>strange</b>."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘이 수프는 맛있다(맛이 좋다)’를 영어로 바르게 쓴 것은?",
+   opts:["This soup tastes good.","This soup tastes well.","This soup looks good.","This soup good tastes.","This soup smells good."], a:0,
+   exp:"맛이 좋다 → tastes <b>good</b>. well은 부사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘그는 화가 나 보인다’를 영어로 바르게 쓴 것은?",
+   opts:["He looks angry.","He looks angrily.","He sounds angry.","He angry looks.","He feels angrily."], a:0,
+   exp:"보인다 → looks + 형용사 <b>angry</b>."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘이 담요는 따뜻하게 느껴진다’를 영어로 바르게 쓴 것은?",
+   opts:["This blanket feels warm.","This blanket feels warmly.","This blanket looks warm.","This blanket warm feels.","This blanket tastes warm."], a:0,
+   exp:"느껴진다 → feels + 형용사 <b>warm</b>."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘She looks happy.’의 뜻으로 알맞은 것은?",
+   opts:["그녀는 행복해 보인다.","그녀는 행복을 본다.","그녀는 행복하게 본다.","그녀는 행복을 찾는다.","그녀는 행복하게 들린다."], a:0,
+   exp:"look + 형용사 = ~하게 <b>보이다</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘The pizza smells good.’의 뜻으로 알맞은 것은?",
+   opts:["그 피자는 좋은 냄새가 난다.","그 피자는 맛이 좋다.","그 피자는 좋아 보인다.","나는 피자 냄새를 맡는다.","그 피자는 좋게 들린다."], a:0,
+   exp:"smell + 형용사 = ~한 <b>냄새가 나다</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"뒤에 형용사", sent:"The baby looks ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["cute","cutely","cuteness","to cute","like cute"], a:0, eng:true,
+   ko:"그 아기는 귀여워 보인다.",
+   exp:"look 뒤에는 형용사 <b>cute</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"His idea sounds ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["great","greatly","greatness","to great","like great"], a:0, eng:true,
+   ko:"그의 생각은 멋지게 들린다.",
+   exp:"sound 뒤에는 형용사 <b>great</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"The lemon tastes ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["sour","sourly","sourness","to sour","like sour"], a:0, eng:true,
+   ko:"그 레몬은 신맛이 난다.",
+   exp:"taste 뒤에는 형용사 <b>sour</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"The bread smells ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["fresh","freshly","freshness","to fresh","like fresh"], a:0, eng:true,
+   ko:"그 빵은 신선한 냄새가 난다.",
+   exp:"smell 뒤에는 형용사 <b>fresh</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"I feel ___ after the exam.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["relaxed","relaxedly","relax","to relax","like relaxed"], a:0, eng:true,
+   ko:"나는 시험이 끝나고 마음이 편하다.",
+   exp:"feel 뒤에는 형용사 <b>relaxed</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"The room looks ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["clean","cleanly","cleaning","to clean","like clean"], a:0, eng:true,
+   ko:"그 방은 깨끗해 보인다.",
+   exp:"look 뒤에는 형용사 <b>clean</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"The story sounds ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["interesting","interestingly","interest","to interest","like interesting"], a:0, eng:true,
+   ko:"그 이야기는 재미있게 들린다.",
+   exp:"sound 뒤에는 형용사 <b>interesting</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"This medicine tastes ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["bitter","bitterly","bitterness","to bitter","like bitter"], a:0, eng:true,
+   ko:"이 약은 쓴맛이 난다.",
+   exp:"taste 뒤에는 형용사 <b>bitter</b>."},
+
+  {type:"n", tag:"뒤에 형용사", sent:"Her hands feel ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["cold","coldly","coldness","to cold","like cold"], a:0, eng:true,
+   ko:"그녀의 손은 차갑게 느껴진다.",
+   exp:"feel 뒤에는 형용사 <b>cold</b>."},
+
+  {type:"n", tag:"뒤에 형용사", multi:true, q:"빈칸에 들어갈 수 있는 말을 모두 고르세요. (여러 개)<br><span class=\"eng\">The girl looks ___ .</span>",
+   opts:["sad","lovely","friendly","sadly","happily"], ans:[0,1,2],
+   exp:"lovely · friendly는 ly로 끝나지만 <b>형용사</b>입니다. sadly · happily는 부사입니다."},
+
+  {type:"a", tag:"like + 명사", sent:"The cloud looks ___ a rabbit.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["like","to","as","for","at"], a:0, eng:true,
+   ko:"그 구름은 토끼처럼 보인다.",
+   exp:"뒤에 명사 a rabbit → <b>look like</b>."},
+
+  {type:"a", tag:"like + 명사", sent:"His voice sounds ___ a robot.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["like","to","as","of","with"], a:0, eng:true,
+   ko:"그의 목소리는 로봇처럼 들린다.",
+   exp:"뒤에 명사 → <b>sound like</b>."},
+
+  {type:"a", tag:"like + 명사", sent:"This candy tastes ___ strawberries.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["like","to","as","for","in"], a:0, eng:true,
+   ko:"이 사탕은 딸기 같은 맛이 난다.",
+   exp:"뒤에 명사 → <b>taste like</b>."},
+
+  {type:"a", tag:"like + 명사", sent:"The room smells ___ coffee.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["like","to","as","at","on"], a:0, eng:true,
+   ko:"그 방에서 커피 같은 냄새가 난다.",
+   exp:"뒤에 명사 → <b>smell like</b>."},
+
+  {type:"a", tag:"like + 명사", sent:"I feel ___ a new person.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["like","to","as","for","with"], a:0, eng:true,
+   ko:"나는 새사람이 된 느낌이다.",
+   exp:"뒤에 명사 → <b>feel like</b>."},
+
+  {type:"a", tag:"like + 명사", q:"어법상 알맞은 문장을 고르세요.",
+   opts:["It sounds like fun.","It sounds like funny.","It sounds funnily.","It sounds fun like.","It sounds to fun."], a:0,
+   exp:"fun은 명사(재미)이므로 <b>sound like fun</b>도 됩니다. funny는 형용사라 like 없이 씁니다."},
+
+  {type:"a", tag:"like + 명사", q:"빈칸에 like가 <b>필요한</b> 문장은?",
+   opts:["She looks ___ an angel.","She looks ___ kind.","She looks ___ tired.","She looks ___ young.","She looks ___ busy."], a:0,
+   exp:"an angel은 명사 → <b>looks like</b>. 나머지는 형용사입니다."},
+
+  {type:"a", tag:"like + 명사", multi:true, q:"어법상 알맞은 문장을 모두 고르세요. (여러 개)",
+   opts:["It looks like a cat.","It smells sweet.","It tastes like honey.","It looks like cute.","It smells sweetly."], ans:[0,1,2],
+   exp:"like 뒤에는 명사, 형용사 앞에는 like를 쓰지 않습니다."},
+
+  {type:"a", tag:"like + 명사", q:"두 문장의 뜻을 바르게 짝지은 것은?<br><span class=\"eng\">① He looks tired.&nbsp;&nbsp;② He looks like his mom.</span>",
+   opts:["① 피곤해 보인다 ② 엄마를 닮았다","① 피곤하게 본다 ② 엄마를 좋아한다","① 피곤을 본다 ② 엄마를 본다","① 피곤해 보인다 ② 엄마를 좋아한다","① 피곤하게 본다 ② 엄마를 닮았다"], a:0,
+   exp:"look + 형용사 = ~해 보이다, look like + 명사 = ~처럼 보이다(닮다)"},
+
+  {type:"a", tag:"like + 명사", q:"어법상 <b>틀린</b> 문장을 고르세요.",
+   opts:["The music sounds like beautiful.","The music sounds beautiful.","It sounds like a bird.","It feels like silk.","It tastes great."], a:0,
+   exp:"beautiful은 형용사 → like 없이 sounds <b>beautiful</b>."}
+];
+
+var X3 = [
+  {type:"n", tag:"3인칭 단수", sent:"This perfume ___ like roses.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["smells","smell","smelling","is smell","smelled of"], a:0, eng:true,
+   ko:"이 향수는 장미 같은 냄새가 난다.",
+   exp:"This perfume은 하나 → <b>smells</b>."},
+
+  {type:"n", tag:"3인칭 단수", sent:"The children ___ excited.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["look","looks","looking","is look","looks like"], a:0, eng:true,
+   ko:"아이들은 신나 보인다.",
+   exp:"children은 여러 명 → <b>look</b>."},
+
+  {type:"n", tag:"3인칭 단수", sent:"My new shoes ___ comfortable.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["feel","feels","feeling","is feel","feel like"], a:0, eng:true,
+   ko:"내 새 신발은 편하게 느껴진다.",
+   exp:"shoes는 여러 개 → <b>feel</b>."},
+
+  {type:"n", tag:"과거형", sent:"The pasta ___ delicious last night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["tasted","tastes","taste","tasting","was taste"], a:0, eng:true,
+   ko:"어젯밤 그 파스타는 맛있었다.",
+   exp:"last night → 과거 <b>tasted</b>."},
+
+  {type:"n", tag:"과거형", sent:"She ___ nervous before the speech.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["felt","feeled","feels","was feel","feel"], a:0, eng:true,
+   ko:"그녀는 발표 전에 떨렸다.",
+   exp:"feel의 과거형은 <b>felt</b>."},
+
+  {type:"n", tag:"형태 확인", q:"밑줄 친 부분이 어법상 <b>틀린</b> 문장을 고르세요.",
+   opts:["She looks **sadly** today.","The pie smells **good**.","You look **great**.","This tastes **salty**.","I feel **sleepy**."], a:0,
+   exp:"look 뒤에는 형용사 → She looks <b>sad</b>."},
+
+  {type:"n", tag:"형태 확인", q:"어법상 알맞은 문장을 모두 고른 것은?<br><span class=\"eng\">ⓐ It feels soft.&nbsp;ⓑ It feels softly.&nbsp;ⓒ It sounds like a plan.&nbsp;ⓓ It sounds like good.</span>",
+   opts:["ⓐ, ⓒ","ⓐ, ⓑ","ⓑ, ⓓ","ⓒ, ⓓ","ⓐ, ⓓ"], a:0,
+   exp:"ⓑ softly(부사) ✕, ⓓ like good ✕"},
+
+  {type:"a", tag:"부정문", sent:"The soup ___ good.", q:"‘그 수프는 맛이 좋지 않다’가 되도록 알맞은 것은?",
+   opts:["doesn't taste","don't taste","isn't taste","doesn't tastes","not tastes"], a:0, eng:true,
+   ko:"그 수프는 맛이 좋지 않다.",
+   exp:"한 개 주어 → <b>doesn't</b> + 동사원형 taste."},
+
+  {type:"a", tag:"부정문", sent:"He ___ well yesterday.", q:"‘그는 어제 몸이 좋지 않았다’가 되도록 알맞은 것은?",
+   opts:["didn't feel","didn't felt","doesn't feel","wasn't feel","not felt"], a:0, eng:true,
+   ko:"그는 어제 몸이 좋지 않았다.",
+   exp:"과거 부정 → <b>didn't</b> + 동사원형 feel. 여기서 well은 ‘건강한’이라는 형용사입니다."},
+
+  {type:"a", tag:"의문문", sent:"___ the flowers smell nice?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Do","Does","Is","Are","Did it"], a:0, eng:true,
+   ko:"그 꽃들은 좋은 냄새가 나니?",
+   exp:"the flowers는 여러 개 → <b>Do</b>."},
+
+  {type:"a", tag:"의문문", sent:"___ your sister look like you?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Does","Do","Is","Are","Has"], a:0, eng:true,
+   ko:"네 여동생은 너를 닮았니?",
+   exp:"your sister는 한 사람 → <b>Does</b>."},
+
+  {type:"a", tag:"의문문", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: How does the soup taste?<br>B: It ___ a little salty.</span>",
+   opts:["tastes","taste","tastes like","is taste","tasting"], a:0,
+   exp:"salty는 형용사 → like 없이 It <b>tastes</b> salty."},
+
+  {type:"a", tag:"의문문", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Let's go to the beach this weekend.<br>B: That ___ a great idea!</span>",
+   opts:["sounds like","sounds","looks","sound like","is sound"], a:0,
+   exp:"a great idea는 명사 → That <b>sounds like</b> a great idea."},
+
+  {type:"a", tag:"의문문", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What does your dog look like?<br>B: It ___ a small bear.</span>",
+   opts:["looks like","looks","look like","is look","looking"], a:0,
+   exp:"a small bear는 명사, It은 하나 → <b>looks like</b>."},
+
+  {type:"v", tag:"판별", q:"밑줄 친 like의 쓰임이 나머지와 <b>다른</b> 것은?",
+   opts:["They **like** playing soccer.","It tastes **like** chicken.","She looks **like** a doll.","It sounds **like** rain.","It smells **like** smoke."], a:0,
+   exp:"첫째는 ‘좋아하다’(동사), 나머지는 ‘~처럼’입니다."},
+
+  {type:"v", tag:"판별", q:"빈칸에 들어갈 말이 <b>나머지와 다른</b> 것은?",
+   opts:["This bag feels ___ .","This bag looks ___ leather.","It sounds ___ thunder.","It smells ___ smoke.","He looks ___ a singer."], a:0,
+   exp:"첫째는 뒤에 형용사가 와야 하고(예: soft), 나머지는 명사 앞이라 like가 들어갑니다."},
+
+  {type:"v", tag:"서술형 전환", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그 계획은 재미있게 들린다.’</span>",
+   opts:["The plan sounds interesting.","The plan sounds interestingly.","The plan sounds like interesting.","The plan is sound interesting.","The plan hears interesting."], a:0,
+   exp:"sound + 형용사 interesting"},
+
+  {type:"v", tag:"서술형 전환", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘이 우유는 이상한 맛이 난다.’</span>",
+   opts:["This milk tastes strange.","This milk tastes strangely.","This milk tastes like strange.","This milk is taste strange.","This milk strange tastes."], a:0,
+   exp:"taste + 형용사 strange"},
+
+  {type:"v", tag:"서술형 전환", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그 소리는 아기 울음소리처럼 들렸다.’</span>",
+   opts:["The sound sounded like a baby crying.","The sound sounded a baby crying.","The sound sounds like a baby crying.","The sound was sound like a baby crying.","The sound heard like a baby crying."], a:0,
+   exp:"과거 + 뒤에 명사 → <b>sounded like</b>"},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 <b>알맞은</b> 문장은 모두 몇 개인가요?<br><span class=\"eng\">ⓐ He feels happily.&nbsp;ⓑ It looks like a ball.&nbsp;ⓒ Does it smell bad?&nbsp;ⓓ The cake tastes sweet.</span>",
+   opts:["3개","1개","2개","4개","0개"], a:0,
+   exp:"ⓐ happily ✕ → happy. ⓑ ⓒ ⓓ가 맞습니다."}
+];
+
+var X4 = [
+  {type:"n", tag:"seem·appear", sent:"He ___ happy with the result.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["seems","seem","seeming","is seem","seems like"], a:0, eng:true,
+   ko:"그는 결과에 만족하는 것 같다.",
+   exp:"seem + 형용사: ~인 것 같다. He는 한 사람 → <b>seems</b>."},
+
+  {type:"n", tag:"seem·appear", sent:"The problem ___ to be easy, but it wasn't.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["appeared","appears","appear","was appear","appearing"], a:0, eng:true,
+   ko:"그 문제는 쉬워 보였지만 그렇지 않았다.",
+   exp:"뒤 문장이 과거 → <b>appeared</b> to be."},
+
+  {type:"n", tag:"확장 표현", sent:"The room smells ___ paint.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["of","to","at","for","in"], a:0, eng:true,
+   ko:"그 방에서는 페인트 냄새가 난다.",
+   exp:"smell <b>of</b> + 명사: ~의 냄새가 나다"},
+
+  {type:"n", tag:"확장 표현", sent:"You look ___ you didn't sleep well.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["as if","as","so","that","because"], a:0, eng:true,
+   ko:"너는 잠을 잘 못 잔 것처럼 보인다.",
+   exp:"look <b>as if</b> + 주어 + 동사: ~인 것처럼 보이다 (look like도 씁니다)."},
+
+  {type:"n", tag:"확장 표현", sent:"I don't feel ___ going out today.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["like","to","as","for","of"], a:0, eng:true,
+   ko:"나는 오늘 나가고 싶지 않다.",
+   exp:"feel <b>like</b> + -ing: ~하고 싶다"},
+
+  {type:"n", tag:"확장 표현", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She feels like to cry.","She feels like crying.","She seems sad.","She looks as if she is sad.","She appears to be sad."], a:0,
+   exp:"feel like 뒤에는 <b>-ing</b> → feels like crying."},
+
+  {type:"n", tag:"확장 표현", q:"다음 중 빈칸에 like가 들어갈 수 <b>없는</b> 것은?",
+   opts:["He seems ___ very kind.","He looks ___ a movie star.","I feel ___ eating pizza.","It sounds ___ a train.","It tastes ___ chocolate."], a:0,
+   exp:"very kind는 형용사 → He seems very kind."},
+
+  {type:"a", tag:"지각동사 구별", sent:"I watched the kids ___ in the park.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["play","to play","played","plays","to playing"], a:0, eng:true,
+   ko:"나는 아이들이 공원에서 노는 것을 지켜보았다.",
+   exp:"지각동사 watch + 목적어 + <b>동사원형</b>(또는 -ing)"},
+
+  {type:"a", tag:"지각동사 구별", sent:"She felt the ground ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["shaking","to shake","shaken","shakes","to shaking"], a:0, eng:true,
+   ko:"그녀는 땅이 흔들리는 것을 느꼈다.",
+   exp:"지각동사 feel + 목적어 + 동사원형 또는 <b>-ing</b>"},
+
+  {type:"a", tag:"지각동사 구별", q:"밑줄 친 smell의 쓰임이 나머지와 <b>다른</b> 것은?",
+   opts:["I can **smell** something burning.","The soup **smells** good.","The room **smells** of flowers.","Your hair **smells** nice.","This cheese **smells** bad."], a:0,
+   exp:"첫째는 ‘냄새를 맡다’(뒤에 목적어), 나머지는 ‘~한 냄새가 나다’(감각동사)입니다."},
+
+  {type:"a", tag:"지각동사 구별", q:"밑줄 친 taste의 쓰임이 나머지와 <b>다른</b> 것은?",
+   opts:["Can I **taste** your soup?","The cookie **tastes** sweet.","It **tastes** like lemon.","This water **tastes** strange.","The cake **tastes** great."], a:0,
+   exp:"첫째는 ‘맛보다’(뒤에 목적어), 나머지는 ‘~한 맛이 나다’입니다."},
+
+  {type:"a", tag:"지각동사 구별", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["We saw the sun rise.","We saw the sun to rise.","We saw the sun rose.","We saw the sun rises.","We saw the sun to rising."], a:0,
+   exp:"see + 목적어 + <b>동사원형</b>"},
+
+  {type:"a", tag:"지각동사 구별", q:"다음 문장을 바르게 고친 것은?<br><span class=\"eng\">I heard my name to call.</span>",
+   opts:["I heard my name called.","I heard my name calling.","I heard my name call.","I heard my name to be call.","I heard my name calls."], a:0,
+   exp:"이름이 ‘불리는’ 것 → 과거분사 <b>called</b>."},
+
+  {type:"v", tag:"고난도", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["The cake is tasted sweet.","The cake tastes sweet.","The cake tasted sweet.","The cake doesn't taste sweet.","Does the cake taste sweet?"], a:0,
+   exp:"감각동사(~한 맛이 나다)는 수동태로 쓰지 않습니다."},
+
+  {type:"v", tag:"고난도", q:"빈칸 ⓐ와 ⓑ에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">Your plan sounds ⓐ. It sounds ⓑ a lot of fun.</span>",
+   opts:["ⓐ great – ⓑ like","ⓐ greatly – ⓑ like","ⓐ like great – ⓑ ×","ⓐ great – ⓑ ×","ⓐ greatly – ⓑ ×"], a:0,
+   exp:"ⓐ 형용사 great ⓑ 명사 앞 → like"},
+
+  {type:"v", tag:"고난도", q:"다음 글의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">Jiho came home late. His face was pale, and he ___ very tired.</span>",
+   opts:["looked","looked like","looks like","was look","looked tiredly"], a:0,
+   exp:"tired는 형용사, 과거 이야기 → <b>looked</b>."},
+
+  {type:"v", tag:"고난도", q:"우리말을 영어로 바르게 옮긴 것은?<br><span class=\"eng\">‘그 방은 어제보다 더 깨끗해 보였다.’</span>",
+   opts:["The room looked cleaner than yesterday.","The room looked more cleanly than yesterday.","The room looked like cleaner than yesterday.","The room looks cleaner than yesterday.","The room was looked cleaner than yesterday."], a:0,
+   exp:"과거 looked + 형용사 비교급 cleaner"},
+
+  {type:"v", tag:"고난도", q:"다음 중 빈칸에 들어갈 말이 <b>나머지와 다른</b> 것은?",
+   opts:["The coat feels ___ .","It looks ___ it will snow.","I feel ___ dancing.","It smells ___ fish.","She sounds ___ her sister."], a:0,
+   exp:"첫째는 형용사(예: warm)가 오고, 나머지는 like가 들어갑니다."},
+
+  {type:"v", tag:"고난도", multi:true, q:"어법상 알맞은 문장을 모두 고르세요. (여러 개)",
+   opts:["She seems to know the answer.","I feel like taking a nap.","It smells of garlic.","He looks like tired.","We heard him to sing."], ans:[0,1,2],
+   exp:"looks tired, heard him sing이 맞습니다."},
+
+  {type:"v", tag:"고난도", q:"다음 대화에서 어법상 <b>틀린</b> 부분이 있는 것은?",
+   opts:["B: It tastes sweetly.","A: How does it taste?","A: Can I try some?","B: Sure. It smells good, too.","A: It looks like a cupcake."], a:0,
+   exp:"taste 뒤에는 형용사 → It tastes <b>sweet</b>."}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 감각동사가 뭐예요?", desc:"한글로 이해 8 · 쉬운 영어 12 · 한글로 감각 다섯 가지 · 영어 낱말 look · sound · smell · taste · feel · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

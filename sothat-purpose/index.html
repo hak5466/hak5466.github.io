@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · SO THAT 목적 GAME</span></h1>
-    <p class="sub">목적과 결과 가리기 · in order to · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">목적과 결과 가리기 · in order to · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -536,6 +536,367 @@ var L4 = [
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 중 어법상 <b>알맞은</b> 문장은?", opts:["He ran fast so as catch the bus.","He ran fast so as to catch the bus.","He ran fast in order catch the bus.","He ran fast so that catch the bus."], a:1, eng:true, exp:"so as 뒤에는 반드시 <b>to + 동사원형</b>이 옵니다."},
   {type:"a", tag:"함정·고난도", hard:true, q:"다음 글의 흐름상 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">Mina wanted to surprise her friend. She practiced the song every day ___ she could play it perfectly at the party.</span>", opts:["so that","to","in order","so as"], a:0, exp:"완전한 문장이 이어지므로 so that이 알맞습니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", sent:"나는 살을 빼려고 매일 걷는다.", q:"목적에 해당하는 부분은?",
+   opts:["살을 빼려고","매일","걷는다","나는","매일 걷는다"], a:0,
+   exp:"‘~하려고’가 <b>목적</b>, 하려는 일입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"너무 졸려서 수업 중에 잠들었다.", q:"이 문장이 나타내는 것은?",
+   opts:["결과","목적","조건","양보","시간"], a:0,
+   exp:"‘너무 ~해서 …했다’는 실제로 일어난 <b>결과</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘비를 맞지 않도록 우산을 가져갔다’에서 ‘~하지 않도록’이 나타내는 것은?",
+   opts:["목적","결과","원인","시간","비교"], a:0,
+   exp:"하지 않으려는 것도 <b>목적</b>입니다. so that I wouldn't get wet"},
+
+  {type:"n", tag:"한글로 이해", q:"목적을 나타내는 말끼리 바르게 묶은 것은?",
+   opts:["to부정사 · in order to · so that","so ~ that · too ~ to","because · since","although · though","if · unless"], a:0,
+   exp:"목적: <b>to부정사, in order to, so as to, so that</b>"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"목적을 나타내는 우리말을 모두 고르세요. (여러 개)",
+   opts:["건강해지려고 운동한다","잊지 않도록 적어 두었다","모두가 볼 수 있게 크게 썼다","너무 더워서 땀이 났다","너무 늦어서 버스를 놓쳤다"], ans:[0,1,2],
+   exp:"‘~하려고 · ~하도록 · ~할 수 있게’가 목적입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"결과를 나타내는 우리말을 모두 고르세요. (여러 개)",
+   opts:["너무 어두워서 넘어졌다","너무 재미있어서 두 번 봤다","너무 시끄러워서 잠을 못 잤다","시험에 붙으려고 공부했다","감기에 걸리지 않게 조심했다"], ans:[0,1,2],
+   exp:"‘너무 ~해서 …했다’가 결과입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"so that(목적)과 so ~ that(결과)을 가르는 가장 쉬운 방법은?",
+   opts:["so와 that 사이에 형용사·부사가 있는지 본다","문장 길이를 본다","주어가 무엇인지 본다","that 뒤의 동사가 과거인지 본다","쉼표가 있는지 본다"], a:0,
+   exp:"so + 형용사/부사 + that → <b>결과</b>, so that이 붙어 있으면 → <b>목적</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"‘~하지 않기 위해서’를 to부정사로 나타내는 방법은?",
+   opts:["not to + 동사원형","to not + -ing","don't to","no to","to no + 동사원형"], a:0,
+   exp:"<b>not to</b> + 동사원형 (in order not to, so as not to)"},
+
+  {type:"n", tag:"한글로 이해", q:"목적의 so that 뒤에 오는 문장에 자주 쓰는 조동사는?",
+   opts:["can · will (could · would)","must · should만","do · does","am · is","have · has"], a:0,
+   exp:"so that + 주어 + <b>can/will</b>(과거는 could/would) + 동사원형"},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["so ~ that은 목적을 나타낸다.","so that은 목적을 나타낸다.","in order to 뒤에는 동사원형이 온다.","to부정사는 목적을 나타낼 수 있다.","‘~하지 않으려고’는 not to로 나타낸다."], a:0,
+   exp:"so + 형용사 + that은 <b>결과</b>(너무 ~해서)입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I went to the bakery ___ buy bread.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","for","so","that","too"], a:0, eng:true,
+   ko:"나는 빵을 사러 빵집에 갔다.",
+   exp:"목적 ‘~하러’ → <b>to</b> + 동사원형"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He turned on the light ___ read a book.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","so","that","for","too"], a:0, eng:true,
+   ko:"그는 책을 읽으려고 불을 켰다.",
+   exp:"목적 <b>to</b> read"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She called me ___ say thank you.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","for","so","that","but"], a:0, eng:true,
+   ko:"그녀는 고맙다고 말하려고 나에게 전화했다.",
+   exp:"목적 <b>to</b> say"},
+
+  {type:"a", tag:"쉬운 영어", sent:"We ran ___ catch the bus.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","for","so","that","and to"], a:0, eng:true,
+   ko:"우리는 버스를 타려고 뛰었다.",
+   exp:"목적 <b>to</b> catch"},
+
+  {type:"a", tag:"쉬운 영어", sent:"Speak slowly so that I ___ understand.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["can","am","do","have","to"], a:0, eng:true,
+   ko:"내가 이해할 수 있도록 천천히 말해 줘.",
+   exp:"so that + 주어 + <b>can</b> + 동사원형"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She took notes ___ she wouldn't forget.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","that","to","such"], a:0, eng:true,
+   ko:"그녀는 잊지 않도록 메모를 했다.",
+   exp:"주어 + 동사가 뒤에 오니 <b>so that</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He trained hard so that he ___ win the race.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["could","can't","is","does","to"], a:0, eng:true,
+   ko:"그는 경주에서 이길 수 있도록 열심히 훈련했다.",
+   exp:"과거 문장이라 so that + 주어 + <b>could</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"밑줄 친 부분이 나타내는 것으로 알맞은 것은?<br><span class=\"eng\">It was **so hot that** I opened all the windows.</span>",
+   opts:["결과","목적"], a:0, eng:true,
+   exp:"so + 형용사 + that → 너무 더워서 창문을 열었다, <b>결과</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"밑줄 친 부분이 나타내는 것으로 알맞은 것은?<br><span class=\"eng\">I opened the windows **so that** fresh air could come in.</span>",
+   opts:["목적","결과"], a:0, eng:true,
+   exp:"so that이 붙어 있음 → 들어오도록, <b>목적</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She whispered ___ the baby wouldn't wake up.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","to","too","enough"], a:0, eng:true,
+   ko:"그녀는 아기가 깨지 않도록 속삭였다.",
+   exp:"목적 <b>so that</b> + 주어 + wouldn't"}
+];
+
+var X2 = [
+  {type:"n", tag:"so~that 결과", sent:"The movie was so funny ___ we laughed a lot.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","so","to","for","as"], a:0, eng:true,
+   ko:"영화가 너무 웃겨서 우리는 많이 웃었다.",
+   exp:"so funny <b>that</b> — 결과"},
+
+  {type:"n", tag:"so~that 결과", sent:"She was so sleepy that she ___ her eyes open.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["couldn't keep","can keep","keeps to","keeping","to keep"], a:0, eng:true,
+   ko:"그녀는 너무 졸려서 눈을 뜨고 있을 수 없었다.",
+   exp:"결과 ‘~할 수 없었다’ → <b>couldn't keep</b>"},
+
+  {type:"n", tag:"so~that 결과", q:"다음 중 결과(너무 ~해서 …하다)를 나타내는 문장은?",
+   opts:["The road was so icy that cars slid.","He saved money so that he could travel.","She left early so that she wouldn't be late.","I studied so that I could pass.","He whispered so that no one heard."], a:0, eng:true,
+   exp:"so + 형용사(icy) + that → <b>결과</b>"},
+
+  {type:"n", tag:"so~that 결과", sent:"The box was so heavy ___ I needed help.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","so","to","for","because"], a:0, eng:true,
+   ko:"상자가 너무 무거워서 나는 도움이 필요했다.",
+   exp:"so heavy <b>that</b>"},
+
+  {type:"n", tag:"so~that 결과", write:true, ans:"that", sent:"It rained so hard ___ the game was canceled.", q:"빈칸에 알맞은 말을 쓰세요.",
+   ko:"비가 너무 많이 와서 경기가 취소되었다.",
+   exp:"so hard <b>that</b> — 결과"},
+
+  {type:"n", tag:"so~that 결과", sent:"He was so nervous ___ his hands shook.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","to","for","so","as"], a:0, eng:true,
+   ko:"그는 너무 긴장해서 손이 떨렸다.",
+   exp:"so nervous <b>that</b>"},
+
+  {type:"n", tag:"so~that 결과", q:"다음 중 밑줄 친 부분의 쓰임이 <b>결과</b>인 것은?",
+   opts:["The test was **so** easy **that** everyone passed.","I studied **so that** I could pass.","He left early **so that** he could rest.","Talk quietly **so that** she can sleep.","We hurried **so that** we wouldn't be late."], a:0, eng:true,
+   exp:"so + 형용사 + that → <b>결과</b>"},
+
+  {type:"a", tag:"so that 목적", sent:"I set an alarm so that I ___ wake up on time.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["could","couldn't","am","did","to"], a:0, eng:true,
+   ko:"나는 제시간에 일어날 수 있도록 알람을 맞췄다.",
+   exp:"so that + 주어 + <b>could</b>"},
+
+  {type:"a", tag:"so that 목적", q:"다음 문장을 to부정사를 이용해 같은 뜻으로 바꾼 것은?<br><span class=\"eng\">She practices every day so that she can play well.</span>",
+   opts:["She practices every day to play well.","She practices every day to playing well.","She practices every day so play well.","She practices every day that play well.","She practices every day too play well."], a:0, eng:true,
+   exp:"so that she can play = <b>to play</b>"},
+
+  {type:"a", tag:"so that 목적", sent:"He wrote it down ___ he could remember it.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","that","to","such"], a:0, eng:true,
+   ko:"그는 기억할 수 있도록 그것을 적어 두었다.",
+   exp:"주어 + 동사 앞 → <b>so that</b>"},
+
+  {type:"a", tag:"so that 목적", write:true, ans:"to see", sent:"He wore glasses ___ better.", q:"‘더 잘 보려고’가 되도록 to부정사로 빈칸에 쓰세요.",
+   ko:"그는 더 잘 보려고 안경을 썼다.",
+   exp:"목적 → <b>to see</b>"},
+
+  {type:"a", tag:"so that 목적", q:"다음 중 밑줄 친 so that의 쓰임이 <b>목적</b>인 것은?",
+   opts:["She stood up **so that** she could see the stage.","It was **so** dark **that** I tripped.","He was **so** angry **that** he left.","The soup was **so** salty **that** I drank water.","It was **so** late **that** the shop closed."], a:0, eng:true,
+   exp:"so that(붙어 있음) + 주어 + could → <b>목적</b>"},
+
+  {type:"a", tag:"so that 목적", sent:"Put on sunscreen ___ you won't get burned.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","too","enough","such"], a:0, eng:true,
+   ko:"햇볕에 타지 않도록 선크림을 발라라.",
+   exp:"목적 <b>so that</b> + 주어 + won't"},
+
+  {type:"a", tag:"so that 목적", sent:"The teacher repeated it ___ everyone would understand.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","to","for","too"], a:0, eng:true,
+   ko:"선생님은 모두가 이해하도록 그것을 되풀이하셨다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"v", tag:"구별·전환", q:"다음 두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She studies English to talk with foreigners.<br>= She studies English ___ she can talk with foreigners.</span>",
+   opts:["so that","so","that","such that","too"], a:0, eng:true,
+   exp:"목적 to부정사 = <b>so that</b> + 주어 + can"},
+
+  {type:"v", tag:"구별·전환", q:"다음 문장은 목적/결과 중 무엇인가요?<br><span class=\"eng\">The bridge was so old that it fell down.</span>",
+   opts:["결과","목적"], a:0, eng:true,
+   exp:"so + 형용사 + that → 너무 낡아서 무너졌다, <b>결과</b>"},
+
+  {type:"v", tag:"구별·전환", q:"다음 문장은 목적/결과 중 무엇인가요?<br><span class=\"eng\">He studied hard so that he could get a scholarship.</span>",
+   opts:["목적","결과"], a:0, eng:true,
+   exp:"so that + could → 받을 수 있도록, <b>목적</b>"},
+
+  {type:"v", tag:"구별·전환", write:true, ans:"목적", q:"다음 문장이 목적인지 결과인지 한 단어로 쓰세요. (목적 또는 결과)<br><span class=\"eng\">I left early so that I could avoid the traffic.</span>",
+   exp:"so that + could → <b>목적</b>"},
+
+  {type:"v", tag:"구별·전환", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He ran so that fast he won.","He ran so fast that he won.","He ran fast so that he could win.","He ran fast to win.","He ran fast in order to win."], a:0, eng:true,
+   exp:"결과는 so + <b>형용사/부사</b> + that 차례입니다. so fast that"},
+
+  {type:"v", tag:"구별·전환", q:"다음 설명과 예문이 바르게 짝지어진 것은?<br>① so + 형용사 + that ② so that + 주어 + can",
+   opts:["①결과 - ②목적","①목적 - ②결과","①목적 - ②목적","①결과 - ②결과","①원인 - ②조건"], a:0,
+   exp:"so 바로 뒤에 형용사가 오면 결과, so that이 붙어 있으면 목적입니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"기출", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: Why did you go to the library?<br>B: ___ borrow some books.</span>",
+   opts:["To","For","So","That","Too"], a:0, eng:true,
+   exp:"Why?에 목적으로 답할 때 <b>To</b> + 동사원형"},
+
+  {type:"n", tag:"기출", q:"다음 문장을 in order to를 이용해 바꾼 것으로 알맞은 것은?<br><span class=\"eng\">She eats vegetables so that she can stay healthy.</span>",
+   opts:["She eats vegetables in order to stay healthy.","She eats vegetables in order staying healthy.","She eats vegetables in order that stay healthy.","She eats vegetables in order to staying healthy.","She eats vegetables in order for stay healthy."], a:0, eng:true,
+   exp:"in order to + <b>동사원형</b>"},
+
+  {type:"n", tag:"기출", sent:"He wrote clearly ___ the teacher could read it easily.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","to","such","too"], a:0, eng:true,
+   ko:"그는 선생님이 쉽게 읽을 수 있도록 또박또박 썼다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기출", q:"다음 문장에서 so as to가 알맞게 쓰인 것은?",
+   opts:["She hurried so as to arrive on time.","She hurried so as arriving on time.","She hurried so as to arrived on time.","She hurried so to as arrive on time.","She hurried so as that she arrived on time."], a:0, eng:true,
+   exp:"so as to + <b>동사원형</b>"},
+
+  {type:"n", tag:"기출", write:true, ans:"so that", sent:"She turned off her phone ___ nobody could disturb her.", q:"빈칸에 알맞은 말을 쓰세요.",
+   ko:"그녀는 아무도 방해하지 못하도록 전화기를 껐다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기출", sent:"The puzzle was so hard ___ I gave up.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","so","to","for","as"], a:0, eng:true,
+   ko:"퍼즐이 너무 어려워서 나는 포기했다.",
+   exp:"결과 so hard <b>that</b>"},
+
+  {type:"n", tag:"기출", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: Why do you go jogging every morning?<br>B: ___ stay in shape.</span>",
+   opts:["To","For","So","That","Enough"], a:0, eng:true,
+   exp:"목적 <b>To</b> stay"},
+
+  {type:"n", tag:"기출", q:"다음 문장을 우리말로 옳게 옮긴 것은?<br><span class=\"eng\">She spoke loudly so that everyone could hear her.</span>",
+   opts:["그녀는 모두가 들을 수 있도록 크게 말했다.","그녀가 너무 크게 말해서 모두가 들었다.","모두가 들어서 그녀는 크게 말했다.","그녀는 모두의 말을 크게 들었다.","그녀는 크게 말하지 않았다."], a:0, eng:true,
+   exp:"so that = <b>~하도록</b>(목적)"},
+
+  {type:"n", tag:"기출", sent:"We turned off the lights ___ we could see the stars.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","too","such","enough"], a:0, eng:true,
+   ko:"우리는 별을 볼 수 있도록 불을 껐다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기출", q:"다음 중 밑줄 친 부분과 바꿔 쓸 수 있는 것은?<br><span class=\"eng\">She saved money **to buy** a bike.</span>",
+   opts:["so that she could buy a bike","so she bought a bike","because she bought a bike","though she bought a bike","if she buys a bike"], a:0, eng:true,
+   exp:"목적 to buy = <b>so that she could buy</b>"},
+
+  {type:"n", tag:"기출", sent:"He studied hard ___ he could enter a good school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","to","too","such"], a:0, eng:true,
+   ko:"그는 좋은 학교에 들어갈 수 있도록 열심히 공부했다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기출", write:true, ans:"to buy", sent:"She went to the store ___ some milk.", q:"빈칸에 목적을 나타내는 말을 쓰세요. (buy)",
+   ko:"그녀는 우유를 사러 가게에 갔다.",
+   exp:"목적 <b>to buy</b>"},
+
+  {type:"n", tag:"기출", q:"다음 두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">He wore a mask so that he wouldn't catch a cold.<br>= He wore a mask ___ not to catch a cold.</span>",
+   opts:["in order","so that","such","too","enough"], a:0, eng:true,
+   exp:"so that … wouldn't = <b>in order</b> not to"},
+
+  {type:"n", tag:"기출", sent:"She stood on a chair ___ reach the top shelf.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","for","so","that","too"], a:0, eng:true,
+   ko:"그녀는 맨 위 선반에 손이 닿도록 의자 위에 올라섰다.",
+   exp:"목적 <b>to</b> reach"},
+
+  {type:"n", tag:"기출", q:"다음 대화에서 어법상 알맞은 것을 고르세요.<br><span class=\"eng\">A: Why did you bring an umbrella?<br>B: (So that / So) I wouldn't get wet.</span>",
+   opts:["So that","So"], a:0, eng:true,
+   exp:"목적 ‘~하지 않도록’ → <b>So that</b>"},
+
+  {type:"n", tag:"기출", sent:"They built a fence ___ the dog couldn't run away.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","to","too","such"], a:0, eng:true,
+   ko:"그들은 개가 달아나지 못하도록 울타리를 쳤다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"a", tag:"고난도", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She practiced in order to winning.","She practiced in order to win.","She practiced so as to win.","She practiced so that she could win.","She practiced to win."], a:0, eng:true,
+   exp:"in order to + <b>동사원형</b> win"},
+
+  {type:"a", tag:"고난도", q:"다음 우리말을 영어로 옮길 때 가장 알맞은 것은?<br>‘그는 실수하지 않으려고 천천히 썼다.’",
+   opts:["He wrote slowly so as not to make mistakes.","He wrote slowly so as to not making mistakes.","He wrote slowly so not as to make mistakes.","He wrote so slowly that he made mistakes.","He wrote slowly not so as to make mistakes."], a:0, eng:true,
+   exp:"목적의 부정 <b>so as not to</b> + 동사원형"},
+
+  {type:"a", tag:"고난도", q:"다음 문장에서 밑줄 친 부분의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["It was **so** foggy **that** we drove slowly.","I left early **so that** I could rest.","She spoke up **so that** we could hear.","He saved money **so that** he could travel.","Close the door **so that** the cat stays in."], a:0, eng:true,
+   exp:"so foggy that은 <b>결과</b>, 나머지는 목적입니다."},
+
+  {type:"a", tag:"고난도", q:"다음 문장을 in order that을 이용해 바르게 바꾼 것은?<br><span class=\"eng\">She took a taxi so that she could arrive on time.</span>",
+   opts:["She took a taxi in order that she could arrive on time.","She took a taxi in order that arrive on time.","She took a taxi in order to that she could arrive.","She took a taxi in order that to arrive on time.","She took a taxi in that order she could arrive."], a:0, eng:true,
+   exp:"in order that + 주어 + can/could (so that과 같은 뜻)"}
+];
+
+var X4 = [
+  {type:"n", tag:"기본", sent:"She hid the gift ___ he wouldn't find it.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","too","such","enough"], a:0, eng:true,
+   ko:"그녀는 그가 찾지 못하도록 선물을 숨겼다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기본", q:"다음 문장을 to부정사로 바꾼 것으로 알맞은 것은?<br><span class=\"eng\">He went to bed early so that he could get up early.</span>",
+   opts:["He went to bed early to get up early.","He went to bed early to getting up early.","He went to bed early for get up early.","He went to bed early so get up early.","He went to bed early that get up early."], a:0, eng:true,
+   exp:"so that he could get up = <b>to get up</b>"},
+
+  {type:"n", tag:"기본", sent:"We spoke quietly ___ we wouldn't wake the baby.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","to","too","such"], a:0, eng:true,
+   ko:"우리는 아기를 깨우지 않도록 조용히 말했다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기본", write:true, ans:"so that", sent:"He left the door open ___ the cat could come in.", q:"빈칸에 알맞은 말을 쓰세요.",
+   ko:"그는 고양이가 들어올 수 있도록 문을 열어 두었다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기본", q:"다음 문장의 의미로 알맞은 것은?<br><span class=\"eng\">The room was so cold that we could see our breath.</span>",
+   opts:["방이 너무 추워서 입김이 보일 정도였다.","입김을 보려고 방을 춥게 했다.","방이 추워지도록 입김을 불었다.","방이 춥지 않아 입김이 보이지 않았다.","입김 때문에 방이 추웠다."], a:0, eng:true,
+   exp:"so ~ that = <b>너무 ~해서 …하다</b>(결과)"},
+
+  {type:"n", tag:"기본", sent:"She saved every coin ___ she could buy a gift for her mom.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","too","to","such"], a:0, eng:true,
+   ko:"그녀는 엄마 선물을 살 수 있도록 동전을 모두 모았다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기본", q:"다음 문장을 so as to로 바꾼 것으로 알맞은 것은?<br><span class=\"eng\">He whispered to keep it a secret.</span>",
+   opts:["He whispered so as to keep it a secret.","He whispered so as keeping it a secret.","He whispered so to keep as it a secret.","He whispered so as that keep it a secret.","He whispered as so to keep it a secret."], a:0, eng:true,
+   exp:"<b>so as to</b> + 동사원형"},
+
+  {type:"n", tag:"기본", sent:"We booked early ___ we could get good seats.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","too","such","enough"], a:0, eng:true,
+   ko:"우리는 좋은 자리를 얻을 수 있도록 일찍 예약했다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"n", tag:"기본", write:true, ans:"to thank", sent:"I wrote her a letter ___ her.", q:"빈칸에 목적을 나타내는 말을 쓰세요. (thank)",
+   ko:"나는 그녀에게 고마움을 전하려고 편지를 썼다.",
+   exp:"목적 <b>to thank</b>"},
+
+  {type:"n", tag:"기본", sent:"He moved closer ___ he could hear better.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","too","enough","such"], a:0, eng:true,
+   ko:"그는 더 잘 들을 수 있도록 가까이 갔다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"a", tag:"함정·고난도", q:"다음 두 문장의 뜻 차이를 바르게 설명한 것은?<br><span class=\"eng\">① She studied hard so that she could pass.<br>② She studied so hard that she passed.</span>",
+   opts:["①목적(붙을 수 있도록) - ②결과(실제로 붙었다)","①결과 - ②목적","둘 다 목적","둘 다 결과","둘 다 원인"], a:0, eng:true,
+   exp:"so that은 목적, so + 부사 + that은 결과입니다."},
+
+  {type:"a", tag:"함정·고난도", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He saved money so that he buy a car.","He saved money so that he could buy a car.","He saved money to buy a car.","He saved money in order to buy a car.","He saved money so as to buy a car."], a:0, eng:true,
+   exp:"so that 뒤에는 주어 + <b>could</b> + 동사원형"},
+
+  {type:"a", tag:"함정·고난도", sent:"It was such a sad story ___ everyone cried.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","so","to","as","for"], a:0, eng:true,
+   ko:"그것은 아주 슬픈 이야기여서 모두가 울었다.",
+   exp:"such ~ <b>that</b> — 결과"},
+
+  {type:"a", tag:"함정·고난도", q:"다음 문장에서 밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She practiced every day **so that win** the prize.</span>",
+   opts:["so that she could win","so win that","so that winning","so that to win","고칠 필요 없음"], a:0, eng:true,
+   exp:"so that + <b>주어 + could</b> + 동사원형"},
+
+  {type:"a", tag:"함정·고난도", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: Why did you leave a light on?<br>B: I left it on ___ Dad could find the door.</span>",
+   opts:["so that","so","because of","too","such"], a:0, eng:true,
+   exp:"목적 <b>so that</b>"},
+
+  {type:"a", tag:"함정·고난도", write:true, ans:"so that", sent:"He set two alarms ___ he wouldn't oversleep.", q:"빈칸에 알맞은 접속사를 쓰세요.",
+   ko:"그는 늦잠을 자지 않도록 알람을 두 개 맞췄다.",
+   exp:"목적 <b>so that</b>"},
+
+  {type:"a", tag:"함정·고난도", q:"다음 중 <b>결과</b>(너무 ~해서)를 나타내는 문장은?",
+   opts:["The line was so long that we left.","We left early so that we could rest.","We left early to rest.","We left early in order to rest.","We left early so as to rest."], a:0, eng:true,
+   exp:"so long that → <b>결과</b>"},
+
+  {type:"a", tag:"함정·고난도", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">She left early in order not to miss the show.</span>",
+   opts:["그녀는 공연을 놓치지 않으려고 일찍 떠났다.","그녀는 공연을 놓쳐서 일찍 떠났다.","그녀는 공연을 보지 않으려고 일찍 떠났다.","그녀는 일찍 떠나지 않았다.","그녀는 공연 때문에 늦게 떠났다."], a:0, eng:true,
+   exp:"in order not to = <b>~하지 않으려고</b>"},
+
+  {type:"a", tag:"함정·고난도", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["She spoke slowly so as to be understood.","She spoke slowly so as to understood.","She spoke slowly so as being understood.","She spoke slowly so that be understood.","She spoke so as slowly to be understood."], a:0, eng:true,
+   exp:"so as to + <b>동사원형</b>(be understood)"},
+
+  {type:"a", tag:"함정·고난도", q:"다음 글의 흐름상 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">Jun wanted to buy a present for his sister. He saved his pocket money ___ he could buy a nice doll.</span>",
+   opts:["so that","so","too","such","enough"], a:0, eng:true,
+   exp:"살 수 있도록 → 목적 <b>so that</b>"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 목적과 결과", desc:"한글로 이해 10 · 쉬운 영어 10 · ~하려고와 너무 ~해서 · to부정사 목적 · so that 목적 · 쉬운 영어 문장 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

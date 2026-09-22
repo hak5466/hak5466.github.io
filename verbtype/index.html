@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 동사 뽀개기</span></h1>
-    <p class="sub">be동사 · 일반동사 · 조동사 구별 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">be동사 · 일반동사 · 조동사 구별 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -746,6 +746,359 @@ var L4 = [
    opts:["has to","is going to be","don't have to","is able","may not"], a:0, eng:true,
    exp:"밖에 나갈 수 없다고 했으므로 ‘꼭 끝내야만 한다’는 뜻이 알맞습니다. 주어가 She이므로 <b>has to</b>입니다."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘책이 가방 안에 있다’의 ‘있다’는 어느 동사 가족일까요?",
+   opts:["be동사","일반동사","조동사","명사","형용사"], a:0,
+   exp:"‘~에 있다’도 <b>be동사</b>로 말합니다. The book is in the bag."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~해야 한다, ~할 것이다, ~해도 된다’처럼 뜻을 더해 주는 말은 어느 가족일까요?",
+   opts:["조동사","be동사","일반동사","명사","형용사"], a:0,
+   exp:"동사 앞에서 뜻을 보태 주는 말 → <b>조동사</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"조동사를 ‘도우미 동사’라고 부르는 까닭은?",
+   opts:["다른 동사를 도와 뜻을 더해 주기 때문","문장 끝에 오기 때문","이름을 나타내기 때문","혼자 문장을 만들기 때문","모든 문장에 꼭 있어야 하기 때문"], a:0,
+   exp:"조동사는 뒤에 오는 동사를 <b>돕는</b> 말입니다. can swim, will go"},
+
+  {type:"n", tag:"한글로 이해", q:"be동사와 일반동사를 한 동사 자리에 함께 쓸 수 있을까요?",
+   opts:["함께 쓰지 않는다","언제나 함께 쓴다","과거에만 함께 쓴다","질문할 때만 함께 쓴다","부정할 때만 함께 쓴다"], a:0,
+   exp:"I am like it.(✕) → I like it.(○) 동사 자리에는 하나만 씁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 수영할 수 있다’에서 조동사가 더해 주는 뜻은?",
+   opts:["할 수 있다(능력)","해야 한다(의무)","할 것이다(미래)","해도 된다(허락)","했다(과거)"], a:0,
+   exp:"‘~할 수 있다’ → 능력의 조동사 <b>can</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 내일 영화를 볼 것이다’에서 조동사가 더해 주는 뜻은?",
+   opts:["할 것이다(미래)","할 수 있다(능력)","해야 한다(의무)","해도 된다(허락)","하는 중이다"], a:0,
+   exp:"앞으로의 일 → <b>will</b>"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"be동사로 말하는 우리말을 모두 고르세요. (여러 개)",
+   opts:["나는 배고프다.","그는 선생님이다.","고양이가 방에 있다.","나는 노래한다.","그는 걷는다."], ans:[0,1,2],
+   exp:"상태 · ~이다 · ~있다 → be동사"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"조동사가 들어 있는 우리말을 모두 고르세요. (여러 개)",
+   opts:["나는 달릴 수 있다.","너는 숙제를 해야 한다.","나는 내일 갈 것이다.","나는 달린다.","그는 키가 크다."], ans:[0,1,2],
+   exp:"~할 수 있다 · ~해야 한다 · ~할 것이다 → 조동사"},
+
+  {type:"n", tag:"한글로 이해", sent:"그들은 공원에 **있었다**.", q:"밑줄 친 말은 어느 동사일까요?",
+   opts:["be동사","일반동사","조동사","명사","형용사"], a:0,
+   exp:"‘~에 있었다’ → be동사 과거. They were in the park."},
+
+  {type:"n", tag:"한글로 이해", sent:"그녀는 영어를 **공부한다**.", q:"밑줄 친 말은 어느 동사일까요?",
+   opts:["일반동사","be동사","조동사","명사","부사"], a:0,
+   exp:"‘공부한다’는 행동 → <b>일반동사</b>. She studies English."},
+
+  {type:"n", tag:"한글로 이해", sent:"너는 지금 집에 **가야 한다**.", q:"밑줄 친 말은 어느 동사일까요?",
+   opts:["조동사가 들어 있다","be동사","명사","형용사","부사"], a:0,
+   exp:"‘~해야 한다’ → 조동사 must + go"},
+
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["조동사 뒤에는 동사원형이 온다.","조동사 뒤 동사에는 s를 붙인다.","be동사는 행동을 나타낸다.","일반동사는 ‘~이다’라는 뜻이다.","조동사는 혼자 쓴다."], a:0,
+   exp:"can swim, will go → 조동사 뒤는 <b>동사원형</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"eat · run · sing은 어느 동사 가족일까요?",
+   opts:["일반동사","be동사","조동사","명사","형용사"], a:0,
+   exp:"행동을 나타내는 <b>일반동사</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"can · will · must는 어느 동사 가족일까요?",
+   opts:["조동사","be동사","일반동사","명사","형용사"], a:0,
+   exp:"뜻을 더해 주는 <b>조동사</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"They ___ my friends.", q:"빈칸에 알맞은 말은?",
+   opts:["are","am","is","be","can"], a:0, eng:true,
+   ko:"그들은 내 친구들이다.",
+   exp:"They → <b>are</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He ___ run fast.", q:"‘그는 빨리 달릴 수 있다’가 되도록 알맞은 것은?",
+   opts:["can","is","does","am","runs"], a:0, eng:true,
+   ko:"그는 빨리 달릴 수 있다.",
+   exp:"~할 수 있다 → <b>can</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I will ___ you tomorrow.", q:"‘나는 내일 너를 만날 것이다’가 되도록 알맞은 것은?",
+   opts:["meet","meets","meeting","met","to meet"], a:0, eng:true,
+   ko:"나는 내일 너를 만날 것이다.",
+   exp:"will 뒤에는 동사원형 <b>meet</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘~해야 한다’를 영어로 하면?",
+   opts:["must","can","will","may","is"], a:0,
+   exp:"~해야 한다 = <b>must</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She **is** my sister.", q:"밑줄 친 말은 어느 동사일까요?",
+   opts:["be동사","일반동사","조동사","명사","형용사"], a:0,
+   ko:"그녀는 내 여동생이다.",
+   exp:"is는 <b>be동사</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"We **will** go camping.", q:"밑줄 친 말은 어느 동사일까요?",
+   opts:["조동사","be동사","일반동사","명사","형용사"], a:0,
+   ko:"우리는 캠핑하러 갈 것이다.",
+   exp:"will은 <b>조동사</b>입니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 be동사를 모두 고르세요. (여러 개)",
+   opts:["was","were","is","do","can"], ans:[0,1,2],
+   exp:"do는 일반동사 또는 도우미, can은 조동사입니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 일반동사를 모두 고르세요. (여러 개)",
+   opts:["read","sleep","have","will","are"], ans:[0,1,2],
+   exp:"will은 조동사, are는 be동사입니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 조동사를 모두 고르세요. (여러 개)",
+   opts:["will","should","must","eat","am"], ans:[0,1,2],
+   exp:"eat는 일반동사, am은 be동사입니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 be동사의 현재형을 모두 고르세요. (여러 개)",
+   opts:["am","is","are","was","were"], ans:[0,1,2],
+   exp:"was · were는 과거형입니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 일반동사의 과거형을 모두 고르세요. (여러 개)",
+   opts:["played","went","ate","were","could"], ans:[0,1,2],
+   exp:"were는 be동사 과거, could는 조동사 과거입니다."},
+
+  {type:"a", tag:"뜻", word:"could", q:"<b>could</b>의 뜻으로 알맞은 것은? (can의 과거)",
+   opts:["~할 수 있었다","~할 것이다","~해야 했다","~해도 된다","~하는 게 좋다"], a:0,
+   exp:"can의 과거 → <b>could</b>: ~할 수 있었다"},
+
+  {type:"a", tag:"뜻", word:"would", q:"<b>would</b>는 어느 조동사의 과거형일까요?",
+   opts:["will","can","must","may","should"], a:0,
+   exp:"will → <b>would</b>"},
+
+  {type:"a", tag:"뜻", q:"‘~해도 된다’를 뜻하는 조동사를 모두 담은 것은?",
+   opts:["may, can","must, should","will, would","do, does","am, is"], a:0,
+   exp:"허락 → <b>may</b>, <b>can</b> (May I ~? / Can I ~?)"},
+
+  {type:"a", tag:"뜻", q:"다음 중 조동사와 뜻이 바르게 짝지어지지 <b>않은</b> 것은?",
+   opts:["must – ~할 수 있다","will – ~할 것이다","can – ~할 수 있다","should – ~하는 게 좋다","may – ~해도 된다"], a:0,
+   exp:"must는 ‘~해야만 한다’입니다."},
+
+  {type:"a", tag:"모양", sent:"We ___ in the same class last year.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["were","was","are","is","be"], a:0, eng:true,
+   ko:"우리는 작년에 같은 반이었다.",
+   exp:"last year, 주어 We → <b>were</b>"},
+
+  {type:"a", tag:"모양", sent:"She ___ to music every night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["listens","listen","is listen","can listens","listening"], a:0, eng:true,
+   ko:"그녀는 매일 밤 음악을 듣는다.",
+   exp:"She, 현재 → <b>listens</b>"},
+
+  {type:"a", tag:"모양", sent:"He will ___ busy tomorrow.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["be","is","am","are","being"], a:0, eng:true,
+   ko:"그는 내일 바쁠 것이다.",
+   exp:"조동사 뒤 be동사는 원형 <b>be</b>"},
+
+  {type:"v", tag:"문장 속 구별", sent:"He **was** tired yesterday.", q:"밑줄 친 동사의 종류는?",
+   opts:["be동사 (과거)","일반동사","조동사","be동사 (현재)","명사"], a:0, eng:true,
+   ko:"그는 어제 피곤했다.",
+   exp:"was는 be동사의 <b>과거</b>입니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"You **should** eat vegetables.", q:"밑줄 친 동사의 종류는?",
+   opts:["조동사","일반동사","be동사","명사","형용사"], a:0, eng:true,
+   ko:"너는 채소를 먹는 게 좋다.",
+   exp:"should는 <b>조동사</b>입니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"My dad **cooks** on Sundays.", q:"밑줄 친 동사의 종류는?",
+   opts:["일반동사","be동사","조동사","명사","형용사"], a:0, eng:true,
+   ko:"우리 아빠는 일요일마다 요리한다.",
+   exp:"cooks는 <b>일반동사</b>입니다. (여기서는 ‘요리하다’)"},
+
+  {type:"v", tag:"문장 속 구별", sent:"It **may** snow tonight.", q:"밑줄 친 동사의 종류는?",
+   opts:["조동사","be동사","일반동사","명사","부사"], a:0, eng:true,
+   ko:"오늘 밤 눈이 올지도 모른다.",
+   exp:"may는 <b>조동사</b>입니다."},
+
+  {type:"v", tag:"문장 속 구별", sent:"You ___ be quiet in the library.", q:"빈칸에 알맞은 것을 고르세요.<br>‘도서관에서는 조용히 해야만 한다.’",
+   opts:["must","may","can","will","are"], a:0, eng:true,
+   ko:"도서관에서는 조용히 해야만 한다.",
+   exp:"~해야만 한다 → <b>must</b>"},
+
+  {type:"v", tag:"문장 속 구별", sent:"He will ___ a doctor someday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["be","is","being","am","becomes"], a:0, eng:true,
+   ko:"그는 언젠가 의사가 될 것이다.",
+   exp:"will 뒤에는 원형 <b>be</b>"},
+
+  {type:"v", tag:"문장 속 구별", sent:"I ___ at home last night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["was","were","am","is","be"], a:0, eng:true,
+   ko:"나는 어젯밤 집에 있었다.",
+   exp:"I, 과거 → <b>was</b>"},
+
+  {type:"v", tag:"정리", q:"다음 중 동사의 종류가 나머지와 <b>다른</b> 것은?",
+   opts:["can","am","is","are","were"], a:0,
+   exp:"can은 조동사, 나머지는 be동사입니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"짝 찾기", q:"‘I am going to visit my aunt.’의 뜻으로 알맞은 것은?",
+   opts:["나는 이모 댁을 방문할 것이다.","나는 이모 댁에 가는 중이다.","나는 이모 댁을 방문해야 한다.","나는 이모 댁을 방문할 수 있다.","나는 이모 댁을 방문했다."], a:0,
+   exp:"be going to + 동사원형 = ~할 것이다"},
+
+  {type:"n", tag:"짝 찾기", q:"‘~해야 했다’를 영어로 바르게 쓴 것은?",
+   opts:["had to","must to","have to","musted","has to"], a:0,
+   exp:"must는 과거형이 없어서 <b>had to</b>를 씁니다."},
+
+  {type:"n", tag:"짝 찾기", q:"‘~할 수 있었다’와 바꿔 쓸 수 있는 말은?",
+   opts:["was able to","is able to","will be able to","has to","is going to"], a:0,
+   exp:"could = <b>was/were able to</b>"},
+
+  {type:"n", tag:"짝 찾기", q:"‘~할 수 있을 것이다’를 영어로 바르게 쓴 것은?",
+   opts:["will be able to","will can","can will","will able to","be will able to"], a:0,
+   exp:"조동사 두 개를 겹쳐 쓸 수 없으므로 <b>will be able to</b>"},
+
+  {type:"n", tag:"짝 찾기", q:"have to의 부정 don't have to와 뜻이 같은 것은?",
+   opts:["need not","must not","cannot","should","will not"], a:0,
+   exp:"don't have to = need not: ~할 필요가 없다"},
+
+  {type:"n", tag:"짝 찾기", q:"다음 중 뜻이 나머지와 <b>다른</b> 것은?",
+   opts:["be going to","must","have to","has to","had to"], a:0,
+   exp:"be going to는 ‘~할 것이다’, 나머지는 ‘~해야 한다(했다)’입니다."},
+
+  {type:"n", tag:"짝 찾기", q:"세 표현의 과거를 바르게 짝지은 것은?<br><span class=\"eng\">ⓐ can&nbsp;ⓑ will&nbsp;ⓒ must</span>",
+   opts:["ⓐ could – ⓑ would – ⓒ had to","ⓐ could – ⓑ would – ⓒ musted","ⓐ can – ⓑ would – ⓒ had to","ⓐ could – ⓑ will – ⓒ must","ⓐ was can – ⓑ was will – ⓒ had to"], a:0,
+   exp:"can → could, will → would, must → had to"},
+
+  {type:"a", tag:"모양", sent:"She ___ wear a uniform at school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["has to","have to","having to","is have to","has"], a:0, eng:true,
+   ko:"그녀는 학교에서 교복을 입어야 한다.",
+   exp:"She → <b>has to</b>"},
+
+  {type:"a", tag:"모양", sent:"I ___ able to solve the problem yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["was","am","were","be","is"], a:0, eng:true,
+   ko:"나는 어제 그 문제를 풀 수 있었다.",
+   exp:"yesterday, I → <b>was</b> able to"},
+
+  {type:"a", tag:"모양", sent:"They ___ going to travel to Jeju.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","am","be","do"], a:0, eng:true,
+   ko:"그들은 제주도로 여행을 갈 것이다.",
+   exp:"They → <b>are</b> going to"},
+
+  {type:"a", tag:"모양", sent:"He doesn't ___ to get up early on Sundays.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["have","has","had","having","to have"], a:0, eng:true,
+   ko:"그는 일요일에는 일찍 일어날 필요가 없다.",
+   exp:"doesn't 뒤에는 원형 → doesn't <b>have</b> to"},
+
+  {type:"a", tag:"모양", sent:"We had to ___ for an hour.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["wait","waited","waits","waiting","to wait"], a:0, eng:true,
+   ko:"우리는 한 시간 동안 기다려야 했다.",
+   exp:"had to 뒤에는 동사원형 <b>wait</b>"},
+
+  {type:"a", tag:"모양", q:"다음 두 문장이 같은 뜻이 되도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">She must finish it today. = She ___ finish it today.</span>",
+   opts:["has to","have to","is going to","is able to","had to"], a:0,
+   exp:"must = have to, 주어 She → <b>has to</b>"},
+
+  {type:"a", tag:"모양", q:"다음 두 문장이 같은 뜻이 되도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">He could swim when he was five. = He ___ swim when he was five.</span>",
+   opts:["was able to","is able to","were able to","can able to","had to"], a:0,
+   exp:"could = <b>was able to</b>"},
+
+  {type:"v", tag:"판별", q:"두 문장의 뜻 차이를 바르게 말한 것은?<br><span class=\"eng\">ⓐ You must not run here.&nbsp;ⓑ You don't have to run here.</span>",
+   opts:["ⓐ 뛰면 안 된다 – ⓑ 뛸 필요가 없다","ⓐ 뛸 필요가 없다 – ⓑ 뛰면 안 된다","둘 다 뛰면 안 된다","둘 다 뛸 필요가 없다","ⓐ 뛰어야 한다 – ⓑ 뛰면 안 된다"], a:0,
+   exp:"must not = 금지, don't have to = 필요 없음"},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She will can drive next year.","She will be able to drive next year.","She can drive.","She was able to drive.","She is going to drive."], a:0,
+   exp:"조동사 두 개를 겹쳐 쓸 수 없습니다 → will <b>be able to</b>"},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["We are going to visiting him.","We are going to visit him.","We have to visit him.","We were able to visit him.","We will visit him."], a:0,
+   exp:"be going to 뒤에는 동사원형 → visit"},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["He had to go to the dentist yesterday.","He must went to the dentist yesterday.","He has to went to the dentist yesterday.","He musted go yesterday.","He had to went yesterday."], a:0,
+   exp:"과거의 의무 → <b>had to</b> + 동사원형"},
+
+  {type:"v", tag:"판별", multi:true, q:"어법상 알맞은 문장을 모두 고르세요. (여러 개)",
+   opts:["I don't have to hurry.","Are you going to join us?","Does she have to go?","He have to study.","They is able to swim."], ans:[0,1,2],
+   exp:"He has to, They are able to가 맞습니다."},
+
+  {type:"v", tag:"판별", q:"밑줄 친 부분의 쓰임이 나머지와 <b>다른</b> 것은?",
+   opts:["I **am going to** the park now.","I **am going to** meet her.","She **is going to** buy a bag.","We **are going to** play soccer.","They **are going to** sing."], a:0,
+   exp:"첫째는 ‘공원에 가는 중이다’(진행), 나머지는 ‘~할 것이다’입니다."}
+];
+
+var X4 = [
+  {type:"n", tag:"동사의 역할", q:"다음 중 동사가 <b>없어서</b> 문장이 되지 않는 것은?",
+   opts:["My brother very tall.","My brother is very tall.","My brother runs.","My brother can swim.","My brother was sick."], a:0,
+   exp:"‘~이다’의 be동사가 빠졌습니다 → My brother <b>is</b> very tall."},
+
+  {type:"n", tag:"동사의 역할", q:"‘He can swim.’에서 동사 노릇을 하는 부분은?",
+   opts:["can swim","He","can","swim","He can"], a:0,
+   exp:"조동사 + 동사원형이 <b>한 덩어리</b>로 동사 노릇을 합니다."},
+
+  {type:"n", tag:"동사의 역할", sent:"My keys **are** on the desk.", q:"이 문장의 be동사를 우리말로 어떻게 옮길까요?",
+   opts:["~있다 (책상 위에 있다)","~이다 (책상이다)","~하다","~할 수 있다","~해야 한다"], a:0,
+   exp:"장소 앞의 be동사 → ‘<b>있다</b>’"},
+
+  {type:"n", tag:"동사의 역할", sent:"She **is** a nurse.", q:"이 문장의 be동사를 우리말로 어떻게 옮길까요?",
+   opts:["~이다 (간호사이다)","~있다 (간호사에 있다)","~한다","~할 것이다","~할 수 있다"], a:0,
+   exp:"명사 앞의 be동사 → ‘<b>이다</b>’"},
+
+  {type:"n", tag:"동사의 역할", q:"다음 중 동사 자리에 동사가 <b>두 개</b> 들어가 틀린 문장은?",
+   opts:["She is plays tennis.","She plays tennis.","She can play tennis.","She is a tennis player.","She will play tennis."], a:0,
+   exp:"be동사 is와 일반동사 plays를 함께 쓸 수 없습니다."},
+
+  {type:"n", tag:"동사의 역할", q:"조동사가 있는 문장을 ‘아니다’로 바꿀 때 not의 자리는?",
+   opts:["조동사 바로 뒤","문장 맨 앞","문장 맨 끝","주어 앞","동사 뒤"], a:0,
+   exp:"can not(cannot), will not(won't), must not"},
+
+  {type:"a", tag:"한글·영어 짝", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그들은 지금 교실에 있다.’</span>",
+   opts:["They are in the classroom now.","They is in the classroom now.","They do in the classroom now.","They are the classroom now.","They in the classroom now."], a:0,
+   exp:"~에 있다 → <b>are</b> in"},
+
+  {type:"a", tag:"한글·영어 짝", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘나는 어제 그 영화를 보았다.’</span>",
+   opts:["I watched the movie yesterday.","I watch the movie yesterday.","I was watch the movie yesterday.","I did watched the movie yesterday.","I watching the movie yesterday."], a:0,
+   exp:"과거 → <b>watched</b>"},
+
+  {type:"a", tag:"한글·영어 짝", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘너는 이 버튼을 누르면 안 된다.’</span>",
+   opts:["You must not push this button.","You don't have to push this button.","You must push this button.","You can push this button.","You will push this button."], a:0,
+   exp:"금지 → <b>must not</b>"},
+
+  {type:"a", tag:"한글·영어 짝", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그는 내일 바쁠 것이다.’</span>",
+   opts:["He will be busy tomorrow.","He will is busy tomorrow.","He will busy tomorrow.","He is will busy tomorrow.","He wills be busy tomorrow."], a:0,
+   exp:"will + 원형 <b>be</b>"},
+
+  {type:"a", tag:"한글·영어 짝", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘창문을 열어도 될까요?’</span>",
+   opts:["May I open the window?","Must I open the window?","Will I open the window?","Am I open the window?","Do I may open the window?"], a:0,
+   exp:"허락을 구할 때 → <b>May I</b> ~?"},
+
+  {type:"a", tag:"한글·영어 짝", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">You should go to bed early.</span>",
+   opts:["너는 일찍 자는 게 좋다.","너는 일찍 잘 수 있다.","너는 일찍 잤다.","너는 일찍 자면 안 된다.","너는 일찍 잘 필요가 없다."], a:0,
+   exp:"should = ~하는 게 좋다(충고)"},
+
+  {type:"a", tag:"한글·영어 짝", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">I couldn't sleep last night.</span>",
+   opts:["나는 어젯밤 잠을 잘 수 없었다.","나는 어젯밤 자지 말아야 했다.","나는 어젯밤 잘 것이다.","나는 어젯밤 잠을 잘 잤다.","나는 어젯밤 자도 되었다."], a:0,
+   exp:"couldn't = ~할 수 없었다"},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She musts study hard.","She must study hard.","She has to study hard.","She should study hard.","She will study hard."], a:0,
+   exp:"조동사에는 s를 붙이지 않습니다 → She <b>must</b> study."},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["Can you help me?","Do you can help me?","Are you can help me?","You can helps me?","Can you helping me?"], a:0,
+   exp:"조동사 의문문 → <b>조동사 + 주어 + 동사원형</b>?"},
+
+  {type:"v", tag:"판별", q:"밑줄 친 동사의 종류가 나머지와 <b>다른</b> 것은?",
+   opts:["She **is** a singer.","We **can** dance.","They **will** come.","You **must** stop.","I **may** be late."], a:0,
+   exp:"is는 be동사, 나머지는 조동사입니다."},
+
+  {type:"v", tag:"판별", q:"다음 중 be동사가 들어 있지 <b>않은</b> 문장은?",
+   opts:["He goes to school by bike.","He is at school.","They were happy.","I am going to eat.","We will be there."], a:0,
+   exp:"goes는 일반동사만 쓰였습니다."},
+
+  {type:"v", tag:"고난도", q:"빈칸 ⓐ와 ⓑ에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">Yesterday I ⓐ sick, so I ⓑ go to school.</span>",
+   opts:["ⓐ was – ⓑ couldn't","ⓐ am – ⓑ can't","ⓐ was – ⓑ can't","ⓐ were – ⓑ couldn't","ⓐ is – ⓑ couldn't"], a:0,
+   exp:"yesterday → 과거 was, couldn't"},
+
+  {type:"v", tag:"고난도", q:"다음 중 어법상 알맞은 문장은 모두 몇 개인가요?<br><span class=\"eng\">ⓐ He will be a pilot.&nbsp;ⓑ She can speaks French.&nbsp;ⓒ We had to leave.&nbsp;ⓓ They are like pizza.&nbsp;ⓔ I don't have to wait.</span>",
+   opts:["3개","1개","2개","4개","5개"], a:0,
+   exp:"ⓑ can speak, ⓓ They like pizza. ⓐ ⓒ ⓔ가 맞습니다."},
+
+  {type:"v", tag:"고난도", q:"다음 글의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">Jiho has a big test tomorrow. He ___ study tonight. He can't play games.</span>",
+   opts:["has to","doesn't have to","may","can't","is able to"], a:0,
+   exp:"시험이 있어 공부해야 함 → <b>has to</b>"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 동사 세 가족", desc:"한글로 이해 12 · 쉬운 영어 8 · be동사 · 일반동사 · 조동사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 전치사 뽀개기</span></h1>
-    <p class="sub">in · on · under · 때의 at · on · in · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">in · on · under · 때의 at · on · in · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -739,6 +739,356 @@ var L4 = [
    opts:["전치사 뒤에는 동사가 온다.","전치사 뒤에는 명사가 온다.","시각에는 at을 쓴다.","요일에는 on을 쓴다.","달과 계절에는 in을 쓴다."], a:0,
    exp:"전치사 뒤에는 <b>명사</b>가 옵니다. 대명사가 올 때는 me · him · her 처럼 목적격을 씁니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘전치사’의 ‘전(前)’은 무슨 뜻일까요?",
+   opts:["앞","뒤","위","아래","옆"], a:0,
+   exp:"명사 <b>앞</b>에 놓이는 말이라서 전치사입니다. in the box — in이 box 앞에 옵니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"공이 의자 밑에 있다.", q:"‘의자’와 짝이 되어 자리를 알려 주는 말은?",
+   opts:["밑에","공이","있다","의자","공"], a:0,
+   exp:"‘밑에’가 공이 있는 자리를 알려 줍니다. under the chair"},
+
+  {type:"n", tag:"한글로 이해", sent:"우리는 월요일에 시험을 본다.", q:"‘월요일에’의 ‘에’가 알려 주는 것은?",
+   opts:["언제인지","어디인지","누구와 함께인지","무엇으로인지","얼마나인지"], a:0,
+   exp:"요일은 <b>때</b>입니다. on Monday"},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 친구와 함께 도서관에 간다.", q:"‘친구와 함께’가 알려 주는 것은?",
+   opts:["누구와 함께인지","언제인지","어디인지","왜인지","얼마인지"], a:0,
+   exp:"‘~와 함께’는 <b>with</b>입니다. with my friend"},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 연필로 이름을 쓴다.", q:"‘연필로’의 ‘로’가 알려 주는 것은?",
+   opts:["무엇을 가지고(도구)","언제인지","어디로 가는지","누구와 함께인지","얼마나 많은지"], a:0,
+   exp:"도구를 나타내는 ‘~로’는 <b>with</b>입니다. with a pencil"},
+
+  {type:"n", tag:"한글로 이해", q:"우리말은 ‘상자 안에’처럼 명사 뒤에 붙지만, 영어 전치사는 어디에 올까요?",
+   opts:["명사 앞","명사 뒤","문장 맨 끝","동사 뒤에만","아무 데나"], a:0,
+   exp:"영어는 <b>전치사 + 명사</b> 차례입니다. in the box"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>자리</b>를 알려 주는 말을 모두 고르세요. (여러 개)",
+   opts:["뒤에","옆에","앞에","세 시에","여름에"], ans:[0,1,2],
+   exp:"뒤 · 옆 · 앞은 자리, ‘세 시에 · 여름에’는 때입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>때</b>를 알려 주는 말을 모두 고르세요. (여러 개)",
+   opts:["일곱 시에","토요일에","겨울에","책상 위에","문 뒤에"], ans:[0,1,2],
+   exp:"시각 · 요일 · 계절은 때, 책상 위 · 문 뒤는 자리입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘방 ___ ’에 넣어 자리를 말할 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["안에","밖에","앞에","빨리","예쁜"], ans:[0,1,2],
+   exp:"안 · 밖 · 앞은 자리를 알려 줍니다. ‘빨리’는 부사, ‘예쁜’은 형용사입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"전치사 뒤에 올 수 <b>없는</b> 것은?",
+   opts:["달리다(동사원형)","학교(명사)","그(대명사, him)","오후(명사)","내 친구(명사)"], a:0,
+   exp:"전치사 뒤에는 <b>명사나 대명사</b>가 옵니다. 동사원형은 올 수 없습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘집에서 학교까지’에서 ‘에서’와 ‘까지’처럼 출발과 도착을 알려 주는 영어 짝은?",
+   opts:["from – to","in – on","at – in","under – on","with – by"], a:0,
+   exp:"from ~ to … = ‘~에서 …까지’. from home <b>to</b> school"},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["전치사는 명사 뒤에 온다.","전치사는 자리를 알려 줄 수 있다.","전치사는 때를 알려 줄 수 있다.","전치사 뒤에 대명사가 오면 me · him 모양을 쓴다.","with는 ‘~와 함께’라는 뜻이 있다."], a:0,
+   exp:"전치사는 명사 <b>앞</b>에 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘~ 뒤에’를 영어로 하면?",
+   opts:["behind","in","on","under","to"], a:0, eng:true,
+   exp:"~ 뒤에 = <b>behind</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘~ 앞에’를 영어로 하면?",
+   opts:["in front of","behind","under","next to","into"], a:0, eng:true,
+   exp:"~ 앞에 = <b>in front of</b> (세 낱말이 한 덩어리)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"The dog is ___ the table.", q:"‘개가 탁자 아래에 있다’가 되도록 알맞은 것은?",
+   opts:["under","on","in","to","with"], a:0, eng:true,
+   ko:"개가 탁자 아래에 있다.",
+   exp:"~ 아래에 = <b>under</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She sits ___ me.", q:"‘그녀는 내 옆에 앉는다’가 되도록 알맞은 것은?",
+   opts:["next to","in","on","under","from"], a:0, eng:true,
+   ko:"그녀는 내 옆에 앉는다.",
+   exp:"~ 옆에 = <b>next to</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"This gift is ___ you.", q:"‘이 선물은 너를 위한 것이다’가 되도록 알맞은 것은?",
+   opts:["for","in","on","under","at"], a:0, eng:true,
+   ko:"이 선물은 너를 위한 것이다.",
+   exp:"~을 위해 = <b>for</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I am ___ Korea.", q:"‘나는 한국에서 왔다(한국 출신이다)’가 되도록 알맞은 것은?",
+   opts:["from","to","on","under","with"], a:0, eng:true,
+   ko:"나는 한국에서 왔다.",
+   exp:"~에서, ~ 출신 = <b>from</b>"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"우리말과 전치사가 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["~ 안에 – in","~ 아래에 – under","~와 함께 – with","~ 뒤에 – on","~ 옆에 – from"], ans:[0,1,2],
+   exp:"~ 뒤에 = behind, ~ 옆에 = next to입니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"on the bed", q:"<b>on the bed</b>의 뜻으로 알맞은 것은?",
+   opts:["침대 위에","침대 아래에","침대 안에","침대 옆에","침대 뒤에"], a:0, eng:true,
+   exp:"on = ~ 위에(닿아서). <b>침대 위에</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"뜻", word:"in front of", q:"<b>in front of</b>의 뜻으로 알맞은 것은?",
+   opts:["~ 앞에","~ 뒤에","~ 안에","~ 아래에","~ 위에"], a:0,
+   exp:"in front of = <b>~ 앞에</b>. 반대는 behind(~ 뒤에)"},
+
+  {type:"n", tag:"뜻", word:"from", q:"<b>from</b>의 뜻으로 알맞은 것은?",
+   opts:["~ 에서, ~ 로부터","~ 로, ~ 에게","~ 와 함께","~ 아래에","~ 위에"], a:0,
+   exp:"from = <b>~에서, ~로부터</b>. from Seoul(서울에서)"},
+
+  {type:"n", tag:"뜻", word:"for", q:"<b>for</b>의 뜻으로 알맞은 것은?",
+   opts:["~ 을 위해","~ 아래에","~ 뒤에","~ 안에","~ 옆에"], a:0,
+   exp:"for = <b>~을 위해</b>. for you(너를 위해)"},
+
+  {type:"n", tag:"뜻", word:"into", q:"<b>into</b>의 뜻으로 알맞은 것은?",
+   opts:["~ 안으로","~ 밖으로","~ 위에","~ 옆에","~ 뒤에"], a:0,
+   exp:"into = <b>~ 안으로</b>(움직임). He jumped into the pool."},
+
+  {type:"n", tag:"뜻", word:"between", q:"<b>between</b>의 뜻으로 알맞은 것은?",
+   opts:["~ 사이에","~ 위에","~ 뒤에","~ 안에","~ 로부터"], a:0,
+   exp:"between A and B = <b>A와 B 사이에</b>"},
+
+  {type:"n", tag:"뜻", word:"by", q:"‘버스로, 기차로’처럼 탈것 앞에 쓰는 <b>by</b>의 뜻은?",
+   opts:["~ 로(타고)","~ 와 함께","~ 안에","~ 아래에","~ 을 위해"], a:0,
+   exp:"by bus, by train = <b>~을 타고</b>"},
+
+  {type:"n", tag:"뜻", word:"over", q:"<b>over</b>의 뜻으로 알맞은 것은?",
+   opts:["~ 위에(떨어져서), ~ 위로","~ 아래에","~ 안에","~ 옆에","~ 뒤에"], a:0,
+   exp:"over = 닿지 않고 <b>위에</b>. A bird flew over the house."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>위</b>와 관계있는 전치사를 모두 고르세요. (여러 개)",
+   opts:["on","over","above","under","below"], ans:[0,1,2],
+   exp:"on(닿아서 위) · over · above(떨어져서 위). under · below는 아래입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"바르게 쓴 짝을 모두 고르세요. (여러 개)",
+   opts:["between you and me","in front of the house","next to the bank","next the bank","in front the house"], ans:[0,1,2],
+   exp:"next <b>to</b>, in front <b>of</b>처럼 덩어리를 빠뜨리면 안 됩니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"탈것과 함께 쓰는 by가 바르게 쓰인 것을 모두 고르세요. (여러 개)",
+   opts:["by bus","by subway","by bike","by a bus","by the bike"], ans:[0,1,2],
+   exp:"by + 탈것에는 a · the를 붙이지 않습니다. by bus"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"뒤에 <b>사람</b>이 와서 ‘~에게, ~을 위해, ~와 함께’가 되는 것을 모두 고르세요. (여러 개)",
+   opts:["to my mom","for my dad","with my sister","in the box","on Monday"], ans:[0,1,2],
+   exp:"to · for · with + 사람. in the box는 자리, on Monday는 때입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"전치사 뒤에 오는 말이 <b>바른</b> 것을 모두 고르세요. (여러 개)",
+   opts:["with her","for them","to us","with she","for they"], ans:[0,1,2],
+   exp:"전치사 뒤 대명사는 <b>her · them · us</b> 모양입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>움직임</b>(방향)을 나타내는 표현을 모두 고르세요. (여러 개)",
+   opts:["go to the park","come from school","jump into the water","sit on the chair","stay in the room"], ans:[0,1,2],
+   exp:"to · from · into는 움직임, on · in은 머무는 자리입니다."},
+
+  {type:"v", tag:"구별", sent:"The bank is ___ the post office and the school.", q:"‘은행은 우체국과 학교 사이에 있다’가 되도록 알맞은 것은?",
+   opts:["between","behind","under","into","from"], a:0, eng:true,
+   ko:"은행은 우체국과 학교 사이에 있다.",
+   exp:"A and B 사이 = <b>between</b>"},
+
+  {type:"v", tag:"구별", sent:"There is a tree ___ my house.", q:"‘우리 집 앞에 나무가 있다’가 되도록 알맞은 것은?",
+   opts:["in front of","behind","into","under","between"], a:0, eng:true,
+   ko:"우리 집 앞에 나무가 있다.",
+   exp:"~ 앞에 = <b>in front of</b>"},
+
+  {type:"v", tag:"구별", sent:"He jumped ___ the swimming pool.", q:"‘그는 수영장 안으로 뛰어들었다’가 되도록 알맞은 것은?",
+   opts:["into","on","under","behind","from"], a:0, eng:true,
+   ko:"그는 수영장 안으로 뛰어들었다.",
+   exp:"안으로 들어가는 움직임 = <b>into</b>"},
+
+  {type:"v", tag:"구별", sent:"I made this cake ___ you.", q:"‘너를 위해 이 케이크를 만들었다’가 되도록 알맞은 것은?",
+   opts:["for","to","on","under","into"], a:0, eng:true,
+   ko:"나는 너를 위해 이 케이크를 만들었다.",
+   exp:"~을 위해 = <b>for</b>"},
+
+  {type:"v", tag:"구별", sent:"We walked ___ the station to the hotel.", q:"‘우리는 역에서 호텔까지 걸었다’가 되도록 알맞은 것은?",
+   opts:["from","into","under","on","with"], a:0, eng:true,
+   ko:"우리는 역에서 호텔까지 걸었다.",
+   exp:"from ~ to … = ~에서 …까지"},
+
+  {type:"v", tag:"구별", sent:"A plane flew ___ the city.", q:"‘비행기가 도시 위로 날아갔다’가 되도록 알맞은 것은?",
+   opts:["over","under","in","into","next to"], a:0, eng:true,
+   ko:"비행기가 도시 위로 날아갔다.",
+   exp:"닿지 않고 위로 = <b>over</b>"},
+
+  {type:"v", tag:"구별", hard:true, q:"다음 중 어법상 <b>틀린</b> 것은?",
+   opts:["next the door","next to the door","behind the door","in front of the door","by the door"], a:0, eng:true,
+   exp:"‘~ 옆에’는 <b>next to</b>. to를 빠뜨리면 틀립니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"때", sent:"The movie starts ___ 7:30.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["at","on","in","to","for"], a:0, eng:true,
+   ko:"영화는 7시 30분에 시작한다.",
+   exp:"시각 앞에는 <b>at</b>"},
+
+  {type:"n", tag:"때", sent:"We go on a picnic ___ May 5.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["on","at","in","to","by"], a:0, eng:true,
+   ko:"우리는 5월 5일에 소풍을 간다.",
+   exp:"날짜 앞에는 <b>on</b>"},
+
+  {type:"n", tag:"때", sent:"He was born ___ 2012.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["in","on","at","to","for"], a:0, eng:true,
+   ko:"그는 2012년에 태어났다.",
+   exp:"연도 앞에는 <b>in</b>"},
+
+  {type:"n", tag:"때", sent:"I do my homework ___ the evening.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["in","at","on","to","by"], a:0, eng:true,
+   ko:"나는 저녁에 숙제를 한다.",
+   exp:"in the morning / afternoon / evening. (밤은 at night)"},
+
+  {type:"n", tag:"때", sent:"The stars shine ___ night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["at","in","on","to","for"], a:0, eng:true,
+   ko:"별은 밤에 빛난다.",
+   exp:"night 앞에는 <b>at</b>. at night"},
+
+  {type:"n", tag:"때", sent:"We have a party ___ Christmas Day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["on","in","at","to","by"], a:0, eng:true,
+   ko:"우리는 크리스마스 날에 파티를 한다.",
+   exp:"특정한 날 앞에는 <b>on</b>"},
+
+  {type:"n", tag:"때", multi:true, eng:true, q:"<b>on</b>과 함께 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["Sunday","my birthday","July 4","summer","noon"], ans:[0,1,2],
+   exp:"요일 · 특정한 날 · 날짜는 on, 계절은 in, noon은 at입니다."},
+
+  {type:"a", tag:"자리", sent:"There are many people ___ the park.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["in","on","at","to","by"], a:0, eng:true,
+   ko:"공원에 사람이 많다.",
+   exp:"넓은 공간 안 → <b>in</b> the park"},
+
+  {type:"a", tag:"자리", sent:"Let's meet ___ the library.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["at","on","to","into","under"], a:0, eng:true,
+   ko:"도서관에서 만나자.",
+   exp:"만나는 한 지점 → <b>at</b> the library"},
+
+  {type:"a", tag:"자리", sent:"My uncle lives ___ Canada.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["in","at","on","to","by"], a:0, eng:true,
+   ko:"삼촌은 캐나다에 사신다.",
+   exp:"나라 앞에는 <b>in</b>"},
+
+  {type:"a", tag:"자리", sent:"The clock is ___ the wall.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["on","in","at","under","into"], a:0, eng:true,
+   ko:"시계가 벽에 걸려 있다.",
+   exp:"벽에 붙어 있으면 <b>on</b>"},
+
+  {type:"a", tag:"자리", q:"‘버스 정류장에서’처럼 한 지점에 쓰는 전치사와 ‘서울에서’처럼 넓은 곳에 쓰는 전치사를 바르게 짝지은 것은?",
+   opts:["at – in","in – at","on – at","at – on","in – on"], a:0, eng:true,
+   exp:"한 지점 <b>at</b>, 도시 · 나라처럼 넓은 곳 <b>in</b>"},
+
+  {type:"a", tag:"자리", multi:true, eng:true, q:"<b>in</b>과 어울리는 짝을 모두 고르세요. (여러 개)",
+   opts:["in the kitchen","in Busan","in the world","at noon","in Monday"], ans:[0,1,2],
+   exp:"방 · 도시 · 세계처럼 공간 안은 in. 요일은 on Monday입니다."},
+
+  {type:"v", tag:"가려내기", sent:"Can you go shopping with ___ ?", q:"‘우리와 함께 쇼핑하러 갈래?’가 되도록 알맞은 것은?",
+   opts:["us","we","our","ours","we're"], a:0, eng:true,
+   ko:"우리와 함께 쇼핑하러 갈래?",
+   exp:"전치사 뒤 대명사는 목적격 <b>us</b>"},
+
+  {type:"v", tag:"가려내기", sent:"I bought flowers for ___ .", q:"‘그녀를 위해 꽃을 샀다’가 되도록 알맞은 것은?",
+   opts:["her","she","hers","she's","herself's"], a:0, eng:true,
+   ko:"나는 그녀를 위해 꽃을 샀다.",
+   exp:"전치사 for 뒤에는 목적격 <b>her</b>"},
+
+  {type:"v", tag:"가려내기", sent:"She cut the paper ___ scissors.", q:"‘가위로 종이를 잘랐다’가 되도록 알맞은 것은?",
+   opts:["with","by","on","in","at"], a:0, eng:true,
+   ko:"그녀는 가위로 종이를 잘랐다.",
+   exp:"도구 ‘~로’ → <b>with</b>"},
+
+  {type:"v", tag:"가려내기", sent:"He goes to work ___ subway.", q:"‘지하철로 출근한다’가 되도록 알맞은 것은?",
+   opts:["by","with","on the","in a","at"], a:0, eng:true,
+   ko:"그는 지하철로 출근한다.",
+   exp:"탈것 ‘~를 타고’ → <b>by</b> subway (관사 없음)"},
+
+  {type:"v", tag:"가려내기", multi:true, eng:true, q:"바르게 쓴 것을 모두 고르세요. (여러 개)",
+   opts:["at noon","in the morning","on Friday","in night","at 2020"], ans:[0,1,2],
+   exp:"밤은 at night, 연도는 in 2020입니다."},
+
+  {type:"v", tag:"가려내기", hard:true, q:"다음 중 어법상 <b>틀린</b> 것은?",
+   opts:["I will see you in Sunday.","I will see you on Sunday.","I will see you at five.","I will see you in July.","I will see you in the afternoon."], a:0, eng:true,
+   exp:"요일 앞에는 <b>on</b>. on Sunday"},
+
+  {type:"v", tag:"가려내기", hard:true, q:"다음 중 어법상 <b>틀린</b> 것은?",
+   opts:["This is for he.","This is for him.","Come with me.","Sit next to her.","Talk to them."], a:0, eng:true,
+   exp:"전치사 뒤 대명사는 목적격 <b>him</b>"}
+];
+
+var X4 = [
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"to", q:"‘~ 로, ~ 에게’(방향)를 나타내는 전치사를 영어로 써 보세요.",
+   exp:"~로, ~에게 = <b>to</b>. go to school"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"for", q:"‘~ 을 위해’를 나타내는 전치사를 영어로 써 보세요.",
+   exp:"~을 위해 = <b>for</b>"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"into", q:"‘~ 안으로’(움직임)를 나타내는 전치사를 영어로 써 보세요.",
+   exp:"~ 안으로 = <b>into</b>"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"between", q:"‘~ 사이에’를 나타내는 전치사를 영어로 써 보세요.",
+   exp:"~ 사이에 = <b>between</b>"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"in front of", q:"‘~ 앞에’를 나타내는 말을 영어로 써 보세요. (세 낱말)",
+   exp:"~ 앞에 = <b>in front of</b>"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"over", alt:["above"], q:"‘~ 위에(떨어져서)’를 나타내는 전치사를 영어로 써 보세요.",
+   exp:"닿지 않고 위 = <b>over</b> (above도 됩니다)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"by", q:"‘버스를 타고’의 ‘타고’처럼 탈것 앞에 쓰는 전치사를 영어로 써 보세요.",
+   exp:"by bus = 버스를 타고. <b>by</b>"},
+
+  {type:"a", tag:"때 쓰기", write:true, ans:"at", sent:"School starts ___ nine.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"학교는 아홉 시에 시작한다.",
+   exp:"시각 앞에는 <b>at</b>"},
+
+  {type:"a", tag:"때 쓰기", write:true, ans:"on", sent:"We don't go to school ___ Sunday.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"우리는 일요일에 학교에 가지 않는다.",
+   exp:"요일 앞에는 <b>on</b>"},
+
+  {type:"a", tag:"때 쓰기", write:true, ans:"in", sent:"Flowers bloom ___ spring.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"꽃은 봄에 핀다.",
+   exp:"계절 앞에는 <b>in</b>"},
+
+  {type:"a", tag:"때 쓰기", write:true, ans:"at", sent:"I usually go to bed ___ night.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"나는 보통 밤에 잠자리에 든다.",
+   exp:"at night"},
+
+  {type:"a", tag:"때 쓰기", write:true, ans:"in", sent:"I jog ___ the morning.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"나는 아침에 조깅한다.",
+   exp:"in the morning"},
+
+  {type:"a", tag:"때 쓰기", write:true, ans:"on", sent:"Her birthday party is ___ Friday.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"그녀의 생일 파티는 금요일이다.",
+   exp:"요일 앞에는 <b>on</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"under", sent:"My shoes are ___ the bed.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"내 신발은 침대 아래에 있다.",
+   exp:"~ 아래에 = <b>under</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"behind", sent:"The cat is hiding ___ the sofa.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"고양이가 소파 뒤에 숨어 있다.",
+   exp:"~ 뒤에 = <b>behind</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"at", sent:"Wait for me ___ the bus stop.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"버스 정류장에서 나를 기다려.",
+   exp:"한 지점 → <b>at</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"with", sent:"I eat soup ___ a spoon.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"나는 숟가락으로 수프를 먹는다.",
+   exp:"도구 ‘~로’ → <b>with</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"from", sent:"This letter is ___ my grandma.", q:"빈칸에 알맞은 전치사를 써 보세요.",
+   ko:"이 편지는 할머니에게서 온 것이다.",
+   exp:"~로부터 = <b>from</b>"},
+
+  {type:"v", tag:"문장 채우기", hard:true, write:true, ans:"The ball is next to the box", q:"우리말에 맞게 영어로 써 보세요.<br>‘공이 상자 옆에 있다’ (The로 시작해서)",
+   exp:"<b>The ball is next to the box.</b> next to는 한 덩어리입니다."},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["요일 앞에는 in을 쓴다.","시각 앞에는 at을 쓴다.","계절과 달 앞에는 in을 쓴다.","전치사 뒤 대명사는 me · him · her 모양이다.","by + 탈것에는 a · the를 붙이지 않는다."], a:0,
+   exp:"요일 앞에는 <b>on</b>입니다. on Monday"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 자리와 때를 알려 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 전치사가 무엇인지 · 명사 앞자리 · in · on · under · to · with · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

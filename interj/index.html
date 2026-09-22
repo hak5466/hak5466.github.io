@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · 감탄사 뽀개기</span></h1>
-    <p class="sub">Wow · Ouch · Oops · 감탄문 What·How · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">Wow · Ouch · Oops · 감탄문 What·How · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -745,6 +745,359 @@ var L4 = [
    opts:["What 감탄문에서 셀 수 없는 명사 앞에는 a를 쓴다.","What 뒤에는 명사가 들어간 말이 온다.","How 뒤에는 형용사나 부사가 온다.","감탄문 끝의 주어와 동사는 뺄 수 있다.","감탄사는 문장 맨 앞에 자주 온다."], a:0,
    exp:"셀 수 없는 명사와 복수 명사 앞에는 <b>a를 쓰지 않습니다</b>."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", sent:"야호, 방학이다!", q:"밑줄 칠 감탄사는 무엇인가요?",
+   opts:["야호","방학","이다","쉼표","느낌표"], a:0,
+   exp:"기쁨을 나타내는 <b>야호</b>가 감탄사입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"어머, 벌써 여덟 시네.", q:"밑줄 칠 감탄사는 무엇인가요?",
+   opts:["어머","벌써","여덟 시","-네","쉼표"], a:0,
+   exp:"놀람을 나타내는 <b>어머</b>가 감탄사입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"아이쿠, 컵을 떨어뜨렸다.", q:"‘아이쿠’가 나타내는 느낌으로 알맞은 것은?",
+   opts:["실수했을 때의 놀람","기쁨","배고픔","졸림","자랑스러움"], a:0,
+   exp:"작은 실수를 했을 때 → 영어로는 Oops!"},
+
+  {type:"n", tag:"한글로 이해", sent:"음, 잘 모르겠어.", q:"‘음’이 나타내는 것으로 알맞은 것은?",
+   opts:["잠깐 생각하는 느낌","큰 기쁨","아픔","부르는 말","칭찬"], a:0,
+   exp:"망설이거나 생각할 때 → 영어로는 Well, 또는 Hmm"},
+
+  {type:"n", tag:"한글로 이해", q:"감탄사가 다른 품사와 다른 점으로 알맞은 것은?",
+   opts:["다른 낱말을 꾸미거나 잇지 않고 혼자 느낌을 나타낸다","명사를 꾸며 준다","문장과 문장을 잇는다","동사를 꾸며 준다","사람의 이름을 나타낸다"], a:0,
+   exp:"감탄사는 <b>혼자 따로</b> 쓰여 느낌을 나타냅니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"와! 이 그림 정말 멋지다.", q:"‘와’를 빼면 어떻게 될까요?",
+   opts:["놀라는 느낌만 빠지고 문장은 된다","문장이 되지 않는다","뜻이 반대가 된다","주어가 사라진다","질문이 된다"], a:0,
+   exp:"감탄사는 빼도 문장이 됩니다. 느낌만 약해집니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 감탄사를 모두 고르세요. (여러 개)",
+   opts:["야호","아이쿠","쉿","학교","달리다"], ans:[0,1,2],
+   exp:"학교는 명사, 달리다는 동사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"누군가를 부를 때 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["야","저기요","얘","아야","만세"], ans:[0,1,2],
+   exp:"부르는 말 → 영어로는 Hey!"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"맛있을 때 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["음, 맛있다","냠냠","와, 맛있다","아야","쉿"], ans:[0,1,2],
+   exp:"영어로는 Yummy! Yum!"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"조용히 하라고 할 때 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["쉿","조용","쉬잇","만세","와"], ans:[0,1,2],
+   exp:"영어로는 Shh!"},
+
+  {type:"n", tag:"한글로 이해", sent:"___ ! 우리가 이겼다!", q:"빈칸에 알맞은 감탄사는?",
+   opts:["만세","아야","쉿","아이쿠","음"], a:0,
+   exp:"이겨서 기쁨 → <b>만세</b>(Hurray!)"},
+
+  {type:"n", tag:"한글로 이해", sent:"___ , 도서관에서는 조용히 해.", q:"빈칸에 알맞은 감탄사는?",
+   opts:["쉿","만세","야호","와","아야"], a:0,
+   exp:"조용히 하라는 말 → <b>쉿</b>(Shh!)"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘야! 저기!’처럼 부를 때 쓰는 영어는?",
+   opts:["Hey!","Ouch!","Oops!","Yummy!","Shh!"], a:0,
+   exp:"부를 때 → <b>Hey!</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘쉿!’을 영어로 하면?",
+   opts:["Shh!","Wow!","Ouch!","Hurray!","Hey!"], a:0,
+   exp:"조용히 → <b>Shh!</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘냠냠, 맛있다!’를 영어로 하면?",
+   opts:["Yummy!","Ouch!","Oops!","Shh!","Hey!"], a:0,
+   exp:"맛있을 때 → <b>Yummy!</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘아!’(무언가를 알아차렸을 때)를 영어로 하면?",
+   opts:["Oh!","Ouch!","Oops!","Yummy!","Hurray!"], a:0,
+   exp:"알아차리거나 놀랐을 때 → <b>Oh!</b>"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"감탄사를 모두 고르세요. (여러 개)",
+   opts:["Hurray","Yummy","Shh","Happy","Hurry"], ans:[0,1,2],
+   exp:"Happy는 형용사, Hurry는 동사(서두르다)입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"Oops!가 알맞은 때는?",
+   opts:["우유를 쏟았을 때","생일 선물을 받았을 때","친구를 부를 때","맛있는 것을 먹을 때","시험에 합격했을 때"], a:0,
+   exp:"작은 실수 → <b>Oops!</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"Hurray!가 알맞은 때는?",
+   opts:["우리 반이 경기에서 이겼을 때","넘어졌을 때","컵을 깼을 때","도서관에 있을 때","생각할 때"], a:0,
+   exp:"기쁨과 환호 → <b>Hurray!</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"Shh!가 알맞은 때는?",
+   opts:["아기가 자고 있을 때","선물을 받았을 때","발을 다쳤을 때","친구를 부를 때","골을 넣었을 때"], a:0,
+   exp:"조용히 하라고 할 때 → <b>Shh!</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"뜻", word:"Yummy!", q:"<b>Yummy!</b>는 어떤 느낌을 나타낼까요?",
+   opts:["맛있음 (냠냠!)","아픔 (아야!)","실수 (이런!)","부름 (야!)","생각 (글쎄)"], a:0,
+   exp:"Yummy!는 <b>맛있다!</b>입니다."},
+
+  {type:"n", tag:"뜻", word:"Shh!", q:"<b>Shh!</b>는 어떤 때 쓸까요?",
+   opts:["조용히 하라고 할 때 (쉿!)","아플 때","기쁠 때","놀랐을 때","부를 때"], a:0,
+   exp:"Shh! = <b>쉿!</b>"},
+
+  {type:"n", tag:"뜻", word:"Oh no!", q:"<b>Oh no!</b>는 어떤 느낌을 나타낼까요?",
+   opts:["안타까움이나 당황 (아, 이런!)","큰 기쁨","맛있음","칭찬","부름"], a:0,
+   exp:"나쁜 일이 생겼을 때 → <b>Oh no!</b>"},
+
+  {type:"n", tag:"뜻", word:"Yay!", q:"<b>Yay!</b>는 어떤 느낌을 나타낼까요?",
+   opts:["기쁨 (야호!)","아픔","슬픔","졸림","실수"], a:0,
+   exp:"Yay! = <b>야호!</b>"},
+
+  {type:"n", tag:"뜻", word:"Hmm,", q:"<b>Hmm,</b>으로 말을 시작하면 어떤 느낌일까요?",
+   opts:["생각하거나 망설일 때 (음,)","아플 때","기쁠 때","부를 때","조용히 하라고 할 때"], a:0,
+   exp:"Hmm = <b>음</b>. 생각할 때 씁니다."},
+
+  {type:"n", tag:"뜻", word:"Oh dear!", q:"<b>Oh dear!</b>의 쓰임으로 알맞은 것은?",
+   opts:["걱정되거나 안타까울 때 (어머나, 저런!)","맛있을 때","골을 넣었을 때","부를 때","조용히 시킬 때"], a:0,
+   exp:"Oh dear! = <b>어머나, 저런!</b>"},
+
+  {type:"n", tag:"뜻", word:"Great!", q:"<b>Great!</b>는 어떤 때 쓸까요?",
+   opts:["좋은 소식을 듣고 기뻐할 때 (잘됐다!)","아플 때","실수했을 때","조용히 시킬 때","생각할 때"], a:0,
+   exp:"Great! = <b>좋아! 잘됐다!</b>"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 감탄사를 모두 고르세요. (여러 개)",
+   opts:["Yay","Shh","Hmm","Yes","Say"], ans:[0,1,2],
+   exp:"Say는 동사(말하다)입니다. Yes는 대답하는 말입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"아프거나 실수했을 때 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["Ouch","Oops","Ow","Yummy","Hurray"], ans:[0,1,2],
+   exp:"Ouch · Ow(아프다) · Oops(실수)"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"생각하거나 망설일 때 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["Well","Hmm","Um","Wow","Ouch"], ans:[0,1,2],
+   exp:"Well · Hmm · Um"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"좋은 소식을 들었을 때 쓰는 말을 모두 고르세요. (여러 개)",
+   opts:["Great","Wow","Yay","Ouch","Shh"], ans:[0,1,2],
+   exp:"기쁨과 감탄 → Great · Wow · Yay"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"감탄사 뒤에 올 수 있는 문장 부호를 모두 고르세요. (여러 개)",
+   opts:["!",",",";","@","#"], ans:[0,1],
+   exp:"감탄사 뒤에는 느낌표(!)나 쉼표(,)를 씁니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"바르게 쓴 문장을 모두 고르세요. (여러 개)",
+   opts:["Ouch! My finger!","Hmm, I'm not sure.","Yay! It's Friday!","I Ouch am hurt.","It's yummy wow good."], ans:[0,1,2],
+   exp:"감탄사는 보통 문장 맨 앞에 따로 씁니다."},
+
+  {type:"v", tag:"문장 채우기", sent:"___ ! This pizza is so good.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Yummy","Ouch","Oops","Shh","Oh no"], a:0, eng:true,
+   ko:"냠냠! 이 피자 정말 맛있다.",
+   exp:"맛있을 때 → <b>Yummy</b>"},
+
+  {type:"v", tag:"문장 채우기", sent:"___ ! The baby is sleeping.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Shh","Hurray","Yay","Wow","Yummy"], a:0, eng:true,
+   ko:"쉿! 아기가 자고 있어.",
+   exp:"조용히 → <b>Shh</b>"},
+
+  {type:"v", tag:"문장 채우기", sent:"___ ! I spilled my milk.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Oops","Hurray","Yummy","Yay","Great"], a:0, eng:true,
+   ko:"이런! 우유를 쏟았다.",
+   exp:"작은 실수 → <b>Oops</b>"},
+
+  {type:"v", tag:"문장 채우기", sent:"___ ! Tomorrow is a holiday!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Yay","Ouch","Oops","Shh","Oh dear"], a:0, eng:true,
+   ko:"야호! 내일은 쉬는 날이다!",
+   exp:"기쁨 → <b>Yay</b>"},
+
+  {type:"v", tag:"문장 채우기", sent:"___ ! Where are you going?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Hey","Ouch","Oops","Yummy","Shh"], a:0, eng:true,
+   ko:"야! 어디 가니?",
+   exp:"부를 때 → <b>Hey</b>"},
+
+  {type:"v", tag:"문장 채우기", sent:"___ , I think you are right.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Hmm","Ouch","Hurray","Shh","Yummy"], a:0, eng:true,
+   ko:"음, 네 말이 맞는 것 같아.",
+   exp:"생각하며 말을 시작 → <b>Hmm</b>"},
+
+  {type:"v", tag:"문장 채우기", q:"감탄사의 쓰임이 <b>어색한</b> 문장은?",
+   opts:["Yummy! I hurt my leg.","Ouch! I hurt my leg.","Wow! What a nice car!","Oops! I'm sorry.","Shh! Be quiet."], a:0,
+   exp:"다리를 다쳤을 때는 Ouch!가 알맞습니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"What 감탄문", sent:"___ a cute cat it is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","How","Very","So","That"], a:0, eng:true,
+   ko:"정말 귀여운 고양이구나!",
+   exp:"a + 형용사 + 명사 앞 → <b>What</b>"},
+
+  {type:"n", tag:"What 감탄문", sent:"What ___ tall tree!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["a","an","the","×","very"], a:0, eng:true,
+   ko:"정말 키 큰 나무구나!",
+   exp:"셀 수 있는 단수 명사, 자음 소리 → <b>a</b>"},
+
+  {type:"n", tag:"What 감탄문", sent:"What ___ amazing story!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["an","a","the","×","very"], a:0, eng:true,
+   ko:"정말 놀라운 이야기구나!",
+   exp:"모음 소리 amazing → <b>an</b>"},
+
+  {type:"n", tag:"What 감탄문", sent:"What kind people ___ !", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["they are","are they","is it","it is","he is"], a:0, eng:true,
+   ko:"정말 친절한 사람들이구나!",
+   exp:"주어 + 동사 차례, people은 복수 → <b>they are</b>"},
+
+  {type:"n", tag:"What 감탄문", sent:"What ___ shoes you have!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["nice","a nice","an nice","nicely","very nice"], a:0, eng:true,
+   ko:"정말 멋진 신발을 가졌구나!",
+   exp:"복수 명사 shoes 앞에는 a를 쓰지 않습니다."},
+
+  {type:"n", tag:"What 감탄문", sent:"___ hot water it is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","What a","How","How a","Very"], a:0, eng:true,
+   ko:"정말 뜨거운 물이구나!",
+   exp:"water는 셀 수 없음 → a 없이 <b>What</b>"},
+
+  {type:"n", tag:"What 감탄문", sent:"What ___ easy question it was!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["an","a","×","the","so"], a:0, eng:true,
+   ko:"정말 쉬운 문제였구나!",
+   exp:"모음 소리 easy → <b>an</b>"},
+
+  {type:"a", tag:"How 감탄문", sent:"___ beautiful the sky is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["How","What","What a","Very","So"], a:0, eng:true,
+   ko:"하늘이 정말 아름답구나!",
+   exp:"형용사 + 주어 + 동사 → <b>How</b>"},
+
+  {type:"a", tag:"How 감탄문", sent:"How ___ he speaks!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["slowly","slow","a slow","slowness","slows"], a:0, eng:true,
+   ko:"그는 정말 천천히 말하는구나!",
+   exp:"동사 speaks를 꾸미므로 부사 <b>slowly</b>"},
+
+  {type:"a", tag:"How 감탄문", sent:"How ___ the soup is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["hot","a hot","hotly","hot soup","heat"], a:0, eng:true,
+   ko:"그 수프 정말 뜨겁구나!",
+   exp:"How + 형용사 + 주어 + 동사"},
+
+  {type:"a", tag:"How 감탄문", sent:"How kind ___ !", q:"‘너는 정말 친절하구나!’가 되도록 알맞은 것은?",
+   opts:["you are","are you","you","is you","you do"], a:0, eng:true,
+   ko:"너는 정말 친절하구나!",
+   exp:"감탄문은 <b>주어 + 동사</b> 차례"},
+
+  {type:"a", tag:"How 감탄문", sent:"___ well she plays the violin!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["How","What","What a","Very","So a"], a:0, eng:true,
+   ko:"그녀는 바이올린을 정말 잘 켜는구나!",
+   exp:"부사 well 앞 → <b>How</b>"},
+
+  {type:"a", tag:"How 감탄문", multi:true, q:"어법상 옳은 감탄문을 모두 고르세요. (여러 개)",
+   opts:["How cold it is!","What a cold day!","What cold water!","How a cold day it is!","What cold day it is!"], ans:[0,1,2],
+   exp:"How + 형용사 / What + a + 형용사 + 단수 명사 / What + 형용사 + 셀 수 없는 명사"},
+
+  {type:"v", tag:"시험형", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">It is a very old building.<br>= What ___ it is!</span>",
+   opts:["an old building","a old building","old a building","an building old","old building"], a:0, eng:true,
+   exp:"What + <b>an + 형용사 + 명사</b>. old는 모음 소리라 an"},
+
+  {type:"v", tag:"시험형", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The girls are very smart.<br>= How ___ the girls are!</span>",
+   opts:["smart","smart girls","a smart","smartly","the smart"], a:0, eng:true,
+   exp:"How + 형용사 + 주어 + 동사"},
+
+  {type:"v", tag:"시험형", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**What** delicious the cake is!</span>",
+   opts:["How","What a","What an","Very","So"], a:0, eng:true,
+   exp:"명사 없이 형용사 + 주어 + 동사 → <b>How</b>"},
+
+  {type:"v", tag:"시험형", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">What **a** lovely flowers they are!</span>",
+   opts:["a를 뺀다","an","the","very","How"], a:0, eng:true,
+   exp:"복수 명사 flowers 앞에는 a를 쓰지 않습니다."},
+
+  {type:"v", tag:"시험형", q:"대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Look! I made this cake myself.<br>B: ___ ! It looks delicious.</span>",
+   opts:["Wow","Ouch","Oops","Shh","Oh no"], a:0, eng:true,
+   exp:"감탄할 때 → <b>Wow</b>"},
+
+  {type:"v", tag:"시험형", q:"빈칸에 들어갈 말이 나머지와 <b>다른</b> 것은?",
+   opts:["___ nice your bag is!","___ a nice bag!","___ nice bags!","___ an old car!","___ good news!"], a:0,
+   exp:"첫째는 How, 나머지는 What입니다."},
+
+  {type:"v", tag:"시험형", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘그는 정말 빨리 달리는구나!’</span>",
+   opts:["How fast he runs!","What fast he runs!","How fast does he run!","How he runs fast!","What a fast he runs!"], a:0, eng:true,
+   exp:"How + 부사 + 주어 + 동사"}
+];
+
+var X4 = [
+  {type:"n", tag:"바꿔 쓰기", q:"감탄문으로 바르게 바꾼 것은?<br><span class=\"eng\">It is a very exciting game.</span>",
+   opts:["What an exciting game it is!","What a exciting game it is!","How an exciting game it is!","What exciting game it is!","How exciting game it is!"], a:0, eng:true,
+   exp:"What + an + 형용사 + 명사 + 주어 + 동사"},
+
+  {type:"n", tag:"바꿔 쓰기", q:"감탄문으로 바르게 바꾼 것은?<br><span class=\"eng\">He sings very well.</span>",
+   opts:["How well he sings!","What well he sings!","How well does he sing!","What a well he sings!","How he sings well!"], a:0, eng:true,
+   exp:"How + 부사 + 주어 + 동사"},
+
+  {type:"n", tag:"바꿔 쓰기", q:"감탄문을 평서문으로 바르게 바꾼 것은?<br><span class=\"eng\">How brave the firefighter is!</span>",
+   opts:["The firefighter is very brave.","The firefighter is a very brave.","The firefighter very brave is.","Is the firefighter very brave?","The very firefighter is brave."], a:0, eng:true,
+   exp:"How + 형용사 → very + 형용사"},
+
+  {type:"n", tag:"바꿔 쓰기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">What a mess!</span>",
+   opts:["정말 엉망이구나!","무엇이 엉망이니?","엉망이 무엇이니?","엉망이 아니다.","정말 깨끗하구나!"], a:0, eng:true,
+   exp:"What a + 명사! = 정말 ~구나!"},
+
+  {type:"n", tag:"바꿔 쓰기", sent:"___ fresh air it is!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","What a","How","How a","Very"], a:0, eng:true,
+   ko:"정말 신선한 공기구나!",
+   exp:"air는 셀 수 없음 → a 없이 <b>What</b>"},
+
+  {type:"n", tag:"바꿔 쓰기", sent:"___ a small world!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["What","How","Very","So","That"], a:0, eng:true,
+   ko:"세상 참 좁구나!",
+   exp:"a + 형용사 + 명사 앞 → <b>What</b>"},
+
+  {type:"n", tag:"바꿔 쓰기", multi:true, q:"빈칸에 How가 들어가는 문장을 모두 고르세요. (여러 개)",
+   opts:["___ tall you are!","___ quickly time flies!","___ expensive this is!","___ a tall boy!","___ nice weather!"], ans:[0,1,2],
+   exp:"형용사나 부사 + 주어 + 동사 → How"},
+
+  {type:"a", tag:"상황과 대화", q:"친구가 멋진 그림을 보여 줄 때 할 말은?",
+   opts:["Wow!","Ouch!","Oops!","Shh!","Oh no!"], a:0,
+   exp:"감탄 → <b>Wow!</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"실수로 친구 이름을 잘못 불렀을 때 할 말은?",
+   opts:["Oops!","Hurray!","Yummy!","Wow!","Yay!"], a:0,
+   exp:"작은 실수 → <b>Oops!</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"영화관에서 옆 사람이 떠들 때 할 말은?",
+   opts:["Shh!","Yay!","Yummy!","Hurray!","Wow!"], a:0,
+   exp:"조용히 → <b>Shh!</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: My dog is sick.<br>B: ___ ! I'm sorry to hear that.</span>",
+   opts:["Oh dear","Hurray","Yummy","Wow","Yay"], a:0, eng:true,
+   exp:"안타까울 때 → <b>Oh dear</b>"},
+
+  {type:"a", tag:"상황과 대화", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: I passed the test!<br>B: ___ ! Good for you!</span>",
+   opts:["Great","Ouch","Oops","Shh","Oh no"], a:0, eng:true,
+   exp:"좋은 소식 → <b>Great</b>"},
+
+  {type:"a", tag:"상황과 대화", multi:true, q:"감탄사와 쓰임이 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["Shh – 조용히 시킬 때","Yummy – 맛있을 때","Hey – 부를 때","Hurray – 아플 때","Oops – 기쁠 때"], ans:[0,1,2],
+   exp:"Hurray는 기쁠 때, Oops는 실수했을 때 씁니다."},
+
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["How a pretty girl she is!","What a pretty girl she is!","How pretty she is!","What pretty girls they are!","How pretty the girls are!"], a:0,
+   exp:"a + 형용사 + 명사 앞은 What → What a pretty girl she is!"},
+
+  {type:"v", tag:"종합", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
+   opts:["What an interesting movie it is!","How interesting the movie is!","What interesting movies they are!","What a interesting movie it is!","How an interesting movie it is!"], ans:[0,1,2],
+   exp:"an interesting movie / How + 형용사 / 복수 명사는 a 없이"},
+
+  {type:"v", tag:"종합", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">How deep the lake is!<br>= What a ___ lake it is!</span>",
+   opts:["deep","deeply","depth","deeper","the deep"], a:0, eng:true,
+   exp:"What a + 형용사 + 명사"},
+
+  {type:"v", tag:"종합", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">How time flies!</span>",
+   opts:["시간 정말 빠르구나!","시간이 어떻게 나니?","시간이 날아갔다.","몇 시니?","시간이 얼마나 걸리니?"], a:0, eng:true,
+   exp:"How + 주어 + 동사! = 정말 ~하구나! (세월이 빠르다는 표현)"},
+
+  {type:"v", tag:"종합", q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ ___ cheap these shoes are!<br>ⓑ ___ cheap shoes these are!</span>",
+   opts:["How – What","What – How","How – How","What – What","How – What a"], a:0,
+   exp:"ⓐ 형용사 + 주어 + 동사 → How, ⓑ 형용사 + 복수 명사 → What"},
+
+  {type:"v", tag:"종합", q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">ⓐOh! ⓑWhat a nice day! ⓒHow blue the sky is! ⓓWhat fresh air! ⓔHow a warm wind it is!</span>",
+   opts:["ⓔ","ⓐ","ⓑ","ⓒ","ⓓ"], a:0,
+   exp:"a + 형용사 + 명사 앞은 What → What a warm wind it is!"},
+
+  {type:"v", tag:"정리", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["How 감탄문은 How + 형용사(부사) + 주어 + 동사 차례이다.","What 감탄문에서 복수 명사 앞에도 a를 쓴다.","감탄문 끝에는 물음표를 쓴다.","How 뒤에는 명사가 바로 온다.","감탄문은 동사 + 주어 차례이다."], a:0,
+   exp:"How + 형용사(부사) + 주어 + 동사!"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 느낌을 나타내는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 놀람 · 기쁨 · 아픔 · 부름 · Wow · Ouch · Oops · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

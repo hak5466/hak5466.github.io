@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · TO부정사 GAME</span></h1>
-    <p class="sub">명사적 · 형용사적 · 부사적 용법 · 의미상 주어 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">명사적 · 형용사적 · 부사적 용법 · 의미상 주어 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -610,6 +610,382 @@ var L4 = [
 
   {"type":"v","tag":"심화 종합","hard":true,"sent":"___ tell the truth, I don't like this plan.","ko":"사실대로 말하면, 나는 이 계획이 마음에 들지 않는다.","q":"빈칸에 알맞은 것을 고르세요.","opts":["To","Telling","Told","For","Tell"],"a":0,"full":"**To** tell the truth, I don't like this plan.","fullko":"사실대로 말하면, 나는 이 계획이 마음에 들지 않는다.","exp":"<b>To tell the truth</b>(사실대로 말하면)처럼 문장 전체를 꾸미는 <b>독립부정사</b>입니다. To be honest, Strange to say도 같은 무리입니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", sent:"나는 [피아노를 배우기로] 결심했다.", q:"[ ] 부분은 어느 용법일까요?",
+   opts:["명사적 용법 — ~하는 것(목적어)","형용사적 용법","부사적 용법 — 목적","부사적 용법 — 결과","부사적 용법 — 감정의 원인"], a:0,
+   exp:"‘배우기로(배우는 것을)’ 결심한 것, decide의 목적어 → <b>명사적</b> 용법"},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 [함께 이야기할] 친구가 필요하다.", q:"[ ] 부분은 어느 용법일까요?",
+   opts:["형용사적 용법 — 명사를 꾸밈","명사적 용법","부사적 용법 — 목적","부사적 용법 — 결과","부사적 용법 — 원인"], a:0,
+   exp:"‘이야기할’이 명사 ‘친구’를 꾸밈 → <b>형용사적</b> 용법. a friend to talk with"},
+
+  {type:"n", tag:"한글로 이해", sent:"우리는 [기차를 타려고] 서둘렀다.", q:"[ ] 부분이 나타내는 것은?",
+   opts:["목적","감정의 원인","결과","판단의 근거","명사를 꾸밈"], a:0,
+   exp:"‘~하려고’는 <b>목적</b>입니다. to catch the train"},
+
+  {type:"n", tag:"한글로 이해", sent:"그녀는 [시험에 떨어져서] 속상했다.", q:"[ ] 부분이 나타내는 것은?",
+   opts:["감정의 원인","목적","결과","명사를 꾸밈","주어"], a:0,
+   exp:"속상한 <b>까닭</b>, 감정의 원인입니다. She was upset to fail the test."},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 [100살까지] 살았다.", q:"‘100살까지 살았다’를 to부정사로 나타내면 어떤 뜻일까요?",
+   opts:["결과 — 살아서 100살이 되었다","목적 — 100살이 되려고","원인 — 100살이라서","명사를 꾸밈","주어"], a:0,
+   exp:"He lived <b>to be</b> 100. ‘살아서 그 결과 100살이 되었다’, 결과입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"[외국어를 배우는 것]은 쉽지 않다.", q:"[ ] 부분은 문장에서 어느 자리일까요?",
+   opts:["주어","목적어","보어","명사를 꾸밈","부사"], a:0,
+   exp:"‘~는’ 자리 → <b>주어</b>. To learn a foreign language is not easy."},
+
+  {type:"n", tag:"한글로 이해", q:"형용사적 용법의 to부정사는 꾸미는 명사의 어느 쪽에 올까요?",
+   opts:["명사 뒤","명사 앞","문장 맨 앞","동사 앞","아무 데나"], a:0,
+   exp:"명사 <b>뒤</b>에서 꾸밉니다. something <b>to drink</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"‘~하려고, ~하기 위해’(목적)를 더 분명하게 나타내는 표현은?",
+   opts:["in order to","in case of","because of","instead of","as well as"], a:0,
+   exp:"목적의 to부정사는 <b>in order to</b>로 바꿔 쓸 수 있습니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>명사적</b> 용법으로 옮길 우리말을 모두 고르세요. (여러 개)",
+   opts:["그는 춤추기를 좋아한다","일찍 자는 것이 좋다","내 목표는 반장이 되는 것이다","춤출 시간","자려고 누웠다"], ans:[0,1,2],
+   exp:"‘~하는 것 · ~하기’는 명사적 용법입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>형용사적</b> 용법으로 옮길 말을 모두 고르세요. (여러 개)",
+   opts:["읽을 잡지","앉을 의자","도와줄 사람","읽으러 갔다","읽는 것"], ans:[0,1,2],
+   exp:"‘~할 + 명사’ 모양이 형용사적 용법입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>부사적</b> 용법(목적 · 원인 · 결과)으로 옮길 우리말을 모두 고르세요. (여러 개)",
+   opts:["우유를 사러 나갔다","그 말을 듣고 놀랐다","깨어 보니 혼자였다","마실 우유","우유를 마시는 것"], ans:[0,1,2],
+   exp:"‘~하러’는 목적, ‘듣고 놀랐다’는 원인, ‘깨어 보니’는 결과입니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["형용사적 용법은 명사 앞에서 꾸민다.","명사적 용법은 주어 · 목적어 · 보어가 된다.","부사적 용법은 목적 · 원인 · 결과를 나타낸다.","목적은 in order to로 바꿀 수 있다.","to 뒤에는 동사원형이 온다."], a:0,
+   exp:"형용사적 용법은 명사 <b>뒤</b>에서 꾸밉니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"My plan is **to learn** Spanish.", q:"밑줄 친 to부정사의 용법은?",
+   opts:["명사적 용법","형용사적 용법","부사적 용법"], a:0, eng:true,
+   exp:"be동사 뒤 보어 ‘배우는 것’ → <b>명사적</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She needs a pen **to write** with.", q:"밑줄 친 to부정사의 용법은?",
+   opts:["형용사적 용법","명사적 용법","부사적 용법"], a:0, eng:true,
+   exp:"a pen을 꾸미는 ‘쓸’ → <b>형용사적</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I was sad **to lose** my wallet.", q:"밑줄 친 to부정사의 용법은?",
+   opts:["부사적 용법","명사적 용법","형용사적 용법"], a:0, eng:true,
+   exp:"슬픈 까닭(감정의 원인) → <b>부사적</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"We decided ___ a trip.", q:"‘우리는 여행을 가기로 결정했다’가 되도록 알맞은 것은?",
+   opts:["to take","take","taking","took","takes"], a:0, eng:true,
+   ko:"우리는 여행을 가기로 결정했다.",
+   exp:"decide + <b>to부정사</b>(명사적 용법)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"There are many things ___ in this city.", q:"‘이 도시에는 볼 것이 많다’가 되도록 알맞은 것은?",
+   opts:["to see","see","seeing","saw","seen"], a:0, eng:true,
+   ko:"이 도시에는 볼 것이 많다.",
+   exp:"things를 꾸미는 <b>to see</b>(형용사적)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She got up early ___ breakfast.", q:"‘그녀는 아침을 만들려고 일찍 일어났다’가 되도록 알맞은 것은?",
+   opts:["to make","make","making","made","makes"], a:0, eng:true,
+   ko:"그녀는 아침을 만들려고 일찍 일어났다.",
+   exp:"목적 ‘~하려고’ → <b>to make</b>(부사적)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"It is important ___ enough sleep.", q:"‘충분히 자는 것은 중요하다’가 되도록 알맞은 것은?",
+   opts:["to get","get","gets","got","getting to"], a:0, eng:true,
+   ko:"충분히 자는 것은 중요하다.",
+   exp:"It(가주어) ~ <b>to get</b>(진주어)"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"to부정사가 <b>명사를 꾸미는</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I need a bag to carry these books.","She has a lot of work to do.","Is there anything to eat?","I want to eat something.","He went out to eat."], ans:[0,1,2],
+   exp:"a bag · work · anything을 꾸미는 것이 형용사적 용법입니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"명사적", sent:"___ healthy food is good for you.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["To eat","Eat","Eats","Ate","To eating"], a:0, eng:true,
+   ko:"건강한 음식을 먹는 것은 너에게 좋다.",
+   exp:"주어 자리의 <b>To eat</b>(명사적)"},
+
+  {type:"n", tag:"명사적", sent:"He hopes ___ the game.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to win","win","winning","won","wins"], a:0, eng:true,
+   ko:"그는 경기에서 이기기를 바란다.",
+   exp:"hope의 목적어 → <b>to win</b>"},
+
+  {type:"n", tag:"명사적", sent:"Her job is ___ sick animals.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to care for","care for","cares for","cared for","to caring for"], a:0, eng:true,
+   ko:"그녀의 일은 아픈 동물들을 돌보는 것이다.",
+   exp:"보어 자리의 <b>to care for</b>"},
+
+  {type:"n", tag:"명사적", sent:"It is fun ___ new things.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to try","try","tries","tried","to trying"], a:0, eng:true,
+   ko:"새로운 것을 해 보는 것은 재미있다.",
+   exp:"가주어 It, 진주어 <b>to try</b>"},
+
+  {type:"n", tag:"명사적", sent:"She wants **to be** a vet.", q:"밑줄 친 to부정사의 자리와 해석으로 알맞은 것은?",
+   opts:["목적어 — ~가 되는 것을","주어 — ~가 되는 것은","보어 — ~가 되는 것","명사를 꾸밈 — ~가 될","목적 — ~가 되려고"], a:0, eng:true,
+   exp:"want의 <b>목적어</b>, ‘수의사가 되는 것을’"},
+
+  {type:"n", tag:"명사적", sent:"**To keep** a diary is a good habit.", q:"밑줄 친 to부정사의 자리와 해석으로 알맞은 것은?",
+   opts:["주어 — ~하는 것은","목적어 — ~하는 것을","보어 — ~하는 것","명사를 꾸밈 — ~할","목적 — ~하려고"], a:0, eng:true,
+   exp:"문장 맨 앞 <b>주어</b>, ‘일기를 쓰는 것은’"},
+
+  {type:"n", tag:"명사적", sent:"The goal is **to finish** by noon.", q:"밑줄 친 to부정사의 자리와 해석으로 알맞은 것은?",
+   opts:["보어 — ~하는 것","주어 — ~하는 것은","목적어 — ~하는 것을","명사를 꾸밈 — ~할","결과 — ~하게 되다"], a:0, eng:true,
+   exp:"be동사 뒤 <b>보어</b>, ‘끝내는 것’"},
+
+  {type:"a", tag:"형용사적", sent:"I need someone ___ me.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to help","help","helps","helped","helping to"], a:0, eng:true,
+   ko:"나는 나를 도와줄 누군가가 필요하다.",
+   exp:"someone을 꾸미는 <b>to help</b>"},
+
+  {type:"a", tag:"형용사적", sent:"She bought a magazine ___ on the train.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to read","read","reads","reading to","readed"], a:0, eng:true,
+   ko:"그녀는 기차에서 읽을 잡지를 샀다.",
+   exp:"a magazine을 꾸미는 <b>to read</b>"},
+
+  {type:"a", tag:"형용사적", sent:"It's time ___ lunch.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to have","have","having","had","has"], a:0, eng:true,
+   ko:"점심 먹을 시간이다.",
+   exp:"time을 꾸미는 <b>to have</b>"},
+
+  {type:"a", tag:"형용사적", sent:"He has a lot of friends ___ him.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to support","support","supports","supported","supporting to"], a:0, eng:true,
+   ko:"그는 그를 지지해 줄 친구가 많다.",
+   exp:"friends를 꾸미는 <b>to support</b>"},
+
+  {type:"a", tag:"형용사적", sent:"She has something **to tell** you.", q:"밑줄 친 to부정사의 용법은?",
+   opts:["형용사적 용법","명사적 용법","부사적 용법 – 목적","부사적 용법 – 원인","부사적 용법 – 결과"], a:0, eng:true,
+   exp:"something을 꾸미는 ‘말할’ → <b>형용사적</b>"},
+
+  {type:"a", tag:"형용사적", sent:"I'd like something ___ .", q:"빈칸에 알맞은 말이 바르게 배열된 것은?",
+   opts:["sweet to eat","to eat sweet","eat sweet to","sweet eat to","to sweet eat"], a:0, eng:true,
+   ko:"나는 단 것을 먹고 싶다.",
+   exp:"-thing + <b>형용사</b> + to부정사 차례. something sweet to eat"},
+
+  {type:"a", tag:"형용사적", sent:"We have no reason ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to worry","worry","worried","worries","worrying to"], a:0, eng:true,
+   ko:"우리는 걱정할 이유가 없다.",
+   exp:"reason을 꾸미는 <b>to worry</b>"},
+
+  {type:"v", tag:"부사적", sent:"She saved money ___ a new laptop.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to buy","buy","buying","bought","buys"], a:0, eng:true,
+   ko:"그녀는 새 노트북을 사려고 돈을 모았다.",
+   exp:"목적 ‘~하려고’ → <b>to buy</b>"},
+
+  {type:"v", tag:"부사적", sent:"They were excited ___ the concert.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to see","see","seeing","saw","sees"], a:0, eng:true,
+   ko:"그들은 콘서트를 보게 되어 신이 났다.",
+   exp:"감정의 원인 → <b>to see</b>"},
+
+  {type:"v", tag:"부사적", sent:"I'm sorry ___ that.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to hear","hear","hearing","heard","hears"], a:0, eng:true,
+   ko:"그 말을 들으니 유감이다.",
+   exp:"감정의 원인 → <b>to hear</b>"},
+
+  {type:"v", tag:"부사적", sent:"He opened the door **to let** the cat in.", q:"밑줄 친 to부정사의 용법은?",
+   opts:["부사적 용법 – 목적","부사적 용법 – 감정의 원인","명사적 용법","형용사적 용법","부사적 용법 – 결과"], a:0, eng:true,
+   exp:"고양이를 들여보내려고 → <b>목적</b>"},
+
+  {type:"v", tag:"부사적", sent:"We were surprised **to find** the door open.", q:"밑줄 친 to부정사의 용법은?",
+   opts:["부사적 용법 – 감정의 원인","부사적 용법 – 목적","명사적 용법","형용사적 용법","부사적 용법 – 결과"], a:0, eng:true,
+   exp:"놀란 까닭 → <b>감정의 원인</b>"},
+
+  {type:"v", tag:"부사적", sent:"She went to the station ___ her aunt.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to meet","meet","meeting","met","meets"], a:0, eng:true,
+   ko:"그녀는 이모를 만나러 역에 갔다.",
+   exp:"목적 ‘~하러’ → <b>to meet</b>"}
+];
+
+var X3 = [
+  {type:"n", tag:"목적어·보어·가주어", sent:"I think it important ___ every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to exercise","exercise","exercising to","exercised","exercises"], a:0, eng:true,
+   ko:"나는 매일 운동하는 것이 중요하다고 생각한다.",
+   exp:"가목적어 it, 진목적어 <b>to exercise</b>"},
+
+  {type:"n", tag:"목적어·보어·가주어", q:"다음 문장을 부정문으로 바르게 고친 것은?<br><span class=\"eng\">She tried to cry.</span>",
+   opts:["She tried not to cry.","She tried to not cry cry.","She not tried to cry.","She tried to cry not.","She tried don't to cry."], a:0, eng:true,
+   exp:"to부정사의 부정은 <b>not to</b> + 동사원형"},
+
+  {type:"n", tag:"목적어·보어·가주어", sent:"The doctor advised him ___ .", q:"‘의사는 그에게 담배를 피우지 말라고 충고했다’가 되도록 알맞은 것은?",
+   opts:["not to smoke","to not smoking","don't smoke","not smoking","no to smoke"], a:0, eng:true,
+   ko:"의사는 그에게 담배를 피우지 말라고 충고했다.",
+   exp:"advise + 목적어 + <b>not to</b> + 동사원형"},
+
+  {type:"n", tag:"목적어·보어·가주어", sent:"I expect you ___ on time.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to come","come","coming","came","comes"], a:0, eng:true,
+   ko:"나는 네가 제시간에 오기를 기대한다.",
+   exp:"expect + 목적어 + <b>to부정사</b>(목적격보어)"},
+
+  {type:"n", tag:"목적어·보어·가주어", sent:"She allowed us ___ her car.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to use","use","using","used","uses"], a:0, eng:true,
+   ko:"그녀는 우리가 그녀의 차를 쓰도록 허락했다.",
+   exp:"allow + 목적어 + <b>to부정사</b>"},
+
+  {type:"n", tag:"목적어·보어·가주어", q:"밑줄 친 to부정사의 쓰임이 <b>나머지 넷과 다른</b> 것은?",
+   opts:["I have no money **to spend**.","I want **to spend** money.","I decided **to spend** less.","It is fun **to spend** time with you.","My plan is **to spend** more time outside."], a:0, eng:true,
+   exp:"money를 꾸미는 <b>형용사적</b> 용법입니다. 나머지는 명사적 용법입니다."},
+
+  {type:"n", tag:"목적어·보어·가주어", sent:"___ was hard to say goodbye.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["It","That","This","There","What"], a:0, eng:true,
+   ko:"작별 인사를 하는 것은 힘들었다.",
+   exp:"가주어 <b>It</b>, 진주어 to say goodbye"},
+
+  {type:"a", tag:"형용사적 심화", sent:"He needs a friend ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to talk to","to talk","talk to","talking","to talk it"], a:0, eng:true,
+   ko:"그는 이야기를 나눌 친구가 필요하다.",
+   exp:"talk to a friend라서 <b>to talk to</b> — 전치사를 남깁니다."},
+
+  {type:"a", tag:"형용사적 심화", sent:"Give me a spoon ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to eat with","to eat","eat with","eating with","to eat it"], a:0, eng:true,
+   ko:"(가지고) 먹을 숟가락을 줘.",
+   exp:"eat with a spoon → a spoon <b>to eat with</b>"},
+
+  {type:"a", tag:"형용사적 심화", sent:"There is nothing ___ .", q:"‘걱정할 것이 없다’가 되도록 알맞은 것은?",
+   opts:["to worry about","to worry","worry about","worrying about to","to worry it"], a:0, eng:true,
+   ko:"걱정할 것이 아무것도 없다.",
+   exp:"worry about nothing → nothing <b>to worry about</b>"},
+
+  {type:"a", tag:"형용사적 심화", sent:"They found a place ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to stay at","to stay","stay at","staying","to stay it"], a:0, eng:true,
+   ko:"그들은 머물 곳을 찾았다.",
+   exp:"stay at a place → a place <b>to stay at</b> (at을 빼고 a place to stay도 흔히 씁니다)"},
+
+  {type:"a", tag:"형용사적 심화", sent:"If you **are to succeed**, you must work hard.", q:"밑줄 친 부분의 의미로 알맞은 것은?",
+   opts:["의도 (~하려면)","예정 (~할 예정이다)","의무 (~해야 한다)","가능 (~할 수 있다)","운명 (~할 운명이다)"], a:0, eng:true,
+   exp:"if절의 be to는 <b>의도</b>, ‘성공하려면’"},
+
+  {type:"a", tag:"형용사적 심화", sent:"The meeting **is to be** held next Monday.", q:"밑줄 친 부분의 의미로 알맞은 것은?",
+   opts:["예정 (~할 예정이다)","의무 (~해야 한다)","가능 (~할 수 있다)","의도 (~하려면)","운명"], a:0, eng:true,
+   exp:"be to = <b>예정</b>. 회의는 다음 월요일에 열릴 예정이다."},
+
+  {type:"a", tag:"형용사적 심화", hard:true, q:"밑줄 친 부분의 용법이 <b>나머지와 다른</b> 것은?",
+   opts:["He went out **to get** some air.","I have a letter **to send**.","She is the first **to arrive**.","We need a place **to park**.","Here is a list **to check**."], a:0, eng:true,
+   exp:"‘바람을 쐬러’는 목적(<b>부사적</b>)입니다. 나머지는 명사를 꾸미는 형용사적 용법입니다."},
+
+  {type:"v", tag:"부사적 심화", sent:"She woke up **to find** herself famous.", q:"밑줄 친 to부정사의 용법으로 알맞은 것은?",
+   opts:["결과","목적","감정의 원인","판단의 근거","조건"], a:0, eng:true,
+   exp:"깨어 보니 유명해져 있었다 → <b>결과</b>"},
+
+  {type:"v", tag:"부사적 심화", sent:"You must be tired **to work** all day.", q:"밑줄 친 to부정사의 용법으로 알맞은 것은?",
+   opts:["판단의 근거","목적","결과","감정의 원인","명사적 용법"], a:0, eng:true,
+   exp:"하루 종일 일하다니 피곤하겠구나 → <b>판단의 근거</b>"},
+
+  {type:"v", tag:"부사적 심화", sent:"We left early ___ miss the bus.", q:"‘버스를 놓치지 않으려고’가 되도록 알맞은 것은?",
+   opts:["in order not to","in order to not","not in order to","in order to no","so as to not"], a:0, eng:true,
+   ko:"우리는 버스를 놓치지 않으려고 일찍 떠났다.",
+   exp:"목적의 부정 → <b>in order not to</b> (so as not to)"},
+
+  {type:"v", tag:"부사적 심화", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">The water is so cold that we can't swim in it.<br>= The water is ___ cold for us ___ swim in.</span>",
+   opts:["too / to","so / to","enough / to","very / that","too / that"], a:0, eng:true,
+   exp:"so ~ that … can't = <b>too ~ to</b>. 목적어 it은 뺍니다."},
+
+  {type:"v", tag:"부사적 심화", sent:"This book is easy ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to read","to read it","read","reading to","for read"], a:0, eng:true,
+   ko:"이 책은 읽기 쉽다.",
+   exp:"형용사 easy를 꾸미는 부사적 용법 <b>to read</b>(주어가 목적어 노릇이라 it을 쓰지 않습니다)"},
+
+  {type:"v", tag:"부사적 심화", hard:true, q:"밑줄 친 부분의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["I want **to be** a writer.","He grew up **to be** a writer.","She studied hard **to be** a writer.","I was happy **to be** a writer.","He must be clever **to be** a writer."], a:0, eng:true,
+   exp:"want의 목적어 → <b>명사적</b> 용법. 나머지는 결과 · 목적 · 원인 · 판단 근거의 부사적 용법입니다."}
+];
+
+var X4 = [
+  {type:"n", tag:"의미상의 주어", sent:"It is easy ___ her to learn languages.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["for","of","to","with","by"], a:0, eng:true,
+   ko:"그녀에게 언어를 배우는 것은 쉽다.",
+   exp:"easy처럼 성격이 아닌 형용사 → <b>for</b> + 목적격"},
+
+  {type:"n", tag:"의미상의 주어", sent:"It was careless ___ me to leave the door open.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["of","for","to","with","by"], a:0, eng:true,
+   ko:"문을 열어 둔 것은 내가 부주의했다.",
+   exp:"사람의 성격(careless) → <b>of</b> + 목적격"},
+
+  {type:"n", tag:"의미상의 주어", sent:"It is important ___ students to read a lot.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["for","of","to","with","at"], a:0, eng:true,
+   ko:"학생들이 책을 많이 읽는 것은 중요하다.",
+   exp:"important → <b>for</b>"},
+
+  {type:"n", tag:"의미상의 주어", sent:"It was generous ___ him to share his lunch.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["of","for","to","by","with"], a:0, eng:true,
+   ko:"점심을 나눠 준 것을 보니 그는 너그러웠다.",
+   exp:"성격(generous) → <b>of</b>"},
+
+  {type:"n", tag:"의미상의 주어", q:"밑줄 친 부분이 어법상 <b>어색한</b> 것은?",
+   opts:["It is polite **for** you to say thank you.","It is hard **for** me to wake up early.","It is wise **of** you to save money.","It is fun **for** us to play games.","It was rude **of** him to shout."], a:0, eng:true,
+   exp:"polite(예의 바른)은 성격 → <b>of</b> you"},
+
+  {type:"n", tag:"의미상의 주어", sent:"It is natural ___ a baby to cry.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["for","of","to","with","at"], a:0, eng:true,
+   ko:"아기가 우는 것은 자연스럽다.",
+   exp:"natural → <b>for</b>"},
+
+  {type:"n", tag:"의미상의 주어", sent:"The box is too heavy ___ me to carry.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["for","of","to","with","by"], a:0, eng:true,
+   ko:"그 상자는 내가 나르기에 너무 무겁다.",
+   exp:"too ~ <b>for</b> + 의미상 주어 + to부정사"},
+
+  {type:"n", tag:"의미상의 주어", q:"다음 문장에서 to solve를 하는 사람은?<br><span class=\"eng\">It is hard for Tom to solve the problem.</span>",
+   opts:["Tom","It","the problem","hard","알 수 없다"], a:0, eng:true,
+   exp:"for Tom이 to solve의 <b>의미상의 주어</b>입니다."},
+
+  {type:"a", tag:"의문사 + to부정사", sent:"She taught me how ___ a kite.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to fly","fly","flying","flew","flies"], a:0, eng:true,
+   ko:"그녀는 나에게 연 날리는 법을 가르쳐 주었다.",
+   exp:"how + <b>to fly</b> = 날리는 방법"},
+
+  {type:"a", tag:"의문사 + to부정사", sent:"I can't decide which ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to choose","choose","choosing","chose","chosen"], a:0, eng:true,
+   ko:"나는 어느 것을 골라야 할지 정할 수 없다.",
+   exp:"which + <b>to choose</b> = 어느 것을 고를지"},
+
+  {type:"a", tag:"의문사 + to부정사", sent:"Do you know where ___ tickets?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to buy","buy","buying","bought","buys"], a:0, eng:true,
+   ko:"표를 어디서 사야 할지 아니?",
+   exp:"where + <b>to buy</b> = 어디서 살지"},
+
+  {type:"a", tag:"의문사 + to부정사", sent:"Tell me what time ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to come","come","coming","came","comes"], a:0, eng:true,
+   ko:"몇 시에 와야 할지 말해 줘.",
+   exp:"what time + <b>to come</b>"},
+
+  {type:"a", tag:"의문사 + to부정사", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">I don't know how I should cook it.<br>= I don't know how ___ it.</span>",
+   opts:["to cook","cook","cooking","cooked","I cook to"], a:0, eng:true,
+   exp:"의문사 + should + 동사원형 = 의문사 + <b>to부정사</b>"},
+
+  {type:"a", tag:"의문사 + to부정사", q:"다음 중 우리말과 짝이 <b>틀린</b> 것은?",
+   opts:["when to leave – 어디로 떠날지","what to buy – 무엇을 살지","how to swim – 수영하는 방법","where to go – 어디로 갈지","who to ask – 누구에게 물어볼지"], a:0, eng:true,
+   exp:"when to leave는 ‘<b>언제</b> 떠날지’입니다."},
+
+  {type:"v", tag:"심화 종합", sent:"She decided ___ the offer.", q:"‘그녀는 그 제안을 받아들이지 않기로 했다’가 되도록 알맞은 것은?",
+   opts:["not to accept","to not accepting","don't accept","not accepting to","no to accept"], a:0, eng:true,
+   ko:"그녀는 그 제안을 받아들이지 않기로 결정했다.",
+   exp:"to부정사의 부정 <b>not to</b> + 동사원형"},
+
+  {type:"v", tag:"심화 종합", q:"빈칸에 알맞은 것을 고르세요.<br><span class=\"eng\">A: Can you come to my party?<br>B: I'd like ___ , but I'm busy.</span>",
+   opts:["to","to come to","coming","come","for"], a:0, eng:true,
+   exp:"앞말과 겹치는 동사를 빼고 <b>to</b>만 남기는 대부정사입니다."},
+
+  {type:"v", tag:"심화 종합", sent:"The baby seems ___ hungry.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to be","be","being","been","is"], a:0, eng:true,
+   ko:"아기가 배고픈 것 같다.",
+   exp:"seem + <b>to be</b> = ~인 것 같다"},
+
+  {type:"v", tag:"심화 종합", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">He is too tired to walk.<br>= He is ___ tired ___ he can't walk.</span>",
+   opts:["so / that","too / to","very / that","enough / to","so / to"], a:0, eng:true,
+   exp:"too ~ to = <b>so ~ that</b> … can't"},
+
+  {type:"v", tag:"심화 종합", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">She is smart enough to solve it.<br>= She is ___ smart ___ she can solve it.</span>",
+   opts:["so / that","too / to","enough / to","very / to","so / to"], a:0, eng:true,
+   exp:"~ enough to = <b>so ~ that</b> … can"},
+
+  {type:"v", tag:"심화 종합", sent:"___ be honest, I forgot your birthday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["To","For","In","With","As"], a:0, eng:true,
+   ko:"솔직히 말하면, 네 생일을 잊었어.",
+   exp:"<b>To</b> be honest = 솔직히 말하면 (독립부정사)"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · to부정사 세 가지 쓰임", desc:"한글로 이해 12 · 쉬운 영어 8 · 명사적 · 형용사적 · 부사적 용법 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중3 · 관계대명사 GAME</span></h1>
-    <p class="sub">who · which · that · whose · what · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중3 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">who · which · that · whose · what · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중3 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -748,6 +748,365 @@ var L4 = [
    opts:["계속적 용법에는 that을 쓸 수 있다.","전치사 바로 뒤에는 that을 쓸 수 없다.","what은 선행사를 품고 있어 앞에 명사가 없다.","목적격 관계대명사는 생략할 수 있다.","whose 뒤에는 명사가 온다."], a:0,
    exp:"쉼표 뒤 계속적 용법에는 <b>that을 쓸 수 없습니다</b>. who나 which를 씁니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"관계대명사를 쓰면 두 문장이 어떻게 될까요?",
+   opts:["한 문장으로 이어진다","세 문장으로 나뉜다","의문문이 된다","과거로 바뀐다","부정문이 된다"], a:0,
+   exp:"관계대명사는 같은 사람이나 물건이 나오는 두 문장을 <b>하나로</b> 잇습니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 [빨간 모자를 쓴] 소녀를 보았다.", q:"[ ] 부분이 꾸며 주는 말은?",
+   opts:["소녀","나","모자","빨간","보았다"], a:0,
+   exp:"‘빨간 모자를 쓴’이 <b>소녀</b>를 꾸밉니다. the girl <b>who</b> wears a red hat"},
+
+  {type:"n", tag:"한글로 이해", sent:"이것은 [아빠가 고쳐 주신] 자전거이다.", q:"꾸밈을 받는 말(선행사)은?",
+   opts:["자전거","아빠","이것","고쳐","주신"], a:0,
+   exp:"‘아빠가 고쳐 주신’이 <b>자전거</b>를 꾸밉니다. the bike <b>which</b> my dad fixed"},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 영어를 잘하는 친구가 있다’를 두 문장으로 나누면?",
+   opts:["나는 친구가 있다. + 그 친구는 영어를 잘한다.","나는 영어가 있다. + 친구가 잘한다.","친구는 나다. + 영어를 잘한다.","나는 잘한다. + 친구가 영어다.","나는 친구다. + 영어가 있다."], a:0,
+   exp:"같은 ‘친구’가 두 번 나오니 관계대명사로 잇습니다. I have a friend <b>who</b> speaks English well."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"관계대명사 <b>who</b>를 쓰는 선행사를 모두 고르세요. (여러 개)",
+   opts:["학생","가수","할머니","우산","강아지"], ans:[0,1,2],
+   exp:"사람(학생 · 가수 · 할머니)에는 <b>who</b>. 우산과 강아지는 which입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"관계대명사 <b>which</b>를 쓰는 선행사를 모두 고르세요. (여러 개)",
+   opts:["휴대 전화","고양이","노래","아기","경찰관"], ans:[0,1,2],
+   exp:"사물과 동물에는 <b>which</b>. 아기와 경찰관은 사람이라 who입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘내가 좋아하는 노래’에서 영어로 먼저 말하는 것은?",
+   opts:["노래","내가","좋아하는","는","좋아"], a:0,
+   exp:"영어는 선행사(노래)를 먼저: the song <b>which</b> I like"},
+
+  {type:"n", tag:"한글로 이해", q:"‘선행사’의 ‘선(先)’은 무슨 뜻일까요?",
+   opts:["먼저, 앞","착한","선택","뒤","가운데"], a:0,
+   exp:"관계대명사보다 <b>먼저(앞에)</b> 나오는 말이라서 선행사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"두 문장에서 같은 것이 나와 관계대명사로 이을 수 있는 짝을 모두 고르세요. (여러 개)",
+   opts:["나는 개를 키운다. / 그 개는 짧은 다리를 가졌다.","그녀는 가수다. / 그 가수는 유명하다.","이것은 책이다. / 나는 그 책을 샀다.","나는 배고프다. / 비가 온다.","그는 키가 크다. / 오늘은 월요일이다."], ans:[0,1,2],
+   exp:"같은 사람이나 물건(개 · 가수 · 책)이 두 문장에 나와야 관계대명사로 이을 수 있습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"관계대명사 <b>that</b>을 쓸 수 있는 선행사는?",
+   opts:["사람과 사물 모두","사람만","사물만","동물만","장소만"], a:0,
+   exp:"that은 사람 · 사물 · 동물 <b>모두</b>에 쓸 수 있습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 [우리 반에서 가장 빠른] 학생을 안다’에서 관계대명사로 꾸며야 할 말은?",
+   opts:["학생","나","우리 반","가장","빠른"], a:0,
+   exp:"꾸밈을 받는 명사 <b>학생</b>이 선행사, 사람이니 who입니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["선행사가 동물이면 who를 쓴다.","선행사가 사람이면 who를 쓴다.","관계대명사는 두 문장을 잇는다.","관계대명사절은 선행사 뒤에 온다.","that은 사람에도 사물에도 쓴다."], a:0,
+   exp:"동물에는 <b>which</b>(또는 that)를 씁니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I have a dog ___ is very smart.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","who","whose","what","where"], a:0, eng:true,
+   ko:"나는 아주 똑똑한 개를 키운다.",
+   exp:"선행사 a dog(동물) → <b>which</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She is the teacher ___ teaches us math.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["who","which","whose","what","where"], a:0, eng:true,
+   ko:"그녀는 우리에게 수학을 가르치는 선생님이다.",
+   exp:"선행사 the teacher(사람) → <b>who</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"This is the cake ___ my mom made.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","who","whose","where","when"], a:0, eng:true,
+   ko:"이것은 엄마가 만든 케이크이다.",
+   exp:"선행사 the cake(사물) → <b>which</b>"},
+
+  {type:"a", tag:"쉬운 영어", word:"a boy who plays soccer", q:"<b>a boy who plays soccer</b>의 뜻으로 알맞은 것은?",
+   opts:["축구를 하는 소년","소년이 축구를 한다","축구하는 소년들을","소년은 누구니","축구를 하고 싶은 소년"], a:0, eng:true,
+   exp:"who plays soccer가 a boy를 꾸밉니다. <b>축구를 하는 소년</b>"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"관계대명사 <b>who</b>를 쓸 선행사를 모두 고르세요. (여러 개)",
+   opts:["a doctor","my aunt","the players","a bike","the river"], ans:[0,1,2],
+   exp:"사람에는 <b>who</b>. a bike · the river는 which입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"두 문장을 이을 때 관계대명사가 대신하는 말은?<br><span class=\"eng\">This is the bag. I bought it yesterday.</span>",
+   opts:["it","I","This","yesterday","bought"], a:0, eng:true,
+   exp:"it이 the bag을 가리키므로 <b>it</b>을 which로 바꿉니다. the bag which I bought yesterday"},
+
+  {type:"a", tag:"쉬운 영어", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">I have a cat. It has white fur.</span>",
+   opts:["I have a cat which has white fur.","I have a cat who has white fur.","I have a cat which it has white fur.","I have which a cat has white fur.","I have a cat what has white fur."], a:0, eng:true,
+   exp:"동물 선행사 → which, it은 which가 대신하니 다시 쓰지 않습니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The boy ___ is running is my brother.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["who","which","what","whose","where"], a:0, eng:true,
+   ko:"달리고 있는 소년은 내 남동생이다.",
+   exp:"선행사 The boy(사람) → <b>who</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"모양", sent:"The pizza ___ we ordered was delicious.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","who","whose","what","where"], a:0, eng:true,
+   ko:"우리가 주문한 피자는 맛있었다.",
+   exp:"선행사 The pizza(사물), 뒤에 주어 + 동사 → 목적격 <b>which</b>"},
+
+  {type:"n", tag:"모양", sent:"I met a woman ___ son is my classmate.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whose","who","which","whom","what"], a:0, eng:true,
+   ko:"나는 아들이 내 반 친구인 여자분을 만났다.",
+   exp:"뒤에 명사 son이 바로 오고 ‘그녀의 아들’ → <b>whose</b>"},
+
+  {type:"n", tag:"모양", sent:"The students ___ passed the test were happy.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["who","which","whose","what","whom"], a:0, eng:true,
+   ko:"시험에 합격한 학생들은 기뻤다.",
+   exp:"사람 선행사 + 동사 passed → 주격 <b>who</b>"},
+
+  {type:"n", tag:"모양", sent:"He is the actor ___ I like the most.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whom","whose","which","what","where"], a:0, eng:true,
+   ko:"그는 내가 가장 좋아하는 배우이다.",
+   exp:"사람 선행사, 뒤에 주어 + 동사(like의 목적어가 빠짐) → 목적격 <b>whom</b>"},
+
+  {type:"n", tag:"모양", sent:"I have a friend ___ house is near the beach.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whose","who","which","that","what"], a:0, eng:true,
+   ko:"나는 집이 바닷가 근처에 있는 친구가 있다.",
+   exp:"‘친구의 집’ → 소유격 <b>whose</b>"},
+
+  {type:"n", tag:"모양", sent:"The shoes ___ are on sale are nice.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","who","whose","what","whom"], a:0, eng:true,
+   ko:"할인 중인 신발이 멋지다.",
+   exp:"사물 선행사 + 동사 are → 주격 <b>which</b>"},
+
+  {type:"n", tag:"모양", sent:"Tell me ___ you saw last night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["what","which","who","whose","that"], a:0, eng:true,
+   ko:"어젯밤에 본 것을 나에게 말해 줘.",
+   exp:"앞에 선행사가 없고 ‘네가 본 것’ → <b>what</b>"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>which</b>가 들어갈 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["the bus ___ goes to Seoul","a movie ___ I watched","the house ___ has a big garden","a girl ___ sings well","my uncle ___ lives in Busan"], ans:[0,1,2],
+   exp:"사물 선행사에는 which, 사람에는 who입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"밑줄 친 관계대명사가 <b>목적격</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["the song **which** I love","the man **whom** we met","the bag **that** she bought","the girl **who** is singing","the cat **which** is sleeping"], ans:[0,1,2],
+   exp:"뒤에 ‘주어 + 동사’가 오면 목적격, 바로 동사가 오면 주격입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>whose</b>가 들어갈 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["a boy ___ hair is long","a house ___ roof is red","a writer ___ books are famous","a boy ___ is tall","a house ___ I bought"], ans:[0,1,2],
+   exp:"뒤에 명사(hair · roof · books)가 바로 오고 ‘~의’ 뜻이면 whose입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"관계대명사를 <b>생략할 수 없는</b> 것을 모두 고르세요. (여러 개)",
+   opts:["the man **who** lives here","the dog **which** is barking","a girl **whose** name is Amy","the book **which** I read","the boy **whom** I know"], ans:[0,1,2],
+   exp:"주격 · 소유격은 생략할 수 없습니다. 목적격만 생략할 수 있습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The girl who sits next to me is Mina.","This is the phone I bought.","I know a boy whose sister is a singer.","The girl who she sits next to me is Mina.","I know a boy who sister is a singer."], ans:[0,1,2],
+   exp:"관계대명사 뒤에 주어를 또 쓰지 않고, ‘~의’는 whose입니다. 목적격(which)은 생략할 수 있습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The man which lives here is kind.","I have a dog who is cute.","This is the pen who I lost.","The man who lives here is kind.","This is the pen which I lost."], ans:[0,1,2],
+   exp:"사람 → who, 동물 · 사물 → which. 반대로 쓰면 틀립니다."},
+
+  {type:"v", tag:"함정", sent:"The books which are on the table ___ mine.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","am","be","was"], a:0, eng:true,
+   ko:"탁자 위에 있는 책들은 내 것이다.",
+   exp:"주어는 The books(복수) → <b>are</b>. 꾸밈말을 괄호로 묶어 보세요."},
+
+  {type:"v", tag:"함정", sent:"She has a brother who ___ in the army.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","be","am","were"], a:0, eng:true,
+   ko:"그녀는 군대에 있는 오빠가 있다.",
+   exp:"who의 선행사 a brother(단수) → <b>is</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["The girl whom I met her was friendly.","The girl whom I met was friendly.","The girl I met was friendly.","The girl who met me was friendly.","The girl that I met was friendly."], a:0, eng:true,
+   exp:"whom이 her를 대신하므로 <b>her를 또 쓰면 안 됩니다</b>."},
+
+  {type:"v", tag:"함정", sent:"This is the bike ___ I got for my birthday.", q:"빈칸에 들어갈 수 <b>없는</b> 것은?",
+   opts:["who","which","that"], a:0, eng:true,
+   ko:"이것은 내가 생일 선물로 받은 자전거이다.",
+   exp:"사물 선행사에는 which · that. <b>who</b>는 사람에게만 씁니다."},
+
+  {type:"v", tag:"함정", sent:"I know a girl ___ mother is a pilot.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["whose","who","who's","which","whom"], a:0, eng:true,
+   ko:"나는 어머니가 비행기 조종사인 소녀를 안다.",
+   exp:"‘그녀의 어머니’ → <b>whose</b>. who's는 who is의 줄임말입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"밑줄 친 which의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["**Which** do you like better?","The cap **which** I bought is blue.","This is the song **which** I love.","I have a bag **which** is heavy.","The bus **which** goes there is late."], a:0, eng:true,
+   exp:"Which do you like better?는 ‘어느 것’이라고 묻는 <b>의문사</b>입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ I have a friend ___ lives in Paris.<br>ⓑ I have a friend ___ father lives in Paris.</span>",
+   opts:["who – whose","whose – who","who – who","which – whose","whose – whose"], a:0, eng:true,
+   exp:"ⓐ 사람 + 동사 → who, ⓑ ‘친구의 아버지’ → whose"}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", sent:"I visited my grandma, ___ lives in the country.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["who","that","which","whom","what"], a:0, eng:true,
+   ko:"나는 할머니를 찾아뵈었는데, 할머니는 시골에 사신다.",
+   exp:"쉼표 뒤 계속적 용법, 사람 → <b>who</b>. that은 쓸 수 없습니다."},
+
+  {type:"n", tag:"빈칸", sent:"She passed the exam, ___ surprised everyone.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","that","what","who","it"], a:0, eng:true,
+   ko:"그녀는 시험에 합격했는데, 그것이 모두를 놀라게 했다.",
+   exp:"앞 문장 전체를 받는 계속적 용법 <b>which</b>"},
+
+  {type:"n", tag:"빈칸", sent:"This is the knife with ___ I cut the bread.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","that","who","what","whose"], a:0, eng:true,
+   ko:"이것은 내가 빵을 자른 칼이다.",
+   exp:"전치사 with 바로 뒤에는 <b>which</b>"},
+
+  {type:"n", tag:"빈칸", sent:"He was the first person ___ helped me.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","which","what","whose","where"], a:0, eng:true,
+   ko:"그는 나를 도와준 첫 번째 사람이었다.",
+   exp:"the first가 붙은 선행사에는 <b>that</b>을 즐겨 씁니다."},
+
+  {type:"n", tag:"빈칸", sent:"All ___ I want is a little rest.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","which","who","whose"], a:0, eng:true,
+   ko:"내가 원하는 것은 약간의 휴식뿐이다.",
+   exp:"all이 선행사 → <b>that</b>. all what(✕)"},
+
+  {type:"n", tag:"빈칸", sent:"The girl ___ by the window is my cousin.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["standing","stands","stood","to stand","is standing"], a:0, eng:true,
+   ko:"창가에 서 있는 소녀는 내 사촌이다.",
+   exp:"who is standing에서 who is를 뺀 <b>standing</b>"},
+
+  {type:"n", tag:"빈칸", sent:"Is there anything ___ I can do for you?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","what","who","whose","where"], a:0, eng:true,
+   ko:"내가 너를 위해 해 줄 수 있는 것이 있니?",
+   exp:"-thing으로 끝나는 선행사에는 <b>that</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">My father, **that** is a doctor, works hard.</span>",
+   opts:["who","which","whom","whose","고칠 필요 없음"], a:0, eng:true,
+   exp:"계속적 용법에는 that을 쓸 수 없습니다. 사람 → <b>who</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">This is the box in **what** I keep my toys.</span>",
+   opts:["which","that","who","whose","고칠 필요 없음"], a:0, eng:true,
+   exp:"전치사 in 뒤, 선행사 the box → <b>which</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">The man **whose** is talking to Mom is my uncle.</span>",
+   opts:["who","whom","which","what","고칠 필요 없음"], a:0, eng:true,
+   exp:"뒤에 동사 is가 오니 주격 <b>who</b>. whose 뒤에는 명사가 옵니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">The flowers which my mom grows **smells** good.</span>",
+   opts:["smell","smelling","to smell","is smell","고칠 필요 없음"], a:0, eng:true,
+   exp:"문장 주어 The flowers(복수) → <b>smell</b>"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["This is the only book that I have.","This is the only book what I have.","This is the only book who I have.","This is the only book whose I have.","This is the only book that I have it."], a:0, eng:true,
+   exp:"the only가 붙은 선행사 → that, 목적어 it을 또 쓰지 않습니다."},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I have a sister, that is a nurse.","This is the house in that he lives.","Everything what she said was true.","I have a sister, who is a nurse.","Everything that she said was true."], ans:[0,1,2],
+   exp:"계속적 용법과 전치사 뒤에는 that을 못 쓰고, everything 뒤에 what을 쓰지 않습니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">I have a friend. His dream is to be a chef.</span>",
+   opts:["I have a friend whose dream is to be a chef.","I have a friend who dream is to be a chef.","I have a friend which dream is to be a chef.","I have a friend whose his dream is to be a chef.","I have a friend that dream is to be a chef."], a:0, eng:true,
+   exp:"His(그의) → 소유격 <b>whose</b>"},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">This is the letter. My friend sent it to me.</span>",
+   opts:["This is the letter which my friend sent to me.","This is the letter which my friend sent it to me.","This is the letter who my friend sent to me.","This is the letter whose my friend sent to me.","This is the letter what my friend sent to me."], a:0, eng:true,
+   exp:"it을 대신하는 목적격 <b>which</b>, it은 빼야 합니다."},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"두 문장을 한 문장으로 바르게 이은 것은?<br><span class=\"eng\">This is the room. I study in it.</span>",
+   opts:["This is the room in which I study.","This is the room in that I study.","This is the room which I study.","This is the room in which I study in it.","This is the room who I study in."], a:0, eng:true,
+   exp:"in it → <b>in which</b> (the room which I study in도 됩니다)"},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"우리말에 맞게 바르게 쓴 것은?<br>‘나는 네가 나에게 준 것을 좋아한다.’",
+   opts:["I like what you gave me.","I like that you gave me.","I like which you gave me.","I like the thing what you gave me.","I like what you gave me it."], a:0, eng:true,
+   exp:"선행사가 없는 ‘~한 것’ → <b>what</b>"},
+
+  {type:"v", tag:"문장 잇기와 서술형", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Which bag is yours?<br>B: It's the one ___ has a star on it.</span>",
+   opts:["which","who","whose","what","where"], a:0, eng:true,
+   exp:"선행사 the one(가방) + 동사 has → 주격 <b>which</b>"},
+
+  {type:"v", tag:"문장 잇기와 서술형", hard:true, q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">I have a friend ⓐ<b>whose</b> name is Jun. He has a cat ⓑ<b>which</b> is very lazy. The cat, ⓒ<b>that</b> sleeps all day, likes fish. Jun, ⓓ<b>who</b> loves his cat, buys fish ⓔ<b>which</b> is fresh.</span>",
+   opts:["ⓒ","ⓐ","ⓑ","ⓓ","ⓔ"], a:0, eng:true,
+   exp:"쉼표가 있는 계속적 용법에는 that을 쓸 수 없습니다. → <b>which</b>"},
+
+  {type:"v", tag:"문장 잇기와 서술형", hard:true, q:"밑줄 친 that의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["I think **that** she is right.","This is the pen **that** I lost.","He is the man **that** helped me.","I like the song **that** you sang.","The movie **that** we saw was sad."], a:0, eng:true,
+   exp:"I think that ~의 that은 뒤가 완전한 <b>접속사</b>입니다. 나머지는 관계대명사입니다."}
+];
+
+var X4 = [
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 who가 <b>관계대명사</b>인 것은?",
+   opts:["I know the boy **who** won the race.","**Who** won the race?","Do you know **who** he is?","**Who** is your teacher?","**Who** made this cake?"], a:0, eng:true,
+   exp:"앞의 the boy를 꾸미면 관계대명사, ‘누구’라고 물으면 의문사입니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 부분을 생략할 수 <b>있는</b> 것은?",
+   opts:["The pizza **which** I ate was good.","The girl **who** called me is Amy.","I met a man **whose** job is a pilot.","I have a brother, **who** is a cook.","The house **in which** I live is old."], a:0, eng:true,
+   exp:"목적격 관계대명사만 생략할 수 있습니다."},
+
+  {type:"n", tag:"쓰임 가리기", sent:"Do you know the reason ___ he left early?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["why","which","what","who","whose"], a:0, eng:true,
+   ko:"너는 그가 일찍 떠난 이유를 아니?",
+   exp:"the reason 뒤, 뒤 문장이 완전 → 관계부사 <b>why</b>"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"This is the city ___ my parents met.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["where","which","what","who","when"], a:0, eng:true,
+   ko:"이곳은 우리 부모님이 만나신 도시이다.",
+   exp:"장소 선행사 + 완전한 문장 → <b>where</b>"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"This is the city ___ I visited last year.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["which","where","what","who","when"], a:0, eng:true,
+   ko:"이곳은 내가 작년에 방문한 도시이다.",
+   exp:"visited의 목적어가 빠져 있으니 관계대명사 <b>which</b>. where가 아닙니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 which가 가리키는 것은?<br><span class=\"eng\">She sang a song, **which** made everyone cry.</span>",
+   opts:["그녀가 노래를 부른 일","everyone","She","cry","made"], a:0, eng:true,
+   exp:"계속적 용법의 which는 앞 문장 전체(그녀가 노래를 부른 일)를 받을 수 있습니다."},
+
+  {type:"n", tag:"쓰임 가리기", multi:true, q:"밑줄 친 부분을 생략해도 되는 문장을 모두 고르세요. (여러 개)",
+   opts:["The boy (**who is**) playing the guitar is Jin.","The book (**which**) I borrowed was fun.","The woman (**whom**) we saw is an actress.","The man (**who**) lives next door is kind.","My mom, (**who**) is a teacher, is busy."], ans:[0,1,2], eng:true,
+   exp:"‘주격 관계대명사 + be’와 목적격은 생략할 수 있습니다. 주격 · 계속적 용법은 안 됩니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I have a cousin, who is a singer.<br>= I have a cousin, ___ she is a singer.</span>",
+   opts:["and","but","so","or","because"], a:0, eng:true,
+   exp:"계속적 용법 who = <b>and</b> + she"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I remember the day when we won the game.<br>= I remember the day ___ which we won the game.</span>",
+   opts:["on","in","at","to","for"], a:0, eng:true,
+   exp:"when = <b>on</b> which (날 앞에는 on)"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The man who is sitting on the bench is my grandpa.<br>= The man ___ on the bench is my grandpa.</span>",
+   opts:["sitting","sits","sat","to sit","is sitting"], a:0, eng:true,
+   exp:"who is를 함께 빼면 <b>sitting</b>만 남습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">Show me the way you made it.<br>= Show me ___ you made it.</span>",
+   opts:["how","what","which","where","why"], a:0, eng:true,
+   exp:"the way = <b>how</b>. the way how처럼 함께 쓰지 않습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장을 한 문장으로 만들 때 빈칸에 알맞은 것은?<br><span class=\"eng\">I know a girl. Her brother is a famous dancer.<br>→ I know a girl ___ brother is a famous dancer.</span>",
+   opts:["whose","who","which","whom","that"], a:0, eng:true,
+   exp:"Her(그녀의) → <b>whose</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"뜻이 <b>같은</b> 짝을 모두 고르세요. (여러 개)",
+   opts:["the town where I grew up = the town in which I grew up","the reason why he cried = the reason for which he cried","the girl who is dancing = the girl dancing","the house which he built = the house where he built","the thing that I need = the thing what I need"], ans:[0,1,2],
+   exp:"built의 목적어가 빠져 있으면 where가 아니라 which, the thing what은 틀린 말입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["This is the place which I first met her.","This is the place where I first met her.","This is the place in which I first met her.","This is the place which I visited.","This is the place I visited."], a:0, eng:true,
+   exp:"I first met her는 완전한 문장이라 which가 아니라 <b>where</b>를 씁니다."},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["He is the tallest boy that I know.","I lost my key, which made me worried.","The girl whose bag was stolen cried.","This is the hotel where we stayed at.","I don't know the reason which he left."], ans:[0,1,2],
+   exp:"where we stayed(at 빼기), the reason why(또는 for which) he left가 맞습니다."},
+
+  {type:"v", tag:"종합", q:"빈칸에 공통으로 알맞은 것은?<br><span class=\"eng\">• This is the most beautiful place ___ I have ever seen.<br>• Is there anything ___ you need?</span>",
+   opts:["that","what","which","who","where"], a:0, eng:true,
+   exp:"최상급 선행사와 -thing 선행사에는 <b>that</b>"},
+
+  {type:"v", tag:"종합", hard:true, q:"밑줄 친 who의 쓰임이 다음 문장과 같은 것은?<br><span class=\"eng\">I have a friend **who** lives in Jeju.</span>",
+   opts:["The man **who** fixed my car was kind.","**Who** lives in Jeju?","I wonder **who** lives there.","**Who** is at the door?","Tell me **who** you are."], a:0, eng:true,
+   exp:"앞의 사람(the man)을 꾸미는 <b>관계대명사</b>입니다. 나머지는 ‘누구’입니다."},
+
+  {type:"v", tag:"종합", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">He has a son, who became a doctor.</span>",
+   opts:["그는 아들이 하나 있는데, 그 아들은 의사가 되었다.","그는 의사가 된 아들들이 있다.","그는 아들이 의사인지 묻는다.","의사가 그의 아들을 만났다.","그는 의사가 되고 싶은 아들이 있다."], a:0, eng:true,
+   exp:"쉼표 계속적 용법 → ‘~ 있는데, 그는 …’. 아들이 <b>하나</b>임을 알 수 있습니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ This is the restaurant ___ I often eat.<br>ⓑ This is the restaurant ___ my aunt runs.</span>",
+   opts:["where – which","which – where","where – where","which – which","what – where"], a:0, eng:true,
+   exp:"ⓐ 완전한 문장 → where, ⓑ runs의 목적어가 빠짐 → which"},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["소유격 관계대명사 whose는 생략할 수 있다.","목적격 관계대명사는 생략할 수 있다.","전치사 바로 뒤에는 that을 쓸 수 없다.","관계부사 where = in(at) which이다.","the way와 how는 함께 쓰지 않는다."], a:0, eng:true,
+   exp:"whose는 생략할 수 <b>없습니다</b>."}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 관계대명사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 두 문장 잇기 · 선행사 · 사람 who와 사물 which · 쉬운 영어 문장", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

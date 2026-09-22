@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · [대]명사 뽀개기</span></h1>
-    <p class="sub">명사 · 대명사 · 인칭대명사 · 지시대명사 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">명사 · 대명사 · 인칭대명사 · 지시대명사 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -740,6 +740,355 @@ var L4 = [
    opts:["Mina and Jun","a ball","the park","Mina 한 사람","Jun 한 사람"], a:0, eng:true,
    exp:"They는 앞에 나온 <b>Mina and Jun</b> 두 사람을 대신합니다. 뒤의 It은 a ball을 대신합니다. 대명사를 만나면 앞에서 짝을 찾으세요."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘서울, 민수, 한강’처럼 하나뿐인 이름도 무엇에 들어갈까요?",
+   opts:["명사","대명사","동사","형용사","부사"], a:0,
+   exp:"사람 · 장소의 <b>이름</b>이므로 명사입니다. 영어로 쓸 때는 첫 글자를 대문자로 씁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘행복, 사랑, 우정’처럼 눈에 보이지 않는 것의 이름은 무엇일까요?",
+   opts:["명사","동사","형용사","부사","대명사"], a:0,
+   exp:"보이지 않아도 무언가의 <b>이름</b>이면 명사입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘나 · 우리’를 말하는 사람이라는 뜻에서 무엇이라고 할까요?",
+   opts:["1인칭","2인칭","3인칭","복수","단수"], a:0,
+   exp:"말하는 사람 자신 → <b>1인칭</b>(I, we)"},
+
+  {type:"n", tag:"한글로 이해", q:"‘너 · 너희’처럼 듣는 사람을 가리키는 말은?",
+   opts:["2인칭","1인칭","3인칭","지시대명사","명사"], a:0,
+   exp:"듣는 사람 → <b>2인칭</b>(you)"},
+
+  {type:"n", tag:"한글로 이해", q:"‘그 · 그녀 · 그것 · 그들’은 몇 인칭일까요?",
+   opts:["3인칭","1인칭","2인칭","0인칭","4인칭"], a:0,
+   exp:"나와 너를 뺀 나머지 → <b>3인칭</b>"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 명사를 모두 고르세요. (여러 개)",
+   opts:["연필","엄마","부산","예쁘다","달리다"], ans:[0,1,2],
+   exp:"연필 · 엄마 · 부산은 이름, 예쁘다 · 달리다는 명사가 아닙니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 여럿을 가리키는 대명사를 모두 고르세요. (여러 개)",
+   opts:["우리","그들","너희","그녀","나"], ans:[0,1,2],
+   exp:"우리(we) · 그들(they) · 너희(you)는 여럿을 가리킵니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 1인칭을 모두 고르세요. (여러 개)",
+   opts:["나","우리","저","너","그"], ans:[0,1,2],
+   exp:"말하는 사람 자신 → 나 · 저 · 우리"},
+
+  {type:"n", tag:"한글로 이해", sent:"민수와 지호는 친구다. **그들은** 같은 반이다.", q:"밑줄 친 말이 대신하는 것은?",
+   opts:["민수와 지호","민수","지호","친구","같은 반"], a:0,
+   exp:"두 사람을 함께 대신하므로 <b>그들</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"우리 언니는 가수다. **그녀는** 노래를 잘한다.", q:"밑줄 친 말이 대신하는 것은?",
+   opts:["우리 언니","가수","노래","우리","나"], a:0,
+   exp:"‘그녀는’ = <b>우리 언니</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"다음 중 대명사가 쓰인 문장은?",
+   opts:["그것은 내 가방이다.","지우는 책을 읽는다.","고양이가 잔다.","엄마가 요리한다.","하늘이 파랗다."], a:0,
+   exp:"‘그것’이 대명사입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["대명사는 앞에 나온 명사를 대신한다.","명사는 움직임을 나타낸다.","‘그녀’는 1인칭이다.","‘우리’는 한 사람만 가리킨다.","대명사는 이름보다 길다."], a:0,
+   exp:"대명사는 명사를 <b>대신하는 말</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 중 명사(이름)는?",
+   opts:["teacher","run","happy","slowly","and"], a:0,
+   exp:"teacher(선생님)는 사람의 이름입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"명사를 모두 고르세요. (여러 개)",
+   opts:["water","Korea","family","eat","big"], ans:[0,1,2],
+   exp:"water(물) · Korea(한국) · family(가족)"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"대명사를 모두 고르세요. (여러 개)",
+   opts:["he","it","you","cat","sing"], ans:[0,1,2],
+   exp:"he · it · you가 대명사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘우리’를 영어로 하면?",
+   opts:["we","they","you","he","I"], a:0,
+   exp:"우리 = <b>we</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘그들’을 영어로 하면?",
+   opts:["they","we","he","she","it"], a:0,
+   exp:"그들 = <b>they</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"This is my bag. ___ is new.", q:"빈칸에 알맞은 말은?",
+   opts:["It","He","She","They","We"], a:0, eng:true,
+   ko:"이것은 내 가방이다. 그것은 새것이다.",
+   exp:"물건 하나 → <b>It</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"Mina and I are friends. ___ are in the same class.", q:"빈칸에 알맞은 말은?",
+   opts:["We","They","She","You","I"], a:0, eng:true,
+   ko:"미나와 나는 친구다. 우리는 같은 반이다.",
+   exp:"나를 포함한 여럿 → <b>We</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"My dad is tall. ___ plays basketball.", q:"빈칸에 알맞은 말은?",
+   opts:["He","She","It","They","We"], a:0, eng:true,
+   ko:"우리 아빠는 키가 크다. 그는 농구를 한다.",
+   exp:"아빠(남자 한 명) → <b>He</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 명사를 모두 고르세요. (여러 개)",
+   opts:["desk","milk","park","walk","pretty"], ans:[0,1,2],
+   exp:"desk(책상) · milk(우유) · park(공원). walk는 동사, pretty는 형용사입니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 사람을 나타내는 명사를 모두 고르세요. (여러 개)",
+   opts:["doctor","student","baby","bird","tree"], ans:[0,1,2],
+   exp:"doctor · student · baby는 사람, bird · tree는 사람이 아닙니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 대명사를 모두 고르세요. (여러 개)",
+   opts:["we","they","she","friend","class"], ans:[0,1,2],
+   exp:"friend · class는 명사입니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 3인칭을 모두 고르세요. (여러 개)",
+   opts:["he","it","they","I","we"], ans:[0,1,2],
+   exp:"I · we는 1인칭입니다."},
+
+  {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 여럿을 가리키는 것을 모두 고르세요. (여러 개)",
+   opts:["we","they","these","she","it"], ans:[0,1,2],
+   exp:"we · they · these는 여럿입니다."},
+
+  {type:"a", tag:"인칭", word:"they", q:"<b>they</b>의 인칭으로 알맞은 것은?",
+   opts:["3인칭","1인칭","2인칭","단수","명사"], a:0,
+   exp:"그들 · 그것들 → <b>3인칭</b> 복수"},
+
+  {type:"a", tag:"인칭", word:"we", q:"<b>we</b>의 인칭으로 알맞은 것은?",
+   opts:["1인칭","2인칭","3인칭","단수","명사"], a:0,
+   exp:"우리 → 말하는 사람이 들어 있으므로 <b>1인칭</b> 복수"},
+
+  {type:"a", tag:"인칭", word:"it", q:"<b>it</b>의 뜻과 인칭으로 알맞은 것은?",
+   opts:["그것 · 3인칭","그것들 · 3인칭","그 · 1인칭","나 · 1인칭","너 · 2인칭"], a:0,
+   exp:"it = 그것, <b>3인칭</b> 단수"},
+
+  {type:"a", tag:"인칭", word:"you", q:"<b>you</b>가 가리킬 수 있는 것은?",
+   opts:["너 또는 너희","나","그","그것","그들"], a:0,
+   exp:"you는 한 사람(너)도, 여럿(너희)도 가리킵니다."},
+
+  {type:"a", tag:"인칭", word:"she", q:"<b>she</b>의 뜻과 인칭으로 알맞은 것은?",
+   opts:["그녀 · 3인칭","그 · 3인칭","너 · 2인칭","우리 · 1인칭","그녀 · 1인칭"], a:0,
+   exp:"she = 그녀, 3인칭"},
+
+  {type:"a", tag:"인칭", word:"he", q:"<b>he</b>의 뜻과 인칭으로 알맞은 것은?",
+   opts:["그 · 3인칭","그녀 · 3인칭","나 · 1인칭","너 · 2인칭","그것 · 3인칭"], a:0,
+   exp:"he = 그, 3인칭"},
+
+  {type:"a", tag:"인칭", q:"인칭과 대명사를 바르게 짝지은 것은?",
+   opts:["1인칭 – I, we","2인칭 – he, she","3인칭 – I, you","1인칭 – they","2인칭 – it"], a:0,
+   exp:"1인칭 I · we / 2인칭 you / 3인칭 he · she · it · they"},
+
+  {type:"v", tag:"대신하기", q:"밑줄 친 말을 대명사로 바꾸면?<br><span class=\"eng\"><u>My brother</u> likes pizza.</span>",
+   opts:["He","She","It","They","We"], a:0,
+   exp:"남자 한 명 → <b>He</b>"},
+
+  {type:"v", tag:"대신하기", q:"밑줄 친 말을 대명사로 바꾸면?<br><span class=\"eng\"><u>The flowers</u> are pretty.</span>",
+   opts:["They","It","She","We","He"], a:0,
+   exp:"꽃 여러 송이 → <b>They</b>"},
+
+  {type:"v", tag:"대신하기", q:"밑줄 친 말을 대명사로 바꾸면?<br><span class=\"eng\"><u>You and Tom</u> are late.</span>",
+   opts:["You","They","We","He","It"], a:0,
+   exp:"너 + 다른 사람 = 너희 → <b>You</b>"},
+
+  {type:"v", tag:"대신하기", q:"밑줄 친 말을 대명사로 바꾸면?<br><span class=\"eng\"><u>My grandma</u> lives in Jeju.</span>",
+   opts:["She","He","It","They","We"], a:0,
+   exp:"여자 한 명 → <b>She</b>"},
+
+  {type:"v", tag:"대신하기", q:"밑줄 친 말을 대명사로 바꾸면?<br><span class=\"eng\"><u>The dog</u> is barking.</span>",
+   opts:["It","He","She","They","We"], a:0,
+   exp:"동물 하나 → 보통 <b>It</b>"},
+
+  {type:"v", tag:"대신하기", sent:"I bought two pens. ___ are blue.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["They","It","He","She","We"], a:0, eng:true,
+   ko:"나는 펜 두 자루를 샀다. 그것들은 파랗다.",
+   exp:"펜 여러 개 → <b>They</b>"},
+
+  {type:"v", tag:"대신하기", sent:"Jun is in my class. ___ is good at math.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["He","She","It","They","You"], a:0, eng:true,
+   ko:"준은 우리 반이다. 그는 수학을 잘한다.",
+   exp:"Jun(남자 한 명) → <b>He</b>"},
+
+  {type:"v", tag:"정리", q:"다음 중 종류가 나머지와 <b>다른</b> 것은?",
+   opts:["cat","they","she","we","it"], a:0,
+   exp:"cat은 명사, 나머지는 대명사입니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"지시대명사", word:"these", q:"<b>these</b>의 뜻으로 알맞은 것은?",
+   opts:["이것들 (가까이 있는 여럿)","저것들 (멀리 있는 여럿)","이것 (가까이 있는 하나)","저것 (멀리 있는 하나)","그들"], a:0,
+   exp:"this의 복수 → <b>these</b>"},
+
+  {type:"n", tag:"지시대명사", word:"those", q:"<b>those</b>의 뜻으로 알맞은 것은?",
+   opts:["저것들 (멀리 있는 여럿)","이것들 (가까이 있는 여럿)","저것 (멀리 있는 하나)","이것 (가까이 있는 하나)","우리"], a:0,
+   exp:"that의 복수 → <b>those</b>"},
+
+  {type:"n", tag:"지시대명사", q:"this와 that을 나누는 기준은?",
+   opts:["가까이 있는지 멀리 있는지","크기가 큰지 작은지","사람인지 물건인지","새것인지 헌것인지","좋은지 싫은지"], a:0,
+   exp:"가까이 → this, 멀리 → that"},
+
+  {type:"n", tag:"지시대명사", sent:"___ is my house. (멀리 보이는 집 한 채)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["That","This","These","Those","It"], a:0, eng:true,
+   ko:"저것은 우리 집이다.",
+   exp:"멀리 있는 하나 → <b>That</b>"},
+
+  {type:"n", tag:"지시대명사", sent:"___ are my shoes. (발밑에 있는 신발)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["These","Those","This","That","It"], a:0, eng:true,
+   ko:"이것들은 내 신발이다.",
+   exp:"가까이 있는 여럿 → <b>These</b>"},
+
+  {type:"n", tag:"지시대명사", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Is this your pencil?<br>B: Yes, ___ is.</span>",
+   opts:["it","this","that","these","they"], a:0,
+   exp:"this · that으로 물으면 대답은 <b>it</b>으로 합니다."},
+
+  {type:"n", tag:"지시대명사", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Are those your books?<br>B: No, ___ aren't.</span>",
+   opts:["they","those","these","it","we"], a:0,
+   exp:"these · those로 물으면 대답은 <b>they</b>로 합니다."},
+
+  {type:"a", tag:"격", q:"인칭대명사가 목적어 자리(~을, ~에게)에 올 때의 모양을 무엇이라고 할까요?",
+   opts:["목적격","주격","소유격","복수","지시"], a:0,
+   exp:"me · him · her · them 같은 모양이 <b>목적격</b>입니다."},
+
+  {type:"a", tag:"격", q:"‘우리의’를 뜻하는 말로 알맞은 것은?",
+   opts:["our","we","us","ours","their"], a:0,
+   exp:"we – <b>our</b> – us"},
+
+  {type:"a", tag:"격", q:"‘그들을, 그들에게’를 뜻하는 말로 알맞은 것은?",
+   opts:["them","they","their","theirs","those"], a:0,
+   exp:"they – their – <b>them</b>"},
+
+  {type:"a", tag:"격", sent:"This is ___ bike.", q:"빈칸에 알맞은 것을 고르세요.<br>‘이것은 그녀의 자전거이다.’",
+   opts:["her","she","hers","his","their"], a:0, eng:true,
+   ko:"이것은 그녀의 자전거이다.",
+   exp:"명사 앞 ‘그녀의’ → <b>her</b>"},
+
+  {type:"a", tag:"격", sent:"Please help ___ .", q:"빈칸에 알맞은 것을 고르세요.<br>‘저를 도와주세요.’",
+   opts:["me","I","my","mine","we"], a:0, eng:true,
+   ko:"저를 도와주세요.",
+   exp:"‘나를’ → 목적격 <b>me</b>"},
+
+  {type:"a", tag:"격", q:"세 모양을 바르게 짝지은 것은?<br><span class=\"eng\">그녀 · 그녀의 · 그녀를</span>",
+   opts:["she – her – her","she – hers – her","she – her – hers","her – she – her","she – she – her"], a:0,
+   exp:"she – <b>her</b> – <b>her</b> (소유격과 목적격이 같습니다)"},
+
+  {type:"a", tag:"격", q:"세 모양을 바르게 짝지은 것은?<br><span class=\"eng\">우리 · 우리의 · 우리를</span>",
+   opts:["we – our – us","we – us – our","we – our – ours","our – we – us","we – ours – us"], a:0,
+   exp:"we – <b>our</b> – <b>us</b>"},
+
+  {type:"v", tag:"모두 고르기", multi:true, q:"다음 중 주격을 모두 고르세요. (여러 개)",
+   opts:["I","she","they","me","them"], ans:[0,1,2],
+   exp:"me · them은 목적격입니다."},
+
+  {type:"v", tag:"모두 고르기", multi:true, q:"다음 중 여럿을 가리키는 지시대명사를 모두 고르세요. (여러 개)",
+   opts:["these","those","this","that","it"], ans:[0,1],
+   exp:"these · those만 여럿을 가리킵니다."},
+
+  {type:"v", tag:"모두 고르기", multi:true, q:"어법상 알맞은 문장을 모두 고르세요. (여러 개)",
+   opts:["She loves him.","Their house is big.","I know them.","Him is my brother.","This are my pens."], ans:[0,1,2],
+   exp:"He is my brother, These are my pens가 맞습니다."},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I like she.","She likes me.","We like them.","They like us.","He likes her."], a:0,
+   exp:"목적어 자리 → I like <b>her</b>."},
+
+  {type:"v", tag:"판별", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Those is my cap.","That is my cap.","Those are my caps.","This is my cap.","These are my caps."], a:0,
+   exp:"Those는 여럿 → Those <b>are</b>. 또는 That is my cap."},
+
+  {type:"v", tag:"판별", q:"밑줄 친 말이 가리키는 것으로 알맞은 것은?<br><span class=\"eng\">I have two sisters. I love <u>them</u>.</span>",
+   opts:["two sisters","I","love","me","a sister"], a:0,
+   exp:"them = <b>two sisters</b>"}
+];
+
+var X4 = [
+  {type:"n", tag:"셀 수 있는 명사", q:"다음 중 셀 수 <b>있는</b> 명사는?",
+   opts:["egg","milk","rice","air","money"], a:0,
+   exp:"egg는 하나, 둘 셀 수 있습니다. an egg, two eggs"},
+
+  {type:"n", tag:"셀 수 있는 명사", sent:"There are five ___ on the shelf.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["boxes","boxs","box","boxies","boxen"], a:0, eng:true,
+   ko:"선반 위에 상자가 다섯 개 있다.",
+   exp:"x로 끝나면 <b>es</b> → boxes"},
+
+  {type:"n", tag:"셀 수 있는 명사", sent:"I saw many ___ at the farm.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["sheep","sheeps","sheepes","a sheep","sheepies"], a:0, eng:true,
+   ko:"나는 농장에서 양을 많이 보았다.",
+   exp:"sheep은 단수와 복수가 <b>같은</b> 모양입니다."},
+
+  {type:"n", tag:"셀 수 있는 명사", q:"다음 중 복수형이 <b>틀린</b> 것은?",
+   opts:["foots","teeth","women","mice","babies"], a:0,
+   exp:"foot → <b>feet</b>"},
+
+  {type:"n", tag:"셀 수 있는 명사", q:"셀 수 없는 명사의 양을 말하는 방법으로 알맞은 것은?",
+   opts:["a glass of water","a water","two waters","waters glass","an water"], a:0,
+   exp:"셀 수 없는 명사는 그릇이나 단위를 써서 셉니다. a glass of water"},
+
+  {type:"n", tag:"셀 수 있는 명사", sent:"I ate ___ apple this morning.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["an","a","two","many","some of"], a:0, eng:true,
+   ko:"나는 오늘 아침에 사과 한 개를 먹었다.",
+   exp:"모음 소리로 시작 → <b>an</b> apple"},
+
+  {type:"a", tag:"부정대명사", word:"anything", q:"<b>anything</b>의 뜻으로 알맞은 것은? (묻는 말에서)",
+   opts:["무언가, 아무것","누군가","아무도 없음","모든 사람","하나"], a:0,
+   exp:"Do you need anything? = 뭐 필요한 것 있니?"},
+
+  {type:"a", tag:"부정대명사", word:"everyone", q:"<b>everyone</b>의 뜻으로 알맞은 것은?",
+   opts:["모든 사람","누군가","아무도 없음","무언가","어떤 것"], a:0,
+   exp:"everyone = 모두. 한 사람처럼 봐서 is, likes를 씁니다."},
+
+  {type:"a", tag:"부정대명사", word:"nobody", q:"<b>nobody</b>의 뜻으로 알맞은 것은?",
+   opts:["아무도 ~ 않다","모든 사람","누군가","무언가","하나"], a:0,
+   exp:"Nobody knows. = 아무도 모른다."},
+
+  {type:"a", tag:"부정대명사", sent:"This shirt is too small. Do you have a bigger ___ ?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["one","it","this","that","them"], a:0, eng:true,
+   ko:"이 셔츠는 너무 작아요. 더 큰 것이 있나요?",
+   exp:"같은 종류의 다른 것 → <b>one</b>"},
+
+  {type:"a", tag:"부정대명사", sent:"I lost my umbrella. I can't find ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["it","one","some","any","this one"], a:0, eng:true,
+   ko:"나는 우산을 잃어버렸다. 그것을 찾을 수 없다.",
+   exp:"바로 그 우산 → <b>it</b>"},
+
+  {type:"a", tag:"부정대명사", sent:"I want ___ cookies.", q:"빈칸에 알맞은 것을 고르세요.<br>‘나는 쿠키를 좀 원한다.’",
+   opts:["some","any","one","a","it"], a:0, eng:true,
+   ko:"나는 쿠키를 좀 원한다.",
+   exp:"긍정문의 ‘조금, 몇몇’ → <b>some</b>"},
+
+  {type:"a", tag:"부정대명사", sent:"There isn't ___ milk in the fridge.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["any","some","one","a","many"], a:0, eng:true,
+   ko:"냉장고에 우유가 조금도 없다.",
+   exp:"부정문 → <b>any</b>"},
+
+  {type:"a", tag:"부정대명사", q:"다음 문장의 우리말 해석으로 알맞은 것은?<br><span class=\"eng\">Everyone in my class likes music.</span>",
+   opts:["우리 반 모두가 음악을 좋아한다.","우리 반 누군가가 음악을 좋아한다.","우리 반 아무도 음악을 좋아하지 않는다.","우리 반은 음악 반이다.","나는 우리 반 음악을 좋아한다."], a:0,
+   exp:"everyone = 모두"},
+
+  {type:"v", tag:"종합", q:"밑줄 친 말의 종류로 알맞은 것은?<br><span class=\"eng\"><u>Those</u> are my friends.</span>",
+   opts:["지시대명사","인칭대명사","부정대명사","명사","동사"], a:0,
+   exp:"저 사람들 → <b>지시대명사</b>"},
+
+  {type:"v", tag:"종합", q:"밑줄 친 말의 종류로 알맞은 것은?<br><span class=\"eng\">I don't need <u>anything</u>.</span>",
+   opts:["부정대명사","인칭대명사","지시대명사","명사","형용사"], a:0,
+   exp:"정해지지 않은 것 → <b>부정대명사</b>"},
+
+  {type:"v", tag:"종합", multi:true, q:"다음 중 명사를 모두 고르세요. (여러 개)",
+   opts:["friendship","Seoul","music","someone","these"], ans:[0,1,2],
+   exp:"someone · these는 대명사입니다."},
+
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I need some informations.","I need some information.","I have two cats.","She has three children.","He drank a glass of milk."], a:0,
+   exp:"information은 셀 수 없는 명사 → some <b>information</b>"},
+
+  {type:"v", tag:"고난도", q:"빈칸 ⓐ와 ⓑ에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">My phone is old. I want a new ⓐ. My sister gave me ⓑ yesterday.</span>",
+   opts:["ⓐ one – ⓑ one","ⓐ it – ⓑ it","ⓐ one – ⓑ them","ⓐ it – ⓑ one","ⓐ ones – ⓑ it"], a:0,
+   exp:"ⓐ 같은 종류의 새것 → one ⓑ 새 휴대 전화 하나를 줌 → one"},
+
+  {type:"v", tag:"고난도", q:"다음 글의 밑줄 친 말이 가리키는 것으로 알맞은 것은?<br><span class=\"eng\">My parents bought a cake for me. <u>They</u> put it on the table.</span>",
+   opts:["My parents","a cake","me","the table","candles"], a:0,
+   exp:"They = 사람 여럿인 <b>My parents</b>, it = a cake"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 이름과 대신하는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 명사 · 대명사 · 인칭대명사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

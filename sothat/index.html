@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · SO~THAT GAME</span></h1>
-    <p class="sub">so~that · too~to · enough to · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">so~that · too~to · enough to · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -535,6 +535,373 @@ var L4 = [
   {type:"v", tag:"고난도", hard:true, q:"다음 글의 빈칸에 공통으로 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">The lecture was ___ boring that half the class fell asleep. It was ___ a boring lecture that no one remembered anything.</span>", opts:["so / such","such / so","too / so","so / so"], a:0, exp:"형용사만 있을 때는 <b>so</b>(so boring), 뒤에 관사+명사가 있을 때는 <b>such</b>(such a boring lecture)를 씁니다."},
   {type:"v", tag:"고난도", hard:true, q:"다음 문장을 부정(‘~하지 않기 위해서’)의 뜻으로 바르게 옮긴 것은?<br><span class=\"eng\">‘그는 늦지 않으려고 택시를 탔다.’</span>", opts:["He took a taxi in order not to be late.","He took a taxi in order to not be late.","He took a taxi not in order to be late.","He took a taxi so that not be late."], a:0, eng:true, exp:"목적의 부정은 <b>in order not to + 동사원형</b>입니다. not은 반드시 to 앞에 옵니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", sent:"너무 피곤해서 숙제를 할 수 없었다.", q:"원인에 해당하는 부분은?",
+   opts:["너무 피곤해서","숙제를","할 수 없었다","없었다","숙제"], a:0,
+   exp:"‘너무 ~해서’가 <b>원인</b>, 뒤가 결과입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그 영화는 너무 슬퍼서 모두가 울었다.", q:"결과에 해당하는 부분은?",
+   opts:["모두가 울었다","그 영화는","너무 슬퍼서","영화","너무"], a:0,
+   exp:"‘모두가 울었다’가 <b>결과</b>입니다. The movie was so sad that everyone cried."},
+
+  {type:"n", tag:"한글로 이해", q:"‘너무 무거워서 들 수 없다’와 뜻이 같은 것은?",
+   opts:["들기에는 너무 무겁다","들 만큼 가볍다","들 수 있을 만큼 무겁다","무거운 것을 들었다","들고 싶을 만큼 가볍다"], a:0,
+   exp:"too heavy to lift = <b>들기에는 너무 무겁다</b> = so heavy that I can't lift it"},
+
+  {type:"n", tag:"한글로 이해", q:"‘충분히 빨라서 이길 수 있다’와 뜻이 같은 것은?",
+   opts:["이길 만큼 충분히 빠르다","이기기에는 너무 빠르다","너무 느려서 질 것이다","빠르지만 이길 수 없다","이기려고 빨라졌다"], a:0,
+   exp:"fast enough to win = <b>이길 만큼 충분히 빠르다</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"‘too ~ to …’의 뜻으로 알맞은 것은?",
+   opts:["너무 ~해서 …할 수 없다","충분히 ~해서 …할 수 있다","~하기 위해 …하다","~하지만 …하다","~할 때 …하다"], a:0,
+   exp:"too ~ to … = <b>너무 ~해서 …할 수 없다</b>. 뜻 속에 부정(못 한다)이 숨어 있습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~ enough to …’의 뜻으로 알맞은 것은?",
+   opts:["…할 만큼 충분히 ~하다","너무 ~해서 …할 수 없다","~하기 전에 …하다","~ 때문에 …하지 않다","…하려고 ~하다"], a:0,
+   exp:"~ enough to … = <b>…할 만큼 충분히 ~하다</b>"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"결과가 ‘~할 수 있다(있었다)’인 문장을 모두 고르세요. (여러 개)",
+   opts:["키가 충분히 커서 선반에 손이 닿았다","아주 똑똑해서 그 문제를 풀 수 있었다","충분히 부자여서 집을 살 수 있다","너무 어려서 운전할 수 없다","너무 추워서 나갈 수 없었다"], ans:[0,1,2],
+   exp:"‘~할 수 있다’는 enough to 또는 so ~ that … can, ‘~할 수 없다’는 too ~ to입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"too ~ to로 옮기기 알맞은 우리말을 모두 고르세요. (여러 개)",
+   opts:["너무 바빠서 전화할 수 없었다","너무 매워서 먹을 수 없다","너무 멀어서 걸어갈 수 없다","키가 커서 문에 머리가 닿았다","충분히 따뜻해서 수영할 수 있다"], ans:[0,1,2],
+   exp:"‘너무 ~해서 …할 수 없다’가 too ~ to입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"enough는 형용사의 어느 쪽에 놓일까요?",
+   opts:["형용사 뒤","형용사 앞","문장 맨 앞","to 뒤","아무 데나"], a:0,
+   exp:"형용사 · 부사 <b>뒤</b>: tall enough, fast enough. (명사는 앞: enough money)"},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["too ~ to는 ‘…할 수 있다’는 뜻이다.","so ~ that은 원인과 결과를 잇는다.","enough는 형용사 뒤에 온다.","too ~ to는 so ~ that … can't로 바꿀 수 있다.","enough to는 so ~ that … can으로 바꿀 수 있다."], a:0,
+   exp:"too ~ to는 ‘너무 ~해서 …할 수 <b>없다</b>’입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"She was so happy ___ she sang all day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","so","to","enough","too"], a:0, eng:true,
+   ko:"그녀는 너무 기뻐서 하루 종일 노래했다.",
+   exp:"so ~ <b>that</b> + 주어 + 동사"},
+
+  {type:"a", tag:"쉬운 영어", sent:"The soup was ___ salty that I couldn't eat it.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so","too","enough","very","such"], a:0, eng:true,
+   ko:"수프가 너무 짜서 먹을 수 없었다.",
+   exp:"<b>so</b> + 형용사 + that"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He was so hungry that he ___ two hamburgers.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["ate","eat","eating","to eat","eats up to"], a:0, eng:true,
+   ko:"그는 너무 배가 고파서 햄버거 두 개를 먹었다.",
+   exp:"that 뒤는 문장: he <b>ate</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"It was so noisy that I ___ hear you.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["couldn't","could","can","didn't can","won't can"], a:0, eng:true,
+   ko:"너무 시끄러워서 네 말을 들을 수 없었다.",
+   exp:"과거 결과 ‘들을 수 없었다’ → <b>couldn't</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"The room is so small that we ___ all sit down.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["can't","can","don't can","aren't","isn't"], a:0, eng:true,
+   ko:"방이 너무 작아서 우리 모두가 앉을 수 없다.",
+   exp:"현재 결과 ‘앉을 수 없다’ → <b>can't</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She spoke so quickly that I ___ understand her.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["couldn't","could","wasn't","didn't","can"], a:0, eng:true,
+   ko:"그녀가 너무 빨리 말해서 나는 알아들을 수 없었다.",
+   exp:"so + 부사(quickly) + that, 결과 <b>couldn't</b>"},
+
+  {type:"a", tag:"쉬운 영어", word:"so cold that we stayed home", q:"<b>It was so cold that we stayed home.</b>의 뜻으로 알맞은 것은?",
+   opts:["너무 추워서 우리는 집에 있었다.","추웠지만 우리는 나갔다.","집에 있어서 추웠다.","추워지기 전에 집에 갔다.","우리는 추운 집에 있었다."], a:0, eng:true,
+   exp:"so ~ that = <b>너무 ~해서 …하다</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"우리말을 영어로 옮길 때 어순이 알맞은 것은?<br>‘그 길은 너무 미끄러워서 많은 사람이 넘어졌다.’",
+   opts:["The road was so slippery that many people fell.","The road was that slippery so many people fell.","The road so was slippery that many people fell.","The road was slippery so that many people fell so.","So the road was slippery that many people fell."], a:0, eng:true,
+   exp:"주어 + 동사 + <b>so</b> + 형용사 + <b>that</b> + 주어 + 동사"},
+
+  {type:"a", tag:"쉬운 영어", sent:"We were so late ___ we missed the movie.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","so","to","but","or"], a:0, eng:true,
+   ko:"우리는 너무 늦어서 영화를 놓쳤다.",
+   exp:"so late <b>that</b> ~"},
+
+  {type:"a", tag:"쉬운 영어", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The music was very loud. I couldn't sleep.<br>= The music was ___ loud ___ I couldn't sleep.</span>",
+   opts:["so / that","too / to","very / that","enough / to","so / to"], a:0, eng:true,
+   exp:"원인 + 결과 → <b>so</b> ~ <b>that</b>"}
+];
+
+var X2 = [
+  {type:"n", tag:"too~to", sent:"The shoes are too small ___ wear.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","for","that","so","enough"], a:0, eng:true,
+   ko:"그 신발은 신기에는 너무 작다.",
+   exp:"too ~ <b>to</b> + 동사원형"},
+
+  {type:"n", tag:"too~to", sent:"It is too late ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to go out","go out","going out","went out","for go out"], a:0, eng:true,
+   ko:"나가기에는 너무 늦었다.",
+   exp:"too late <b>to go out</b>"},
+
+  {type:"n", tag:"too~to", sent:"He was too sick ___ to school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to go","going","go","went","for go"], a:0, eng:true,
+   ko:"그는 너무 아파서 학교에 갈 수 없었다.",
+   exp:"too sick <b>to go</b>"},
+
+  {type:"n", tag:"too~to", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">The river is so deep that we can't cross it.<br>= The river is ___ deep ___ cross.</span>",
+   opts:["too / to","so / to","enough / to","very / that","too / that"], a:0, eng:true,
+   exp:"so ~ that … can't = <b>too ~ to</b>, 목적어 it은 뺍니다."},
+
+  {type:"n", tag:"too~to", sent:"The question was too hard for me ___ answer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","that","so","for","enough"], a:0, eng:true,
+   ko:"그 질문은 내가 답하기에 너무 어려웠다.",
+   exp:"too ~ for + 사람 + <b>to</b> + 동사원형"},
+
+  {type:"n", tag:"too~to", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He is too tired to walking.","He is too tired to walk.","He is so tired that he can't walk.","The road is too long to walk.","It's too far for us to walk."], a:0, eng:true,
+   exp:"too ~ to 뒤에는 <b>동사원형</b> walk"},
+
+  {type:"n", tag:"too~to", sent:"The bag is too expensive ___ me to buy.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["for","of","to","by","with"], a:0, eng:true,
+   ko:"그 가방은 내가 사기에 너무 비싸다.",
+   exp:"의미상의 주어 <b>for</b> me"},
+
+  {type:"n", tag:"too~to", sent:"She got up too late ___ the bus.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to catch","catching","caught","catch","for catch"], a:0, eng:true,
+   ko:"그녀는 너무 늦게 일어나서 버스를 탈 수 없었다.",
+   exp:"too + 부사(late) + <b>to catch</b>"},
+
+  {type:"n", tag:"too~to", q:"다음 우리말과 일치하도록 빈칸에 알맞은 것은?<br>‘이 물은 마시기에 너무 더럽다.’<br><span class=\"eng\">This water is ___ dirty ___ drink.</span>",
+   opts:["too / to","so / that","enough / to","very / to","so / to"], a:0, eng:true,
+   exp:"<b>too</b> dirty <b>to</b> drink"},
+
+  {type:"n", tag:"too~to", sent:"I was too excited ___ sleep last night.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to","that","so","for","enough"], a:0, eng:true,
+   ko:"나는 어젯밤 너무 신나서 잠을 잘 수 없었다.",
+   exp:"too excited <b>to</b> sleep"},
+
+  {type:"a", tag:"enough to", sent:"The water is warm ___ to swim in.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough","too","so","very","much"], a:0, eng:true,
+   ko:"물이 수영할 만큼 충분히 따뜻하다.",
+   exp:"형용사 + <b>enough</b> + to"},
+
+  {type:"a", tag:"enough to", sent:"He is brave ___ climb the mountain.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough to","to enough","too to","so that","enough that"], a:0, eng:true,
+   ko:"그는 그 산을 오를 만큼 용감하다.",
+   exp:"brave <b>enough to</b> climb"},
+
+  {type:"a", tag:"enough to", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He is enough rich to buy a car.","He is rich enough to buy a car.","He has enough money to buy a car.","He is so rich that he can buy a car.","He worked hard enough to buy a car."], a:0, eng:true,
+   exp:"enough는 형용사 <b>뒤</b>: rich enough"},
+
+  {type:"a", tag:"enough to", sent:"We have ___ food for everyone.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough","too","so","very","such"], a:0, eng:true,
+   ko:"우리는 모두에게 줄 충분한 음식이 있다.",
+   exp:"명사 앞에는 <b>enough</b>가 먼저 옵니다. enough food"},
+
+  {type:"a", tag:"enough to", q:"두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">She is so kind that she can help everyone.<br>= She is kind ___ help everyone.</span>",
+   opts:["enough to","too to","so that","to enough","enough that"], a:0, eng:true,
+   exp:"so ~ that … can = ~ <b>enough to</b>"},
+
+  {type:"a", tag:"enough to", sent:"He spoke loudly ___ be heard.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough to","too to","so to","to enough","enough for"], a:0, eng:true,
+   ko:"그는 들릴 만큼 충분히 크게 말했다.",
+   exp:"부사 + <b>enough to</b>"},
+
+  {type:"a", tag:"enough to", q:"우리말을 영어로 옮긴 것 중 어순이 알맞은 것은?<br>‘그녀는 혼자 여행할 만큼 나이가 들었다.’",
+   opts:["She is old enough to travel alone.","She is enough old to travel alone.","She is old to enough travel alone.","She enough is old to travel alone.","She is old enough travel to alone."], a:0, eng:true,
+   exp:"형용사 + <b>enough to</b> + 동사원형"},
+
+  {type:"a", tag:"enough to", sent:"Is there ___ room for my bag?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough","too","so","very","much too"], a:0, eng:true,
+   ko:"내 가방을 둘 충분한 자리가 있니?",
+   exp:"enough + 명사(room)"},
+
+  {type:"a", tag:"enough to", sent:"The ice isn't thick ___ walk on.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough to","too to","so that","to enough","enough that"], a:0, eng:true,
+   ko:"얼음이 위를 걸을 만큼 두껍지 않다.",
+   exp:"not ~ enough to = …할 만큼 ~하지 않다"},
+
+  {type:"a", tag:"enough to", q:"다음 중 우리말 해석이 알맞은 것은?",
+   opts:["He is tall enough to be a model. — 그는 모델이 될 만큼 키가 크다.","He is too tall to be a model. — 그는 모델이 될 만큼 키가 크다.","He is tall enough to be a model. — 그는 너무 커서 모델이 될 수 없다.","He is not tall enough. — 그는 너무 크다.","He is too short. — 그는 충분히 크다."], a:0, eng:true,
+   exp:"tall enough to = <b>~할 만큼 키가 크다</b>"}
+];
+
+var X3 = [
+  {type:"n", tag:"형태 확인", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: Why didn't you finish the book?<br>B: It was so long ___ I got bored.</span>",
+   opts:["that","so","to","enough","too"], a:0, eng:true,
+   exp:"so long <b>that</b> ~"},
+
+  {type:"n", tag:"형태 확인", sent:"The test was ___ easy that everyone passed.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so","too","enough","such","very much"], a:0, eng:true,
+   ko:"시험이 너무 쉬워서 모두가 통과했다.",
+   exp:"<b>so</b> + 형용사 + that"},
+
+  {type:"n", tag:"형태 확인", sent:"He is ___ to reach the top shelf.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["too short","short enough","so short","such short","short too"], a:0, eng:true,
+   ko:"그는 너무 작아서 맨 위 선반에 손이 닿지 않는다.",
+   exp:"너무 작아서 못 닿는다 → <b>too short</b> to"},
+
+  {type:"n", tag:"형태 확인", sent:"The rope is long ___ to reach the ground.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough","too","so","such","very"], a:0, eng:true,
+   ko:"밧줄이 땅에 닿을 만큼 충분히 길다.",
+   exp:"long <b>enough</b> to"},
+
+  {type:"n", tag:"형태 확인", q:"다음 중 빈칸에 들어갈 말이 <b>나머지와 다른</b> 것은?",
+   opts:["She is smart ___ to win the quiz.","He was ___ tired that he fell asleep.","It was ___ hot that we went swimming.","The story was ___ funny that we laughed.","I was ___ busy that I skipped lunch."], a:0, eng:true,
+   exp:"첫 문장은 형용사 뒤 <b>enough</b>, 나머지는 so ~ that의 so입니다."},
+
+  {type:"n", tag:"형태 확인", sent:"He was so weak ___ he couldn't stand up.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","to","enough","for","too"], a:0, eng:true,
+   ko:"그는 너무 약해서 일어설 수 없었다.",
+   exp:"so weak <b>that</b> ~ couldn't"},
+
+  {type:"n", tag:"형태 확인", q:"다음 대화의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">A: Can we go swimming?<br>B: No. The water is ___ cold.</span>",
+   opts:["too","enough","so that","such","very enough"], a:0, eng:true,
+   exp:"(수영하기에) 너무 차갑다 → <b>too</b> cold"},
+
+  {type:"a", tag:"전환 연습", q:"다음 두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The tea is too hot to drink.<br>= The tea is ___ hot ___ I can't drink it.</span>",
+   opts:["so / that","too / to","enough / to","very / to","such / that"], a:0, eng:true,
+   exp:"too ~ to = <b>so ~ that</b> … can't + 목적어 it"},
+
+  {type:"a", tag:"전환 연습", q:"다음 두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She is tall enough to be a basketball player.<br>= She is ___ tall ___ she can be a basketball player.</span>",
+   opts:["so / that","too / to","enough / to","very / that","such / to"], a:0, eng:true,
+   exp:"enough to = <b>so ~ that</b> … can"},
+
+  {type:"a", tag:"전환 연습", q:"다음 문장을 too ~ to 구문으로 바르게 바꾼 것은?<br><span class=\"eng\">The problem was so difficult that I couldn't solve it.</span>",
+   opts:["The problem was too difficult for me to solve.","The problem was too difficult for me to solve it.","The problem was difficult enough to solve.","The problem was so difficult to solve.","The problem was too difficult that I solve."], a:0, eng:true,
+   exp:"too ~ for me to solve, 목적어 it은 뺍니다."},
+
+  {type:"a", tag:"전환 연습", q:"다음 문장을 enough to 구문으로 바르게 바꾼 것은?<br><span class=\"eng\">He is so strong that he can carry the sofa.</span>",
+   opts:["He is strong enough to carry the sofa.","He is enough strong to carry the sofa.","He is too strong to carry the sofa.","He is strong to enough carry the sofa.","He is so strong enough to carry the sofa."], a:0, eng:true,
+   exp:"형용사 + <b>enough to</b>"},
+
+  {type:"a", tag:"전환 연습", q:"다음 문장을 so ~ that 구문으로 바르게 바꾼 것은?<br><span class=\"eng\">She is too busy to meet us.</span>",
+   opts:["She is so busy that she can't meet us.","She is so busy that she can meet us.","She is busy enough to meet us.","She is so busy to meet us.","She is too busy that she can't meet us."], a:0, eng:true,
+   exp:"too ~ to → <b>so ~ that … can't</b>"},
+
+  {type:"a", tag:"전환 연습", q:"다음 문장을 so ~ that 구문으로 바르게 바꾼 것은?<br><span class=\"eng\">The boy is clever enough to answer the question.</span>",
+   opts:["The boy is so clever that he can answer the question.","The boy is so clever that he can't answer the question.","The boy is too clever to answer the question.","The boy is clever so that he answers.","The boy is so clever to answer the question."], a:0, eng:true,
+   exp:"enough to → <b>so ~ that … can</b>"},
+
+  {type:"a", tag:"전환 연습", q:"다음 대화에서 B의 말을 too ~ to로 바르게 바꾼 것은?<br><span class=\"eng\">A: Why can't the kids play outside?<br>B: It is so windy that they can't play outside.</span>",
+   opts:["It is too windy for them to play outside.","It is too windy of them to play outside.","It is windy enough for them to play outside.","It is so windy for them to play outside.","It is too windy that they play outside."], a:0, eng:true,
+   exp:"too windy <b>for them</b> to play"},
+
+  {type:"v", tag:"함정 어법", q:"다음 중 밑줄 친 부분이 어법상 <b>어색한</b> 것은?",
+   opts:["She is **enough tall** to ride it.","She has **enough time** to rest.","She is **tall enough** to ride it.","She ran **fast enough** to win.","There is **enough food** for us."], a:0, eng:true,
+   exp:"형용사 + enough → <b>tall enough</b>"},
+
+  {type:"v", tag:"함정 어법", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["The box is too heavy to lift it.","The box is too heavy to lift.","The box is so heavy that I can't lift it.","The box is too heavy for me to lift.","The box is light enough to lift."], a:0, eng:true,
+   exp:"주어(The box)가 lift의 목적어라서 it을 또 쓰지 않습니다."},
+
+  {type:"v", tag:"함정 어법", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["It was such cold that we stayed inside.","It was so cold that we stayed inside.","It was such a cold day that we stayed inside.","It was too cold to go out.","It was cold enough to snow."], a:0, eng:true,
+   exp:"형용사만 있으면 <b>so</b> cold. such는 (a) + 형용사 + 명사와 씁니다."},
+
+  {type:"v", tag:"함정 어법", q:"다음 중 빈칸에 <b>too</b>가 들어갈 수 없는 것은?",
+   opts:["She is kind ___ to help me.","It's ___ late to call him.","The box is ___ big to fit.","He is ___ young to vote.","It's ___ hot to run."], a:0, eng:true,
+   exp:"‘도와줄 만큼 친절하다’ → kind <b>enough</b> to. too는 형용사 앞에 와야 합니다."},
+
+  {type:"v", tag:"함정 어법", q:"다음 중 우리말 해석이 <b>잘못된</b> 것은?",
+   opts:["She is too young to drive. — 그녀는 운전할 만큼 나이가 들었다.","She is old enough to drive. — 그녀는 운전할 만큼 나이가 들었다.","It was so hot that I swam. — 너무 더워서 나는 수영했다.","It was too hot to sleep. — 너무 더워서 잘 수 없었다.","He was so tired that he fell asleep. — 그는 너무 피곤해서 잠들었다."], a:0, eng:true,
+   exp:"too young to drive = 너무 어려서 운전할 수 <b>없다</b>"},
+
+  {type:"v", tag:"함정 어법", q:"다음 문장에서 어법상 알맞은 것을 고르세요.<br><span class=\"eng\">He is (enough old / old enough) to join the club.</span>",
+   opts:["old enough","enough old"], a:0, eng:true,
+   exp:"형용사 + enough → <b>old enough</b>"}
+];
+
+var X4 = [
+  {type:"n", tag:"such~that", sent:"It was ___ a good movie that I watched it twice.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["such","so","too","very","enough"], a:0, eng:true,
+   ko:"그것은 아주 좋은 영화여서 나는 두 번 봤다.",
+   exp:"<b>such</b> + a + 형용사 + 명사 + that"},
+
+  {type:"n", tag:"such~that", sent:"They are ___ nice people that everyone loves them.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["such","so","such a","too","very"], a:0, eng:true,
+   ko:"그들은 아주 좋은 사람들이어서 모두가 그들을 좋아한다.",
+   exp:"복수 명사(people) 앞에는 a 없이 <b>such</b>"},
+
+  {type:"n", tag:"such~that", q:"다음 두 문장이 같은 뜻이 되도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She is such a smart girl that she won the prize.<br>= She is ___ smart ___ girl that she won the prize.</span>",
+   opts:["so / a","such / a","too / a","so / the","very / a"], a:0, eng:true,
+   exp:"such a + 형용사 + 명사 = <b>so</b> + 형용사 + <b>a</b> + 명사"},
+
+  {type:"n", tag:"such~that", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["It was such a hot day that we went to the beach.","It was so a hot day that we went to the beach.","It was such hot day that we went to the beach.","It was such a hot that we went to the beach.","It was so hot a day to go to the beach that."], a:0, eng:true,
+   exp:"<b>such a</b> + 형용사 + 명사 + that"},
+
+  {type:"a", tag:"목적/in order to", sent:"She saved money ___ she could travel.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","so","such that","too","enough"], a:0, eng:true,
+   ko:"그녀는 여행을 할 수 있도록 돈을 모았다.",
+   exp:"목적 ‘~하도록’ → <b>so that</b> + 주어 + can/could"},
+
+  {type:"a", tag:"목적/in order to", sent:"He practiced every day ___ win the contest.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["in order to","so that","such that","too","enough that"], a:0, eng:true,
+   ko:"그는 대회에서 우승하기 위해 매일 연습했다.",
+   exp:"in order to + <b>동사원형</b>"},
+
+  {type:"a", tag:"목적/in order to", sent:"Speak clearly ___ everyone can hear you.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so that","in order to","too","enough to","such"], a:0, eng:true,
+   ko:"모두가 들을 수 있도록 또렷하게 말해라.",
+   exp:"뒤에 주어 + 동사 → <b>so that</b>"},
+
+  {type:"a", tag:"목적/in order to", sent:"We left early ___ not to miss the train.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["in order","so that","such","too","enough"], a:0, eng:true,
+   ko:"우리는 기차를 놓치지 않으려고 일찍 떠났다.",
+   exp:"<b>in order</b> not to + 동사원형"},
+
+  {type:"n", tag:"기본 종합", sent:"The hill was ___ steep that we had to rest.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["so","such","too","enough","very much"], a:0, eng:true,
+   ko:"언덕이 너무 가팔라서 우리는 쉬어야 했다.",
+   exp:"<b>so</b> + 형용사 + that"},
+
+  {type:"n", tag:"기본 종합", q:"다음 두 문장의 뜻이 같도록 할 때 빈칸에 알맞은 것은?<br><span class=\"eng\">This bag is too small to hold my books.<br>= This bag is ___ small ___ it can't hold my books.</span>",
+   opts:["so / that","too / to","such / that","enough / to","very / that"], a:0, eng:true,
+   exp:"too ~ to = <b>so ~ that</b> … can't"},
+
+  {type:"n", tag:"기본 종합", sent:"She isn't tall ___ to reach the button.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["enough","too","so","such","very"], a:0, eng:true,
+   ko:"그녀는 버튼에 손이 닿을 만큼 키가 크지 않다.",
+   exp:"not + 형용사 + <b>enough</b> to"},
+
+  {type:"n", tag:"기본 종합", q:"다음 문장을 in order to를 이용해 바르게 바꾼 것은?<br><span class=\"eng\">He works hard so that he can buy a house.</span>",
+   opts:["He works hard in order to buy a house.","He works hard in order to buying a house.","He works hard in order that to buy a house.","He works hard in order buy a house.","He works hard so in order to buy a house."], a:0, eng:true,
+   exp:"so that he can buy = <b>in order to buy</b>"},
+
+  {type:"n", tag:"기본 종합", q:"다음 중 어법상 알맞은 문장은?",
+   opts:["It was so long a story that I got bored.","It was such long a story that I got bored.","It was so a long story that I got bored.","It was such long story that I got bored.","It was too long a story that I got bored."], a:0, eng:true,
+   exp:"<b>so</b> + 형용사 + <b>a</b> + 명사 = such a long story"},
+
+  {type:"v", tag:"고난도", q:"다음 중 밑줄 친 부분의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["She left early **so that** she could catch the bus.","It was **so** dark **that** I got lost.","He was **so** tired **that** he slept.","The book was **so** funny **that** I laughed.","It rained **so** hard **that** we stayed home."], a:0, eng:true,
+   exp:"so that(~하도록)은 <b>목적</b>, 나머지는 so ~ that(너무 ~해서) 결과입니다."},
+
+  {type:"v", tag:"고난도", q:"다음 문장에서 so가 들어갈 위치로 가장 알맞은 곳은?<br><span class=\"eng\">It was ① interesting ② a ③ book ④ that ⑤ I read it twice.</span>",
+   opts:["①","②","③","④","⑤"], a:0, eng:true,
+   exp:"<b>so</b> + 형용사 + a + 명사: so interesting a book"},
+
+  {type:"v", tag:"고난도", sent:"The noise was so loud ___ the baby woke up.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["that","to","for","as","so"], a:0, eng:true,
+   ko:"소음이 너무 커서 아기가 깼다.",
+   exp:"so loud <b>that</b> ~"},
+
+  {type:"v", tag:"고난도", q:"다음 두 문장의 뜻이 같도록 빈칸에 공통으로 알맞은 것은?<br><span class=\"eng\">It was such a big dog that I was scared.<br>= The dog was ___ big that I was scared.<br>= It was ___ big a dog that I was scared.</span>",
+   opts:["so","such","too","very","enough"], a:0, eng:true,
+   exp:"둘 다 <b>so</b>: so big / so big a dog"},
+
+  {type:"v", tag:"고난도", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She was too tired that she couldn't walk.","She was so tired that she couldn't walk.","She was too tired to walk.","She was tired enough to sleep early.","She was so tired that she slept early."], a:0, eng:true,
+   exp:"too ~ that(✕). too는 to와, so는 that과 짝입니다."},
+
+  {type:"v", tag:"고난도", q:"다음 글의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">It was ___ a sunny day that we went on a picnic. The park was ___ crowded that we couldn't find a seat.</span>",
+   opts:["such / so","so / such","such / such","so / so","too / so"], a:0, eng:true,
+   exp:"a sunny day(명사 있음) → such, crowded(형용사만) → so"},
+
+  {type:"v", tag:"고난도", q:"다음 문장을 ‘~하지 않도록’의 뜻으로 바르게 옮긴 것은?<br>‘그녀는 잊지 않으려고 메모를 했다.’",
+   opts:["She wrote a note so that she wouldn't forget.","She wrote a note so that she would forget.","She wrote a note in order to forget.","She wrote a note too not to forget.","She wrote a note enough not to forget."], a:0, eng:true,
+   exp:"목적의 부정 → so that + 주어 + <b>won't/wouldn't</b> (in order not to도 됩니다)"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 너무 ~해서 …하다", desc:"한글로 이해 10 · 쉬운 영어 10 · 원인과 결과 · so ~ that 모양 · 쉬운 영어 문장 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

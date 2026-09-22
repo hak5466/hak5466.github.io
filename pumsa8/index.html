@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · 8품사 GAME</span></h1>
-    <p class="sub">단어의 역할 여덟 가지 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">단어의 역할 여덟 가지 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -644,6 +644,226 @@ var L4 = [
    opts:["부사는 명사를 꾸민다.","형용사는 명사를 꾸민다.","전치사는 명사 앞에 온다.","접속사는 말과 말을 잇는다.","대명사는 명사를 대신한다."], a:0,
    exp:"명사를 꾸미는 것은 <b>형용사</b>입니다. 부사는 동사 · 형용사 · 다른 부사를 꾸밉니다."}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"<b>명사를 대신해서 가리키는</b> 말은?",
+   opts:["대명사","명사","형용사","부사","감탄사"], a:0,
+   exp:"나 · 너 · 그녀처럼 이름 대신 쓰는 말은 <b>대명사</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"<b>말과 말을 이어 주는</b> 말은?",
+   opts:["접속사","전치사","감탄사","대명사","형용사"], a:0,
+   exp:"그리고 · 그러나 · 그래서처럼 이어 주는 말은 <b>접속사</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"<b>놀람이나 느낌</b>을 나타내는 말은?",
+   opts:["감탄사","접속사","부사","동사","명사"], a:0,
+   exp:"와! · 앗! · 아야!처럼 느낌을 나타내는 말은 <b>감탄사</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"<b>명사 앞에서 자리나 때를 알려 주는</b> 영어 낱말의 품사는?",
+   opts:["전치사","접속사","부사","형용사","감탄사"], a:0,
+   exp:"in the box · at seven처럼 명사 앞에 오는 말은 <b>전치사</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"한 낱말의 품사를 정할 때 가장 먼저 살펴볼 것은?",
+   opts:["문장에서 그 낱말이 하는 일","낱말의 길이","낱말의 첫 글자","낱말의 소리","낱말을 배운 날짜"], a:0,
+   exp:"품사는 문장 속에서 <b>하는 일</b>로 정합니다."},
+
+  W("n","한글로 이해","연필","n"),
+  W("n","한글로 이해","먹다","v"),
+  W("n","한글로 이해","행복한","a"),
+  W("n","한글로 이해","아주","ad"),
+  W("n","한글로 이해","그러나","c"),
+  W("n","한글로 이해","앗!","i"),
+  W("n","한글로 이해","우리","pn"),
+
+  W("a","쉬운 영어","pencil","n",true),
+  W("a","쉬운 영어","sing","v",true),
+  W("a","쉬운 영어","beautiful","a",true,"‘아름다운’이라는 뜻입니다."),
+  W("a","쉬운 영어","often","ad",true),
+  W("a","쉬운 영어","we","pn",true),
+  {type:"a", tag:"쉬운 영어", word:"in", eng:true, multi:true, q:"다음 영어 낱말의 품사를 <b>모두</b> 고르세요. (여러 개)",
+   opts:["전치사","부사","명사","동사","감탄사"], ans:[0,1],
+   exp:"in the box(상자 안에)처럼 명사 앞에서는 <b>전치사</b>, Come in.(들어와)처럼 혼자 쓰이면 <b>부사</b>입니다."},
+  W("a","쉬운 영어","because","c",true),
+  W("a","쉬운 영어","ouch","i",true)
+];
+
+var X2 = [
+  {type:"n", tag:"뜻풀이", q:"‘<b>사람이나 사물의 이름</b>’에 알맞은 낱말은?",
+   opts:["학교","달리다","예쁜","빨리","그리고"], a:0,
+   exp:"학교는 이름을 나타내는 <b>명사</b>입니다."},
+
+  {type:"n", tag:"뜻풀이", q:"‘<b>명사를 꾸미는 말</b>’에 알맞은 낱말은?",
+   opts:["작은","고양이","자다","천천히","와"], a:0,
+   exp:"작은 고양이 — ‘작은’은 <b>형용사</b>입니다."},
+
+  {type:"n", tag:"뜻풀이", q:"‘<b>동사를 꾸며 어떻게 하는지 말하는 말</b>’에 알맞은 낱말은?",
+   opts:["조용히","조용한","교실","읽다","그러나"], a:0,
+   exp:"조용히 읽다 — ‘조용히’는 <b>부사</b>입니다. ‘조용한’은 형용사입니다."},
+
+  {type:"n", tag:"뜻풀이", q:"‘<b>이어 주는 말</b>’에 알맞은 영어 낱말은?",
+   opts:["or","owl","old","out of","oh"], a:0, eng:true,
+   exp:"tea or coffee — or는 <b>접속사</b>입니다."},
+
+  {type:"n", tag:"뜻풀이", q:"‘<b>명사를 대신해서 가리키는 말</b>’에 알맞은 영어 낱말은?",
+   opts:["them","tree","tall","talk","then"], a:0, eng:true,
+   exp:"them(그들을)은 <b>대명사</b>입니다."},
+
+  {type:"n", tag:"뜻풀이", q:"‘<b>놀람이나 느낌을 나타내는 말</b>’에 알맞은 영어 낱말은?",
+   opts:["hurray","hurry","happy","heavy","honey"], a:0, eng:true,
+   exp:"hurray(만세)는 <b>감탄사</b>입니다. hurry는 동사, happy · heavy는 형용사입니다."},
+
+  {type:"n", tag:"뜻풀이", q:"‘<b>명사 앞에서 때를 알려 주는 말</b>’에 알맞은 영어 낱말은?",
+   opts:["at","an","am","ant","art"], a:0, eng:true,
+   exp:"at seven(일곱 시에) — at은 <b>전치사</b>입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>명사</b>를 모두 고르세요. (여러 개)",
+   opts:["music","friend","city","sing","pretty"], ans:[0,1,2],
+   exp:"음악 · 친구 · 도시는 명사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>동사</b>를 모두 고르세요. (여러 개)",
+   opts:["read","come","go","beautiful","school"], ans:[0,1,2],
+   exp:"읽다 · 오다 · 가다는 동사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>형용사</b>를 모두 고르세요. (여러 개)",
+   opts:["beautiful","tall","sad","sadly","sing"], ans:[0,1,2],
+   exp:"아름다운 · 키가 큰 · 슬픈은 형용사입니다. sadly는 부사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>부사</b>를 모두 고르세요. (여러 개)",
+   opts:["often","slowly","never","kind","song"], ans:[0,1,2],
+   exp:"자주 · 천천히 · 결코는 부사입니다. kind는 형용사, song은 명사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>접속사</b>를 모두 고르세요. (여러 개)",
+   opts:["and","but","because","under","wow"], ans:[0,1,2],
+   exp:"그리고 · 그러나 · 왜냐하면은 접속사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>감탄사</b>를 모두 고르세요. (여러 개)",
+   opts:["wow","oops","ouch","owl","open"], ans:[0,1,2],
+   exp:"와 · 이런 · 아야는 감탄사입니다. owl(부엉이)은 명사, open은 동사나 형용사입니다."},
+
+  W("v","함정","careful","a",true,"-ly를 붙인 carefully가 부사입니다."),
+  W("v","함정","happily","ad",true,"happy(행복한)는 형용사, happily(행복하게)는 부사입니다."),
+  W("v","함정","in front of","p",true,"세 낱말이지만 한 덩어리로 ‘~ 앞에’라는 전치사입니다."),
+  Object.assign(W("v","함정","lovely","a",true,"-ly로 끝나지만 ‘사랑스러운’이라는 형용사입니다. a lovely girl"),{hard:true}),
+  W("v","함정","him","pn",true,"he의 목적격입니다."),
+  W("v","함정","writer","n",true,"write(쓰다)는 동사, writer(작가)는 명사입니다."),
+  W("v","함정","hurray","i",true,"hurry(서두르다)와 헷갈리지 않도록 합니다.")
+];
+
+var X3 = [
+  S1("n","문장 속 품사","My **mother** is a nurse.","우리 엄마는 간호사이다.","n"),
+  S1("n","문장 속 품사","I like **them** very much.","나는 그들을 아주 좋아한다.","pn"),
+  S1("n","문장 속 품사","We **sing** every morning.","우리는 매일 아침 노래한다.","v"),
+  S1("n","문장 속 품사","She has a **beautiful** voice.","그녀는 아름다운 목소리를 가졌다.","a"),
+  S1("n","문장 속 품사","He **always** gets up early.","그는 늘 일찍 일어난다.","ad"),
+  S1("n","문장 속 품사","The bank is **between** the school and the park.","은행은 학교와 공원 사이에 있다.","p"),
+  S1("n","문장 속 품사","I was tired, **so** I went to bed.","나는 피곤해서 잠자리에 들었다.","c","여기서 so는 앞뒤 문장을 잇습니다."),
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 문장에서 <b>명사</b>를 모두 고르세요. (여러 개)<br><span class=\"eng\">My sister drinks milk at school.</span>",
+   opts:["sister","milk","school","drinks","at"], ans:[0,1,2],
+   exp:"언니 · 우유 · 학교가 명사입니다. drinks는 동사, at은 전치사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 문장에서 <b>형용사</b>를 모두 고르세요. (여러 개)<br><span class=\"eng\">The little girl wore a long blue dress.</span>",
+   opts:["little","long","blue","girl","wore"], ans:[0,1,2],
+   exp:"작은 · 긴 · 파란 — 명사를 꾸미는 형용사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 문장에서 <b>동사</b>를 모두 고르세요. (여러 개)<br><span class=\"eng\">They open the door, walk in, and sit down.</span>",
+   opts:["open","walk","sit","door","down"], ans:[0,1,2],
+   exp:"열다 · 걷다 · 앉다가 동사입니다. 여기서 open은 동사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 문장에서 <b>부사</b>를 모두 고르세요. (여러 개)<br><span class=\"eng\">He speaks very slowly and never shouts.</span>",
+   opts:["very","slowly","never","speaks","shouts"], ans:[0,1,2],
+   exp:"아주 · 천천히 · 결코가 부사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 문장에서 <b>대명사</b>를 모두 고르세요. (여러 개)<br><span class=\"eng\">She called us, and we visited her.</span>",
+   opts:["She","us","her","called","visited"], ans:[0,1,2],
+   exp:"She · us · her가 대명사입니다. (we도 대명사입니다)"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"다음 문장에서 <b>전치사</b>를 모두 고르세요. (여러 개)<br><span class=\"eng\">I went to the park with my dog after lunch.</span>",
+   opts:["to","with","after","park","went"], ans:[0,1,2],
+   exp:"~로 · ~와 함께 · ~ 후에 — 명사 앞의 전치사입니다."},
+
+  {type:"v", tag:"고르기와 판별", q:"밑줄 친 낱말의 품사가 <b>나머지와 다른</b> 것은?",
+   opts:["She sings **happily**.","He is a **happy** boy.","It is a **lovely** day.","She is **kind**.","The box is **heavy**."], a:0, eng:true,
+   exp:"첫째 happily는 동사를 꾸미는 <b>부사</b>입니다. 나머지는 모두 형용사입니다."},
+
+  {type:"v", tag:"고르기와 판별", sent:"She runs ___ .", q:"빈칸에 <b>부사</b>를 넣어 ‘그녀는 빨리 달린다’가 되도록 알맞은 것은?",
+   opts:["quickly","quick","quickness","queen","and"], a:0, eng:true,
+   ko:"그녀는 빨리 달린다.",
+   exp:"동사 runs를 꾸미는 부사 <b>quickly</b>"},
+
+  {type:"v", tag:"고르기와 판별", sent:"Do you want juice ___ milk?", q:"빈칸에 알맞은 접속사는?",
+   opts:["or","but","so","because","in"], a:0, eng:true,
+   ko:"주스를 원하니, 아니면 우유를 원하니?",
+   exp:"둘 중 하나 → 접속사 <b>or</b>"},
+
+  {type:"v", tag:"고르기와 판별", sent:"___ ! I dropped my phone.", q:"빈칸에 알맞은 감탄사는?",
+   opts:["Oops","Hurray","Yummy","Great","Happy"], a:0, eng:true,
+   ko:"이런! 휴대 전화를 떨어뜨렸다.",
+   exp:"작은 실수 → 감탄사 <b>Oops</b>"},
+
+  {type:"v", tag:"고르기와 판별", sent:"The cat is sleeping ___ the sofa.", q:"빈칸에 알맞은 전치사는?",
+   opts:["on","and","very","happy","they"], a:0, eng:true,
+   ko:"고양이가 소파 위에서 자고 있다.",
+   exp:"명사 앞에서 자리를 알려 주는 전치사 <b>on</b>"},
+
+  {type:"v", tag:"고르기와 판별", q:"낱말과 품사가 바르게 짝지어지지 <b>않은</b> 것은?",
+   opts:["beautiful – 부사","teacher – 명사","because – 접속사","under – 전치사","they – 대명사"], a:0, eng:true,
+   exp:"beautiful은 <b>형용사</b>입니다."},
+
+  {type:"v", tag:"고르기와 판별", q:"다음 문장에서 <b>부사</b>는?<br><span class=\"eng\">Oh, the tall man walks slowly in the park.</span>",
+   opts:["slowly","tall","Oh","in","park"], a:0, eng:true,
+   exp:"동사 walks를 꾸미는 <b>slowly</b>가 부사입니다. tall은 형용사, Oh는 감탄사, in은 전치사입니다."}
+];
+
+var X4 = [
+  S1("n","한 낱말 두 품사","It is an **early** train.","그것은 이른 기차이다.","a","명사 train을 꾸밉니다."),
+  S1("n","한 낱말 두 품사","I got up **early**.","나는 일찍 일어났다.","ad","동사 got up을 꾸밉니다."),
+  S1("n","한 낱말 두 품사","I **love** my family.","나는 우리 가족을 사랑한다.","v"),
+  S1("n","한 낱말 두 품사","Thank you for your **love**.","사랑해 주셔서 고맙습니다.","n","전치사 뒤 your 다음에 오는 이름입니다."),
+  S1("n","한 낱말 두 품사","She is a **late** sleeper.","그녀는 늦잠꾸러기이다.","a","명사 sleeper를 꾸밉니다."),
+  S1("n","한 낱말 두 품사","He came home **late**.","그는 집에 늦게 왔다.","ad","동사 came을 꾸밉니다."),
+  S1("n","한 낱말 두 품사","Let's take a **walk**.","산책하자.","n","a 뒤에 오는 이름(산책)입니다."),
+
+  S1("a","문장 속 품사","**This** is my room.","이것은 내 방이다.","pn","혼자 ‘이것’을 가리킵니다."),
+  S1("a","문장 속 품사","**This** room is mine.","이 방은 내 것이다.","a","명사 room을 꾸밉니다."),
+  S1("a","문장 속 품사","I have lived here **since** 2020.","나는 2020년부터 여기에 살았다.","p","명사 2020 앞에 옵니다."),
+  S1("a","문장 속 품사","I have lived here **since** I was born.","나는 태어난 후로 여기에 살았다.","c","뒤에 주어와 동사가 이어집니다."),
+  S1("a","문장 속 품사","Let's meet **after** school.","방과 후에 만나자.","p","명사 school 앞에 옵니다."),
+  S1("a","문장 속 품사","I'll call you **after** I finish my homework.","숙제를 끝낸 후에 전화할게.","c","뒤에 주어와 동사가 이어집니다."),
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"밑줄 친 낱말이 <b>형용사</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["It was a **hard** test.","She has **long** hair.","This is a **fast** car.","He studies **hard**.","She runs **fast**."], ans:[0,1,2],
+   exp:"명사를 꾸미면 형용사, 동사를 꾸미면 부사입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"밑줄 친 낱말의 품사가 <b>나머지와 다른</b> 것은?",
+   opts:["I had a good **dream**.","I **dream** of flying.","They **play** tennis.","We **walk** to school.","I **love** music."], a:0, eng:true,
+   exp:"첫째 dream은 a good 뒤의 <b>명사</b>입니다. 나머지는 동사입니다."},
+
+  {type:"v", tag:"종합", q:"다른 낱말을 꾸미지도, 잇지도 않고 느낌만 나타내는 품사는?",
+   opts:["감탄사","부사","형용사","접속사","전치사"], a:0,
+   exp:"Oops! · Hurray!처럼 따로 쓰이는 <b>감탄사</b>입니다."},
+
+  {type:"v", tag:"종합", q:"접속사 because 뒤에 오는 것으로 알맞은 것은?",
+   opts:["주어와 동사가 있는 문장","명사 하나만","형용사 하나만","감탄사","전치사"], a:0,
+   exp:"because + 주어 + 동사. because of 뒤에는 명사가 옵니다."},
+
+  {type:"v", tag:"종합", sent:"This present is for ___ .", q:"빈칸에 알맞은 것은?",
+   opts:["her","she","they","I","he"], a:0, eng:true,
+   ko:"이 선물은 그녀를 위한 것이다.",
+   exp:"전치사 for 뒤에는 목적격 <b>her</b>가 옵니다."},
+
+  {type:"v", tag:"종합", q:"다음 문장에 쓰이지 <b>않은</b> 품사는?<br><span class=\"eng\">Wow, my little brother sings very well!</span>",
+   opts:["전치사","감탄사","대명사","형용사","부사"], a:0, eng:true,
+   exp:"Wow(감탄사) · my(대명사) · little(형용사) · brother(명사) · sings(동사) · very, well(부사). 전치사는 없습니다."},
+
+  {type:"v", tag:"정리", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["같은 낱말도 문장에서 하는 일에 따라 품사가 달라질 수 있다.","-ly로 끝나는 낱말은 모두 부사이다.","전치사 뒤에는 주격 대명사가 온다.","형용사는 동사를 꾸민다.","감탄사는 문장 가운데에만 온다."], a:0,
+   exp:"fast · early · like처럼 하는 일에 따라 품사가 바뀝니다. friendly · lovely는 -ly지만 형용사입니다."}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 8품사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 여덟 가지 품사의 이름과 하는 일 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

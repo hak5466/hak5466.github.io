@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">초등·중1 · 형용사 뽀개기</span></h1>
-    <p class="sub">어떠한지를 말하는 말 · 어순과 many·much · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">어떠한지를 말하는 말 · 어순과 many·much · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -719,6 +719,329 @@ var L4 = [
    opts:["형용사 뒤에는 늘 a가 붙는다.","형용사는 명사를 앞에서 꾸민다.","be동사 뒤에는 형용사가 온다.","many는 셀 수 있는 것에 쓴다.","much는 셀 수 없는 것에 쓴다."], a:0,
    exp:"a는 형용사 <b>앞</b>에 붙습니다. <b>a</b> big dog(○) · big <u>a</u> dog(✕)"}
 ];
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘어떤 가방?’ 하고 물었을 때 답이 되는 말은?",
+   opts:["무거운","가방","들다","빨리","그리고"], a:0,
+   exp:"‘어떤?’의 답 → <b>무거운</b> 가방. 형용사입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘친구가 착하다’에서 ‘착하다’가 하는 일은?",
+   opts:["주어(친구)가 어떠한지 설명한다","동사를 꾸며 준다","명사를 대신한다","문장과 문장을 잇는다","놀람을 나타낸다"], a:0,
+   exp:"주어를 설명하는 형용사입니다. My friend is kind."},
+
+  {type:"n", tag:"한글로 이해", q:"‘착한 친구’에서 ‘착한’이 하는 일은?",
+   opts:["명사(친구)를 꾸며 준다","동사를 꾸며 준다","주어를 대신한다","문장을 잇는다","때를 나타낸다"], a:0,
+   exp:"명사 앞에서 꾸며 줍니다. a kind friend"},
+
+  {type:"n", tag:"한글로 이해", q:"색깔을 나타내는 ‘빨간, 파란, 노란’은 어느 품사일까요?",
+   opts:["형용사","명사","동사","부사","전치사"], a:0,
+   exp:"‘어떤 색?’의 답 → <b>형용사</b>. a red cap"},
+
+  {type:"n", tag:"한글로 이해", q:"‘많은, 조금의’처럼 수나 양을 나타내는 말은 어느 품사일까요?",
+   opts:["형용사","동사","부사","접속사","감탄사"], a:0,
+   exp:"명사의 수나 양을 알려 주는 <b>형용사</b>입니다. many books"},
+
+  {type:"n", tag:"한글로 이해", q:"‘빠른 차’와 ‘빨리 달린다’에서 형용사는?",
+   opts:["빠른","빨리","차","달린다","둘 다"], a:0,
+   exp:"명사 ‘차’를 꾸미는 <b>빠른</b>이 형용사, ‘빨리’는 부사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 형용사를 모두 고르세요. (여러 개)",
+   opts:["작은","새로운","귀여운","작게","먹다"], ans:[0,1,2],
+   exp:"‘작게’는 부사, ‘먹다’는 동사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"기분을 나타내는 형용사를 모두 고르세요. (여러 개)",
+   opts:["기쁜","슬픈","화난","빠른","둥근"], ans:[0,1,2],
+   exp:"기쁜(happy) · 슬픈(sad) · 화난(angry)"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"형용사가 명사를 꾸며 주는 말을 모두 고르세요. (여러 개)",
+   opts:["따뜻한 우유","파란 하늘","친절한 선생님","천천히 걷다","아주 빨리"], ans:[0,1,2],
+   exp:"‘천천히 · 아주’는 부사입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그 방은 **깨끗하다**.", q:"밑줄 친 말은 무엇일까요?",
+   opts:["형용사","부사","명사","동사","전치사"], a:0,
+   exp:"주어 ‘그 방’이 어떠한지 설명 → <b>형용사</b>. The room is clean."},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 방을 **깨끗하게** 치웠다.", q:"밑줄 친 말은 무엇일까요?",
+   opts:["부사","형용사","명사","동사","대명사"], a:0,
+   exp:"동사 ‘치웠다’를 꾸밈 → <b>부사</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["형용사는 명사를 꾸미거나 주어를 설명한다.","형용사는 동사를 꾸민다.","형용사는 영어에서 명사 뒤에만 온다.","형용사는 움직임을 나타낸다.","형용사는 이름을 나타낸다."], a:0,
+   exp:"형용사가 하는 두 가지 일입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 중 형용사는?",
+   opts:["pretty","sing","school","quickly","under"], a:0,
+   exp:"pretty = 예쁜"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"형용사를 모두 고르세요. (여러 개)",
+   opts:["sad","long","cute","walk","desk"], ans:[0,1,2],
+   exp:"walk는 동사, desk는 명사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘빠른’을 영어로 하면?",
+   opts:["fast","slow","tall","hot","old"], a:0,
+   exp:"빠른 = <b>fast</b>"},
+
+  {type:"a", tag:"쉬운 영어", q:"old(나이 든)의 반대말은?",
+   opts:["young","slow","tall","short","big"], a:0,
+   exp:"나이 든 ↔ <b>young</b>(젊은, 어린). 물건이 오래된 것이면 반대말은 new입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘예쁜 꽃’을 바른 차례로 쓴 것은?",
+   opts:["a pretty flower","a flower pretty","pretty a flower","flower a pretty","a flowers pretty"], a:0,
+   exp:"a + 형용사 + 명사"},
+
+  {type:"a", tag:"쉬운 영어", q:"a tall boy에서 tall이 꾸며 주는 말은?",
+   opts:["boy","a","tall","없다","a tall"], a:0,
+   exp:"형용사 tall은 명사 <b>boy</b>를 꾸밉니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The bag is ___ .", q:"‘그 가방은 무겁다’가 되도록 알맞은 것은?",
+   opts:["heavy","light","heavily","weight","lift"], a:0, eng:true,
+   ko:"그 가방은 무겁다.",
+   exp:"무거운 = <b>heavy</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"It is a ___ day.", q:"‘화창한 날이다’가 되도록 알맞은 것은?",
+   opts:["sunny","sun","sunnily","rain","cloud"], a:0, eng:true,
+   ko:"화창한 날이다.",
+   exp:"화창한 = <b>sunny</b>. sun은 명사(해)입니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"뜻", word:"pretty", q:"<b>pretty</b>의 뜻으로 알맞은 것은?",
+   opts:["예쁜","무서운","배고픈","느린","더운"], a:0,
+   exp:"pretty = <b>예쁜</b>"},
+
+  {type:"n", tag:"뜻", word:"hungry", q:"<b>hungry</b>의 뜻으로 알맞은 것은?",
+   opts:["배고픈","목마른","피곤한","졸린","화난"], a:0,
+   exp:"hungry = <b>배고픈</b>"},
+
+  {type:"n", tag:"뜻", word:"busy", q:"<b>busy</b>의 뜻으로 알맞은 것은?",
+   opts:["바쁜","한가한","쉬운","조용한","시끄러운"], a:0,
+   exp:"busy = <b>바쁜</b>"},
+
+  {type:"n", tag:"뜻", word:"easy", q:"<b>easy</b>의 뜻으로 알맞은 것은?",
+   opts:["쉬운","어려운","무거운","비싼","더러운"], a:0,
+   exp:"easy = <b>쉬운</b>"},
+
+  {type:"n", tag:"뜻", word:"cheap", q:"<b>cheap</b>의 뜻으로 알맞은 것은?",
+   opts:["값이 싼","비싼","깨끗한","넓은","좁은"], a:0,
+   exp:"cheap = <b>값이 싼</b> ↔ expensive"},
+
+  {type:"n", tag:"뜻", word:"quiet", q:"<b>quiet</b>의 뜻으로 알맞은 것은?",
+   opts:["조용한","시끄러운","밝은","어두운","빠른"], a:0,
+   exp:"quiet = <b>조용한</b>"},
+
+  {type:"n", tag:"뜻", word:"strong", q:"<b>strong</b>의 뜻으로 알맞은 것은?",
+   opts:["힘센","약한","작은","둥근","부드러운"], a:0,
+   exp:"strong = <b>힘센</b> ↔ weak"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 형용사를 모두 고르세요. (여러 개)",
+   opts:["busy","easy","quiet","study","slowly"], ans:[0,1,2],
+   exp:"study는 동사, slowly는 부사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"색깔을 나타내는 형용사를 모두 고르세요. (여러 개)",
+   opts:["red","blue","green","round","soft"], ans:[0,1,2],
+   exp:"round(둥근) · soft(부드러운)는 모양과 느낌입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"날씨를 나타내는 형용사를 모두 고르세요. (여러 개)",
+   opts:["sunny","rainy","windy","hungry","angry"], ans:[0,1,2],
+   exp:"hungry · angry는 사람의 상태입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"사람의 성격을 나타내는 형용사를 모두 고르세요. (여러 개)",
+   opts:["kind","honest","brave","sunny","cheap"], ans:[0,1,2],
+   exp:"kind(친절한) · honest(정직한) · brave(용감한)"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 중 어순이 바른 것을 모두 고르세요. (여러 개)",
+   opts:["a hot day","an easy test","a cute baby","a day hot","test an easy"], ans:[0,1,2],
+   exp:"a/an + 형용사 + 명사"},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"The room is ___ . 빈칸에 들어갈 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["clean","dark","big","cleanly","room"], ans:[0,1,2],
+   exp:"be동사 뒤에는 형용사. cleanly는 부사, room은 명사입니다."},
+
+  {type:"v", tag:"반대말", word:"easy", q:"<b>easy</b>의 반대말은?",
+   opts:["difficult","simple","fast","kind","busy"], a:0,
+   exp:"easy(쉬운) ↔ <b>difficult</b>(어려운)"},
+
+  {type:"v", tag:"반대말", word:"tall", q:"<b>tall</b>의 반대말은?",
+   opts:["short","long","big","small","low"], a:0,
+   exp:"키가 큰 ↔ <b>short</b>(키가 작은)"},
+
+  {type:"v", tag:"반대말", word:"strong", q:"<b>strong</b>의 반대말은?",
+   opts:["weak","big","hard","heavy","soft"], a:0,
+   exp:"strong(힘센) ↔ <b>weak</b>(약한)"},
+
+  {type:"v", tag:"반대말", word:"fast", q:"<b>fast</b>의 반대말은?",
+   opts:["slow","quick","late","early","short"], a:0,
+   exp:"fast(빠른) ↔ <b>slow</b>(느린)"},
+
+  {type:"v", tag:"반대말", word:"good", q:"<b>good</b>의 반대말은?",
+   opts:["bad","nice","well","great","fine"], a:0,
+   exp:"good(좋은) ↔ <b>bad</b>(나쁜)"},
+
+  {type:"v", tag:"반대말", sent:"This is an ___ question. (쉬운 질문)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["easy","difficult","easily","ease","hard"], a:0, eng:true,
+   ko:"이것은 쉬운 질문이다.",
+   exp:"쉬운 = <b>easy</b>. 모음 소리로 시작하므로 an easy"},
+
+  {type:"v", tag:"반대말", sent:"The water is ___ . (차갑다)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["cold","hot","warm","coldly","cool down"], a:0, eng:true,
+   ko:"그 물은 차갑다.",
+   exp:"차가운 = <b>cold</b>"}
+];
+
+var X3 = [
+  {type:"n", tag:"두 자리", sent:"This is an ___ book. (재미있는 책)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["interesting","interest","interestingly","interested","interests"], a:0, eng:true,
+   ko:"이것은 재미있는 책이다.",
+   exp:"명사 book을 꾸미는 형용사 <b>interesting</b>"},
+
+  {type:"n", tag:"두 자리", sent:"This book is ___ . (재미있다)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["interesting","interest","interestingly","an interesting","interests"], a:0, eng:true,
+   ko:"이 책은 재미있다.",
+   exp:"be동사 뒤에서 주어를 설명 → <b>interesting</b>"},
+
+  {type:"n", tag:"두 자리", q:"밑줄 친 형용사가 명사를 꾸며 주는 문장은?",
+   opts:["She has a **cute** puppy.","Her puppy is **cute**.","The test was **easy**.","I am **hungry**.","The sky is **blue**."], a:0,
+   exp:"cute가 명사 puppy 앞에서 꾸밉니다."},
+
+  {type:"n", tag:"두 자리", q:"밑줄 친 형용사가 주어를 설명하는 문장은?",
+   opts:["My room is **small**.","I have a **small** room.","It is a **big** house.","He is a **good** cook.","She has **long** hair."], a:0,
+   exp:"be동사 뒤에서 주어 My room을 설명합니다."},
+
+  {type:"n", tag:"두 자리", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She is a kindly.","She is kind.","She is a kind girl.","They are kind.","He has a kind heart."], a:0,
+   exp:"명사 없이 a를 쓸 수 없고 kindly는 부사입니다 → She is kind."},
+
+  {type:"n", tag:"두 자리", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["The movie was sadly.","The movie was sad.","It was a sad movie.","I felt sad.","She looks sad."], a:0,
+   exp:"be동사 뒤에는 형용사 → The movie was <b>sad</b>."},
+
+  {type:"n", tag:"두 자리", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The flowers are beautiful. = They are ___ flowers.</span>",
+   opts:["beautiful","beautifully","a beautiful","beauty","beautifuls"], a:0,
+   exp:"복수 명사 앞이므로 a 없이 <b>beautiful</b> flowers"},
+
+  {type:"a", tag:"어순", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘새 자전거’</span>",
+   opts:["a new bike","a bike new","new a bike","bike a new","an new bike"], a:0,
+   exp:"a + 형용사 + 명사"},
+
+  {type:"a", tag:"어순", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘그 오래된 집’</span>",
+   opts:["the old house","the house old","old the house","an old the house","house the old"], a:0,
+   exp:"the + 형용사 + 명사"},
+
+  {type:"a", tag:"어순", q:"우리말과 뜻이 같도록 바르게 쓴 것은?<br><span class=\"eng\">‘내 빨간 모자’</span>",
+   opts:["my red cap","red my cap","my cap red","a my red cap","cap my red"], a:0,
+   exp:"소유격 + 형용사 + 명사"},
+
+  {type:"a", tag:"어순", q:"형용사 두 개를 쓸 때 바른 것은?<br><span class=\"eng\">‘크고 검은 고양이’</span>",
+   opts:["a big black cat","a black big cat","a big cat black","big a black cat","a cat big black"], a:0,
+   exp:"크기 → 색깔 차례. a big black cat"},
+
+  {type:"a", tag:"어순", q:"다음 중 어순이 <b>틀린</b> 것은?",
+   opts:["a movie funny","a funny movie","an old man","the hot soup","my new phone"], a:0,
+   exp:"형용사는 명사 앞 → a funny movie"},
+
+  {type:"a", tag:"어순", multi:true, q:"어순이 바른 것을 모두 고르세요. (여러 개)",
+   opts:["an easy question","my little brother","the tall tree","a question easy","brother my little"], ans:[0,1,2],
+   exp:"a/the/소유격 + 형용사 + 명사"},
+
+  {type:"v", tag:"수량", word:"a few", q:"<b>a few</b> 뒤에는 어떤 명사가 올까요?",
+   opts:["셀 수 있는 명사의 복수형","셀 수 없는 명사","셀 수 있는 명사의 단수형","사람 이름만","형용사"], a:0,
+   exp:"a few friends (친구 몇 명)"},
+
+  {type:"v", tag:"수량", word:"a little", q:"<b>a little</b> 뒤에는 어떤 명사가 올까요?",
+   opts:["셀 수 없는 명사","셀 수 있는 명사의 복수형","셀 수 있는 명사의 단수형","동사","부사"], a:0,
+   exp:"a little milk (우유 조금)"},
+
+  {type:"v", tag:"수량", sent:"I have ___ friends in this town. (친구 몇 명)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["a few","a little","much","a","little"], a:0, eng:true,
+   ko:"나는 이 동네에 친구가 몇 명 있다.",
+   exp:"셀 수 있는 복수 → <b>a few</b>"},
+
+  {type:"v", tag:"수량", sent:"Add ___ sugar to the tea. (설탕 조금)", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["a little","a few","many","a","few"], a:0, eng:true,
+   ko:"차에 설탕을 조금 넣어라.",
+   exp:"셀 수 없는 명사 → <b>a little</b>"},
+
+  {type:"v", tag:"수량", sent:"How ___ money do you have?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["much","many","few","a few","lot"], a:0, eng:true,
+   ko:"너는 돈이 얼마나 있니?",
+   exp:"money는 셀 수 없음 → How <b>much</b>"},
+
+  {type:"v", tag:"수량", multi:true, q:"much와 함께 쓸 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["water","time","money","books","friends"], ans:[0,1,2],
+   exp:"셀 수 없는 명사와 씁니다. books · friends는 many"},
+
+  {type:"v", tag:"수량", q:"다음 중 어법상 <b>틀린</b> 것은?",
+   opts:["a few water","a few eggs","a little milk","many pens","a lot of time"], a:0,
+   exp:"water는 셀 수 없음 → a little water"}
+];
+
+var X4 = [
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"hot", q:"‘뜨거운’을 영어로 써 보세요.",
+   exp:"<b>hot</b>입니다. hot soup (뜨거운 수프)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"old", q:"‘나이 든, 오래된’을 영어로 써 보세요.",
+   exp:"<b>old</b>입니다. an old man, an old book"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"sad", q:"‘슬픈’을 영어로 써 보세요.",
+   exp:"<b>sad</b>입니다. a sad story (슬픈 이야기)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"fast", alt:["quick"], q:"‘빠른’을 영어로 써 보세요.",
+   exp:"<b>fast</b>입니다. a fast car (빠른 차)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"good", q:"‘좋은’을 영어로 써 보세요.",
+   exp:"<b>good</b>입니다. a good idea (좋은 생각)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"pretty", alt:["beautiful"], q:"‘예쁜’을 영어로 써 보세요.",
+   exp:"<b>pretty</b>입니다. a pretty doll (예쁜 인형)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"easy", q:"‘쉬운’을 영어로 써 보세요.",
+   exp:"<b>easy</b>입니다. an easy test (쉬운 시험)"},
+
+  {type:"n", tag:"낱말 쓰기", write:true, ans:"hungry", q:"‘배고픈’을 영어로 써 보세요.",
+   exp:"<b>hungry</b>입니다. I am hungry. (나는 배고프다)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"slow", q:"<b>fast</b>의 반대말을 영어로 써 보세요.",
+   exp:"fast(빠른) ↔ <b>slow</b>(느린)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"short", q:"<b>tall</b>의 반대말을 영어로 써 보세요.",
+   exp:"tall(키가 큰) ↔ <b>short</b>(키가 작은)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"weak", q:"<b>strong</b>의 반대말을 영어로 써 보세요.",
+   exp:"strong(힘센) ↔ <b>weak</b>(약한)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"young", q:"사람의 나이를 말할 때 <b>old</b>의 반대말을 영어로 써 보세요.",
+   exp:"old(나이 든) ↔ <b>young</b>(젊은, 어린)"},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"difficult", alt:["hard"], q:"<b>easy</b>의 반대말을 영어로 써 보세요.",
+   exp:"easy(쉬운) ↔ <b>difficult</b>(어려운). hard도 됩니다."},
+
+  {type:"a", tag:"반대말 쓰기", write:true, ans:"light", q:"<b>heavy</b>의 반대말을 영어로 써 보세요.",
+   exp:"heavy(무거운) ↔ <b>light</b>(가벼운)"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"happy", alt:["glad"], q:"빈칸에 알맞은 형용사를 써 보세요.<br><span class=\"eng\">I am ___ today. (나는 오늘 행복하다)</span>",
+   exp:"be동사 뒤에서 주어를 설명합니다. <b>happy</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"long", q:"빈칸에 알맞은 형용사를 써 보세요.<br><span class=\"eng\">She has ___ hair. (그녀는 머리가 길다)</span>",
+   exp:"명사 hair를 꾸밉니다. <b>long</b>"},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"many", alt:["a lot of","lots of"], q:"빈칸에 알맞은 말을 써 보세요.<br><span class=\"eng\">There are ___ students in the gym. (학생이 많다)</span>",
+   exp:"students는 셀 수 있으므로 <b>many</b>입니다."},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"much", q:"빈칸에 알맞은 말을 써 보세요.<br><span class=\"eng\">How ___ milk do you want? (얼마나 많은)</span>",
+   exp:"milk는 셀 수 없으므로 How <b>much</b>입니다."},
+
+  {type:"v", tag:"문장 채우기", write:true, ans:"a big red ball", alt:["a red big ball"], q:"우리말에 맞게 영어로 써 보세요.<br><span class=\"eng\">‘크고 빨간 공’ (a 로 시작해서)</span>",
+   exp:"<b>a big red ball</b>입니다. 크기를 먼저, 색깔을 나중에 씁니다."},
+
+  {type:"v", tag:"정리", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["a few는 셀 수 있는 명사, a little은 셀 수 없는 명사와 쓴다.","much는 셀 수 있는 명사와 쓴다.","형용사는 명사 뒤에서 꾸민다.","be동사 뒤에는 부사가 온다.","형용사 두 개를 쓸 때는 색깔을 먼저 쓴다."], a:0,
+   exp:"a few + 복수 명사, a little + 셀 수 없는 명사"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 어떠한지를 말하는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 형용사가 하는 일 두 가지 · 쉬운 형용사와 반대말 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중2 · 동명사 GAME</span></h1>
-    <p class="sub">동명사 -ing · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">동명사 -ing · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중2 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -753,6 +753,366 @@ var L4 = [
    opts:["enjoy, finish, mind 뒤에는 to부정사가 온다.","동명사 주어는 단수로 받는다.","전치사 뒤에는 동명사가 온다.","remember -ing는 지난 일을 기억하는 것이다.","like, love, start 뒤에는 둘 다 올 수 있다."], a:0,
    exp:"enjoy · finish · mind 뒤에는 <b>동명사</b>가 옵니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘동명사’라는 이름에서 ‘동’과 ‘명’은 각각 무엇을 뜻할까요?",
+   opts:["동사 + 명사","동물 + 명사","동사 + 명령","동작 + 명령","동그라미 + 명사"], a:0,
+   exp:"<b>동</b>사를 <b>명</b>사처럼 쓰는 말이라서 동명사입니다. 모양은 동사(-ing), 하는 일은 명사입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘달리다’를 ‘~하는 것’으로 바꾼 말은?",
+   opts:["달리는 것","달렸다","달릴 것이다","달리고 있다","달려라"], a:0,
+   exp:"‘~하는 것 · ~하기’로 바꾸면 명사처럼 쓸 수 있습니다. 달리는 것 = <b>running</b>"},
+
+  {type:"n", tag:"한글로 이해", sent:"그의 꿈은 [의사가 되는 것]이다.", q:"[ ] 부분은 문장에서 어느 자리일까요?",
+   opts:["보어(주어가 무엇인지 설명)","주어(~은, ~는)","목적어(~을, ~를)","동사","전치사"], a:0,
+   exp:"‘꿈 = 의사가 되는 것’, 주어를 설명하는 <b>보어</b>입니다. His dream is <b>becoming</b> a doctor."},
+
+  {type:"n", tag:"한글로 이해", sent:"[책 읽기]는 나의 즐거움이다.", q:"[ ] 부분은 문장에서 어느 자리일까요?",
+   opts:["주어(~은, ~는)","목적어(~을, ~를)","보어","동사","전치사 뒤"], a:0,
+   exp:"‘~는’ 자리이니 <b>주어</b>입니다. <b>Reading books</b> is my pleasure."},
+
+  {type:"n", tag:"한글로 이해", sent:"그녀는 [노래 부르기]를 좋아한다.", q:"[ ] 부분은 문장에서 어느 자리일까요?",
+   opts:["목적어(~을, ~를)","주어(~은, ~는)","보어","동사","형용사"], a:0,
+   exp:"‘~를’ 자리이니 <b>목적어</b>입니다. She likes <b>singing</b>."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그는 수영하는 것<b>에</b> 관심이 있다’처럼 ‘~에, ~에 대해’ 뒤에 오는 동명사는 어느 자리일까요?",
+   opts:["전치사 뒤","주어","동사","형용사 앞","문장 맨 앞에만"], a:0,
+   exp:"‘~에’는 전치사 in입니다. 전치사 <b>뒤</b>에는 동명사가 옵니다. He is interested in <b>swimming</b>."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"동명사(~하는 것)가 <b>목적어</b> 자리에 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["나는 **요리하기**를 즐긴다.","그는 **숙제하기**를 끝냈다.","우리는 **걷기**를 좋아한다.","**걷기**는 건강에 좋다.","내 취미는 **걷기**이다."], ans:[0,1,2],
+   exp:"‘~을/를’이 붙으면 <b>목적어</b>입니다. ‘걷기는’은 주어, ‘걷기이다’는 보어입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘~하는 것 · ~하기’로 풀이되는 말을 모두 고르세요. (여러 개)",
+   opts:["춤추기","그림 그리는 것","일찍 일어나기","춤추고 있다","그림을 그렸다"], ans:[0,1,2],
+   exp:"‘~하기 · ~하는 것’이 동명사입니다. ‘~하고 있다’는 진행, ‘~했다’는 과거입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"동명사가 주어일 때 뒤에 오는 동사는?",
+   opts:["단수 동사(is, was)","복수 동사(are, were)","아무것이나","동사원형","동사가 오지 않는다"], a:0,
+   exp:"동명사 주어는 하나의 일로 보아 <b>단수</b>로 셉니다. Swimming <b>is</b> fun."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~하지 않는 것’처럼 동명사를 부정할 때 not의 자리는?",
+   opts:["동명사 바로 앞","동명사 바로 뒤","문장 맨 끝","주어 앞","be동사 뒤에만"], a:0,
+   exp:"not은 동명사 <b>앞</b>에 둡니다. <b>Not eating</b> breakfast is bad."},
+
+  {type:"n", tag:"한글로 이해", q:"‘-ing’가 붙은 말 가운데 ‘~하는 것’(동명사)이 <b>아닌</b> 것은?",
+   opts:["나는 지금 공부하고 있다.","공부하기는 중요하다.","내 일은 공부하는 것이다.","나는 공부하기를 좋아한다.","그는 공부하는 것에 지쳤다."], a:0,
+   exp:"‘~하고 있다’는 be + -ing의 <b>진행형</b>입니다. 나머지는 모두 ‘~하는 것’입니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["동명사는 문장에서 형용사처럼 명사를 꾸미는 것이 주된 일이다.","동명사는 동사원형에 -ing를 붙인다.","동명사는 주어 · 목적어 · 보어가 될 수 있다.","전치사 뒤에는 동명사를 쓴다.","동명사를 부정할 때는 앞에 not을 둔다."], a:0,
+   exp:"동명사의 주된 일은 <b>명사</b> 노릇입니다. 명사를 꾸미는 -ing는 현재분사입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"write를 동명사로 바르게 바꾼 것은?",
+   opts:["writing","writeing","writting","wrote","written"], a:0, eng:true,
+   exp:"e로 끝나면 e를 빼고 -ing → <b>writing</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"___ books is my hobby.", q:"‘책 읽기는 내 취미이다’가 되도록 알맞은 것은?",
+   opts:["Reading","Read","Reads","To reading","Readed"], a:0, eng:true,
+   ko:"책 읽기는 내 취미이다.",
+   exp:"주어 자리에 동명사 <b>Reading</b>이 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I finished ___ my homework.", q:"‘나는 숙제하기를 끝냈다’가 되도록 알맞은 것은?",
+   opts:["doing","do","to do","did","does"], a:0, eng:true,
+   ko:"나는 숙제하기를 끝냈다.",
+   exp:"finish 뒤에는 <b>동명사</b>가 옵니다. finished <b>doing</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"Her job is ___ children.", q:"‘그녀의 일은 아이들을 가르치는 것이다’가 되도록 알맞은 것은?",
+   opts:["teaching","teach","taught","teaches","to teaching"], a:0, eng:true,
+   ko:"그녀의 일은 아이들을 가르치는 것이다.",
+   exp:"be동사 뒤 보어 자리에 동명사 <b>teaching</b>이 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"Walking is good for you.", q:"<b>Walking is good for you.</b>의 뜻으로 알맞은 것은?",
+   opts:["걷기는 너에게 좋다.","너는 걷고 있다.","너는 걸었다.","걸어라.","너는 걸을 것이다."], a:0, eng:true,
+   exp:"문장 맨 앞 Walking은 주어 ‘<b>걷기는</b>’입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"우리말과 동명사가 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["수영하기 – swimming","쓰기 – writing","달리기 – running","만들기 – makeing","앉기 – siting"], ans:[0,1,2],
+   exp:"make → <b>making</b>(e 빼기), sit → <b>sitting</b>(t를 한 번 더)"},
+
+  {type:"a", tag:"쉬운 영어", sent:"We love ___ in the park.", q:"‘우리는 공원에서 뛰어노는 것을 아주 좋아한다’가 되도록 알맞은 것은?",
+   opts:["playing","play","played","plays","to playing"], a:0, eng:true,
+   ko:"우리는 공원에서 뛰어노는 것을 아주 좋아한다.",
+   exp:"love의 목적어 자리에 동명사 <b>playing</b>이 옵니다. (to play도 됩니다)"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"밑줄 친 부분이 <b>동명사</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["**Cooking** is fun.","I like **drawing**.","My hobby is **singing**.","She is **singing** now.","They are **running**."], ans:[0,1,2],
+   exp:"주어 · 목적어 · 보어 자리의 -ing가 동명사입니다. be + -ing(지금 ~하고 있다)는 진행형입니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"모양", q:"run의 동명사를 바르게 쓴 것은?",
+   opts:["running","runing","runnning","ran","runs"], a:0, eng:true,
+   exp:"짧은 모음 + 자음으로 끝나면 자음을 한 번 더 → <b>running</b>"},
+
+  {type:"n", tag:"모양", q:"die(죽다)의 -ing 모양은?",
+   opts:["dying","dieing","dieying","diing","died"], a:0, eng:true,
+   exp:"-ie로 끝나면 ie를 y로 바꾸고 -ing → <b>dying</b>"},
+
+  {type:"n", tag:"모양", sent:"Would you mind ___ quiet?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["being","be","to be","been","is"], a:0, eng:true,
+   ko:"조용히 해 주시겠어요?",
+   exp:"mind 뒤에는 동명사, be의 동명사는 <b>being</b>"},
+
+  {type:"n", tag:"모양", sent:"They practiced ___ the song.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["singing","to sing","sing","sang","sung"], a:0, eng:true,
+   ko:"그들은 그 노래 부르기를 연습했다.",
+   exp:"practice 뒤에는 <b>동명사</b>가 옵니다."},
+
+  {type:"n", tag:"모양", sent:"He avoided ___ my eyes.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["meeting","to meet","meet","met","meets"], a:0, eng:true,
+   ko:"그는 내 눈을 마주치는 것을 피했다.",
+   exp:"avoid 뒤에는 <b>동명사</b>가 옵니다."},
+
+  {type:"n", tag:"모양", sent:"She is afraid of ___ alone.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["being","be","to be","been","is"], a:0, eng:true,
+   ko:"그녀는 혼자 있는 것을 무서워한다.",
+   exp:"전치사 of 뒤에는 동명사 <b>being</b>이 옵니다."},
+
+  {type:"n", tag:"모양", sent:"___ too much candy is bad for your teeth.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Eating","Eat","Eats","Ate","Eaten"], a:0, eng:true,
+   ko:"사탕을 너무 많이 먹는 것은 이에 나쁘다.",
+   exp:"주어 자리에는 동명사 <b>Eating</b>이 옵니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"뒤에 <b>동명사</b>가 오는 동사를 모두 고르세요. (여러 개)",
+   opts:["practice","avoid","give up","hope","promise"], ans:[0,1,2],
+   exp:"practice · avoid · give up은 동명사, hope · promise는 to부정사와 씁니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>to부정사</b>가 와야 하는 것을 모두 고르세요. (여러 개)",
+   opts:["I hope ___ you again.","She promised ___ early.","We need ___ now.","I enjoy ___ songs.","He kept ___ ."], ans:[0,1,2],
+   exp:"hope · promise · need 뒤에는 to부정사, enjoy · keep 뒤에는 동명사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["She began to cry.","She began crying.","He avoided talking to me.","He avoided to talk to me.","I hope seeing you."], ans:[0,1,2],
+   exp:"begin은 둘 다 되고, avoid는 동명사, hope는 to부정사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"빈칸에 <b>동명사</b>가 와야 하는 것을 모두 고르세요. (여러 개)",
+   opts:["He is good at ___ .","I'm tired of ___ .","She left without ___ .","I want ___ .","They decided ___ ."], ans:[0,1,2],
+   exp:"전치사 at · of · without 뒤에는 동명사입니다. want · decide는 to부정사입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"동명사의 철자가 <b>바른</b> 것을 모두 고르세요. (여러 개)",
+   opts:["sitting","coming","lying","writting","dieing"], ans:[0,1,2],
+   exp:"write → writing, die → dying이 바른 철자입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Watch movies are fun.","I practiced to play the violin.","She avoided to answer.","Watching movies is fun.","I practiced playing the violin."], ans:[0,1,2],
+   exp:"주어는 Watching movies(단수 is), practice와 avoid 뒤에는 동명사입니다."},
+
+  {type:"v", tag:"함정", sent:"Taking pictures of animals ___ my hobby.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","be","were","being"], a:0, eng:true,
+   ko:"동물 사진을 찍는 것이 내 취미이다.",
+   exp:"주어는 Taking(동명사, 단수)입니다. animals에 속지 마세요. → <b>is</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Learning languages are interesting.","Learning languages is interesting.","I enjoy learning languages.","My hobby is learning languages.","He is good at learning languages."], a:0, eng:true,
+   exp:"동명사 주어는 단수 → <b>is</b>. languages에 속으면 안 됩니다."},
+
+  {type:"v", tag:"함정", sent:"I'm sorry for ___ late.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["being","be","am","to be","was"], a:0, eng:true,
+   ko:"늦어서 미안해.",
+   exp:"전치사 for 뒤에는 동명사, be → <b>being</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"밑줄 친 부분이 어법상 <b>어색한</b> 것은?",
+   opts:["She decided **going** abroad.","She enjoys **going** abroad.","She gave up **going** abroad.","She is thinking about **going** abroad.","She loves **going** abroad."], a:0, eng:true,
+   exp:"decide 뒤에는 <b>to부정사</b>입니다. decided to go"},
+
+  {type:"v", tag:"함정", sent:"He is used to ___ up early.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["getting","get","got","gets","be get"], a:0, eng:true,
+   ko:"그는 일찍 일어나는 데 익숙하다.",
+   exp:"be used to의 to는 <b>전치사</b>라서 뒤에 동명사가 옵니다. to부정사가 아닙니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"밑줄 친 -ing의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["They are **dancing** on the stage.","**Dancing** is good exercise.","She likes **dancing**.","Her hobby is **dancing**.","He is good at **dancing**."], a:0, eng:true,
+   exp:"be + -ing(~하고 있다)는 <b>진행형</b>입니다. 나머지는 모두 동명사입니다."},
+
+  {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">She promised ___ harder, and she kept ___ every day.</span>",
+   opts:["to study – studying","studying – to study","to study – to study","studying – studying","study – studying"], a:0, eng:true,
+   exp:"promise 뒤에는 <b>to부정사</b>, keep 뒤에는 <b>동명사</b>입니다."}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", sent:"It started ___ in the afternoon.", q:"빈칸에 들어갈 수 <b>없는</b> 것은?",
+   opts:["rain","raining","to rain"], a:0, eng:true,
+   ko:"오후에 비가 오기 시작했다.",
+   exp:"start 뒤에는 동명사와 to부정사가 모두 옵니다. 동사원형 rain은 올 수 없습니다."},
+
+  {type:"n", tag:"빈칸", sent:"Thank you for ___ me the way.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["showing","show","to show","showed","shows"], a:0, eng:true,
+   ko:"길을 알려 줘서 고마워.",
+   exp:"전치사 for 뒤에는 동명사 <b>showing</b>"},
+
+  {type:"n", tag:"빈칸", sent:"Let's go ___ this Saturday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["shopping","shop","to shopping","shopped","shops"], a:0, eng:true,
+   ko:"이번 토요일에 쇼핑하러 가자.",
+   exp:"go + -ing = ‘~하러 가다’. go <b>shopping</b>"},
+
+  {type:"n", tag:"빈칸", sent:"She spent two hours ___ the report.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["writing","to write","write","wrote","written"], a:0, eng:true,
+   ko:"그녀는 보고서를 쓰는 데 두 시간을 썼다.",
+   exp:"spend + 시간 + -ing = ‘~하는 데 시간을 쓰다’"},
+
+  {type:"n", tag:"빈칸", sent:"He had trouble ___ the answer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["finding","to find","find","found","finds"], a:0, eng:true,
+   ko:"그는 답을 찾는 데 어려움을 겪었다.",
+   exp:"have trouble + -ing = ‘~하는 데 어려움을 겪다’"},
+
+  {type:"n", tag:"빈칸", sent:"What about ___ a movie tonight?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["watching","watch","to watch","watched","watches"], a:0, eng:true,
+   ko:"오늘 밤 영화 보는 게 어때?",
+   exp:"What about + -ing = How about + -ing = ‘~하는 게 어때?’"},
+
+  {type:"n", tag:"빈칸", multi:true, sent:"She loves ___ in the rain.", q:"빈칸에 들어갈 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["walking","to walk","walk","walked","walks"], ans:[0,1], eng:true,
+   ko:"그녀는 빗속을 걷는 것을 아주 좋아한다.",
+   exp:"love는 동명사와 to부정사를 모두 씁니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She is good at **make** cakes.</span>",
+   opts:["making","to make","made","makes","고칠 필요 없음"], a:0, eng:true,
+   exp:"전치사 at 뒤에는 동명사 <b>making</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He gave up **to smoke** last year.</span>",
+   opts:["smoking","smoke","smoked","to smoking","고칠 필요 없음"], a:0, eng:true,
+   exp:"give up 뒤에는 동명사 <b>smoking</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">Watching sports on TV **make** me excited.</span>",
+   opts:["makes","making","to make","made me to","고칠 필요 없음"], a:0, eng:true,
+   exp:"동명사 주어는 단수 → <b>makes</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I'm looking forward to **meet** you.</span>",
+   opts:["meeting","met","meets","to meet","고칠 필요 없음"], a:0, eng:true,
+   exp:"look forward to의 to는 <b>전치사</b> → 동명사 <b>meeting</b>"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["He is proud of being a teacher.","He is proud of be a teacher.","He is proud of to be a teacher.","He is proud of is a teacher.","He is proud of been a teacher."], a:0, eng:true,
+   exp:"전치사 of 뒤에는 동명사 <b>being</b>"},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I'm interested in learn Chinese.","Stop to talk and listen to me.","Collecting stamps are fun.","I'm interested in learning Chinese.","Collecting stamps is fun."], ans:[0,1,2],
+   exp:"in 뒤에는 learning, ‘말하기를 멈춰’는 stop talking, 동명사 주어는 is입니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: What is your hobby?<br>B: My hobby is ___ .</span>",
+   opts:["playing the guitar","play the guitar","plays the guitar","played the guitar","to playing the guitar"], a:0, eng:true,
+   exp:"be동사 뒤 보어 자리에 동명사 <b>playing</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"대답으로 알맞은 것은?<br><span class=\"eng\">A: How about going to the beach?<br>B: ___</span>",
+   opts:["That sounds great!","Yes, I went.","No, I'm not a beach.","I'm going to the beach yesterday.","It is a beach."], a:0, eng:true,
+   exp:"How about ~ing?는 제안입니다. 좋다는 대답 <b>That sounds great!</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 쓴 것은?<br>‘아침을 거르는 것은 건강에 나쁘다.’",
+   opts:["Skipping breakfast is bad for your health.","Skip breakfast is bad for your health.","Skipping breakfast are bad for your health.","To skipping breakfast is bad for your health.","Skipped breakfast is bad for your health."], a:0, eng:true,
+   exp:"주어 = 동명사 <b>Skipping</b> breakfast, 동사는 단수 is"},
+
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 쓴 것은?<br>‘그는 작별 인사도 없이 떠났다.’",
+   opts:["He left without saying goodbye.","He left without say goodbye.","He left without to say goodbye.","He left without said goodbye.","He left not saying without goodbye."], a:0, eng:true,
+   exp:"without + 동명사 = ‘~하지 않고, ~ 없이’"},
+
+  {type:"v", tag:"대화와 배열", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">It is difficult to learn Japanese.<br>= ___ Japanese is difficult.</span>",
+   opts:["Learning","Learn","Learned","Learns","To learning"], a:0, eng:true,
+   exp:"가주어 It 대신 동명사 주어 <b>Learning</b>으로 바꿔 쓸 수 있습니다."},
+
+  {type:"v", tag:"대화와 배열", hard:true, q:"다음 글에서 어법상 <b>틀린</b> 것은?<br><span class=\"eng\">I like ⓐ<b>hiking</b>. Last week, I went ⓑ<b>hiking</b> with my dad. ⓒ<b>Climb</b> the mountain was hard, but I enjoyed ⓓ<b>looking</b> at the view. I'm thinking about ⓔ<b>going</b> again.</span>",
+   opts:["ⓒ","ⓐ","ⓑ","ⓓ","ⓔ"], a:0, eng:true,
+   exp:"주어 자리에는 동명사 <b>Climbing</b>이 와야 합니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 공통으로 알맞은 것은?<br><span class=\"eng\">• I'm not good at ___ .<br>• ___ in the sea is exciting.</span>",
+   opts:["swimming","swim","to swim","swam","swims"], a:0, eng:true,
+   exp:"전치사 at 뒤, 주어 자리 모두 동명사 <b>swimming</b>"}
+];
+
+var X4 = [
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 부분이 <b>동명사</b>인 것은?",
+   opts:["a **swimming** pool","a **swimming** boy","The boy is **swimming**.","a **crying** baby","the **rising** sun"], a:0, eng:true,
+   exp:"a swimming pool = 수영<b>하기 위한</b> 수영장, 용도를 나타내는 동명사입니다. 나머지는 ‘~하는’ 현재분사입니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 부분이 <b>현재분사</b>인 것은?",
+   opts:["the **dancing** girl","a **dancing** shoe","**Dancing** is fun.","I like **dancing**.","a **dancing** room"], a:0, eng:true,
+   exp:"the dancing girl = 춤추고 <b>있는</b> 소녀, 현재분사입니다. dancing shoe · room은 용도(동명사)입니다."},
+
+  {type:"n", tag:"쓰임 가리기", sent:"I'll never forget ___ you for the first time.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["meeting","to meet","meet","met","meets"], a:0, eng:true,
+   ko:"너를 처음 만났던 것을 절대 잊지 않을 거야.",
+   exp:"forget + -ing = 이미 한 일을 잊다. forget + to = 할 일을 잊다"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"Remember ___ your homework tomorrow.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to bring","bringing","bring","brought","brings"], a:0, eng:true,
+   ko:"내일 숙제 가져오는 것을 기억해.",
+   exp:"앞으로 할 일을 기억하다 → remember <b>to</b> + 동사원형"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"I tried ___ the window, but it was locked.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to open","opening","open","opened","opens"], a:0, eng:true,
+   ko:"나는 창문을 열려고 애썼지만 잠겨 있었다.",
+   exp:"try + to = ~하려고 애쓰다, try + -ing = 시험 삼아 ~해 보다"},
+
+  {type:"n", tag:"쓰임 가리기", sent:"If you have a headache, try ___ some water.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["drinking","to drink","drink","drank","drunk"], a:0, eng:true,
+   ko:"머리가 아프면 물을 좀 마셔 봐.",
+   exp:"시험 삼아 ~해 보다 → try + <b>-ing</b>"},
+
+  {type:"n", tag:"쓰임 가리기", multi:true, q:"밑줄 친 -ing가 <b>동명사</b>인 것을 모두 고르세요. (여러 개)",
+   opts:["a **washing** machine","My job is **teaching**.","I'm afraid of **flying**.","a **flying** bird","The baby is **sleeping**."], ans:[0,1,2],
+   exp:"용도(washing machine) · 보어 · 전치사 뒤가 동명사입니다. a flying bird와 진행형은 현재분사입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">To exercise every day is important.<br>= ___ every day is important.</span>",
+   opts:["Exercising","Exercise","Exercised","Exercises","To exercising"], a:0, eng:true,
+   exp:"to부정사 주어는 동명사 주어 <b>Exercising</b>으로 바꿀 수 있습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">Shall we go swimming?<br>= What about ___ swimming?</span>",
+   opts:["going","go","to go","went","goes"], a:0, eng:true,
+   exp:"What about + <b>-ing</b> = ‘~하는 게 어때?’"},
+
+  {type:"a", tag:"바꿔 쓰기", sent:"I can't help ___ about the test.", q:"‘시험 걱정을 하지 않을 수 없다’가 되도록 빈칸에 알맞은 것은?",
+   opts:["worrying","worry","to worry","worried","worries"], a:0, eng:true,
+   ko:"나는 시험 걱정을 하지 않을 수 없다.",
+   exp:"cannot help + -ing = ‘~하지 않을 수 없다’"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">When he heard the news, he started to cry.<br>= On ___ the news, he started to cry.</span>",
+   opts:["hearing","hear","heard","to hear","hears"], a:0, eng:true,
+   exp:"On + -ing = ‘~하자마자’"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She is proud that she is a nurse.<br>= She is proud of ___ a nurse.</span>",
+   opts:["being","be","is","to be","been"], a:0, eng:true,
+   exp:"전치사 of 뒤에 동명사 <b>being</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"뜻이 <b>같은</b> 짝을 모두 고르세요. (여러 개)",
+   opts:["Let's take a break. = How about taking a break?","It is fun to ride a bike. = Riding a bike is fun.","He began to talk. = He began talking.","I remember to call her. = I remember calling her.","She stopped to eat. = She stopped eating."], ans:[0,1,2],
+   exp:"remember와 stop은 to부정사와 동명사의 뜻이 달라집니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I remember to visiting Busan when I was ten.","I remember visiting Busan when I was ten.","Remember to call me.","She stopped talking.","He tried moving the sofa alone."], a:0, eng:true,
+   exp:"지난 일을 기억하면 remember <b>visiting</b>, to 뒤에는 동사원형입니다."},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["This movie is worth watching.","I'm looking forward to seeing you.","She is busy preparing for the trip.","He is used to get up early.","I spent my money to buy clothes."], ans:[0,1,2],
+   exp:"be used to <b>getting</b> up, spend money (on) <b>buying</b>이 맞습니다."},
+
+  {type:"v", tag:"종합", sent:"There is no ___ what will happen.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["knowing","know","to know","known","knows"], a:0, eng:true,
+   ko:"무슨 일이 일어날지 알 수 없다.",
+   exp:"There is no + -ing = ‘~할 수 없다’"},
+
+  {type:"v", tag:"종합", sent:"He felt like ___ after the long walk.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["resting","rest","to rest","rested","rests"], a:0, eng:true,
+   ko:"그는 오래 걷고 나서 쉬고 싶었다.",
+   exp:"feel like + -ing = ‘~하고 싶다’"},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ Stop ___ ! The baby is sleeping.<br>ⓑ He stopped ___ a rest because he was tired.</span>",
+   opts:["shouting – to take","to shout – taking","shouting – taking","to shout – to take","shout – take"], a:0, eng:true,
+   exp:"ⓐ 소리치는 것을 멈춰 → stop <b>-ing</b>, ⓑ 쉬기 위해 멈추다 → stop <b>to</b> + 동사원형"},
+
+  {type:"v", tag:"종합", q:"우리말에 맞게 바르게 쓴 것은?<br>‘나는 그 책을 읽을 만한 가치가 있다고 생각한다.’",
+   opts:["I think the book is worth reading.","I think the book is worth to read.","I think the book is worth read.","I think the book is worthy reading to.","I think the book worth is reading."], a:0, eng:true,
+   exp:"be worth + -ing = ‘~할 가치가 있다’"},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["look forward to 뒤에는 동사원형이 온다.","전치사 뒤에는 동명사를 쓴다.","동명사 주어는 단수로 받는다.","remember + -ing는 지난 일을 기억한다는 뜻이다.","go + -ing는 ‘~하러 가다’라는 뜻이다."], a:0, eng:true,
+   exp:"look forward to의 to는 전치사라서 <b>동명사</b>가 옵니다. look forward to seeing you"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · 동명사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 동사 + -ing = ~하는 것 · 주어·목적어·보어 자리 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},

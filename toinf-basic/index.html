@@ -293,7 +293,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 <div class="wrap">
   <header class="masthead">
     <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · TO부정사 기본</span></h1>
-    <p class="sub">to + 동사원형 · 세 가지 노릇 · 80문제 · 네 단계 각 20문제 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+    <p class="sub">to + 동사원형 · 세 가지 노릇 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 넓히기와 함정, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
   </header>
 
   <div class="rail" id="rail" aria-hidden="true">
@@ -751,6 +751,364 @@ var L4 = [
    opts:["to 뒤에는 동사에 ing를 붙인다.","to부정사는 이름 노릇을 할 수 있다.","to부정사는 명사를 뒤에서 꾸민다.","to부정사는 까닭을 말할 수 있다.","enough는 형용사 뒤에 온다."], a:0, eng:true,
    exp:"to 뒤에는 <b>동사원형</b>입니다. 이 한 줄이 처음부터 끝까지 그대로입니다."}
 ];
+
+
+/* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"to부정사의 ‘부정(不定)’은 무슨 뜻일까요?",
+   opts:["정해지지 않았다","아니라고 한다","틀렸다","싫어한다","멈춘다"], a:0,
+   exp:"하는 일(품사)이 하나로 <b>정해지지 않아서</b> 부정사입니다. 명사 · 형용사 · 부사 노릇을 모두 합니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 [피아노 치기]를 배운다.", q:"[ ] 부분이 하는 노릇은?",
+   opts:["~하는 것(이름처럼)","꾸며 주기","까닭 말하기","동사","감탄"], a:0,
+   exp:"‘~하기, ~하는 것’은 <b>이름처럼</b> 쓰이는 명사 노릇입니다. I learn <b>to play</b> the piano."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 [입을] 옷이 없다.", q:"[ ] 부분이 하는 노릇은?",
+   opts:["명사를 꾸며 주기","~하는 것","까닭 말하기","동사","감탄"], a:0,
+   exp:"‘입을’은 명사 ‘옷’을 꾸밉니다. clothes <b>to wear</b>"},
+
+  {type:"n", tag:"한글로 이해", sent:"그녀는 [시험에 합격하려고] 열심히 공부했다.", q:"[ ] 부분이 하는 노릇은?",
+   opts:["까닭(목적) 말하기","~하는 것","명사를 꾸며 주기","동사","감탄"], a:0,
+   exp:"‘~하려고’는 <b>왜</b> 공부했는지, 목적입니다. to pass the test"},
+
+  {type:"n", tag:"한글로 이해", q:"‘읽을 책’을 영어 차례로 바르게 나타낸 것은?",
+   opts:["책 + 읽을","읽을 + 책","책 + 읽다 + 을","읽다 + 책","을 + 책 + 읽다"], a:0,
+   exp:"영어는 명사를 먼저 쓰고 뒤에서 꾸밉니다. a book <b>to read</b>"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘~하려고, ~하러’처럼 <b>목적</b>을 나타내는 말을 모두 고르세요. (여러 개)",
+   opts:["살을 빼려고","친구를 만나러","책을 빌리러","달리는 것","먹을 빵"], ans:[0,1,2],
+   exp:"‘~하려고 · ~하러’가 목적입니다. ‘달리는 것’은 이름처럼, ‘먹을 빵’은 꾸며 주기입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘~하는 것’(이름처럼) 노릇을 하는 말을 모두 고르세요. (여러 개)",
+   opts:["여행하는 것","요리하기","일찍 자는 것","잘 사람","자러 가다"], ans:[0,1,2],
+   exp:"‘~하는 것 · ~하기’가 이름처럼 쓰는 명사 노릇입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"to부정사 ‘to eat’에서 to 뒤의 eat을 바꿀 수 있는 모양은?",
+   opts:["바꾸지 않고 늘 동사원형","eats","ate","eating","eaten"], a:0,
+   exp:"to 뒤에는 주어나 때와 상관없이 늘 <b>동사원형</b>입니다. He wants <b>to eat</b>."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그는 뉴스를 듣고 놀랐다’에서 ‘듣고’는 무엇을 나타낼까요?",
+   opts:["놀란 까닭(감정의 원인)","들을 것","듣는 사람","들은 때","듣는 장소"], a:0,
+   exp:"감정(놀란) 뒤의 to부정사는 <b>감정의 원인</b>입니다. He was surprised <b>to hear</b> the news."},
+
+  {type:"n", tag:"한글로 이해", q:"‘할 일’, ‘마실 것’처럼 꾸며 주는 to부정사는 명사의 어느 쪽에 올까요?",
+   opts:["명사 뒤","명사 앞","문장 맨 앞","동사 앞","아무 데나"], a:0,
+   exp:"꾸며 주는 to부정사는 명사 <b>뒤</b>에 옵니다. work <b>to do</b>, something <b>to drink</b>"},
+
+  {type:"n", tag:"한글로 이해", q:"to부정사와 ‘학교에 간다’의 to school은 무엇이 다를까요?",
+   opts:["to부정사는 뒤에 동사, to school의 to는 뒤에 명사","둘 다 뒤에 동사가 온다","둘 다 뒤에 명사가 온다","to school이 to부정사이다","다른 점이 없다"], a:0,
+   exp:"to + <b>동사원형</b>이 to부정사, to + <b>명사</b>는 ‘~로, ~에’라는 전치사입니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["꾸며 주는 to부정사는 명사 앞에 온다.","to부정사는 to + 동사원형이다.","to부정사는 ~하는 것, ~할, ~하려고로 풀이된다.","to 뒤의 동사는 주어가 he여도 원형이다.","to school의 to는 to부정사가 아니다."], a:0,
+   exp:"꾸며 주는 to부정사는 명사 <b>뒤</b>에 옵니다. water to drink"},
+
+  {type:"a", tag:"쉬운 영어", word:"to swim", q:"<b>to swim</b>을 ‘~하는 것’으로 풀이하면?",
+   opts:["수영하는 것","수영했다","수영하고 있다","수영장","수영할 사람"], a:0, eng:true,
+   exp:"to swim = <b>수영하는 것</b>, 수영하기"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I want ___ pizza.", q:"‘나는 피자를 먹고 싶다’가 되도록 알맞은 것은?",
+   opts:["to eat","eat","eats","eating","ate"], a:0, eng:true,
+   ko:"나는 피자를 먹고 싶다.",
+   exp:"want <b>to</b> + 동사원형 = ~하고 싶다"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She needs a pen ___ with.", q:"‘그녀는 쓸 펜이 필요하다’가 되도록 알맞은 것은?",
+   opts:["to write","write","writes","writing","wrote"], a:0, eng:true,
+   ko:"그녀는 (가지고) 쓸 펜이 필요하다.",
+   exp:"명사 pen을 뒤에서 꾸미는 <b>to write</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He came here ___ you.", q:"‘그는 너를 도우러 여기 왔다’가 되도록 알맞은 것은?",
+   opts:["to help","help","helps","helping","helped"], a:0, eng:true,
+   ko:"그는 너를 도우러 여기 왔다.",
+   exp:"‘~하러’ 목적 → <b>to help</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I have a lot of homework ___ .", q:"‘나는 할 숙제가 많다’가 되도록 알맞은 것은?",
+   opts:["to do","do","does","did","doing"], a:0, eng:true,
+   ko:"나는 할 숙제가 많다.",
+   exp:"homework를 뒤에서 꾸미는 <b>to do</b>"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"바르게 만든 to부정사를 모두 고르세요. (여러 개)",
+   opts:["to sing","to drink","to have","to sings","to drank"], ans:[0,1,2],
+   exp:"to 뒤에는 <b>동사원형</b>. to sings · to drank는 틀립니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"I'm happy to see you.", q:"<b>I'm happy to see you.</b>의 뜻으로 알맞은 것은?",
+   opts:["너를 만나서 기쁘다.","너를 만날 기쁨","나는 너를 보고 있다.","너를 만나러 간다.","너를 본 적이 있다."], a:0, eng:true,
+   exp:"happy 뒤의 to see는 기쁜 <b>까닭</b>, ‘만나서’입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"to가 <b>to부정사</b>로 쓰인 것을 모두 고르세요. (여러 개)",
+   opts:["I like **to dance**.","I need **to rest**.","She wants **to win**.","I walk **to school**.","Give it **to me**."], ans:[0,1,2],
+   exp:"to + 동사원형이 to부정사입니다. to school · to me는 ‘~로, ~에게’라는 전치사입니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"모양", sent:"We decided ___ a party.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to have","have","having","had","has"], a:0, eng:true,
+   ko:"우리는 파티를 열기로 결정했다.",
+   exp:"decide 뒤에는 <b>to부정사</b>"},
+
+  {type:"n", tag:"모양", sent:"She promised ___ me every day.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to call","call","calling","called","calls"], a:0, eng:true,
+   ko:"그녀는 나에게 매일 전화하겠다고 약속했다.",
+   exp:"promise 뒤에는 <b>to부정사</b>"},
+
+  {type:"n", tag:"모양", sent:"Do you have a chair ___ on?", q:"‘앉을 의자’가 되도록 알맞은 것은?",
+   opts:["to sit","sit","sitting","sat","sits"], a:0, eng:true,
+   ko:"너는 앉을 의자가 있니?",
+   exp:"chair를 뒤에서 꾸미는 <b>to sit</b> (sit on a chair라서 on이 남습니다)"},
+
+  {type:"n", tag:"모양", sent:"He saved money ___ a new bike.", q:"‘새 자전거를 사려고’가 되도록 알맞은 것은?",
+   opts:["to buy","buy","buying","bought","buys"], a:0, eng:true,
+   ko:"그는 새 자전거를 사려고 돈을 모았다.",
+   exp:"목적 ‘~하려고’ → <b>to buy</b>"},
+
+  {type:"n", tag:"모양", sent:"It is dangerous ___ here.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to swim","swim","swims","swam","to swimming"], a:0, eng:true,
+   ko:"여기서 수영하는 것은 위험하다.",
+   exp:"It(가주어) ~ <b>to부정사</b>(진주어)"},
+
+  {type:"n", tag:"모양", sent:"I was sad ___ the movie.", q:"‘그 영화를 보고 슬펐다’가 되도록 알맞은 것은?",
+   opts:["to watch","watch","watching","watched","watches"], a:0, eng:true,
+   ko:"나는 그 영화를 보고 슬펐다.",
+   exp:"감정(sad) 뒤의 to부정사는 원인, ‘~해서’"},
+
+  {type:"n", tag:"모양", q:"‘나는 노래를 잘 부르고 싶다’를 바르게 옮긴 것은?",
+   opts:["I want to sing well.","I want sing well.","I want to singing well.","I want to sang well.","I to want sing well."], a:0, eng:true,
+   exp:"want <b>to sing</b>. to 뒤에는 동사원형"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"뒤에 <b>to부정사</b>를 데려오는 동사를 모두 고르세요. (여러 개)",
+   opts:["plan","promise","need","enjoy","finish"], ans:[0,1,2],
+   exp:"plan · promise · need는 to부정사, enjoy · finish는 동명사와 씁니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"명사를 뒤에서 <b>꾸며 주는</b> to부정사가 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["I need a friend to talk to.","There are many places to visit.","It's time to go to bed.","I want to visit Jeju.","He went out to jog."], ans:[0,1,2],
+   exp:"a friend · places · time을 꾸밉니다. want to visit는 목적어, to jog는 목적입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"to부정사가 <b>목적</b>(~하려고)으로 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["I got up early to see the sunrise.","She called me to say sorry.","We went to the beach to swim.","I have nothing to say.","I want to swim."], ans:[0,1,2],
+   exp:"‘~하려고, ~하러’가 목적입니다. nothing to say는 꾸며 주기, want to swim은 목적어입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["He plans to travel.","It is hard to learn Chinese.","I have some letters to write.","She needs to studies.","I have to something eat."], ans:[0,1,2],
+   exp:"to 뒤에는 동사원형, 꾸며 주는 to부정사는 명사 뒤에 옵니다. something to eat"},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"감정의 원인(~해서)을 나타내는 to부정사가 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["I'm glad to meet you.","She was surprised to see me.","We were sad to lose the game.","I want to meet you.","I have a friend to meet."], ans:[0,1,2],
+   exp:"glad · surprised · sad 같은 감정 뒤의 to부정사가 원인입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["She decided to going home.","I need a book read.","He came to helps me.","She decided to go home.","He came to help me."], ans:[0,1,2],
+   exp:"to going(✕) → to go, a book read(✕) → a book to read, to helps(✕) → to help"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She wants to becomes a nurse.","She wants to become a nurse.","Her dream is to become a nurse.","She studies hard to become a nurse.","It is her dream to become a nurse."], a:0, eng:true,
+   exp:"주어가 She여도 to 뒤에는 <b>동사원형</b> become"},
+
+  {type:"v", tag:"함정", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I need to something drink.","I need something to drink.","I need to drink something.","I have something to drink.","Do you need anything to drink?"], a:0, eng:true,
+   exp:"‘마실 것’은 something <b>to drink</b>. to부정사가 명사 뒤에서 꾸밉니다."},
+
+  {type:"v", tag:"함정", sent:"She hopes ___ a singer someday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to be","be","is","being","to is"], a:0, eng:true,
+   ko:"그녀는 언젠가 가수가 되기를 바란다.",
+   exp:"be동사의 to부정사는 <b>to be</b>"},
+
+  {type:"v", tag:"함정", hard:true, q:"밑줄 친 to의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["She went **to** the park.","She wants **to** go.","She needs **to** sleep.","She hopes **to** win.","She plans **to** travel."], a:0, eng:true,
+   exp:"to the park의 to는 ‘~로’라는 <b>전치사</b>입니다. 나머지는 to부정사입니다."},
+
+  {type:"v", tag:"함정", sent:"It is not easy ___ a new language.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to learn","learn","learning to","learned","to learned"], a:0, eng:true,
+   ko:"새 언어를 배우는 것은 쉽지 않다.",
+   exp:"It ~ <b>to learn</b>. It이 가짜 주어, 진짜 주어는 to learn a new language"},
+
+  {type:"v", tag:"함정", sent:"I have a lot of friends ___ with.", q:"‘함께 놀 친구’가 되도록 알맞은 것은?",
+   opts:["to play","play","playing","played","to playing"], a:0, eng:true,
+   ko:"나는 함께 놀 친구가 많다.",
+   exp:"friends를 꾸미는 <b>to play</b> with (play with friends라서 with가 남습니다)"},
+
+  {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">He ___ to be a pilot, and his sister ___ to be a doctor.</span>",
+   opts:["wants – wants","want – want","wants – want","want – wants","wanting – wants"], a:0, eng:true,
+   exp:"주어가 He, his sister(3인칭 단수)라서 둘 다 <b>wants</b>입니다. to 뒤는 원형 be"}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", sent:"His plan is ___ around the world.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to travel","travel","travels","traveled","to traveling"], a:0, eng:true,
+   ko:"그의 계획은 세계 여행을 하는 것이다.",
+   exp:"be동사 뒤 보어 자리에 <b>to travel</b>"},
+
+  {type:"n", tag:"빈칸", sent:"Here are some tips ___ healthy.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to stay","stay","stays","stayed","to stayed"], a:0, eng:true,
+   ko:"여기 건강을 지키는 몇 가지 방법이 있다.",
+   exp:"tips를 꾸미는 <b>to stay</b>"},
+
+  {type:"n", tag:"빈칸", sent:"We need someone ___ care of the dog.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to take","take","takes","took","taking to"], a:0, eng:true,
+   ko:"우리는 개를 돌볼 사람이 필요하다.",
+   exp:"someone을 꾸미는 <b>to take</b> care of"},
+
+  {type:"n", tag:"빈칸", sent:"She opened the window ___ some fresh air.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to get","get","gets","got","getting to"], a:0, eng:true,
+   ko:"그녀는 신선한 공기를 들이려고 창문을 열었다.",
+   exp:"목적 ‘~하려고’ → <b>to get</b>"},
+
+  {type:"n", tag:"빈칸", sent:"It is exciting ___ a new sport.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to try","try","tries","tried","to tried"], a:0, eng:true,
+   ko:"새 운동을 해 보는 것은 신난다.",
+   exp:"It ~ <b>to try</b>"},
+
+  {type:"n", tag:"빈칸", sent:"I was happy ___ your letter.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to get","get","got","gets","to got"], a:0, eng:true,
+   ko:"나는 네 편지를 받아서 기뻤다.",
+   exp:"감정의 원인 → happy <b>to get</b>"},
+
+  {type:"n", tag:"빈칸", sent:"They agreed ___ the meeting.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to join","join","joining","joined","joins"], a:0, eng:true,
+   ko:"그들은 회의에 참석하기로 동의했다.",
+   exp:"agree 뒤에는 <b>to부정사</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He needs a knife **cut** the bread.</span>",
+   opts:["to cut","cuts","cutting","for cut","고칠 필요 없음"], a:0, eng:true,
+   exp:"knife를 꾸미는 <b>to cut</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">My hope is **to wins** the prize.</span>",
+   opts:["to win","win","wins","to winning","고칠 필요 없음"], a:0, eng:true,
+   exp:"to 뒤에는 동사원형 <b>win</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She went to the market **buying** fruit.</span>",
+   opts:["to buy","buy","bought","for buy","고칠 필요 없음"], a:0, eng:true,
+   exp:"‘과일을 사러’ 목적 → <b>to buy</b>"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["There is no time to lose.","There is no time lose.","There is no time to losing.","There is no to lose time.","There is no time to loses."], a:0, eng:true,
+   exp:"time을 꾸미는 <b>to lose</b> — 잃을 시간이 없다(서둘러야 한다)"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["He wants to something eat.","He wants something to eat.","He wants to eat something.","He has something to eat.","He wants to eat."], a:0, eng:true,
+   exp:"‘먹을 것’은 something <b>to eat</b>. 차례가 바뀌면 안 됩니다."},
+
+  {type:"a", tag:"고치기", multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I need a house to live in.","She has no one to help her.","We have a lot of things to do.","I need a house to live.","She has to no one help her."], ans:[0,1,2],
+   exp:"live in a house라서 a house to live <b>in</b>이 바른 문장입니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Why are you saving money?<br>B: ___</span>",
+   opts:["To buy a new phone.","Buy a new phone.","Buying a new phone yesterday.","I bought a new phone.","A new phone to."], a:0, eng:true,
+   exp:"Why?에 목적으로 답할 때 <b>To + 동사원형</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">A: Are you free?<br>B: No. I have a lot of work ___ .</span>",
+   opts:["to do","do","doing","did","to doing"], a:0, eng:true,
+   exp:"work를 꾸미는 <b>to do</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br>‘그녀는 버스를 타려고 뛰었다.’",
+   opts:["She ran to catch the bus.","She ran catch to the bus.","She to catch ran the bus.","She ran the bus to catch.","She catch ran to the bus."], a:0, eng:true,
+   exp:"‘~하려고’ 목적은 동사 뒤에 <b>to catch</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br>‘나는 너에게 해 줄 이야기가 있다.’",
+   opts:["I have a story to tell you.","I have to tell you a story story.","I have a to tell story you.","I have tell a story to you to.","I to have a story tell you."], a:0, eng:true,
+   exp:"a story를 뒤에서 꾸미는 <b>to tell</b> you"},
+
+  {type:"v", tag:"대화와 배열", sent:"He was surprised ___ the result.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to see","see","saw","seeing to","to saw"], a:0, eng:true,
+   ko:"그는 결과를 보고 놀랐다.",
+   exp:"감정의 원인 → surprised <b>to see</b>"},
+
+  {type:"v", tag:"대화와 배열", multi:true, q:"빈칸에 <b>to부정사</b>가 들어가는 문장을 모두 고르세요. (여러 개)",
+   opts:["She decided ___ early.","I need a jacket ___ .","We went out ___ dinner.","I enjoy ___ .","He finished ___ ."], ans:[0,1,2], eng:true,
+   exp:"decide 뒤, 명사를 꾸밀 때, 목적일 때 to부정사입니다. enjoy · finish 뒤는 동명사입니다."},
+
+  {type:"v", tag:"대화와 배열", hard:true, q:"밑줄 친 to부정사의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["I went to the gym **to exercise**.","I want **to exercise**.","My plan is **to exercise**.","It is good **to exercise**.","I decided **to exercise**."], a:0, eng:true,
+   exp:"‘운동하러’는 <b>목적</b>(부사 노릇)입니다. 나머지는 ‘운동하는 것’(명사 노릇)입니다."}
+];
+
+var X4 = [
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 to부정사가 <b>이름 노릇</b>(~하는 것)을 하는 것은?",
+   opts:["I hope **to see** you.","I have a lot **to see**.","I went there **to see** him.","I was glad **to see** him.","There's nothing **to see**."], a:0, eng:true,
+   exp:"hope의 목적어 ‘보는 것’이 명사 노릇입니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 to부정사가 <b>명사를 꾸며 주는</b> 것은?",
+   opts:["Give me something **to write** with.","I want **to write** a letter.","**To write** a diary is good.","She sat down **to write**.","My job is **to write**."], a:0, eng:true,
+   exp:"something을 꾸미는 ‘쓸’입니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"밑줄 친 to부정사가 <b>감정의 원인</b>을 나타내는 것은?",
+   opts:["I'm sorry **to hear** that.","I want **to hear** that.","It is hard **to hear** that.","I have news **to tell** you.","She came **to tell** me."], a:0, eng:true,
+   exp:"sorry(유감스러운) 뒤의 to hear는 ‘들어서’, 감정의 원인입니다."},
+
+  {type:"n", tag:"쓰임 가리기", multi:true, q:"to부정사가 <b>목적</b>(~하려고)으로 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["He studies hard to be a doctor.","I use a map to find the way.","We left early to avoid traffic.","I want to be a doctor.","I have a map to use."], ans:[0,1,2],
+   exp:"‘~하려고’가 목적입니다. want to be는 목적어, a map to use는 꾸며 주기입니다."},
+
+  {type:"n", tag:"쓰임 가리기", q:"다음 문장에서 It이 가리키는 것은?<br><span class=\"eng\">It is not easy to make good friends.</span>",
+   opts:["to make good friends","good friends","easy","make","It 그 자체(날씨)"], a:0, eng:true,
+   exp:"It은 가짜 주어, 진짜 주어는 <b>to make good friends</b>입니다."},
+
+  {type:"n", tag:"쓰임 가리기", hard:true, q:"밑줄 친 to의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["I'm looking forward **to** the trip.","I'd like **to** go.","He tried **to** smile.","It's time **to** leave.","She came **to** say hello."], a:0, eng:true,
+   exp:"look forward to의 to는 전치사라서 뒤에 명사(the trip)가 옵니다. 나머지는 to부정사입니다."},
+
+  {type:"n", tag:"쓰임 가리기", multi:true, q:"빈칸에 동사원형이 와야 하는 것을 모두 고르세요. (여러 개)",
+   opts:["She needs to ___ .","I promise to ___ .","It is fun to ___ .","I enjoy ___ .","He is good at ___ ."], ans:[0,1,2], eng:true,
+   exp:"to 뒤에는 동사원형입니다. enjoy와 전치사 at 뒤에는 동명사가 옵니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">To keep a diary is good.<br>= ___ is good to keep a diary.</span>",
+   opts:["It","That","This","There","What"], a:0, eng:true,
+   exp:"긴 주어 to부정사를 뒤로 보내고 앞에 가주어 <b>It</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The box is so heavy that I can't carry it.<br>= The box is ___ heavy for me ___ carry.</span>",
+   opts:["too – to","so – to","enough – to","very – that","too – that"], a:0, eng:true,
+   exp:"so ~ that … can't = <b>too ~ to</b> (너무 ~해서 …할 수 없다)"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She is so tall that she can touch the ceiling.<br>= She is tall ___ ___ touch the ceiling.</span>",
+   opts:["enough – to","too – to","so – to","very – to","enough – that"], a:0, eng:true,
+   exp:"so ~ that … can = 형용사 + <b>enough to</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I don't know where I should go.<br>= I don't know where ___ .</span>",
+   opts:["to go","going","go","I go to","to going"], a:0, eng:true,
+   exp:"의문사 + should + 동사원형 = 의문사 + <b>to부정사</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", sent:"Can you teach me ___ to swim?", q:"‘수영하는 방법’이 되도록 빈칸에 알맞은 것은?",
+   opts:["how","what","where","who","when"], a:0, eng:true,
+   ko:"나에게 수영하는 방법을 가르쳐 줄래?",
+   exp:"<b>how to</b> + 동사원형 = ~하는 방법"},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, eng:true, q:"뜻이 <b>같은</b> 짝을 모두 고르세요. (여러 개)",
+   opts:["It is fun to dance. = To dance is fun.","I don't know what to say. = I don't know what I should say.","She is too tired to walk. = She is so tired that she can't walk.","He is old enough to drive. = He is too old to drive.","I have a book to read. = I want to read a book."], ans:[0,1,2],
+   exp:"enough to(충분히 ~할 수 있다)와 too ~ to(너무 ~해서 못 한다)는 뜻이 반대입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She is enough old to go to school.","She is old enough to go to school.","She is too young to go to school.","It is time to go to school.","She wants to go to school."], a:0, eng:true,
+   exp:"enough는 형용사 <b>뒤</b>에 옵니다. old enough to"},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I finished to clean my room.","I decided to clean my room.","I need to clean my room.","It is time to clean my room.","I have a room to clean."], a:0, eng:true,
+   exp:"finish 뒤에는 동명사 <b>cleaning</b>이 옵니다."},
+
+  {type:"v", tag:"종합", sent:"I woke up ___ myself alone in the room.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["to find","find","found","finding to","to found"], a:0, eng:true,
+   ko:"나는 깨어 보니 방에 혼자 있었다.",
+   exp:"woke up to find = ‘깨어 보니 ~했다’, 결과를 나타내는 to부정사입니다."},
+
+  {type:"v", tag:"종합", sent:"She must be kind ___ you.", q:"‘너를 돕다니 그녀는 친절한 게 틀림없다’가 되도록 알맞은 것은?",
+   opts:["to help","help","helping","helped","to helping"], a:0, eng:true,
+   ko:"너를 돕다니 그녀는 친절한 게 틀림없다.",
+   exp:"판단의 근거(~하다니) → <b>to help</b>"},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ It is time ___ bed.<br>ⓑ It is time ___ to bed.</span>",
+   opts:["for – to go","to – for go","for – going","to – to go","for – for going"], a:0, eng:true,
+   exp:"It is time <b>for</b> + 명사, It is time <b>to</b> + 동사원형"},
+
+  {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I don't know how to use this.","He is strong enough to carry it.","It is fun to watch soccer.","She is too tired walking.","I want something eat."], ans:[0,1,2],
+   exp:"too tired <b>to walk</b>, something <b>to eat</b>이 맞습니다."},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["enough는 형용사 앞에 온다.","too ~ to는 ‘너무 ~해서 …할 수 없다’이다.","how to + 동사원형은 ‘~하는 방법’이다.","It ~ to 짜임에서 It은 가짜 주어이다.","to부정사는 감정의 원인을 나타낼 수 있다."], a:0, eng:true,
+   exp:"enough는 형용사 <b>뒤</b>에 옵니다. old enough to"}
+];
+
+/* 기본 문제와 늘린 문제를 종류(n·a·v) 차례로 합칩니다 */
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
   1:{name:"기본1 · to부정사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · to + 동사원형 · 세 가지 노릇 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
