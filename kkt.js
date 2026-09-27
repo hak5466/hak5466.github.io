@@ -109,6 +109,7 @@
     "prep": familyA("전치사 뽀개기"),
     "noun": familyA("[대]명사 뽀개기"),
     "verbtype": familyA("동사 뽀개기"),
+    "beuse": familyA("be동사 문장 활용"),
     "verbuse": familyA("일반동사 문장 활용"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
@@ -240,37 +241,67 @@
     });
   }
 
-  /* ---------- 결과 화면 안의 보내기 칸 ---------- */
-  var bar, nameInput, sendBtn, msgEl, offered = null, sent = {};
+  /* ---------- 아직 보내지 않은 결과 보관 ---------- */
+  /* 단계를 끝내면 결과를 먼저 기기에 담아 둡니다.
+     게임을 나갔다가 들어와도 담아 둔 결과를 한꺼번에 보낼 수 있습니다. */
+  function loadPend() {
+    var a = [];
+    try { a = JSON.parse(ls(PEND_KEY) || "[]"); } catch (e) { a = []; }
+    return Array.isArray(a) ? a : [];
+  }
+  function savePend(a) { ls(PEND_KEY, JSON.stringify(a.slice(-30))); }
+  function loadSent() {
+    var a = [];
+    try { a = JSON.parse(ls(SENT_KEY) || "[]"); } catch (e) { a = []; }
+    return Array.isArray(a) ? a : [];
+  }
+  function markSent(keys) {
+    var a = loadSent().concat(keys);
+    ls(SENT_KEY, JSON.stringify(a.slice(-60)));
+    keys.forEach(function (k) { sent[k] = true; });
+  }
+  function recKey(res) { return [R.game, res.level, res.score, res.hit, res.total].join("|"); }
+  function addPend(res) {
+    var key = recKey(res);
+    if (sent[key]) return;
+    if (loadSent().indexOf(key) >= 0) { sent[key] = true; return; }
+    var a = loadPend();
+    for (var i = 0; i < a.length; i++) if (a[i].key === key) return;
+    a.push({
+      key: key, game: R.game, level: res.level || "",
+      score: res.score, hit: res.hit, total: res.total,
+      wrongs: (res.wrongs || []).slice(0, 60), ts: Date.now()
+    });
+    savePend(a);
+  }
+  function pendCount() { return loadPend().length; }
 
-  /* 게임마다 결과 화면에서 이 요소 바로 앞에 끼워 넣습니다. 못 찾으면 결과 상자 끝에 붙입니다. */
-  var MOUNT = {
-    "familyA":        { box: "#result",        before: "#rbreak" },
-    "phonics":        { box: "#stage-report",  before: "#reportBody" },
-    "pumsa-lab":      { box: "#screen-result .result-card", before: "#btn-retry" },
-    "verb1":          { box: "#resultCard",    before: "#missTitle" },
-    "verb2":          { box: "#resultCard",    before: ".retry-row" },
-    "jokjipge":       { box: "#summary",       before: null }
-  };
-  var MOUNT_KEY = MOUNT[slug] ? slug : "familyA";
+  /* ---------- 화면 아래 붙어 있는 보내기 칸 ---------- */
+  var bar, nameInput, sendBtn, msgEl, subEl, sending = false, sent = {}, shownKey = null;
+  var PEND_KEY = "kkt_pending_v1";
+  var SENT_KEY = "kkt_sent_v1";
 
   function buildBar() {
     bar = document.createElement("div");
     bar.setAttribute("dir", "ltr");
     bar.style.cssText = [
-      "display:none", "box-sizing:border-box", "width:100%",
-      "margin:14px 0", "padding:15px 16px",
-      "background:#0F6E5C", "color:#FFFFFF", "border-radius:13px",
+      "display:none", "position:fixed", "left:0", "right:0", "bottom:0", "z-index:99999",
+      "box-sizing:border-box", "width:100%",
+      "padding:13px 14px calc(13px + env(safe-area-inset-bottom,0px))",
+      "background:#0F6E5C", "color:#FFFFFF",
       "font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif",
-      "font-size:16px", "line-height:1.5", "text-align:left",
-      "box-shadow:0 6px 18px -10px rgba(0,0,0,.45)"
+      "font-size:16px", "line-height:1.45", "text-align:left",
+      "box-shadow:0 -8px 22px -12px rgba(0,0,0,.55)"
     ].join(";");
 
     var inner = document.createElement("div");
-    inner.style.cssText = "display:flex;flex-wrap:wrap;align-items:center;gap:9px 10px";
+    inner.style.cssText = "max-width:720px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px";
 
     msgEl = document.createElement("span");
     msgEl.style.cssText = "flex:1 1 100%;font-weight:700;font-size:17px;color:#FFFFFF";
+
+    subEl = document.createElement("span");
+    subEl.style.cssText = "flex:1 1 100%;font-size:14px;color:#D8F0E8;margin-top:-4px";
 
     nameInput = document.createElement("input");
     nameInput.type = "text";
@@ -294,9 +325,11 @@
     ].join(";");
 
     inner.appendChild(msgEl);
+    inner.appendChild(subEl);
     inner.appendChild(nameInput);
     inner.appendChild(sendBtn);
     bar.appendChild(inner);
+    document.body.appendChild(bar);
 
     sendBtn.addEventListener("click", doSend);
     nameInput.addEventListener("keydown", function (e) {
@@ -304,17 +337,7 @@
     });
   }
 
-  /* 결과 상자 안 제자리에 놓기 */
-  function place() {
-    var m = MOUNT[MOUNT_KEY];
-    var box = $(m.box);
-    if (!box) return false;
-    var ref = m.before ? $(m.before, box) : null;
-    if (ref && ref.parentNode === box) box.insertBefore(bar, ref);
-    else if (ref && box.contains(ref)) ref.parentNode.insertBefore(bar, ref);
-    else box.appendChild(bar);
-    return true;
-  }
+  function isAdmin() { return gameName() === "꾸메땅"; }
 
   function gameName() {
     if (!R.nameSel) return "";
@@ -322,24 +345,46 @@
     return e ? (e.value || "").trim() : "";
   }
 
-  function showBar(res, key) {
+  function showBar(res) {
     if (!bar) buildBar();
-    if (!place()) return;                 /* 결과 상자를 못 찾으면 아무것도 하지 않습니다 */
-    bar.dataset.key = key;
-    bar.dataset.payload = JSON.stringify(res);
-    msgEl.textContent = "결과를 선생님께 보낼까요?  " +
-      (res.level ? res.level + " · " : "") + res.score + "점" +
-      (res.total ? " (" + res.hit + "/" + res.total + ")" : "");
-    nameInput.value = gameName() || ls(NAME_KEY) || "";
-    nameInput.style.display = "";
-    sendBtn.style.display = "";
-    sendBtn.disabled = false;
-    sendBtn.textContent = "선생님께 보내기";
+    var n = pendCount();
+    if (!n) { hideBar(); return; }
+    if (res) {
+      msgEl.textContent = "이 단계 결과를 선생님께 보내 주세요 — " +
+        (res.level ? res.level + " · " : "") + res.score + "점" +
+        (res.total ? " (" + res.hit + "/" + res.total + ")" : "");
+    } else {
+      msgEl.textContent = "아직 선생님께 보내지 않은 결과가 " + n + "개 있습니다.";
+    }
+    subEl.textContent = n > 1
+      ? "보내지 않은 결과 " + n + "개를 한 번에 보냅니다."
+      : "이름을 적고 단추를 누르면 선생님께 바로 갑니다.";
+    if (!sending) {
+      nameInput.style.display = "";
+      sendBtn.style.display = "";
+      sendBtn.disabled = false;
+      sendBtn.textContent = n > 1 ? "모두 보내기 (" + n + ")" : "선생님께 보내기";
+      if (!nameInput.value) nameInput.value = gameName() || ls(NAME_KEY) || "";
+    }
     bar.style.display = "block";
+    padBody(true);
   }
 
   function hideBar() {
     if (bar) bar.style.display = "none";
+    padBody(false);
+  }
+
+  /* 칸이 화면 아래를 가리지 않도록 여백을 둡니다 */
+  function padBody(on) {
+    try {
+      if (on) {
+        var h = bar ? bar.offsetHeight : 0;
+        document.body.style.paddingBottom = (h + 12) + "px";
+      } else if (document.body.style.paddingBottom) {
+        document.body.style.paddingBottom = "";
+      }
+    } catch (e) {}
   }
 
   function doSend() {
@@ -347,26 +392,39 @@
     if (!who) { nameInput.focus(); msgEl.textContent = "이름을 먼저 적어 주세요."; return; }
     ls(NAME_KEY, who);
 
-    var res = JSON.parse(bar.dataset.payload);
-    var key = bar.dataset.key;
-    var rec = {
-      name: who, game: R.game, level: res.level || "",
-      score: res.score, hit: res.hit, total: res.total,
-      wrongs: (res.wrongs || []).slice(0, 60)
-    };
+    var list = loadPend();
+    if (!list.length) { hideBar(); return; }
 
-    sent[key] = true;
+    sending = true;
+    savePend([]);                      /* 먼저 비우고, 실패하면 다시 담습니다 */
+    markSent(list.map(function (p) { return p.key; }));
     sendBtn.disabled = true;
     sendBtn.textContent = "보내는 중…";
 
-    post(rec).then(function (ok) {
-      if (!ok) pushQueue(rec);
-      msgEl.textContent = "✓ 보냈습니다 — " + who + " · " +
-        (rec.level ? rec.level + " · " : "") + rec.score + "점";
-      nameInput.style.display = "none";
-      sendBtn.style.display = "none";
-      setTimeout(hideBar, 6000);
+    var done = 0, fail = 0;
+    list.forEach(function (p) {
+      var rec = {
+        name: who, game: p.game, level: p.level,
+        score: p.score, hit: p.hit, total: p.total, wrongs: p.wrongs || []
+      };
+      post(rec).then(function (ok) {
+        if (!ok) { fail++; pushQueue(rec); }
+        done++;
+        if (done === list.length) finishSend(who, list.length, fail);
+      });
     });
+  }
+
+  function finishSend(who, count, fail) {
+    sending = false;
+    msgEl.textContent = "✓ 보냈습니다 — " + who + " · 결과 " + count + "개";
+    subEl.textContent = fail ? "인터넷이 돌아오면 자동으로 다시 보냅니다." : "잘했습니다. 이어서 다음 단계에 도전해 보세요.";
+    nameInput.style.display = "none";
+    sendBtn.style.display = "none";
+    shownKey = null;
+    setTimeout(function () {
+      if (pendCount()) { showBar(null); } else { hideBar(); }
+    }, 5000);
   }
 
   /* ---------- 결과 화면 지켜보기 ---------- */
@@ -379,17 +437,28 @@
     if (R.levelWatch) {
       try { var lv = R.levelWatch(); if (lv) lastLevel = lv; } catch (e) {}
     }
+    if (isAdmin()) { hideBar(); return; }   /* 관리자(꾸메땅)로 풀어 볼 때는 보내지 않습니다 */
+
     var res = null;
     try { res = R.read(); } catch (e) { res = null; }
-    if (!res || res.score === null || res.score === undefined) {
-      if (offered !== null) { offered = null; hideBar(); }
+
+    if (res && res.score !== null && res.score !== undefined) {
+      addPend(res);
+      var key = recKey(res);
+      if (sending) return;
+      if (key !== shownKey) { shownKey = key; showBar(res); }
+      else if (bar && bar.style.display === "none" && pendCount()) showBar(res);
       return;
     }
-    var key = [R.game, res.level, res.score, res.hit, res.total].join("|");
-    if (key === offered) return;
-    offered = key;
-    if (sent[key]) { hideBar(); return; }
-    showBar(res, key);
+
+    /* 결과 화면이 아니어도, 보내지 않은 결과가 있으면 칸을 계속 보여 줍니다 */
+    if (sending) return;
+    if (pendCount()) {
+      if (shownKey !== "pend") { shownKey = "pend"; showBar(null); }
+    } else {
+      shownKey = null;
+      hideBar();
+    }
   }
 
   function start() {

@@ -399,8 +399,8 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 /* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
   {type:"n", tag:"한글로 이해", q:"현재완료의 모양으로 알맞은 것은?",
-   opts:["have(has) + 과거분사","be + -ing","will + 동사원형","did + 동사원형","to + 동사원형"], a:0,
-   exp:"현재완료는 <b>have(has) + 과거분사(p.p.)</b>입니다. I have seen · She has lived"},
+   opts:["have(has) + 과거분사[동사+ed]","be + -ing","will + 동사원형","did + 동사원형","to + 동사원형"], a:0,
+   exp:"현재완료는 <b>have(has) + 과거분사[동사+ed / 세 번째 모양, p.p.]</b>입니다. 불규칙도 많습니다(see – saw – seen). I have seen · She has lived"},
 
   {type:"n", tag:"한글로 이해", q:"현재완료는 언제 쓸까요?",
    opts:["과거에 일어난 일이 지금까지 이어지거나 지금에 영향을 줄 때","과거에 끝나 지금과 상관없는 일","앞으로 일어날 일","지금 이 순간 하고 있는 일","날마다 되풀이하는 일"], a:0,
@@ -1131,7 +1131,7 @@ function learn1(){
   figPerfect()+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>모양은 하나</span>'+
-    '<div class="swap"><span>have(has) + 과거분사</span><span class="ar">→</span><span class="good">have seen · has lived</span></div>'+
+    '<div class="swap"><span>have(has) + 과거분사[동사+ed]</span><span class="ar">→</span><span class="good">have seen · has lived</span></div>'+
     '<p>주어가 he · she · it처럼 하나이면 <b>has</b>, 나머지는 <b>have</b>입니다.</p>'+
   '</div>'+
   '<div class="block">'+
