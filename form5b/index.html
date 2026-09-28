@@ -425,7 +425,7 @@ var L1 = [
    exp:"<b>help</b>와 <b>get</b>은 시키거나 돕는 뜻이지만 뒤에 오는 모양이 make·have·let과 달라서 <b>준사역동사</b>라고 따로 부릅니다."},
 
   {type:"n", tag:"한글로 이해", q:"‘바라다 · 말하다 · 부탁하다’ 같은 동사는 목적격보어 자리에 무엇을 데려올까요?",
-   opts:["to부정사","동사원형","현재분사[동사+ing]","부사","아무것도 오지 않는다"], a:0,
+   opts:["to부정사","동사원형","현재분사[동사+ing / 형용사 역할]","부사","아무것도 오지 않는다"], a:0,
    exp:"want · tell · ask 는 <b>to부정사</b>를 데려옵니다. 지각동사와 사역동사만 동사원형을 쓴다는 점이 다릅니다."},
 
   {type:"n", tag:"한글로 이해", multi:true, q:"<b>지각동사</b>의 뜻을 모두 고르세요. (여러 개)",
@@ -437,15 +437,15 @@ var L1 = [
    exp:"make(~하게 만들다) · have(~하게 시키다) · let(~하도록 놓아두다) 세 개가 사역동사입니다."},
 
   {type:"n", tag:"한글로 이해", multi:true, q:"<b>지각동사</b> 뒤 목적격보어 자리에 올 수 있는 것을 모두 고르세요. (여러 개)",
-   opts:["동사원형","현재분사[동사+ing]","to부정사","부사","명사"], ans:[0,1],
+   opts:["동사원형","현재분사[동사+ing / 형용사 역할]","to부정사","부사","명사"], ans:[0,1],
    exp:"지각동사 뒤에는 <b>동사원형</b>이나 <b>현재분사[동사+ing / 형용사 역할]</b>가 옵니다. 진행 중임을 강조하고 싶으면 -ing를 씁니다. to부정사는 쓰지 않습니다."},
 
   {type:"n", tag:"한글로 이해", multi:true, q:"<b>사역동사 make · have · let</b> 뒤에 올 수 있는 것을 모두 고르세요. (여러 개)",
-   opts:["동사원형","과거분사[동사+ed]","to부정사","현재분사[동사+ing]","부사"], ans:[0,1],
-   exp:"사역동사 뒤에는 <b>동사원형</b>이 옵니다. 다만 목적어가 ‘당하는’ 쪽이면 <b>과거분사[동사+ed / 당하는 뜻]</b>가 옵니다. (have my hair cut — 머리를 깎게 하다)"},
+   opts:["동사원형","과거분사[동사+ed / 형용사 역할]","to부정사","현재분사[동사+ing / 형용사 역할]","부사"], ans:[0,1],
+   exp:"사역동사 뒤에는 <b>동사원형</b>이 옵니다. 다만 목적어가 ‘당하는’ 쪽이면 <b>과거분사[동사+ed / 형용사 역할 · 당하는 뜻]</b>가 옵니다. (have my hair cut — 머리를 깎게 하다)"},
 
   {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["목적격보어 자리에는 부사도 올 수 있다.","지각동사 뒤에는 동사원형이나 현재분사[동사+ing]가 온다.","사역동사는 make · have · let 세 개이다.","help는 동사원형과 to부정사를 둘 다 쓸 수 있다.","목적어와 목적격보어는 서로 설명하는 관계이다."], a:0,
+   opts:["목적격보어 자리에는 부사도 올 수 있다.","지각동사 뒤에는 동사원형이나 현재분사[동사+ing / 형용사 역할]가 온다.","사역동사는 make · have · let 세 개이다.","help는 동사원형과 to부정사를 둘 다 쓸 수 있다.","목적어와 목적격보어는 서로 설명하는 관계이다."], a:0,
    exp:"목적격보어 자리에 <b>부사는 올 수 없습니다.</b> 명사 · 형용사 · 분사 · 동사원형 · to부정사가 옵니다."},
 
   {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"다음 중 <b>지각동사</b>를 모두 고르세요. (여러 개)",
@@ -472,10 +472,10 @@ var L1 = [
    opts:["call","keep","find","see","let"], ans:[0,1,2],
    exp:"call(부르다) · keep(~한 상태로 두다) · find(~라고 알게 되다)는 뒤에 <b>명사나 형용사</b>가 옵니다. call him Tom · keep it clean · find it easy"},
 
-  {type:"a", tag:"쉬운 영어", sent:"I saw him ___ .", q:"‘나는 그가 춤추는 것을 보았다’가 되도록 알맞은 것은?",
-   opts:["dance","to dance","danced","dances","to dancing"], a:0, eng:true,
+  {type:"a", tag:"쉬운 영어", sent:"I saw him ___ .", multi:true, q:"‘나는 그가 춤추는 것을 보았다’가 되도록 알맞은 것을 <b>모두</b> 고르세요. (여러 개)",
+   opts:["dance","dancing","to dance","danced","dances"], ans:[0,1], eng:true,
    ko:"나는 그가 춤추는 것을 보았다.",
-   exp:"지각동사 see 뒤 목적격보어는 <b>동사원형</b>(또는 -ing)입니다. to를 붙이지 않습니다."},
+   exp:"지각동사 see 뒤 목적격보어 자리에는 <b>동사원형(dance)</b>과 <b>현재분사(dancing)</b>가 모두 옵니다. to는 붙이지 않습니다."},
 
   {type:"a", tag:"쉬운 영어", sent:"Mom made me ___ my room.", q:"‘엄마는 내게 방을 청소하게 하셨다’가 되도록 알맞은 것은?",
    opts:["clean","to clean","cleaned","cleans","cleaning"], a:0, eng:true,
@@ -501,9 +501,9 @@ var L2 = [
    exp:"watch도 지각동사입니다. <b>play</b>와 <b>playing</b> 둘 다 됩니다."},
 
   {type:"n", tag:"지각동사", sent:"I felt something ___ my shoulder.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["touch","to touch","touches","touched by","to touching"], a:0, eng:true,
+   opts:["touch","touching","to touch","touches","to touching"], ans:[0,1], eng:true, multi:true,
    ko:"나는 무언가가 내 어깨를 건드리는 것을 느꼈다.",
-   exp:"feel도 지각동사이므로 <b>동사원형 touch</b>가 옵니다. to부정사는 쓰지 않습니다."},
+   exp:"feel도 지각동사이므로 <b>touch</b>와 <b>touching</b>이 모두 옵니다. to부정사는 쓰지 않습니다."},
 
   {type:"n", tag:"지각동사", q:"다음 중 어법상 <b>틀린</b> 문장은?",
    opts:["I saw her to dance.","I saw her dance.","I saw her dancing.","I heard him sing.","I heard him singing."], a:0, eng:true,
@@ -514,9 +514,9 @@ var L2 = [
    exp:"동사원형은 처음부터 끝까지 본 것, <b>-ing</b>는 하고 있는 <b>중간 모습</b>을 본 것에 가깝습니다. 둘 다 맞는 문장입니다."},
 
   {type:"n", tag:"지각동사", sent:"Did you hear the baby ___ ?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["cry","to cry","cries","to crying","cried by"], a:0, eng:true,
+   opts:["cry","crying","to cry","cries","to crying"], ans:[0,1], eng:true, multi:true,
    ko:"너는 아기가 우는 것을 들었니?",
-   exp:"의문문이 되어도 규칙은 그대로입니다. 지각동사 hear 뒤에는 <b>동사원형</b>이 옵니다."},
+   exp:"의문문이 되어도 규칙은 그대로입니다. 지각동사 hear 뒤에는 <b>cry</b>와 <b>crying</b>이 모두 옵니다."},
 
   {type:"a", tag:"사역동사", sent:"My mom made me ___ my room.", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["clean","to clean","cleaning","cleaned","cleans"], a:0, eng:true,
@@ -816,10 +816,10 @@ var X1 = [
    opts:["hear","let","make","want","tell"], ans:[0,1,2],
    exp:"지각(hear) · 사역(let, make)은 동사원형, want · tell은 to부정사입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I heard her ___ a song.", q:"‘나는 그녀가 노래 부르는 것을 들었다’가 되도록 알맞은 것은?",
-   opts:["sing","to sing","sang","sings","sung"], a:0, eng:true,
+  {type:"a", tag:"쉬운 영어", sent:"I heard her ___ a song.", multi:true, q:"‘나는 그녀가 노래 부르는 것을 들었다’가 되도록 알맞은 것을 <b>모두</b> 고르세요. (여러 개)",
+   opts:["sing","singing","to sing","sang","sung"], ans:[0,1], eng:true,
    ko:"나는 그녀가 노래 부르는 것을 들었다.",
-   exp:"지각동사 hear + 목적어 + <b>동사원형</b>(또는 -ing)"},
+   exp:"지각동사 hear 뒤에는 <b>동사원형(sing)</b>과 <b>현재분사(singing)</b>가 모두 옵니다."},
 
   {type:"a", tag:"쉬운 영어", sent:"Dad let me ___ his phone.", q:"‘아빠는 내가 전화기를 쓰게 해 주셨다’가 되도록 알맞은 것은?",
    opts:["use","to use","used","uses","using to"], a:0, eng:true,
@@ -841,10 +841,10 @@ var X1 = [
    ko:"우리는 선생님을 스마일이라고 부른다.",
    exp:"call + 목적어 + <b>명사</b>(이름)"},
 
-  {type:"a", tag:"쉬운 영어", sent:"I watched the birds ___ .", q:"‘나는 새들이 날아가는 것을 지켜보았다’가 되도록 알맞은 것은?",
-   opts:["fly","to fly","flew","flown","flies"], a:0, eng:true,
+  {type:"a", tag:"쉬운 영어", sent:"I watched the birds ___ .", multi:true, q:"‘나는 새들이 날아가는 것을 지켜보았다’가 되도록 알맞은 것을 <b>모두</b> 고르세요. (여러 개)",
+   opts:["fly","flying","to fly","flew","flown"], ans:[0,1], eng:true,
    ko:"나는 새들이 날아가는 것을 지켜보았다.",
-   exp:"watch(지각) + 목적어 + <b>동사원형</b>"}
+   exp:"watch도 지각동사입니다. <b>동사원형(fly)</b>과 <b>현재분사(flying)</b>가 모두 옵니다."}
 ];
 
 var X2 = [
@@ -859,23 +859,23 @@ var X2 = [
    exp:"hear + 목적어 + 동사원형 / -ing"},
 
   {type:"n", tag:"지각동사", sent:"I felt the ground ___ .", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["shake","to shake","shook","shaken","shakes"], a:0, eng:true,
+   opts:["shake","shaking","to shake","shook","shaken"], ans:[0,1], eng:true, multi:true,
    ko:"나는 땅이 흔들리는 것을 느꼈다.",
-   exp:"feel + 목적어 + <b>동사원형</b>"},
+   exp:"feel + 목적어 + <b>동사원형(shake)</b> 또는 <b>현재분사(shaking)</b>"},
 
   {type:"n", tag:"지각동사", sent:"We watched the sun ___ .", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["rise","to rise","rose","risen","rises"], a:0, eng:true,
+   opts:["rise","rising","to rise","rose","risen"], ans:[0,1], eng:true, multi:true,
    ko:"우리는 해가 뜨는 것을 지켜보았다.",
-   exp:"watch + 목적어 + <b>동사원형</b>"},
+   exp:"watch + 목적어 + <b>동사원형(rise)</b> 또는 <b>현재분사(rising)</b>"},
 
   {type:"n", tag:"지각동사", q:"다음 중 어법상 <b>틀린</b> 문장은?",
    opts:["I heard him to call my name.","I heard him call my name.","I heard him calling my name.","I saw him leave.","I felt someone push me."], a:0, eng:true,
    exp:"지각동사 뒤에는 to부정사를 쓰지 않습니다. heard him <b>call</b>"},
 
   {type:"n", tag:"지각동사", sent:"Did you see the boy ___ the window?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["break","to break","broke","breaks","to breaking"], a:0, eng:true,
+   opts:["break","breaking","to break","broke","to breaking"], ans:[0,1], eng:true, multi:true,
    ko:"너는 그 소년이 창문을 깨는 것을 봤니?",
-   exp:"see + 목적어 + <b>동사원형</b>"},
+   exp:"see + 목적어 + <b>동사원형(break)</b> 또는 <b>현재분사(breaking)</b>"},
 
   {type:"n", tag:"지각동사", sent:"I listened to her ___ the violin.", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["play","to play","played","plays","to playing"], a:0, eng:true,
@@ -958,9 +958,9 @@ var X3 = [
    ko:"엄마는 나에게 쓰레기를 내다 버리라고 부탁하셨다.",
    exp:"ask + 목적어 + <b>to부정사</b>"},
 
-  {type:"n", tag:"빈칸", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Why are you so happy?<br>B: I saw my favorite singer ___ on TV.</span>",
-   opts:["dancing","to dance","danced","dances","to dancing"], a:0, eng:true,
-   exp:"지각동사 see + 목적어 + <b>-ing</b>(동사원형도 됩니다)"},
+  {type:"n", tag:"빈칸", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Why are you so happy?<br>B: I saw my favorite singer ___ on TV.</span>", multi:true,
+   opts:["dancing","dance","to dance","danced","to dancing"], ans:[0,1], eng:true,
+   exp:"지각동사 see 뒤에는 <b>현재분사(dancing)</b>와 <b>동사원형(dance)</b>이 모두 옵니다."},
 
   {type:"n", tag:"빈칸", sent:"The long walk made me ___ tired.", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["feel","to feel","felt","feeling to","feels"], a:0, eng:true,
@@ -1177,7 +1177,7 @@ function learn1(){
     '<p>지각동사도 사역동사도 아니면서 5형식을 만드는 동사가 더 있습니다. 앞의 셋은 뒤에 <b>to부정사</b>, 뒤의 셋은 <b>명사나 형용사</b>를 데려옵니다.</p>'+
   '</div>'+
   '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">I saw him <u class="hl a">dance</u>.<span class="k">보다 + 누가 + 무엇을 하는지</span></div><div class="ex">Mom made me <u class="hl a">clean</u> my room.<span class="k">시키다 + 누구에게 + 무엇을</span></div><div class="ex">I want you <u class="hl a">to come</u>.<span class="k">바라다 + 누가 + to 동사원형</span></div></div>'+
-  '<div class="tip"><span class="h">1단계에서 챙길 것</span>목적격보어 자리에 오는 것 <b>네 가지</b>(명사·형용사·현재분사[동사+ing]·과거분사[동사+ed])와, 동사 <b>네 무리</b>(지각 · 사역 · 준사역 · 그 밖의 5형식 동사)의 이름입니다. 뒤에 무엇이 오는지는 2단계에서 합니다.</div>';
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>목적격보어 자리에 오는 것 <b>네 가지</b>(명사·형용사·현재분사[동사+ing / 형용사 역할]·과거분사[동사+ed / 형용사 역할])와, 동사 <b>네 무리</b>(지각 · 사역 · 준사역 · 그 밖의 5형식 동사)의 이름입니다. 뒤에 무엇이 오는지는 2단계에서 합니다.</div>';
 }
 
 function learn2(){
