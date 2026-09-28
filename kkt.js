@@ -110,6 +110,8 @@
     "noun": familyA("[대]명사 뽀개기"),
     "verbtype": familyA("동사 뽀개기"),
     "beuse": familyA("be동사 문장 활용"),
+    "thereis": familyA("There is · are 뽀개기"),
+    "tense": familyA("시제 뽀개기"),
     "verbuse": familyA("일반동사 문장 활용"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),

@@ -1,0 +1,1837 @@
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · There is · are 뽀개기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --card:#FFFFFF;
+  --ink:#15201D;
+  --muted:#54615D;
+  --line:#E1E5DD;
+  --line-strong:#C9D1C8;
+  --accent:#0F6E5C;
+  --accent-soft:#E1F0EA;
+  --mark:#F3D74B;
+  --ok:#1C7A5B;
+  --ok-soft:#E3F1EA;
+  --no:#BC443A;
+  --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
+  --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+    --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+    --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+  --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+  --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:19px;line-height:1.62;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:720px;margin:0 auto;padding:24px 14px 72px;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){ .wrap{padding:28px 18px 72px} }
+h1,h2,h3{margin:0;text-wrap:balance}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7vw,39px);letter-spacing:-.02em;line-height:1.08}
+h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
+.sub{color:var(--muted);font-size:16.5px}
+
+.rail{display:flex;gap:10px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
+.seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
+.seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
+.seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+@media (min-width:600px){ .card{padding:24px} }
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
+
+
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
+.btn:hover{opacity:.88}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:19.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
+.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:21px;line-height:1.2}
+.role .m{font-size:15px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:18px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:17.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+#qlevel{font-size:17px;font-weight:800;padding:5px 13px}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
+
+.exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+.verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
+.verdict.ok{color:var(--ok)}
+.verdict.no{color:var(--no)}
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
+.full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
+.full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
+.full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
+.full .kr{font-size:18.5px;line-height:1.6}
+
+/* ---------- 결과 ---------- */
+.score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
+.score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+.bd .t{font-size:14px;color:var(--muted);font-weight:600}
+.bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
+.wrongs{display:flex;flex-direction:column;gap:10px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.wrong .top{display:flex;gap:8px;align-items:baseline}
+.wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
+.wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
+.wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
+.submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tablewrap{overflow-x:auto}
+table.rank{width:100%;border-collapse:collapse;font-size:17.5px}
+table.rank th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
+table.rank tr.top .pos{color:var(--accent)}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
+table.rank .when{color:var(--muted);font-size:15px}
+table.rank tr.me{background:var(--accent-soft)}
+table.rank tr.me .who{color:var(--accent)}
+.empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
+.toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · There is · are 뽀개기</span></h1>
+    <p class="sub">~가 있다 · have와 be동사 가리기 · 과거와 부정·의문 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 때와 문장 모양 익히기, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+  </header>
+
+  <div class="rail" id="rail" aria-hidden="true">
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+  </div>
+
+  <!-- 시작 -->
+  <section class="card" id="start">
+    <h2>단계를 골라 도전해 보세요</h2>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
+    <div class="namebar">
+      <span class="h">이름</span>
+      <div class="row">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <button class="btn small" id="saveName">저장</button>
+      </div>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
+    </div>
+    <div id="resumeBar" class="hide"></div>
+    <div class="levels" id="levelPick"></div>
+    <div class="actions">
+      <button class="btn ghost" id="openRank">순위 보기</button>
+    </div>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+  </section>
+
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
+    <div class="actions">
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
+    </div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="card hide" id="quiz">
+    <div class="qhead">
+      <span class="qnum" id="qnum">1 / 20</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
+    </div>
+    <div class="qbody" id="qbody"></div>
+    <div id="qexp"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="card hide" id="result">
+    <h2 id="rtitle">1단계 결과</h2>
+    <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
+    <div id="rsubmit"></div>
+    <div id="rwrong"></div>
+    <div class="actions" id="ractions"></div>
+  </section>
+
+  <!-- 순위 -->
+  <section class="card hide" id="rank">
+    <div class="subhead">
+      <h2>도전 순위</h2>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
+    </div>
+    <div id="rankToast"></div>
+    <div class="tabs" id="rankTabs">
+      <button class="tab on" data-t="all">종합</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rankHome">단계 선택으로</button>
+    </div>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
+  </section>
+
+  <p class="foot"><img src="/logo.png" alt="꾸메땅" style="display:block;height:56px;width:auto;margin:0 auto 10px;padding:6px 10px;background:#fff;border-radius:10px">꾸메땅 영문법 GAME · There is · are 뽀개기<br>© 꾸메땅 학습코칭학원 · 무단 복제와 배포를 금합니다.<br>☎ 010.5851.8209</p>
+</div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
+
+<script>
+"use strict";
+
+/* ---------- LEVEL 1 : 한글로 이해 24 + 쉬운 영어 16 ----------
+   ‘~가 있다’를 어떻게 말하나 — There is · are / have / be동사 가려 쓰기 */
+var L1 = [
+  {type:"n", tag:"한글로 이해", q:"‘책상 위에 책이 <b>있다</b>’처럼 무엇이 있다고 알려 줄 때 쓰는 표현은?",
+   opts:["There is · There are","I have","It is","This is","Here you are"], a:0,
+   exp:"무엇이 있다는 것을 알려 줄 때는 <b>There is · There are</b>로 시작합니다. There is a book on the desk."},
+
+  {type:"n", tag:"한글로 이해", q:"There is · There are에서 <b>There</b>는 어떤 뜻일까요?",
+   opts:["뜻이 없고 자리만 채운다","거기에","여기에","그것은","저것은"], a:0,
+   exp:"이 There는 해석하지 않습니다. 진짜 주인공은 <b>뒤에 오는 말</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"There is와 There are를 나누는 기준은?",
+   opts:["뒤에 오는 말이 하나인지 여럿인지","앞에 오는 말","문장의 길이","때가 언제인지","말하는 사람이 누구인지"], a:0,
+   exp:"뒤가 하나면 <b>is</b>, 여럿이면 <b>are</b>입니다. There is a cat. / There are two cats."},
+
+  {type:"n", tag:"한글로 이해", sent:"탁자 위에 사과가 한 개 있다.", q:"이 문장에 알맞은 것은?",
+   opts:["There is","There are","I have","It is","There were"], a:0,
+   exp:"사과 한 개 → <b>There is</b> an apple on the table."},
+
+  {type:"n", tag:"한글로 이해", sent:"교실에 학생이 스무 명 있다.", q:"이 문장에 알맞은 것은?",
+   opts:["There are","There is","I have","It is","There was"], a:0,
+   exp:"학생 스무 명 → <b>There are</b> twenty students in the classroom."},
+
+  {type:"n", tag:"한글로 이해", q:"‘물이 조금 있다’처럼 셀 수 없는 것에는 무엇을 쓸까요?",
+   opts:["There is","There are","I have","They are","There do"], a:0,
+   exp:"water · milk · money처럼 셀 수 없는 말에는 <b>There is</b>를 씁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 강아지가 <b>있다</b>’는 무엇으로 말할까요?",
+   opts:["I have a dog","There is I a dog","There is a dog me","I am a dog","It has me a dog"], a:0,
+   exp:"<b>가지고 있다</b>는 뜻이면 have입니다. 누가 가졌는지가 드러날 때 씁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"There is와 have의 차이로 알맞은 것은?",
+   opts:["There is는 무엇이 있다고 알려 주고, have는 누가 가지고 있는지를 말한다","뜻이 같다","There is는 과거에만 쓴다","have는 물건에만 쓴다","There is는 사람에게만 쓴다"], a:0,
+   exp:"There is a dog in the yard.(마당에 개가 있다) / I have a dog.(나는 개를 기른다)"},
+
+  {type:"n", tag:"한글로 이해", sent:"고양이가 소파 위에 있다.", q:"이미 아는 그 고양이가 어디 있는지 말할 때 알맞은 것은?",
+   opts:["The cat is on the sofa.","There is the cat on the sofa.","I have a cat on the sofa.","It has a cat on the sofa.","There are a cat on the sofa."], a:0,
+   exp:"<b>정해진 것</b>이 어디 있는지 말할 때는 be동사를 씁니다. 처음 알려 줄 때는 There is a cat on the sofa."},
+
+  {type:"n", tag:"한글로 이해", q:"There is 뒤에 보통 오지 <b>않는</b> 말은?",
+   opts:["the book (정해진 것)","a book (처음 말하는 것)","some water","two cats","a big tree"], a:0,
+   exp:"There is는 <b>처음 알려 주는 것</b>에 씁니다. 정해진 것은 The book is on the desk.처럼 말합니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~가 있었다’처럼 지난 일을 말할 때는?",
+   opts:["There was · There were","There is · There are","There does","There has","There will"], a:0,
+   exp:"지난 일은 <b>There was</b>(하나) · <b>There were</b>(여럿)입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~가 없다’처럼 아니라고 말할 때 바른 것은?",
+   opts:["There is not(isn't)","There don't","There not is","There doesn't","Not there is"], a:0,
+   exp:"be동사 문장처럼 <b>be동사 뒤에 not</b>을 씁니다. There isn't a chair here."},
+
+  {type:"n", tag:"한글로 이해", q:"‘~가 있니?’처럼 물어볼 때 바른 것은?",
+   opts:["Is there ~ ?","There is ~ ?","Does there ~ ?","Do there ~ ?","Is it there ~ ?"], a:0,
+   exp:"be동사를 앞으로 보냅니다. <b>Is there</b> a bank near here?"},
+
+  {type:"n", tag:"한글로 이해", q:"‘Is there ~ ?’에 답할 때 바른 것은?",
+   opts:["Yes, there is. / No, there isn't.","Yes, it is. / No, it isn't.","Yes, I do. / No, I don't.","Yes, there does.","Yes, it has."], a:0,
+   exp:"물은 말 그대로 <b>there</b>로 답합니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"저기에 큰 나무가 있다. (손으로 가리키며)", q:"‘저기에’에 해당하는 there는 어떤 there일까요?",
+   opts:["곳을 나타내는 부사 there","뜻 없이 자리만 채우는 there","대명사 there","접속사 there","감탄사 there"], a:0,
+   exp:"‘거기에 · 저기에’로 해석되면 <b>부사</b> there입니다. Look over there!"},
+
+  {type:"n", tag:"한글로 이해", q:"두 there의 차이를 바르게 말한 것은?",
+   opts:["해석되면 부사, 해석되지 않으면 ‘있다’의 There","둘은 같다","부사 there는 문장 앞에만 온다","‘있다’의 There는 해석한다","부사 there는 뜻이 없다"], a:0,
+   exp:"There is a book.(해석 안 함) / I go there.(거기에)"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘~가 있다’를 There is · are로 말하는 우리말을 모두 고르세요. (여러 개)",
+   opts:["책상 위에 연필이 있다.","공원에 아이들이 많이 있다.","냉장고에 우유가 조금 있다.","나는 연필이 있다.","그 연필은 책상 위에 있다."], ans:[0,1,2],
+   exp:"누가 가졌다 → have, 정해진 것이 어디 있다 → be동사입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"There <b>is</b>를 쓰는 것을 모두 고르세요. (여러 개)",
+   opts:["의자 한 개","우유 조금","시간이 조금","의자 두 개","학생 세 명"], ans:[0,1,2],
+   exp:"하나이거나 셀 수 없으면 is, 여럿이면 are입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"There <b>are</b>를 쓰는 것을 모두 고르세요. (여러 개)",
+   opts:["사과 다섯 개","친구 두 명","많은 책들","빵 한 조각","물 한 잔"], ans:[0,1,2],
+   exp:"여럿이면 are입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘~가 없다’로 바르게 말한 것을 모두 고르세요. (여러 개)",
+   opts:["There isn't a chair.","There aren't any chairs.","There is no chair.","There don't a chair.","There doesn't chair."], ans:[0,1,2],
+   exp:"be동사 + not, 또는 <b>no</b>를 써서 말합니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"우리 반에 남학생이 열두 명 있었다.", q:"지난 일이므로 알맞은 것은?",
+   opts:["There were","There was","There are","There is","I had"], a:0,
+   exp:"열두 명(여럿) + 지난 일 → <b>There were</b>"},
+
+  {type:"n", tag:"한글로 이해", sent:"어제 교실에 아무도 없었다.", q:"알맞은 것은?",
+   opts:["There was no one","There is no one","There were no one","There aren't anyone","There didn't anyone"], a:0,
+   exp:"no one은 한 사람처럼 봅니다 → <b>There was no one</b> in the classroom yesterday."},
+
+  {type:"n", tag:"한글로 이해", q:"There is · are 문장에서 진짜 주어는 어디에 있을까요?",
+   opts:["be동사 뒤에 오는 말","There","문장 맨 끝","전치사 뒤","주어가 없다"], a:0,
+   exp:"There is <b>a book</b> on the desk. — a book이 진짜 주어라서 be동사 모양을 정합니다."},
+
+  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["There는 언제나 ‘거기에’로 해석한다.","뒤가 하나면 is, 여럿이면 are를 쓴다.","지난 일은 was · were를 쓴다.","물어볼 때는 be동사를 앞으로 보낸다.","‘없다’는 be동사 뒤에 not을 붙인다."], a:0,
+   exp:"‘있다’의 There는 <b>해석하지 않습니다.</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"___ a book on the desk.", q:"‘책상 위에 책이 한 권 있다’가 되도록 알맞은 것은?",
+   opts:["There is","There are","It is","I have","There were"], a:0, eng:true,
+   ko:"책상 위에 책이 한 권 있다.",
+   exp:"a book(하나) → <b>There is</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"___ three cats in the garden.", q:"‘정원에 고양이가 세 마리 있다’가 되도록 알맞은 것은?",
+   opts:["There are","There is","It is","I have","There was"], a:0, eng:true,
+   ko:"정원에 고양이가 세 마리 있다.",
+   exp:"three cats(여럿) → <b>There are</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"___ some milk in the fridge.", q:"‘냉장고에 우유가 조금 있다’가 되도록 알맞은 것은?",
+   opts:["There is","There are","They are","I have","There do"], a:0, eng:true,
+   ko:"냉장고에 우유가 조금 있다.",
+   exp:"milk는 셀 수 없음 → <b>There is</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I ___ two brothers.", q:"‘나는 형이 둘 있다’가 되도록 알맞은 것은?",
+   opts:["have","there are","am","there is","is"], a:0, eng:true,
+   ko:"나는 형이 둘 있다.",
+   exp:"누가 가졌는지를 말하므로 <b>have</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"My bag ___ on the chair.", q:"‘내 가방은 의자 위에 있다’가 되도록 알맞은 것은?",
+   opts:["is","there is","are","have","there are"], a:0, eng:true,
+   ko:"내 가방은 의자 위에 있다.",
+   exp:"정해진 것(My bag)이 어디 있는지 → be동사 <b>is</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"___ a park near my house.", q:"‘우리 집 근처에 공원이 하나 있다’가 되도록 알맞은 것은?",
+   opts:["There is","There are","It is","Is there","I have"], a:0, eng:true,
+   ko:"우리 집 근처에 공원이 하나 있다.",
+   exp:"a park(하나) → <b>There is</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"There ___ many people in the park.", q:"빈칸에 알맞은 것은?",
+   opts:["are","is","has","have","was"], a:0, eng:true,
+   ko:"공원에 사람이 많이 있다.",
+   exp:"many people(여럿) → <b>are</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"There ___ a big tree here last year.", q:"‘작년에 여기에 큰 나무가 있었다’가 되도록 알맞은 것은?",
+   opts:["was","were","is","are","did"], a:0, eng:true,
+   ko:"작년에 여기에 큰 나무가 있었다.",
+   exp:"a big tree(하나) + 지난 일 → <b>was</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"There ___ not any chairs in the room.", q:"‘방에 의자가 하나도 없다’가 되도록 알맞은 것은?",
+   opts:["are","is","do","does","has"], a:0, eng:true,
+   ko:"방에 의자가 하나도 없다.",
+   exp:"chairs(여럿) → There <b>are</b> not(aren't) any chairs."},
+
+  {type:"a", tag:"쉬운 영어", sent:"___ there a bank near here?", q:"‘이 근처에 은행이 있나요?’가 되도록 알맞은 것은?",
+   opts:["Is","Are","Does","Do","Has"], a:0, eng:true,
+   ko:"이 근처에 은행이 있나요?",
+   exp:"a bank(하나) → <b>Is</b> there ~?"},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 대답으로 알맞은 것은?<br><span class=\"eng\">A: Are there any apples in the basket?<br>B: Yes, ___ .</span>",
+   opts:["there are","there is","they do","it is","there have"], a:0,
+   exp:"Are there ~?에는 <b>Yes, there are.</b>로 답합니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"Look! My friends are over ___ .", q:"‘저기에’가 되도록 알맞은 것은?",
+   opts:["there","their","they're","here is","there is"], a:0, eng:true,
+   ko:"봐! 내 친구들이 저기에 있어.",
+   exp:"곳을 나타내는 부사 <b>there</b>(저기에)입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"There is를 쓰는 문장을 모두 고르세요. (여러 개)",
+   opts:["___ a pen in my bag.","___ some water in the cup.","___ a cat under the table.","___ five books on the desk.","___ many students here."], ans:[0,1,2],
+   exp:"하나이거나 셀 수 없으면 There is입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"어법에 맞는 문장을 모두 고르세요. (여러 개)",
+   opts:["There is a dog in the yard.","There are two dogs in the yard.","I have a dog.","There is two dogs in the yard.","There have a dog in the yard."], ans:[0,1,2],
+   exp:"two dogs → There are, ‘가지고 있다’ → have"},
+
+  {type:"a", tag:"쉬운 영어", q:"‘There is a cat on the sofa.’의 뜻으로 알맞은 것은?",
+   opts:["소파 위에 고양이가 한 마리 있다.","그 고양이는 소파 위에 있다.","나는 고양이가 있다.","저기에 고양이가 있다.","고양이가 소파를 가지고 있다."], a:0,
+   exp:"There is는 <b>무엇이 있다</b>고 알려 주는 말입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘나는 자전거가 있다’를 영어로 바르게 쓴 것은?",
+   opts:["I have a bike.","There is I a bike.","There is a bike me.","I am a bike.","There have a bike."], a:0,
+   exp:"누가 가졌는지를 말하므로 <b>have</b>입니다."}
+];
+
+/* ---------- LEVEL 2 : 때와 문장 모양 · 부사 there 가리기 40 ---------- */
+var L2 = [
+  {type:"n", tag:"때와 모양", sent:"There ___ a cup on the table.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","has"], a:0, eng:true,
+   ko:"탁자 위에 컵이 한 개 있다.",
+   exp:"a cup(하나) → <b>is</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ two cups on the table.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","have","has"], a:0, eng:true,
+   ko:"탁자 위에 컵이 두 개 있다.",
+   exp:"two cups(여럿) → <b>are</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ a lot of snow last winter.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["was","were","is","are","did"], a:0, eng:true,
+   ko:"지난겨울에는 눈이 많이 왔다.",
+   exp:"snow는 셀 수 없음 + 지난 일 → <b>was</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ many cars on the road this morning.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["were","was","are","is","did"], a:0, eng:true,
+   ko:"오늘 아침 도로에 차가 많았다.",
+   exp:"many cars(여럿) + 지난 일 → <b>were</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ a post office here ten years ago.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["was","were","is","are","has"], a:0, eng:true,
+   ko:"십 년 전에는 여기에 우체국이 있었다.",
+   exp:"a post office(하나) + ago(지난 일) → <b>was</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ thirty students in my class now.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","were","was","have"], a:0, eng:true,
+   ko:"지금 우리 반에는 학생이 서른 명 있다.",
+   exp:"thirty students + now → <b>are</b>"},
+
+  {type:"n", tag:"때와 모양", q:"There is · are의 지난 일 모양을 바르게 짝지은 것은?",
+   opts:["is → was / are → were","is → were / are → was","is → did / are → did","is → had / are → had","바뀌지 않는다"], a:0,
+   exp:"There <b>was</b> · There <b>were</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ a concert in the park tomorrow.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["will be","will is","is will","was","were"], a:0, eng:true,
+   ko:"내일 공원에서 음악회가 있을 것이다.",
+   exp:"앞으로의 일 → <b>There will be</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ some bread and two eggs in the basket.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","has"], a:0, eng:true,
+   ko:"바구니에 빵 조금과 달걀 두 개가 있다.",
+   exp:"바로 뒤에 오는 말(some bread)에 맞춥니다 → <b>is</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ two eggs and some bread in the basket.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","have","has"], a:0, eng:true,
+   ko:"바구니에 달걀 두 개와 빵 조금이 있다.",
+   exp:"바로 뒤가 two eggs이므로 <b>are</b>입니다. 차례만 바뀌어도 모양이 달라집니다."},
+
+  {type:"n", tag:"때와 모양", q:"줄임말을 바르게 쓴 것은?",
+   opts:["There is → There's","There are → There're가 가장 바른 표기","There was → There'was","There is not → There no","There are not → There not"], a:0,
+   exp:"There is → <b>There's</b>. There are는 보통 줄이지 않고 그대로 씁니다."},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ no milk in the fridge.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","do","does","have"], a:0, eng:true,
+   ko:"냉장고에 우유가 없다.",
+   exp:"milk는 셀 수 없음 → There <b>is</b> no milk."},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ a few people at the bus stop.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","has","have"], a:0, eng:true,
+   ko:"버스 정류장에 사람이 몇 명 있다.",
+   exp:"a few people(여럿) → <b>are</b>"},
+
+  {type:"n", tag:"때와 모양", sent:"There ___ a little water in the bottle.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","do"], a:0, eng:true,
+   ko:"병에 물이 조금 있다.",
+   exp:"a little water(셀 수 없음) → <b>is</b>"},
+
+  {type:"a", tag:"평서·부정·의문", sent:"There ___ any juice in the glass.", q:"‘잔에 주스가 하나도 없다’가 되도록 알맞은 것은?",
+   opts:["isn't","aren't","doesn't","don't","wasn't any not"], a:0, eng:true,
+   ko:"잔에 주스가 하나도 없다.",
+   exp:"juice는 셀 수 없음 → There <b>isn't</b> any juice."},
+
+  {type:"a", tag:"평서·부정·의문", sent:"There ___ any students in the gym.", q:"‘체육관에 학생이 아무도 없다’가 되도록 알맞은 것은?",
+   opts:["aren't","isn't","don't","doesn't","weren't not"], a:0, eng:true,
+   ko:"체육관에 학생이 아무도 없다.",
+   exp:"students(여럿) → There <b>aren't</b> any students."},
+
+  {type:"a", tag:"평서·부정·의문", sent:"___ there any milk in the fridge?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Is","Are","Does","Do","Has"], a:0, eng:true,
+   ko:"냉장고에 우유가 있나요?",
+   exp:"milk는 셀 수 없음 → <b>Is</b> there ~?"},
+
+  {type:"a", tag:"평서·부정·의문", sent:"___ there any chairs in the room?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Are","Is","Do","Does","Have"], a:0, eng:true,
+   ko:"방에 의자가 있나요?",
+   exp:"chairs(여럿) → <b>Are</b> there ~?"},
+
+  {type:"a", tag:"평서·부정·의문", q:"다음 대답으로 알맞은 것은?<br><span class=\"eng\">A: Is there a library in your town?<br>B: ___ It's next to the school.</span>",
+   opts:["Yes, there is.","No, there isn't.","Yes, it does.","No, it doesn't.","Yes, there are."], a:0,
+   exp:"학교 옆에 있다고 했으므로 <b>Yes, there is.</b>"},
+
+  {type:"a", tag:"평서·부정·의문", q:"다음 대답으로 알맞은 것은?<br><span class=\"eng\">A: Were there many people at the concert?<br>B: ___ It was almost empty.</span>",
+   opts:["No, there weren't.","Yes, there were.","No, there wasn't.","Yes, there was.","No, they weren't."], a:0,
+   exp:"거의 비었다고 했으므로 <b>No, there weren't.</b>"},
+
+  {type:"a", tag:"평서·부정·의문", multi:true, q:"어법에 맞는 부정문을 모두 고르세요. (여러 개)",
+   opts:["There isn't a pen here.","There aren't any pens here.","There is no pen here.","There don't a pen here.","There doesn't any pen here."], ans:[0,1,2],
+   exp:"be동사 + not, 또는 no를 씁니다."},
+
+  {type:"a", tag:"평서·부정·의문", multi:true, q:"어법에 맞는 의문문을 모두 고르세요. (여러 개)",
+   opts:["Is there a hospital near here?","Are there any questions?","Was there a party last night?","Does there a hospital near here?","Do there any questions?"], ans:[0,1,2],
+   exp:"be동사를 there 앞으로 보냅니다."},
+
+  {type:"a", tag:"평서·부정·의문", multi:true, q:"대답이 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["Is there a cat? – Yes, there is.","Are there cats? – No, there aren't.","Was there a test? – Yes, there was.","Is there a cat? – Yes, it is.","Are there cats? – No, they don't."], ans:[0,1,2],
+   exp:"there로 물으면 there로 답합니다."},
+
+  {type:"a", tag:"평서·부정·의문", multi:true, q:"‘하나도 없다’를 바르게 말한 것을 모두 고르세요. (여러 개)",
+   opts:["There isn't any water.","There is no water.","There aren't any apples.","There isn't no water.","There are no any apples."], ans:[0,1,2],
+   exp:"not any = no. 두 가지를 함께 쓰지는 않습니다."},
+
+  {type:"a", tag:"평서·부정·의문", sent:"How many students ___ there in your class?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","do","does","has"], a:0, eng:true,
+   ko:"너희 반에는 학생이 몇 명 있니?",
+   exp:"How many + 복수 명사 → <b>are</b> there ~?"},
+
+  {type:"a", tag:"평서·부정·의문", sent:"How much water ___ there in the bottle?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","do","does","have"], a:0, eng:true,
+   ko:"병에 물이 얼마나 있니?",
+   exp:"How much + 셀 수 없는 명사 → <b>is</b> there ~?"},
+
+  {type:"v", tag:"there 가리기", q:"밑줄 친 there의 뜻이 <b>나머지와 다른</b> 것은?",
+   opts:["Let's meet **there** at five.","**There** is a book on the desk.","**There** are two cats.","**There** was a party.","**There** will be a test."], a:0,
+   exp:"첫째는 ‘거기에서’라는 <b>부사</b>, 나머지는 ‘있다’의 There입니다."},
+
+  {type:"v", tag:"there 가리기", q:"밑줄 친 there가 ‘거기에’로 해석되는 것은?",
+   opts:["I went **there** yesterday.","**There** is a cat.","**There** are some eggs.","**There** was no one.","**There** isn't any milk."], a:0,
+   exp:"‘어제 거기에 갔다’ → 곳을 나타내는 부사입니다."},
+
+  {type:"v", tag:"there 가리기", sent:"Look over ___ ! A rainbow!", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["there","their","they're","there is","here are"], a:0, eng:true,
+   ko:"저기 봐! 무지개야!",
+   exp:"over <b>there</b> = 저기에"},
+
+  {type:"v", tag:"there 가리기", sent:"___ is a rainbow in the sky.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["There","Their","They're","Over there","Here you"], a:0, eng:true,
+   ko:"하늘에 무지개가 있다.",
+   exp:"무엇이 있다고 알려 주는 <b>There</b>입니다."},
+
+  {type:"v", tag:"there 가리기", multi:true, q:"there가 ‘있다’로 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["There is a problem.","There are many ways.","There was a small shop here.","Put it over there.","My car is parked there."], ans:[0,1,2],
+   exp:"뒤에 be동사 + 명사가 오면 ‘있다’의 There입니다."},
+
+  {type:"v", tag:"there 가리기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["There have a cat in the box.","There is a cat in the box.","I have a cat.","The cat is in the box.","There are two cats in the box."], a:0,
+   exp:"There 뒤에는 be동사를 씁니다. have를 쓰지 않습니다."},
+
+  {type:"v", tag:"there 가리기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["There is the book on the desk.","There is a book on the desk.","The book is on the desk.","There are some books on the desk.","There isn't a book on the desk."], a:0,
+   exp:"정해진 것(the book)은 <b>The book is ~</b>로 말합니다."},
+
+  {type:"v", tag:"there 가리기", sent:"There ___ a mistake in your answer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","have","has","do"], a:0, eng:true,
+   ko:"네 답에 잘못된 곳이 하나 있다.",
+   exp:"a mistake(하나) → <b>is</b>"},
+
+  {type:"v", tag:"there 가리기", sent:"There ___ something on your face.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","do"], a:0, eng:true,
+   ko:"네 얼굴에 무언가 묻어 있다.",
+   exp:"something은 하나로 봅니다 → <b>is</b>"},
+
+  {type:"v", tag:"there 가리기", sent:"There ___ a lot of people in the market.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","has","have"], a:0, eng:true,
+   ko:"시장에 사람이 많이 있다.",
+   exp:"a lot of people(여럿) → <b>are</b>"},
+
+  {type:"v", tag:"there 가리기", q:"두 문장의 뜻 차이를 바르게 말한 것은?<br><span class=\"eng\">ⓐ There is a dog in the yard.&nbsp;ⓑ I have a dog.</span>",
+   opts:["ⓐ 마당에 개가 있다 – ⓑ 나는 개를 기른다","ⓐ 나는 개가 있다 – ⓑ 마당에 개가 있다","둘 다 같은 뜻이다","ⓐ 개가 마당을 가졌다 – ⓑ 개가 나를 가졌다","ⓐ 거기에 개가 있다 – ⓑ 나는 개를 본다"], a:0,
+   exp:"There is는 있다는 사실, have는 누가 가졌는지를 말합니다."},
+
+  {type:"v", tag:"there 가리기", q:"두 문장의 뜻 차이를 바르게 말한 것은?<br><span class=\"eng\">ⓐ There is a cat on the roof.&nbsp;ⓑ The cat is on the roof.</span>",
+   opts:["ⓐ 처음 알려 주는 말 – ⓑ 아는 고양이가 어디 있는지 말하는 말","ⓐ 아는 고양이 – ⓑ 처음 보는 고양이","둘 다 같다","ⓐ 지난 일 – ⓑ 지금 일","ⓐ 물음 – ⓑ 대답"], a:0,
+   exp:"처음 알려 줄 때는 There is a ~, 이미 아는 것은 The ~ is로 말합니다."},
+
+  {type:"v", tag:"there 가리기", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ ___ a new student in our class. ⓑ ___ name is Mina.</span>",
+   opts:["There is – Her","There is – There","It is – Her","There are – Her","Here is – There"], a:0,
+   exp:"ⓐ 처음 알려 주는 말 → There is ⓑ 그 학생의 이름 → Her"},
+
+  {type:"v", tag:"there 가리기", hard:true, q:"다음 중 어법상 알맞은 문장은?",
+   opts:["There were a lot of books in the old library.","There was a lot of books in the old library.","There have a lot of books in the old library.","There are a lot of books yesterday.","There is a lot of books now."], a:0,
+   exp:"a lot of books(여럿) + 지난 일 → <b>There were</b>"}
+];
+
+/* ---------- LEVEL 3 : 중1 학교 시험형 40 ---------- */
+var L3 = [
+  {type:"n", tag:"빈칸", sent:"There ___ four seasons in Korea.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","has","have"], a:0, eng:true,
+   ko:"한국에는 네 계절이 있다.",
+   exp:"four seasons(여럿) → <b>are</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ a lot of homework today.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","do"], a:0, eng:true,
+   ko:"오늘은 숙제가 많다.",
+   exp:"homework는 셀 수 없음 → <b>is</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ an old tree in front of the school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","has"], a:0, eng:true,
+   ko:"학교 앞에 오래된 나무가 한 그루 있다.",
+   exp:"an old tree(하나) → <b>is</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ two windows and a door in this room.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","have","has"], a:0, eng:true,
+   ko:"이 방에는 창문 두 개와 문 하나가 있다.",
+   exp:"바로 뒤가 two windows → <b>are</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ no clouds in the sky yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["were","was","are","is","did"], a:0, eng:true,
+   ko:"어제 하늘에는 구름이 하나도 없었다.",
+   exp:"no clouds(여럿) + 지난 일 → <b>were</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ a cat and two dogs in the yard.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","has"], a:0, eng:true,
+   ko:"마당에 고양이 한 마리와 개 두 마리가 있다.",
+   exp:"바로 뒤가 a cat → <b>is</b>"},
+
+  {type:"n", tag:"빈칸", sent:"___ there anything in the box?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Is","Are","Does","Do","Has"], a:0, eng:true,
+   ko:"상자 안에 무언가 있나요?",
+   exp:"anything은 하나로 봅니다 → <b>Is</b> there ~?"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ a bakery here, but now it's a cafe.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["was","is","were","are","has"], a:0, eng:true,
+   ko:"여기에 빵집이 있었지만 지금은 카페이다.",
+   exp:"지금은 카페 → 앞은 지난 일 <b>was</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ a soccer game next Saturday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["will be","will is","is going","was","were"], a:0, eng:true,
+   ko:"다음 주 토요일에 축구 경기가 있을 것이다.",
+   exp:"앞으로의 일 → <b>There will be</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ some interesting books in the library.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","has","have"], a:0, eng:true,
+   ko:"도서관에 재미있는 책이 몇 권 있다.",
+   exp:"some books(여럿) → <b>are</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ a lot of rain in summer.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","do"], a:0, eng:true,
+   ko:"여름에는 비가 많이 온다.",
+   exp:"rain은 셀 수 없음 → <b>is</b>"},
+
+  {type:"n", tag:"빈칸", sent:"How many chairs ___ there in the classroom?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","do","does","have"], a:0, eng:true,
+   ko:"교실에 의자가 몇 개 있니?",
+   exp:"How many + 복수 → <b>are</b> there ~?"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ two hundred students in our school last year.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["were","was","are","is","had"], a:0, eng:true,
+   ko:"작년에 우리 학교에는 학생이 이백 명 있었다.",
+   exp:"two hundred students + last year → <b>were</b>"},
+
+  {type:"n", tag:"빈칸", sent:"There ___ nothing in my pocket.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","do"], a:0, eng:true,
+   ko:"내 주머니에는 아무것도 없다.",
+   exp:"nothing은 하나로 봅니다 → <b>is</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">There **is** five apples in the basket.</span>",
+   opts:["are","was","have","has","be"], a:0, eng:true,
+   exp:"five apples(여럿) → <b>are</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">There **have** many people in the park.</span>",
+   opts:["are","is","has","do","were not"], a:0, eng:true,
+   exp:"There 뒤에는 be동사 → <b>are</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**Do** there any questions?</span>",
+   opts:["Are","Is","Does","Have","Has"], a:0, eng:true,
+   exp:"there 의문문은 be동사로 → <b>Are</b> there any questions?"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">There **were** a big fire last night.</span>",
+   opts:["was","is","are","did","had"], a:0, eng:true,
+   exp:"a big fire(하나) + 지난 일 → <b>was</b>"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">There **don't** any milk in the fridge.</span>",
+   opts:["isn't","aren't","doesn't","wasn't not","haven't"], a:0, eng:true,
+   exp:"milk는 셀 수 없음 → There <b>isn't</b> any milk."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**There is** my dog under the table.</span>",
+   opts:["My dog is","There are","Is there","There was","It is there"], a:0, eng:true,
+   exp:"정해진 것(my dog)은 <b>My dog is</b> under the table.로 말합니다."},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 옳은 문장은?",
+   opts:["There is a lot of water in the pool.","There are a lot of water in the pool.","There have a lot of water in the pool.","There is a lot of waters in the pool.","There was a lot of waters in the pool."], a:0,
+   exp:"water는 셀 수 없음 → There <b>is</b>"},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 옳은 문장은?",
+   opts:["Were there many children at the party?","Was there many children at the party?","Did there many children at the party?","There were many children at the party?","Are there many children at the party yesterday?"], a:0,
+   exp:"many children(여럿) + 지난 일 → <b>Were there ~?</b>"},
+
+  {type:"a", tag:"고치기", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
+   opts:["There is some cheese on the plate.","There are three plates on the table.","There was a concert last night.","There are a concert last night.","There is three plates on the table."], ans:[0,1,2],
+   exp:"셀 수 없는 말과 하나는 is · was, 여럿은 are · were입니다."},
+
+  {type:"a", tag:"고치기", multi:true, q:"밑줄 친 곳이 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["There **is** two boys.","There **have** a dog.","**Do** there any pens?","There **is** a dog.","There **are** two boys."], ans:[0,1,2],
+   exp:"are, is(be동사), Are로 고쳐야 합니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">There isn't **no** chairs in the room.</span>",
+   opts:["any","some","no any","not","much"], a:0, eng:true,
+   exp:"not과 no를 함께 쓰지 않습니다 → There isn't <b>any</b> chairs. (또는 There are no chairs.)"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">How many students **is** there in your class?</span>",
+   opts:["are","was","do","does","have"], a:0, eng:true,
+   exp:"How many students(여럿) → <b>are</b> there"},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Is there a bank near here?<br>B: ___ It's across the street.</span>",
+   opts:["Yes, there is.","No, there isn't.","Yes, it does.","No, there aren't.","Yes, they are."], a:0,
+   exp:"길 건너에 있다고 했으므로 <b>Yes, there is.</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Are there any eggs in the fridge?<br>B: ___ I'll buy some.</span>",
+   opts:["No, there aren't.","Yes, there are.","No, it isn't.","Yes, there is.","No, they don't."], a:0,
+   exp:"사 오겠다고 했으므로 <b>No, there aren't.</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 물음은?<br><span class=\"eng\">A: ___<br>B: There are twenty-five.</span>",
+   opts:["How many students are there in your class?","How much water is there?","Is there a student in your class?","Where is your class?","Are there a student in your class?"], a:0,
+   exp:"숫자로 답했으므로 <b>How many ~ are there?</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 물음은?<br><span class=\"eng\">A: ___<br>B: Yes, there was. It was really fun.</span>",
+   opts:["Was there a school festival last week?","Is there a school festival?","Were there school festivals?","Are there a school festival?","Did there a school festival?"], a:0,
+   exp:"there was로 답했으므로 <b>Was there ~?</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘탁자 위에 컵이 세 개 있다.’</span>",
+   opts:["There are three cups on the table.","There is three cups on the table.","There three cups are on the table.","On the table there is three cups.","Three cups there are on the table."], a:0,
+   exp:"There + are + 여럿 + 장소"},
+
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘우리 동네에는 도서관이 없다.’</span>",
+   opts:["There isn't a library in my town.","There aren't a library in my town.","There don't a library in my town.","My town isn't a library.","There is a library not in my town."], a:0,
+   exp:"a library(하나) → There <b>isn't</b>"},
+
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘교실에 몇 명이 있었니?’</span>",
+   opts:["How many people were there in the classroom?","How many people was there in the classroom?","How much people were there in the classroom?","How many were there people in the classroom?","There were how many people in the classroom?"], a:0,
+   exp:"How many + 복수 + were there ~?"},
+
+  {type:"v", tag:"대화와 배열", sent:"There ___ many kinds of flowers in this garden.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","was","has","have"], a:0, eng:true,
+   ko:"이 정원에는 여러 종류의 꽃이 있다.",
+   exp:"many kinds(여럿) → <b>are</b>"},
+
+  {type:"v", tag:"대화와 배열", sent:"There ___ a big supermarket in my neighborhood.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","has"], a:0, eng:true,
+   ko:"우리 동네에는 큰 슈퍼마켓이 하나 있다.",
+   exp:"a big supermarket(하나) → <b>is</b>"},
+
+  {type:"v", tag:"대화와 배열", multi:true, q:"빈칸에 <b>are</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["There ___ many books here.","There ___ some apples in the bag.","There ___ two chairs in the room.","There ___ a pen on the desk.","There ___ some water in the cup."], ans:[0,1,2],
+   exp:"여럿이면 are, 하나나 셀 수 없는 말이면 is입니다."},
+
+  {type:"v", tag:"대화와 배열", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
+   opts:["Is there a problem?","There are no eggs left.","There was a lot of noise.","There were a lot of noise.","There is many people."], ans:[0,1,2],
+   exp:"noise는 셀 수 없는 말이라 was, many people은 여럿이라 are가 맞습니다."},
+
+  {type:"v", tag:"대화와 배열", hard:true, q:"다음 글의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">In my room ⓐ ___ a bed and a desk. ⓑ ___ also two windows.</span>",
+   opts:["there is – There are","there are – There is","there has – There have","there is – There is","there are – There are"], a:0,
+   exp:"ⓐ 바로 뒤가 a bed → is ⓑ two windows → are"},
+
+  {type:"v", tag:"대화와 배열", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["There are a bread on the table.","There is some bread on the table.","There are two pieces of bread on the table.","There isn't any bread on the table.","Is there any bread on the table?"], a:0,
+   exp:"bread는 셀 수 없어 a를 붙이지 않고, 여럿으로도 세지 않습니다."},
+
+  {type:"v", tag:"대화와 배열", hard:true, q:"다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ___ there any milk?<br>B: No, there ___ . Let's buy some.</span>",
+   opts:["Is – isn't","Are – aren't","Is – aren't","Does – doesn't","Are – isn't"], a:0,
+   exp:"milk는 셀 수 없음 → <b>Is</b> there / there <b>isn't</b>"}
+];
+
+/* ---------- LEVEL 4 : ‘~가 있다’ 전체 아우르기 40 ---------- */
+var L4 = [
+  {type:"n", tag:"세 가지 가리기", sent:"___ a beautiful park in this city.", q:"‘이 도시에 아름다운 공원이 하나 있다’가 되도록 알맞은 것은?",
+   opts:["There is","I have","It is","The park is","There have"], a:0, eng:true,
+   ko:"이 도시에 아름다운 공원이 하나 있다.",
+   exp:"처음 알려 주는 말 → <b>There is</b>"},
+
+  {type:"n", tag:"세 가지 가리기", sent:"I ___ a new bike.", q:"‘나는 새 자전거가 있다’가 되도록 알맞은 것은?",
+   opts:["have","there is","am","there are","is"], a:0, eng:true,
+   ko:"나는 새 자전거가 있다.",
+   exp:"누가 가졌는지 → <b>have</b>"},
+
+  {type:"n", tag:"세 가지 가리기", sent:"My cat ___ under the bed.", q:"‘내 고양이는 침대 아래에 있다’가 되도록 알맞은 것은?",
+   opts:["is","there is","has","there are","have"], a:0, eng:true,
+   ko:"내 고양이는 침대 아래에 있다.",
+   exp:"정해진 것이 어디 있는지 → be동사 <b>is</b>"},
+
+  {type:"n", tag:"세 가지 가리기", sent:"She ___ two sisters.", q:"‘그녀는 언니가 둘 있다’가 되도록 알맞은 것은?",
+   opts:["has","have","there is","there are","is"], a:0, eng:true,
+   ko:"그녀는 언니가 둘 있다.",
+   exp:"She → <b>has</b>"},
+
+  {type:"n", tag:"세 가지 가리기", sent:"___ a problem with my computer.", q:"‘내 컴퓨터에 문제가 하나 있다’가 되도록 알맞은 것은?",
+   opts:["There is","I am","It has","The problem is","There have"], a:0, eng:true,
+   ko:"내 컴퓨터에 문제가 하나 있다.",
+   exp:"문제가 있다는 사실을 알려 줌 → <b>There is</b>"},
+
+  {type:"n", tag:"세 가지 가리기", sent:"The keys ___ on the table.", q:"‘그 열쇠들은 탁자 위에 있다’가 되도록 알맞은 것은?",
+   opts:["are","there are","have","is","there is"], a:0, eng:true,
+   ko:"그 열쇠들은 탁자 위에 있다.",
+   exp:"정해진 것(The keys) → be동사 <b>are</b>"},
+
+  {type:"n", tag:"세 가지 가리기", q:"세 가지 표현을 바르게 짝지은 것은?",
+   opts:["무엇이 있다 – There is / 가지고 있다 – have / 어디에 있다 – be동사","무엇이 있다 – have / 가지고 있다 – There is / 어디에 있다 – be동사","셋 다 같다","무엇이 있다 – be동사 / 가지고 있다 – There is","어디에 있다 – have"], a:0,
+   exp:"There is a cat. / I have a cat. / The cat is here."},
+
+  {type:"n", tag:"세 가지 가리기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["There is my book on the desk.","There is a book on the desk.","My book is on the desk.","I have a book.","There are two books on the desk."], a:0,
+   exp:"my book은 정해진 것 → My book is on the desk."},
+
+  {type:"n", tag:"세 가지 가리기", multi:true, q:"There is · are로 말해야 하는 우리말을 모두 고르세요. (여러 개)",
+   opts:["방에 사람이 세 명 있다.","가방 안에 무언가 있다.","이 근처에 병원이 하나 있다.","나는 동생이 한 명 있다.","내 동생은 방에 있다."], ans:[0,1,2],
+   exp:"누가 가졌다 → have, 정해진 사람이 어디 있다 → be동사입니다."},
+
+  {type:"n", tag:"세 가지 가리기", multi:true, q:"have로 말해야 하는 우리말을 모두 고르세요. (여러 개)",
+   opts:["나는 강아지가 있다.","그는 형이 둘 있다.","우리 학교는 운동장이 넓다(운동장을 가지고 있다).","공원에 나무가 많이 있다.","그 나무는 공원에 있다."], ans:[0,1,2],
+   exp:"가진 주인이 드러나면 have입니다."},
+
+  {type:"n", tag:"세 가지 가리기", sent:"___ any questions?", q:"‘질문 있나요?’가 되도록 알맞은 것은?",
+   opts:["Are there","Is there","Do you there","Have there","There are"], a:0, eng:true,
+   ko:"질문 있나요?",
+   exp:"questions(여럿) → <b>Are there</b> any questions?"},
+
+  {type:"n", tag:"세 가지 가리기", sent:"___ you ___ any questions?", q:"‘질문 있나요?’를 have로 말할 때 알맞게 짝지은 것은?",
+   full:"**Do** you **have** any questions?",
+   fullko:"질문 있나요?",
+   opts:["Do – have","Are – have","Do – has","Have – do","Is – have"], a:0, eng:true,
+   ko:"질문 있나요?",
+   exp:"have로 물으면 <b>Do you have ~?</b>입니다."},
+
+  {type:"n", tag:"세 가지 가리기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">Our school has a big library. = ___ a big library in our school.</span>",
+   opts:["There is","There are","It is","Have","There has"], a:0,
+   exp:"have 문장은 <b>There is</b> 문장으로 바꿔 쓸 수 있습니다."},
+
+  {type:"n", tag:"세 가지 가리기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">There are four rooms in this house. = This house ___ four rooms.</span>",
+   opts:["has","have","is","are","there has"], a:0,
+   exp:"This house는 하나 → <b>has</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"다음 문장을 부정문으로 바르게 바꾼 것은?<br><span class=\"eng\">There is a cat in the box.</span>",
+   opts:["There isn't a cat in the box.","There doesn't a cat in the box.","There not is a cat in the box.","There is a cat not in the box.","There aren't a cat in the box."], a:0,
+   exp:"be동사 뒤에 not → <b>isn't</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"다음 문장을 의문문으로 바르게 바꾼 것은?<br><span class=\"eng\">There are some eggs in the fridge.</span>",
+   opts:["Are there any eggs in the fridge?","Do there any eggs in the fridge?","There are any eggs in the fridge?","Is there some eggs in the fridge?","Are there some eggs in the fridge please?"], a:0,
+   exp:"be동사를 앞으로 보내고, 묻는 말에서는 some을 보통 <b>any</b>로 바꿉니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"다음 문장을 지난 일로 바르게 바꾼 것은?<br><span class=\"eng\">There are many people in the square.</span>",
+   opts:["There were many people in the square.","There was many people in the square.","There did many people in the square.","There have many people in the square.","There are many people in the square yesterday."], a:0,
+   exp:"are의 지난 일 → <b>were</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">There aren't any students in the room. = There are ___ students in the room.</span>",
+   opts:["no","any","not","some","much"], a:0,
+   exp:"not any = <b>no</b>"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I have no money now. = There is ___ money in my pocket.</span>",
+   opts:["no","any","some","a","not"], a:0,
+   exp:"‘하나도 없다’ → There is <b>no</b> money."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"우리말을 영어로 바르게 옮긴 것은?<br><span class=\"eng\">‘내 방에는 창문이 두 개 있다.’</span>",
+   opts:["There are two windows in my room.","There is two windows in my room.","My room have two windows.","There have two windows in my room.","Two windows there are in my room."], a:0,
+   exp:"two windows(여럿) → There are ~ (My room has two windows.도 됩니다)"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"우리말을 영어로 바르게 옮긴 것은?<br><span class=\"eng\">‘탁자 위에 빵이 조금 있다.’</span>",
+   opts:["There is some bread on the table.","There are some bread on the table.","There is some breads on the table.","There have some bread on the table.","Some bread is have on the table."], a:0,
+   exp:"bread는 셀 수 없음 → There <b>is</b> some bread."},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, q:"뜻이 같은 짝을 모두 고르세요. (여러 개)",
+   opts:["There is a garden in our school. = Our school has a garden.","There are five members in my family. = My family has five members.","There isn't any water. = There is no water.","There is a cat. = I have a cat.","The cat is here. = There is the cat here."], ans:[0,1,2],
+   exp:"‘있다’와 ‘가지고 있다’, 정해진 것의 자리는 서로 다른 말입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
+   opts:["There will be a test tomorrow.","There used to be a shop here.","There is going to be a party.","There will is a test tomorrow.","There used to a shop here."], ans:[0,1,2],
+   exp:"There 뒤에도 be동사 원형을 씁니다. will be · used to be · is going to be"},
+
+  {type:"a", tag:"바꿔 쓰기", sent:"There ___ to be a small library here.", q:"‘여기에 작은 도서관이 있었다(예전에)’가 되도록 알맞은 것은?",
+   opts:["used","use","uses","using","is used"], a:0, eng:true,
+   ko:"예전에는 여기에 작은 도서관이 있었다.",
+   exp:"There <b>used</b> to be ~ = 예전에는 ~가 있었다"},
+
+  {type:"a", tag:"바꿔 쓰기", sent:"There ___ going to be a festival next month.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","has","have","will"], a:0, eng:true,
+   ko:"다음 달에 축제가 있을 것이다.",
+   exp:"a festival(하나) → There <b>is</b> going to be ~"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">There is nothing to eat in the fridge.</span>",
+   opts:["냉장고에 먹을 것이 아무것도 없다.","냉장고에 먹을 것이 조금 있다.","나는 냉장고가 없다.","냉장고는 비어 있지 않다.","먹을 것이 냉장고에 많다."], a:0,
+   exp:"nothing to eat = 먹을 것이 아무것도 없음"},
+
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["There are a lot of homework.","There is a lot of homework.","There are a lot of books.","There is a lot of water.","There are a lot of people."], a:0,
+   exp:"homework는 셀 수 없음 → There <b>is</b>"},
+
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Is there many books in the library?","Are there many books in the library?","Is there much water in the pool?","Was there a party last night?","Were there many guests?"], a:0,
+   exp:"many books(여럿) → <b>Are</b> there ~?"},
+
+  {type:"v", tag:"종합", sent:"There ___ a piece of cake and two cookies on the plate.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","were","have","has"], a:0, eng:true,
+   ko:"접시에 케이크 한 조각과 쿠키 두 개가 있다.",
+   exp:"바로 뒤가 a piece of cake → <b>is</b>"},
+
+  {type:"v", tag:"종합", sent:"There ___ anyone in the room when I came in.", q:"‘내가 들어갔을 때 방에 아무도 없었다’가 되도록 알맞은 것은?",
+   opts:["wasn't","weren't","isn't","aren't","didn't"], a:0, eng:true,
+   ko:"내가 들어갔을 때 방에 아무도 없었다.",
+   exp:"anyone은 하나로 보고 지난 일 → <b>wasn't</b>"},
+
+  {type:"v", tag:"종합", q:"밑줄 친 there의 쓰임이 <b>나머지와 다른</b> 것은?",
+   opts:["We stayed **there** for two days.","**There** is a hole in my sock.","**There** were many stars last night.","**There** isn't any sugar.","**There** will be a meeting."], a:0,
+   exp:"첫째는 ‘거기에서’라는 부사입니다."},
+
+  {type:"v", tag:"종합", q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ ___ a new cafe near my house. ⓑ It ___ very nice.</span>",
+   opts:["There is – is","There are – is","It is – is","There has – is","There is – has"], a:0,
+   exp:"ⓐ 처음 알려 주는 말 → There is ⓑ 그 카페를 가리키는 It is"},
+
+  {type:"v", tag:"종합", q:"다음 글의 빈칸에 들어갈 말로 가장 알맞은 것은?<br><span class=\"eng\">My town is small. ___ only one school and two parks.</span>",
+   opts:["There are","There is","It has not","There have","Have there"], a:0,
+   exp:"바로 뒤가 only one school이지만 두 가지를 함께 말하고 있어 <b>There are</b>가 자연스럽습니다."},
+
+  {type:"v", tag:"종합", q:"우리말을 영어로 바르게 옮긴 것은?<br><span class=\"eng\">‘전에는 이곳에 극장이 있었다.’</span>",
+   opts:["There used to be a theater here.","There was used to a theater here.","Here used to have a theater.","There is used to be a theater here.","There used to a theater here."], a:0,
+   exp:"There used to be ~ = 예전에는 ~가 있었다"},
+
+  {type:"v", tag:"종합", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
+   opts:["There is a spoon and two forks.","My sister has a doll.","The dolls are in the box.","There have a spoon.","There is the dolls in the box."], ans:[0,1,2],
+   exp:"There 뒤에는 be동사, 정해진 것은 The ~ is/are로 말합니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"빈칸에 <b>There is</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["___ a bus stop near here.","___ some cheese in the fridge.","___ something under the chair.","___ two buses at the stop.","___ many people here."], ans:[0,1,2],
+   exp:"하나이거나 셀 수 없는 말 앞에는 There is입니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 대화에서 어법상 <b>틀린</b> 부분이 있는 것은?",
+   opts:["B: Yes, there have three.","A: Are there any banks near here?","B: Yes, there are three.","A: Is there a hospital, too?","B: No, there isn't."], a:0,
+   exp:"there 뒤에는 be동사를 씁니다 → Yes, there <b>are</b> three."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ ___ two chairs in the room yesterday, but now ⓑ ___ only one.</span>",
+   opts:["there were – there is","there was – there are","there are – there was","there were – there are","there is – there were"], a:0,
+   exp:"ⓐ 어제 + 여럿 → there were ⓑ 지금 + 하나 → there is"},
+
+  {type:"v", tag:"종합", hard:true, q:"다음 중 어법상 알맞은 문장은?",
+   opts:["How much money is there in your wallet?","How much money are there in your wallet?","How many money is there in your wallet?","How much money do there in your wallet?","How many money are there in your wallet?"], a:0,
+   exp:"money는 셀 수 없음 → How much money <b>is</b> there ~?"},
+
+  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["There는 ‘거기에’로 해석해야 뜻이 통한다.","뒤에 오는 말이 하나면 is, 여럿이면 are를 쓴다.","지난 일은 was · were로 말한다.","‘가지고 있다’는 have로 말한다.","정해진 것이 어디 있는지는 be동사로 말한다."], a:0,
+   exp:"‘있다’의 There는 해석하지 않습니다. 해석되는 there는 곳을 나타내는 부사입니다."}
+];
+
+var LEVELS = {
+  1:{name:"기본1 · ~가 있다는 어떻게 말할까?", desc:"한글로 이해 24 · 쉬운 영어 16 · There is·are와 have, be동사 가려 쓰기 · is와 are 구별", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 때와 문장 모양", desc:"현재와 과거 · 평서·부정·의문 · 뜻 없는 There와 ‘거기에’ 부사 there 가리기", qs:L2, typeLabels:{n:"때와 모양",a:"평서·부정·의문",v:"there 가리기"}},
+  3:{name:"기본3 · 중1 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열 · How many·How much", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
+  4:{name:"기본4 · ‘~가 있다’ 모두 아우르기", desc:"There is·are와 have와 be동사 가리기 · 바꿔 쓰기 · will be·used to be까지", qs:L4, typeLabels:{n:"세 가지 가리기",a:"바꿔 쓰기",v:"종합"}}
+};
+
+/* ===================== 개념 화면 ===================== */
+function figThere(){
+  return '<svg class="fig" viewBox="0 0 560 128" role="img" aria-label="There is와 have와 be동사를 견주는 그림">'+
+    '<rect x="14" y="10" width="170" height="46" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
+    '<text x="99" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">There is a cat.</text>'+
+    '<text x="99" y="78" text-anchor="middle" font-size="14" fill="var(--muted)">있다고 알려 주기</text>'+
+    '<text x="99" y="100" text-anchor="middle" font-size="13" fill="var(--muted)">고양이가 있다</text>'+
+    '<rect x="195" y="10" width="170" height="46" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
+    '<text x="280" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ra)" font-family="Newsreader, serif">I have a cat.</text>'+
+    '<text x="280" y="78" text-anchor="middle" font-size="14" fill="var(--muted)">가지고 있다</text>'+
+    '<text x="280" y="100" text-anchor="middle" font-size="13" fill="var(--muted)">나는 고양이를 기른다</text>'+
+    '<rect x="376" y="10" width="170" height="46" rx="12" fill="var(--rv-soft, #EEF1F6)" stroke="var(--rv, #5B6B8C)" stroke-width="1.5"/>'+
+    '<text x="461" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--rv, #5B6B8C)" font-family="Newsreader, serif">The cat is here.</text>'+
+    '<text x="461" y="78" text-anchor="middle" font-size="14" fill="var(--muted)">어디에 있다</text>'+
+    '<text x="461" y="100" text-anchor="middle" font-size="13" fill="var(--muted)">그 고양이는 여기 있다</text>'+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · ~가 있다는 어떻게 말할까?</h2>'+
+  '<p class="lead">우리말은 ‘있다’ 하나로 다 말하지만, 영어는 <b>세 가지</b>로 나누어 말합니다. 무엇이 있다고 <b>알려 줄 때</b>, 누가 <b>가지고 있을 때</b>, 정해진 것이 <b>어디에 있을 때</b>입니다.</p>'+
+  figThere()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>① There is · There are — 있다고 알려 주기</span>'+
+    '<div class="ex">책상 위에 책이 있다.<span class="k">There is a book on the desk.</span></div>'+
+    '<p>이때 <b>There는 해석하지 않습니다.</b> 자리만 채우고, 진짜 주인공은 뒤에 오는 말입니다.</p>'+
+    '<div class="swap"><span>뒤가 하나 · 셀 수 없는 것</span><span class="ar">→</span><span class="good">There is</span></div>'+
+    '<div class="swap"><span>뒤가 여럿</span><span class="ar">→</span><span class="good">There are</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>② have — 누가 가지고 있는지</span>'+
+    '<div class="ex">나는 강아지가 있다.<span class="k">I have a dog.</span></div>'+
+    '<p>가진 사람이 드러나면 have를 씁니다. ‘There is I a dog.(✕)’처럼 쓰지 않습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>③ be동사 — 정해진 것이 어디에 있는지</span>'+
+    '<div class="ex">그 고양이는 소파 위에 있다.<span class="k">The cat is on the sofa.</span></div>'+
+    '<p>이미 아는 것(the · my · 이름)은 There is로 시작하지 않습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>아니다 · 물어보기 · 지난 일</span>'+
+    '<div class="ex">There <u class="hl a">isn\'t</u> a chair here.<span class="k">be동사 뒤에 not</span></div>'+
+    '<div class="ex"><u class="hl a">Is there</u> a bank near here?<span class="k">be동사를 앞으로</span></div>'+
+    '<div class="ex">There <u class="hl a">was</u> a big tree here.<span class="k">지난 일은 was · were</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>‘있다’를 <b>세 가지</b>로 나누어 말하고, There 뒤에는 <b>하나면 is · 여럿이면 are</b>를 씁니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · 때와 문장 모양</h2>'+
+  '<p class="lead">현재와 과거, 평서문·부정문·의문문을 한 바퀴 돌고, 뜻 없는 <b>There</b>와 ‘거기에’라는 <b>부사 there</b>를 가려냅니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>때에 따라</span>'+
+    '<div class="swap"><span>지금</span><span class="ar">→</span><span class="good">There is · There are</span></div>'+
+    '<div class="swap"><span>지난 일</span><span class="ar">→</span><span class="good">There was · There were</span></div>'+
+    '<div class="swap"><span>앞으로</span><span class="ar">→</span><span class="good">There will be</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>세 가지 모양</span>'+
+    '<div class="ex">There is a cat.<span class="k">평서문 — 있다</span></div>'+
+    '<div class="ex">There isn\'t a cat. / There is no cat.<span class="k">부정문 — 없다</span></div>'+
+    '<div class="ex">Is there a cat? — Yes, there is. / No, there isn\'t.<span class="k">의문문 — 있니?</span></div>'+
+    '<p>묻는 말에는 보통 some 대신 <b>any</b>를 씁니다. Are there <b>any</b> eggs?</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>두 there 가리기</span>'+
+    '<div class="swap"><span>There is a book.</span><span class="ar">→</span><span class="good">해석하지 않음 — 있다</span></div>'+
+    '<div class="swap"><span>Look over there!</span><span class="ar">→</span><span class="good">저기에 — 곳을 나타내는 부사</span></div>'+
+    '<p>‘거기에’로 바꿔 보아 말이 되면 <b>부사</b>, 어색하면 ‘있다’의 <b>There</b>입니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">외우는 한 줄</span>모양은 <b>바로 뒤에 오는 말</b>이 정합니다. There is a cat and two dogs.</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 중1 학교 시험형</h2>'+
+  '<p class="lead">학교 시험에 그대로 나오는 자리입니다. is와 are 고르기, 틀린 곳 고치기, 개수를 묻는 말까지 봅니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>시험에서 자주 묻는 곳</span>'+
+    '<div class="swap"><span>There is five apples.</span><span class="ar">✕</span><span class="good">There are five apples.</span></div>'+
+    '<div class="swap"><span>There have many people.</span><span class="ar">✕</span><span class="good">There are many people.</span></div>'+
+    '<div class="swap"><span>Do there any questions?</span><span class="ar">✕</span><span class="good">Are there any questions?</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>셀 수 없는 말을 조심하세요</span>'+
+    '<div class="ex">There <u class="hl">is</u> a lot of water · homework · bread · money.<span class="k">셀 수 없으면 is</span></div>'+
+    '<div class="ex">There <u class="hl">are</u> a lot of books · people · cars.<span class="k">셀 수 있으면 are</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>개수와 양을 물을 때</span>'+
+    '<div class="swap"><span>셀 수 있는 것</span><span class="ar">→</span><span class="good">How many students are there ~ ?</span></div>'+
+    '<div class="swap"><span>셀 수 없는 것</span><span class="ar">→</span><span class="good">How much water is there ~ ?</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>뒤에 오는 말이 <b>몇 개인지</b>, <b>셀 수 있는지</b>, <b>때가 언제인지</b> — 이 세 곳입니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · ‘~가 있다’ 모두 아우르기</h2>'+
+  '<p class="lead">마지막입니다. 세 가지 ‘있다’를 한자리에 놓고 가려 쓰며, 바꿔 쓰기와 will be · used to be까지 아울러 봅니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>세 가지를 한자리에</span>'+
+    '<div class="ex">There is a park in this city.<span class="k">있다고 알려 주기</span></div>'+
+    '<div class="ex">I have a new bike.<span class="k">가지고 있다</span></div>'+
+    '<div class="ex">My cat is under the bed.<span class="k">정해진 것이 어디에</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>바꿔 쓰기</span>'+
+    '<div class="swap"><span>Our school has a library.</span><span class="ar">=</span><span class="good">There is a library in our school.</span></div>'+
+    '<div class="swap"><span>There aren\'t any students.</span><span class="ar">=</span><span class="good">There are no students.</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>There 뒤에도 be는 원형</span>'+
+    '<div class="ex">There <u class="hl a">will be</u> a test tomorrow.<span class="k">앞으로</span></div>'+
+    '<div class="ex">There <u class="hl a">used to be</u> a theater here.<span class="k">예전에는</span></div>'+
+    '<div class="ex">There <u class="hl a">is going to be</u> a festival.<span class="k">곧</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마무리 한 줄</span>‘있다’는 <b>알려 주기 · 가지고 있기 · 어디에 있기</b> 세 가지입니다.</div>';
+}
+
+var LVCHEER = {
+  1:"‘있다’를 세 가지로 나누어 말할 수 있게 되었어요. 2단계로 가 봅니다.",
+  2:"과거와 부정, 의문까지 해냈습니다. 3단계는 학교 시험형입니다.",
+  3:"셀 수 있는지 없는지 살피는 눈이 생겼어요. 마지막 단계만 남았습니다.",
+  4:"There is · are를 끝까지 해냈습니다. 이제 ‘있다’는 자신 있습니다!"
+};
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_thereis_v1", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+drawCount(L)+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
+
+/* ===================== 문제 ===================== */
+/* 문제 뽑기: 종류(n·a·v) 비율을 지키고, 보스 문제는 하나만 그 종류의 맨 끝에 둡니다 */
+function drawCount(L){ return Math.min(20, L.qs.length); }
+function drawList(L){
+  var qs=L.qs, N=drawCount(L), T=["n","a","v"];
+  if(qs.length<=N) return qs.map(function(_,i){return i;});
+  var by={}, boss=[], cnt={}, sum=0;
+  T.forEach(function(t){ by[t]=[]; cnt[t]=0; });
+  qs.forEach(function(q,i){ if(q.tag==="보스 문제") boss.push(i); else if(by[q.type]) by[q.type].push(i); });
+  T.forEach(function(t){
+    var p=qs.filter(function(q){ return q.type===t; }).length;
+    cnt[t]=Math.round(p*N/qs.length); sum+=cnt[t];
+  });
+  while(sum>N){ var big=T.slice().sort(function(x,y){return cnt[y]-cnt[x];})[0]; cnt[big]--; sum--; }
+  while(sum<N){ var lot=T.slice().sort(function(x,y){return by[y].length-cnt[y]-(by[x].length-cnt[x]);})[0]; cnt[lot]++; sum++; }
+  var b = boss.length ? boss[Math.floor(Math.random()*boss.length)] : -1;
+  if(b>=0) cnt[qs[b].type]--;
+  var out=[];
+  T.forEach(function(t){
+    var pool=by[t].slice();
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=pool[i]; pool[i]=pool[j]; pool[j]=x; }
+    var got=pool.slice(0,Math.max(0,cnt[t])).sort(function(x,y){return x-y;});
+    if(b>=0 && qs[b].type===t) got.push(b);
+    out=out.concat(got);
+  });
+  return out;
+}
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=drawList(L);
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  clearProg();
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || "";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
+
+  var h="";
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
+  saveProg();
+  S.answered=false;S.picked=-1;
+
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
+  });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
+  show("quiz");
+}
+
+function buildFull(q){
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
+
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
+
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
+
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
+  }else{
+    if(!ok) S.retryWrong.push(S.list[S.i]);
+  }
+
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
+function next(){
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
+}
+
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+function praise(p){
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  clearProg();
+  var L=LEVELS[S.level], total=drawCount(L);
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var tl=L.typeLabels||{};
+  var keys=Object.keys(tl).filter(function(k){ return S.byType[k] && S.byType[k][1]>0; });
+  var bd;
+  if(keys.length<2){
+    bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+       '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>'+
+       '<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  }else{
+    bd=keys.map(function(k){
+      var cls = k==="v" ? "v3" : k;
+      return '<div class="bd '+cls+'"><div class="t">'+esc(tl[k])+'</div><div class="v">'+S.byType[k][0]+'/'+S.byType[k][1]+'</div></div>';
+    }).join('');
+  }
+  $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
+  $("rbreak").innerHTML=bd;
+
+  var isAdmin = (S.name==="꾸메땅");
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null && !isAdmin){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
+      w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
+  show("result");
+  openPraise(S.score, total, S.correct, S.wrong.length);
+}
+
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
+}
+
+function renderRetryResult(){
+  clearProg();
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  if(!still){ S.finished[S.level]=true; S.active=0; }
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").style.gridTemplateColumns = "repeat(3,1fr)";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+}
+
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+  }else{
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
+  }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
+}
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
+  show("rank");
+}
+
+/* ===================== 시작 배선 ===================== */
+function goHome(){
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
+}
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
+function saveProg(){
+  try{
+    if(!S.level || !S.list || !S.list.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  var p = loadProg();
+  if(!p) return;
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
+}
+function progBanner(){
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
+}
+
+refreshStart();
+
+</script>
+<script src="/kkt.js"></script>
+</body></html>

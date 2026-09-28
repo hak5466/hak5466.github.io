@@ -25,6 +25,8 @@
 | sense | 감각동사 GAME | 중1 |
 | itsub | 비인칭주어 GAME | 중1 |
 | beuse | be동사 문장 활용 | 중1 |
+| thereis | There is · are 뽀개기 | 중1 |
+| tense | 시제 뽀개기 | 초등·중1 |
 | verbuse | 일반동사 문장 활용 | 중1 |
 | toinf-basic | TO부정사 기본 | 중1 |
 | form5b | 5형식 뽀개기 | 중2 |
