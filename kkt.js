@@ -112,6 +112,7 @@
     "beuse": familyA("be동사 문장 활용"),
     "thereis": familyA("There is · are 뽀개기"),
     "tense": familyA("시제 뽀개기"),
+    "freq": familyA("빈도부사 뽀개기"),
     "verbuse": familyA("일반동사 문장 활용"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
@@ -280,8 +281,25 @@
 
   /* ---------- 화면 아래 붙어 있는 보내기 칸 ---------- */
   var bar, nameInput, sendBtn, msgEl, subEl, sending = false, sent = {}, shownKey = null;
+  var mini, placed = "";
   var PEND_KEY = "kkt_pending_v1";
   var SENT_KEY = "kkt_sent_v1";
+
+  var FIXED_CSS = [
+    "position:fixed", "left:0", "right:0", "bottom:0", "border-radius:0", "margin:0",
+    "padding:13px 14px calc(13px + env(safe-area-inset-bottom,0px))",
+    "box-shadow:0 -8px 22px -12px rgba(0,0,0,.55)"
+  ];
+  var INLINE_CSS = [
+    "position:static", "left:auto", "right:auto", "bottom:auto", "border-radius:16px",
+    "margin:16px 0 6px", "padding:16px 16px 17px",
+    "box-shadow:0 14px 30px -18px rgba(15,110,92,.95)"
+  ];
+  var MODAL_CSS = [
+    "position:static", "left:auto", "right:auto", "bottom:auto", "border-radius:14px",
+    "margin:12px 0 2px", "padding:14px 14px 15px",
+    "box-shadow:none"
+  ];
 
   function buildBar() {
     bar = document.createElement("div");
@@ -339,6 +357,119 @@
     });
   }
 
+  /* 화면 아래에 붙는 작은 되돌아가기 단추 — 결과 칸이 위로 밀려 보이지 않을 때만 나옵니다 */
+  function buildMini() {
+    mini = document.createElement("button");
+    mini.type = "button";
+    mini.setAttribute("dir", "ltr");
+    mini.textContent = "↑ 선생님께 보내기";
+    mini.style.cssText = [
+      "display:none", "position:fixed", "left:0", "right:0", "bottom:0", "z-index:99998",
+      "box-sizing:border-box", "width:100%", "border:0", "cursor:pointer",
+      "padding:14px 14px calc(14px + env(safe-area-inset-bottom,0px))",
+      "background:#F3D74B", "color:#15201D",
+      "font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif",
+      "font-size:17px", "font-weight:700",
+      "box-shadow:0 -8px 22px -12px rgba(0,0,0,.45)"
+    ].join(";");
+    mini.addEventListener("click", function () { lookAtBar(); });
+    document.body.appendChild(mini);
+  }
+
+  /* 칸을 둘 자리를 정합니다 — 칭찬 창 안 → 결과 칸 안 → 화면 아래 차례 */
+  /* 칭찬 창은 position:fixed 라서 offsetParent 로는 못 봅니다 */
+  function modalUp() {
+    var pb = $("#praiseBox");
+    if (!pb) return false;
+    if (pb.className && /(^|\s)hide(\s|$)/.test(pb.className)) return false;
+    try { return getComputedStyle(pb).display !== "none" && getComputedStyle(pb).visibility !== "hidden"; }
+    catch (e) { return false; }
+  }
+
+  function desiredSpot(res) {
+    if (modalUp()) return "modal";
+    var r = $("#result");
+    if (res || (r && vis(r))) return "inline";
+    return "fixed";
+  }
+
+  /* 칭찬 창 · 결과 칸 안(글 흐름) · 화면 아래 고정 — 같은 칸을 자리만 옮겨 씁니다 */
+  function placeBar(where) {
+    if (!bar) buildBar();
+    if (placed === where) return;
+    if (where === "modal") {
+      var box = $("#praiseBox .box");
+      if (box && modalUp()) {
+        applyCss(MODAL_CSS);
+        var close = $("#pmClose");
+        if (close && close.parentNode === box) box.insertBefore(bar, close);
+        else box.appendChild(bar);
+        placed = "modal";
+        return;
+      }
+      where = "inline";
+    }
+    if (where === "inline") {
+      var host = $("#result");
+      if (host && vis(host)) {
+        var slot = document.getElementById("kktSlot");
+        if (!slot) {
+          slot = document.createElement("div");
+          slot.id = "kktSlot";
+          var anchor = $("#rnext") || $("#rsubmit") || $("#rwrong");
+          if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(slot, anchor);
+          else host.appendChild(slot);
+        }
+        applyCss(INLINE_CSS);
+        slot.appendChild(bar);
+        placed = "inline";
+        return;
+      }
+    }
+    applyCss(FIXED_CSS);
+    document.body.appendChild(bar);
+    placed = "fixed";
+  }
+
+  function applyCss(rules) {
+    rules.forEach(function (r) {
+      var i = r.indexOf(":");
+      bar.style[cssProp(r.slice(0, i))] = r.slice(i + 1);
+    });
+  }
+
+  function cssProp(n) { return n.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); }); }
+
+  function lookAtBar() {
+    try { bar.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (e) { try { bar.scrollIntoView(); } catch (e2) {} }
+    try {
+      sendBtn.style.transition = "transform .25s";
+      var k = 0, t = setInterval(function () {
+        sendBtn.style.transform = (k % 2 ? "scale(1)" : "scale(1.07)");
+        if (++k > 5) { clearInterval(t); sendBtn.style.transform = "scale(1)"; }
+      }, 260);
+    } catch (e) {}
+  }
+
+  /* 결과 칸이 화면에서 벗어났는지 봅니다 */
+  function barOffScreen() {
+    if (!bar || placed !== "inline" || bar.style.display === "none") return false;
+    if (modalUp()) return false;
+    try {
+      var r = bar.getBoundingClientRect();
+      if (!r.height) return false;
+      return r.bottom < 40 || r.top > (window.innerHeight || 0) - 20;
+    } catch (e) { return false; }
+  }
+
+  function syncMini() {
+    if (!mini) buildMini();
+    var on = !sending && pendCount() > 0 && barOffScreen();
+    mini.style.display = on ? "block" : "none";
+    if (on) padBody(true, mini.offsetHeight);
+    else if (placed === "inline") padBody(false);
+  }
+
   function isAdmin() { return gameName() === "꾸메땅"; }
 
   function gameName() {
@@ -351,8 +482,12 @@
     if (!bar) buildBar();
     var n = pendCount();
     if (!n) { hideBar(); return; }
-    if (res) {
-      msgEl.textContent = "이 단계 결과를 선생님께 보내 주세요 — " +
+    var wasPlaced = placed;
+    placeBar(desiredSpot(res));
+    if (res && placed === "modal") {
+      msgEl.textContent = "단계 끝! 선생님께 보내 주세요";
+    } else if (res) {
+      msgEl.textContent = "단계 끝! 결과를 선생님께 보내 주세요 — " +
         (res.level ? res.level + " · " : "") + res.score + "점" +
         (res.total ? " (" + res.hit + "/" + res.total + ")" : "");
     } else {
@@ -360,7 +495,7 @@
     }
     subEl.textContent = n > 1
       ? "보내지 않은 결과 " + n + "개를 한 번에 보냅니다."
-      : "이름을 적고 단추를 누르면 선생님께 바로 갑니다.";
+      : "① 이름을 적고 ② 노란 단추를 누르면 선생님께 바로 갑니다.";
     if (!sending) {
       nameInput.style.display = "";
       sendBtn.style.display = "";
@@ -369,20 +504,23 @@
       if (!nameInput.value) nameInput.value = gameName() || ls(NAME_KEY) || "";
     }
     bar.style.display = "block";
-    padBody(true);
+    padBody(placed === "fixed");
+    if (placed === "inline" && res && wasPlaced !== "inline") setTimeout(lookAtBar, 260);
+    syncMini();
   }
 
   function hideBar() {
     if (bar) bar.style.display = "none";
+    if (mini) mini.style.display = "none";
     padBody(false);
   }
 
   /* 칸이 화면 아래를 가리지 않도록 여백을 둡니다 */
-  function padBody(on) {
+  function padBody(on, h) {
     try {
       if (on) {
-        var h = bar ? bar.offsetHeight : 0;
-        document.body.style.paddingBottom = (h + 12) + "px";
+        var px = h || (bar ? bar.offsetHeight : 0);
+        document.body.style.paddingBottom = (px + 12) + "px";
       } else if (document.body.style.paddingBottom) {
         document.body.style.paddingBottom = "";
       }
@@ -424,6 +562,7 @@
     nameInput.style.display = "none";
     sendBtn.style.display = "none";
     shownKey = null;
+    if (mini) mini.style.display = "none";
     setTimeout(function () {
       if (pendCount()) { showBar(null); } else { hideBar(); }
     }, 5000);
@@ -450,6 +589,8 @@
       if (sending) return;
       if (key !== shownKey) { shownKey = key; showBar(res); }
       else if (bar && bar.style.display === "none" && pendCount()) showBar(res);
+      else if (placed !== desiredSpot(res)) showBar(res);
+      else syncMini();
       return;
     }
 
@@ -466,6 +607,14 @@
   function start() {
     flushQueue();
     setInterval(tick, 700);
+    var waiting = false;
+    function onScroll() {
+      if (waiting) return;
+      waiting = true;
+      setTimeout(function () { waiting = false; try { syncMini(); } catch (e) {} }, 120);
+    }
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onScroll);
     tick();
   }
 

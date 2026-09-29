@@ -1254,6 +1254,7 @@ var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
 
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function unent(s){return String(s).replace(/&nbsp;/g," ").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,"&");}
 function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
 function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
 
@@ -1599,7 +1600,8 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,"").replace(/\s+/g," ").trim());
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,""));
+      shown = unent(shown).replace(/\s+/g," ").trim();
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
          '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
             ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")

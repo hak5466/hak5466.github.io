@@ -1,0 +1,1826 @@
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · 빈도부사 뽀개기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --card:#FFFFFF;
+  --ink:#15201D;
+  --muted:#54615D;
+  --line:#E1E5DD;
+  --line-strong:#C9D1C8;
+  --accent:#0F6E5C;
+  --accent-soft:#E1F0EA;
+  --mark:#F3D74B;
+  --ok:#1C7A5B;
+  --ok-soft:#E3F1EA;
+  --no:#BC443A;
+  --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
+  --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+    --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+    --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+  --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+  --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:19px;line-height:1.62;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:720px;margin:0 auto;padding:24px 14px 72px;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){ .wrap{padding:28px 18px 72px} }
+h1,h2,h3{margin:0;text-wrap:balance}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7vw,39px);letter-spacing:-.02em;line-height:1.08}
+h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
+.sub{color:var(--muted);font-size:16.5px}
+
+.rail{display:flex;gap:10px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
+.seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
+.seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
+.seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+@media (min-width:600px){ .card{padding:24px} }
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
+
+
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
+.btn:hover{opacity:.88}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:19.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
+.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:21px;line-height:1.2}
+.role .m{font-size:15px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:18px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:17.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+#qlevel{font-size:17px;font-weight:800;padding:5px 13px}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
+
+.exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+.verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
+.verdict.ok{color:var(--ok)}
+.verdict.no{color:var(--no)}
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
+.full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
+.full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
+.full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
+.full .kr{font-size:18.5px;line-height:1.6}
+
+/* ---------- 결과 ---------- */
+.score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
+.score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+.bd .t{font-size:14px;color:var(--muted);font-weight:600}
+.bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
+.wrongs{display:flex;flex-direction:column;gap:10px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.wrong .top{display:flex;gap:8px;align-items:baseline}
+.wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
+.wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
+.wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
+.submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tablewrap{overflow-x:auto}
+table.rank{width:100%;border-collapse:collapse;font-size:17.5px}
+table.rank th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
+table.rank tr.top .pos{color:var(--accent)}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
+table.rank .when{color:var(--muted);font-size:15px}
+table.rank tr.me{background:var(--accent-soft)}
+table.rank tr.me .who{color:var(--accent)}
+.empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
+.toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중1 · 빈도부사 뽀개기</span></h1>
+    <p class="sub">always · usually · often · sometimes · rarely · never · 자리와 뜻 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 자리와 뜻 익히기, 3단계 중1 학교 시험형, 4단계에서 전 학년 문법과 함께 아우릅니다.</p>
+  </header>
+
+  <div class="rail" id="rail" aria-hidden="true">
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+  </div>
+
+  <!-- 시작 -->
+  <section class="card" id="start">
+    <h2>단계를 골라 도전해 보세요</h2>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
+    <div class="namebar">
+      <span class="h">이름</span>
+      <div class="row">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <button class="btn small" id="saveName">저장</button>
+      </div>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
+    </div>
+    <div id="resumeBar" class="hide"></div>
+    <div class="levels" id="levelPick"></div>
+    <div class="actions">
+      <button class="btn ghost" id="openRank">순위 보기</button>
+    </div>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+  </section>
+
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
+    <div class="actions">
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
+    </div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="card hide" id="quiz">
+    <div class="qhead">
+      <span class="qnum" id="qnum">1 / 20</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
+    </div>
+    <div class="qbody" id="qbody"></div>
+    <div id="qexp"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="card hide" id="result">
+    <h2 id="rtitle">1단계 결과</h2>
+    <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
+    <div id="rsubmit"></div>
+    <div id="rwrong"></div>
+    <div class="actions" id="ractions"></div>
+  </section>
+
+  <!-- 순위 -->
+  <section class="card hide" id="rank">
+    <div class="subhead">
+      <h2>도전 순위</h2>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
+    </div>
+    <div id="rankToast"></div>
+    <div class="tabs" id="rankTabs">
+      <button class="tab on" data-t="all">종합</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rankHome">단계 선택으로</button>
+    </div>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
+  </section>
+
+  <p class="foot"><img src="/logo.png" alt="꾸메땅" style="display:block;height:56px;width:auto;margin:0 auto 10px;padding:6px 10px;background:#fff;border-radius:10px">꾸메땅 영문법 GAME · 빈도부사 뽀개기<br>© 꾸메땅 학습코칭학원 · 무단 복제와 배포를 금합니다.<br>☎ 010.5851.8209</p>
+</div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
+
+<script>
+"use strict";
+
+/* ---------- LEVEL 1 : 한글로 이해 24 + 쉬운 영어 16 ----------
+   빈도가 무엇인지 · 부사가 하는 일 · 빈도부사 일곱 개의 뜻 */
+var L1 = [
+  {type:"n", tag:"한글로 이해", q:"‘빈도’는 무슨 뜻일까요?",
+   opts:["얼마나 자주 하는지","얼마나 빠른지","얼마나 큰지","어디에서 하는지","누구와 하는지"], a:0,
+   exp:"빈도는 <b>얼마나 자주</b> 일어나는지를 뜻합니다."},
+
+  {type:"n", tag:"한글로 이해", q:"<b>부사</b>는 문장에서 어떤 일을 할까요?",
+   opts:["동사나 형용사를 꾸며 더 자세히 알려 준다","사람이나 물건의 이름을 나타낸다","문장의 주인을 나타낸다","두 문장을 이어 준다","놀란 마음을 나타낸다"], a:0,
+   exp:"부사는 <b>더 자세히</b> 알려 주는 말입니다. 빠르게 · 매우 · 늘처럼 씁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"그러면 <b>빈도부사</b>는 무엇일까요?",
+   opts:["얼마나 자주 하는지를 알려 주는 부사","얼마나 빨리 하는지를 알려 주는 부사","어디에서 하는지를 알려 주는 부사","누가 하는지를 알려 주는 말","무엇을 하는지를 알려 주는 말"], a:0,
+   exp:"‘늘 · 보통 · 자주 · 가끔 · 거의 · 전혀’처럼 <b>자주 하는 정도</b>를 알려 줍니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"빈도부사가 알려 주는 것을 모두 고르세요. (여러 개)",
+   opts:["날마다 하는지","어쩌다 한 번 하는지","무슨 색인지","얼마나 큰지","어디에 있는지"], ans:[0,1],
+   exp:"빈도부사는 <b>자주 하는 정도</b>만 알려 줍니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 늘 아침을 먹는다.", q:"‘늘 · 항상’에 해당하는 영어는?",
+   opts:["always","never","often","sometimes","usually"], a:0,
+   exp:"늘 · 항상은 <b>always</b>입니다. 빈도로 치면 100%입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 보통 일곱 시에 일어난다.", q:"‘보통 · 대개’에 해당하는 영어는?",
+   opts:["usually","always","sometimes","never","rarely"], a:0,
+   exp:"거의 몸에 밴 <b>습관</b>이면 usually입니다. 빈도로 치면 90%쯤입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"우리는 자주 축구를 한다.", q:"‘자주 · 종종’에 해당하는 영어는?",
+   opts:["often","seldom","never","always","sometimes"], a:0,
+   exp:"자주 · 종종은 <b>often</b>입니다. 빈도로 치면 70%쯤입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그녀는 가끔 만화책을 읽는다.", q:"‘가끔 · 때때로’에 해당하는 영어는?",
+   opts:["sometimes","always","never","usually","often"], a:0,
+   exp:"가끔 · 때때로는 <b>sometimes</b>입니다. 빈도로 치면 50%쯤입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그들은 텔레비전을 거의 보지 않는다.", q:"‘거의 ~하지 않는다’에 해당하는 영어는?",
+   opts:["rarely","always","often","usually","sometimes"], a:0,
+   exp:"<b>rarely</b>와 <b>seldom</b>이 ‘거의 ~하지 않는다’입니다. 빈도로 치면 10%쯤입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 커피를 전혀 마시지 않는다.", q:"‘전혀 ~하지 않는다’에 해당하는 영어는?",
+   opts:["never","always","often","rarely","usually"], a:0,
+   exp:"전혀 ~하지 않는다는 <b>never</b>입니다. 빈도로 치면 0%입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘거의 ~하지 않는다’라는 뜻인 말을 모두 고르세요. (여러 개)",
+   opts:["rarely","seldom","always","often","usually"], ans:[0,1],
+   exp:"rarely와 seldom은 뜻이 거의 같습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"빈도가 가장 <b>높은</b> 말은?",
+   opts:["always","usually","often","sometimes","never"], a:0,
+   exp:"always가 100%로 가장 높습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"빈도가 가장 <b>낮은</b> 말은?",
+   opts:["never","rarely","sometimes","often","usually"], a:0,
+   exp:"never가 0%로 가장 낮습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"always와 usually 가운데 더 자주 하는 쪽은?",
+   opts:["always","usually","둘이 똑같다","알 수 없다","둘 다 하지 않는다"], a:0,
+   exp:"always(100%)가 usually(90%쯤)보다 위입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"often과 sometimes 가운데 더 자주 하는 쪽은?",
+   opts:["often","sometimes","둘이 똑같다","알 수 없다","둘 다 하지 않는다"], a:0,
+   exp:"often(70%쯤)이 sometimes(50%쯤)보다 위입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"sometimes와 rarely 가운데 더 자주 하는 쪽은?",
+   opts:["sometimes","rarely","둘이 똑같다","알 수 없다","둘 다 늘 한다"], a:0,
+   exp:"sometimes(50%쯤)가 rarely(10%쯤)보다 위입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"거의 하지 않거나 전혀 하지 않는다는 뜻인 말을 모두 고르세요. (여러 개)",
+   opts:["rarely","seldom","never","always","often"], ans:[0,1,2],
+   exp:"rarely · seldom은 거의 안 함, never는 아예 안 함입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"never에 대한 설명으로 알맞은 것은?",
+   opts:["말 안에 이미 ‘아니다’가 들어 있어 not을 또 쓰지 않는다","꼭 not과 함께 써야 뜻이 산다","‘늘’이라는 뜻이다","‘가끔’이라는 뜻이다","빈도가 가장 높다"], a:0,
+   exp:"never는 그 자체가 부정입니다. don’t never(✕) → never(○)"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"우리말 뜻이 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["always — 늘 · 항상","never — 전혀 ~하지 않는다","often — 가끔","sometimes — 늘","usually — 전혀 ~하지 않는다"], ans:[0,1],
+   exp:"often은 자주, sometimes는 가끔, usually는 보통입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘나는 아침을 먹는다’와 ‘나는 <b>늘</b> 아침을 먹는다’의 차이는?",
+   opts:["뒤 문장은 얼마나 자주인지까지 알려 준다","뒤 문장은 지난 일을 말한다","뒤 문장은 물어보는 말이다","두 문장의 뜻이 같다","뒤 문장은 먹지 않는다는 뜻이다"], a:0,
+   exp:"빈도부사 하나로 <b>얼마나 자주</b>인지가 또렷해집니다."},
+
+  {type:"n", tag:"한글로 이해", q:"빈도가 높은 차례로 바르게 늘어놓은 것은?",
+   opts:["always – usually – often – sometimes – rarely – never","never – rarely – sometimes – often – usually – always","always – often – usually – never – sometimes – rarely","sometimes – always – never – often – usually – rarely","usually – always – sometimes – often – never – rarely"], a:0,
+   exp:"100% always → 90% usually → 70% often → 50% sometimes → 10% rarely → 0% never"},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"빈도부사가 <b>아닌</b> 것을 모두 고르세요. (여러 개)",
+   opts:["very(매우)","fast(빠르게)","always(늘)","often(자주)","never(전혀)"], ans:[0,1],
+   exp:"very와 fast도 부사이지만 <b>얼마나 자주</b>를 말하지 않습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘거의 날마다 한다’에 가장 가까운 말은?",
+   opts:["usually","never","rarely","seldom","sometimes"], a:0,
+   exp:"거의 날마다 하는 습관이면 <b>usually</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 가운데 <b>옳지 않은</b> 것은?",
+   opts:["sometimes는 ‘늘’이라는 뜻이다.","빈도부사는 얼마나 자주 하는지를 알려 준다.","always는 100%에 가깝다.","never는 0%이다.","rarely와 seldom은 뜻이 거의 같다."], a:0,
+   exp:"sometimes는 <b>가끔 · 때때로</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"I ___ eat breakfast.", q:"‘늘(100%)’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["always","never","rarely","seldom","not"], a:0, eng:true,
+   ko:"나는 늘 아침을 먹는다.",
+   exp:"늘 → <b>always</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"She ___ goes to bed at ten.", q:"‘보통 · 대개’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["usually","never","rarely","seldom","always"], a:0, eng:true,
+   ko:"그녀는 보통 열 시에 잔다.",
+   exp:"보통 · 대개 → <b>usually</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"We ___ play soccer.", q:"‘자주 · 종종’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["often","never","rarely","seldom","always"], a:0, eng:true,
+   ko:"우리는 자주 축구를 한다.",
+   exp:"자주 · 종종 → <b>often</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"He ___ reads comic books.", q:"‘가끔 · 때때로’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["sometimes","never","always","usually","often"], a:0, eng:true,
+   ko:"그는 가끔 만화책을 읽는다.",
+   exp:"가끔 · 때때로 → <b>sometimes</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"They ___ watch TV.", q:"‘거의 보지 않는다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["rarely","always","usually","often","sometimes"], a:0, eng:true,
+   ko:"그들은 텔레비전을 거의 보지 않는다.",
+   exp:"거의 ~하지 않는다 → <b>rarely</b>"},
+
+  {type:"a", tag:"쉬운 영어", sent:"I ___ drink coffee.", q:"‘전혀 마시지 않는다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["never","always","usually","often","sometimes"], a:0, eng:true,
+   ko:"나는 커피를 전혀 마시지 않는다.",
+   exp:"전혀 ~하지 않는다 → <b>never</b>. not을 또 붙이지 않습니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"always", q:"always의 뜻으로 알맞은 것은?",
+   opts:["늘 · 항상","가끔","전혀 ~하지 않는다","거의 ~하지 않는다","보통 · 대개"], a:0,
+   exp:"always = 늘 · 항상 (100%)"},
+
+  {type:"a", tag:"쉬운 영어", word:"usually", q:"usually의 뜻으로 알맞은 것은?",
+   opts:["보통 · 대개","전혀 ~하지 않는다","가끔","거의 ~하지 않는다","늘 · 항상"], a:0,
+   exp:"usually = 보통 · 대개 (90%쯤)"},
+
+  {type:"a", tag:"쉬운 영어", word:"often", q:"often의 뜻으로 알맞은 것은?",
+   opts:["자주 · 종종","가끔","늘 · 항상","전혀 ~하지 않는다","보통 · 대개"], a:0,
+   exp:"often = 자주 · 종종 (70%쯤)"},
+
+  {type:"a", tag:"쉬운 영어", word:"sometimes", q:"sometimes의 뜻으로 알맞은 것은?",
+   opts:["가끔 · 때때로","늘 · 항상","자주 · 종종","전혀 ~하지 않는다","보통 · 대개"], a:0,
+   exp:"sometimes = 가끔 · 때때로 (50%쯤)"},
+
+  {type:"a", tag:"쉬운 영어", word:"seldom", q:"seldom의 뜻으로 알맞은 것은?",
+   opts:["거의 ~하지 않는다","늘 · 항상","자주 · 종종","가끔 · 때때로","보통 · 대개"], a:0,
+   exp:"seldom = 거의 ~하지 않는다 (10%쯤). rarely와 뜻이 같습니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"never", q:"never의 뜻으로 알맞은 것은?",
+   opts:["전혀 ~하지 않는다","늘 · 항상","자주 · 종종","가끔 · 때때로","보통 · 대개"], a:0,
+   exp:"never = 전혀 ~하지 않는다 (0%)"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"<b>빈도부사</b>를 모두 고르세요. (여러 개)",
+   opts:["always","never","fast","very","here"], ans:[0,1],
+   exp:"fast(빠르게) · very(매우) · here(여기에)는 빈도를 말하지 않습니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"뜻이 거의 같은 두 낱말을 고르세요. (여러 개)",
+   opts:["rarely","seldom","always","never","often"], ans:[0,1],
+   exp:"rarely = seldom = 거의 ~하지 않는다"},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"빈도가 <b>절반보다 높은</b> 말을 모두 고르세요. (여러 개)",
+   opts:["always","often","never","rarely","seldom"], ans:[0,1],
+   exp:"always(100%)와 often(70%쯤)이 절반보다 위입니다."},
+
+  {type:"a", tag:"쉬운 영어", hard:true, q:"낱말과 뜻이 <b>잘못</b> 짝지어진 것은?",
+   opts:["often — 전혀 ~하지 않는다","always — 늘 · 항상","never — 전혀 ~하지 않는다","sometimes — 가끔 · 때때로","usually — 보통 · 대개"], a:0,
+   exp:"often은 <b>자주 · 종종</b>입니다."}
+];
+
+/* ---------- LEVEL 2 : 자리 찾기 14 · 문장 만들기 12 · 뜻과 자리 14 ----------
+   빈도부사를 어디에 넣는지와 무슨 뜻인지 — 중1이 쉽게 */
+var L2 = [
+  {type:"n", tag:"자리 찾기", q:"빈도부사는 <b>be동사</b>와 어떤 차례로 쓸까요?",
+   opts:["be동사 뒤","be동사 앞","문장 맨 끝에만","주어 앞에만","be동사와는 쓸 수 없다"], a:0,
+   exp:"She <b>is always</b> kind. be동사 뒤입니다."},
+
+  {type:"n", tag:"자리 찾기", q:"빈도부사는 <b>일반동사</b>와 어떤 차례로 쓸까요?",
+   opts:["일반동사 앞","일반동사 뒤","목적어 뒤에만","주어 앞에만","일반동사와는 쓸 수 없다"], a:0,
+   exp:"She <b>always gets</b> up early. 일반동사 앞입니다."},
+
+  {type:"n", tag:"자리 찾기", q:"can · will 같은 <b>조동사</b>가 있으면 어디에 쓸까요?",
+   opts:["조동사 뒤","조동사 앞","문장 맨 앞","주어 앞","문장 맨 끝"], a:0,
+   exp:"I <b>can always</b> help you. 조동사 뒤입니다."},
+
+  {type:"n", tag:"자리 찾기", q:"어법상 <b>옳은</b> 문장은?<br><span class=\"eng\">‘그녀는 늘 친절하다.’</span>",
+   opts:["She is always kind.","She always is kind.","Always is she kind.","She is kind always is.","She be always kind."], a:0,
+   exp:"be동사 뒤 → is always"},
+
+  {type:"n", tag:"자리 찾기", q:"어법상 <b>옳은</b> 문장은?<br><span class=\"eng\">‘그는 늘 버스로 학교에 간다.’</span>",
+   opts:["He always goes to school by bus.","He goes always to school by bus.","Always he goes school by bus.","He go always to school by bus.","He is always go to school by bus."], a:0,
+   exp:"일반동사 앞 → always goes"},
+
+  {type:"n", tag:"자리 찾기", q:"어법상 <b>옳은</b> 문장은?<br><span class=\"eng\">‘나는 그것을 절대 잊을 수 없다.’</span>",
+   opts:["I can never forget it.","I never can forget it.","I can forget never it.","Never I can forget it.","I can not never forget it."], a:0,
+   exp:"조동사 뒤 → can never"},
+
+  {type:"n", tag:"자리 찾기", multi:true, q:"빈도부사의 자리가 <b>바른</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["They are usually busy.","We often eat out.","She goes always to bed early.","He is late always is.","I will never am late."], ans:[0,1],
+   exp:"be동사 뒤, 일반동사 앞이 바른 자리입니다."},
+
+  {type:"n", tag:"자리 찾기", multi:true, q:"빈도부사의 자리가 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["My mom cooks usually dinner.","I am often at home never.","She is sometimes shy.","We always walk to school.","He can usually swim."], ans:[0,1],
+   exp:"cooks usually(✕) → usually cooks, 빈도부사를 두 개 겹쳐 쓰지 않습니다."},
+
+  {type:"n", tag:"자리 찾기", sent:"___ you usually walk to school?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Do","Are","Does","Is","Did"], a:0, eng:true,
+   ko:"너는 보통 걸어서 학교에 가니?",
+   exp:"일반동사 의문문 → <b>Do</b> + 주어 + 빈도부사 + 동사원형"},
+
+  {type:"n", tag:"자리 찾기", sent:"I ___ usually get up early.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["don't","am not","doesn't","not","never not"], a:0, eng:true,
+   ko:"나는 보통 일찍 일어나지 않는다.",
+   exp:"부정문은 <b>don't</b> 뒤에 빈도부사가 옵니다."},
+
+  {type:"n", tag:"자리 찾기", q:"never를 쓸 때 조심할 점은?",
+   opts:["not과 함께 쓰지 않는다","꼭 not과 함께 쓴다","문장 맨 끝에만 쓴다","주어 앞에만 쓴다","be동사 앞에만 쓴다"], a:0,
+   exp:"I don't never go.(✕) → I <b>never</b> go.(○)"},
+
+  {type:"n", tag:"자리 찾기", q:"문장 <b>맨 앞</b>에도 자연스럽게 쓸 수 있는 빈도부사는?",
+   opts:["Sometimes","Always","Never","Seldom","Rarely"], a:0,
+   exp:"sometimes · usually · often은 맨 앞에도 씁니다. never · seldom · rarely는 맨 앞에 두면 어순이 바뀌어 중1에서는 쓰지 않습니다."},
+
+  {type:"n", tag:"자리 찾기", q:"빈도부사의 자리를 바르게 정리한 것은?",
+   opts:["be동사 뒤 · 일반동사 앞 · 조동사 뒤","be동사 앞 · 일반동사 뒤 · 조동사 앞","모두 문장 맨 끝","모두 문장 맨 앞","모두 주어 앞"], a:0,
+   exp:"이 세 줄만 외우면 자리는 끝납니다."},
+
+  {type:"n", tag:"자리 찾기", hard:true, q:"빈도부사의 자리가 <b>모두 바른</b> 것은?",
+   opts:["ⓐ She is always happy. ⓑ He often plays the piano. ⓒ I can never sleep.","ⓐ She always is happy. ⓑ He plays often the piano. ⓒ I never can sleep.","ⓐ Always is she happy. ⓑ He often plays the piano. ⓒ I can sleep never.","ⓐ She is happy always is. ⓑ Often is he plays the piano. ⓒ Never can I not sleep.","ⓐ She is always happy. ⓑ He plays the piano often is. ⓒ I can never can sleep."], a:0,
+   exp:"be동사 뒤 · 일반동사 앞 · 조동사 뒤 — 세 자리가 모두 맞습니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"그녀는 늘 바쁘다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["She is always busy.","She always is busy.","Always she busy is.","She is busy always is.","She busy is always."], a:0,
+   exp:"be동사 뒤에 always를 둡니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"나는 자주 도서관에 간다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["I often go to the library.","I go often to the library.","Often go I to the library.","I go to the library often go.","I am often go to the library."], a:0,
+   exp:"일반동사 go 앞에 often을 둡니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"그는 가끔 늦는다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["He is sometimes late.","He sometimes is late.","He is late sometimes is.","Sometimes is he late.","He be sometimes late."], a:0,
+   exp:"be동사 is 뒤에 sometimes를 둡니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"우리는 절대 늦지 않는다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["We are never late.","We are not never late.","We never are late.","Never are we late.","We are late never are."], a:0,
+   exp:"never 하나로 부정이 됩니다. not을 또 쓰지 않습니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"너는 보통 몇 시에 자니?", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["What time do you usually go to bed?","What time you usually go to bed?","What time do usually you go to bed?","What time are you usually go to bed?","What time do you go usually bed?"], a:0,
+   exp:"do + 주어 + <b>빈도부사</b> + 동사원형 차례입니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"나는 아침을 거의 거르지 않는다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["I rarely skip breakfast.","I skip rarely breakfast.","Rarely skip I breakfast.","I don't rarely skip breakfast.","I am rarely skip breakfast."], a:0,
+   exp:"rarely 하나로 ‘거의 ~않다’가 됩니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"He ___ helps his mom.", q:"‘자주’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["often","is often","often is","be often","often the"], a:0, eng:true,
+   ko:"그는 자주 엄마를 돕는다.",
+   exp:"일반동사 helps 앞이라 <b>often</b>만 넣습니다."},
+
+  {type:"a", tag:"문장 만들기", sent:"They are ___ tired after school.", q:"‘보통’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["usually","usually are","are usually","be usually","usually be"], a:0, eng:true,
+   ko:"그들은 방과 후에 보통 피곤하다.",
+   exp:"are 뒤라서 <b>usually</b>만 넣습니다."},
+
+  {type:"a", tag:"문장 만들기", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I am always happy.","She never eats meat.","He eats never meat.","They are often is busy.","We always are tired."], ans:[0,1],
+   exp:"be동사 뒤, 일반동사 앞 — 두 자리를 지킨 문장입니다."},
+
+  {type:"a", tag:"문장 만들기", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["She goes usually to church.","I am not never angry.","He usually goes to church.","I am never angry.","We sometimes play games."], ans:[0,1],
+   exp:"goes usually(✕) → usually goes, not never(✕) → never"},
+
+  {type:"a", tag:"문장 만들기", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Do you often go swimming? B: ___</span>",
+   opts:["Yes, I do. I go every week.","Yes, I am.","Yes, I did.","No, I amn't.","Yes, I have."], a:0,
+   exp:"Do로 물으면 do로 답합니다."},
+
+  {type:"a", tag:"문장 만들기", hard:true, q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">She <b>goes always</b> to school on foot.</span>",
+   opts:["always goes","goes always always","always is going","always go","goes to always"], a:0,
+   exp:"일반동사 앞 → <b>always goes</b>"},
+
+  {type:"v", tag:"뜻과 자리", q:"밑줄 친 말의 뜻으로 알맞은 것은?<br><span class=\"eng\">My dad <b>usually</b> takes the subway.</span>",
+   opts:["보통 · 대개","전혀 ~하지 않는다","가끔","거의 ~하지 않는다","늘 · 항상"], a:0,
+   exp:"usually = 보통 · 대개"},
+
+  {type:"v", tag:"뜻과 자리", q:"밑줄 친 말을 넣어 바르게 옮긴 것은?<br><span class=\"eng\">She is <b>seldom</b> absent.</span>",
+   opts:["그녀는 거의 결석하지 않는다.","그녀는 늘 결석한다.","그녀는 가끔 결석한다.","그녀는 자주 결석한다.","그녀는 보통 결석한다."], a:0,
+   exp:"seldom = 거의 ~하지 않는다"},
+
+  {type:"v", tag:"뜻과 자리", q:"밑줄 친 말을 넣어 바르게 옮긴 것은?<br><span class=\"eng\">I <b>never</b> tell a lie.</span>",
+   opts:["나는 거짓말을 전혀 하지 않는다.","나는 거짓말을 늘 한다.","나는 거짓말을 가끔 한다.","나는 거짓말을 자주 한다.","나는 거짓말을 보통 한다."], a:0,
+   exp:"never = 전혀 ~하지 않는다"},
+
+  {type:"v", tag:"뜻과 자리", q:"두 문장의 뜻 차이로 알맞은 것은?<br><span class=\"eng\">I sometimes read books. / I always read books.</span>",
+   opts:["앞은 가끔, 뒤는 늘 읽는다","두 문장의 뜻이 같다","앞은 늘, 뒤는 가끔 읽는다","앞은 지난 일, 뒤는 올 일이다","둘 다 읽지 않는다는 뜻이다"], a:0,
+   exp:"sometimes(50%쯤)와 always(100%)의 차이입니다."},
+
+  {type:"v", tag:"뜻과 자리", sent:"Tom ___ plays computer games.", q:"‘거의 하지 않는다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["rarely","always","usually","often","is rarely"], a:0, eng:true,
+   ko:"톰은 컴퓨터 게임을 거의 하지 않는다.",
+   exp:"일반동사 plays 앞에 <b>rarely</b>를 둡니다."},
+
+  {type:"v", tag:"뜻과 자리", sent:"My sister is ___ angry.", q:"‘전혀 화내지 않는다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["never","not never","never not","no","don't"], a:0, eng:true,
+   ko:"내 여동생은 전혀 화를 내지 않는다.",
+   exp:"is 뒤에 <b>never</b> 하나만 씁니다."},
+
+  {type:"v", tag:"뜻과 자리", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Are you always busy? B: ___</span>",
+   opts:["No, I'm not. Only on Mondays.","No, I don't.","Yes, I do.","Yes, I did.","No, I didn't."], a:0,
+   exp:"be동사로 물으면 be동사로 답합니다."},
+
+  {type:"v", tag:"뜻과 자리", multi:true, q:"빈도가 <b>높은 편</b>인 말을 모두 고르세요. (여러 개)",
+   opts:["always","usually","never","rarely","seldom"], ans:[0,1],
+   exp:"always와 usually가 위쪽입니다."},
+
+  {type:"v", tag:"뜻과 자리", multi:true, q:"빈도가 <b>낮은 편</b>인 말을 모두 고르세요. (여러 개)",
+   opts:["rarely","never","always","usually","often"], ans:[0,1],
+   exp:"rarely와 never가 아래쪽입니다."},
+
+  {type:"v", tag:"뜻과 자리", sent:"우리 아빠는 늘 늦게 오신다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["My dad always comes home late.","My dad comes always home late.","Always comes my dad home late.","My dad is always come home late.","My dad come always home late."], a:0,
+   exp:"일반동사 comes 앞에 always를 둡니다."},
+
+  {type:"v", tag:"뜻과 자리", sent:"나는 주말에 가끔 영화를 본다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["I sometimes watch movies on weekends.","I watch sometimes movies on weekends.","Sometimes watch I movies on weekends.","I am sometimes watch movies on weekends.","I watch movies sometimes watch on weekends."], a:0,
+   exp:"일반동사 watch 앞에 sometimes를 둡니다."},
+
+  {type:"v", tag:"뜻과 자리", q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">He ⓐ ___ late for class. She ⓑ ___ comes on time.</span>",
+   opts:["ⓐ is never – ⓑ always","ⓐ never is – ⓑ always","ⓐ is never – ⓑ is always","ⓐ never – ⓑ is always","ⓐ never is – ⓑ is always"], a:0,
+   exp:"ⓐ는 be동사 뒤, ⓑ는 일반동사 comes 앞입니다."},
+
+  {type:"v", tag:"뜻과 자리", q:"다음 중 <b>빈도부사가 들어 있지 않은</b> 문장은?",
+   opts:["He runs very fast.","She is always kind.","I often read books.","They never eat meat.","We sometimes go out."], a:0,
+   exp:"very와 fast는 빈도를 말하지 않습니다."},
+
+  {type:"v", tag:"뜻과 자리", hard:true, multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["Sometimes I walk to school.","My mom never watches TV.","My mom watches never TV.","I am often go out.","She always is at home."], ans:[0,1],
+   exp:"sometimes는 맨 앞에도 되고, never는 일반동사 앞입니다."}
+];
+
+/* ---------- LEVEL 3 : 빈칸 14 · 고치기 12 · 대화와 배열 14 ----------
+   중1 학교 시험에 꼭 나오는 자리만 */
+var L3 = [
+  {type:"n", tag:"빈칸", sent:"Mina ___ does her homework after dinner.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["usually","is usually","usually is","does usually","usually do"], a:0, eng:true,
+   ko:"미나는 보통 저녁을 먹은 뒤에 숙제를 한다.",
+   exp:"일반동사 does 앞 → <b>usually</b>"},
+
+  {type:"n", tag:"빈칸", sent:"He is ___ absent from school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["seldom","seldom is","is seldom","doesn't","not seldom"], a:0, eng:true,
+   ko:"그는 학교에 거의 결석하지 않는다.",
+   exp:"be동사 is 뒤 → <b>seldom</b>"},
+
+  {type:"n", tag:"빈칸", sent:"We ___ have lunch at twelve.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["always","are always","always are","always is","is always"], a:0, eng:true,
+   ko:"우리는 늘 열두 시에 점심을 먹는다.",
+   exp:"일반동사 have 앞 → <b>always</b>"},
+
+  {type:"n", tag:"빈칸", sent:"My brother ___ cleans his room.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["rarely","is rarely","rarely is","doesn't rarely","not rarely"], a:0, eng:true,
+   ko:"내 동생은 방을 거의 치우지 않는다.",
+   exp:"일반동사 cleans 앞 → <b>rarely</b>. doesn't를 또 붙이지 않습니다."},
+
+  {type:"n", tag:"빈칸", sent:"I ___ forget her birthday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["never","don't never","never don't","am never","not never"], a:0, eng:true,
+   ko:"나는 그녀의 생일을 절대 잊지 않는다.",
+   exp:"never 하나로 부정이 됩니다."},
+
+  {type:"n", tag:"빈칸", sent:"They are ___ noisy in class.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["often","often are","are often","do often","often do"], a:0, eng:true,
+   ko:"그들은 수업 시간에 자주 시끄럽다.",
+   exp:"be동사 are 뒤 → <b>often</b>"},
+
+  {type:"n", tag:"빈칸", sent:"___ do you go to the library?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["How often","How many","How much","How long","How far"], a:0, eng:true,
+   ko:"너는 얼마나 자주 도서관에 가니?",
+   exp:"얼마나 자주냐고 물을 때는 <b>How often</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"She ___ wear a school uniform on Sunday.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["doesn't usually","don't usually","isn't usually","usually not","not usually does"], a:0, eng:true,
+   ko:"그녀는 일요일에는 보통 교복을 입지 않는다.",
+   exp:"주어가 She → doesn't, 그 뒤에 빈도부사를 둡니다."},
+
+  {type:"n", tag:"빈칸", sent:"Tom ___ plays soccer after school.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["sometimes","is sometimes","sometimes is","does sometimes play","sometimes to"], a:0, eng:true,
+   ko:"톰은 방과 후에 가끔 축구를 한다.",
+   exp:"일반동사 plays 앞 → <b>sometimes</b>"},
+
+  {type:"n", tag:"빈칸", sent:"You can ___ ask me for help.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["always","always can","be always","is always","always to"], a:0, eng:true,
+   ko:"너는 언제든지 나에게 도움을 청할 수 있다.",
+   exp:"조동사 can 뒤 → <b>always</b>"},
+
+  {type:"n", tag:"빈칸", sent:"My parents ___ go to bed before eleven.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["usually","are usually","usually are","usually is","is usually"], a:0, eng:true,
+   ko:"우리 부모님은 보통 열한 시 전에 주무신다.",
+   exp:"일반동사 go 앞 → <b>usually</b>"},
+
+  {type:"n", tag:"빈칸", multi:true, q:"빈칸에 <b>never</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["She is ___ angry with me.","He ___ eats breakfast.","I don't ___ eat meat.","He doesn't ___ come late.","They aren't ___ happy."], ans:[0,1],
+   exp:"don't · doesn't · aren't와는 함께 쓰지 않습니다."},
+
+  {type:"n", tag:"빈칸", sent:"How often ___ your sister exercise?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["does","do","is","are","did"], a:0, eng:true,
+   ko:"네 언니는 얼마나 자주 운동하니?",
+   exp:"주어가 your sister(하나) → <b>does</b>"},
+
+  {type:"n", tag:"빈칸", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">Sora ⓐ ___ tired after school, but she ⓑ ___ complains.</span>",
+   opts:["ⓐ is often – ⓑ never","ⓐ often is – ⓑ never","ⓐ is often – ⓑ is never","ⓐ often – ⓑ is never","ⓐ often is – ⓑ doesn't never"], a:0,
+   exp:"ⓐ be동사 뒤 is often, ⓑ 일반동사 앞 never complains"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">She <b>always is</b> on time.</span>",
+   opts:["is always","always be","be always","always is always","is always is"], a:0,
+   exp:"be동사 뒤가 바른 자리입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">He <b>eats never</b> vegetables.</span>",
+   opts:["never eats","doesn't never eat","never eat","is never eat","never is eating"], a:0,
+   exp:"일반동사 앞이 바른 자리입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">I <b>don't never</b> lie.</span>",
+   opts:["never","not never","never not","am never","don't ever not"], a:0,
+   exp:"never에 이미 부정이 들어 있어 don't와 함께 쓰지 않습니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">My mom <b>cooks usually</b> dinner.</span>",
+   opts:["usually cooks","usually cook","is usually cook","cooks usual","usually cooking"], a:0,
+   exp:"일반동사 앞 → usually cooks"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">They <b>are often play</b> games.</span>",
+   opts:["often play","often are play","are play often","often plays","play often are"], a:0,
+   exp:"일반동사 play에는 be동사를 붙이지 않습니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\"><b>Do</b> she usually walk to school?</span>",
+   opts:["Does","Is","Are","Did","Doing"], a:0,
+   exp:"주어가 she(하나)이므로 <b>Does</b>입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">We <b>go always</b> to the park on Sunday.</span>",
+   opts:["always go","go always always","always going","always goes","go to always"], a:0,
+   exp:"일반동사 go 앞 → always go"},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">My dad <b>is usually get</b> up at six.</span>",
+   opts:["usually gets","usually get","is usually gets","usually is get","gets usually is"], a:0,
+   exp:"일반동사 get에는 be동사가 붙지 않고, 주어 My dad는 하나라서 gets입니다."},
+
+  {type:"a", tag:"고치기", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["She never is late.","I don't never watch TV.","She is never late.","I never watch TV.","He often walks to school."], ans:[0,1],
+   exp:"be동사 뒤가 바른 자리이고, never는 don't와 겹쳐 쓰지 않습니다."},
+
+  {type:"a", tag:"고치기", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["How often do you play the piano?","My sister is always kind to me.","How often you play the piano?","My sister always is kind to me.","She often is reading books never."], ans:[0,1],
+   exp:"How often 뒤에도 do가 필요하고, be동사 뒤가 바른 자리입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분이 <b>어법상 옳은</b> 것은?",
+   opts:["She <b>is rarely</b> absent.","She <b>rarely is</b> absent.","She <b>is rarely not</b> absent.","She <b>doesn't rarely</b> be absent.","She <b>rarely</b> is not absent."], a:0,
+   exp:"be동사 뒤에 rarely 하나만 둡니다."},
+
+  {type:"a", tag:"고치기", hard:true, q:"어법상 <b>틀린</b> 문장은?",
+   opts:["My mom doesn't never cook.","My mom never cooks.","My mom is never angry.","My mom usually cooks dinner.","My mom sometimes cooks dinner."], a:0,
+   exp:"doesn't와 never를 겹쳐 쓸 수 없습니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: How often do you exercise? B: ___</span>",
+   opts:["Three times a week.","Yes, I do.","At the gym.","With my brother.","For an hour ago."], a:0,
+   exp:"How often에는 횟수로 답합니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Are you often late for school? B: ___</span>",
+   opts:["No, I'm never late.","No, I don't.","Yes, I did.","Yes, I have.","No, I wasn't."], a:0,
+   exp:"be동사로 물으면 be동사로 답합니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Does he always walk to school? B: ___</span>",
+   opts:["No, he sometimes takes the bus.","No, he isn't.","Yes, he is.","Yes, he has.","No, he didn't."], a:0,
+   exp:"Does로 물으면 does로 답합니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 물음은?<br><span class=\"eng\">A: ___ B: I usually have toast for breakfast.</span>",
+   opts:["What do you usually have for breakfast?","What are you usually have for breakfast?","How often do you breakfast?","When do you usually breakfast?","What you usually have for breakfast?"], a:0,
+   exp:"대답이 ‘무엇을 먹는지’이므로 What으로 묻습니다."},
+
+  {type:"v", tag:"대화와 배열", sent:"나는 절대 학교에 늦지 않는다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["I am never late for school.","I never am late for school.","I am not never late for school.","Never am I late for school.","I am late never for school."], a:0,
+   exp:"be동사 am 뒤에 never를 둡니다."},
+
+  {type:"v", tag:"대화와 배열", sent:"그는 보통 버스를 타고 학교에 간다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["He usually goes to school by bus.","He goes usually to school by bus.","He is usually go to school by bus.","Usually goes he to school by bus.","He go usually to school by bus."], a:0,
+   exp:"일반동사 goes 앞에 usually를 둡니다."},
+
+  {type:"v", tag:"대화와 배열", sent:"너는 얼마나 자주 방을 치우니?", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["How often do you clean your room?","How often you clean your room?","How often are you clean your room?","How much do you clean your room?","How often does you clean your room?"], a:0,
+   exp:"How often + do + 주어 + 동사원형"},
+
+  {type:"v", tag:"대화와 배열", multi:true, q:"대화가 <b>자연스러운</b> 것을 모두 고르세요. (여러 개)",
+   opts:["A: How often do you read? B: Once a week.","A: Are you always happy? B: No, I'm not.","A: How often do you read? B: Yes, I do.","A: Are you always happy? B: No, I don't.","A: Do you often swim? B: Yes, I am."], ans:[0,1],
+   exp:"How often에는 횟수로, be동사에는 be동사로 답합니다."},
+
+  {type:"v", tag:"대화와 배열", multi:true, q:"빈도부사가 <b>be동사 뒤</b>에 온 문장을 모두 고르세요. (여러 개)",
+   opts:["She is always happy.","They are often busy.","He always walks fast.","We never eat out.","I sometimes read comics."], ans:[0,1],
+   exp:"is · are 뒤에 온 것은 앞의 두 문장입니다."},
+
+  {type:"v", tag:"대화와 배열", multi:true, q:"빈도부사가 <b>일반동사 앞</b>에 온 문장을 모두 고르세요. (여러 개)",
+   opts:["He always walks to school.","We sometimes play badminton.","She is never late.","They are usually kind.","I am often tired."], ans:[0,1],
+   exp:"walks · play 앞에 온 것은 앞의 두 문장입니다."},
+
+  {type:"v", tag:"대화와 배열", sent:"우리 언니는 가끔 나를 도와준다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["My sister sometimes helps me.","My sister helps sometimes me.","Sometimes helps my sister me.","My sister is sometimes help me.","My sister help sometimes me."], a:0,
+   exp:"일반동사 helps 앞에 sometimes를 둡니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: How often does your mom go shopping? B: ___</span>",
+   opts:["Twice a month.","Yes, she does.","At the mall.","With my dad.","She is shopping now."], a:0,
+   exp:"How often에는 횟수로 답합니다."},
+
+  {type:"v", tag:"대화와 배열", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Do you ever eat fast food? B: No, I ___ eat it.</span>",
+   opts:["never","don't never","not never","never don't","am never"], a:0,
+   exp:"never 하나로 ‘전혀 먹지 않는다’가 됩니다."},
+
+  {type:"v", tag:"대화와 배열", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ⓐ ___ do you play the guitar? B: I ⓑ ___ play it on weekends.</span>",
+   opts:["ⓐ How often – ⓑ usually","ⓐ How much – ⓑ usually","ⓐ How often – ⓑ usually am","ⓐ How long – ⓑ usually","ⓐ How often – ⓑ am usually"], a:0,
+   exp:"얼마나 자주 → How often, 일반동사 play 앞 → usually"}
+];
+
+/* ---------- LEVEL 4 : 넓혀 보기 14 · 바꿔 쓰기 12 · 종합 14 ----------
+   hardly ever · almost always · once a week 같은 표현까지 아울러 마무리 */
+var L4 = [
+  {type:"n", tag:"넓혀 보기", q:"<b>hardly ever</b>의 뜻으로 알맞은 것은?",
+   opts:["거의 ~하지 않는다","늘 한다","자주 한다","보통 한다","꼭 한다"], a:0,
+   exp:"hardly ever는 rarely · seldom과 뜻이 거의 같습니다."},
+
+  {type:"n", tag:"넓혀 보기", q:"<b>almost always</b>의 뜻으로 알맞은 것은?",
+   opts:["거의 늘","전혀 ~하지 않는다","가끔","드물게","한 번도 없이"], a:0,
+   exp:"almost always는 always 바로 아래, 아주 자주라는 뜻입니다."},
+
+  {type:"n", tag:"넓혀 보기", q:"<b>once a week</b>의 뜻은?",
+   opts:["일주일에 한 번","한 주 내내","하루에 한 번","한 달에 한 번","일 년에 한 번"], a:0,
+   exp:"once = 한 번, twice = 두 번, 세 번부터는 three times처럼 씁니다."},
+
+  {type:"n", tag:"넓혀 보기", q:"<b>twice a month</b>의 뜻은?",
+   opts:["한 달에 두 번","두 달에 한 번","일주일에 두 번","하루에 두 번","일 년에 두 번"], a:0,
+   exp:"twice = 두 번, a month = 한 달에"},
+
+  {type:"n", tag:"넓혀 보기", q:"<b>three times a year</b>의 뜻은?",
+   opts:["일 년에 세 번","세 해에 한 번","한 달에 세 번","일주일에 세 번","하루에 세 번"], a:0,
+   exp:"세 번부터는 <b>three times</b>처럼 times를 씁니다."},
+
+  {type:"n", tag:"넓혀 보기", q:"‘얼마나 자주’를 묻는 말은?",
+   opts:["How often","How many","How much","How long","How far"], a:0,
+   exp:"How often ~? — 얼마나 자주 ~하니?"},
+
+  {type:"n", tag:"넓혀 보기", q:"once a week · every day 같은 말은 보통 문장 어디에 올까요?",
+   opts:["문장 맨 끝","일반동사 바로 앞","be동사 바로 뒤","주어 앞","조동사 뒤"], a:0,
+   exp:"I play tennis <b>once a week</b>. 횟수를 나타내는 말은 보통 문장 끝에 옵니다."},
+
+  {type:"n", tag:"넓혀 보기", multi:true, q:"‘거의 ~하지 않는다’와 뜻이 비슷한 말을 모두 고르세요. (여러 개)",
+   opts:["hardly ever","seldom","almost always","all the time","every day"], ans:[0,1],
+   exp:"hardly ever = seldom = rarely"},
+
+  {type:"n", tag:"넓혀 보기", multi:true, q:"‘아주 자주’에 가까운 말을 모두 고르세요. (여러 개)",
+   opts:["almost always","all the time","hardly ever","once a year","never"], ans:[0,1],
+   exp:"all the time은 ‘내내 · 늘’이라는 뜻입니다."},
+
+  {type:"n", tag:"넓혀 보기", q:"빈도가 높은 차례로 바르게 놓은 것은?",
+   opts:["always – almost always – often – hardly ever – never","never – always – often – hardly ever – almost always","often – always – never – almost always – hardly ever","hardly ever – never – often – always – almost always","almost always – never – always – often – hardly ever"], a:0,
+   exp:"always → almost always → often → hardly ever → never"},
+
+  {type:"n", tag:"넓혀 보기", q:"<b>from time to time</b>의 뜻으로 알맞은 것은?",
+   opts:["가끔 · 때때로","늘 · 항상","전혀 ~하지 않는다","거의 ~하지 않는다","하루에 한 번"], a:0,
+   exp:"from time to time = sometimes"},
+
+  {type:"n", tag:"넓혀 보기", sent:"I go to the library ___ .", q:"‘일주일에 두 번’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["twice a week","two times week","a week twice","two a week","twice week"], a:0, eng:true,
+   ko:"나는 일주일에 두 번 도서관에 간다.",
+   exp:"두 번은 <b>twice</b>, 그 뒤에 a week를 붙입니다."},
+
+  {type:"n", tag:"넓혀 보기", sent:"She ___ eats fast food.", q:"‘거의 먹지 않는다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["hardly ever","hardly never","ever hardly","not hardly","hardly not"], a:0, eng:true,
+   ko:"그녀는 패스트푸드를 거의 먹지 않는다.",
+   exp:"hardly ever가 한 덩어리입니다. hardly never라고 쓰지 않습니다."},
+
+  {type:"n", tag:"넓혀 보기", hard:true, q:"빈도가 <b>가장 낮은</b> 것은?",
+   opts:["never","hardly ever","once a year","sometimes","almost always"], a:0,
+   exp:"never는 0%, hardly ever와 once a year는 아주 낮지만 0은 아닙니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">I seldom watch TV.</span>",
+   opts:["I hardly ever watch TV.","I always watch TV.","I often watch TV.","I usually watch TV.","I watch TV every day."], a:0,
+   exp:"seldom = hardly ever = rarely"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">She plays tennis once a week.</span>",
+   opts:["She plays tennis one time a week.","She plays tennis every day.","She plays tennis twice a week.","She never plays tennis.","She plays tennis all the time."], a:0,
+   exp:"once = one time"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">He is never absent.</span>",
+   opts:["He always comes to school.","He is always absent.","He is often absent.","He sometimes comes to school.","He rarely comes to school."], a:0,
+   exp:"한 번도 결석하지 않는다 = 늘 나온다"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">I don't ever eat meat.</span>",
+   opts:["I never eat meat.","I always eat meat.","I often eat meat.","I sometimes eat meat.","I usually eat meat."], a:0,
+   exp:"don't ever = never"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">She goes jogging every day.</span>",
+   opts:["She always goes jogging.","She never goes jogging.","She rarely goes jogging.","She goes jogging once a year.","She hardly ever goes jogging."], a:0,
+   exp:"every day(날마다) = always에 가깝습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">We eat out from time to time.</span>",
+   opts:["We sometimes eat out.","We always eat out.","We never eat out.","We eat out every day.","We hardly ever eat out."], a:0,
+   exp:"from time to time = sometimes"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"<b>의문문</b>으로 바꾼 것은?<br><span class=\"eng\">You often go camping.</span>",
+   opts:["Do you often go camping?","Are you often go camping?","Do often you go camping?","Often do you go camping?","Does you often go camping?"], a:0,
+   exp:"Do + 주어 + 빈도부사 + 동사원형"},
+
+  {type:"a", tag:"바꿔 쓰기", q:"<b>부정문</b>으로 바꾼 것은?<br><span class=\"eng\">He usually walks to school.</span>",
+   opts:["He doesn't usually walk to school.","He usually doesn't walks to school.","He isn't usually walk to school.","He don't usually walk to school.","He usually not walk to school."], a:0,
+   exp:"doesn't 뒤에 빈도부사, 그 뒤에 동사원형입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"밑줄 친 곳을 묻는 말로 바꾼 것은?<br><span class=\"eng\">I visit my grandma <b>twice a month</b>.</span>",
+   opts:["How often do you visit your grandma?","How many do you visit your grandma?","How long do you visit your grandma?","How often you visit your grandma?","How often are you visit your grandma?"], a:0,
+   exp:"횟수를 물을 때는 How often입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, q:"바꿔 쓴 것이 <b>알맞은</b> 것을 모두 고르세요. (여러 개)",
+   opts:["rarely = hardly ever","almost always = 거의 늘","never = 늘","once a week = 하루에 한 번","often = 전혀 ~하지 않는다"], ans:[0,1],
+   exp:"never는 0%, once a week는 일주일에 한 번, often은 자주입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["I hardly ever go to the movies.","We go camping twice a year.","I hardly never go to the movies.","We go twice a year camping go.","I don't hardly ever go out."], ans:[0,1],
+   exp:"hardly ever가 한 덩어리이고, 횟수를 나타내는 말은 문장 끝에 둡니다."},
+
+  {type:"a", tag:"바꿔 쓰기", hard:true, q:"두 문장의 뜻이 <b>다른</b> 것은?",
+   opts:["He rarely smiles. / He smiles a lot.","She seldom eats out. / She hardly ever eats out.","I never lie. / I don't ever lie.","We go there once a week. / We go there one time a week.","They are almost always busy. / They are busy nearly all the time."], a:0,
+   exp:"rarely는 ‘거의 웃지 않는다’이고 a lot은 ‘많이 웃는다’라 정반대입니다."},
+
+  {type:"v", tag:"종합", q:"어법상 <b>옳은</b> 문장은?<br><span class=\"eng\">‘그녀는 모두에게 늘 친절하다.’</span>",
+   opts:["She is always kind to everyone.","She always is kind to everyone.","Always is she kind to everyone.","She is kind always to everyone is.","She be always kind to everyone."], a:0,
+   exp:"be동사 뒤가 바른 자리입니다."},
+
+  {type:"v", tag:"종합", q:"어법상 <b>틀린</b> 문장은?",
+   opts:["I don't never go there.","I never go there.","I hardly ever go there.","I rarely go there.","I seldom go there."], a:0,
+   exp:"don't와 never를 겹쳐 쓰지 않습니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["How often do they meet?","They meet once a month.","How often they meet?","They meet a month once.","They are meet once a month."], ans:[0,1],
+   exp:"How often 뒤에 do가 오고, 횟수는 문장 끝에 둡니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["My dad reads always the newspaper.","I am hardly ever not tired.","My dad always reads the newspaper.","I am hardly ever tired.","She goes jogging every morning."], ans:[0,1],
+   exp:"일반동사 앞이 바른 자리이고, hardly ever에 not을 또 붙이지 않습니다."},
+
+  {type:"v", tag:"종합", sent:"나는 한 달에 두 번 할머니를 찾아뵌다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["I visit my grandma twice a month.","I twice a month visit my grandma.","I visit twice a month my grandma.","I am visit my grandma twice a month.","I visit my grandma a month twice."], a:0,
+   exp:"횟수를 나타내는 말은 문장 끝에 둡니다."},
+
+  {type:"v", tag:"종합", sent:"그는 거의 화를 내지 않는다.", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["He hardly ever gets angry.","He hardly never gets angry.","He gets hardly ever angry.","He doesn't hardly ever get angry.","He is hardly ever get angry."], a:0,
+   exp:"hardly ever는 일반동사 앞에 한 덩어리로 옵니다."},
+
+  {type:"v", tag:"종합", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: How often do you eat out? B: ___</span>",
+   opts:["About once a week.","Yes, I do.","At a restaurant.","Because I like it.","For two hours."], a:0,
+   exp:"How often에는 횟수로 답합니다."},
+
+  {type:"v", tag:"종합", sent:"They ___ go abroad.", q:"‘거의 가지 않는다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["hardly ever","hardly never","ever hardly","don't hardly","not ever hardly"], a:0, eng:true,
+   ko:"그들은 외국에 거의 나가지 않는다.",
+   exp:"hardly ever가 한 덩어리입니다."},
+
+  {type:"v", tag:"종합", sent:"He is ___ on time.", q:"‘거의 늘’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["almost always","always almost","almost never","hardly ever","never almost"], a:0, eng:true,
+   ko:"그는 거의 늘 시간을 지킨다.",
+   exp:"almost always = 거의 늘"},
+
+  {type:"v", tag:"종합", q:"밑줄 친 말과 바꿔 쓸 수 <b>없는</b> 것은?<br><span class=\"eng\">I <b>seldom</b> drink soda.</span>",
+   opts:["always","rarely","hardly ever","almost never","not often"], a:0,
+   exp:"always는 뜻이 정반대입니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"‘일주일에 한 번’을 바르게 쓴 것을 모두 고르세요. (여러 개)",
+   opts:["once a week","one time a week","a week once","week a once","once week"], ans:[0,1],
+   exp:"once a week = one time a week"},
+
+  {type:"v", tag:"종합", q:"다음 중 빈도를 나타내지 <b>않는</b> 말은?",
+   opts:["quickly","always","once a week","hardly ever","every day"], a:0,
+   exp:"quickly는 ‘빠르게’라서 빈도가 아닙니다."},
+
+  {type:"v", tag:"종합", sent:"우리는 얼마나 자주 만나니?", q:"우리말에 맞게 늘어놓은 것은?",
+   opts:["How often do we meet?","How often we do meet?","How often are we meet?","How much do we meet?","How often does we meet?"], a:0,
+   exp:"How often + do + 주어 + 동사원형"},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ⓐ ___ do you go to the gym? B: I ⓑ ___ go, maybe once a month. I ⓒ ___ late for work.</span>",
+   opts:["ⓐ How often – ⓑ hardly ever – ⓒ am often","ⓐ How much – ⓑ hardly ever – ⓒ often am","ⓐ How often – ⓑ hardly never – ⓒ am often","ⓐ How long – ⓑ hardly ever – ⓒ am often","ⓐ How often – ⓑ hardly ever – ⓒ often am"], a:0,
+   exp:"ⓐ 얼마나 자주 → How often, ⓑ 거의 안 감 → hardly ever, ⓒ be동사 뒤 → am often"}
+];
+
+var LEVELS = {
+  1:{name:"기본1 · 빈도부사가 뭐예요?", desc:"한글로 이해 24 · 쉬운 영어 16 · 빈도와 부사의 뜻 · always부터 never까지 일곱 낱말", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 자리와 뜻", desc:"be동사 뒤 · 일반동사 앞 · 조동사 뒤 · 부정문과 의문문에서의 자리", qs:L2, typeLabels:{n:"자리 찾기",a:"문장 만들기",v:"뜻과 자리"}},
+  3:{name:"기본3 · 중1 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화와 배열 · How often 묻고 답하기", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
+  4:{name:"기본4 · 빈도 표현 모두 아우르기", desc:"hardly ever · almost always · once a week · twice a month까지 넓혀 마무리", qs:L4, typeLabels:{n:"넓혀 보기",a:"바꿔 쓰기",v:"종합"}}
+};
+
+/* ===================== 개념 화면 ===================== */
+function figScale(){
+  var rows = [
+    ["always",   "100%", "늘 · 항상",          0],
+    ["usually",  "90%",  "보통 · 대개",        1],
+    ["often",    "70%",  "자주 · 종종",        2],
+    ["sometimes","50%",  "가끔 · 때때로",      3],
+    ["rarely",   "10%",  "거의 ~하지 않는다",  4],
+    ["never",    "0%",   "전혀 ~하지 않는다",  5]
+  ];
+  var s = '<svg class="fig" viewBox="0 0 560 250" role="img" aria-label="빈도부사를 100%부터 0%까지 늘어놓은 눈금">';
+  rows.forEach(function(r, i){
+    var y = 18 + i * 39;
+    var w = Math.max(28, 300 * (parseInt(r[1], 10) / 100));
+    var col = i < 2 ? "var(--rn)" : (i < 4 ? "var(--ra)" : "var(--rv, #5B6B8C)");
+    var soft = i < 2 ? "var(--rn-soft)" : (i < 4 ? "var(--ra-soft)" : "var(--rv-soft, #EEF1F6)");
+    s += '<text x="10" y="'+(y+14)+'" font-size="16" font-weight="700" fill="'+col+'" font-family="Newsreader, serif">'+r[0]+'</text>';
+    s += '<rect x="122" y="'+y+'" width="'+w+'" height="19" rx="9.5" fill="'+soft+'" stroke="'+col+'" stroke-width="1.5"/>';
+    s += '<text x="128" y="'+(y+14)+'" font-size="12.5" font-weight="700" fill="'+col+'">'+r[1]+'</text>';
+    s += '<text x="550" y="'+(y+14)+'" text-anchor="end" font-size="13.5" fill="var(--muted)">'+r[2]+'</text>';
+  });
+  s += '</svg>';
+  return s;
+}
+
+function figPos(){
+  function row(y, label, col, soft, kw, sent1, kwWord, sent2){
+    return '<text x="12" y="'+(y-8)+'" font-size="17" font-weight="700" fill="'+col+'">'+label+'</text>'+
+      '<rect x="12" y="'+y+'" width="146" height="32" rx="9" fill="'+soft+'" stroke="'+col+'" stroke-width="1.5"/>'+
+      '<text x="85" y="'+(y+22)+'" text-anchor="middle" font-size="18" fill="'+col+'" font-family="Newsreader, serif">'+kw+'</text>'+
+      '<text x="172" y="'+(y+22)+'" font-size="18" fill="var(--muted)">→</text>'+
+      '<text x="200" y="'+(y+22)+'" font-size="19" fill="var(--ink, #15201D)" font-family="Newsreader, serif">'+sent1+
+      '<tspan font-weight="700" fill="'+col+'">'+kwWord+'</tspan>'+sent2+'</text>';
+  }
+  return '<svg class="fig" viewBox="0 0 560 220" role="img" aria-label="빈도부사가 들어가는 세 자리">'+
+    row(22,  'be동사 뒤',   'var(--rn)', 'var(--rn-soft)', 'is · are',  'She is ', 'always', ' kind.')+
+    row(100, '일반동사 앞', 'var(--ra)', 'var(--ra-soft)', 'go · eat',  'She ',    'always', ' gets up.')+
+    row(178, '조동사 뒤',   'var(--rv, #5B6B8C)', 'var(--rv-soft, #EEF1F6)', 'can · will', 'I can ', 'always', ' help.')+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · 빈도부사가 뭐예요?</h2>'+
+  '<p class="lead">먼저 우리말로 잡고 갑니다. <b>빈도</b>는 얼마나 자주인지, <b>부사</b>는 더 자세히 알려 주는 말, 그래서 <b>빈도부사</b>는 <b>얼마나 자주 하는지</b>를 알려 주는 말입니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>① 낱말 셋을 먼저</span>'+
+    '<div class="swap"><span>빈도</span><span class="ar">→</span><span class="good">얼마나 자주</span></div>'+
+    '<div class="swap"><span>부사</span><span class="ar">→</span><span class="good">더 자세히 알려 주는 말</span></div>'+
+    '<div class="swap"><span>빈도부사</span><span class="ar">→</span><span class="good">얼마나 자주 하는지 알려 주는 말</span></div>'+
+    '<div class="ex">나는 아침을 먹는다.<span class="k">얼마나 자주인지 모름</span></div>'+
+    '<div class="ex">나는 <b>늘</b> 아침을 먹는다.<span class="k">빈도부사 하나로 또렷해짐</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>② 100%부터 0%까지 일곱 낱말</span>'+
+    figScale()+
+    '<p><b>rarely</b>와 <b>seldom</b>은 뜻이 거의 같습니다. 둘 다 ‘거의 ~하지 않는다’입니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>③ never는 그 자체가 ‘아니다’</span>'+
+    '<div class="swap"><span>I don’t never go.</span><span class="ar">✕</span><span class="good">I never go.</span></div>'+
+    '<p>never 안에 이미 ‘아니다’가 들어 있어 not을 또 쓰지 않습니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>always 늘 · usually 보통 · often 자주 · sometimes 가끔 · rarely(seldom) 거의 안 함 · never 전혀 안 함 — 일곱 낱말입니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · 자리와 뜻</h2>'+
+  '<p class="lead">빈도부사는 아무 데나 넣지 않습니다. 들어가는 자리가 <b>딱 세 군데</b>입니다.</p>'+
+  figPos()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>세 줄로 외우기</span>'+
+    '<div class="swap"><span>be동사(am·is·are)</span><span class="ar">→</span><span class="good">뒤에</span></div>'+
+    '<div class="swap"><span>일반동사(go·eat·play)</span><span class="ar">→</span><span class="good">앞에</span></div>'+
+    '<div class="swap"><span>조동사(can·will·must)</span><span class="ar">→</span><span class="good">뒤에</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>물을 때와 아니라고 할 때</span>'+
+    '<div class="ex"><u class="hl a">Do</u> you <u class="hl">usually</u> walk to school?<span class="k">do + 주어 + 빈도부사 + 동사원형</span></div>'+
+    '<div class="ex">I <u class="hl a">don\'t</u> <u class="hl">usually</u> get up early.<span class="k">don\'t 뒤에 빈도부사</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>조심할 두 가지</span>'+
+    '<div class="swap"><span>I don’t never lie.</span><span class="ar">✕</span><span class="good">I never lie.</span></div>'+
+    '<p>그리고 <b>sometimes · usually · often</b>은 문장 맨 앞에도 쓸 수 있습니다. <b>Sometimes</b> I walk to school.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">외우는 한 줄</span><b>be동사 뒤 · 일반동사 앞 · 조동사 뒤</b> — 이 세 줄이면 자리는 끝납니다.</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 중1 학교 시험형</h2>'+
+  '<p class="lead">시험에 나오는 자리는 정해져 있습니다. 자리 고르기, 틀린 곳 고치기, 그리고 <b>How often</b> 묻고 답하기입니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>시험에서 자주 묻는 곳</span>'+
+    '<div class="swap"><span>She always is on time.</span><span class="ar">✕</span><span class="good">She is always on time.</span></div>'+
+    '<div class="swap"><span>He eats never vegetables.</span><span class="ar">✕</span><span class="good">He never eats vegetables.</span></div>'+
+    '<div class="swap"><span>I don’t never lie.</span><span class="ar">✕</span><span class="good">I never lie.</span></div>'+
+    '<div class="swap"><span>Do she usually walk?</span><span class="ar">✕</span><span class="good">Does she usually walk?</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>How often — 얼마나 자주</span>'+
+    '<div class="ex"><u class="hl">How often</u> do you exercise?<span class="k">— Three times a week.</span></div>'+
+    '<div class="ex"><u class="hl">How often</u> does your mom go shopping?<span class="k">— Twice a month.</span></div>'+
+    '<p>대답은 <b>횟수</b>로 합니다. Yes · No로 답하지 않습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>물은 말과 같은 것으로 답하기</span>'+
+    '<div class="swap"><span>Are you often late?</span><span class="ar">→</span><span class="good">No, I’m never late.</span></div>'+
+    '<div class="swap"><span>Does he always walk?</span><span class="ar">→</span><span class="good">No, he sometimes takes the bus.</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>① 자리가 맞는지 ② never와 not이 겹치지 않았는지 ③ Do인지 Does인지 — 이 세 곳입니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 빈도 표현 모두 아우르기</h2>'+
+  '<p class="lead">마지막입니다. 일곱 낱말에 더해 실제로 자주 쓰는 빈도 표현까지 넓혀 봅니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>낱말을 더 늘려 봅니다</span>'+
+    '<div class="swap"><span>almost always</span><span class="ar">=</span><span class="good">거의 늘</span></div>'+
+    '<div class="swap"><span>all the time</span><span class="ar">=</span><span class="good">내내 · 늘</span></div>'+
+    '<div class="swap"><span>from time to time</span><span class="ar">=</span><span class="good">가끔 · 때때로</span></div>'+
+    '<div class="swap"><span>hardly ever</span><span class="ar">=</span><span class="good">거의 ~하지 않는다</span></div>'+
+    '<p>hardly ever는 rarely · seldom과 뜻이 같습니다. <b>hardly never</b>라고 쓰지 않습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>몇 번인지 그대로 말하기</span>'+
+    '<div class="ex">I play tennis <u class="hl a">once a week</u>.<span class="k">일주일에 한 번</span></div>'+
+    '<div class="ex">I visit her <u class="hl a">twice a month</u>.<span class="k">한 달에 두 번</span></div>'+
+    '<div class="ex">We travel <u class="hl a">three times a year</u>.<span class="k">일 년에 세 번</span></div>'+
+    '<p>한 번은 once, 두 번은 twice, 세 번부터는 <b>three times</b>처럼 씁니다. 이런 말은 보통 <b>문장 끝</b>에 옵니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>묻고 답하기</span>'+
+    '<div class="swap"><span>How often do you eat out?</span><span class="ar">→</span><span class="good">About once a week.</span></div>'+
+    '<div class="swap"><span>How often does he exercise?</span><span class="ar">→</span><span class="good">Every day.</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마무리 한 줄</span>빈도부사는 <b>자리</b>(be동사 뒤 · 일반동사 앞 · 조동사 뒤), 횟수를 나타내는 말은 <b>문장 끝</b>입니다.</div>';
+}
+
+var LVCHEER = {
+  1:"일곱 낱말의 뜻을 잡았어요. 2단계에서는 어디에 넣는지 익힙니다.",
+  2:"자리 세 군데를 손에 익혔습니다. 3단계는 학교 시험형입니다.",
+  3:"시험에 나오는 곳을 다 보았어요. 마지막 단계만 남았습니다.",
+  4:"빈도 표현을 끝까지 해냈습니다. 이제 ‘얼마나 자주’는 자신 있습니다!"
+};
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_freq_v1", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function unent(s){return String(s).replace(/&nbsp;/g," ").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,"&");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+drawCount(L)+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
+
+/* ===================== 문제 ===================== */
+/* 문제 뽑기: 종류(n·a·v) 비율을 지키고, 보스 문제는 하나만 그 종류의 맨 끝에 둡니다 */
+function drawCount(L){ return Math.min(20, L.qs.length); }
+function drawList(L){
+  var qs=L.qs, N=drawCount(L), T=["n","a","v"];
+  if(qs.length<=N) return qs.map(function(_,i){return i;});
+  var by={}, boss=[], cnt={}, sum=0;
+  T.forEach(function(t){ by[t]=[]; cnt[t]=0; });
+  qs.forEach(function(q,i){ if(q.tag==="보스 문제") boss.push(i); else if(by[q.type]) by[q.type].push(i); });
+  T.forEach(function(t){
+    var p=qs.filter(function(q){ return q.type===t; }).length;
+    cnt[t]=Math.round(p*N/qs.length); sum+=cnt[t];
+  });
+  while(sum>N){ var big=T.slice().sort(function(x,y){return cnt[y]-cnt[x];})[0]; cnt[big]--; sum--; }
+  while(sum<N){ var lot=T.slice().sort(function(x,y){return by[y].length-cnt[y]-(by[x].length-cnt[x]);})[0]; cnt[lot]++; sum++; }
+  var b = boss.length ? boss[Math.floor(Math.random()*boss.length)] : -1;
+  if(b>=0) cnt[qs[b].type]--;
+  var out=[];
+  T.forEach(function(t){
+    var pool=by[t].slice();
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=pool[i]; pool[i]=pool[j]; pool[j]=x; }
+    var got=pool.slice(0,Math.max(0,cnt[t])).sort(function(x,y){return x-y;});
+    if(b>=0 && qs[b].type===t) got.push(b);
+    out=out.concat(got);
+  });
+  return out;
+}
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=drawList(L);
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  clearProg();
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || "";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
+
+  var h="";
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
+  saveProg();
+  S.answered=false;S.picked=-1;
+
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
+  });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
+  show("quiz");
+}
+
+function buildFull(q){
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
+
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
+
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
+
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
+  }else{
+    if(!ok) S.retryWrong.push(S.list[S.i]);
+  }
+
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
+function next(){
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
+}
+
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+function praise(p){
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  clearProg();
+  var L=LEVELS[S.level], total=drawCount(L);
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var tl=L.typeLabels||{};
+  var keys=Object.keys(tl).filter(function(k){ return S.byType[k] && S.byType[k][1]>0; });
+  var bd;
+  if(keys.length<2){
+    bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+       '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>'+
+       '<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  }else{
+    bd=keys.map(function(k){
+      var cls = k==="v" ? "v3" : k;
+      return '<div class="bd '+cls+'"><div class="t">'+esc(tl[k])+'</div><div class="v">'+S.byType[k][0]+'/'+S.byType[k][1]+'</div></div>';
+    }).join('');
+  }
+  $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
+  $("rbreak").innerHTML=bd;
+
+  var isAdmin = (S.name==="꾸메땅");
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null && !isAdmin){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,""));
+      shown = unent(shown).replace(/\s+/g," ").trim();
+      w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
+            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
+  show("result");
+  openPraise(S.score, total, S.correct, S.wrong.length);
+}
+
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
+}
+
+function renderRetryResult(){
+  clearProg();
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  if(!still){ S.finished[S.level]=true; S.active=0; }
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").style.gridTemplateColumns = "repeat(3,1fr)";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+}
+
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+  }else{
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
+  }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
+}
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
+  show("rank");
+}
+
+/* ===================== 시작 배선 ===================== */
+function goHome(){
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
+}
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
+function saveProg(){
+  try{
+    if(!S.level || !S.list || !S.list.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  var p = loadProg();
+  if(!p) return;
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
+}
+function progBanner(){
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
+}
+
+refreshStart();
+
+</script>
+<script src="/kkt.js"></script>
+</body></html>
