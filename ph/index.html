@@ -280,6 +280,21 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 .resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
 .resumebar .row .btn{flex:1 1 130px}
 
+/* 조각을 차례대로 눌러 문장 만들기 */
+.orderbox{display:flex;flex-direction:column;gap:12px}
+.slotline{display:flex;flex-wrap:wrap;gap:7px;min-height:58px;align-items:center;padding:12px;border:1.5px dashed var(--line-strong);border-radius:13px;background:var(--paper)}
+.slotline.ok{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.slotline.no{border-style:solid;border-color:var(--no);background:var(--no-soft)}
+.slotline .slot{font-family:"Newsreader",Georgia,serif;font-size:21px;line-height:1.3;padding:5px 11px;border-radius:9px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.slotline .slot.empty{font-family:inherit;font-size:15.5px;color:var(--muted);background:none;border:0;padding:0 2px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.orderbox .multibar{justify-content:flex-end}
+.orderbox .multihint{flex:1 1 100%;margin-bottom:-4px}
+.chip-w{font-family:"Newsreader",Georgia,serif;font-size:21px;line-height:1.3;padding:11px 15px;border-radius:11px;border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .12s,background .12s}
+.chip-w:hover:not(:disabled){background:var(--paper);transform:translateY(-1px)}
+.chip-w:active:not(:disabled){transform:translateY(0)}
+.chip-w.used{opacity:.28;border-style:dashed;cursor:default}
+.chip-w:disabled{cursor:default}
 .writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
 .writebox input:focus{outline:none;border-color:var(--accent)}
@@ -1321,7 +1336,15 @@ function renderQ(){
   if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
   else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
   if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
-  if(q.write){
+  if(q.order){
+    h+='<div class="orderbox">'+
+       '<div class="slotline" id="orderPick" aria-label="고른 차례"></div>'+
+       '<div class="chips" id="orderChips"></div>'+
+       '<div class="multibar"><span class="multihint" id="orderNote">조각을 차례대로 눌러 문장을 만드세요.</span>'+
+       '<button class="btn ghost small" id="orderUndo">되돌리기</button>'+
+       '<button class="btn" id="orderBtn">확인</button></div></div>';
+    h+='<div class="opts hide">';
+  } else if(q.write){
     h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
        '<button class="btn" id="writeBtn">확인</button></div>';
     h+='<div class="opts hide">';
@@ -1356,10 +1379,12 @@ function renderQ(){
     $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
     setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
   }
+  if(q.order) setupOrder(q);
   show("quiz");
 }
 
 function buildFull(q){
+  if(q.order) return {en:esc(q.parts.join(" ")), kr:q.ko||""};
   if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
   if(!q.sent) return null;
   if(q.sent.indexOf("___")>=0){
@@ -1407,6 +1432,60 @@ function answerMulti(){
   var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
   var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
   finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+/* ---------- 조각을 차례대로 눌러 문장 만들기 ---------- */
+function setupOrder(q){
+  S.orderPicked=[];
+  var bag=q.parts.map(function(t,i){ return {t:t,i:i}; });
+  for(var k=bag.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)); var tmp=bag[k];bag[k]=bag[r];bag[r]=tmp; }
+  var chips=$("orderChips");
+  chips.innerHTML = bag.map(function(b){
+    return '<button class="chip-w" data-i="'+b.i+'">'+esc(b.t)+'</button>';
+  }).join("");
+  Array.prototype.forEach.call(chips.querySelectorAll(".chip-w"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered||this.disabled) return;
+      this.disabled=true; this.classList.add("used");
+      S.orderPicked.push(+this.dataset.i);
+      drawOrder(q);
+    });
+  });
+  $("orderUndo").addEventListener("click",function(){
+    if(S.answered||!S.orderPicked.length) return;
+    var last=S.orderPicked.pop();
+    var b=$("orderChips").querySelector('.chip-w[data-i="'+last+'"]');
+    if(b){ b.disabled=false; b.classList.remove("used"); }
+    drawOrder(q);
+  });
+  $("orderBtn").addEventListener("click",function(){ answerOrder(); });
+  drawOrder(q);
+}
+
+function drawOrder(q){
+  var line=$("orderPick");
+  line.innerHTML = S.orderPicked.length
+    ? S.orderPicked.map(function(i){ return '<span class="slot">'+esc(q.parts[i])+'</span>'; }).join("")
+    : '<span class="slot empty">여기에 차례대로 쌓입니다</span>';
+  var note=$("orderNote");
+  if(note) note.textContent = S.orderPicked.length===q.parts.length
+    ? "다 놓았습니다. 확인을 누르세요."
+    : "차례대로 눌러 주세요 · "+S.orderPicked.length+" / "+q.parts.length;
+}
+
+function answerOrder(){
+  if(S.answered) return;
+  var q=curQ();
+  if(S.orderPicked.length!==q.parts.length){ $("orderNote").textContent="조각을 모두 놓아 주세요."; return; }
+  var ok = S.orderPicked.every(function(v,i){ return v===i; });
+  S.answered=true;
+  Array.prototype.forEach.call($("orderChips").querySelectorAll(".chip-w"),function(b){ b.disabled=true; });
+  $("orderBtn").disabled=true;
+  var ub=$("orderUndo"); if(ub) ub.remove();
+  $("orderPick").className = "slotline " + (ok?"ok":"no");
+  $("orderNote").textContent = ok ? "차례가 모두 맞습니다." : "차례가 맞지 않아요.";
+  var right = q.parts.join(" ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">바른 차례 · '+esc(right)+'</span>');
 }
 
 function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
@@ -1526,11 +1605,14 @@ function renderResult(){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
     S.wrong.forEach(function(qi,n){
       var q=L.qs[qi];
-      var shown = q.word ? q.word : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,""));
+      var shown = q.order ? (q.ko || q.parts.join(" "))
+                : q.word ? q.word
+                : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,""));
       shown = unent(shown).replace(/\s+/g," ").trim();
       w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
-         '<div class="a">정답 <b>'+esc(q.write ? q.ans : q.multi
-            ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+         '<div class="a">정답 <b>'+esc(q.order ? q.parts.join(" ")
+            : q.write ? q.ans
+            : q.multi ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
             : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
     });
     w+='</div>';

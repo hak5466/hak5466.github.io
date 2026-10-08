@@ -30,6 +30,7 @@
 | freq | 빈도부사 뽀개기 | 중1 |
 | participle | 분사 뽀개기 | 초등·중1 |
 | subjunctive | 가정법 뽀개기 | 중3 |
+| themore | THE 비교급 뽀개기 | 중3 |
 | verbuse | 일반동사 문장 활용 | 중1 |
 | toinf-basic | TO부정사 기본 | 중1 |
 | form5b | 5형식 뽀개기 | 중2 |

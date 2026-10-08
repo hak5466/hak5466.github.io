@@ -1,0 +1,1905 @@
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 GAME · THE 비교급 뽀개기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --card:#FFFFFF;
+  --ink:#15201D;
+  --muted:#54615D;
+  --line:#E1E5DD;
+  --line-strong:#C9D1C8;
+  --accent:#0F6E5C;
+  --accent-soft:#E1F0EA;
+  --mark:#F3D74B;
+  --ok:#1C7A5B;
+  --ok-soft:#E3F1EA;
+  --no:#BC443A;
+  --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
+  --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+    --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+    --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+  --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+  --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:19px;line-height:1.62;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:720px;margin:0 auto;padding:24px 14px 72px;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){ .wrap{padding:28px 18px 72px} }
+h1,h2,h3{margin:0;text-wrap:balance}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7vw,39px);letter-spacing:-.02em;line-height:1.08}
+h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
+.sub{color:var(--muted);font-size:16.5px}
+
+.rail{display:flex;gap:10px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
+.seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
+.seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
+.seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+@media (min-width:600px){ .card{padding:24px} }
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
+
+
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
+.btn:hover{opacity:.88}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:19.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
+.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:21px;line-height:1.2}
+.role .m{font-size:15px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:18px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:17.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+#qlevel{font-size:17px;font-weight:800;padding:5px 13px}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
+
+.exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+.verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
+.verdict.ok{color:var(--ok)}
+.verdict.no{color:var(--no)}
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
+.full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
+.full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
+.full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
+.full .kr{font-size:18.5px;line-height:1.6}
+
+/* ---------- 결과 ---------- */
+.score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
+.score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+.bd .t{font-size:14px;color:var(--muted);font-weight:600}
+.bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
+.wrongs{display:flex;flex-direction:column;gap:10px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.wrong .top{display:flex;gap:8px;align-items:baseline}
+.wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
+.wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
+.wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
+.submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tablewrap{overflow-x:auto}
+table.rank{width:100%;border-collapse:collapse;font-size:17.5px}
+table.rank th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
+table.rank tr.top .pos{color:var(--accent)}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
+table.rank .when{color:var(--muted);font-size:15px}
+table.rank tr.me{background:var(--accent-soft)}
+table.rank tr.me .who{color:var(--accent)}
+.empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
+.toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+/* 조각을 차례대로 눌러 문장 만들기 */
+.orderbox{display:flex;flex-direction:column;gap:12px}
+.slotline{display:flex;flex-wrap:wrap;gap:7px;min-height:58px;align-items:center;padding:12px;border:1.5px dashed var(--line-strong);border-radius:13px;background:var(--paper)}
+.slotline.ok{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.slotline.no{border-style:solid;border-color:var(--no);background:var(--no-soft)}
+.slotline .slot{font-family:"Newsreader",Georgia,serif;font-size:21px;line-height:1.3;padding:5px 11px;border-radius:9px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.slotline .slot.empty{font-family:inherit;font-size:15.5px;color:var(--muted);background:none;border:0;padding:0 2px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.orderbox .multibar{justify-content:flex-end}
+.orderbox .multihint{flex:1 1 100%;margin-bottom:-4px}
+.chip-w{font-family:"Newsreader",Georgia,serif;font-size:21px;line-height:1.3;padding:11px 15px;border-radius:11px;border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .12s,background .12s}
+.chip-w:hover:not(:disabled){background:var(--paper);transform:translateY(-1px)}
+.chip-w:active:not(:disabled){transform:translateY(0)}
+.chip-w.used{opacity:.28;border-style:dashed;cursor:default}
+.chip-w:disabled{cursor:default}
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1>꾸메땅 <span class="mark">영문법 GAME</span><span class="subtitle">중3 · THE 비교급 뽀개기</span></h1>
+    <p class="sub">~할수록 더 ~하다 · 두 칸 만들기 · 점점 더와 훨씬 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 같은 문장을 영어로 · 차례대로 놓기, 3단계 중3 학교 시험형, 4단계에서 점점 더와 훨씬까지 아울러 마무리합니다</p>
+  </header>
+
+  <div class="rail" id="rail" aria-hidden="true">
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+  </div>
+
+  <!-- 시작 -->
+  <section class="card" id="start">
+    <h2>단계를 골라 도전해 보세요</h2>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
+    <div class="namebar">
+      <span class="h">이름</span>
+      <div class="row">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <button class="btn small" id="saveName">저장</button>
+      </div>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
+    </div>
+    <div id="resumeBar" class="hide"></div>
+    <div class="levels" id="levelPick"></div>
+    <div class="actions">
+      <button class="btn ghost" id="openRank">순위 보기</button>
+    </div>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+  </section>
+
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
+    <div class="actions">
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
+    </div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="card hide" id="quiz">
+    <div class="qhead">
+      <span class="qnum" id="qnum">1 / 20</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
+    </div>
+    <div class="qbody" id="qbody"></div>
+    <div id="qexp"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="card hide" id="result">
+    <h2 id="rtitle">1단계 결과</h2>
+    <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
+    <div id="rsubmit"></div>
+    <div id="rwrong"></div>
+    <div class="actions" id="ractions"></div>
+  </section>
+
+  <!-- 순위 -->
+  <section class="card hide" id="rank">
+    <div class="subhead">
+      <h2>도전 순위</h2>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
+    </div>
+    <div id="rankToast"></div>
+    <div class="tabs" id="rankTabs">
+      <button class="tab on" data-t="all">종합</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rankHome">단계 선택으로</button>
+    </div>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
+  </section>
+
+  <p class="foot"><img src="/logo.png" alt="꾸메땅" style="display:block;height:56px;width:auto;margin:0 auto 10px;padding:6px 10px;background:#fff;border-radius:10px">꾸메땅 영문법 GAME · THE 비교급 뽀개기<br>© 꾸메땅 학습코칭학원 · 무단 복제와 배포를 금합니다.<br>☎ 010.5851.8209</p>
+</div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
+
+<script>
+"use strict";
+
+/* ---------- LEVEL 1 : 한글로 이해 24 + 쉬운 영어 16 ----------
+   평범한 문장을 ‘~할수록’과 ‘더 ~하다’ 두 칸으로 바꾸는 연습 (초등도 가능) */
+var L1 = [
+  {type:"n", tag:"한글로 이해", q:"‘~할수록 더 ~하다’는 무엇을 말하는 걸까요?",
+   opts:["한쪽이 커지면 다른 쪽도 같이 커진다","한쪽이 커지면 다른 쪽은 작아진다","두 가지가 서로 상관없다","지난 일을 말한다","명령하는 말이다"], a:0,
+   exp:"‘많이 읽을수록 더 똑똑해진다’처럼 <b>둘이 같이 올라갑니다.</b>"},
+
+  {type:"n", tag:"한글로 이해", sent:"네가 책을 더 많이 읽을수록, 더 똑똑해진다.", q:"이 말은 몇 칸으로 되어 있을까요?",
+   opts:["두 칸 — ‘~할수록’과 ‘더 ~하다’","한 칸","세 칸","네 칸","칸이 없다"], a:0,
+   exp:"앞칸과 뒷칸, <b>두 칸</b>이 한 짝입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"<b>앞칸</b>(~할수록)이 하는 일은?",
+   opts:["조건을 말한다","결과를 말한다","물어본다","명령한다","감탄한다"], a:0,
+   exp:"앞칸은 ‘이만큼 하면’이라는 <b>조건</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"<b>뒷칸</b>(더 ~하다)이 하는 일은?",
+   opts:["결과를 말한다","조건을 말한다","물어본다","명령한다","감탄한다"], a:0,
+   exp:"뒷칸은 ‘그러면 이렇게 된다’는 <b>결과</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"너는 책을 많이 읽는다.", q:"<b>앞칸</b>(~할수록)으로 바르게 바꾼 것은?",
+   opts:["네가 책을 더 많이 읽을수록","네가 책을 읽었다","네가 책을 읽어라","네가 책을 읽지 않는다","네가 책을 읽을 것이다"], a:0,
+   exp:"‘더’를 넣고 끝을 <b>~할수록</b>으로 바꿉니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"너는 똑똑해진다.", q:"<b>뒷칸</b>(더 ~하다)으로 바르게 바꾼 것은?",
+   opts:["더 똑똑해진다","똑똑해졌다","똑똑해져라","똑똑하지 않다","똑똑해질 것이다"], a:0,
+   exp:"앞에 <b>더</b>를 붙이기만 하면 됩니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"너는 책을 많이 읽는다. + 너는 똑똑해진다.", q:"두 칸을 합쳐 바르게 만든 것은?",
+   opts:["네가 책을 더 많이 읽을수록, 더 똑똑해진다.","너는 책을 많이 읽고 똑똑해진다.","너는 똑똑해서 책을 많이 읽는다.","책을 읽으면 똑똑해져라.","너는 책을 읽지 않아서 똑똑하지 않다."], a:0,
+   exp:"앞칸 + 쉼표 + 뒷칸으로 이어 붙입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 일찍 일어난다.", q:"<b>앞칸</b>(~할수록)으로 바르게 바꾼 것은?",
+   opts:["내가 더 일찍 일어날수록","내가 일찍 일어났다","내가 일찍 일어나라","내가 일찍 일어나지 않는다","내가 일찍 일어날 것이다"], a:0,
+   exp:"‘더 + 일찍 + 일어날수록’입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 하루가 길다.", q:"<b>뒷칸</b>(더 ~하다)으로 바르게 바꾼 것은?",
+   opts:["하루가 더 길다","하루가 길었다","하루를 길게 해라","하루가 짧다","하루가 길 것이다"], a:0,
+   exp:"앞에 <b>더</b>를 붙입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 일찍 일어난다. + 나는 하루가 길다.", q:"두 칸을 합쳐 바르게 만든 것은?",
+   opts:["내가 더 일찍 일어날수록, 하루가 더 길다.","나는 일찍 일어나서 하루가 길다.","하루가 길어서 일찍 일어난다.","일찍 일어나면 하루를 길게 해라.","나는 늦게 일어나서 하루가 짧다."], a:0,
+   exp:"앞칸과 뒷칸을 쉼표로 잇습니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 열심히 공부한다.", q:"<b>앞칸</b>(~할수록)으로 바르게 바꾼 것은?",
+   opts:["그가 더 열심히 공부할수록","그가 열심히 공부했다","그는 열심히 공부해라","그는 공부하지 않는다","그는 공부할 것이다"], a:0,
+   exp:"‘더 + 열심히 + 공부할수록’입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그의 점수가 오른다.", q:"<b>뒷칸</b>(더 ~하다)으로 바르게 바꾼 것은?",
+   opts:["점수가 더 오른다","점수가 올랐다","점수를 올려라","점수가 내린다","점수가 오를 것이다"], a:0,
+   exp:"앞에 <b>더</b>를 붙입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"그는 열심히 공부한다. + 그의 점수가 오른다.", q:"두 칸을 합쳐 바르게 만든 것은?",
+   opts:["그가 더 열심히 공부할수록, 점수가 더 오른다.","그는 열심히 공부해서 점수가 올랐다.","점수가 올라서 열심히 공부한다.","열심히 공부해서 점수를 올려라.","그는 공부를 안 해서 점수가 내린다."], a:0,
+   exp:"조건이 앞, 결과가 뒤입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"날씨가 춥다.", q:"<b>앞칸</b>(~할수록)으로 바르게 바꾼 것은?",
+   opts:["날씨가 더 추울수록","날씨가 추웠다","날씨가 추워라","날씨가 춥지 않다","날씨가 추울 것이다"], a:0,
+   exp:"‘더 + 추울수록’입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"나는 두꺼운 옷을 입는다.", q:"<b>뒷칸</b>(더 ~하다)으로 바르게 바꾼 것은?",
+   opts:["더 두꺼운 옷을 입는다","두꺼운 옷을 입었다","두꺼운 옷을 입어라","얇은 옷을 입는다","두꺼운 옷을 입을 것이다"], a:0,
+   exp:"꾸미는 말 앞에 <b>더</b>를 붙입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"날씨가 춥다. + 나는 두꺼운 옷을 입는다.", q:"두 칸을 합쳐 바르게 만든 것은?",
+   opts:["날씨가 더 추울수록, 더 두꺼운 옷을 입는다.","날씨가 추워서 두꺼운 옷을 입었다.","두꺼운 옷을 입어서 춥지 않다.","추우면 두꺼운 옷을 입어라.","날씨가 안 추워서 얇은 옷을 입는다."], a:0,
+   exp:"두 칸 모두 ‘더’가 들어갑니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"너는 자주 연습한다.", q:"<b>앞칸</b>(~할수록)으로 바르게 바꾼 것은?",
+   opts:["네가 더 자주 연습할수록","네가 자주 연습했다","자주 연습해라","너는 연습하지 않는다","너는 연습할 것이다"], a:0,
+   exp:"‘더 + 자주 + 연습할수록’입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"너는 잘한다.", q:"<b>뒷칸</b>(더 ~하다)으로 바르게 바꾼 것은?",
+   opts:["더 잘한다","잘했다","잘해라","못한다","잘할 것이다"], a:0,
+   exp:"앞에 <b>더</b>를 붙입니다."},
+
+  {type:"n", tag:"한글로 이해", sent:"너는 자주 연습한다. + 너는 잘한다.", q:"두 칸을 합쳐 바르게 만든 것은?",
+   opts:["네가 더 자주 연습할수록, 더 잘한다.","너는 자주 연습해서 잘했다.","잘해서 자주 연습한다.","자주 연습해서 잘해라.","너는 연습을 안 해서 못한다."], a:0,
+   exp:"앞칸이 조건, 뒷칸이 결과입니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>앞칸</b>(~할수록)으로 바르게 바꾼 것을 모두 고르세요. (여러 개)",
+   opts:["내가 더 많이 걸을수록","날이 더 밝을수록","나는 많이 걸었다","날이 밝아라","나는 걷지 않는다"], ans:[0,1],
+   exp:"‘더’가 들어가고 끝이 ‘~할수록’이어야 합니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"<b>뒷칸</b>(더 ~하다)으로 바르게 바꾼 것을 모두 고르세요. (여러 개)",
+   opts:["더 건강해진다","값이 더 싸진다","건강해졌다","값을 싸게 해라","건강하지 않다"], ans:[0,1],
+   exp:"앞에 ‘더’를 붙여 결과를 말합니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"‘~할수록 더 ~하다’로 말하기 <b>어울리는</b> 짝을 모두 고르세요. (여러 개)",
+   opts:["많이 걷는다 — 건강해진다","일찍 자는다 — 덜 피곤하다","비가 온다 — 어제 눈이 왔다","나는 학생이다 — 그는 선생님이다","오늘은 월요일이다 — 내일은 화요일이다"], ans:[0,1],
+   exp:"한쪽이 커지면 다른 쪽도 따라 움직이는 짝이어야 합니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘점점 더 ~하다’와 ‘~할수록 더 ~하다’의 차이로 알맞은 것은?",
+   opts:["앞은 한 가지가 계속 변하고, 뒤는 두 가지가 같이 변한다","두 말의 뜻이 같다","앞은 지난 일, 뒤는 올 일이다","앞은 물음, 뒤는 대답이다","앞은 명령이다"], a:0,
+   exp:"‘날이 점점 추워진다’는 하나, ‘추울수록 더 입는다’는 둘입니다."},
+
+  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 가운데 <b>옳지 않은</b> 것은?",
+   opts:["두 칸 가운데 뒷칸이 조건이다.","앞칸은 ‘~할수록’으로 끝난다.","뒷칸은 ‘더 ~하다’가 된다.","두 칸 모두 ‘더’가 들어간다.","한쪽이 커지면 다른 쪽도 같이 커진다."], a:0,
+   exp:"<b>앞칸이 조건</b>, 뒷칸이 결과입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"‘~할수록 더 ~하다’의 영어 틀로 알맞은 것은?",
+   opts:["The + 비교급 ~, the + 비교급 ~","비교급 + than ~","as + 원급 + as ~","the + 최상급 ~","so + 원급 + that ~"], a:0,
+   exp:"두 칸 앞에 모두 <b>the</b>를 붙이고 <b>비교급</b>을 씁니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"두 칸 사이에는 무엇을 넣을까요?",
+   opts:["쉼표( , )","than","and","that","to"], a:0,
+   exp:"The more you read<b>,</b> the smarter you become."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>앞칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">You read many books.</span>",
+   opts:["The more books you read","The many books you read","More books you read","The more you read books","You read the more books"], a:0,
+   exp:"more가 <b>books</b>까지 데리고 통째로 앞으로 나옵니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>뒷칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">You become smart.</span>",
+   opts:["the smarter you become","the smart you become","smarter you become","the more smart you become","you become the smarter"], a:0,
+   exp:"the + 비교급(smarter) + 주어 + 동사 차례입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"두 칸을 합쳐 바르게 만든 것은?<br><span class=\"eng\">You read many books. + You become smart.</span>",
+   opts:["The more books you read, the smarter you become.","You read many books, you become smart.","The many books you read, the smart you become.","You read the more books, the smarter you become.","The more books you read, you become smarter."], a:0,
+   exp:"두 칸 모두 the와 비교급을 갖춥니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>앞칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">He studies hard.</span>",
+   opts:["The harder he studies","The hard he studies","Harder he studies","The more hard he studies","He studies the harder"], a:0,
+   exp:"hard의 비교급은 harder입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"<b>뒷칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">His grades go up high.</span>",
+   opts:["the higher his grades go up","the high his grades go up","higher his grades go up","the more high his grades go up","his grades go up the higher"], a:0,
+   exp:"high의 비교급은 higher입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"두 칸을 합쳐 바르게 만든 것은?<br><span class=\"eng\">He studies hard. + His grades go up high.</span>",
+   opts:["The harder he studies, the higher his grades go up.","He studies harder, his grades go up higher.","The hard he studies, the high his grades go up.","He studies the harder, the higher his grades go up.","The harder he studies, his grades go up higher."], a:0,
+   exp:"앞칸과 뒷칸 모두 the + 비교급입니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"tall · big · easy", q:"비교급이 바르게 짝지어진 것은?",
+   opts:["taller · bigger · easier","more tall · more big · more easy","tallest · biggest · easiest","taller · biger · easyer","tall · big · easy"], a:0,
+   exp:"짧은 낱말은 -er, 자음을 겹치는 것(big → bigger), y를 i로 바꾸는 것(easy → easier)이 있습니다."},
+
+  {type:"a", tag:"쉬운 영어", word:"careful", q:"careful의 비교급은?",
+   opts:["more careful","carefuler","carefulest","most careful","the careful"], a:0,
+   exp:"긴 낱말 앞에는 more를 붙입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The ___ you study, the better your grades get.", q:"‘열심히 할수록’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["harder","hard","hardly","most hard","more hardly"], a:0, eng:true,
+   ko:"네가 더 열심히 공부할수록 성적이 더 좋아진다.",
+   exp:"the 뒤에는 <b>비교급</b>이 옵니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The more you practice, the ___ you become.", q:"‘더 잘하게 된다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["better","good","best","well","more good"], a:0, eng:true,
+   ko:"더 많이 연습할수록 더 잘하게 된다.",
+   exp:"good의 비교급은 <b>better</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The older we get, the wiser we become.","The more we talk, the closer we feel.","The old we get, the wise we become.","More we talk, closer we feel.","The older we get, we become wiser."], ans:[0,1],
+   exp:"두 칸 모두 the + 비교급을 갖춰야 합니다."},
+
+  {type:"a", tag:"쉬운 영어", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The fast you run, the tired you get.","The more you eat than, the heavier you get.","The faster you run, the more tired you get.","The more you eat, the heavier you get.","The longer you wait, the colder it gets."], ans:[0,1],
+   exp:"원급을 쓰거나 than을 넣으면 안 됩니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"밑줄 친 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">The more you give, the more you get.</span>",
+   opts:["더 많이 줄수록 더 많이 받는다.","많이 주면 적게 받는다.","많이 주었다.","많이 주어라.","주는 것과 받는 것은 상관없다."], a:0,
+   exp:"두 칸이 같이 올라갑니다."},
+
+  {type:"a", tag:"쉬운 영어", hard:true, q:"다음 가운데 <b>어법상 옳은</b> 문장은?",
+   opts:["The sooner you start, the earlier you finish.","The soon you start, the early you finish.","Sooner you start, earlier you finish.","The sooner you start, you finish earlier.","The sooner you start than, the earlier you finish."], a:0,
+   exp:"the + 비교급 두 칸, 그 사이에 쉼표입니다."}
+];
+
+/* ---------- LEVEL 2 : 같은 문장 영어로 14 · 차례대로 놓기 12 · 함정 가리기 14 ----------
+   1단계에서 한글로 만든 바로 그 문장들을 이번에는 영어로 */
+var L2 = [
+  {type:"n", tag:"같은 문장 영어로", q:"<b>앞칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">I get up early.</span>",
+   opts:["The earlier I get up","The early I get up","Earlier I get up","The more early I get up","I get up the earlier"], a:0,
+   exp:"1단계의 ‘내가 더 일찍 일어날수록’입니다. early → earlier"},
+
+  {type:"n", tag:"같은 문장 영어로", q:"<b>뒷칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">My day is long.</span>",
+   opts:["the longer my day is","the long my day is","longer my day is","the more long my day is","my day is the longer"], a:0,
+   exp:"‘하루가 더 길다’입니다. long → longer"},
+
+  {type:"n", tag:"같은 문장 영어로", q:"두 칸을 합쳐 바르게 만든 것은?<br><span class=\"eng\">I get up early. + My day is long.</span>",
+   opts:["The earlier I get up, the longer my day is.","The early I get up, the long my day is.","Earlier I get up, longer my day is.","I get up earlier, my day is longer.","The earlier I get up than, the longer my day is."], a:0,
+   exp:"1단계의 ‘내가 더 일찍 일어날수록, 하루가 더 길다’입니다."},
+
+  {type:"n", tag:"같은 문장 영어로", q:"<b>앞칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">It is cold.</span>",
+   opts:["The colder it is","The cold it is","Colder it is","The more cold it is","It is the colder"], a:0,
+   exp:"‘날씨가 더 추울수록’입니다. cold → colder"},
+
+  {type:"n", tag:"같은 문장 영어로", q:"<b>뒷칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">I wear thick clothes.</span>",
+   opts:["the thicker clothes I wear","the thick clothes I wear","thicker clothes I wear","the more thick clothes I wear","I wear the thicker clothes"], a:0,
+   exp:"‘더 두꺼운 옷을 입는다’입니다. thicker가 clothes를 데리고 앞으로 나옵니다."},
+
+  {type:"n", tag:"같은 문장 영어로", q:"두 칸을 합쳐 바르게 만든 것은?<br><span class=\"eng\">It is cold. + I wear thick clothes.</span>",
+   opts:["The colder it is, the thicker clothes I wear.","The cold it is, the thick clothes I wear.","Colder it is, thicker clothes I wear.","It is colder, I wear thicker clothes.","The colder it is than, the thicker clothes I wear."], a:0,
+   exp:"1단계의 ‘날씨가 더 추울수록, 더 두꺼운 옷을 입는다’입니다."},
+
+  {type:"n", tag:"같은 문장 영어로", q:"<b>앞칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">You practice often.</span>",
+   opts:["The more often you practice","The often you practice","Oftener you practice","The oftenest you practice","You practice the more often"], a:0,
+   exp:"‘네가 더 자주 연습할수록’입니다. often → more often"},
+
+  {type:"n", tag:"같은 문장 영어로", q:"<b>뒷칸</b>으로 바르게 바꾼 것은?<br><span class=\"eng\">You play well.</span>",
+   opts:["the better you play","the well you play","better you play","the more well you play","you play the better"], a:0,
+   exp:"‘더 잘한다’입니다. well → better"},
+
+  {type:"n", tag:"같은 문장 영어로", q:"두 칸을 합쳐 바르게 만든 것은?<br><span class=\"eng\">You practice often. + You play well.</span>",
+   opts:["The more often you practice, the better you play.","The often you practice, the well you play.","Oftener you practice, better you play.","You practice more often, you play better.","The more often you practice than, the better you play."], a:0,
+   exp:"1단계의 ‘네가 더 자주 연습할수록, 더 잘한다’입니다."},
+
+  {type:"n", tag:"같은 문장 영어로", q:"The more <b>books</b> you read에서 books가 앞으로 나온 까닭은?",
+   opts:["more가 꾸미는 명사라서 함께 끌려 나온다","아무 뜻 없이 자리만 바꾼 것이다","the 뒤에는 늘 명사가 온다","주어라서 앞에 온다","목적어는 늘 앞에 온다"], a:0,
+   exp:"more books가 한 덩어리라 <b>통째로</b> 앞으로 나갑니다."},
+
+  {type:"n", tag:"같은 문장 영어로", q:"the + 비교급 뒤에는 무엇이 올까요?",
+   opts:["주어 + 동사","동사 + 주어","than + 명사","to + 동사원형","아무것도 오지 않는다"], a:0,
+   exp:"The harder <b>he studies</b>처럼 주어와 동사가 그대로 따라옵니다."},
+
+  {type:"n", tag:"같은 문장 영어로", multi:true, q:"두 칸이 <b>바르게</b> 갖춰진 문장을 모두 고르세요. (여러 개)",
+   opts:["The longer you wait, the angrier he gets.","The sooner we leave, the safer we are.","The long you wait, the angry he gets.","Sooner we leave, safer we are.","The longer you wait, he gets angrier."], ans:[0,1],
+   exp:"the와 비교급이 두 칸 모두에 있어야 합니다."},
+
+  {type:"n", tag:"같은 문장 영어로", sent:"The ___ you sleep, the more tired you feel.", q:"‘적게 잘수록’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["less","little","least","few","fewer"], a:0, eng:true,
+   ko:"적게 잘수록 더 피곤하다.",
+   exp:"little의 비교급은 <b>less</b>입니다."},
+
+  {type:"n", tag:"같은 문장 영어로", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">The ⓐ ___ you get up, the ⓑ ___ time you have.</span>",
+   opts:["ⓐ earlier – ⓑ more","ⓐ early – ⓑ much","ⓐ earlier – ⓑ much","ⓐ early – ⓑ more","ⓐ earliest – ⓑ most"], a:0,
+   exp:"ⓐ는 early의 비교급 earlier, ⓑ는 명사 time 앞이라 more입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The more books","you read,","the smarter","you become."],
+   ko:"책을 더 많이 읽을수록, 더 똑똑해진다.",
+   exp:"앞칸(The more books you read) 다음에 뒷칸(the smarter you become)이 옵니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The earlier","I get up,","the longer","my day is."],
+   ko:"일찍 일어날수록, 하루가 더 길다.",
+   exp:"the + 비교급 + 주어 + 동사가 두 번 되풀이됩니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The harder","he studies,","the higher","his grades go."],
+   ko:"그가 더 열심히 공부할수록, 점수가 더 오른다.",
+   exp:"hard → harder, high → higher입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The colder","it is,","the thicker clothes","I wear."],
+   ko:"날씨가 추울수록, 더 두꺼운 옷을 입는다.",
+   exp:"thicker가 clothes를 데리고 함께 앞으로 나옵니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The more often","you practice,","the better","you play."],
+   ko:"자주 연습할수록, 더 잘한다.",
+   exp:"often → more often, well → better입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The sooner","you start,","the earlier","you finish."],
+   ko:"빨리 시작할수록, 일찍 끝낸다.",
+   exp:"soon → sooner, early → earlier입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The less","you sleep,","the more tired","you feel."],
+   ko:"적게 잘수록, 더 피곤하다.",
+   exp:"little → less, tired는 긴 낱말이라 more tired입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The quieter","the room is,","the better","I sleep."],
+   ko:"방이 조용할수록, 나는 더 잘 잔다.",
+   exp:"quiet → quieter, well → better입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The bigger","the city is,","the more cars","there are."],
+   ko:"도시가 클수록, 차가 더 많다.",
+   exp:"more가 cars를 데리고 함께 앞으로 나옵니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The more money","you spend,","the less","you save."],
+   ko:"돈을 더 많이 쓸수록, 더 적게 모은다.",
+   exp:"money는 셀 수 없는 명사라 more money입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The longer","you wait,","the worse","it gets."],
+   ko:"오래 기다릴수록, 더 나빠진다.",
+   exp:"bad의 비교급은 worse입니다."},
+
+  {type:"a", tag:"차례대로 놓기", order:true, hard:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The more careful","you are,","the fewer mistakes","you make."],
+   ko:"조심할수록, 실수를 더 적게 한다.",
+   exp:"careful은 긴 낱말이라 more careful, mistakes는 셀 수 있어 fewer입니다."},
+
+  {type:"v", tag:"함정 가리기", q:"함정! 두 칸 앞에 반드시 붙여야 하는 것은?",
+   opts:["the","a","an","than","to"], a:0,
+   exp:"두 칸 모두 <b>the</b>로 시작합니다."},
+
+  {type:"v", tag:"함정 가리기", q:"함정! the 뒤에 와야 하는 모양은?",
+   opts:["비교급","원급","최상급","동사원형","to부정사"], a:0,
+   exp:"The <b>faster</b>처럼 비교급을 씁니다."},
+
+  {type:"v", tag:"함정 가리기", q:"함정! 두 칸 안에 넣으면 <b>안 되는</b> 말은?",
+   opts:["than","the","비교급","주어","동사"], a:0,
+   exp:"견주는 상대를 따로 밝히지 않으므로 than을 쓰지 않습니다."},
+
+  {type:"v", tag:"함정 가리기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The <b>fast</b> you run, the sooner you arrive.</span>",
+   opts:["faster","fastest","more fast","fastly","the fast"], a:0,
+   exp:"the 뒤에는 비교급이 옵니다."},
+
+  {type:"v", tag:"함정 가리기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The harder you try, <b>you get</b> better.</span>",
+   opts:["the better you get","better you get","you get the better","the good you get","the more better you get"], a:0,
+   exp:"뒷칸도 the + 비교급 + 주어 + 동사입니다."},
+
+  {type:"v", tag:"함정 가리기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\"><b>Louder</b> you speak, the better I hear.</span>",
+   opts:["The louder","More louder","The loud","Loudly","The loudest"], a:0,
+   exp:"앞칸에도 the를 붙여야 합니다."},
+
+  {type:"v", tag:"함정 가리기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The more careful you are, the <b>little</b> mistakes you make.</span>",
+   opts:["fewer","less","little","fewest","few"], a:0,
+   exp:"mistakes는 셀 수 있는 명사라 <b>fewer</b>를 씁니다."},
+
+  {type:"v", tag:"함정 가리기", q:"두 칸 구문에서 쉼표는 어디에 올까요?",
+   opts:["앞칸이 끝나는 자리","문장 맨 끝","the 바로 뒤","비교급 바로 뒤","주어 앞"], a:0,
+   exp:"The harder you try<b>,</b> the better you get."},
+
+  {type:"v", tag:"함정 가리기", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The warmer it is, the happier I feel.","The more you smile, the better you look.","The warm it is, the happy I feel.","The more you smile than, the better you look.","More you smile, better you look."], ans:[0,1],
+   exp:"the + 비교급 두 칸, than 없이 씁니다."},
+
+  {type:"v", tag:"함정 가리기", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The hard you work, the much you earn.","The faster you type, you finish sooner.","The harder you work, the more you earn.","The faster you type, the sooner you finish.","The older the wine is, the better it tastes."], ans:[0,1],
+   exp:"원급을 쓰거나 뒷칸에 the가 빠졌습니다."},
+
+  {type:"v", tag:"함정 가리기", sent:"많이 걸을수록, 더 건강해진다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The more you walk, the healthier you get.","The much you walk, the healthy you get.","More you walk, healthier you get.","You walk more, you get healthier.","The more you walk than, the healthier you get."], a:0,
+   exp:"much → more, healthy → healthier입니다."},
+
+  {type:"v", tag:"함정 가리기", sent:"그 책이 재미있을수록, 나는 더 오래 읽는다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The more interesting the book is, the longer I read.","The interesting the book is, the long I read.","More interesting the book is, longer I read.","The book is more interesting, I read longer.","The interestinger the book is, the longer I read."], a:0,
+   exp:"interesting은 긴 낱말이라 more interesting입니다."},
+
+  {type:"v", tag:"함정 가리기", multi:true, q:"두 칸으로 바르게 만든 것을 모두 고르세요. (여러 개)",
+   opts:["The sooner, the better.","The more, the merrier.","The soon, the good.","More, merrier.","The sooner than, the better."], ans:[0,1],
+   exp:"굳어진 말로 주어와 동사를 줄여 쓰기도 합니다."},
+
+  {type:"v", tag:"함정 가리기", hard:true, q:"어법상 <b>옳은</b> 문장은?",
+   opts:["The fewer people come, the more food we have.","The less people come, the much food we have.","Fewer people come, more food we have.","The fewer people come, we have more food.","The fewer people come than, the more food we have."], a:0,
+   exp:"people은 셀 수 있으므로 fewer, food는 셀 수 없으므로 more입니다."}
+];
+
+/* ---------- LEVEL 3 : 빈칸 14 · 고치기 12 · 바꿔 쓰기 14 ----------
+   중3 학교 시험에 나오는 자리 */
+var L3 = [
+  {type:"n", tag:"빈칸", sent:"The ___ you exercise, the stronger you become.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["more","much","most","many","more of"], a:0, eng:true,
+   ko:"운동을 더 많이 할수록 더 튼튼해진다.",
+   exp:"much의 비교급은 more입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The higher the mountain is, the ___ it is to climb.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["harder","hard","hardest","more hardly","hardly"], a:0, eng:true,
+   ko:"산이 높을수록 오르기가 더 어렵다.",
+   exp:"hard의 비교급은 harder입니다."},
+
+  {type:"n", tag:"빈칸", word:"good · bad", q:"비교급이 바르게 짝지어진 것은?",
+   opts:["good – better · bad – worse","good – gooder · bad – badder","good – best · bad – worst","good – more good · bad – more bad","good – better · bad – more bad"], a:0,
+   exp:"모양이 아주 바뀌는 비교급입니다. the <b>better</b> · the <b>worse</b>로 두 칸에 자주 들어갑니다."},
+
+  {type:"n", tag:"빈칸", sent:"The more careful you are, the ___ mistakes you make.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["fewer","less","little","few","fewest"], a:0, eng:true,
+   ko:"조심할수록 실수를 더 적게 한다.",
+   exp:"mistakes는 셀 수 있는 명사라 fewer입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The ___ water you drink, the healthier you feel.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["more","many","much","most","fewer"], a:0, eng:true,
+   ko:"물을 더 많이 마실수록 더 건강해진다.",
+   exp:"water는 셀 수 없는 명사라 more를 씁니다."},
+
+  {type:"n", tag:"빈칸", sent:"The older he got, the ___ he became.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["wiser","wise","wisest","more wise","wisely"], a:0, eng:true,
+   ko:"그는 나이가 들수록 더 지혜로워졌다.",
+   exp:"wise의 비교급은 wiser입니다."},
+
+  {type:"n", tag:"빈칸", word:"many · much · little", q:"비교급이 바르게 짝지어진 것은?",
+   opts:["many – more · much – more · little – less","many – manier · much – mucher · little – littler","many – most · much – most · little – least","many – more · much – mucher · little – less","many – fewer · much – less · little – more"], a:0,
+   exp:"셀 수 있는 many와 셀 수 없는 much는 비교급이 둘 다 <b>more</b>입니다. little은 <b>less</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The more we learn, the ___ we know how little we know.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["better","good","best","well","more good"], a:0, eng:true,
+   ko:"배울수록 우리가 얼마나 모르는지 더 잘 알게 된다.",
+   exp:"good·well의 비교급은 better입니다."},
+
+  {type:"n", tag:"빈칸", multi:true, q:"빈칸에 <b>more</b>를 넣어야 하는 문장을 모두 고르세요. (여러 개)",
+   opts:["The ___ money you save, the safer you feel.","The ___ you smile, the happier you look.","The ___ you sleep, the more tired you are.","The ___ books you lose, the better.","The ___ you talk, the quieter it gets."], ans:[0,1],
+   exp:"뒤칸의 뜻을 보고 같이 커지는 쪽인지 봅니다."},
+
+  {type:"n", tag:"빈칸", multi:true, q:"빈칸에 <b>fewer</b>를 넣어야 하는 문장을 모두 고르세요. (여러 개)",
+   opts:["The more you check, the ___ errors you find later.","The quieter the class is, the ___ warnings the teacher gives.","The more you drink, the ___ water is left.","The more you study, the ___ confidence you lose.","The colder it is, the ___ snow melts."], ans:[0,1],
+   exp:"errors와 warnings는 셀 수 있는 명사입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The sooner you ___ , the better.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["decide","decided","will decide","deciding","to decide"], a:0, eng:true,
+   ko:"빨리 정할수록 좋다.",
+   exp:"the + 비교급 뒤에는 <b>주어 + 동사</b>가 옵니다."},
+
+  {type:"n", tag:"빈칸", sent:"The longer the movie is, the ___ I get.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["more bored","boreder","bored","most bored","boring"], a:0, eng:true,
+   ko:"영화가 길수록 나는 더 지루해진다.",
+   exp:"bored는 긴 낱말이라 more bored입니다. 사람은 -ed입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The ___ the price is, the more people buy it.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["lower","low","lowest","more low","lowly"], a:0, eng:true,
+   ko:"값이 쌀수록 사람들이 더 많이 산다.",
+   exp:"low의 비교급은 lower입니다."},
+
+  {type:"n", tag:"빈칸", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">The ⓐ ___ friends you have, the ⓑ ___ lonely you feel.</span>",
+   opts:["ⓐ more – ⓑ less","ⓐ many – ⓑ little","ⓐ more – ⓑ few","ⓐ much – ⓑ less","ⓐ fewer – ⓑ less"], a:0,
+   exp:"friends 앞은 more, lonely 앞은 ‘덜’이라는 뜻의 less입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The <b>much</b> you practice, the better you play.</span>",
+   opts:["more","most","many","more much","much more"], a:0,
+   exp:"much의 비교급은 more입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The faster you walk, <b>sooner</b> you get there.</span>",
+   opts:["the sooner","soon","the soon","more sooner","the soonest"], a:0,
+   exp:"뒷칸에도 the를 붙입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The more you study, the <b>goodest</b> your grades become.</span>",
+   opts:["better","good","best","more good","well"], a:0,
+   exp:"good의 비교급은 better입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The <b>difficulter</b> the test is, the lower the scores are.</span>",
+   opts:["more difficult","most difficult","difficult","difficultest","more difficulty"], a:0,
+   exp:"긴 낱말은 more + 원급으로 비교급을 만듭니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The older you get, <b>you become</b> wiser.</span>",
+   opts:["the wiser you become","wiser you become","you become the wiser","the wise you become","the more wiser you become"], a:0,
+   exp:"뒷칸은 the + 비교급 + 주어 + 동사입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The more you eat, the <b>fatter than</b> you get.</span>",
+   opts:["fatter","fat","fattest","more fat","fatly"], a:0,
+   exp:"두 칸 구문에는 than을 쓰지 않습니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The more careful you are, the <b>less</b> errors you make.</span>",
+   opts:["fewer","little","few","least","fewest"], a:0,
+   exp:"errors는 셀 수 있는 명사라 fewer입니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\"><b>Harder</b> you work, the more you earn.</span>",
+   opts:["The harder","More harder","The hard","Hardly","The hardest"], a:0,
+   exp:"앞칸에도 the를 붙입니다."},
+
+  {type:"a", tag:"고치기", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The more you give, you get more.","The high you climb, the cold it gets.","The more you give, the more you get.","The higher you climb, the colder it gets.","The fewer cars there are, the cleaner the air is."], ans:[0,1],
+   exp:"뒷칸에 the가 빠지거나 원급을 썼습니다."},
+
+  {type:"a", tag:"고치기", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The darker the sky is, the brighter the stars look.","The more time you spend, the better the result is.","The dark the sky is, the bright the stars look.","The more time you spend than, the better the result is.","More time you spend, better the result is."], ans:[0,1],
+   exp:"the + 비교급 두 칸, than 없이 씁니다."},
+
+  {type:"a", tag:"고치기", q:"밑줄 친 부분이 <b>어법상 옳은</b> 것은?",
+   opts:["The <b>more slowly</b> you speak, the better I understand.","The <b>slowlier</b> you speak, the better I understand.","The <b>slow</b> you speak, the better I understand.","The <b>most slowly</b> you speak, the better I understand.","The <b>more slow</b> you speak, the better I understand."], a:0,
+   exp:"-ly로 끝나는 부사는 more를 붙여 비교급을 만듭니다."},
+
+  {type:"a", tag:"고치기", hard:true, q:"어법상 <b>틀린</b> 문장은?",
+   opts:["The more people come than, the louder it gets.","The more people come, the louder it gets.","The fewer people come, the quieter it gets.","The sooner, the better.","The more, the merrier."], a:0,
+   exp:"두 칸 구문에 than을 넣을 수 없습니다."},
+
+  {type:"v", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">As you read more, you learn more.</span>",
+   opts:["The more you read, the more you learn.","The read more, the learn more.","You read more than you learn.","As more you read, more you learn.","The more you read than, the more you learn."], a:0,
+   exp:"As ~ more 문장은 the 비교급 두 칸으로 바꿔 쓸 수 있습니다."},
+
+  {type:"v", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">The harder you work, the more you earn.</span>",
+   opts:["As you work harder, you earn more.","You work hard and earn money.","You earn more than you work.","Work hard to earn more money.","If you work hard, you will not earn."], a:0,
+   exp:"the 비교급 두 칸은 As ~ 로 풀어 쓸 수 있습니다."},
+
+  {type:"v", tag:"바꿔 쓰기", q:"뜻이 같은 문장은?<br><span class=\"eng\">As the night gets darker, the stars look brighter.</span>",
+   opts:["The darker the night gets, the brighter the stars look.","The dark the night gets, the bright the stars look.","The night is darker than the stars.","Darker night, brighter stars are.","The night gets dark, the stars look bright."], a:0,
+   exp:"두 칸으로 옮기면 뜻이 또렷해집니다."},
+
+  {type:"v", tag:"바꿔 쓰기", sent:"공부를 더 많이 할수록, 더 많이 알게 된다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The more you study, the more you know.","The much you study, the much you know.","More you study, more you know.","You study more, you know more.","The more you study than, the more you know."], a:0,
+   exp:"두 칸 모두 the more입니다."},
+
+  {type:"v", tag:"바꿔 쓰기", sent:"공기가 맑을수록, 별이 더 잘 보인다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The cleaner the air is, the better we see the stars.","The clean the air is, the good we see the stars.","Cleaner the air is, better we see the stars.","The air is cleaner, we see the stars better.","The cleaner the air is than, the better we see the stars."], a:0,
+   exp:"clean → cleaner, well → better입니다."},
+
+  {type:"v", tag:"바꿔 쓰기", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">As we get older, we become wiser. = The older we get, ___ .</span>",
+   opts:["the wiser we become","we become wiser","wiser we become","the wise we become","the more wiser we become"], a:0,
+   exp:"뒷칸도 the + 비교급 + 주어 + 동사입니다."},
+
+  {type:"v", tag:"바꿔 쓰기", q:"빈칸에 알맞은 것은?<br><span class=\"eng\">The longer you wait, ___ .</span>",
+   opts:["the worse it gets","it gets worse","worse it gets","the bad it gets","the more worse it gets"], a:0,
+   exp:"bad의 비교급은 worse입니다."},
+
+  {type:"v", tag:"바꿔 쓰기", multi:true, q:"뜻이 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["The more you sleep, the better you feel. — 많이 잘수록 더 개운하다.","The busier he is, the happier he looks. — 바쁠수록 더 행복해 보인다.","The sooner, the better. — 늦을수록 좋다.","The more, the merrier. — 적을수록 즐겁다.","The higher you go, the warmer it gets. — 높이 갈수록 추워진다."], ans:[0,1],
+   exp:"뒤의 셋은 뜻이 뒤집혀 있습니다."},
+
+  {type:"v", tag:"바꿔 쓰기", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: When should I hand it in? B: ___</span>",
+   opts:["The sooner, the better.","The soon, the good.","Sooner the better.","The sooner than the better.","Soon is good."], a:0,
+   exp:"굳어진 말로 그대로 외워 둡니다."},
+
+  {type:"v", tag:"바꿔 쓰기", sent:"값이 비쌀수록, 사는 사람이 더 적다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The more expensive it is, the fewer people buy it.","The expensive it is, the few people buy it.","The expensiver it is, the fewer people buy it.","It is more expensive, fewer people buy it.","The more expensive it is than, the fewer people buy it."], a:0,
+   exp:"expensive는 긴 낱말이라 more expensive입니다."},
+
+  {type:"v", tag:"바꿔 쓰기", sent:"연습을 적게 할수록, 더 빨리 잊는다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The less you practice, the faster you forget.","The little you practice, the fast you forget.","Less you practice, faster you forget.","You practice less, you forget faster.","The less you practice than, the faster you forget."], a:0,
+   exp:"little → less, fast → faster입니다."},
+
+  {type:"v", tag:"바꿔 쓰기", q:"다음 중 두 문장의 뜻이 <b>다른</b> 것은?",
+   opts:["The more you rest, the more tired you get. / As you rest more, you feel better.","The more you read, the more you know. / As you read more, you know more.","The harder it rains, the wetter we get. / As it rains harder, we get wetter.","The sooner you leave, the earlier you arrive. / As you leave sooner, you arrive earlier.","The colder it is, the thicker we dress. / As it gets colder, we dress more thickly."], a:0,
+   exp:"‘쉴수록 더 피곤하다’와 ‘쉴수록 나아진다’는 뜻이 다릅니다."},
+
+  {type:"v", tag:"바꿔 쓰기", order:true, q:"조각을 차례대로 눌러 문장을 만드세요.",
+   parts:["The more water","you drink,","the healthier","you feel."],
+   ko:"물을 더 많이 마실수록, 더 건강해진다.",
+   exp:"water는 셀 수 없는 명사라 more water입니다."},
+
+  {type:"v", tag:"바꿔 쓰기", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">The ⓐ ___ the problem is, the ⓑ ___ time it takes to solve.</span>",
+   opts:["ⓐ more complex – ⓑ more","ⓐ complexer – ⓑ much","ⓐ more complex – ⓑ much","ⓐ complex – ⓑ more","ⓐ most complex – ⓑ most"], a:0,
+   exp:"complex는 긴 낱말이라 more complex, time 앞은 more입니다."}
+];
+
+/* ---------- LEVEL 4 : 점점 더 14 · 훨씬 강조 12 · 종합 14 ----------
+   비교급을 겹쳐 쓰는 표현을 모두 아우르기 */
+var L4 = [
+  {type:"n", tag:"점점 더", q:"<b>비교급 and 비교급</b>은 무슨 뜻일까요?",
+   opts:["점점 더 ~해지다","~할수록 더 ~하다","~만큼 ~하다","가장 ~하다","전혀 ~하지 않다"], a:0,
+   exp:"colder and colder = 점점 더 추워지는입니다."},
+
+  {type:"n", tag:"점점 더", q:"‘~할수록 더 ~하다’와 ‘점점 더 ~해지다’의 차이로 알맞은 것은?",
+   opts:["앞은 두 가지가 같이 변하고, 뒤는 한 가지가 계속 변한다","두 말의 뜻이 같다","앞은 지난 일, 뒤는 올 일이다","앞은 물음, 뒤는 대답이다","앞은 긴 문장, 뒤는 짧은 문장이다"], a:0,
+   exp:"the the는 <b>두 칸</b>, and는 <b>한 가지</b>가 계속 변하는 것입니다."},
+
+  {type:"n", tag:"점점 더", sent:"It is getting ___ and colder.", q:"‘점점 더 추워진다’가 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["colder","cold","coldest","more cold","coldly"], a:0, eng:true,
+   ko:"점점 더 추워지고 있다.",
+   exp:"비교급을 두 번 겹쳐 씁니다."},
+
+  {type:"n", tag:"점점 더", sent:"The story became ___ and more interesting.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["more","much","most","many","more of"], a:0, eng:true,
+   ko:"이야기가 점점 더 재미있어졌다.",
+   exp:"긴 낱말은 <b>more and more + 원급</b>으로 씁니다."},
+
+  {type:"n", tag:"점점 더", q:"긴 낱말로 ‘점점 더’를 만드는 모양은?",
+   opts:["more and more + 원급","원급 + and + 원급","최상급 and 최상급","the + 원급 and 원급","원급 + er and er"], a:0,
+   exp:"more and more beautiful처럼 씁니다."},
+
+  {type:"n", tag:"점점 더", multi:true, q:"‘점점 더’를 <b>바르게</b> 쓴 것을 모두 고르세요. (여러 개)",
+   opts:["hotter and hotter","more and more difficult","hot and hot","difficulter and difficulter","more hot and hot"], ans:[0,1],
+   exp:"짧은 낱말은 -er을 겹치고, 긴 낱말은 more and more를 씁니다."},
+
+  {type:"n", tag:"점점 더", q:"밑줄 친 말의 뜻으로 알맞은 것은?<br><span class=\"eng\">The days are getting <b>longer and longer</b>.</span>",
+   opts:["낮이 점점 더 길어진다","낮이 가장 길다","낮이 짧아진다","낮이 길었다","낮이 길어질 것이다"], a:0,
+   exp:"비교급을 겹치면 ‘점점 더’가 됩니다."},
+
+  {type:"n", tag:"점점 더", sent:"More and more people ___ bikes these days.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["ride","rides","riding","to ride","is riding"], a:0, eng:true,
+   ko:"요즘 점점 더 많은 사람들이 자전거를 탄다.",
+   exp:"people은 여럿이므로 ride입니다."},
+
+  {type:"n", tag:"점점 더", multi:true, q:"뜻이 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["warmer and warmer — 점점 더 따뜻한","more and more popular — 점점 더 인기 있는","faster and faster — 가장 빠른","better and better — 점점 더 나쁜","less and less — 점점 더 많은"], ans:[0,1],
+   exp:"better and better는 점점 더 좋은, less and less는 점점 더 적은입니다."},
+
+  {type:"n", tag:"점점 더", sent:"그는 점점 더 조용해졌다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["He became quieter and quieter.","He became quiet and quiet.","He became more quiet and quiet.","He became the quieter and quieter.","He became quietest and quietest."], a:0,
+   exp:"quiet의 비교급 quieter를 겹칩니다."},
+
+  {type:"n", tag:"점점 더", sent:"값이 점점 더 비싸지고 있다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["Prices are getting more and more expensive.","Prices are getting expensiver and expensiver.","Prices are getting expensive and expensive.","Prices are getting the more expensive.","Prices are getting most and most expensive."], a:0,
+   exp:"expensive는 긴 낱말이라 more and more를 앞에 둡니다."},
+
+  {type:"n", tag:"점점 더", q:"다음 중 ‘점점 더’가 <b>아닌</b> 것은?",
+   opts:["The more you eat, the heavier you get.","It is getting darker and darker.","She is becoming more and more famous.","The line is growing longer and longer.","Prices are rising higher and higher."], a:0,
+   exp:"첫 번째는 두 칸이 같이 움직이는 the 비교급 구문입니다."},
+
+  {type:"n", tag:"점점 더", sent:"The crowd grew ___ and bigger.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["bigger","big","biggest","more big","bigly"], a:0, eng:true,
+   ko:"사람들이 점점 더 많아졌다.",
+   exp:"big의 비교급 bigger를 겹칩니다."},
+
+  {type:"n", tag:"점점 더", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ ___ people are moving here, so the town is getting ⓑ ___ and busier.</span>",
+   opts:["ⓐ More and more – ⓑ busier","ⓐ Much and much – ⓑ busy","ⓐ More and more – ⓑ busy","ⓐ Many and many – ⓑ busier","ⓐ Most and most – ⓑ busiest"], a:0,
+   exp:"ⓐ는 명사 people 앞이라 More and more, ⓑ는 비교급 busier입니다."},
+
+  {type:"a", tag:"훨씬 강조", q:"비교급 앞에 붙여 <b>훨씬</b>이라는 뜻을 더하는 말은?",
+   opts:["much · far · even · a lot · still","very · so · too","the · a · an","more · most","not · never"], a:0,
+   exp:"much taller = 훨씬 더 큰입니다."},
+
+  {type:"a", tag:"훨씬 강조", sent:"This book is ___ more interesting than that one.", q:"‘훨씬’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["much","very","so","too","quite"], a:0, eng:true,
+   ko:"이 책이 저 책보다 훨씬 더 재미있다.",
+   exp:"비교급 앞에는 very가 아니라 <b>much</b>를 씁니다."},
+
+  {type:"a", tag:"훨씬 강조", q:"비교급 앞에 <b>쓸 수 없는</b> 말은?",
+   opts:["very","much","far","even","a lot"], a:0,
+   exp:"very는 원급을 꾸밉니다. very tall(○) · very taller(✕)"},
+
+  {type:"a", tag:"훨씬 강조", sent:"He runs ___ faster than I do.", q:"‘훨씬’이 되도록 빈칸에 알맞은 것을 고르세요.",
+   opts:["far","very","so","too","such"], a:0, eng:true,
+   ko:"그는 나보다 훨씬 더 빨리 달린다.",
+   exp:"far도 ‘훨씬’이라는 뜻으로 비교급을 꾸밉니다."},
+
+  {type:"a", tag:"훨씬 강조", multi:true, q:"비교급 앞에 쓸 수 있는 말을 모두 고르세요. (여러 개)",
+   opts:["even","a lot","very","so","quite a"], ans:[0,1],
+   exp:"even better · a lot better처럼 씁니다."},
+
+  {type:"a", tag:"훨씬 강조", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["This is very better than that.","She is so taller than me.","This is much better than that.","She is far taller than me.","He is even kinder than his brother."], ans:[0,1],
+   exp:"very와 so는 비교급을 꾸미지 못합니다."},
+
+  {type:"a", tag:"훨씬 강조", q:"밑줄 친 곳을 바르게 고친 것은?<br><span class=\"eng\">The second test was <b>very</b> harder than the first.</span>",
+   opts:["much","so","too","very much","quite"], a:0,
+   exp:"비교급 앞에는 much를 씁니다."},
+
+  {type:"a", tag:"훨씬 강조", q:"두 칸 구문에 ‘훨씬’을 넣어 바르게 쓴 것은?",
+   opts:["The more you practice, the much better you get.","The more you practice, the very better you get.","The more you practice, the so better you get.","The more you practice, the too better you get.","The more you practice, the better very you get."], a:0,
+   exp:"두 칸 안에서도 비교급 앞에는 much를 씁니다."},
+
+  {type:"a", tag:"훨씬 강조", q:"밑줄 친 말의 뜻으로 알맞은 것은?<br><span class=\"eng\">My room is <b>a lot</b> cleaner than yours.</span>",
+   opts:["훨씬","조금","전혀","아주 가끔","많은 양의"], a:0,
+   exp:"a lot은 비교급 앞에서 ‘훨씬’이라는 뜻입니다."},
+
+  {type:"a", tag:"훨씬 강조", sent:"오늘이 어제보다 훨씬 더 덥다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["Today is much hotter than yesterday.","Today is very hotter than yesterday.","Today is so hotter than yesterday.","Today is too hotter than yesterday.","Today is much hot than yesterday."], a:0,
+   exp:"much + 비교급 + than입니다."},
+
+  {type:"a", tag:"훨씬 강조", q:"다음 중 <b>어법상 옳은</b> 문장은?",
+   opts:["She is even smarter than her sister.","She is very smarter than her sister.","She is so smarter than her sister.","She is too smarter than her sister.","She is much smart than her sister."], a:0,
+   exp:"even도 ‘훨씬’이라는 뜻으로 비교급을 꾸밉니다."},
+
+  {type:"a", tag:"훨씬 강조", hard:true, multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["This road is much safer than that one.","It got a lot colder last night.","This road is very safer than that one.","It got so colder last night.","This road is more safer than that one."], ans:[0,1],
+   exp:"very·so는 비교급을 꾸미지 못하고, more safer처럼 겹쳐 쓰지도 않습니다."},
+
+  {type:"v", tag:"종합", q:"어법상 <b>옳은</b> 문장은?",
+   opts:["The more you listen, the more you understand.","The much you listen, the much you understand.","More you listen, more you understand.","The more you listen than, the more you understand.","You listen more, the more you understand."], a:0,
+   exp:"두 칸 모두 the + 비교급입니다."},
+
+  {type:"v", tag:"종합", q:"어법상 <b>틀린</b> 문장은?",
+   opts:["The hard you push, the far it goes.","The harder you push, the farther it goes.","It is getting hotter and hotter.","This is much better than that.","The sooner, the better."], a:0,
+   exp:"원급이 아니라 비교급 harder · farther를 써야 합니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["The fewer things you own, the freer you feel.","More and more students join the club.","The few things you own, the free you feel.","Much and much students join the club.","The fewer things you own than, the freer you feel."], ans:[0,1],
+   exp:"things는 셀 수 있어 fewer, students 앞은 More and more입니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"어법상 <b>틀린</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["She became famouser and famouser.","This bag is very lighter than mine.","She became more and more famous.","This bag is much lighter than mine.","The lighter the bag is, the easier it is to carry."], ans:[0,1],
+   exp:"famous는 more and more로, 비교급 앞에는 much로 씁니다."},
+
+  {type:"v", tag:"종합", sent:"연습할수록 더 잘하게 되고, 실력이 점점 더 는다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The more you practice, the better you get, and your skills grow better and better.","The much you practice, the good you get, and your skills grow good and good.","More you practice, better you get, and your skills grow more good.","The more you practice than, the better you get.","You practice more, you get better, skills grow the better."], a:0,
+   exp:"앞은 두 칸 구문, 뒤는 점점 더입니다."},
+
+  {type:"v", tag:"종합", q:"밑줄 친 두 표현의 차이로 알맞은 것은?<br><span class=\"eng\">The colder it gets, the thicker I dress. / It is getting colder and colder.</span>",
+   opts:["앞은 두 가지가 같이 변하고, 뒤는 한 가지가 계속 변한다","두 표현의 뜻이 같다","앞은 지난 일, 뒤는 올 일이다","앞은 물음, 뒤는 대답이다","둘 다 가장 춥다는 뜻이다"], a:0,
+   exp:"두 칸이면 the the, 한 가지가 계속 변하면 and입니다."},
+
+  {type:"v", tag:"종합", word:"far", q:"far의 비교급으로 알맞은 것은?",
+   opts:["farther (또는 further)","farer","more far","farthest","farly"], a:0,
+   exp:"far – <b>farther</b> – farthest. The harder you push, the <b>farther</b> it goes."},
+
+  {type:"v", tag:"종합", sent:"The team played ___ and better as the season went on.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["better","good","best","more good","well"], a:0, eng:true,
+   ko:"시즌이 갈수록 그 팀은 점점 더 잘했다.",
+   exp:"good·well의 비교급 better를 겹칩니다."},
+
+  {type:"v", tag:"종합", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: How many people should I invite? B: ___</span>",
+   opts:["The more, the merrier.","The many, the merry.","More the merrier.","The more than, the merrier.","Many is merry."], a:0,
+   exp:"‘많을수록 즐겁다’는 굳어진 말입니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"뜻이 바르게 짝지어진 것을 모두 고르세요. (여러 개)",
+   opts:["much better — 훨씬 더 좋은","better and better — 점점 더 좋은","much better — 가장 좋은","better and better — 좋은 것과 좋은 것","the better — 두 번째로 좋은"], ans:[0,1],
+   exp:"much는 훨씬, 비교급을 겹치면 점점 더입니다."},
+
+  {type:"v", tag:"종합", sent:"사람이 적을수록 공기가 훨씬 더 맑다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["The fewer people there are, the much cleaner the air is.","The less people there are, the very cleaner the air is.","The few people there are, the much clean the air is.","Fewer people there are, cleaner the air is.","The fewer people there are than, the cleaner the air is."], a:0,
+   exp:"people은 셀 수 있어 fewer, 비교급 앞 ‘훨씬’은 much입니다."},
+
+  {type:"v", tag:"종합", q:"다음 중 ‘~할수록 더 ~하다’ 구문이 <b>아닌</b> 것은?",
+   opts:["She is much taller than her sister.","The taller you are, the farther you can reach.","The more you save, the richer you become.","The louder it is, the harder it is to sleep.","The older the tree is, the thicker it grows."], a:0,
+   exp:"첫 번째는 비교급 + than 문장입니다."},
+
+  {type:"v", tag:"종합", sent:"날이 갈수록 그는 점점 더 건강해졌다.", q:"영어로 바르게 옮긴 것은?",
+   opts:["As days went by, he got healthier and healthier.","As days went by, he got healthy and healthy.","As days went by, he got the healthier.","As days went by, he got very healthier.","As days went by, he got most and most healthy."], a:0,
+   exp:"비교급 healthier를 겹쳐 ‘점점 더’를 만듭니다."},
+
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">The ⓐ ___ you wait, the ⓑ ___ the line gets, and it is ⓒ ___ worse on weekends.</span>",
+   opts:["ⓐ longer – ⓑ longer – ⓒ much","ⓐ long – ⓑ long – ⓒ very","ⓐ longer – ⓑ longer – ⓒ very","ⓐ longest – ⓑ longest – ⓒ much","ⓐ longer – ⓑ long – ⓒ so"], a:0,
+   exp:"두 칸 모두 비교급, 비교급 앞의 ‘훨씬’은 much입니다."}
+];
+
+var LEVELS = {
+  1:{name:"기본1 · ~할수록 더 ~하다", desc:"한글로 이해 24 · 쉬운 영어 16 · 평범한 문장을 두 칸으로 바꾸는 연습 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · 두 칸 만들기", desc:"the + 비교급 두 칸 직접 만들기 · the 빠뜨리기와 than 넣기 함정 · 우리말을 영어로", qs:L2, typeLabels:{n:"두 칸 만들기",a:"함정 가리기",v:"우리말 → 영어"}},
+  3:{name:"기본3 · 중3 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · As ~ 로 바꿔 쓰기 · fewer와 less 가리기", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"바꿔 쓰기"}},
+  4:{name:"기본4 · 비교급 겹쳐 쓰기 모두", desc:"비교급 and 비교급(점점 더) · much·far·even(훨씬) · 두 칸 구문과 함께 마무리", qs:L4, typeLabels:{n:"점점 더",a:"훨씬 강조",v:"종합"}}
+};
+
+/* ===================== 개념 화면 ===================== */
+function figBars(){
+  var s = '<svg class="fig" viewBox="0 0 560 206" role="img" aria-label="한쪽이 올라가면 다른 쪽도 같이 올라가는 막대 그림">';
+  var h = [36, 72, 108];
+  var left = [52, 128, 204], right = [356, 432, 508];
+  s += '<text x="128" y="26" text-anchor="middle" font-size="18" font-weight="700" fill="var(--rn)">많이 읽을수록</text>';
+  for(var i=0;i<3;i++){
+    s += '<rect x="'+(left[i]-26)+'" y="'+(168-h[i])+'" width="52" height="'+h[i]+'" rx="8" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>';
+  }
+  s += '<text x="128" y="196" text-anchor="middle" font-size="16" fill="var(--muted)">읽는 양</text>';
+  s += '<text x="286" y="112" text-anchor="middle" font-size="28" fill="var(--muted)">→</text>';
+  s += '<text x="432" y="26" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ra)">더 똑똑해진다</text>';
+  for(var j=0;j<3;j++){
+    s += '<rect x="'+(right[j]-26)+'" y="'+(168-h[j])+'" width="52" height="'+h[j]+'" rx="8" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>';
+  }
+  s += '<text x="432" y="196" text-anchor="middle" font-size="16" fill="var(--muted)">아는 양</text>';
+  return s + '</svg>';
+}
+
+function figSlot(){
+  return '<svg class="fig" viewBox="0 0 560 178" role="img" aria-label="앞칸과 뒷칸 두 칸으로 된 틀">'+
+    '<rect x="10" y="12" width="256" height="70" rx="14" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
+    '<text x="138" y="40" text-anchor="middle" font-size="19" font-weight="700" fill="var(--rn)">앞칸 · 조건</text>'+
+    '<text x="138" y="68" text-anchor="middle" font-size="20" fill="var(--ink, #15201D)">~할수록</text>'+
+    '<text x="280" y="58" text-anchor="middle" font-size="26" fill="var(--muted)">,</text>'+
+    '<rect x="294" y="12" width="256" height="70" rx="14" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
+    '<text x="422" y="40" text-anchor="middle" font-size="19" font-weight="700" fill="var(--ra)">뒷칸 · 결과</text>'+
+    '<text x="422" y="68" text-anchor="middle" font-size="20" fill="var(--ink, #15201D)">더 ~하다</text>'+
+    '<text x="138" y="120" text-anchor="middle" font-size="20" fill="var(--rn)" font-family="Newsreader, serif">The more you read,</text>'+
+    '<text x="422" y="120" text-anchor="middle" font-size="20" fill="var(--ra)" font-family="Newsreader, serif">the smarter you become.</text>'+
+    '<text x="280" y="158" text-anchor="middle" font-size="17" fill="var(--muted)">두 칸 모두 the + 비교급 + 주어 + 동사</text>'+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · ~할수록 더 ~하다</h2>'+
+  '<p class="lead">한쪽이 커지면 다른 쪽도 같이 커지는 말입니다. 먼저 우리말로, <b>평범한 문장을 두 칸으로 바꾸는 연습</b>부터 합니다.</p>'+
+  figBars()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>① 두 칸짜리 틀</span>'+
+    figSlot()+
+    '<p>앞칸은 <b>조건</b>(~할수록), 뒷칸은 <b>결과</b>(더 ~하다)입니다. 두 칸을 쉼표로 잇습니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>② 평범한 문장을 칸에 넣어 보기</span>'+
+    '<div class="ex">너는 책을 많이 읽는다.<span class="k">→ 앞칸 : 네가 책을 <b>더 많이 읽을수록</b></span></div>'+
+    '<div class="ex">너는 똑똑해진다.<span class="k">→ 뒷칸 : <b>더</b> 똑똑해진다</span></div>'+
+    '<div class="ex">네가 책을 더 많이 읽을수록, 더 똑똑해진다.<span class="k">두 칸을 합친 것</span></div>'+
+    '<p>바꾸는 법은 둘뿐입니다. <b>‘더’를 넣고</b>, 앞칸은 끝을 <b>‘~할수록’</b>으로 바꿉니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>③ 영어도 똑같이 두 칸</span>'+
+    '<div class="swap"><span>You read many books.</span><span class="ar">→</span><span class="good">The more books you read</span></div>'+
+    '<div class="swap"><span>You become smart.</span><span class="ar">→</span><span class="good">the smarter you become</span></div>'+
+    '<p>두 칸 모두 <b>the + 비교급</b>으로 시작하고, 그 뒤에 <b>주어 + 동사</b>가 따라옵니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>앞칸은 <b>~할수록</b>, 뒷칸은 <b>더 ~하다</b>. 영어로는 두 칸 모두 <b>the + 비교급</b>입니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · 두 칸 만들기</h2>'+
+  '<p class="lead">이제 직접 만들어 봅니다. 평범한 문장 둘을 두 칸에 끼워 넣기만 하면 됩니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>만드는 차례</span>'+
+    '<div class="swap"><span>① 두 낱말을 비교급으로</span><span class="ar">→</span><span class="good">much → more · healthy → healthier</span></div>'+
+    '<div class="swap"><span>② 앞에 the를 붙여</span><span class="ar">→</span><span class="good">the more · the healthier</span></div>'+
+    '<div class="swap"><span>③ 주어와 동사를 뒤에</span><span class="ar">→</span><span class="good">The more you walk, the healthier you get.</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>명사는 끌고 나옵니다</span>'+
+    '<div class="ex">You read many <u class="hl">books</u>.<span class="k">→ The more <b>books</b> you read</span></div>'+
+    '<div class="ex">You spend much <u class="hl">money</u>.<span class="k">→ The more <b>money</b> you spend</span></div>'+
+    '<p>more가 꾸미는 명사는 <b>통째로</b> 앞으로 따라 나옵니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>자주 빠지는 함정 넷</span>'+
+    '<div class="swap"><span>Louder you speak, ~</span><span class="ar">✕</span><span class="good">The louder you speak, ~</span></div>'+
+    '<div class="swap"><span>The fast you run, ~</span><span class="ar">✕</span><span class="good">The faster you run, ~</span></div>'+
+    '<div class="swap"><span>~, you get better.</span><span class="ar">✕</span><span class="good">~, the better you get.</span></div>'+
+    '<div class="swap"><span>The more you eat than, ~</span><span class="ar">✕</span><span class="good">The more you eat, ~</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">외우는 한 줄</span><b>the 두 번 · 비교급 두 번 · than은 없다.</b></div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 중3 학교 시험형</h2>'+
+  '<p class="lead">시험에 나오는 자리는 정해져 있습니다. 비교급 모양, 두 칸 갖추기, 그리고 As ~ 로 풀어 쓰기입니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>시험에서 자주 묻는 곳</span>'+
+    '<div class="swap"><span>The much you practice, ~</span><span class="ar">✕</span><span class="good">The more you practice, ~</span></div>'+
+    '<div class="swap"><span>The difficulter the test is, ~</span><span class="ar">✕</span><span class="good">The more difficult the test is, ~</span></div>'+
+    '<div class="swap"><span>~, you become wiser.</span><span class="ar">✕</span><span class="good">~, the wiser you become.</span></div>'+
+    '<div class="swap"><span>~, the less errors you make.</span><span class="ar">✕</span><span class="good">~, the fewer errors you make.</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>fewer와 less 가리기</span>'+
+    '<div class="swap"><span>셀 수 있는 것</span><span class="ar">→</span><span class="good">fewer errors · fewer people</span></div>'+
+    '<div class="swap"><span>셀 수 없는 것</span><span class="ar">→</span><span class="good">less time · less water</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>As ~ 로 바꿔 쓰기</span>'+
+    '<div class="swap"><span>As you read more, you learn more.</span><span class="ar">=</span><span class="good">The more you read, the more you learn.</span></div>'+
+    '<p>굳어진 말도 그대로 외워 둡니다. <b>The sooner, the better.</b>(빠를수록 좋다) · <b>The more, the merrier.</b>(많을수록 즐겁다)</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>① 비교급이 맞는가 ② 두 칸에 the가 다 있는가 ③ fewer인가 less인가 — 이 세 곳입니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 비교급 겹쳐 쓰기 모두</h2>'+
+  '<p class="lead">마지막입니다. 비교급을 겹쳐 쓰는 다른 식구들까지 한자리에 놓습니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>비교급 and 비교급 — 점점 더</span>'+
+    '<div class="ex">It is getting <u class="hl">colder and colder</u>.<span class="k">점점 더 추워진다</span></div>'+
+    '<div class="ex">She became <u class="hl">more and more</u> famous.<span class="k">긴 낱말은 more and more + 원급</span></div>'+
+    '<div class="swap"><span>두 가지가 같이 변하면</span><span class="ar">→</span><span class="good">the 비교급, the 비교급</span></div>'+
+    '<div class="swap"><span>한 가지가 계속 변하면</span><span class="ar">→</span><span class="good">비교급 and 비교급</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>훨씬 — much · far · even · a lot · still</span>'+
+    '<div class="ex">This is <u class="hl a">much</u> better than that.<span class="k">훨씬 더 좋다</span></div>'+
+    '<p class="warn">very taller(✕) · so taller(✕) — <b>very와 so는 비교급을 꾸미지 못합니다.</b></p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>한자리에 놓고 보기</span>'+
+    '<div class="swap"><span>The colder it gets, the thicker I dress.</span><span class="ar">=</span><span class="good">추울수록 더 두껍게 입는다</span></div>'+
+    '<div class="swap"><span>It is getting colder and colder.</span><span class="ar">=</span><span class="good">점점 더 추워진다</span></div>'+
+    '<div class="swap"><span>Today is much colder than yesterday.</span><span class="ar">=</span><span class="good">어제보다 훨씬 더 춥다</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마무리 한 줄</span>두 칸이면 <b>the the</b>, 계속 변하면 <b>and</b>, 훨씬이면 <b>much</b>입니다.</div>';
+}
+
+var LVCHEER = {
+  1:"평범한 문장을 두 칸으로 바꿀 수 있게 되었어요. 2단계로 가 봅니다.",
+  2:"두 칸을 직접 만들 수 있게 되었습니다. 3단계는 학교 시험형입니다.",
+  3:"시험에 나오는 자리를 손에 익혔어요. 마지막 단계만 남았습니다.",
+  4:"비교급 겹쳐 쓰기를 모두 끝냈습니다. 이제 the 비교급은 자신 있습니다!"
+};
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_themore_v1", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function unent(s){return String(s).replace(/&nbsp;/g," ").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,"&");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+drawCount(L)+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
+
+/* ===================== 문제 ===================== */
+/* 문제 뽑기: 종류(n·a·v) 비율을 지키고, 보스 문제는 하나만 그 종류의 맨 끝에 둡니다 */
+function drawCount(L){ return Math.min(20, L.qs.length); }
+function drawList(L){
+  var qs=L.qs, N=drawCount(L), T=["n","a","v"];
+  if(qs.length<=N) return qs.map(function(_,i){return i;});
+  var by={}, boss=[], cnt={}, sum=0;
+  T.forEach(function(t){ by[t]=[]; cnt[t]=0; });
+  qs.forEach(function(q,i){ if(q.tag==="보스 문제") boss.push(i); else if(by[q.type]) by[q.type].push(i); });
+  T.forEach(function(t){
+    var p=qs.filter(function(q){ return q.type===t; }).length;
+    cnt[t]=Math.round(p*N/qs.length); sum+=cnt[t];
+  });
+  while(sum>N){ var big=T.slice().sort(function(x,y){return cnt[y]-cnt[x];})[0]; cnt[big]--; sum--; }
+  while(sum<N){ var lot=T.slice().sort(function(x,y){return by[y].length-cnt[y]-(by[x].length-cnt[x]);})[0]; cnt[lot]++; sum++; }
+  var b = boss.length ? boss[Math.floor(Math.random()*boss.length)] : -1;
+  if(b>=0) cnt[qs[b].type]--;
+  var out=[];
+  T.forEach(function(t){
+    var pool=by[t].slice();
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=pool[i]; pool[i]=pool[j]; pool[j]=x; }
+    var got=pool.slice(0,Math.max(0,cnt[t])).sort(function(x,y){return x-y;});
+    if(b>=0 && qs[b].type===t) got.push(b);
+    out=out.concat(got);
+  });
+  return out;
+}
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=drawList(L);
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  clearProg();
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || "";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
+
+  var h="";
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.order){
+    h+='<div class="orderbox">'+
+       '<div class="slotline" id="orderPick" aria-label="고른 차례"></div>'+
+       '<div class="chips" id="orderChips"></div>'+
+       '<div class="multibar"><span class="multihint" id="orderNote">조각을 차례대로 눌러 문장을 만드세요.</span>'+
+       '<button class="btn ghost small" id="orderUndo">되돌리기</button>'+
+       '<button class="btn" id="orderBtn">확인</button></div></div>';
+    h+='<div class="opts hide">';
+  } else if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
+  saveProg();
+  S.answered=false;S.picked=-1;
+
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
+  });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
+  if(q.order) setupOrder(q);
+  show("quiz");
+}
+
+function buildFull(q){
+  if(q.order) return {en:esc(q.parts.join(" ")), kr:q.ko||""};
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
+
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
+
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
+
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+/* ---------- 조각을 차례대로 눌러 문장 만들기 ---------- */
+function setupOrder(q){
+  S.orderPicked=[];
+  var bag=q.parts.map(function(t,i){ return {t:t,i:i}; });
+  for(var k=bag.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)); var tmp=bag[k];bag[k]=bag[r];bag[r]=tmp; }
+  var chips=$("orderChips");
+  chips.innerHTML = bag.map(function(b){
+    return '<button class="chip-w" data-i="'+b.i+'">'+esc(b.t)+'</button>';
+  }).join("");
+  Array.prototype.forEach.call(chips.querySelectorAll(".chip-w"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered||this.disabled) return;
+      this.disabled=true; this.classList.add("used");
+      S.orderPicked.push(+this.dataset.i);
+      drawOrder(q);
+    });
+  });
+  $("orderUndo").addEventListener("click",function(){
+    if(S.answered||!S.orderPicked.length) return;
+    var last=S.orderPicked.pop();
+    var b=$("orderChips").querySelector('.chip-w[data-i="'+last+'"]');
+    if(b){ b.disabled=false; b.classList.remove("used"); }
+    drawOrder(q);
+  });
+  $("orderBtn").addEventListener("click",function(){ answerOrder(); });
+  drawOrder(q);
+}
+
+function drawOrder(q){
+  var line=$("orderPick");
+  line.innerHTML = S.orderPicked.length
+    ? S.orderPicked.map(function(i){ return '<span class="slot">'+esc(q.parts[i])+'</span>'; }).join("")
+    : '<span class="slot empty">여기에 차례대로 쌓입니다</span>';
+  var note=$("orderNote");
+  if(note) note.textContent = S.orderPicked.length===q.parts.length
+    ? "다 놓았습니다. 확인을 누르세요."
+    : "차례대로 눌러 주세요 · "+S.orderPicked.length+" / "+q.parts.length;
+}
+
+function answerOrder(){
+  if(S.answered) return;
+  var q=curQ();
+  if(S.orderPicked.length!==q.parts.length){ $("orderNote").textContent="조각을 모두 놓아 주세요."; return; }
+  var ok = S.orderPicked.every(function(v,i){ return v===i; });
+  S.answered=true;
+  Array.prototype.forEach.call($("orderChips").querySelectorAll(".chip-w"),function(b){ b.disabled=true; });
+  $("orderBtn").disabled=true;
+  var ub=$("orderUndo"); if(ub) ub.remove();
+  $("orderPick").className = "slotline " + (ok?"ok":"no");
+  $("orderNote").textContent = ok ? "차례가 모두 맞습니다." : "차례가 맞지 않아요.";
+  var right = q.parts.join(" ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">바른 차례 · '+esc(right)+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
+  }else{
+    if(!ok) S.retryWrong.push(S.list[S.i]);
+  }
+
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
+function next(){
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
+}
+
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+function praise(p){
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  clearProg();
+  var L=LEVELS[S.level], total=drawCount(L);
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var tl=L.typeLabels||{};
+  var keys=Object.keys(tl).filter(function(k){ return S.byType[k] && S.byType[k][1]>0; });
+  var bd;
+  if(keys.length<2){
+    bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+       '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>'+
+       '<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  }else{
+    bd=keys.map(function(k){
+      var cls = k==="v" ? "v3" : k;
+      return '<div class="bd '+cls+'"><div class="t">'+esc(tl[k])+'</div><div class="v">'+S.byType[k][0]+'/'+S.byType[k][1]+'</div></div>';
+    }).join('');
+  }
+  $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
+  $("rbreak").innerHTML=bd;
+
+  var isAdmin = (S.name==="꾸메땅");
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null && !isAdmin){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.order ? (q.ko || q.parts.join(" "))
+                : q.word ? q.word
+                : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,""));
+      shown = unent(shown).replace(/\s+/g," ").trim();
+      w+='<div class="wrong"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.order ? q.parts.join(" ")
+            : q.write ? q.ans
+            : q.multi ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
+  show("result");
+  openPraise(S.score, total, S.correct, S.wrong.length);
+}
+
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
+}
+
+function renderRetryResult(){
+  clearProg();
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  if(!still){ S.finished[S.level]=true; S.active=0; }
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").style.gridTemplateColumns = "repeat(3,1fr)";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+}
+
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+  }else{
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
+  }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
+}
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
+  show("rank");
+}
+
+/* ===================== 시작 배선 ===================== */
+function goHome(){
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
+}
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
+function saveProg(){
+  try{
+    if(!S.level || !S.list || !S.list.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  var p = loadProg();
+  if(!p) return;
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
+}
+function progBanner(){
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
+}
+
+refreshStart();
+
+</script>
+<script src="/kkt.js"></script>
+</body></html>

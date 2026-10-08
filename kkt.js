@@ -115,6 +115,7 @@
     "freq": familyA("빈도부사 뽀개기"),
     "participle": familyA("분사 뽀개기"),
     "subjunctive": familyA("가정법 뽀개기"),
+    "themore": familyA("THE 비교급 뽀개기"),
     "verbuse": familyA("일반동사 문장 활용"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
