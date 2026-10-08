@@ -42,9 +42,16 @@
         if (score === null) return null;
         var wrongs = $$("#rwrong .wrong").map(function (w) {
           var a = $$(".a", w);
+          /* 문제마다 붙은 태그(세부 영역)를 함께 보냅니다.
+             시트 쪽을 고치지 않아도 되게 문제 글 앞에도 [태그] 로 넣어 둡니다. */
+          var tag = (w.getAttribute && w.getAttribute("data-tag")) || "";
+          var kind = (w.getAttribute && w.getAttribute("data-kind")) || "";
+          var body = tx(".q", w);
           return {
             no: tx(".no", w),
-            q: tx(".q", w),
+            tag: tag,
+            kind: kind,
+            q: tag ? "[" + tag + "] " + body : body,
             mine: "",
             ans: a.length ? tx("b", a[a.length - 1]) : ""
           };
