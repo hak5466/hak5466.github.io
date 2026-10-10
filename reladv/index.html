@@ -552,7 +552,7 @@ var L2 = [
 
   {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"<b>when</b>을 쓸 수 있는 앞말을 모두 고르세요. (여러 개)",
    opts:["the day","the year","the time","the park","the way"], ans:[0,1,2],
-   exp:"때를 뜻하는 앞말에 <b>when</b>을 씁니다. the park는 where, the way는 how 쪽입니다."},
+   exp:"때를 뜻하는 앞말에 <b>when</b>을 씁니다. the park는 장소라 where, the way는 방법이라 when을 쓰지 않습니다."},
 
   {type:"a", tag:"모두 고르기", multi:true, q:"관계부사를 바르게 짝지은 것을 모두 고르세요. (여러 개)",
    opts:["장소 — where","때 — when","까닭 — why","방법 — where","장소 — why"], ans:[0,1,2],
@@ -562,10 +562,10 @@ var L2 = [
    opts:["the house ___ I live","the day ___ she came","the reason ___ he cried","the man ___ helped me","the book ___ I bought"], ans:[0,1,2],
    exp:"앞의 셋은 뒤가 완전하므로 관계부사(where · when · why)입니다. 뒤의 둘은 주어나 목적어가 빠져 관계대명사 자리입니다."},
 
-  {type:"v", tag:"함정", sent:"This is the way ___ he studies.", q:"빈칸에 들어갈 수 <b>없는</b> 것은?", eng:true,
-   opts:["how","in which","that","( 빈칸 없이 바로 )","-"], a:0,
+  {type:"v", tag:"함정", sent:"This is the way ___ he studies.", q:"빈칸에 들어갈 수 <b>있는</b> 것을 모두 고르세요.", eng:true,
+   opts:["in which","that","아무것도 넣지 않기","how","where"], multi:true, ans:[0,1,2],
    ko:"이것이 그가 공부하는 방법이다.",
-   exp:"<b>the way how</b>는 쓰지 않습니다. the way / the way in which / the way that / how 가운데 하나만 씁니다.", hard:true},
+   exp:"the way 뒤에는 <b>in which</b>나 <b>that</b>을 쓰거나 아무것도 쓰지 않습니다. <b>the way how</b>는 함께 쓰지 않고, where는 장소에 씁니다.", hard:true},
 
   {type:"v", tag:"함정", sent:"I visited the town ___ is famous for apples.", q:"빈칸에 알맞은 것은?", eng:true,
    opts:["which","where","when","why","how"], a:0,
@@ -844,9 +844,9 @@ var X1 = [
    opts:["for that reason","the reason","he left","at night","by bus"], a:0,
    exp:"why는 <b>for that reason</b>을 한 낱말로 줄인 것입니다."},
 
-  {type:"a", tag:"쉬운 영어", eng:true, q:"앞말이 <b>방법(the way)</b>일 때 쓰는 관계부사는?",
+  {type:"a", tag:"쉬운 영어", eng:true, q:"<b>방법</b>을 말할 때 쓰는 관계부사는?",
    opts:["how","why","when","where","what"], a:0,
-   exp:"방법 → <b>how</b>. 다만 the way와 how는 함께 쓰지 않습니다."},
+   exp:"방법 → <b>how</b>. 다만 the way와 how는 함께 쓰지 않습니다. 둘 가운데 하나만 씁니다."},
 
   {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"관계부사를 모두 고르세요. (여러 개)",
    opts:["where","when","why","who","which"], ans:[0,1,2],
@@ -1224,7 +1224,8 @@ function learn2(){
     '<div class="ex">the place · the city · the house &#8594; <u class="hl">where</u><span class="k">장소</span></div>'+
     '<div class="ex">the day · the time · the year &#8594; <u class="hl">when</u><span class="k">때</span></div>'+
     '<div class="ex">the reason &#8594; <u class="hl">why</u><span class="k">까닭</span></div>'+
-    '<div class="ex">the way &#8594; <u class="hl">how</u><span class="k">방법</span></div>'+
+    '<div class="ex">방법을 말할 때 &#8594; <u class="hl">how</u><span class="k">the way와 함께 쓰지 않습니다</span></div>'+
+    '<p>앞의 셋은 앞말이 그대로 남지만, <b>방법</b>만 다릅니다. the way와 how는 뜻이 겹쳐 <b>하나만</b> 씁니다.</p>'+
   '</div>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-a"></i>관계대명사와 가르는 법</span>'+

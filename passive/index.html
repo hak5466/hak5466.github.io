@@ -1,0 +1,2004 @@
+<!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="꾸메땅">
+<meta name="theme-color" content="#0F6E5C">
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script src="/theme.js"></script>
+<title>꾸메땅 영문법 레벨Up · 수동태 뽀개기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Black+Han+Sans&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --card:#FFFFFF;
+  --ink:#15201D;
+  --muted:#54615D;
+  --line:#E1E5DD;
+  --line-strong:#C9D1C8;
+  --accent:#0F6E5C;
+  --accent-soft:#E1F0EA;
+  --mark:#F3D74B;
+  --ok:#1C7A5B;
+  --ok-soft:#E3F1EA;
+  --no:#BC443A;
+  --no-soft:#FAE6E3;
+  --rn:#0F6E5C; --rn-soft:#E1F0EA;
+  --ra:#8C6410; --ra-soft:#F7ECD2;
+  --rv:#3B5C99; --rv-soft:#E4EBF7;
+  --shadow:0 1px 2px rgba(21,32,29,.05), 0 12px 28px -18px rgba(21,32,29,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+    --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+    --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+    --rn:#5AC6A8; --rn-soft:#15302A;
+    --ra:#E0BC63; --ra-soft:#332B14;
+    --rv:#93B4EC; --rv-soft:#1B2740;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101614; --card:#19201D; --ink:#E8EEE9; --muted:#9DABA6;
+  --line:#28322E; --line-strong:#3A4641; --accent:#5AC6A8; --accent-soft:#15302A;
+  --mark:#E3CB4C; --ok:#5CC59C; --ok-soft:#14302A; --no:#EA7C70; --no-soft:#331F1D;
+  --rn:#5AC6A8; --rn-soft:#15302A;
+  --ra:#E0BC63; --ra-soft:#332B14;
+  --rv:#93B4EC; --rv-soft:#1B2740;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:19px;line-height:1.62;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:720px;margin:0 auto;padding:24px 14px 72px;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){ .wrap{padding:28px 18px 72px} }
+h1,h2,h3{margin:0;text-wrap:balance}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+h1{word-break:keep-all;font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(27px,7vw,39px);letter-spacing:-.02em;line-height:1.08}
+h1 .mark{background:var(--mark);color:#15201D;padding:0 .12em;border-radius:5px}
+h1 .pre{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:.44em;line-height:1.3;letter-spacing:-.01em;color:var(--accent);margin-bottom:7px}
+h1 .up{white-space:nowrap}
+h1 .up em{font-style:normal;font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;color:var(--accent);letter-spacing:-.01em}
+h1 .brand{font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;display:inline-block;white-space:nowrap;font-size:1.3em;font-weight:400;letter-spacing:-.02em;background:var(--mark);color:#15201D;padding:0 .13em .04em;border-radius:7px;transform:rotate(-2deg);box-shadow:0 7px 0 -4px rgba(15,110,92,.2)}
+.sub{color:var(--muted);font-size:16.5px}
+
+.rail{display:flex;gap:10px;align-items:flex-end}
+.seg{display:flex;flex-direction:column;gap:7px;flex:1}
+.seg .lab{font-size:17px;letter-spacing:.02em;color:var(--muted);font-weight:700}
+.seg .bar{height:11px;border-radius:99px;background:var(--line);overflow:hidden}
+.seg .fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.pct{font-style:normal;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent);margin-left:5px;font-variant-numeric:tabular-nums}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+@media (min-width:600px){ .card{padding:24px} }
+h2{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em}
+h3{font-size:17.5px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);line-height:1.7}
+.foot{font-size:15px;color:var(--muted);text-align:center;line-height:1.7;margin:0}
+.hide{display:none !important}
+/* ---------- 칭찬 팝업 ---------- */
+.modal{position:fixed;inset:0;background:rgba(21,32,29,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .18s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);max-width:400px;width:100%;padding:26px 22px 22px;text-align:center;display:flex;flex-direction:column;gap:8px;animation:pop .24s ease both}
+.modal .lv{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.modal .sc{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(56px,16vw,72px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--accent)}
+.modal .sc small{font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;color:var(--muted);font-weight:600;margin-left:5px}
+.modal .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(23px,6.4vw,28px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.modal .s{font-size:16.5px;color:var(--muted);line-height:1.6}
+.modal .tally{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.modal .tally span{font-size:14px;font-weight:800;padding:4px 12px;border-radius:99px;border:1px solid}
+.modal .t-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.modal .t-no{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.modal .tally .note-line{flex:0 0 100%;border:0;background:none;color:var(--muted);font-size:14.5px;font-weight:600;padding:2px 0 0}
+.modal .btn{margin-top:10px}
+
+
+.namebar{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.namebar .h{font-size:17px;font-weight:700}
+.namebar .row{display:flex;gap:8px}
+.namebar .note{font-size:16px;color:var(--muted);line-height:1.55}
+input[type=text]{flex:1;min-width:0;font-family:"IBM Plex Sans KR",sans-serif;font-size:19px;padding:11px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{font-family:"IBM Plex Sans KR",sans-serif;font-size:18px;font-weight:700;padding:12px 20px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;transition:opacity .15s ease,transform .08s ease}
+.btn:hover{opacity:.88}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{font-size:16px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions .btn{flex:1;min-width:140px;text-align:center;white-space:normal;word-break:keep-all}
+.nav{display:flex;justify-content:flex-end}
+
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvcard{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.lvcard:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard:active{transform:translateY(1px)}
+.lvcard .rank{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;width:46px;height:46px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+.lvcard .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.lvcard .name{font-weight:700;font-size:19.5px}
+.lvcard .name span{font-weight:500;color:var(--muted);font-size:16px}
+.lvcard .desc{font-size:16px;color:var(--muted);line-height:1.5}
+.lvcard .best{flex:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:var(--ok);font-variant-numeric:tabular-nums;text-align:right}
+.lvcard .best em{display:block;font-style:normal;font-size:13px;color:var(--muted);font-weight:600}
+.lvcard:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.lvcard:disabled:hover{border-color:var(--line);background:var(--paper)}
+.lvcard:disabled .rank{background:var(--line);color:var(--muted)}
+.lvcard.resume{border-color:var(--accent);background:var(--accent-soft)}
+.lvcard .best.lock{color:var(--muted);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lvcard .best.go{color:var(--accent);font-family:"IBM Plex Sans KR",sans-serif;font-size:15px;font-weight:700}
+.lockmsg{font-size:16px;color:var(--no);font-weight:700;line-height:1.55;margin:0}
+
+/* ---------- 개념 화면 ---------- */
+.concept{display:flex;flex-direction:column;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:560px){ .trio{grid-template-columns:1fr} }
+.role{border:1.5px solid;border-radius:12px;padding:13px 12px;display:flex;flex-direction:column;gap:3px}
+.role .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:21px;line-height:1.2}
+.role .m{font-size:15px;font-weight:700}
+.role .e{font-family:"Newsreader",serif;font-size:18px;color:var(--ink);line-height:1.4;margin-top:3px}
+.r-n{border-color:var(--rn);background:var(--rn-soft)} .r-n .t,.r-n .m{color:var(--rn)}
+.r-a{border-color:var(--ra);background:var(--ra-soft)} .r-a .t,.r-a .m{color:var(--ra)}
+.r-v{border-color:var(--rv);background:var(--rv-soft)} .r-v .t,.r-v .m{color:var(--rv)}
+
+.tobox{align-self:center;font-family:"Newsreader",serif;font-weight:500;font-size:27px;background:var(--ink);color:var(--paper);border-radius:99px;padding:7px 24px}
+svg.fig{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+
+.block{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;background:var(--paper)}
+.block .bh{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700}
+.block .bh .dot{width:12px;height:12px;border-radius:99px;flex:none}
+.d-n{background:var(--rn)} .d-a{background:var(--ra)} .d-v{background:var(--rv)}
+.block p{margin:0;font-size:17px;color:var(--muted);line-height:1.6}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.ex .k{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-size:15.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.ex b{font-weight:500}
+u.hl{text-decoration:none;padding:0 .12em;border-radius:4px;font-weight:500;background:var(--rn-soft);color:var(--rn);box-shadow:inset 0 -2px 0 var(--rn)}
+u.hl.a{background:var(--ra-soft);color:var(--ra);box-shadow:inset 0 -2px 0 var(--ra)}
+u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(--rv)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:"Newsreader",serif;font-size:19px}
+.swap .ar{font-family:"IBM Plex Sans KR",sans-serif;font-weight:800;color:var(--muted);font-size:16px}
+.swap .bad{color:var(--no);text-decoration:line-through}
+.swap .good{color:var(--ok);font-weight:500}
+@media (max-width:520px){ .swap{grid-template-columns:1fr;gap:4px} .swap .ar{transform:rotate(90deg);width:1em} }
+.tip{background:var(--accent-soft);border-radius:11px;padding:14px 15px;font-size:17.5px;line-height:1.6}
+.tip .h{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+
+/* ---------- 문제 ---------- */
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;color:var(--accent);font-variant-numeric:tabular-nums}
+.chip{font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent}
+.chip.plain{background:transparent;color:var(--muted);border-color:var(--line)}
+.chip.n{background:var(--rn-soft);color:var(--rn)}
+.chip.a{background:var(--ra-soft);color:var(--ra)}
+.chip.v{background:var(--rv-soft);color:var(--rv)}
+.chip.hard{background:var(--mark);color:#15201D}
+#qlevel{font-size:17px;font-weight:800;padding:5px 13px}
+.qbody{display:flex;flex-direction:column;gap:14px}
+.ask{font-size:20px;font-weight:700;color:var(--ink)}
+.ask .eng{font-family:"Newsreader",serif;font-weight:500;font-size:23px;display:inline-block;margin-top:4px}
+.sent{font-family:"Newsreader","Times New Roman",serif;font-size:clamp(24px,6.6vw,31px);line-height:1.45;letter-spacing:.005em}
+.blank{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--line-strong);vertical-align:baseline}
+.ko{font-size:17.5px;color:var(--muted);line-height:1.6}
+.wordcard{font-family:"Newsreader",serif;font-size:clamp(40px,12.5vw,58px);font-weight:500;text-align:center;padding:16px 10px;border:2px dashed var(--line-strong);border-radius:12px;background:var(--paper);line-height:1.15}
+
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;font-family:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .08s ease}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;min-width:24px;height:24px;line-height:23px;text-align:center;border-radius:6px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex:none;margin-top:4px}
+.opt .txt{font-family:"Newsreader",serif;font-size:25px;line-height:1.35}
+.opt.long .txt{font-size:20.5px}
+.opt.kor .txt{font-family:"IBM Plex Sans KR",sans-serif;font-size:18.5px;line-height:1.5}
+.opt.pick-ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.pick-no{border-color:var(--no);background:var(--no-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.opt .res{margin-left:auto;font-weight:800;font-size:15.5px;flex:none;padding-left:8px;line-height:1.6;white-space:nowrap;margin-top:2px}
+.opt.pick-ok .res,.opt.reveal .res{color:var(--ok)}
+.opt.pick-no .res{color:var(--no)}
+
+.exp{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:12px;animation:rise .25s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+.verdict{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20.5px;flex-wrap:wrap}
+.verdict.ok{color:var(--ok)}
+.verdict.no{color:var(--no)}
+.verdict .ans{font-family:"Newsreader",serif;font-size:22px;color:var(--ink);font-weight:500}
+.full{border:2px solid var(--accent);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;background:var(--card)}
+.full .h{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.full .en{font-family:"Newsreader",serif;font-size:clamp(22px,6.2vw,28px);line-height:1.42}
+.full .en .hl{background:var(--mark);color:#15201D;border-radius:4px;padding:0 .14em;font-weight:500}
+.full .kr{font-size:18.5px;line-height:1.6}
+
+/* ---------- 결과 ---------- */
+.score{display:flex;align-items:baseline;gap:10px;justify-content:center;padding:6px 0 2px}
+.score .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(64px,19vw,90px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score .of{font-size:21px;color:var(--muted);font-weight:600}
+.praise{text-align:center;display:flex;flex-direction:column;gap:6px;padding:2px 0 4px}
+.praise .t{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);letter-spacing:-.01em;color:var(--accent);line-height:1.28}
+.praise .s{font-size:17.5px;color:var(--muted);line-height:1.6}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bd{border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+.bd .t{font-size:14px;color:var(--muted);font-weight:600}
+.bd .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;margin-top:2px}
+.bd.n .t{color:var(--rn)} .bd.a .t{color:var(--ra)} .bd.v3 .t{color:var(--rv)}
+.wrongs{display:flex;flex-direction:column;gap:10px}
+.wrong{border:1px solid var(--line);border-left:4px solid var(--no);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.wrong .top{display:flex;gap:8px;align-items:baseline}
+.wrong .no{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.wrong .q{font-family:"Newsreader",serif;font-size:19px;line-height:1.4}
+.wrong .a{font-size:16.5px;color:var(--muted);line-height:1.55}
+.wrong .a b{color:var(--ok);font-family:"Newsreader",serif;font-size:19px;font-weight:500}
+.submit-box{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:15px}
+.submit-box .h{font-size:17.5px;font-weight:800;color:var(--accent)}
+.submit-box .note{font-size:16.5px;color:var(--ink);line-height:1.55}
+
+/* ---------- 순위 ---------- */
+.subhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tablewrap{overflow-x:auto}
+table.rank{width:100%;border-collapse:collapse;font-size:17.5px}
+table.rank th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td{padding:11px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.rank .pos{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);width:36px;font-size:18px}
+table.rank tr.top .pos{color:var(--accent)}
+table.rank .who{font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+table.rank .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-size:19.5px}
+table.rank .when{color:var(--muted);font-size:15px}
+table.rank tr.me{background:var(--accent-soft)}
+table.rank tr.me .who{color:var(--accent)}
+.empty{font-size:17px;color:var(--muted);text-align:center;padding:24px 0;line-height:1.7}
+.toast{background:var(--ok-soft);border:1.5px solid var(--ok);color:var(--ok);border-radius:11px;padding:13px 15px;font-size:17px;font-weight:700;line-height:1.5}
+
+h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-serif;font-weight:700;font-size:19px;letter-spacing:0;color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.multibar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.multihint{font-size:16px;color:var(--muted);flex:1 1 160px;line-height:1.5}
+.lvrow{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--paper)}
+.lvrow-h{font-size:16px;font-weight:700;color:var(--muted)}
+.lvrow-btns{display:flex;gap:8px;flex-wrap:wrap}
+.lvchip{flex:1 1 90px;font-family:inherit;font-size:17px;font-weight:700;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lvchip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.lvchip.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.lvchip:disabled{opacity:.45;cursor:not-allowed}
+
+.resumebar{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px}
+.resumebar .h{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;font-weight:800;font-size:19px;color:var(--accent)}
+.resumebar .note{font-size:16.5px;color:var(--ink);line-height:1.5}
+.resumebar .row{display:flex;gap:8px;flex-wrap:wrap}
+.resumebar .row .btn{flex:1 1 130px}
+
+/* 조각을 차례대로 눌러 문장 만들기 */
+.orderbox{display:flex;flex-direction:column;gap:12px}
+.slotline{display:flex;flex-wrap:wrap;gap:7px;min-height:58px;align-items:center;padding:12px;border:1.5px dashed var(--line-strong);border-radius:13px;background:var(--paper)}
+.slotline.ok{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.slotline.no{border-style:solid;border-color:var(--no);background:var(--no-soft)}
+.slotline .slot{font-family:"Newsreader",Georgia,serif;font-size:21px;line-height:1.3;padding:5px 11px;border-radius:9px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.slotline .slot.empty{font-family:inherit;font-size:15.5px;color:var(--muted);background:none;border:0;padding:0 2px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.orderbox .multibar{justify-content:flex-end}
+.orderbox .multihint{flex:1 1 100%;margin-bottom:-4px}
+.chip-w{font-family:"Newsreader",Georgia,serif;font-size:21px;line-height:1.3;padding:11px 15px;border-radius:11px;border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .12s,background .12s}
+.chip-w:hover:not(:disabled){background:var(--paper);transform:translateY(-1px)}
+.chip-w:active:not(:disabled){transform:translateY(0)}
+.chip-w.used{opacity:.28;border-style:dashed;cursor:default}
+.chip-w:disabled{cursor:default}
+.writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
+.writebox input:focus{outline:none;border-color:var(--accent)}
+.writebox input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.writebox input.no{border-color:var(--no);background:var(--no-soft)}
+.writebox input:disabled{opacity:1}
+.writebox .btn{flex:0 0 auto}
+.opts.hide{display:none}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1><span class="pre">국어로 이해하고<br>영어로 푸는</span><span class="brand">꾸메땅</span> <span class="up">영문법 레벨<em>Up</em></span><span class="subtitle">중2 · 수동태 뽀개기</span></h1>
+    <p class="sub">능동과 수동 · be동사 + 과거분사 · 하는 쪽과 당하는 쪽 · 문제 160개 · 할 때마다 단계별로 20문제씩 새로 뽑습니다 / 1단계는 한글과 쉬운 영어로 개념을 잡고, 2단계 be + 과거분사로 만들기, 3단계 중2 학교 시험형, 4단계에서 5형식·진행·완료 수동까지 중3 과정을 아우릅니다</p>
+  </header>
+
+  <div class="rail" id="rail" aria-hidden="true">
+    <div class="seg"><span class="lab">LEVEL 1<em class="pct" id="p1"></em></span><div class="bar"><div class="fill" id="f1"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 2<em class="pct" id="p2"></em></span><div class="bar"><div class="fill" id="f2"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 3<em class="pct" id="p3"></em></span><div class="bar"><div class="fill" id="f3"></div></div></div>
+    <div class="seg"><span class="lab">LEVEL 4<em class="pct" id="p4"></em></span><div class="bar"><div class="fill" id="f4"></div></div></div>
+  </div>
+
+  <!-- 시작 -->
+  <section class="card" id="start">
+    <h2>단계를 골라 도전해 보세요</h2>
+    <p class="lead">단계마다 따로 채점합니다. 문제를 풀면 바로 ○ ✕ 로 알려 주고, 한 단계가 끝나면 <b>틀린 문제만 다시</b> 풀어 마무리합니다. 순위에는 각 단계의 <b>첫 도전 점수</b>만 올라갑니다.</p>
+    <div class="namebar">
+      <span class="h">이름</span>
+      <div class="row">
+        <input type="text" id="nameIn" maxlength="12" autocomplete="off" placeholder="예: 김하늘">
+        <button class="btn small" id="saveName">저장</button>
+      </div>
+      <span class="note" id="nameNote">이름을 저장하면 순위에 점수를 올릴 수 있습니다.</span>
+    </div>
+    <div id="resumeBar" class="hide"></div>
+    <div class="levels" id="levelPick"></div>
+    <div class="actions">
+      <button class="btn ghost" id="openRank">순위 보기</button>
+    </div>
+    <p class="foot">PC에서는 숫자 키 1~5로 답을 고르고, Enter로 다음 문제로 넘어갈 수 있습니다.</p>
+  </section>
+
+  <!-- 개념 -->
+  <section class="card hide" id="learn">
+    <div class="qhead"><span class="qnum" id="lvnum">LEVEL 1</span><span class="chip plain" id="lvtag">개념 익히기</span></div>
+    <div class="concept" id="learnBody"></div>
+    <div class="actions">
+      <button class="btn" id="toQuiz">이해했어요, 문제 풀기</button>
+      <button class="btn ghost" id="learnBack">단계 선택으로</button>
+    </div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="card hide" id="quiz">
+    <div class="qhead">
+      <span class="qnum" id="qnum">1 / 20</span>
+      <span class="chip" id="qlevel">1단계</span>
+      <span class="chip plain" id="qtag"></span>
+    </div>
+    <div class="qbody" id="qbody"></div>
+    <div id="qexp"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="card hide" id="result">
+    <h2 id="rtitle">1단계 결과</h2>
+    <div class="score"><span class="big" id="rscore">0</span><span class="of">/ 100점</span></div>
+    <div class="praise"><span class="t" id="rpraise"></span><span class="s" id="rsub"></span></div>
+    <div class="breakdown" id="rbreak"></div>
+    <div id="rnext"></div>
+    <div id="rsubmit"></div>
+    <div id="rwrong"></div>
+    <div class="actions" id="ractions"></div>
+  </section>
+
+  <!-- 순위 -->
+  <section class="card hide" id="rank">
+    <div class="subhead">
+      <h2>도전 순위</h2>
+      <button class="btn ghost small" id="clearBtn">기록 초기화</button>
+    </div>
+    <div id="rankToast"></div>
+    <div class="tabs" id="rankTabs">
+      <button class="tab on" data-t="all">종합</button>
+      <button class="tab" data-t="1">1단계</button>
+      <button class="tab" data-t="2">2단계</button>
+      <button class="tab" data-t="3">3단계</button>
+      <button class="tab" data-t="4">4단계</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rankHome">단계 선택으로</button>
+    </div>
+    <p class="foot">순위는 이 기기에 저장되며, 각 단계의 첫 도전 점수만 기록됩니다.</p>
+  </section>
+
+  <p class="foot"><img src="/logo.png" alt="꾸메땅" style="display:block;height:56px;width:auto;margin:0 auto 10px;padding:6px 10px;background:#fff;border-radius:10px">국어로 이해하고 푸는 꾸메땅 영문법 레벨Up · 수동태 뽀개기<br>© 꾸메땅 학습코칭학원 · 무단 복제와 배포를 금합니다.<br>☎ 010.5851.8209</p>
+</div>
+
+
+<div class="modal hide" id="praiseBox" role="dialog" aria-modal="true" aria-labelledby="pmT">
+  <div class="box">
+    <span class="lv" id="pmLv"></span>
+    <span class="sc"><span id="pmSc">0</span><small>/ 100점</small></span>
+    <span class="t" id="pmT"></span>
+    <span class="s" id="pmS"></span>
+    <div class="tally" id="pmTally"></div>
+    <button class="btn" id="pmClose">결과 자세히 보기</button>
+  </div>
+</div>
+
+
+<script>
+"use strict";
+
+/* ---------- LEVEL 1 : 한글로 이해 12 + 쉬운 영어 8 ---------- */
+var L1 = [
+  {type:"n", tag:"한글로 이해", q:"‘나’와 ‘쓰다’는 어떤 사이일까요?",
+   opts:["내가 쓴다 — 하는 쪽","내가 쓰인다 — 당하는 쪽","아무 사이도 아니다","나는 쓸 수 없다","둘 다 맞다"], a:0,
+   exp:"사람은 글을 <b>씁니다</b>. 그러므로 ‘나’는 하는 쪽입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘편지’와 ‘쓰다’는 어떤 사이일까요?",
+   opts:["편지는 쓰인다 — 당하는 쪽","편지가 쓴다 — 하는 쪽","아무 사이도 아니다","둘 다 하는 쪽이다","알 수 없다"], a:0,
+   exp:"편지가 글을 쓸 수는 없습니다. 편지는 <b>쓰이는</b> 쪽입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘피자’와 ‘먹다’는 어떤 사이일까요?",
+   opts:["피자는 먹힌다 — 당하는 쪽","피자가 먹는다 — 하는 쪽","서로 먹는다","아무 사이도 아니다","알 수 없다"], a:0,
+   exp:"피자가 무엇을 먹을 수는 없습니다. 피자는 <b>먹히는</b> 쪽입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘아이’와 ‘먹다’는 어떤 사이일까요?",
+   opts:["아이가 먹는다 — 하는 쪽","아이가 먹힌다 — 당하는 쪽","서로 먹는다","아무 사이도 아니다","알 수 없다"], a:0,
+   exp:"아이는 스스로 먹습니다. <b>하는 쪽</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"주어가 <b>스스로 하는</b> 문장을 무엇이라고 할까요?",
+   opts:["능동","수동","의문","명령","감탄"], a:0,
+   exp:"주어가 스스로 하면 <b>능동</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"주어가 <b>당하는</b> 문장을 무엇이라고 할까요?",
+   opts:["수동","능동","의문","명령","감탄"], a:0,
+   exp:"주어가 당하면 <b>수동</b>입니다. 영어로는 수동태라고 합니다."},
+
+  {type:"n", tag:"한글로 이해", multi:true, q:"우리말 말끝 가운데 <b>수동</b>을 나타내는 것을 모두 고르세요. (여러 개)",
+   opts:["~된다","~해진다","~당한다","~한다","~하고 싶다"], ans:[0,1,2],
+   exp:"‘~된다 · ~해진다 · ~당한다 · ~받는다’가 수동입니다. ‘~한다’는 능동입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"능동 문장의 <b>목적어</b>는 수동 문장에서 어디로 갈까요?",
+   opts:["주어 자리로 올라간다","그 자리에 그대로 있다","없어진다","동사 뒤로 간다","by 뒤로 간다"], a:0,
+   exp:"당하는 쪽을 앞세우는 것이 수동태이므로, 목적어가 <b>주어 자리</b>로 올라갑니다."},
+
+  {type:"n", tag:"한글로 이해", q:"그 일을 <b>한 사람</b>은 수동 문장에서 어디에 적을까요?",
+   opts:["by 뒤에 적는다","주어 자리에 적는다","적지 않는다","동사 앞에 적는다","문장 맨 앞에 적는다"], a:0,
+   exp:"‘누가 했는지’는 <b>by</b> 뒤에 적습니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘경찰이 도둑을 잡았다’를 수동으로 바꾸면 주어는 무엇이 될까요?",
+   opts:["도둑","경찰","잡았다","아무도 아니다","둘 다"], a:0,
+   exp:"당하는 쪽인 <b>도둑</b>이 주어가 됩니다. ‘도둑이 경찰에게 잡혔다’가 됩니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그 집은 지어졌다’는 능동일까요, 수동일까요?",
+   opts:["수동","능동","둘 다 아니다","둘 다 맞다","알 수 없다"], a:0,
+   exp:"집이 스스로 지을 수는 없습니다. ‘지어졌다’는 <b>수동</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"목적어가 없는 동사도 수동으로 바꿀 수 있을까요?",
+   opts:["바꿀 수 없다","언제나 바꿀 수 있다","때에 따라 바꾼다","주어가 사람이면 바꾼다","문장이 길면 바꾼다"], a:0,
+   exp:"수동태는 목적어를 주어 자리로 올리는 것입니다. 올릴 목적어가 없으면 <b>만들 수 없습니다</b>."},
+
+  {type:"a", tag:"쉬운 영어", q:"eat의 과거분사는?", eng:true,
+   opts:["eaten","ate","eating","eated","eat"], a:0,
+   exp:"eat - ate - <b>eaten</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"write의 과거분사는?", eng:true,
+   opts:["written","wrote","writing","writed","write"], a:0,
+   exp:"write - wrote - <b>written</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"수동태의 모양은 무엇일까요?",
+   opts:["be동사 + 과거분사","be동사 + 동사원형","have + 과거분사","do + 동사원형","be동사 + -ing"], a:0,
+   exp:"<b>be동사 + 과거분사</b>입니다. be동사가 때와 주어를 알려 줍니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The pizza ___ by Tom.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is eaten","eats","eating","eat","is eat"], a:0,
+   ko:"그 피자는 톰에게 먹힌다.",
+   exp:"피자는 당하는 쪽이므로 <b>is eaten</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 가운데 <b>수동태</b> 문장은?", eng:true,
+   opts:["The window was broken.","He broke the window.","He breaks the window.","He will break the window.","He is breaking the window."], a:0,
+   exp:"be동사 was와 과거분사 broken이 함께 있는 문장이 수동태입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"make의 과거분사는?", eng:true,
+   opts:["made","make","making","maked","makes"], a:0,
+   exp:"make - made - <b>made</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The letter ___ by my sister.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was written","wrote","writes","is write","writing"], a:0,
+   ko:"그 편지는 누나가 썼다.",
+   exp:"편지는 쓰이는 쪽이므로 <b>was written</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"수동태 문장에서 by는 무엇을 알려 줄까요?",
+   opts:["그 일을 한 사람","일이 일어난 곳","일이 일어난 때","일의 까닭","일의 횟수"], a:0,
+   exp:"by 뒤에는 <b>한 사람</b>이 옵니다."}
+];
+
+/* ---------- LEVEL 2 : 모양 만들기 7 + 모두 고르기 7 + 함정 6 ---------- */
+var L2 = [
+  {type:"n", tag:"모양 만들기", q:"주어가 여럿이고 지금 일이면 수동태의 be동사는?", eng:true,
+   opts:["are","is","am","was","were"], a:0,
+   exp:"주어가 여럿이고 지금 일이면 <b>are</b>입니다."},
+
+  {type:"n", tag:"모양 만들기", sent:"The rooms ___ every day.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["are cleaned","is cleaned","cleans","clean","are clean"], a:0,
+   ko:"그 방들은 날마다 치워진다.",
+   exp:"주어가 여럿이므로 <b>are cleaned</b>입니다."},
+
+  {type:"n", tag:"모양 만들기", q:"능동을 수동으로 바꾸는 <b>첫 걸음</b>은?",
+   opts:["목적어를 주어 자리로 올린다","동사를 과거형으로 바꾼다","주어를 지운다","by를 먼저 쓴다","문장을 둘로 나눈다"], a:0,
+   exp:"당하는 쪽인 목적어를 <b>주어 자리</b>로 올립니다."},
+
+  {type:"n", tag:"모양 만들기", q:"능동을 수동으로 바꾸는 <b>두 번째 걸음</b>은?",
+   opts:["동사를 be동사 + 과거분사로 바꾼다","동사를 지운다","동사를 -ing로 바꾼다","동사를 맨 앞으로 보낸다","동사를 둘로 나눈다"], a:0,
+   exp:"동사 자리를 <b>be동사 + 과거분사</b>로 바꿉니다."},
+
+  {type:"n", tag:"모양 만들기", q:"능동을 수동으로 바꾸는 <b>세 번째 걸음</b>은?",
+   opts:["본디 주어를 by 뒤로 보낸다","본디 주어를 지운다","본디 주어를 목적어 자리에 둔다","본디 주어를 맨 앞에 둔다","아무것도 하지 않는다"], a:0,
+   exp:"본디 주어는 <b>by</b> 뒤로 갑니다. 밝힐 까닭이 없으면 적지 않아도 됩니다."},
+
+  {type:"n", tag:"모양 만들기", write:true, sent:"The song ___ by many people.", ans:"is loved", alt:["is liked"],
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"그 노래는 많은 사람에게 사랑받는다.",
+   exp:"노래는 사랑받는 쪽이므로 <b>is loved</b>입니다."},
+
+  {type:"n", tag:"모양 만들기", sent:"These pictures ___ by my father.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["were taken","was taken","takes","take","is taken"], a:0,
+   ko:"이 사진들은 아버지가 찍으셨다.",
+   exp:"주어가 여럿이고 지난 일이므로 <b>were taken</b>입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"다음 가운데 <b>수동태</b> 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["The door was opened.","Rice is grown here.","The song was sung.","He opened the door.","She sings well."], ans:[0,1,2],
+   exp:"be동사와 과거분사가 함께 있는 문장이 수동태입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"<b>과거분사</b>만 모두 고르세요. (여러 개)", eng:true,
+   opts:["taken","spoken","built","take","speak"], ans:[0,1,2],
+   exp:"take - took - <b>taken</b>, speak - spoke - <b>spoken</b>, build - built - <b>built</b>입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"수동태를 만들 때 꼭 있어야 하는 것을 모두 고르세요. (여러 개)",
+   opts:["be동사","과거분사","주어","will","목적어"], ans:[0,1,2],
+   exp:"주어 + be동사 + 과거분사가 뼈대입니다. 목적어는 이미 주어가 되었으므로 남지 않습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"by를 적지 않아도 되는 때를 모두 고르세요. (여러 개)",
+   opts:["누가 했는지 모를 때","누구나 다 아는 사람일 때","말할 까닭이 없을 때","꼭 밝혀야 할 때","문장이 짧을 때"], ans:[0,1,2],
+   exp:"수동태를 쓰는 큰 까닭이 바로 ‘한 사람을 밝히지 않아도 되는 것’입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"수동태로 바꿀 수 있는 동사를 모두 고르세요. (여러 개)", eng:true,
+   opts:["make","eat","build","happen","appear"], ans:[0,1,2],
+   exp:"목적어를 가지는 동사만 수동태가 됩니다. happen과 appear는 목적어가 없습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"바르게 쓴 수동태 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["It is made.","It was made.","It isn’t made.","It made.","It is make."], ans:[0,1,2],
+   exp:"be동사가 빠지거나 과거분사가 아니면 수동태가 아닙니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"<b>당하는 쪽</b>이 주어인 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["The cake was eaten.","The window is cleaned.","He was called a hero.","He ate the cake.","He cleaned the window."], ans:[0,1,2],
+   exp:"앞의 셋은 주어가 당하는 쪽이고, 뒤의 둘은 주어가 하는 쪽입니다."},
+
+  {type:"v", tag:"함정", q:"다음 가운데 <b>틀린</b> 문장은?", eng:true,
+   opts:["The pizza eaten by Tom.","The pizza is eaten by Tom.","Tom eats the pizza.","The pizza was eaten by Tom.","The pizza isn’t eaten by Tom."], a:0,
+   exp:"<b>be동사</b>가 빠졌습니다. 과거분사만으로는 문장이 되지 않습니다."},
+
+  {type:"v", tag:"함정", q:"다음 가운데 <b>틀린</b> 문장은?", eng:true,
+   opts:["The song is sing by her.","The song is sung by her.","She sings the song.","The song was sung by her.","The song isn’t sung by her."], a:0,
+   exp:"be동사 뒤에는 <b>과거분사</b>가 옵니다. sing이 아니라 sung입니다."},
+
+  {type:"v", tag:"함정", sent:"A strange man ___ at the door.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["appeared","was appeared","is appeared","appears","be appeared"], a:0,
+   ko:"낯선 남자가 문 앞에 나타났다.",
+   exp:"appear는 목적어가 없어 수동태를 만들 수 없습니다."},
+
+  {type:"v", tag:"함정", q:"다음 가운데 수동태로 <b>쓸 수 없는</b> 동사는?", eng:true,
+   opts:["happen","make","build","eat","catch"], a:0,
+   exp:"happen은 목적어가 없습니다. ‘일이 일어나다’는 스스로 일어나는 일입니다."},
+
+  {type:"v", tag:"함정", sent:"She ___ to the meeting by her boss.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was invited","invited","invites","is invite","inviting"], a:0,
+   ko:"그녀는 상사에게 회의에 초대받았다.",
+   exp:"by her boss가 있으니 그녀는 당하는 쪽입니다. <b>was invited</b>입니다.", hard:true},
+
+  {type:"v", tag:"함정", q:"수동태로 바꾸면 언제나 더 좋은 문장이 될까요?",
+   opts:["아니다. 당하는 쪽을 앞세우고 싶을 때 쓴다","그렇다. 언제나 더 좋다","아니다. 쓰면 틀린다","문장이 길 때만 쓴다","주어가 사람일 때만 쓴다"], a:0,
+   exp:"수동태는 <b>골라 쓰는 말투</b>입니다. 당하는 쪽이 더 중요할 때 씁니다."}
+];
+
+/* ---------- LEVEL 3 : 빈칸 7 + 고치기 7 + 대화와 서술형 6 ---------- */
+var L3 = [
+  {type:"n", tag:"빈칸", sent:"This book ___ by many students.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is read","reads","read","is reading","are read"], a:0,
+   ko:"이 책은 많은 학생이 읽는다.",
+   exp:"주어가 하나이므로 <b>is read</b>입니다. read의 과거분사는 read입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The cake ___ by my mom yesterday.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was made","made","makes","is made","were made"], a:0,
+   ko:"그 케이크는 어제 어머니가 만드셨다.",
+   exp:"지난 일이고 주어가 하나이므로 <b>was made</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"I ___ in the story.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["am interested","interest","interests","am interesting","interested"], a:0,
+   ko:"나는 그 이야기에 흥미가 있다.",
+   exp:"<b>be interested in</b>은 by를 쓰지 않는 짝입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The mountain ___ with snow.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is covered","covers","is covering","cover","covered"], a:0,
+   ko:"그 산은 눈으로 덮여 있다.",
+   exp:"<b>be covered with</b>입니다. by가 아니라 with를 씁니다."},
+
+  {type:"n", tag:"빈칸", sent:"He ___ a book by his teacher.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was given","gave","gives","is give","giving"], a:0,
+   ko:"그는 선생님께 책을 받았다.",
+   exp:"목적어가 둘인 문장에서는 사람을 주어로 올릴 수 있습니다. <b>He was given a book</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The box ___ with old toys.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is filled","fills","is filling","fill","filled"], a:0,
+   ko:"그 상자는 낡은 장난감으로 가득 차 있다.",
+   exp:"<b>be filled with</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"She ___ at the news.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was surprised","surprised","surprises","is surprising","surprise"], a:0,
+   ko:"그녀는 그 소식에 놀랐다.",
+   exp:"<b>be surprised at</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"The window was **break** by the boy.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["broken","broke","breaking","breaks","to break"], a:0,
+   exp:"be동사 뒤에는 과거분사가 옵니다. break - broke - <b>broken</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"The letters **is** sent every day.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["are","am","was","be","do"], a:0,
+   exp:"주어 The letters가 여럿이므로 <b>are</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"This song **sang** by many people.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["is sung","sang","sings","sing","singing"], a:0,
+   exp:"노래는 불리는 쪽이므로 <b>is sung</b>입니다. be동사가 꼭 있어야 합니다."},
+
+  {type:"a", tag:"고치기", sent:"The room **cleaned** by my sister.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["was cleaned","cleans","clean","cleaning","to clean"], a:0,
+   exp:"be동사가 빠졌습니다. <b>was cleaned</b>로 고칩니다."},
+
+  {type:"a", tag:"고치기", sent:"The accident **was happened** last night.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["happened","happens","is happening","happen","be happened"], a:0,
+   exp:"happen은 목적어가 없어 수동태가 되지 않습니다."},
+
+  {type:"a", tag:"고치기", sent:"He is interested **at** music.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["in","to","for","with","of"], a:0,
+   exp:"be interested <b>in</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"The bottle is filled **of** water.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["with","in","to","at","for"], a:0,
+   exp:"be filled <b>with</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", order:true, parts:["The window","was broken","by the boy","yesterday"],
+   q:"바른 차례로 놓으세요. — 그 창문은 어제 그 소년이 깼다.",
+   exp:"당하는 쪽을 주어로 놓고, be동사와 과거분사, 그다음 by와 때를 놓습니다."},
+
+  {type:"v", tag:"대화와 서술형", order:true, parts:["This picture","was taken","by my father","in Paris"],
+   q:"바른 차례로 놓으세요. — 이 사진은 아버지가 파리에서 찍으셨다.",
+   exp:"주어 + be동사 + 과거분사 + by + 곳의 차례입니다."},
+
+  {type:"v", tag:"대화와 서술형", write:true, sent:"Korean ___ in this class.", ans:"is taught",
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"이 수업에서는 한국어를 가르친다.",
+   exp:"teach - taught - taught입니다. <b>is taught</b>로 씁니다."},
+
+  {type:"v", tag:"대화와 서술형", write:true, sent:"The house ___ ten years ago.", ans:"was built",
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"그 집은 십 년 전에 지어졌다.",
+   exp:"build - built - built입니다. 지난 일이므로 <b>was built</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", sent:"B: Yes, it ___ by Picasso.", q:"A: Is this painting famous? 빈칸에 알맞은 것은?", eng:true,
+   opts:["was painted","painted","paints","is painting","painting"], a:0,
+   ko:"B: 응, 그것은 피카소가 그렸어.",
+   exp:"그림은 그려지는 쪽이므로 <b>was painted</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", write:true, sent:"He ___ a letter by his friend.", ans:"was sent",
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"그는 친구에게서 편지를 받았다.",
+   exp:"send - sent - sent입니다. 사람을 주어로 올린 수동태입니다.", hard:true}
+];
+
+/* ---------- LEVEL 4 : 때와 모양 가리기 7 + 바꿔 쓰기 7 + 종합 6 ---------- */
+var L4 = [
+  {type:"n", tag:"모양 가리기", sent:"The house ___ now.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is being built","is building","builds","build","is build"], a:0,
+   ko:"그 집은 지금 지어지고 있다.",
+   exp:"지금 당하고 있는 일은 <b>be동사 + being + 과거분사</b>입니다."},
+
+  {type:"n", tag:"모양 가리기", sent:"The work ___ already been finished.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["has","have","is","was","did"], a:0,
+   ko:"그 일은 이미 끝내졌다.",
+   exp:"완료형 수동은 have/has + been + 과거분사입니다."},
+
+  {type:"n", tag:"모양 가리기", q:"<b>진행형 수동</b>의 모양은?",
+   opts:["be동사 + being + 과거분사","be동사 + 과거분사 + -ing","have + being + 과거분사","be동사 + 과거분사","will + being + 과거분사"], a:0,
+   exp:"지금 당하고 있는 일을 나타냅니다."},
+
+  {type:"n", tag:"모양 가리기", q:"<b>완료형 수동</b>의 모양은?",
+   opts:["have/has + been + 과거분사","have/has + 과거분사 + -ing","be동사 + 과거분사","will + been + 과거분사","do + been + 과거분사"], a:0,
+   exp:"지금까지 당한 일을 나타냅니다."},
+
+  {type:"n", tag:"모양 가리기", sent:"He ___ a hero by everyone.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was called","called","calls","is call","calling"], a:0,
+   ko:"그는 모두에게 영웅이라고 불렸다.",
+   exp:"5형식의 수동태입니다. 목적격보어 a hero는 <b>그대로 남습니다</b>."},
+
+  {type:"n", tag:"모양 가리기", sent:"I ___ to clean the room by my mother.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was made","made","makes","am make","making"], a:0,
+   ko:"나는 어머니에게 방을 치우게 되었다.",
+   exp:"사역동사 make가 수동이 되면 사라졌던 <b>to</b>가 되살아납니다."},
+
+  {type:"n", tag:"모양 가리기", sent:"He ___ to cross the street.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was seen","saw","sees","is see","seeing"], a:0,
+   ko:"그가 길을 건너는 것이 보였다.",
+   exp:"지각동사 see가 수동이 되어도 <b>to</b>가 되살아납니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘They speak English here.’를 수동으로 바꾸면?", eng:true,
+   opts:["English is spoken here.","English speaks here.","English are spoken here.","English was spoken here.","English is speaking here."], a:0,
+   exp:"목적어 English가 주어가 되고 동사는 is spoken이 됩니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘She made me wash the car.’를 수동으로 바꾸면?", eng:true,
+   opts:["I was made to wash the car.","I was made wash the car.","I was make to wash the car.","I made to wash the car.","I was washed the car."], a:0,
+   exp:"사역동사의 수동에서는 <b>to</b>를 되살립니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘They laughed at him.’을 수동으로 바꾸면?", eng:true,
+   opts:["He was laughed at by them.","He was laughed by them.","He was laughed at them.","He laughed at by them.","He is laugh at by them."], a:0,
+   exp:"덩어리 동사는 <b>통째로</b> 옮깁니다. at을 빠뜨리지 않습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘People say that he is rich.’를 It으로 시작해 바꾸면?", eng:true,
+   opts:["It is said that he is rich.","It says that he is rich.","It is say that he is rich.","It said that he is rich.","It is saying that he is rich."], a:0,
+   exp:"‘~라고들 한다’는 <b>It is said that ~</b>으로 씁니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘They gave him a prize.’를 him을 주어로 하여 바꾸면?", eng:true,
+   opts:["He was given a prize.","He gave a prize.","A prize was given him.","He was given to a prize.","He is give a prize."], a:0,
+   exp:"목적어가 둘일 때는 사람을 주어로 올릴 수 있습니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘They have built a new bridge.’를 수동으로 바꾸면?", eng:true,
+   opts:["A new bridge has been built.","A new bridge have been built.","A new bridge is built.","A new bridge was built.","A new bridge has built."], a:0,
+   exp:"완료형 수동은 has <b>been</b> built입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘They are cleaning the room.’을 수동으로 바꾸면?", eng:true,
+   opts:["The room is being cleaned.","The room is cleaning.","The room was being cleaned.","The room is been cleaned.","The room are being cleaned."], a:0,
+   exp:"진행형 수동은 is <b>being</b> cleaned입니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"다음 가운데 <b>바른</b> 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["The room is being painted.","The work has been done.","He was made to wait.","The room is painting.","He was made wait."], ans:[0,1,2],
+   exp:"진행형 수동은 being, 완료형 수동은 been, 사역의 수동은 to를 되살립니다."},
+
+  {type:"v", tag:"종합", sent:"This problem ___ by the students now.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is being solved","is solving","solves","solve","is solve"], a:0,
+   ko:"이 문제는 지금 학생들이 풀고 있다.",
+   exp:"지금 당하고 있는 일이므로 <b>is being solved</b>입니다.", hard:true},
+
+  {type:"v", tag:"종합", q:"다음 가운데 수동태를 <b>만들 수 없는</b> 문장은?", eng:true,
+   opts:["He sleeps well.","He eats an apple.","He made a chair.","He broke the cup.","He cleaned the room."], a:0,
+   exp:"sleep은 목적어가 없습니다. 올릴 목적어가 없으면 수동태를 만들 수 없습니다."},
+
+  {type:"v", tag:"종합", write:true, sent:"The room ___ cleaned every day.", ans:"is",
+   q:"빈칸에 알맞은 한 낱말을 쓰세요.", eng:true,
+   ko:"그 방은 날마다 치워진다.",
+   exp:"과거분사 cleaned 앞에는 be동사가 와야 합니다. 주어가 하나이고 지금 일이므로 <b>is</b>입니다."},
+
+  {type:"v", tag:"종합", order:true, parts:["The bridge","has been","built","by the city"],
+   q:"바른 차례로 놓으세요. — 그 다리는 시에 의해 지어졌다.",
+   exp:"완료형 수동은 has + been + 과거분사입니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"수동태가 하는 일을 모두 고르세요. (여러 개)",
+   opts:["당하는 쪽을 문장 앞에 세운다","한 사람을 밝히지 않아도 되게 한다","여럿이 다 아는 일을 말할 때 쓴다","문장을 길게 만들려고 쓴다","주어를 없앤다"], ans:[0,1,2],
+   exp:"수동태는 <b>무엇을 앞세울지</b> 고르는 말투입니다.", hard:true}
+];
+
+/* ---------- 더 넣기 ---------- */
+var X1 = [
+  {type:"n", tag:"한글로 이해", q:"‘창문’과 ‘깨다’는 어떤 사이일까요?",
+   opts:["창문은 깨진다 — 당하는 쪽","창문이 깬다 — 하는 쪽","서로 깬다","아무 사이도 아니다","알 수 없다"], a:0,
+   exp:"창문이 무엇을 깰 수는 없습니다. 창문은 <b>깨지는</b> 쪽입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘노래’와 ‘부르다’는 어떤 사이일까요?",
+   opts:["노래는 불린다 — 당하는 쪽","노래가 부른다 — 하는 쪽","서로 부른다","아무 사이도 아니다","알 수 없다"], a:0,
+   exp:"노래는 <b>불리는</b> 쪽입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘선생님이 나를 불렀다’에서 당하는 쪽은 누구일까요?",
+   opts:["나","선생님","불렀다","둘 다","아무도 아니다"], a:0,
+   exp:"불린 쪽은 <b>나</b>입니다. 수동으로 바꾸면 ‘나는 선생님께 불렸다’가 됩니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그 책은 많은 사람에게 읽힌다’는 능동일까요, 수동일까요?",
+   opts:["수동","능동","둘 다 아니다","둘 다 맞다","알 수 없다"], a:0,
+   exp:"‘읽힌다’는 당하는 말끝입니다. <b>수동</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘그는 날마다 책을 읽는다’는 능동일까요, 수동일까요?",
+   opts:["능동","수동","둘 다 아니다","둘 다 맞다","알 수 없다"], a:0,
+   exp:"‘읽는다’는 스스로 하는 말끝입니다. <b>능동</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"수동으로 바꿀 때 <b>동사</b>는 어떻게 바뀔까요?",
+   opts:["be동사 + 과거분사가 된다","-ing가 된다","과거형이 된다","없어진다","두 개가 된다"], a:0,
+   exp:"동사 자리가 <b>be동사 + 과거분사</b>로 바뀝니다."},
+
+  {type:"n", tag:"한글로 이해", q:"능동 문장의 <b>주어</b>는 수동 문장에서 어디로 갈까요?",
+   opts:["by 뒤로 간다","그대로 주어 자리에 있다","목적어 자리로 간다","동사 앞으로 간다","문장 맨 앞에 남는다"], a:0,
+   exp:"한 사람이므로 <b>by</b> 뒤로 갑니다."},
+
+  {type:"n", tag:"한글로 이해", q:"by 뒤를 적지 않아도 되는 때는 언제일까요?",
+   opts:["누가 했는지 모르거나 말할 까닭이 없을 때","언제나 적지 않는다","주어가 사람일 때","문장이 길 때","동사가 어려울 때"], a:0,
+   exp:"밝힐 까닭이 없으면 <b>적지 않습니다</b>."},
+
+  {type:"n", tag:"한글로 이해", q:"‘문이 열렸다’에서 문은 어느 쪽일까요?",
+   opts:["당하는 쪽","하는 쪽","둘 다","아무 쪽도 아니다","알 수 없다"], a:0,
+   exp:"문은 열리는 쪽, 곧 <b>당하는 쪽</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘바람이 문을 열었다’에서 바람은 어느 쪽일까요?",
+   opts:["하는 쪽","당하는 쪽","둘 다","아무 쪽도 아니다","알 수 없다"], a:0,
+   exp:"바람이 문을 열었으므로 바람이 <b>하는 쪽</b>입니다."},
+
+  {type:"n", tag:"한글로 이해", q:"수동태를 쓰면 무엇이 문장의 앞자리로 올까요?",
+   opts:["당하는 쪽","하는 쪽","때를 나타내는 말","곳을 나타내는 말","까닭을 나타내는 말"], a:0,
+   exp:"당하는 쪽을 앞세우고 싶을 때 수동태를 씁니다."},
+
+  {type:"n", tag:"한글로 이해", q:"‘일이 일어나다’처럼 목적어가 없는 말은 수동으로 쓸 수 있을까요?",
+   opts:["쓸 수 없다","언제나 쓸 수 있다","때에 따라 쓴다","주어가 사람이면 쓴다","문장이 길면 쓴다"], a:0,
+   exp:"올릴 목적어가 없으므로 수동태를 만들 수 없습니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"break의 과거분사는?", eng:true,
+   opts:["broken","broke","breaking","breaked","breaks"], a:0,
+   exp:"break - broke - <b>broken</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"build의 과거분사는?", eng:true,
+   opts:["built","builded","building","builds","build"], a:0,
+   exp:"build - built - <b>built</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"English ___ in many countries.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is spoken","speaks","speaking","speak","is speak"], a:0,
+   ko:"영어는 많은 나라에서 말해진다.",
+   exp:"영어는 말해지는 쪽이므로 <b>is spoken</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"The window ___ by the boy.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was broken","broke","breaks","is break","breaking"], a:0,
+   ko:"그 창문은 그 소년이 깼다.",
+   exp:"창문은 깨지는 쪽이므로 <b>was broken</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"다음 가운데 <b>능동태</b> 문장은?", eng:true,
+   opts:["Tom eats the pizza.","The pizza is eaten.","The pizza was eaten.","The pizza isn’t eaten.","Is the pizza eaten?"], a:0,
+   exp:"주어 Tom이 스스로 먹으므로 능동태입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"read의 과거분사는?", eng:true,
+   opts:["read","readed","reads","reading","to read"], a:0,
+   exp:"read - read - <b>read</b>입니다. 모양은 같고 소리만 달라집니다."},
+
+  {type:"a", tag:"쉬운 영어", sent:"This house ___ in 1990.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was built","builds","is build","building","build"], a:0,
+   ko:"이 집은 1990년에 지어졌다.",
+   exp:"집은 지어지는 쪽이고 지난 일이므로 <b>was built</b>입니다."},
+
+  {type:"a", tag:"쉬운 영어", q:"수동태의 be동사는 무엇에 맞출까요?",
+   opts:["주어와 때","목적어와 때","과거분사의 길이","by 뒤의 사람","문장의 길이"], a:0,
+   exp:"be동사가 <b>주어와 때</b>를 알려 줍니다."}
+];
+
+var X2 = [
+  {type:"n", tag:"모양 만들기", q:"주어가 하나이고 지난 일이면 수동태의 be동사는?", eng:true,
+   opts:["was","were","is","are","am"], a:0,
+   exp:"주어가 하나이고 지난 일이면 <b>was</b>입니다."},
+
+  {type:"n", tag:"모양 만들기", sent:"The letters ___ last week.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["were sent","was sent","sends","send","is sent"], a:0,
+   ko:"그 편지들은 지난주에 부쳐졌다.",
+   exp:"주어가 여럿이고 지난 일이므로 <b>were sent</b>입니다."},
+
+  {type:"n", tag:"모양 만들기", q:"‘Tom broke the window.’를 수동으로 바꾸면 주어는?", eng:true,
+   opts:["The window","Tom","broke","by Tom","the"], a:0,
+   exp:"목적어였던 <b>The window</b>가 주어가 됩니다."},
+
+  {type:"n", tag:"모양 만들기", q:"‘They build houses.’를 수동으로 바꾼 것은?", eng:true,
+   opts:["Houses are built by them.","Houses is built by them.","Houses build by them.","Houses are build by them.","Houses been built by them."], a:0,
+   exp:"주어가 여럿이고 지금 일이므로 <b>are built</b>입니다."},
+
+  {type:"n", tag:"모양 만들기", write:true, sent:"The room ___ by my mother.", ans:"was cleaned", alt:["was tidied"],
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"그 방은 어머니가 치우셨다.",
+   exp:"방은 치워지는 쪽이고 지난 일이므로 <b>was cleaned</b>입니다."},
+
+  {type:"n", tag:"모양 만들기", q:"수동태의 <b>부정문</b>은 어떻게 만들까요?",
+   opts:["be동사 + not + 과거분사","not + be동사 + 과거분사","don’t + 과거분사","be동사 + 과거분사 + not","did not + 과거분사"], a:0,
+   exp:"be동사 바로 뒤에 not을 넣습니다."},
+
+  {type:"n", tag:"모양 만들기", q:"수동태의 <b>의문문</b>은 어떻게 만들까요?",
+   opts:["be동사 + 주어 + 과거분사 ~?","Do + 주어 + 과거분사 ~?","주어 + be동사 ~?","Did + 주어 + 과거분사 ~?","Have + 주어 + 과거분사 ~?"], a:0,
+   exp:"be동사를 앞으로 보냅니다. <b>Is it made?</b>처럼 씁니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"과거분사를 모두 고르세요. (여러 개)", eng:true,
+   opts:["caught","sold","taught","catch","sell"], ans:[0,1,2],
+   exp:"catch - caught - caught, sell - sold - sold, teach - taught - taught입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"수동태 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["The cup was broken.","Books are sold here.","The car is washed.","He broke the cup.","She sells books."], ans:[0,1,2],
+   exp:"be동사와 과거분사가 함께 있어야 수동태입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"수동태의 be동사로 쓸 수 있는 것을 모두 고르세요. (여러 개)", eng:true,
+   opts:["is","are","was","do","does"], ans:[0,1,2],
+   exp:"do와 does는 be동사가 아닙니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"수동으로 바꿀 수 <b>없는</b> 동사를 모두 고르세요. (여러 개)", eng:true,
+   opts:["happen","appear","rise","clean","build"], ans:[0,1,2],
+   exp:"목적어가 없는 동사는 수동태를 만들 수 없습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"수동태를 쓰면 좋은 때를 모두 고르세요. (여러 개)",
+   opts:["누가 했는지 모를 때","당하는 쪽을 앞세우고 싶을 때","한 사람이 누구나 다 아는 사람일 때","문장을 길게 쓰고 싶을 때","주어가 사람일 때만"], ans:[0,1,2],
+   exp:"수동태는 까닭이 있을 때 고르는 말투입니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"바르게 쓴 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["Was it made in Korea?","It wasn’t made in Korea.","It was made in Korea.","Did it made in Korea?","It was make in Korea."], ans:[0,1,2],
+   exp:"수동태의 의문문과 부정문은 be동사를 씁니다. do를 쓰지 않습니다."},
+
+  {type:"a", tag:"모두 고르기", multi:true, q:"<b>하는 쪽</b>이 주어인 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["Tom eats the pizza.","She wrote the letter.","They built the house.","The pizza is eaten.","The letter was written."], ans:[0,1,2],
+   exp:"앞의 셋은 능동태, 뒤의 둘은 수동태입니다."},
+
+  {type:"v", tag:"함정", q:"다음 가운데 <b>틀린</b> 문장은?", eng:true,
+   opts:["The house is build by them.","The house is built by them.","They build the house.","The house was built by them.","The house isn’t built by them."], a:0,
+   exp:"be동사 뒤에는 과거분사 <b>built</b>가 와야 합니다."},
+
+  {type:"v", tag:"함정", sent:"The accident ___ last night.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["happened","was happened","is happened","happens","be happened"], a:0,
+   ko:"그 사고는 어젯밤에 일어났다.",
+   exp:"happen은 수동태를 만들지 않습니다. 그대로 <b>happened</b>입니다."},
+
+  {type:"v", tag:"함정", q:"‘He was died.’는 왜 틀렸을까요?", eng:true,
+   opts:["die는 목적어가 없어 수동으로 쓸 수 없다","was가 틀렸다","He가 틀렸다","died의 철자가 틀렸다","틀리지 않았다"], a:0,
+   exp:"‘죽다’는 스스로 겪는 일이라 당할 수 없습니다. <b>He died.</b>가 바릅니다."},
+
+  {type:"v", tag:"함정", sent:"I ___ in Seoul.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was born","born","bear","bore","am born"], a:0,
+   ko:"나는 서울에서 태어났다.",
+   exp:"‘태어나다’는 언제나 <b>be born</b>으로 씁니다. 덩어리째 외웁니다."},
+
+  {type:"v", tag:"함정", q:"‘be동사 + 과거분사’에서 be동사가 하는 일은?",
+   opts:["때와 주어를 나타낸다","뜻을 더한다","과거분사를 꾸민다","목적어를 만든다","아무 일도 하지 않는다"], a:0,
+   exp:"뜻은 과거분사가 맡고, be동사는 <b>때와 주어</b>를 맡습니다."},
+
+  {type:"v", tag:"함정", sent:"These books ___ by children.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["are read","is read","reads","read","are reading"], a:0,
+   ko:"이 책들은 아이들이 읽는다.",
+   exp:"주어가 여럿이므로 <b>are read</b>입니다.", hard:true}
+];
+
+var X3 = [
+  {type:"n", tag:"빈칸", sent:"Rice ___ by farmers in Korea.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is grown","grows","growing","grow","are grown"], a:0,
+   ko:"쌀은 한국에서 농부들이 기른다.",
+   exp:"by farmers가 있으니 쌀은 당하는 쪽입니다. <b>is grown</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The classroom ___ by the students every day.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is cleaned","cleans","cleaning","clean","are cleaned"], a:0,
+   ko:"그 교실은 날마다 학생들이 치운다.",
+   exp:"주어가 하나이므로 <b>is cleaned</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"He ___ to the party by Jane.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was invited","invited","invites","is invite","inviting"], a:0,
+   ko:"그는 제인에게 그 잔치에 초대받았다.",
+   exp:"초대받는 쪽이므로 <b>was invited</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"This temple ___ for its beauty.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is known","knows","is knowing","know","known"], a:0,
+   ko:"이 절은 아름다움으로 이름나 있다.",
+   exp:"<b>be known for</b>는 ‘~로 이름나다’입니다."},
+
+  {type:"n", tag:"빈칸", sent:"The door ___ by the wind.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was opened","opens","is open","opening","open"], a:0,
+   ko:"그 문은 바람에 열렸다.",
+   exp:"문은 열리는 쪽이므로 <b>was opened</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"Many trees ___ in the park last year.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["were planted","planted","plants","was planted","are planted"], a:0,
+   ko:"지난해 그 공원에 나무가 많이 심겼다.",
+   exp:"주어가 여럿이고 지난 일이므로 <b>were planted</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"These toys ___ in China.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["are made","is made","makes","make","making"], a:0,
+   ko:"이 장난감들은 중국에서 만들어진다.",
+   exp:"주어가 여럿이므로 <b>are made</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"The cake was **make** by my mother.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["made","make","making","makes","to make"], a:0,
+   exp:"be동사 뒤에는 과거분사 <b>made</b>가 옵니다."},
+
+  {type:"a", tag:"고치기", sent:"The books **was** put on the desk.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["were","is","be","do","did"], a:0,
+   exp:"주어 The books가 여럿이므로 <b>were</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"She **surprised** at the news yesterday.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["was surprised","surprises","surprising","surprise","is surprise"], a:0,
+   exp:"놀라는 쪽이므로 <b>was surprised</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"The song is sung **from** many people.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["by","to","at","in","with"], a:0,
+   exp:"한 사람을 밝힐 때는 <b>by</b>를 씁니다."},
+
+  {type:"a", tag:"고치기", sent:"The room is filled **of** people.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["with","by","at","in","for"], a:0,
+   exp:"be filled <b>with</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"The window **broke** by the boy.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["was broken","breaks","break","breaking","to break"], a:0,
+   exp:"by the boy가 있으므로 창문은 당하는 쪽입니다. <b>was broken</b>입니다."},
+
+  {type:"a", tag:"고치기", sent:"An accident **is happened** on the road last night.", q:"굵게 쓴 곳을 바르게 고친 것은?", eng:true,
+   opts:["happened","happens","is happening","happen","was happened"], a:0,
+   exp:"happen은 수동태가 없고 지난 일이므로 <b>happened</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", order:true, parts:["These flowers","were sent","by my friend","this morning"],
+   q:"바른 차례로 놓으세요. — 이 꽃들은 오늘 아침 친구가 보냈다.",
+   exp:"주어 + were sent + by + 때의 차례입니다."},
+
+  {type:"v", tag:"대화와 서술형", order:true, parts:["The letter","was written","in English","by Tom"],
+   q:"바른 차례로 놓으세요. — 그 편지는 톰이 영어로 썼다.",
+   exp:"수동태 뒤에 어떻게와 누가의 차례로 놓습니다."},
+
+  {type:"v", tag:"대화와 서술형", write:true, sent:"This bridge ___ last year.", ans:"was built",
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"이 다리는 지난해에 지어졌다.",
+   exp:"다리는 지어지는 쪽이므로 <b>was built</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", write:true, sent:"The dishes ___ by my brother.", ans:"were washed",
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"설거지는 남동생이 했다.",
+   exp:"주어가 여럿이므로 <b>were washed</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", sent:"B: It ___ by my grandmother.", q:"A: Who made this sweater? 빈칸에 알맞은 것은?", eng:true,
+   opts:["was made","made","makes","is making","making"], a:0,
+   ko:"B: 그것은 할머니가 만드셨어.",
+   exp:"스웨터는 만들어지는 쪽이므로 <b>was made</b>입니다."},
+
+  {type:"v", tag:"대화와 서술형", write:true, sent:"The box ___ with books.", ans:"is filled",
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"그 상자는 책으로 가득 차 있다.",
+   exp:"be filled with입니다. by를 쓰지 않습니다.", hard:true}
+];
+
+var X4 = [
+  {type:"n", tag:"모양 가리기", sent:"The car ___ now.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is being washed","is washing","washes","wash","is wash"], a:0,
+   ko:"그 차는 지금 씻기고 있다.",
+   exp:"지금 당하고 있는 일이므로 <b>is being washed</b>입니다."},
+
+  {type:"n", tag:"모양 가리기", sent:"The homework ___ been finished.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["has","have","is","was","did"], a:0,
+   ko:"그 숙제는 끝내졌다.",
+   exp:"been 앞에는 has나 have가 옵니다. 주어가 하나이므로 <b>has</b>입니다."},
+
+  {type:"n", tag:"모양 가리기", sent:"The road ___ at this moment.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is being repaired","is repairing","repairs","repair","is repair"], a:0,
+   ko:"그 길은 지금 이 순간 고쳐지고 있다.",
+   exp:"지금 당하고 있는 일이므로 진행형 수동입니다."},
+
+  {type:"n", tag:"모양 가리기", q:"‘be born’은 무슨 뜻일까요?", eng:true,
+   opts:["태어나다","낳다","자라다","살다","죽다"], a:0,
+   exp:"<b>태어나다</b>입니다. 언제나 수동 모양으로 씁니다."},
+
+  {type:"n", tag:"모양 가리기", sent:"He ___ in 2010.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was born","born","bears","is born","bore"], a:0,
+   ko:"그는 2010년에 태어났다.",
+   exp:"지난 일이므로 <b>was born</b>입니다."},
+
+  {type:"n", tag:"모양 가리기", sent:"The baby ___ Mina by her parents.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was named","named","names","is name","naming"], a:0,
+   ko:"그 아기는 부모에게 미나라고 이름 지어졌다.",
+   exp:"5형식의 수동태입니다. 이름 Mina는 <b>그대로 남습니다</b>."},
+
+  {type:"n", tag:"모양 가리기", sent:"He ___ to be a kind man.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["is said","says","is saying","said","say"], a:0,
+   ko:"그는 친절한 사람이라고들 한다.",
+   exp:"‘~라고들 한다’는 <b>is said to</b>로 씁니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘Tom broke the window.’를 수동으로 바꾸면?", eng:true,
+   opts:["The window was broken by Tom.","The window broke by Tom.","The window is broken by Tom.","The window was break by Tom.","The window were broken by Tom."], a:0,
+   exp:"지난 일이고 주어가 하나이므로 <b>was broken</b>입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘They are building a new school.’을 수동으로 바꾸면?", eng:true,
+   opts:["A new school is being built.","A new school is building.","A new school are being built.","A new school was being built.","A new school is been built."], a:0,
+   exp:"진행형 수동은 is <b>being</b> built입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘Someone has stolen my bike.’를 수동으로 바꾸면?", eng:true,
+   opts:["My bike has been stolen.","My bike has stolen.","My bike is stolen.","My bike was been stolen.","My bike have been stolen."], a:0,
+   exp:"완료형 수동은 has <b>been</b> stolen입니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘I saw him enter the room.’을 수동으로 바꾸면?", eng:true,
+   opts:["He was seen to enter the room.","He was seen enter the room.","He was see to enter the room.","He saw to enter the room.","He is seen enter the room."], a:0,
+   exp:"지각동사가 수동이 되면 <b>to</b>가 되살아납니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘They take care of the baby.’를 수동으로 바꾸면?", eng:true,
+   opts:["The baby is taken care of by them.","The baby is taken care by them.","The baby is take care of by them.","The baby takes care of by them.","The baby is taking care of."], a:0,
+   exp:"덩어리 동사 take care of는 <b>통째로</b> 옮깁니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘People believe that she is honest.’를 She로 시작해 바꾸면?", eng:true,
+   opts:["She is believed to be honest.","She is believe to be honest.","She believes to be honest.","She is believed that she is honest.","She was believe to be honest."], a:0,
+   exp:"사람을 주어로 올리면 that절이 <b>to부정사</b>로 바뀝니다."},
+
+  {type:"a", tag:"바꿔 쓰기", q:"‘My mother told me to study.’를 수동으로 바꾸면?", eng:true,
+   opts:["I was told to study by my mother.","I was told study by my mother.","I told to study by my mother.","I was tell to study by my mother.","I am told study."], a:0,
+   exp:"to부정사는 그대로 두고 앞만 수동으로 바꿉니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"다음 가운데 <b>틀린</b> 문장을 모두 고르세요. (여러 개)", eng:true,
+   opts:["The window broke by Tom.","The work is doing by him.","He was made wait.","The window was broken by Tom.","He was made to wait."], ans:[0,1,2],
+   exp:"be동사와 과거분사, 그리고 사역의 to를 빠뜨리면 안 됩니다."},
+
+  {type:"v", tag:"종합", sent:"The letter ___ by my father two days ago.", q:"빈칸에 알맞은 것은?", eng:true,
+   opts:["was written","wrote","writes","is written","were written"], a:0,
+   ko:"그 편지는 이틀 전에 아버지가 쓰셨다.",
+   exp:"지난 일이고 주어가 하나이므로 <b>was written</b>입니다."},
+
+  {type:"v", tag:"종합", order:true, parts:["This song","is loved","by many people","in Korea"],
+   q:"바른 차례로 놓으세요. — 이 노래는 한국에서 많은 사람에게 사랑받는다.",
+   exp:"주어 + is loved + by + 곳의 차례입니다."},
+
+  {type:"v", tag:"종합", write:true, sent:"My bike ___ last night.", ans:"was stolen",
+   q:"우리말을 보고 빈칸을 채우세요. (두 낱말)", eng:true,
+   ko:"내 자전거는 어젯밤에 도둑맞았다.",
+   exp:"steal - stole - stolen입니다. <b>was stolen</b>으로 씁니다."},
+
+  {type:"v", tag:"종합", multi:true, q:"by가 아닌 전치사를 쓰는 표현을 모두 고르세요. (여러 개)", eng:true,
+   opts:["be interested in","be filled with","be known to","be eaten by","be written by"], ans:[0,1,2],
+   exp:"마음과 상태를 나타내는 수동 표현은 by를 쓰지 않는 것이 많습니다."},
+
+  {type:"v", tag:"종합", q:"수동태 문장을 읽을 때 가장 먼저 찾을 것은?",
+   opts:["be동사와 과거분사","문장의 길이","낱말의 수","문장 부호","주어의 이름"], a:0,
+   exp:"be동사와 과거분사가 짝을 이루고 있으면 주어는 <b>당하는 쪽</b>입니다.", hard:true}
+];
+
+function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.concat(a.filter(function(q){return q.type===t;}), b.filter(function(q){return q.type===t;})); },[]); }
+L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
+
+var LEVELS = {
+  1:{name:"기본1 · 누가 하고 누가 당하나", desc:"한글로 이해 24 · 쉬운 영어 16 · 나와 쓰다 · 편지와 쓰다 · 피자와 먹다 · 능동과 수동을 우리말로 먼저 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"기본2 · be + 과거분사로 만들기", desc:"be동사를 때와 수에 맞추기 · 바꾸는 세 걸음 · by를 적지 않는 때 · 함정 셋", qs:L2, typeLabels:{n:"모양 만들기",a:"모두 고르기",v:"함정"}},
+  3:{name:"기본3 · 중2 학교 시험형", desc:"빈칸 · 틀린 곳 고치기 · 4형식 수동 · by가 아닌 전치사 · 대화와 배열 · 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 서술형"}},
+  4:{name:"기본4 · 중3까지 아우르기", desc:"5형식 수동 · 지각·사역동사 수동 · 진행형과 완료형 수동 · 구동사 수동 · It is said that ~", qs:L4, typeLabels:{n:"모양 가리기",a:"바꿔 쓰기",v:"종합"}}
+};
+
+/* ===================== 개념 화면 ===================== */
+function figSide(){
+  return '<svg class="fig" viewBox="0 0 560 168" role="img" aria-label="하는 쪽과 당하는 쪽을 가르는 그림">'+
+    '<rect x="16" y="14" width="252" height="134" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
+    '<text x="142" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="var(--rn)">하는 쪽 · 능동</text>'+
+    '<text x="142" y="72" text-anchor="middle" font-size="17" fill="var(--ink)">나 — 쓰다</text>'+
+    '<text x="142" y="98" text-anchor="middle" font-size="17" fill="var(--ink)">아이 — 먹다</text>'+
+    '<text x="142" y="128" text-anchor="middle" font-size="15" fill="var(--rn)">~한다</text>'+
+    '<rect x="292" y="14" width="252" height="134" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
+    '<text x="418" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ra)">당하는 쪽 · 수동</text>'+
+    '<text x="418" y="72" text-anchor="middle" font-size="17" fill="var(--ink)">편지 — 쓰이다</text>'+
+    '<text x="418" y="98" text-anchor="middle" font-size="17" fill="var(--ink)">피자 — 먹히다</text>'+
+    '<text x="418" y="128" text-anchor="middle" font-size="15" fill="var(--ra)">~된다 · ~해진다 · ~당한다</text>'+
+  '</svg>';
+}
+
+function figSwap(){
+  return '<svg class="fig" viewBox="0 0 560 208" role="img" aria-label="능동을 수동으로 바꾸는 세 걸음">'+
+    '<rect x="16" y="10" width="528" height="50" rx="10" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.3"/>'+
+    '<text x="36" y="34" font-size="17" fill="var(--ink)" font-family="Newsreader, serif">Tom  ate  the pizza.</text>'+
+    '<text x="36" y="52" font-size="14" fill="var(--rn)">능동 — 하는 쪽이 주어</text>'+
+    '<text x="280" y="86" text-anchor="middle" font-size="24" fill="var(--muted)">&#8595;</text>'+
+    '<rect x="16" y="98" width="528" height="50" rx="10" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.3"/>'+
+    '<text x="36" y="122" font-size="17" fill="var(--ink)" font-family="Newsreader, serif">The pizza  was eaten  by Tom.</text>'+
+    '<text x="36" y="140" font-size="14" fill="var(--ra)">수동 — 당하는 쪽이 주어</text>'+
+    '<text x="16" y="174" font-size="15" fill="var(--muted)">목적어는 주어로 · 동사는 be + 과거분사로 · 주어는 by 뒤로</text>'+
+    '<text x="16" y="196" font-size="15" fill="var(--muted)">당하는 쪽을 앞세우고 싶을 때 씁니다.</text>'+
+  '</svg>';
+}
+
+function figPrep(){
+  var row=function(y,en,ko,c){
+    return '<rect x="16" y="'+y+'" width="528" height="40" rx="10" fill="var(--'+c+'-soft)" stroke="var(--'+c+')" stroke-width="1.2"/>'+
+      '<text x="36" y="'+(y+26)+'" font-size="17" fill="var(--ink)" font-family="Newsreader, serif">'+en+'</text>'+
+      '<text x="300" y="'+(y+26)+'" font-size="16" fill="var(--'+c+')">'+ko+'</text>';
+  };
+  return '<svg class="fig" viewBox="0 0 560 244" role="img" aria-label="by를 쓰지 않는 수동 표현">'+
+    row(8,'be interested in','~에 흥미가 있다','rn')+
+    row(56,'be surprised at','~에 놀라다','ra')+
+    row(104,'be filled with','~으로 가득 차다','rv')+
+    row(152,'be covered with','~으로 덮이다','rn')+
+    row(200,'be known to','~에게 알려지다','ra')+
+  '</svg>';
+}
+
+function learn1(){
+  return ''+
+  '<h2>LEVEL 1 · 누가 하고 누가 당하나</h2>'+
+  '<p class="lead">낱말 두 개만 놓고 생각해 봅니다. <b>나</b>와 <b>쓰다</b>, <b>편지</b>와 <b>쓰다</b>. 같은 ‘쓰다’인데 사이가 다릅니다.</p>'+
+  figSide()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>스스로 하나, 당하나</span>'+
+    '<div class="ex">나 — 쓰다<span class="k">내가 씁니다. 하는 쪽</span></div>'+
+    '<div class="ex">편지 — 쓰다<span class="k">편지는 쓰입니다. 당하는 쪽</span></div>'+
+    '<div class="ex">아이 — 먹다<span class="k">아이가 먹습니다. 하는 쪽</span></div>'+
+    '<div class="ex">피자 — 먹다<span class="k">피자는 먹힙니다. 당하는 쪽</span></div>'+
+    '<p>피자가 무엇을 먹을 수는 없습니다. 그래서 피자는 언제나 <b>당하는 쪽</b>입니다. 주어가 스스로 하면 <b>능동</b>, 당하면 <b>수동</b>입니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>말끝으로 가려내기</span>'+
+    '<div class="ex">먹는다 · 쓴다 · 연다<span class="k">능동 — ~한다</span></div>'+
+    '<div class="ex">먹힌다 · 쓰인다 · 열린다<span class="k">수동 — ~된다 · ~해진다 · ~당한다</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>자리가 바뀝니다</span>'+
+    figSwap()+
+    '<p>당하는 쪽이 <b>주어 자리</b>로 올라오고, 한 사람은 <b>by</b> 뒤로 갑니다. 그래서 목적어가 없는 말은 수동으로 바꿀 수 없습니다.</p>'+
+  '</div>'+
+  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span>'+
+    '<div class="ex">The pizza <u class="hl a">is eaten</u> by Tom.<span class="k">be동사 + 과거분사</span></div>'+
+    '<div class="ex">The letter <u class="hl a">was written</u> by my sister.<span class="k">지난 일이면 was</span></div>'+
+    '<div class="ex">eat - ate - <u class="hl a">eaten</u> · write - wrote - <u class="hl a">written</u><span class="k">세 번째가 과거분사</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>주어가 스스로 하면 능동, 당하면 수동입니다. 수동의 모양은 <b>be동사 + 과거분사</b>이고, 한 사람은 by 뒤에 적습니다.</div>';
+}
+
+function learn2(){
+  return ''+
+  '<h2>LEVEL 2 · be + 과거분사로 만들기</h2>'+
+  '<p class="lead">이제 직접 바꿔 봅니다. 걸음은 셋뿐입니다. 그다음 꼭 걸리는 함정 셋을 익힙니다.</p>'+
+  figSwap()+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>바꾸는 세 걸음</span>'+
+    '<div class="ex">첫째 — 목적어를 주어 자리로<span class="k">the pizza &#8594; The pizza</span></div>'+
+    '<div class="ex">둘째 — 동사를 be동사 + 과거분사로<span class="k">ate &#8594; was eaten</span></div>'+
+    '<div class="ex">셋째 — 본디 주어를 by 뒤로<span class="k">Tom &#8594; by Tom</span></div>'+
+    '<p>be동사는 <b>주어와 때</b>에 맞춥니다. 하나이고 지금이면 is, 여럿이면 are, 지난 일이면 was와 were입니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>함정 하나 — be동사를 빠뜨리기</span>'+
+    '<div class="swap"><span>The pizza eaten by Tom.</span><span class="ar">&#10007;</span><span class="good">The pizza is eaten by Tom.</span></div>'+
+    '<p>과거분사만으로는 문장이 되지 않습니다. be동사가 꼭 있어야 합니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>함정 둘 — 과거형과 과거분사를 섞기</span>'+
+    '<div class="swap"><span>The song is sing by her.</span><span class="ar">&#10007;</span><span class="good">The song is sung by her.</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>함정 셋 — 목적어가 없는 동사</span>'+
+    '<div class="swap"><span>The accident was happened.</span><span class="ar">&#10007;</span><span class="good">The accident happened.</span></div>'+
+    '<p>happen · appear · rise · die는 목적어가 없어 <b>수동태를 만들 수 없습니다</b>. 올릴 목적어가 없기 때문입니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">2단계에서 챙길 것</span>be동사는 주어와 때에 맞추고, 뒤에는 언제나 과거분사. 목적어가 없는 동사는 아예 바꿀 수 없습니다.</div>';
+}
+
+function learn3(){
+  return ''+
+  '<h2>LEVEL 3 · 중2 학교 시험형</h2>'+
+  '<p class="lead">시험에 나오는 자리는 거의 정해져 있습니다. <b>be동사 맞추기</b>, <b>과거분사 모양</b>, <b>by가 아닌 전치사</b>, 그리고 <b>목적어가 둘인 문장</b>입니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>틀린 곳은 늘 같은 자리</span>'+
+    '<div class="swap"><span>The letters is sent every day.</span><span class="ar">&#10007;</span><span class="good">The letters are sent every day.</span></div>'+
+    '<div class="swap"><span>The window was break by the boy.</span><span class="ar">&#10007;</span><span class="good">The window was broken by the boy.</span></div>'+
+    '<div class="swap"><span>The room cleaned by my sister.</span><span class="ar">&#10007;</span><span class="good">The room was cleaned by my sister.</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>by를 쓰지 않는 짝 — 외워 두면 바로 맞습니다</span>'+
+    figPrep()+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>목적어가 둘일 때</span>'+
+    '<div class="swap"><span>His teacher gave him a book.</span><span class="ar">&#8594;</span><span class="good">He was given a book by his teacher.</span></div>'+
+    '<p>사람과 물건이 모두 목적어이므로 <b>어느 쪽이든</b> 주어로 올릴 수 있습니다. 학교 시험에서는 사람을 올리는 꼴이 더 자주 나옵니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">3단계에서 챙길 것</span>빈칸이 막히면 주어를 먼저 보세요. 주어가 <b>당하는 쪽</b>이면 be동사 + 과거분사입니다.</div>';
+}
+
+function learn4(){
+  return ''+
+  '<h2>LEVEL 4 · 중3까지 아우르기</h2>'+
+  '<p class="lead">수동태의 모양이 늘어납니다. 그래도 가운데는 언제나 <b>과거분사</b>입니다. 앞에 무엇이 붙느냐만 달라집니다.</p>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>모양 네 가지</span>'+
+    '<div class="ex">The room <u class="hl">is cleaned</u>.<span class="k">보통 — be동사 + 과거분사</span></div>'+
+    '<div class="ex">The room <u class="hl">is being cleaned</u>.<span class="k">진행 — 지금 당하고 있다</span></div>'+
+    '<div class="ex">The room <u class="hl">has been cleaned</u>.<span class="k">완료 — 지금까지 당했다</span></div>'+
+    '<div class="ex">The room <u class="hl">will be cleaned</u>.<span class="k">앞날 — 조동사 뒤에는 be</span></div>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-a"></i>보어가 남는 수동 · to가 되살아나는 수동</span>'+
+    '<div class="swap"><span>Everyone called him a hero.</span><span class="ar">&#8594;</span><span class="good">He was called a hero.</span></div>'+
+    '<div class="swap"><span>She made me wash the car.</span><span class="ar">&#8594;</span><span class="good">I was made to wash the car.</span></div>'+
+    '<div class="swap"><span>I saw him cross the street.</span><span class="ar">&#8594;</span><span class="good">He was seen to cross the street.</span></div>'+
+    '<p>5형식에서 보어는 <b>그대로 남고</b>, 지각동사와 사역동사가 수동이 되면 사라졌던 <b>to</b>가 되살아납니다.</p>'+
+  '</div>'+
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>덩어리 동사와 that절</span>'+
+    '<div class="swap"><span>They laughed at him.</span><span class="ar">&#8594;</span><span class="good">He was laughed at by them.</span></div>'+
+    '<div class="swap"><span>People say that he is rich.</span><span class="ar">&#8594;</span><span class="good">It is said that he is rich.</span></div>'+
+    '<p>덩어리 동사는 전치사까지 <b>통째로</b> 옮깁니다. that절은 It으로 시작하거나 사람을 주어로 올려 to부정사로 바꿉니다.</p>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마지막 한마디</span>수동태를 찾는 법은 하나입니다. <b>be동사와 과거분사</b>가 짝을 이루고 있으면 주어는 당하는 쪽입니다.</div>';
+}
+
+var LVCHEER = {
+  1:"하는 쪽과 당하는 쪽을 우리말로 가려냈어요. 2단계에서는 직접 바꿔 봅니다.",
+  2:"be + 과거분사를 만들고 함정 셋을 넘었습니다. 3단계는 중2 학교 시험형입니다.",
+  3:"빈칸과 고치기, 전치사 짝까지 해냈어요. 마지막 단계만 남았습니다.",
+  4:"진행과 완료, 5형식 수동까지 아울렀습니다. 수동태는 이제 든든합니다!"
+};
+
+function renderLearn(){
+  $("lvnum").textContent="LEVEL "+S.level;
+  $("learnBody").innerHTML = S.level===1?learn1():S.level===2?learn2():S.level===3?learn3():learn4();
+  show("learn");
+}
+
+/* ===================== 상태 ===================== */
+var RKEY="kkumettang_passive_v1", NKEY="kkumettang_name";
+var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
+       correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
+       active:0,resume:"quiz",finished:{}};
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function escA(s){return esc(s).replace(/"/g,"&quot;");}   /* 속성 안에 넣을 때 */
+function unent(s){return String(s).replace(/&nbsp;/g," ").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,"&");}
+function loadR(){try{var r=JSON.parse(localStorage.getItem(RKEY)||"[]");return Array.isArray(r)?r:[];}catch(e){return [];}}
+function saveR(r){try{localStorage.setItem(RKEY,JSON.stringify(r));}catch(e){}}
+
+function fmt(s,c){
+  if(!s) return "";
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<u class="hl '+(c||"")+'">$1</u>')
+                  .replace(/___/g,'<span class="blank"></span>');
+}
+function fmtFull(s){
+  return String(s).replace(/\*\*(.+?)\*\*/g,'<span class="hl">$1</span>');
+}
+
+/* ===================== 화면 전환 ===================== */
+var SCREENS=["start","learn","quiz","result","rank"];
+function show(id){
+  SCREENS.forEach(function(s){ $(s).classList.toggle("hide", s!==id); });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ===================== 시작 화면 ===================== */
+function best(level){
+  var r=loadR();
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name && r[i].level===level) return r[i].score;
+  return null;
+}
+function drawRail(){
+  [1,2,3,4].forEach(function(k){
+    var b=best(k);
+    $("f"+k).style.width=(b==null?0:b)+"%";
+    $("p"+k).textContent=(b==null?"":" "+b);
+  });
+}
+function drawLevels(){
+  var h="";
+  [1,2,3,4].forEach(function(k){
+    var L=LEVELS[k], b=best(k);
+    var locked = false;
+    var here = S.active===k;
+    var right;
+    if(locked) right='<span class="best lock">잠김</span>';
+    else if(here) right='<span class="best go">이어서 풀기</span>';
+    else if(b==null) right='<span class="best"><em>미도전</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
+        '<span class="rank">'+k+'</span>'+
+        '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+drawCount(L)+'문제</span></span>'+
+        '<span class="desc">'+esc(L.desc)+'</span></span>'+
+        right+
+      '</button>';
+  });
+  $("levelPick").innerHTML=h;
+  Array.prototype.forEach.call($("levelPick").querySelectorAll(".lvcard"),function(b){
+    b.addEventListener("click",function(){ pickLevel(+this.dataset.lv); });
+  });
+}
+function refreshStart(){ drawRail(); drawLevels(); progBanner(); }
+
+function pickLevel(k){
+  var nm=($("nameIn").value||"").trim();
+  if(!nm){ $("nameNote").innerHTML='<b style="color:var(--no)">먼저 이름을 적어 주세요.</b>'; $("nameIn").focus(); return; }
+  S.name=nm; try{localStorage.setItem(NKEY,nm);}catch(e){}
+  if(S.active && S.active!==k) return;
+  if(S.active===k){
+    if(S.resume==="learn") renderLearn();
+    else if(S.resume==="result") show("result");
+    else renderQ();
+    return;
+  }
+  S.level=k;
+  renderLearn();
+}
+
+/* ===================== 보기 섞기 ===================== */
+/* 정답이 늘 1번에 오지 않도록 게임을 열 때 한 번 섞습니다. */
+(function shuffleAll(){
+  [L1,L2,L3,L4].forEach(function(bank){
+    bank.forEach(function(q){
+      if(!q.opts) return;
+      var idx = q.opts.map(function(_,i){ return i; });
+      for(var i=idx.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+      q.opts = idx.map(function(k){ return q.opts[k]; });
+      if(q.multi) q.ans = q.ans.map(function(k){ return idx.indexOf(k); }).sort(function(a,b){return a-b;});
+      else q.a = idx.indexOf(q.a);
+    });
+  });
+})();
+
+/* ===================== 문제 ===================== */
+/* 문제 뽑기: 종류(n·a·v) 비율을 지키고, 보스 문제는 하나만 그 종류의 맨 끝에 둡니다.
+   지난 판에 나온 문제는 뒤로 미룹니다. 그래서 같은 단계를 두 판 하면 그 단계 문제를 거의 다 보게 됩니다. */
+var SEENKEY = RKEY + "_seen";
+function loadSeen(){
+  try{ var o=JSON.parse(localStorage.getItem(SEENKEY)||"{}"); return (o && typeof o==="object") ? o : {}; }
+  catch(e){ return {}; }
+}
+function seenList(lv){ var a=loadSeen()["L"+lv]; return Array.isArray(a)?a:[]; }
+function putSeen(lv, list){
+  try{ var o=loadSeen(); o["L"+lv]=list.slice(); localStorage.setItem(SEENKEY, JSON.stringify(o)); }catch(e){}
+}
+function shuffled(a){
+  var p=a.slice();
+  for(var i=p.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=p[i]; p[i]=p[j]; p[j]=x; }
+  return p;
+}
+function drawCount(L){ return Math.min(20, L.qs.length); }
+function drawList(L){
+  var qs=L.qs, N=drawCount(L), T=["n","a","v"], lv=S.level;
+  if(qs.length<=N) return qs.map(function(_,i){return i;});
+  var by={}, boss=[], cnt={}, sum=0;
+  T.forEach(function(t){ by[t]=[]; cnt[t]=0; });
+  qs.forEach(function(q,i){ if(q.tag==="보스 문제") boss.push(i); else if(by[q.type]) by[q.type].push(i); });
+  T.forEach(function(t){
+    var p=qs.filter(function(q){ return q.type===t; }).length;
+    cnt[t]=Math.round(p*N/qs.length); sum+=cnt[t];
+  });
+  while(sum>N){ var big=T.slice().sort(function(x,y){return cnt[y]-cnt[x];})[0]; cnt[big]--; sum--; }
+  while(sum<N){ var lot=T.slice().sort(function(x,y){return by[y].length-cnt[y]-(by[x].length-cnt[x]);})[0]; cnt[lot]++; sum++; }
+
+  var all = qs.map(function(_,i){ return i; });
+  var seen = seenList(lv);
+  var isNew = function(i){ return seen.indexOf(i)<0; };
+
+  /* 보스 문제도 아직 안 나온 것을 먼저 고릅니다 */
+  var bF = boss.filter(isNew), bPool = bF.length ? bF : boss;
+  var b = bPool.length ? bPool[Math.floor(Math.random()*bPool.length)] : -1;
+  if(b>=0) cnt[qs[b].type]--;
+
+  var need = N - (b>=0 ? 1 : 0);
+  var pick=[], spare=[];
+  T.forEach(function(t){
+    var k=Math.max(0,cnt[t]), f=shuffled(by[t].filter(isNew));
+    pick=pick.concat(f.slice(0,k));
+    spare=spare.concat(f.slice(k));
+  });
+  /* 아직 안 나온 보스 문제가 더 있으면 그것도 채우는 데 씁니다 */
+  spare = spare.concat(boss.filter(function(i){ return i!==b && isNew(i); }));
+  /* 어느 종류가 모자라면 다른 종류의 새 문제로 채웁니다. 그래도 모자랄 때만 지난 문제를 씁니다. */
+  if(pick.length<need){
+    var add=shuffled(spare).slice(0, need-pick.length);
+    pick=pick.concat(add);
+  }
+  if(pick.length<need){
+    var again=shuffled(all.filter(function(i){
+      return !isNew(i) && boss.indexOf(i)<0 && pick.indexOf(i)<0; }));
+    pick=pick.concat(again.slice(0, need-pick.length));
+  }
+
+  /* 새 문제를 한 바퀴 다 돌았으면 이번 판만 남기고 처음부터 다시 셉니다 */
+  var done = all.filter(isNew).filter(function(i){ return pick.indexOf(i)<0 && i!==b; }).length===0;
+  var nseen = (done ? [] : seen).concat(pick, b>=0 ? [b] : []), keep=[];
+  nseen.forEach(function(i){ if(keep.indexOf(i)<0) keep.push(i); });
+  putSeen(lv, keep);
+
+  var out=[];
+  T.forEach(function(t){
+    var got=pick.filter(function(i){ return qs[i].type===t; }).sort(function(x,y){ return x-y; });
+    if(b>=0 && qs[b].type===t) got.push(b);
+    out=out.concat(got);
+  });
+  return out;
+}
+function startQuiz(){
+  var L=LEVELS[S.level];
+  S.list=drawList(L);
+  S.i=0;S.picked=-1;S.answered=false;
+  S.correct=0;S.wrong=[];S.byType={n:[0,0],a:[0,0],v:[0,0]};
+  S.round=1;S.retryWrong=[];
+  S.active=S.level; S.resume="quiz";
+  clearProg();
+  renderQ();
+}
+function curQ(){ return LEVELS[S.level].qs[ S.list[S.i] ]; }
+
+function renderQ(){
+  var q=curQ(), n=S.list.length, c=q.type||"";
+  $("qnum").textContent=(S.i+1)+" / "+n;
+  $("qlevel").textContent = S.round===1 ? S.level+"단계" : "오답 다시 풀기";
+  $("qlevel").className = "chip"+(c?" "+c:"");
+  var tag = q.tag || "";
+  $("qtag").textContent = tag + (q.hard && tag.indexOf("고난도")<0 ? " · 고난도":"");
+  $("qtag").className = "chip plain"+(q.hard?" hard":"");
+
+  var h="";
+  h+='<p class="ask">'+fmt(q.q,c)+'</p>';
+  if(q.word) h+='<div class="wordcard">'+esc(q.word)+'</div>';
+  else if(q.sent) h+='<p class="sent">'+fmt(q.sent,c)+'</p>';
+  if(q.ko) h+='<p class="ko">'+esc(q.ko)+'</p>';
+  if(q.order){
+    h+='<div class="orderbox">'+
+       '<div class="slotline" id="orderPick" aria-label="고른 차례"></div>'+
+       '<div class="chips" id="orderChips"></div>'+
+       '<div class="multibar"><span class="multihint" id="orderNote">조각을 차례대로 눌러 문장을 만드세요.</span>'+
+       '<button class="btn ghost small" id="orderUndo">되돌리기</button>'+
+       '<button class="btn" id="orderBtn">확인</button></div></div>';
+    h+='<div class="opts hide">';
+  } else if(q.write){
+    h+='<div class="writebox"><input type="text" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 영어로 써 보세요">'+
+       '<button class="btn" id="writeBtn">확인</button></div>';
+    h+='<div class="opts hide">';
+  } else h+='<div class="opts">';
+  (q.opts||[]).forEach(function(o,i){
+    var cls="opt"+(q.eng?"":" kor")+(q.eng&&o.length>26?" long":"");
+    h+='<button class="'+cls+'" data-i="'+i+'"><span class="key">'+(q.multi?"□":(i+1))+'</span>'+
+       '<span class="txt">'+fmt(o,c)+'</span><span class="res"></span></button>';
+  });
+  h+='</div>';
+  if(q.multi) h+='<div class="multibar"><span class="multihint" id="pickNote">정답이 여러 개입니다. 고른 뒤 확인을 누르세요.</span>'+
+                 '<button class="btn" id="checkBtn">확인</button></div>';
+  $("qbody").innerHTML=h;
+  $("qexp").innerHTML="";
+  saveProg();
+  S.answered=false;S.picked=-1;
+
+  Array.prototype.forEach.call($("qbody").querySelectorAll(".opt"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered) return;
+      if(q.multi){
+        this.classList.toggle("sel");
+        this.querySelector(".key").textContent = this.classList.contains("sel") ? "■" : "□";
+        var cnt=$("qbody").querySelectorAll(".opt.sel").length;
+        $("pickNote").textContent = cnt ? cnt+"개를 골랐어요. 다 골랐으면 확인을 누르세요." : "정답이 여러 개입니다. 고른 뒤 확인을 누르세요.";
+      } else answer(+this.dataset.i);
+    });
+  });
+  if(q.multi) $("checkBtn").addEventListener("click",answerMulti);
+  if(q.write){
+    $("writeBtn").addEventListener("click",answerWrite);
+    $("writeIn").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); answerWrite(); } });
+    setTimeout(function(){ try{ $("writeIn").focus({preventScroll:true}); }catch(e){} },60);
+  }
+  if(q.order) setupOrder(q);
+  show("quiz");
+}
+
+function buildFull(q){
+  if(q.order) return {en:esc(q.parts.join(" ")), kr:q.ko||""};
+  if(q.full) return {en:fmtFull(q.full), kr:q.fullko||q.ko||""};
+  if(!q.sent) return null;
+  if(q.sent.indexOf("___")>=0){
+    if(q.write) return {en:q.sent.replace("___",'<span class="hl">'+q.ans+'</span>'), kr:q.ko||""};
+    if(!q.opts) return null;
+    if(q.multi) return {en:q.sent.replace("___",'<span class="hl">'+q.ans.map(function(k){return q.opts[k];}).join(" / ")+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    if(/[A-Za-z]/.test(q.opts[q.a]))
+      return {en:q.sent.replace("___",'<span class="hl">'+q.opts[q.a]+'</span>').replace(/\*\*(.+?)\*\*/g,"$1"), kr:q.ko||""};
+    return null;
+  }
+  return {en:fmtFull(q.sent), kr:q.ko||""};
+}
+
+function answer(pick){
+  if(S.answered) return;
+  var q=curQ(), ok=(pick===q.a);
+  S.answered=true;S.picked=pick;
+
+  var btns=$("qbody").querySelectorAll(".opt");
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    if(i===q.a){ b.classList.add(ok&&i===pick?"pick-ok":"reveal"); b.querySelector(".res").textContent = ok? "○ 정답" : "○ 정답은 이것"; }
+    if(i===pick&&!ok){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 내 답"; }
+  });
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+(q.a+1)+'번 · '+fmt(q.opts[q.a])+'</span>');
+}
+
+function answerMulti(){
+  if(S.answered) return;
+  var q=curQ();
+  var btns=$("qbody").querySelectorAll(".opt");
+  var picked=[];
+  Array.prototype.forEach.call(btns,function(b,i){ if(b.classList.contains("sel")) picked.push(i); });
+  if(!picked.length){ $("pickNote").textContent="하나 이상 골라 주세요."; return; }
+  S.answered=true;
+  var ok = picked.length===q.ans.length && picked.every(function(i){ return q.ans.indexOf(i)>=0; });
+
+  Array.prototype.forEach.call(btns,function(b,i){
+    b.disabled=true;
+    var right=q.ans.indexOf(i)>=0, chose=picked.indexOf(i)>=0;
+    if(right){ b.classList.add(chose?"pick-ok":"reveal"); b.querySelector(".res").textContent = chose? "○ 맞게 골랐어요" : "○ 이것도 정답"; }
+    else if(chose){ b.classList.add("pick-no"); b.querySelector(".res").textContent="✕ 아니에요"; }
+  });
+  var cb=$("checkBtn"); if(cb) cb.remove();
+  var pn=$("pickNote"); if(pn) pn.textContent = ok ? "모두 정확히 골랐습니다." : "정답만 초록색으로 표시했어요.";
+  var ansTxt = q.ans.map(function(i){ return q.opts[i]; }).join(" · ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
+}
+
+/* ---------- 조각을 차례대로 눌러 문장 만들기 ---------- */
+function setupOrder(q){
+  S.orderPicked=[];
+  var bag=q.parts.map(function(t,i){ return {t:t,i:i}; });
+  for(var k=bag.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)); var tmp=bag[k];bag[k]=bag[r];bag[r]=tmp; }
+  var chips=$("orderChips");
+  chips.innerHTML = bag.map(function(b){
+    return '<button class="chip-w" data-i="'+b.i+'">'+esc(b.t)+'</button>';
+  }).join("");
+  Array.prototype.forEach.call(chips.querySelectorAll(".chip-w"),function(b){
+    b.addEventListener("click",function(){
+      if(S.answered||this.disabled) return;
+      this.disabled=true; this.classList.add("used");
+      S.orderPicked.push(+this.dataset.i);
+      drawOrder(q);
+    });
+  });
+  $("orderUndo").addEventListener("click",function(){
+    if(S.answered||!S.orderPicked.length) return;
+    var last=S.orderPicked.pop();
+    var b=$("orderChips").querySelector('.chip-w[data-i="'+last+'"]');
+    if(b){ b.disabled=false; b.classList.remove("used"); }
+    drawOrder(q);
+  });
+  $("orderBtn").addEventListener("click",function(){ answerOrder(); });
+  drawOrder(q);
+}
+
+function drawOrder(q){
+  var line=$("orderPick");
+  line.innerHTML = S.orderPicked.length
+    ? S.orderPicked.map(function(i){ return '<span class="slot">'+esc(q.parts[i])+'</span>'; }).join("")
+    : '<span class="slot empty">여기에 차례대로 쌓입니다</span>';
+  var note=$("orderNote");
+  if(note) note.textContent = S.orderPicked.length===q.parts.length
+    ? "다 놓았습니다. 확인을 누르세요."
+    : "차례대로 눌러 주세요 · "+S.orderPicked.length+" / "+q.parts.length;
+}
+
+function answerOrder(){
+  if(S.answered) return;
+  var q=curQ();
+  if(S.orderPicked.length!==q.parts.length){ $("orderNote").textContent="조각을 모두 놓아 주세요."; return; }
+  var ok = S.orderPicked.every(function(v,i){ return v===i; });
+  S.answered=true;
+  Array.prototype.forEach.call($("orderChips").querySelectorAll(".chip-w"),function(b){ b.disabled=true; });
+  $("orderBtn").disabled=true;
+  var ub=$("orderUndo"); if(ub) ub.remove();
+  $("orderPick").className = "slotline " + (ok?"ok":"no");
+  $("orderNote").textContent = ok ? "차례가 모두 맞습니다." : "차례가 맞지 않아요.";
+  var right = q.parts.join(" ");
+  finishAnswer(q, ok, ok?"":'<span class="ans">바른 차례 · '+esc(right)+'</span>');
+}
+
+function normWrite(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9가-힣]/g,""); }
+function answerWrite(){
+  if(S.answered) return;
+  var q=curQ(), box=$("writeIn"), typed=(box.value||"").trim();
+  if(!typed){ box.focus(); return; }
+  var list=[q.ans].concat(q.alt||[]);
+  var ok = list.some(function(a){ return normWrite(a)===normWrite(typed); });
+  S.answered=true;
+  box.disabled=true;
+  $("writeBtn").disabled=true;
+  box.className = ok ? "ok" : "no";
+  finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+esc(q.ans)+' · 내가 쓴 답 '+esc(typed)+'</span>');
+}
+
+function finishAnswer(q, ok, ansHtml){
+  if(S.round===1){
+    if(q.type&&S.byType[q.type]){ S.byType[q.type][1]++; if(ok) S.byType[q.type][0]++; }
+    if(ok) S.correct++; else S.wrong.push(S.list[S.i]);
+  }else{
+    if(!ok) S.retryWrong.push(S.list[S.i]);
+  }
+
+  var f=buildFull(q), last=(S.i+1>=S.list.length);
+  var h='<div class="exp">'+
+    '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"○ 정답입니다":"✕ 아쉬워요")+ansHtml+'</div>'+
+    (f?'<div class="full"><span class="h">완성 문장</span><span class="en">'+f.en+'</span>'+
+        (f.kr?'<span class="kr">'+esc(f.kr)+'</span>':'')+'</div>':'')+
+    '<div class="tip"><span class="h">왜 그럴까요</span>'+q.exp+'</div>'+
+    '<div class="nav"><button class="btn" id="nextBtn">'+
+      (last?(S.round===1?"결과 보기":"복습 결과 보기"):"다음 문제 →")+'</button></div>'+
+  '</div>';
+  $("qexp").innerHTML=h;
+  $("nextBtn").addEventListener("click",next);
+  $("nextBtn").focus({preventScroll:true});
+  $("qexp").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
+function next(){
+  if(S.i+1<S.list.length){ S.i++; renderQ(); }
+  else if(S.round===1) renderResult();
+  else renderRetryResult();
+}
+
+document.addEventListener("keydown",function(e){
+  if($("quiz").classList.contains("hide")) return;
+  if(e.key==="Enter"&&S.answered){ e.preventDefault(); next(); return; }
+  var n=parseInt(e.key,10);
+  if(!S.answered&&!curQ().multi&&!curQ().write&&curQ().opts&&n>=1&&n<=curQ().opts.length){ e.preventDefault(); answer(n-1); }
+});
+
+/* ===================== 결과 ===================== */
+function praise(p){
+  if(p===100) return ["당신이 지존이에요!", LVCHEER[S.level]];
+  if(p>=90)  return ["영어 고수 되기 일보 전!", LVCHEER[S.level]];
+  if(p>=50)  return ["와우, 성장한 나를 칭찬해요", LVCHEER[S.level]];
+  return ["좀 더 노력해요", "개념 화면을 한 번 더 보고 오면 훨씬 쉬워집니다."];
+}
+
+function openPraise(score,total,correct,wrong){
+  var pr=praise(score);
+  $("pmLv").textContent = S.level+"단계 · "+LEVELS[S.level].name+" 1차 완료";
+  $("pmSc").textContent = score;
+  $("pmT").textContent = pr[0];
+  $("pmS").textContent = pr[1];
+  $("pmTally").innerHTML = '<span class="t-ok">○ 맞음 '+correct+'</span> <span class="t-no">✕ 틀림 '+wrong+'</span>'+
+    (S.rankNote? '<span class="note-line">'+S.rankNote+'</span>' : '');
+  $("praiseBox").classList.remove("hide");
+  $("pmClose").focus({preventScroll:true});
+}
+function closePraise(){ $("praiseBox").classList.add("hide"); }
+
+function renderResult(){
+  clearProg();
+  var L=LEVELS[S.level], total=drawCount(L);
+  S.score=Math.round(S.correct/total*100);
+  var pr=praise(S.score);
+
+  $("rtitle").textContent=S.level+"단계 결과 · "+L.name;
+  document.querySelector("#result .of").textContent="/ 100점";
+  $("rscore").textContent=S.score;
+  $("rpraise").textContent=pr[0];
+  $("rsub").textContent=pr[1];
+
+  var tl=L.typeLabels||{};
+  var keys=Object.keys(tl).filter(function(k){ return S.byType[k] && S.byType[k][1]>0; });
+  var bd;
+  if(keys.length<2){
+    bd='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+S.correct+'</div></div>'+
+       '<div class="bd"><div class="t">틀린 문제</div><div class="v">'+S.wrong.length+'</div></div>'+
+       '<div class="bd"><div class="t">전체 문제</div><div class="v">'+total+'</div></div>';
+  }else{
+    bd=keys.map(function(k){
+      var cls = k==="v" ? "v3" : k;
+      return '<div class="bd '+cls+'"><div class="t">'+esc(tl[k])+'</div><div class="v">'+S.byType[k][0]+'/'+S.byType[k][1]+'</div></div>';
+    }).join('');
+  }
+  $("rbreak").style.gridTemplateColumns = "repeat("+(keys.length<2?3:keys.length)+",1fr)";
+  $("rbreak").innerHTML=bd;
+
+  var isAdmin = (S.name==="꾸메땅");
+  var r=loadR(), hadScore=null;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
+  if(hadScore===null && !isAdmin){
+    var d=new Date();
+    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+    saveR(r);
+  }
+  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+    '<span class="note">'+(hadScore!==null
+      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+
+  if(S.wrong.length){
+    var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
+    S.wrong.forEach(function(qi,n){
+      var q=L.qs[qi];
+      var shown = q.order ? (q.ko || q.parts.join(" "))
+                : q.word ? q.word
+                : (q.sent? q.sent.replace(/\*\*(.+?)\*\*/g,"$1").replace(/<br>/g," ") : q.q.replace(/<[^>]+>/g," ").replace(/\*\*/g,""));
+      shown = unent(shown).replace(/\s+/g," ").trim();
+      w+='<div class="wrong" data-tag="'+escA(q.tag||"")+'" data-kind="'+escA(q.type||"")+'"><div class="top"><span class="no">'+(n+1)+'</span><span class="q">'+esc(shown)+'</span></div>'+
+         '<div class="a">정답 <b>'+esc(q.order ? q.parts.join(" ")
+            : q.write ? q.ans
+            : q.multi ? q.ans.map(function(k){ return q.opts[k].replace(/\*\*/g,""); }).join(" · ")
+            : q.opts[q.a].replace(/\*\*/g,""))+'</b></div></div>';
+    });
+    w+='</div>';
+    $("rwrong").innerHTML=w;
+  } else $("rwrong").innerHTML="";
+
+  if(!S.wrong.length){ S.finished[S.level]=true; S.active=0; }
+  $("rnext").innerHTML = levelRowHTML();
+  $("ractions").innerHTML=actionsHTML(S.wrong.length, S.wrong.length? "틀린 "+S.wrong.length+"문제 다시 풀기":"");
+  var rb=$("retryBtn");
+  if(rb) rb.addEventListener("click",function(){
+    S.round=2;S.list=S.wrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  wireActions();
+  if(isAdmin){
+    S.rankNote = "";
+    $("rsubmit").innerHTML='<div class="submit-box"><span class="h">관리자 보기</span>'+
+      '<span class="note">선생님 확인용입니다. 순위에는 기록하지 않고, 단계는 아무 데나 들어가실 수 있습니다.</span></div>';
+  }
+  show("result");
+  openPraise(S.score, total, S.correct, S.wrong.length);
+}
+
+function levelRowHTML(){
+  var h='<div class="lvrow"><span class="lvrow-h">단계 고르기</span><div class="lvrow-btns">';
+  [1,2,3,4].forEach(function(k){
+    var on = (k===S.level);
+    var lock = false;
+    h+='<button class="lvchip'+(on?" on":"")+'" data-lv="'+k+'"'+(lock?' disabled':'')+'>'+k+'단계</button>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function actionsHTML(remain, retryLabel){
+  var ac="";
+  if(remain) ac+='<button class="btn" id="retryBtn">'+retryLabel+'</button>';
+  else if(S.level<4) ac+='<button class="btn" id="nextLvBtn">'+(S.level+1)+'단계 도전하기</button>';
+  ac+='<button class="btn '+(remain||S.level<4?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">'+(remain?"잠시 나가기":"단계 선택으로")+'</button>';
+  return ac;
+}
+function wireActions(){
+  var nb=$("nextLvBtn");
+  if(nb) nb.addEventListener("click",function(){ S.level=S.level+1; renderLearn(); });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row=$("rnext");
+  if(row) Array.prototype.forEach.call(row.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){
+      var k=+this.dataset.lv;
+      if(k===S.level) return;
+      S.level=k; renderLearn();
+    });
+  });
+}
+
+function renderRetryResult(){
+  clearProg();
+  var done=S.list.length, still=S.retryWrong.length, got=done-still;
+  if(!still){ S.finished[S.level]=true; S.active=0; }
+  $("rtitle").textContent="오답 복습 결과";
+  $("rscore").textContent=got;
+  $("rpraise").textContent = still===0 ? "오답을 모두 정복했어요" : still+"문제가 아직 남았어요";
+  $("rsub").textContent = still===0 ? S.level+"단계를 깔끔하게 마무리했습니다." : "한 번 더 풀면 확실하게 남습니다.";
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+  $("rbreak").style.gridTemplateColumns = "repeat(3,1fr)";
+  $("rbreak").innerHTML='<div class="bd"><div class="t">맞은 문제</div><div class="v">'+got+'</div></div>'+
+    '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
+    '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
+    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+  $("rwrong").innerHTML="";
+  $("rnext").innerHTML = levelRowHTML();
+  var ac="";
+  if(still) ac+='<button class="btn" id="againBtn">남은 '+still+'문제 또 풀기</button>';
+  ac+='<button class="btn '+(still?"ghost":"")+'" id="rankBtn">순위 보기</button>'+
+      '<button class="btn ghost" id="homeBtn">단계 선택으로</button>';
+  $("ractions").innerHTML=ac;
+  var ab=$("againBtn");
+  if(ab) ab.addEventListener("click",function(){
+    S.list=S.retryWrong.slice();S.retryWrong=[];S.i=0;renderQ();
+  });
+  $("rankBtn").addEventListener("click",function(){ S.rankTab=String(S.level); renderRank(); });
+  $("homeBtn").addEventListener("click",goHome);
+  var row2=$("rnext");
+  if(row2) Array.prototype.forEach.call(row2.querySelectorAll(".lvchip"),function(b){
+    b.addEventListener("click",function(){ var k=+this.dataset.lv; if(k!==S.level){ S.level=k; renderLearn(); } });
+  });
+  show("result");
+  document.querySelector("#result .of").textContent="/ "+done+"문제";
+}
+
+/* ===================== 순위 ===================== */
+function rankRows(t){
+  var r=loadR(), rows=[];
+  if(t==="all"){
+    var by={};
+    r.forEach(function(x){
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
+      by[x.name].sum+=x.score; by[x.name].cnt++; by[x.name].date=x.date;
+    });
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+  }else{
+    var lv=+t;
+    r.forEach(function(x){ if(x.level===lv) rows.push({name:x.name,score:x.score,extra:"",date:x.date}); });
+  }
+  rows.sort(function(a,b){ return b.score-a.score; });
+  return rows;
+}
+function renderRank(){
+  Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+    b.classList.toggle("on", b.dataset.t===S.rankTab);
+  });
+  var rows=rankRows(S.rankTab);
+  if(!rows.length){
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+  }else{
+    var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="num">날짜</th></tr></thead><tbody>';
+    rows.slice(0,20).forEach(function(x,i){
+      var me = x.name===S.name ? " me":"";
+      h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+         '<td class="who">'+esc(x.name)+'</td>'+
+         '<td class="num pt">'+x.score+'</td>'+
+         (S.rankTab==="all"?'<td class="num when">'+esc(x.extra)+'</td>':'')+
+         '<td class="num when">'+esc(x.date)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    $("rankBody").innerHTML=h;
+  }
+  show("rank");
+}
+
+/* ===================== 시작 배선 ===================== */
+function goHome(){
+  if(S.active){
+    var cur="quiz";
+    for(var i=0;i<SCREENS.length;i++) if(!$(SCREENS[i]).classList.contains("hide")) cur=SCREENS[i];
+    if(cur==="learn"||cur==="quiz"||cur==="result") S.resume=cur;
+  }
+  refreshStart(); show("start");
+}
+
+try{ var sn=localStorage.getItem(NKEY); if(sn){ S.name=sn; $("nameIn").value=sn; } }catch(e){}
+$("saveName").addEventListener("click",function(){
+  var v=($("nameIn").value||"").trim();
+  if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
+  S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  refreshStart();
+});
+$("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
+$("openRank").addEventListener("click",function(){ S.rankTab="all"; renderRank(); });
+$("rankHome").addEventListener("click",goHome);
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("저장된 순위 기록을 모두 지울까요?")){ saveR([]); renderRank(); refreshStart(); }
+});
+Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
+  b.addEventListener("click",function(){ S.rankTab=this.dataset.t; renderRank(); });
+});
+$("pmClose").addEventListener("click",closePraise);
+document.addEventListener("keydown",function(e){
+  if(!$("praiseBox").classList.contains("hide")&&(e.key==="Enter"||e.key==="Escape")){ e.preventDefault(); closePraise(); }
+});
+$("toQuiz").addEventListener("click",startQuiz);
+$("learnBack").addEventListener("click",goHome);
+
+/* ===================== 이어서 풀기 ===================== */
+var PKEY = RKEY + "_prog";
+function saveProg(){
+  try{
+    if(!S.level || !S.list || !S.list.length) return;
+    localStorage.setItem(PKEY, JSON.stringify({
+      name:S.name, level:S.level, list:S.list, i:S.i,
+      correct:S.correct, wrong:S.wrong, byType:S.byType,
+      round:S.round, retryWrong:S.retryWrong, t:Date.now()
+    }));
+  }catch(e){}
+}
+function clearProg(){ try{ localStorage.removeItem(PKEY); }catch(e){} }
+function loadProg(){
+  try{
+    var p = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if(!p || !p.list || !p.list.length) return null;
+    if(p.i >= p.list.length) return null;
+    if(Date.now() - (p.t || 0) > 1209600000) return null;   /* 두 주가 지나면 버립니다 */
+    return p;
+  }catch(e){ return null; }
+}
+function resumeProg(){
+  var p = loadProg();
+  if(!p) return;
+  S.name = p.name; S.level = p.level; S.list = p.list; S.i = p.i;
+  S.correct = p.correct || 0; S.wrong = p.wrong || [];
+  S.byType = p.byType || {n:[0,0],a:[0,0],v:[0,0]};
+  S.round = p.round || 1; S.retryWrong = p.retryWrong || [];
+  S.active = S.level; S.resume = "quiz";
+  S.picked = -1; S.answered = false;
+  try{ $("nameIn").value = S.name; }catch(e){}
+  renderQ();
+}
+function progBanner(){
+  var el = $("resumeBar");
+  if(!el) return;
+  var p = loadProg();
+  var typed = (($("nameIn") && $("nameIn").value) || "").trim();
+  if(!p || (typed && p.name !== typed)){ el.className = "hide"; el.innerHTML = ""; return; }
+  el.className = "resumebar";
+  el.innerHTML = '<span class="h">이어서 풀기</span>' +
+    '<span class="note"><b>' + esc(p.name) + '</b> 님, <b>' + p.level + '단계 ' + (p.i + 1) + '번</b> 문제까지 풀었습니다.</span>' +
+    '<div class="row"><button class="btn" id="resumeGo">이어서 풀기</button>' +
+    '<button class="btn ghost small" id="resumeNo">처음부터 하기</button></div>';
+  $("resumeGo").addEventListener("click", resumeProg);
+  $("resumeNo").addEventListener("click", function(){ clearProg(); progBanner(); });
+}
+
+refreshStart();
+
+</script>
+<script src="/kkt.js"></script>
+</body></html>
