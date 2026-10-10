@@ -83,6 +83,14 @@
     });
     if (hit !== null && miss !== null) return [hit, hit + miss];
 
+    /* 1-2) 갈래별 칸이 "12 / 12" 꼴이면 모두 더합니다 (100점이어도 셀 수 있습니다) */
+    var sh = 0, st = 0, got = false;
+    $$("#rbreak .bd .v").forEach(function (v) {
+      var r = ratio(tx("", v) || (v.textContent || ""));
+      if (r) { sh += r[0]; st += r[1]; got = true; }
+    });
+    if (got && st > 0) return [sh, st];
+
     /* 2) 문제를 푸는 동안 본 "1 / 20" 의 뒷숫자 */
     if (lastTotal && wrongCount <= lastTotal) return [lastTotal - wrongCount, lastTotal];
 
@@ -297,6 +305,8 @@
   /* ---------- 화면 아래 붙어 있는 보내기 칸 ---------- */
   var bar, nameInput, sendBtn, msgEl, subEl, sending = false, sent = {}, shownKey = null;
   var mini, placed = "";
+  var AUTO_SEND = true;   /* 단계를 끝내면 누르지 않아도 저절로 보냅니다 */
+  var autoNow = false;    /* 이번 보내기가 자동인지 */
   var PEND_KEY = "kkt_pending_v1";
   var SENT_KEY = "kkt_sent_v1";
 
@@ -510,7 +520,7 @@
     }
     subEl.textContent = n > 1
       ? "보내지 않은 결과 " + n + "개를 한 번에 보냅니다."
-      : "① 이름을 적고 ② 노란 단추를 누르면 선생님께 바로 갑니다.";
+      : "이름만 적혀 있으면 저절로 갑니다. 가지 않았으면 노란 단추를 눌러 주세요.";
     if (!sending) {
       nameInput.style.display = "";
       sendBtn.style.display = "";
@@ -542,9 +552,21 @@
     } catch (e) {}
   }
 
+  /* 단계를 끝내면 이름이 있는 한 저절로 보냅니다.
+     이름이 없거나 보내다가 실패하면 아래 노란 단추가 그대로 남습니다. */
+  function tryAutoSend() {
+    if (!AUTO_SEND || sending || !bar || !nameInput) return;
+    var who = (nameInput.value || "").trim() || gameName() || ls(NAME_KEY) || "";
+    if (!who) return;
+    nameInput.value = who;
+    autoNow = true;
+    if (subEl) subEl.textContent = "저절로 보내는 중입니다. 누르지 않아도 됩니다.";
+    doSend();
+  }
+
   function doSend() {
     var who = (nameInput.value || "").trim();
-    if (!who) { nameInput.focus(); msgEl.textContent = "이름을 먼저 적어 주세요."; return; }
+    if (!who) { autoNow = false; nameInput.focus(); msgEl.textContent = "이름을 먼저 적어 주세요."; return; }
     ls(NAME_KEY, who);
 
     var list = loadPend();
@@ -570,17 +592,42 @@
     });
   }
 
+  /* 결과 창과 결과 화면에 "교사에게 결과가 전송되었습니다"를 띄웁니다 */
+  function sentNote(text, ok) {
+    var css = "display:block;margin:10px 0 2px;padding:9px 12px;border-radius:10px;" +
+      "font:700 15px/1.45 'IBM Plex Sans KR',sans-serif;text-align:center;" +
+      (ok ? "background:#E7F3EF;color:#0F6E5C;border:1px solid #0F6E5C;"
+          : "background:#FDECEC;color:#B3261E;border:1px solid #B3261E;");
+    [["kktSentModal", "#praiseBox .box", "#pmClose"],
+     ["kktSentResult", "#rsubmit", null]].forEach(function (sp) {
+      var host = $(sp[1]);
+      if (!host) return;
+      var el = document.getElementById(sp[0]);
+      if (!el) {
+        el = document.createElement("div");
+        el.id = sp[0];
+        var before = sp[2] ? $(sp[2]) : null;
+        if (before) host.insertBefore(el, before); else host.insertBefore(el, host.firstChild);
+      }
+      el.style.cssText = css;
+      el.textContent = text;
+    });
+  }
+
   function finishSend(who, count, fail) {
     sending = false;
-    msgEl.textContent = "✓ 보냈습니다 — " + who + " · 결과 " + count + "개";
-    subEl.textContent = fail ? "인터넷이 돌아오면 자동으로 다시 보냅니다." : "잘했습니다. 이어서 다음 단계에 도전해 보세요.";
+    var wasAuto = autoNow; autoNow = false;
+    msgEl.textContent = "✓ 교사에게 결과가 전송되었습니다 — " + who + " · 결과 " + count + "개";
+    sentNote(fail ? "아직 전송되지 않았습니다. 인터넷이 돌아오면 다시 보냅니다."
+                  : "✓ 교사에게 결과가 전송되었습니다 — " + who, !fail);
+    subEl.textContent = fail ? "인터넷이 돌아오면 저절로 다시 보냅니다." : "잘했습니다. 이어서 다음 단계에 도전해 보세요.";
     nameInput.style.display = "none";
     sendBtn.style.display = "none";
     shownKey = null;
     if (mini) mini.style.display = "none";
     setTimeout(function () {
       if (pendCount()) { showBar(null); } else { hideBar(); }
-    }, 5000);
+    }, 10000);
   }
 
   /* ---------- 결과 화면 지켜보기 ---------- */
@@ -602,7 +649,7 @@
       addPend(res);
       var key = recKey(res);
       if (sending) return;
-      if (key !== shownKey) { shownKey = key; showBar(res); }
+      if (key !== shownKey) { shownKey = key; showBar(res); tryAutoSend(); }
       else if (bar && bar.style.display === "none" && pendCount()) showBar(res);
       else if (placed !== desiredSpot(res)) showBar(res);
       else syncMini();
@@ -612,7 +659,7 @@
     /* 결과 화면이 아니어도, 보내지 않은 결과가 있으면 칸을 계속 보여 줍니다 */
     if (sending) return;
     if (pendCount()) {
-      if (shownKey !== "pend") { shownKey = "pend"; showBar(null); }
+      if (shownKey !== "pend") { shownKey = "pend"; showBar(null); tryAutoSend(); }
     } else {
       shownKey = null;
       hideBar();

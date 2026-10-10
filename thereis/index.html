@@ -1327,7 +1327,7 @@ function drawLevels(){
     if(locked) right='<span class="best lock">잠김</span>';
     else if(here) right='<span class="best go">이어서 풀기</span>';
     else if(b==null) right='<span class="best"><em>미도전</em></span>';
-    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'첫 점수')+'</em></span>';
+    else right='<span class="best">'+b+'점<em>'+(S.finished[k]?'완료':'순위 점수')+'</em></span>';
     h+='<button class="lvcard'+(here?' resume':'')+'" data-lv="'+k+'"'+(locked?' disabled':'')+'>'+
         '<span class="rank">'+k+'</span>'+
         '<span class="body"><span class="name">'+esc(L.name)+' <span>· '+drawCount(L)+'문제</span></span>'+
@@ -1724,18 +1724,21 @@ function renderResult(){
   $("rbreak").innerHTML=bd;
 
   var isAdmin = (S.name==="꾸메땅");
-  var r=loadR(), hadScore=null;
-  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level) hadScore=r[i].score;
-  if(hadScore===null && !isAdmin){
-    var d=new Date();
-    r.push({name:S.name,level:S.level,score:S.score,date:(d.getMonth()+1)+"/"+d.getDate()});
+  /* 순위 점수 — 처음부터 다시 도전하면 그 점수로 고쳐 올립니다.
+     오답 복습 점수는 올라가지 않습니다(renderRetryResult). */
+  var r=loadR(), hadScore=null, at=-1;
+  for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level){ at=i; hadScore=r[i].score; }
+  if(!isAdmin){
+    var d=new Date(), dt=(d.getMonth()+1)+"/"+d.getDate();
+    if(at<0) r.push({name:S.name,level:S.level,score:S.score,date:dt});
+    else { r[at].score=S.score; r[at].date=dt; }
     saveR(r);
   }
-  S.rankNote = hadScore===null ? "" : "순위에는 첫 도전 점수 "+hadScore+"점이 그대로 유지됩니다.";
-  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 기록 유지")+'</span>'+
+  S.rankNote = hadScore===null ? "" : "순위 점수가 "+hadScore+"점에서 "+S.score+"점으로 고쳐졌습니다.";
+  $("rsubmit").innerHTML='<div class="submit-box"><span class="h">'+(hadScore===null?"순위에 올랐습니다":"순위 점수를 고쳤습니다")+'</span>'+
     '<span class="note">'+(hadScore!==null
-      ? '이 단계는 이미 도전한 적이 있습니다. 순위에는 <b>첫 도전 점수 '+hadScore+'점</b>이 그대로 남고, 이번 '+S.score+'점은 연습으로만 기록됩니다.'
-      : '<b>'+esc(S.name)+'</b> 님의 첫 점수 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 다시 풀기나 재도전 점수로는 바뀌지 않습니다.')+'</span></div>';
+      ? '다시 도전한 <b>'+S.score+'점</b>으로 '+S.level+'단계 순위를 고쳤습니다. 지난 점수는 '+hadScore+'점이었습니다.'
+      : '<b>'+esc(S.name)+'</b> 님의 <b>'+S.score+'점</b>이 '+S.level+'단계 순위에 올랐습니다. 처음부터 다시 도전하면 그때 점수로 고쳐집니다.')+'</span></div>';
 
   if(S.wrong.length){
     var w='<h3>틀린 문제 다시 보기</h3><div class="wrongs">';
@@ -1819,7 +1822,7 @@ function renderRetryResult(){
     '<div class="bd"><div class="t">남은 문제</div><div class="v">'+still+'</div></div>'+
     '<div class="bd"><div class="t">순위 점수</div><div class="v">'+S.score+'</div></div>';
   $("rsubmit").innerHTML='<div class="submit-box"><span class="h">순위 안내</span>'+
-    '<span class="note">복습 점수는 순위에 반영되지 않습니다. 순위는 <b>첫 도전 점수</b> 기준입니다.</span></div>';
+    '<span class="note">복습 점수는 순위에 올라가지 않습니다. 순위는 <b>처음부터 다시 푼 도전 점수</b>로 고쳐집니다.</span></div>';
   $("rwrong").innerHTML="";
   $("rnext").innerHTML = levelRowHTML();
   var ac="";
@@ -1864,10 +1867,10 @@ function renderRank(){
   });
   var rows=rankRows(S.rankTab);
   if(!rows.length){
-    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 첫 점수가 순위에 올라갑니다.</div>';
+    $("rankBody").innerHTML='<div class="empty">아직 기록이 없습니다.<br>단계를 끝내면 점수가 순위에 올라갑니다.</div>';
   }else{
     var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
-      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">첫 점수</th>')+
+      '<th class="pos">위</th><th>이름</th>'+(S.rankTab==="all"?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">점수</th>')+
       '<th class="num">날짜</th></tr></thead><tbody>';
     rows.slice(0,20).forEach(function(x,i){
       var me = x.name===S.name ? " me":"";
@@ -1898,7 +1901,7 @@ $("saveName").addEventListener("click",function(){
   var v=($("nameIn").value||"").trim();
   if(!v){ $("nameNote").innerHTML='<b style="color:var(--no)">이름을 적어 주세요.</b>'; return; }
   S.name=v; try{localStorage.setItem(NKEY,v);}catch(e){}
-  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 첫 도전 점수만 올라갑니다.';
+  $("nameNote").innerHTML='<b style="color:var(--ok)">‘'+esc(v)+'’ 이름으로 도전합니다.</b> 순위에는 각 단계의 가장 최근 도전 점수가 올라갑니다.';
   refreshStart();
 });
 $("nameIn").addEventListener("input",function(){ S.name=this.value.trim(); });
