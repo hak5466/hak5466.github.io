@@ -100,6 +100,7 @@
     "gerund": familyA("동명사 GAME"),
     "relpron": familyA("관계대명사 GAME"),
     "reladv": familyA("관계부사 뽀개기"),
+    "asconj": familyA("접속사 AS 뽀개기"),
     "relwhat": familyA("관계대명사 WHAT GAME"),
     "asas": familyA("AS ~ AS 뽀개기"),
     "toinf": familyA("TO부정사 GAME"),
