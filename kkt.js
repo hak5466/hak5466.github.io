@@ -112,6 +112,7 @@
     "pastperfect": familyA("과거완료 뽀개기"),
     "passive": familyA("수동태 뽀개기"),
     "modalpassive": familyA("조동사 수동태 뽀개기"),
+    "callab": familyA("CALL A B 뽀개기"),
     "relwhat": familyA("관계대명사 WHAT GAME"),
     "asas": familyA("AS ~ AS 뽀개기"),
     "toinf": familyA("TO부정사 GAME"),
