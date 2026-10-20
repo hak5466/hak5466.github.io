@@ -474,15 +474,11 @@ var L1 = [
   W("n","한글로 이해","그녀","pn"),
 
   W("a","쉬운 영어","apple","n",true),
-  {type:"a", tag:"쉬운 영어", word:"run", eng:true, multi:true, q:"다음 영어 낱말의 품사를 <b>모두</b> 고르세요. (여러 개)",
-   opts:["동사","명사","형용사","전치사","감탄사"], ans:[0,1],
-   exp:"run은 ‘달리다’(동사)로 가장 많이 쓰지만, a morning run(아침 달리기)처럼 <b>명사</b>로도 씁니다. 한 낱말이 품사를 둘 가질 수 있습니다."},
+  W("a","쉬운 영어","run","v",true,"‘달리다’라는 뜻으로 가장 많이 씁니다."),
   W("a","쉬운 영어","happy","a",true),
   W("a","쉬운 영어","slowly","ad",true),
   W("a","쉬운 영어","she","pn",true),
-  {type:"a", tag:"쉬운 영어", word:"on", eng:true, multi:true, q:"다음 영어 낱말의 품사를 <b>모두</b> 고르세요. (여러 개)",
-   opts:["전치사","부사","명사","동사","감탄사"], ans:[0,1],
-   exp:"on the desk(책상 위에)처럼 명사 앞에서는 <b>전치사</b>, Put on your coat.(코트를 입어라)처럼 혼자 쓰이면 <b>부사</b>입니다."},
+  W("a","쉬운 영어","on","p",true,"on the desk(책상 위에)처럼 명사 앞에 옵니다."),
   W("a","쉬운 영어","but","c",true),
   W("a","쉬운 영어","wow","i",true)
 ];
@@ -632,7 +628,7 @@ var L4 = [
   S1("a","문장 속 품사","Look at **that** bird.","저 새를 봐.","a","명사 bird를 꾸미므로 형용사 노릇을 합니다.",true),
   S1("a","문장 속 품사","I came home **before** dinner.","나는 저녁 식사 전에 집에 왔다.","p","명사 dinner 앞의 전치사입니다."),
   S1("a","문장 속 품사","Wash your hands **before** you eat.","먹기 전에 손을 씻어라.","c","뒤에 ‘주어 + 동사’가 오므로 접속사입니다.",true),
-  S1("a","문장 속 품사","I have seen it **before**.","나는 전에 그것을 본 적이 있다.","ad","혼자 쓰여 ‘전에’라는 뜻의 부사입니다.",true),
+  S1("a","문장 속 품사","I have seen it **before**.","나는 전에 그것을 본 적이 있다.","ad","뒤에 명사도 문장도 오지 않았으니 ‘전에’라는 뜻의 부사입니다.",true),
 
   {type:"v", tag:"종합", hard:true, multi:true, eng:true, q:"밑줄 친 낱말이 <b>부사</b>인 것을 모두 고르세요. (여러 개)",
    opts:["She sings **well**.","I get up **early**.","He runs **fast**.","He is a **fast** runner.","It is an **early** train."], ans:[0,1,2],
@@ -642,9 +638,9 @@ var L4 = [
    opts:["My **study** is small.","I **love** you.","She **swims** well.","They **study** hard.","We **run** fast."], a:0, eng:true,
    exp:"첫째 study는 ‘서재’라는 <b>명사</b>입니다. 나머지는 동사입니다."},
 
-  {type:"v", tag:"종합", q:"문장과 떨어져 혼자 쓰여도 느낌이 전해지는 품사는?",
-   opts:["감탄사","접속사","전치사","부사","명사"], a:0,
-   exp:"Wow! · Ouch!처럼 한마디로 느낌을 전하는 <b>감탄사</b>입니다."},
+  {type:"v", tag:"종합", q:"밑줄 친 낱말이 <b>전치사가 아닌</b> 것은?", eng:true,
+   opts:["Please come **in**.","The cat is **in** the box.","The book is **on** the desk.","I sit **on** the chair.","She is **in** her room."], a:0,
+   exp:"<b>뒤에 명사</b>가 오면 전치사입니다. Come in.은 뒤에 명사가 없으니 <b>부사</b>입니다.", hard:true},
 
   {type:"v", tag:"종합", q:"전치사 뒤에 오는 말로 알맞은 것은?",
    opts:["명사나 대명사(목적격)","동사원형","형용사만","접속사","감탄사"], a:0,
@@ -699,9 +695,7 @@ var X1 = [
   W("a","쉬운 영어","big","a",true,"‘큰’이라는 뜻입니다."),
   W("a","쉬운 영어","often","ad",true),
   W("a","쉬운 영어","we","pn",true),
-  {type:"a", tag:"쉬운 영어", word:"in", eng:true, multi:true, q:"다음 영어 낱말의 품사를 <b>모두</b> 고르세요. (여러 개)",
-   opts:["전치사","부사","명사","동사","감탄사"], ans:[0,1],
-   exp:"in the box(상자 안에)처럼 명사 앞에서는 <b>전치사</b>, Come in.(들어와)처럼 혼자 쓰이면 <b>부사</b>입니다."},
+  W("a","쉬운 영어","in","p",true,"in the box(상자 안에)처럼 명사 앞에 옵니다."),
   W("a","쉬운 영어","because","c",true),
   W("a","쉬운 영어","ouch","i",true)
 ];
@@ -839,8 +833,8 @@ var X4 = [
   S1("n","한 낱말 두 품사","I got up **early**.","나는 일찍 일어났다.","ad","동사 got up을 꾸밉니다."),
   S1("n","한 낱말 두 품사","I **love** my family.","나는 우리 가족을 사랑한다.","v"),
   S1("n","한 낱말 두 품사","Thank you for your **love**.","사랑해 주셔서 고맙습니다.","n","전치사 뒤 your 다음에 오는 이름입니다."),
-  S1("n","한 낱말 두 품사","She is a **late** sleeper.","그녀는 늦잠꾸러기이다.","a","명사 sleeper를 꾸밉니다."),
-  S1("n","한 낱말 두 품사","He came home **late**.","그는 집에 늦게 왔다.","ad","동사 came을 꾸밉니다."),
+  S1("n","한 낱말 두 품사","We went for a **run**.","우리는 달리기를 하러 갔다.","n","run은 ‘달리다’라는 동사로 가장 많이 쓰지만, a run처럼 a가 붙으면 ‘달리기’라는 이름이 됩니다.",true),
+  S1("n","한 낱말 두 품사","Put your coat **on**.","코트를 입어라.","ad","on the desk처럼 <b>뒤에 명사</b>가 오면 전치사입니다. 여기는 뒤에 명사가 없으니 부사입니다.",true),
   S1("n","한 낱말 두 품사","Let's take a **walk**.","산책하자.","n","a 뒤에 오는 이름(산책)입니다."),
 
   S1("a","문장 속 품사","**This** is my room.","이것은 내 방이다.","pn","혼자 ‘이것’을 가리킵니다."),
@@ -888,7 +882,7 @@ var LEVELS = {
   1:{name:"기본1 · 8품사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 여덟 가지 품사의 이름과 하는 일 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"기본2 · 넓히기와 함정", desc:"뜻풀이로 낱말 고르기 · 품사별 모두 고르기 · -ly 함정", qs:L2, typeLabels:{n:"뜻풀이",a:"모두 고르기",v:"함정"}},
   3:{name:"기본3 · 학교 시험형", desc:"문장 속 밑줄 낱말의 품사 · 문장에서 품사 모두 찾기 · 판별", qs:L3, typeLabels:{n:"문장 속 품사",a:"모두 고르기",v:"고르기와 판별"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"한 낱말 두 품사 fast · like · that · before · 품사 차례(아주 큰 집) · 종합", qs:L4, typeLabels:{n:"한 낱말 두 품사",a:"문장 속 품사",v:"종합"}}
+  4:{name:"기본4 · 전 학년 아우르기", desc:"한 낱말 두 품사 run · on · in · fast · like · that · before · 품사 차례(아주 큰 집) · 종합", qs:L4, typeLabels:{n:"한 낱말 두 품사",a:"문장 속 품사",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
@@ -959,6 +953,9 @@ function learn4(){
     '<span class="bh"><i class="dot d-n"></i>한 낱말, 두 품사</span>'+
     '<div class="swap"><span>a fast runner (형용사)</span><span class="ar">↔</span><span class="good">run fast (부사)</span></div>'+
     '<div class="swap"><span>I like it. (동사)</span><span class="ar">↔</span><span class="good">look like her (전치사)</span></div>'+
+    '<div class="swap"><span>I run fast. (동사)</span><span class="ar">↔</span><span class="good">a morning run (명사)</span></div>'+
+    '<div class="swap"><span>on the desk (전치사)</span><span class="ar">↔</span><span class="good">Put your coat on. (부사)</span></div>'+
+    '<div class="swap"><span>in the box (전치사)</span><span class="ar">↔</span><span class="good">Please come in. (부사)</span></div>'+
     '<div class="swap"><span>before dinner (전치사)</span><span class="ar">↔</span><span class="good">before you eat (접속사)</span></div>'+
   '</div>'+
   '<div class="block">'+
@@ -967,7 +964,7 @@ function learn4(){
     '<div class="ex">that bird<span class="k">저 — 명사를 꾸밈</span></div>'+
     '<div class="ex">I think that he is kind.<span class="k">~라고 — 접속사</span></div>'+
   '</div>'+
-  '<div class="tip"><span class="h">마지막 한마디</span>뒤에 명사가 오면 전치사, <b>주어 + 동사</b>가 오면 접속사, 혼자 쓰이면 부사입니다.</div>';
+  '<div class="tip"><span class="h">마지막 한마디</span>뒤에 <b>명사</b>가 오면 전치사, <b>주어 + 동사</b>가 오면 접속사, <b>아무것도 오지 않으면</b> 부사입니다.</div>';
 }
 
 var LVCHEER = {
