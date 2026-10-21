@@ -119,6 +119,7 @@
     "asas": familyA("AS ~ AS 뽀개기"),
     "toinf": familyA("TO부정사 GAME"),
     "toinf-basic": familyA("TO부정사 기본"),
+    "pumsako": familyA("8품사 개념 한글로"),
     "pumsa8": familyA("8품사 GAME"),
     "usedto": familyA("USED TO GAME"),
     "sothat": familyA("SO~THAT GAME"),
