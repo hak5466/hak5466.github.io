@@ -417,90 +417,85 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 /* ---------- LEVEL 1 : 한글로 이해 + 쉬운 영어 20 ---------- */
 var L1 = [
-  {type:"n", tag:"한글로 이해", q:"<b>to</b> 뒤에 동사를 그대로 붙여 만드는 말을 무엇이라고 할까요?",
-   opts:["to부정사","조동사","명사","전치사","감탄사"], a:0,
-   exp:"<b>to + 동사원형</b>을 to부정사라고 합니다. to go · to eat · to play"},
+  {type:"n", tag:"개념", q:"영어 한 문장에 <b>진짜 동사</b>는 몇 개 올 수 있을까요?",
+   opts:["하나","둘","셋","얼마든지","없다"], a:0,
+   exp:"문장의 풀이 자리는 <b>하나</b>뿐입니다. 그래서 동사를 하나 더 쓰고 싶으면 다른 길을 찾아야 합니다."},
 
-  {type:"n", tag:"한글로 이해", q:"to부정사를 만들 때 to 뒤에 오는 동사의 모양은?",
-   opts:["동사원형 그대로","s를 붙인 모양","ing를 붙인 모양","과거형","아무 모양이나"], a:0,
-   exp:"to 뒤에는 <b>늘 동사원형</b>입니다. to goes(✕) · to going(✕) · <b>to go</b>(○)"},
+  {type:"n", tag:"개념", q:"동사를 하나 더 쓰고 싶을 때 <b>to</b>를 붙이면 그 동사는 어떻게 될까요?",
+   opts:["동사 자리에서 빠져나온다","문장의 동사가 하나 더 생긴다","사라진다","명사가 된다","뜻이 반대가 된다"], a:0,
+   exp:"to를 붙이는 일은 그 동사를 <b>풀이 자리에서 빼내는</b> 일입니다. 빠져나왔으니 이제 다른 자리에 앉을 수 있습니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 축구하기를 좋아한다.", q:"‘축구하기’처럼 <b>~하는 것</b>을 나타내는 말의 성격은?",
-   opts:["이름처럼 쓰이는 말","움직임을 나타내는 동사","꾸며 주는 말","이어 주는 말","느낌을 나타내는 말"], a:0,
-   exp:"‘축구하기’는 <b>이름 노릇</b>을 합니다. 영어로는 I like <b>to play</b> soccer."},
+  {type:"n", tag:"개념", q:"to를 붙여 빠져나온 덩어리가 앉을 수 있는 <b>세 자리</b>를 바르게 묶은 것은?",
+   opts:["이름 자리 · 꾸미는 자리 · 설명하는 자리","주어 자리 하나뿐","동사 자리와 이름 자리","꾸미는 자리 하나뿐","앉을 자리가 없다"], a:0,
+   exp:"이름 자리는 <b>명사적</b>, 꾸미는 자리는 <b>형용사적</b>, 설명하는 자리는 <b>부사적</b>이라고 부릅니다. 이 셋이 to부정사의 전부입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 마실 물이 필요하다.", q:"‘마실’은 무엇을 꾸며 주나요?",
-   opts:["명사 ‘물’","동사 ‘필요하다’","주어 ‘나’","아무것도 꾸미지 않는다","문장 전체"], a:0,
-   exp:"명사 뒤에서 꾸며 줍니다. 영어로는 water <b>to drink</b>. 우리말과 차례가 반대입니다."},
+  {type:"n", tag:"개념", q:"<b>to + 동사원형</b>은 to부정사의 무엇일까요?",
+   opts:["겉모양 — 입은 옷일 뿐이다","쓰는 까닭","앉는 자리","우리말 뜻","문장의 동사"], a:0,
+   exp:"‘to + 동사원형’은 <b>모양</b>입니다. 왜 쓰는지와 어디에 앉는지가 to부정사의 속입니다. 옷만 외우면 조금만 비틀어도 흔들립니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 축구하러 공원에 갔다.", q:"‘축구하러’가 알려 주는 것은?",
-   opts:["왜 갔는지","어디로 갔는지","언제 갔는지","누구와 갔는지","어떻게 갔는지"], a:0,
-   exp:"<b>까닭이나 목적</b>을 알려 줍니다. 영어로는 I went to the park <b>to play</b> soccer."},
+  {type:"n", tag:"개념", q:"to부정사의 ‘<b>부정(不定)</b>’은 무슨 뜻일까요?",
+   opts:["어느 자리에 앉을지 정해지지 않았다","아니라고 뒤집는다는 뜻","수가 정해지지 않았다","때가 정해지지 않았다","뜻이 없다"], a:0,
+   exp:"이름 자리에도, 꾸미는 자리에도, 설명하는 자리에도 앉을 수 있어 <b>정해지지 않았다</b>는 뜻입니다. 이름 자체가 개념을 담고 있습니다."},
 
-  {type:"n", tag:"한글로 이해", q:"to부정사가 맡는 세 가지 노릇으로 바르게 묶은 것은?",
-   opts:["이름처럼 · 꾸며 주기 · 까닭 말하기","이어 주기 · 느낌 · 이름","과거 · 현재 · 미래","주어 · 동사 · 목적어","묻기 · 답하기 · 부탁하기"], a:0,
-   exp:"<b>~하는 것</b>(이름) · <b>~할</b>(꾸밈) · <b>~하려고</b>(까닭) 세 가지입니다."},
+  {type:"n", tag:"개념", q:"<b>이름 자리</b>(명사적)에 앉은 to부정사는 우리말로 어떻게 풀이할까요?",
+   opts:["~하는 것, ~하기","~할, ~하는","~하려고, ~해서","~보다 더","~하지 않는"], a:0,
+   exp:"‘읽는 것 · 읽기’처럼 이름이 됩니다. 그래서 주어 · 목적어 · 보어 자리에 들어갑니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 <b>~하는 것</b>으로 풀이되는 말을 모두 고르세요. (여러 개)",
-   opts:["읽는 것","먹는 것","노래하는 것","빨리","그리고"], ans:[0,1,2],
-   exp:"셋 다 이름 노릇을 합니다. ‘빨리’는 부사, ‘그리고’는 접속사입니다."},
+  {type:"n", tag:"개념", q:"<b>꾸미는 자리</b>(형용사적)에 앉은 to부정사는 우리말로 어떻게 풀이할까요?",
+   opts:["~할, ~하는","~하는 것, ~하기","~하려고, ~해서","가장 ~한","~보다 더"], a:0,
+   exp:"‘읽을 책’의 ‘읽을’처럼 <b>바로 앞의 명사</b>를 꾸밉니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"밑줄 친 말이 <b>명사를 꾸며 주는</b> 것을 모두 고르세요. (여러 개)",
-   opts:["마실 **물**","읽을 **책**","할 **일**","**빨리** 달린다","**아주** 크다"], ans:[0,1,2],
-   exp:"앞 셋은 명사를 꾸며 줍니다. 영어에서는 water to drink처럼 <b>명사 뒤에</b> 놓입니다."},
+  {type:"n", tag:"개념", q:"<b>설명하는 자리</b>(부사적)에 앉은 to부정사는 우리말로 어떻게 풀이할까요?",
+   opts:["~하려고, ~해서","~하는 것, ~하기","~할, ~하는","~보다 더","~만큼"], a:0,
+   exp:"‘읽으러 왔다’의 목적, ‘만나서 기쁘다’의 까닭처럼 문장을 <b>설명</b>해 줍니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"<b>까닭이나 목적</b>을 나타내는 말을 모두 고르세요. (여러 개)",
-   opts:["공부하려고","만나러","사기 위해","예쁜","조용히"], ans:[0,1,2],
-   exp:"셋 다 ‘왜’에 답합니다. 영어로는 to study · to meet · to buy입니다."},
+  {type:"n", tag:"개념", q:"[ ] 부분이 앉은 자리는?<br><span class=\"ko2\">나는 [피아노 치기]를 배운다.</span>",
+   opts:["이름 자리 — 배우는 것의 이름","꾸미는 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"무엇을 배우는지, 그 <b>이름</b>이 들어갈 자리입니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"바르게 만든 to부정사를 모두 고르세요. (여러 개)",
-   opts:["to go","to eat","to play","to goes","to playing"], ans:[0,1,2],
-   exp:"to 뒤에는 <b>원형</b>입니다. to goes(✕) · to playing(✕)"},
+  {type:"n", tag:"개념", q:"[ ] 부분이 앉은 자리는?<br><span class=\"ko2\">나는 [입을] 옷이 없다.</span>",
+   opts:["꾸미는 자리 — ‘옷’을 꾸민다","이름 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"바로 뒤의 <b>옷</b>을 꾸며 줍니다. 어떤 옷인지를 좁혀 줍니다."},
 
-  {type:"n", tag:"한글로 이해", q:"다음 중 우리말 차례가 영어와 <b>반대</b>가 되는 것은?",
-   opts:["마실 물 → water to drink","좋아한다 → like","물 → water","책 → book","나는 → I"], a:0,
-   exp:"우리말은 ‘마실 물’이지만 영어는 <b>water to drink</b>입니다. 꾸미는 말이 명사 뒤로 갑니다."},
+  {type:"n", tag:"개념", q:"[ ] 부분이 앉은 자리는?<br><span class=\"ko2\">그녀는 [시험에 합격하려고] 열심히 공부했다.</span>",
+   opts:["설명하는 자리 — 왜 공부했는지","이름 자리","꾸미는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"공부한 <b>까닭(목적)</b>을 설명합니다."},
 
-  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["to 뒤에는 동사에 s를 붙인다.","to 뒤에는 동사원형이 온다.","to부정사는 이름 노릇을 할 수 있다.","to부정사는 명사를 꾸밀 수 있다.","to부정사는 까닭을 말할 수 있다."], a:0,
-   exp:"to 뒤에는 <b>원형</b>입니다. to goes(✕)"},
+  {type:"n", tag:"개념", multi:true, q:"to부정사가 앉을 수 있는 자리를 모두 고르세요. (여러 개)",
+   opts:["이름 자리(명사적)","꾸미는 자리(형용사적)","설명하는 자리(부사적)","문장의 동사 자리","접속사 자리"], ans:[0,1,2],
+   exp:"to를 붙인 까닭이 바로 <b>동사 자리에서 빼내려고</b>입니다. 그러니 동사 자리에는 다시 앉지 못합니다."},
 
-  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"<b>to부정사</b>를 모두 고르세요. (여러 개)",
-   opts:["to run","to eat","to be","run","eats"], ans:[0,1,2],
-   exp:"to + 동사원형이 to부정사입니다."},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["I","주어"],["want","동사"],["to swim","무엇을?"]],2),
+   opts:["이름 자리 — 원하는 것의 이름","꾸미는 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"무엇을 원하는지, 그 이름입니다. 우리말로 ‘수영하는 것을 원한다’입니다."},
 
-  {type:"a", tag:"쉬운 영어", q:"<span class=\"eng\">I want to go.</span>에서 to go의 뜻은?",
-   opts:["가는 것","갔다","간다","가라","가지 마"], a:0,
-   exp:"want to go = 가는 것을 원한다 → <b>가고 싶다</b>"},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["I have","주어와 동사"],["a book","명사"],["to read","바로 뒤"]],2),
+   opts:["꾸미는 자리 — book을 꾸민다","이름 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"바로 앞의 <b>book</b>을 꾸밉니다. ‘읽을 책’입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I want ___ .", q:"‘나는 자고 싶다’가 되도록 알맞은 것은?",
-   opts:["to sleep","sleep","sleeping","to sleeps","sleeps"], a:0, eng:true,
-   ko:"나는 자고 싶다.",
-   exp:"want 뒤에는 <b>to + 동사원형</b>입니다."},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["I went to the park","문장이 이미 끝남"],["to play","덧붙은 말"]],1),
+   opts:["설명하는 자리 — 왜 갔는지","이름 자리","꾸미는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"공원에 간 <b>까닭</b>을 설명합니다. ‘놀려고 갔다’입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I like ___ .", q:"‘나는 노래하는 것을 좋아한다’가 되도록 알맞은 것은?",
-   opts:["to sing","sing","sings","to sang","sang"], a:0, eng:true,
-   ko:"나는 노래하는 것을 좋아한다.",
-   exp:"‘~하는 것’ — 이름 노릇을 하는 <b>to sing</b>입니다."},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["I'm happy","문장이 이미 끝남"],["to see you","덧붙은 말"]],1),
+   opts:["설명하는 자리 — 기쁜 까닭","이름 자리","꾸미는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"왜 기쁜지를 설명합니다. ‘너를 만나서 기쁘다’입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I want to ___ a doctor.", q:"‘나는 의사가 되고 싶다’가 되도록 알맞은 것은?",
-   opts:["be","am","is","are","being"], a:0, eng:true,
-   ko:"나는 의사가 되고 싶다.",
-   exp:"to 뒤에는 원형 <b>be</b>입니다."},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 <b>꾸미는 낱말</b>은?"+figSlot([["She needs","주어와 동사"],["a pen","명사"],["to write with","바로 뒤"]],2),
+   opts:["pen","she","needs","with","to"], a:0,
+   exp:"꾸미는 자리에 앉은 to부정사는 <b>바로 앞의 명사</b>를 꾸밉니다. ‘쓸 펜’입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I have a book ___ .", q:"‘나는 읽을 책이 있다’가 되도록 알맞은 것은?",
-   opts:["to read","read","reads","to reads","for read"], a:0, eng:true,
-   ko:"나는 읽을 책이 있다.",
-   exp:"명사 뒤에서 꾸미는 <b>to read</b>(읽을)입니다."},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["My dream","주어"],["is","동사"],["to be a doctor","무엇?"]],2),
+   opts:["이름 자리 — 꿈이 무엇인지 그 이름","꾸미는 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"꿈이 무엇인지 그 이름을 말합니다. is 뒤에서 주어를 설명하는 보어 자리입니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I went to the park ___ soccer.", q:"‘나는 축구하러 공원에 갔다’가 되도록 알맞은 것은?",
-   opts:["to play","play","plays","to played","for play"], a:0, eng:true,
-   ko:"나는 축구하러 공원에 갔다.",
-   exp:"까닭을 말하는 <b>to play</b>(하러)입니다."},
+  {type:"a", tag:"영어로 보기", q:"밑줄 친 <b>to</b> 가운데 to부정사가 <b>아닌</b> 것은?",
+   opts:["She went **to** the park.","I like **to dance**.","I need **to rest**.","She wants **to win**.","He came **to help**."], a:0,
+   exp:"to 뒤에 <b>명사</b>가 오면 전치사이고, <b>동사</b>가 오면 to부정사입니다. 뒤를 보면 바로 갈립니다."},
 
-  {type:"a", tag:"쉬운 영어", q:"‘<b>마실 물</b>’을 영어로 바르게 쓴 것은?",
-   opts:["water to drink","to drink water","drink water","water drink","to water drink"], a:0, eng:true,
-   exp:"꾸미는 to부정사는 명사 <b>뒤</b>에 옵니다. water to drink"}
+  {type:"a", tag:"영어로 보기", multi:true, q:"밑줄 친 to부정사가 <b>이름 자리</b>에 앉은 것을 모두 고르세요. (여러 개)",
+   opts:["I like **to read**.","**To swim** is fun.","My hope is **to win**.","a book **to read**","I came **to help** you."], ans:[0,1,2],
+   exp:"좋아하는 것 · 재미있는 것 · 희망하는 것, 모두 <b>이름</b> 자리입니다. 뒤의 둘은 꾸미는 자리와 설명하는 자리입니다."}
 ];
 
 /* ---------- LEVEL 2 : 넓히기와 함정 20 (모양 7 · 모두 고르기 6 · 함정 7) ---------- */
@@ -774,89 +769,85 @@ var L4 = [
 
 /* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
 var X1 = [
-  {type:"n", tag:"한글로 이해", q:"to부정사의 ‘부정(不定)’은 무슨 뜻일까요?",
-   opts:["정해지지 않았다","아니라고 한다","틀렸다","싫어한다","멈춘다"], a:0,
-   exp:"하는 일(품사)이 하나로 <b>정해지지 않아서</b> 부정사입니다. 명사 · 형용사 · 부사 노릇을 모두 합니다."},
+  {type:"n", tag:"개념", q:"to부정사를 쓰는 까닭으로 가장 알맞은 것은?",
+   opts:["동사를 동사 아닌 다른 노릇으로 쓰려고","문장을 길게 하려고","동사를 두 개 쓰려고","때를 바꾸려고","뜻을 뒤집으려고"], a:0,
+   exp:"동사를 <b>이름 · 꾸밈 · 설명</b>으로 바꿔 쓰려는 것이 to부정사를 쓰는 까닭입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 [피아노 치기]를 배운다.", q:"[ ] 부분이 하는 노릇은?",
-   opts:["~하는 것(이름처럼)","꾸며 주기","까닭 말하기","동사","감탄"], a:0,
-   exp:"‘~하기, ~하는 것’은 <b>이름처럼</b> 쓰이는 명사 노릇입니다. I learn <b>to play</b> the piano."},
+  {type:"n", tag:"개념", q:"<b>이름 자리</b>에 앉은 to부정사가 들어갈 수 있는 곳을 바르게 묶은 것은?",
+   opts:["주어 · 목적어 · 보어","동사 · 부사","꾸미는 자리뿐","문장 맨 끝뿐","들어갈 곳이 없다"], a:0,
+   exp:"이름이 하는 일은 명사와 같습니다. 그래서 명사가 서는 세 자리에 모두 앉습니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 [입을] 옷이 없다.", q:"[ ] 부분이 하는 노릇은?",
-   opts:["명사를 꾸며 주기","~하는 것","까닭 말하기","동사","감탄"], a:0,
-   exp:"‘입을’은 명사 ‘옷’을 꾸밉니다. clothes <b>to wear</b>"},
+  {type:"n", tag:"개념", q:"<b>꾸미는 자리</b>에 앉은 to부정사는 명사의 어느 쪽에 올까요?",
+   opts:["명사 뒤","명사 앞","문장 맨 앞","문장 맨 끝","아무 데나"], a:0,
+   exp:"우리말은 ‘<b>마실</b> 물’처럼 앞이지만 영어는 water <b>to drink</b>처럼 뒤입니다. 차례가 반대입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"그녀는 [시험에 합격하려고] 열심히 공부했다.", q:"[ ] 부분이 하는 노릇은?",
-   opts:["까닭(목적) 말하기","~하는 것","명사를 꾸며 주기","동사","감탄"], a:0,
-   exp:"‘~하려고’는 <b>왜</b> 공부했는지, 목적입니다. to pass the test"},
+  {type:"n", tag:"개념", q:"‘읽을 책’을 영어 차례로 바르게 나타낸 것은?",
+   opts:["책 + 읽을","읽을 + 책","책 + 책","읽을 + 읽을","차례가 없다"], a:0,
+   exp:"a book to read입니다. 꾸미는 덩어리가 <b>명사 뒤</b>로 갑니다."},
 
-  {type:"n", tag:"한글로 이해", q:"‘읽을 책’을 영어 차례로 바르게 나타낸 것은?",
-   opts:["책 + 읽을","읽을 + 책","책 + 읽다 + 을","읽다 + 책","을 + 책 + 읽다"], a:0,
-   exp:"영어는 명사를 먼저 쓰고 뒤에서 꾸밉니다. a book <b>to read</b>"},
+  {type:"n", tag:"개념", multi:true, q:"<b>설명하는 자리</b>에 앉은 to부정사가 알려 줄 수 있는 것을 모두 고르세요. (여러 개)",
+   opts:["무엇을 하려고(목적)","왜 그런 마음인지(감정의 까닭)","그래서 어떻게 되었는지(결과)","낱말의 개수","글자의 모양"], ans:[0,1,2],
+   exp:"목적이 가장 많고, ‘만나서 기쁘다’ 같은 감정의 까닭도 여기에 듭니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"‘~하려고, ~하러’처럼 <b>목적</b>을 나타내는 말을 모두 고르세요. (여러 개)",
-   opts:["살을 빼려고","친구를 만나러","책을 빌리러","달리는 것","먹을 빵"], ans:[0,1,2],
-   exp:"‘~하려고 · ~하러’가 목적입니다. ‘달리는 것’은 이름처럼, ‘먹을 빵’은 꾸며 주기입니다."},
+  {type:"n", tag:"개념", q:"[ ] 부분이 앉은 자리는?<br><span class=\"ko2\">나는 [축구하기]를 좋아한다.</span>",
+   opts:["이름 자리","꾸미는 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"좋아하는 것의 <b>이름</b>입니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"‘~하는 것’(이름처럼) 노릇을 하는 말을 모두 고르세요. (여러 개)",
-   opts:["여행하는 것","요리하기","일찍 자는 것","잘 사람","자러 가다"], ans:[0,1,2],
-   exp:"‘~하는 것 · ~하기’가 이름처럼 쓰는 명사 노릇입니다."},
+  {type:"n", tag:"개념", q:"[ ] 부분이 앉은 자리는?<br><span class=\"ko2\">나는 [마실] 물이 필요하다.</span>",
+   opts:["꾸미는 자리 — ‘물’을 꾸민다","이름 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"어떤 물인지를 좁혀 줍니다."},
 
-  {type:"n", tag:"한글로 이해", q:"to부정사 ‘to eat’에서 to 뒤의 eat을 바꿀 수 있는 모양은?",
-   opts:["바꾸지 않고 늘 동사원형","eats","ate","eating","eaten"], a:0,
-   exp:"to 뒤에는 주어나 때와 상관없이 늘 <b>동사원형</b>입니다. He wants <b>to eat</b>."},
+  {type:"n", tag:"개념", q:"[ ] 부분이 앉은 자리는?<br><span class=\"ko2\">그는 뉴스를 [듣고] 놀랐다.</span>",
+   opts:["설명하는 자리 — 놀란 까닭","이름 자리","꾸미는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"왜 놀랐는지, 그 <b>까닭</b>을 설명합니다."},
 
-  {type:"n", tag:"한글로 이해", q:"‘그는 뉴스를 듣고 놀랐다’에서 ‘듣고’는 무엇을 나타낼까요?",
-   opts:["놀란 까닭(감정의 원인)","들을 것","듣는 사람","들은 때","듣는 장소"], a:0,
-   exp:"감정(놀란) 뒤의 to부정사는 <b>감정의 원인</b>입니다. He was surprised <b>to hear</b> the news."},
+  {type:"n", tag:"개념", q:"to부정사와 ‘학교에 간다’의 to school은 무엇이 다를까요?",
+   opts:["to부정사는 뒤에 동사, to school의 to는 뒤에 명사","차이가 없다","to부정사는 뒤에 명사","to school이 to부정사다","둘 다 동사가 온다"], a:0,
+   exp:"to 뒤에 무엇이 오는지만 보면 됩니다. <b>동사</b>면 to부정사, <b>명사</b>면 전치사입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"‘할 일’, ‘마실 것’처럼 꾸며 주는 to부정사는 명사의 어느 쪽에 올까요?",
-   opts:["명사 뒤","명사 앞","문장 맨 앞","동사 앞","아무 데나"], a:0,
-   exp:"꾸며 주는 to부정사는 명사 <b>뒤</b>에 옵니다. work <b>to do</b>, something <b>to drink</b>"},
+  {type:"n", tag:"개념", q:"to부정사가 앉은 자리를 알면 무엇이 좋을까요?",
+   opts:["우리말 풀이가 정해진다","낱말 수를 셀 수 있다","철자를 알 수 있다","소리를 알 수 있다","좋은 점이 없다"], a:0,
+   exp:"같은 to read라도 자리에 따라 ‘읽는 것 · 읽을 · 읽으러’로 갈립니다. <b>자리가 뜻을 정합니다.</b>"},
 
-  {type:"n", tag:"한글로 이해", q:"to부정사와 ‘학교에 간다’의 to school은 무엇이 다를까요?",
-   opts:["to부정사는 뒤에 동사, to school의 to는 뒤에 명사","둘 다 뒤에 동사가 온다","둘 다 뒤에 명사가 온다","to school이 to부정사이다","다른 점이 없다"], a:0,
-   exp:"to + <b>동사원형</b>이 to부정사, to + <b>명사</b>는 ‘~로, ~에’라는 전치사입니다."},
+  {type:"n", tag:"개념", q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["to부정사는 문장의 동사 자리에 앉는다","to부정사는 이름 자리에 앉을 수 있다","to부정사는 명사를 뒤에서 꾸민다","to부정사는 까닭을 설명할 수 있다","to 뒤에는 동사원형이 온다"], a:0,
+   exp:"동사 자리에서 빼내려고 to를 붙이는 것이므로, 동사 자리에는 앉지 못합니다."},
 
-  {type:"n", tag:"한글로 이해", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["꾸며 주는 to부정사는 명사 앞에 온다.","to부정사는 to + 동사원형이다.","to부정사는 ~하는 것, ~할, ~하려고로 풀이된다.","to 뒤의 동사는 주어가 he여도 원형이다.","to school의 to는 to부정사가 아니다."], a:0,
-   exp:"꾸며 주는 to부정사는 명사 <b>뒤</b>에 옵니다. water to drink"},
+  {type:"n", tag:"개념", q:"다음 설명 중 <b>맞는</b> 것은?",
+   opts:["같은 to부정사라도 앉은 자리에 따라 뜻이 달라진다","to부정사는 뜻이 하나뿐이다","to 뒤에는 동사에 s를 붙인다","꾸며 주는 to부정사는 명사 앞에 온다","to부정사는 동사를 두 개 쓰게 해 준다"], a:0,
+   exp:"to read 하나로 ‘읽는 것 · 읽을 · 읽으러’가 모두 됩니다. 어디에 놓였는지를 보고 가립니다."},
 
-  {type:"a", tag:"쉬운 영어", word:"to swim", q:"<b>to swim</b>을 ‘~하는 것’으로 풀이하면?",
-   opts:["수영하는 것","수영했다","수영하고 있다","수영장","수영할 사람"], a:0, eng:true,
-   exp:"to swim = <b>수영하는 것</b>, 수영하기"},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["To read books","문장 맨 앞"],["is","동사"],["fun","설명"]],0),
+   opts:["이름 자리 — 문장의 주어","꾸미는 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"무엇이 재미있는지, 그 <b>이름</b>이 주어 자리에 왔습니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I want ___ pizza.", q:"‘나는 피자를 먹고 싶다’가 되도록 알맞은 것은?",
-   opts:["to eat","eat","eats","eating","ate"], a:0, eng:true,
-   ko:"나는 피자를 먹고 싶다.",
-   exp:"want <b>to</b> + 동사원형 = ~하고 싶다"},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["I have","주어와 동사"],["a lot of homework","명사"],["to do","바로 뒤"]],2),
+   opts:["꾸미는 자리 — homework를 꾸민다","이름 자리","설명하는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"‘할 숙제’입니다. 바로 앞의 homework를 꾸밉니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"She needs a pen ___ with.", q:"‘그녀는 쓸 펜이 필요하다’가 되도록 알맞은 것은?",
-   opts:["to write","write","writes","writing","wrote"], a:0, eng:true,
-   ko:"그녀는 (가지고) 쓸 펜이 필요하다.",
-   exp:"명사 pen을 뒤에서 꾸미는 <b>to write</b>"},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 앉은 자리는?"+figSlot([["He came here","문장이 이미 끝남"],["to help you","덧붙은 말"]],1),
+   opts:["설명하는 자리 — 왜 왔는지","이름 자리","꾸미는 자리","동사 자리","자리가 없다"], a:0,
+   exp:"여기 온 <b>까닭</b>을 설명합니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"He came here ___ you.", q:"‘그는 너를 도우러 여기 왔다’가 되도록 알맞은 것은?",
-   opts:["to help","help","helps","helping","helped"], a:0, eng:true,
-   ko:"그는 너를 도우러 여기 왔다.",
-   exp:"‘~하러’ 목적 → <b>to help</b>"},
+  {type:"a", tag:"영어로 보기", q:"테두리를 두른 덩어리가 <b>꾸미는 낱말</b>은?"+figSlot([["I need","주어와 동사"],["something","명사"],["to eat","바로 뒤"]],2),
+   opts:["something","I","need","eat","to"], a:0,
+   exp:"‘먹을 것’입니다. 바로 앞의 something을 꾸밉니다."},
 
-  {type:"a", tag:"쉬운 영어", sent:"I have a lot of homework ___ .", q:"‘나는 할 숙제가 많다’가 되도록 알맞은 것은?",
-   opts:["to do","do","does","did","doing"], a:0, eng:true,
-   ko:"나는 할 숙제가 많다.",
-   exp:"homework를 뒤에서 꾸미는 <b>to do</b>"},
+  {type:"a", tag:"영어로 보기", q:"<b>to read</b>의 우리말 풀이가 <b>세 가지</b>로 갈리는 까닭은?",
+   opts:["앉은 자리가 달라지기 때문","철자가 달라지기 때문","때가 달라지기 때문","주어가 달라지기 때문","갈리지 않는다"], a:0,
+   exp:"모양은 to read 하나인데 이름 자리면 ‘읽는 것’, 꾸미는 자리면 ‘읽을’, 설명하는 자리면 ‘읽으러’가 됩니다."},
 
-  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"바르게 만든 to부정사를 모두 고르세요. (여러 개)",
-   opts:["to sing","to drink","to have","to sings","to drank"], ans:[0,1,2],
-   exp:"to 뒤에는 <b>동사원형</b>. to sings · to drank는 틀립니다."},
+  {type:"a", tag:"영어로 보기", multi:true, q:"밑줄 친 to부정사가 <b>꾸미는 자리</b>에 앉은 것을 모두 고르세요. (여러 개)",
+   opts:["a book **to read**","something **to eat**","a pen **to write** with","I want **to sleep**.","He ran **to catch** the bus."], ans:[0,1,2],
+   exp:"앞의 셋은 모두 바로 앞의 명사를 꾸밉니다. 뒤의 둘은 이름 자리와 설명하는 자리입니다."},
 
-  {type:"a", tag:"쉬운 영어", word:"I'm happy to see you.", q:"<b>I'm happy to see you.</b>의 뜻으로 알맞은 것은?",
-   opts:["너를 만나서 기쁘다.","너를 만날 기쁨","나는 너를 보고 있다.","너를 만나러 간다.","너를 본 적이 있다."], a:0, eng:true,
-   exp:"happy 뒤의 to see는 기쁜 <b>까닭</b>, ‘만나서’입니다."},
+  {type:"a", tag:"영어로 보기", multi:true, q:"밑줄 친 to부정사가 <b>설명하는 자리</b>에 앉은 것을 모두 고르세요. (여러 개)",
+   opts:["I got up early **to study**.","She was glad **to meet** me.","We went out **to play**.","My hobby is **to sing**.","water **to drink**"], ans:[0,1,2],
+   exp:"일어난 까닭, 기쁜 까닭, 나간 까닭입니다. 뒤의 둘은 이름 자리와 꾸미는 자리입니다."},
 
-  {type:"a", tag:"쉬운 영어", multi:true, eng:true, q:"to가 <b>to부정사</b>로 쓰인 것을 모두 고르세요. (여러 개)",
-   opts:["I like **to dance**.","I need **to rest**.","She wants **to win**.","I walk **to school**.","Give it **to me**."], ans:[0,1,2],
-   exp:"to + 동사원형이 to부정사입니다. to school · to me는 ‘~로, ~에게’라는 전치사입니다."}
+  {type:"a", tag:"영어로 보기", multi:true, q:"<b>to부정사</b>가 들어 있는 것을 모두 고르세요. (여러 개)",
+   opts:["I want **to go**.","a place **to rest**","He came **to see** me.","I go **to school**.","Listen **to me**."], ans:[0,1,2],
+   exp:"to 뒤에 <b>동사</b>가 오면 to부정사, <b>명사</b>가 오면 전치사입니다."}
 ];
 
 var X2 = [
@@ -1073,13 +1064,13 @@ var X4 = [
    opts:["It","That","This","There","What"], a:0, eng:true,
    exp:"긴 주어 to부정사를 뒤로 보내고 앞에 가주어 <b>It</b>"},
 
-  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">The box is so heavy that I can't carry it.<br>= The box is ___ heavy for me ___ carry.</span>",
-   opts:["too – to","so – to","enough – to","very – that","too – that"], a:0, eng:true,
-   exp:"so ~ that … can't = <b>too ~ to</b> (너무 ~해서 …할 수 없다)"},
+  {type:"a", tag:"그림 보고 고르기", q:"그림에 맞는 영어 문장은?"+figShelf(86,"손이 선반에 닿지 않습니다"), eng:true,
+   opts:["He is too short to reach the shelf.","He is tall enough to reach the shelf.","He is short enough to reach the shelf.","He is too tall to reach the shelf.","He is enough short to reach the shelf."], a:0,
+   exp:"닿지 <b>못하는</b> 쪽이므로 <b>too ~ to</b>입니다. ‘너무 작아서 닿을 수 없다’입니다."},
 
-  {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">She is so tall that she can touch the ceiling.<br>= She is tall ___ ___ touch the ceiling.</span>",
-   opts:["enough – to","too – to","so – to","very – to","enough – that"], a:0, eng:true,
-   exp:"so ~ that … can = 형용사 + <b>enough to</b>"},
+  {type:"a", tag:"그림 보고 고르기", q:"그림에 맞는 영어 문장은?"+figShelf(146,"손이 선반에 닿습니다"), eng:true,
+   opts:["He is tall enough to reach the shelf.","He is too tall to reach the shelf.","He is too short to reach the shelf.","He is enough tall to reach the shelf.","He is so tall to reach the shelf."], a:0,
+   exp:"닿을 수 <b>있는</b> 쪽이므로 <b>enough to</b>입니다. enough는 형용사 <b>뒤</b>에 옵니다 — tall enough(○) · enough tall(✕)"},
 
   {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같아지도록 빈칸에 알맞은 것은?<br><span class=\"eng\">I don't know where I should go.<br>= I don't know where ___ .</span>",
    opts:["to go","going","go","I go to","to going"], a:0, eng:true,
@@ -1130,13 +1121,122 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · to부정사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · to + 동사원형 · 세 가지 노릇 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"기본1 · 왜 쓰고 어디에 앉나", desc:"개념 24 · 영어로 보기 16 · 동사를 동사 자리에서 빼내는 장치 · 이름 자리 · 꾸미는 자리 · 설명하는 자리", qs:L1, typeLabels:{n:"개념",a:"영어로 보기"}},
   2:{name:"기본2 · 넓히기와 함정", desc:"want·like·hope 뒤 · 명사 꾸미기 · 목적 말하기 · 함정 문제", qs:L2, typeLabels:{n:"모양",a:"모두 고르기",v:"함정"}},
   3:{name:"기본3 · 중1 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
   4:{name:"기본4 · 전 학년 아우르기", desc:"세 쓰임 가리기 · too~to와 enough to · 의문사 + to부정사", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
 };
 
+/* ===================== 그림 ===================== */
+/* 문장을 토막으로 나누고, 가리킨 토막에 테두리를 두르는 그림 */
+function figSlot(rows, hi, cap){
+  var i, W=[], tot=0, G=12;
+  for(i=0;i<rows.length;i++){ W[i]=Math.max(84, rows[i][0].length*11+30); tot+=W[i]; }
+  tot+=G*(rows.length-1);
+  var x=(560-tot)/2, out='';
+  for(i=0;i<rows.length;i++){
+    var on=(i===hi);
+    out+='<rect x="'+x+'" y="34" width="'+W[i]+'" height="50" rx="11" fill="'+(on?'var(--rv-soft)':'#fff')+'" stroke="var(--'+(on?'rv':'muted')+')" stroke-width="'+(on?2.2:1.4)+'"/>'+
+      '<text x="'+(x+W[i]/2)+'" y="66" text-anchor="middle" font-size="19" font-weight="'+(on?700:400)+'" fill="var(--'+(on?'rv':'ink')+')" font-family="Newsreader, serif">'+rows[i][0]+'</text>'+
+      '<text x="'+(x+W[i]/2)+'" y="104" text-anchor="middle" font-size="15" fill="var(--muted)">'+rows[i][1]+'</text>';
+    x+=W[i]+G;
+  }
+  return '<svg class="fig" viewBox="0 0 560 '+(cap?128:114)+'" role="img" aria-label="문장을 토막으로 나누어 to부정사 덩어리가 어디에 붙었는지 보여 주는 그림">'+out+
+    (cap?'<text x="280" y="124" text-anchor="middle" font-size="15" fill="var(--muted)">'+cap+'</text>':'')+'</svg>';
+}
+
+/* 앞의 동사는 모양이 바뀌지만 to 뒤는 그대로라는 그림 */
+function figFix(){
+  var row=function(y,v,s){
+    return '<rect x="34" y="'+y+'" width="150" height="44" rx="11" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.8"/>'+
+      '<text x="109" y="'+(y+29)+'" text-anchor="middle" font-size="19" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">'+v+'</text>'+
+      '<rect x="196" y="'+y+'" width="150" height="44" rx="11" fill="var(--rv-soft)" stroke="var(--rv)" stroke-width="1.8"/>'+
+      '<text x="271" y="'+(y+29)+'" text-anchor="middle" font-size="19" font-weight="700" fill="var(--rv)" font-family="Newsreader, serif">to go</text>'+
+      '<text x="358" y="'+(y+29)+'" font-size="16" fill="var(--muted)">'+s+'</text>';
+  };
+  return '<svg class="fig" viewBox="0 0 500 212" role="img" aria-label="앞의 동사는 모양이 바뀌지만 to 뒤는 바뀌지 않는다는 그림">'+
+    '<text x="109" y="20" text-anchor="middle" font-size="17" fill="var(--rn)">진짜 동사 — 바뀝니다</text>'+
+    '<text x="271" y="20" text-anchor="middle" font-size="17" fill="var(--rv)">to 뒤 — 그대로</text>'+
+    row(30,'want','I want to go.')+
+    row(86,'wants','She wants to go.')+
+    row(142,'wanted','He wanted to go.')+
+    '<text x="250" y="206" text-anchor="middle" font-size="16" fill="var(--muted)">오른쪽 칸은 세 줄 모두 똑같습니다</text>'+
+  '</svg>';
+}
+
+/* 긴 주어를 뒤로 보내고 앞에 가주어 It을 두는 그림 */
+function figItis(){
+  return '<svg class="fig" viewBox="0 0 560 198" role="img" aria-label="긴 주어를 뒤로 보내고 앞에 가주어 It을 두는 그림">'+
+    '<text x="20" y="22" font-size="17" fill="var(--muted)">주어가 길면 머리가 무겁습니다</text>'+
+    '<rect x="20" y="32" width="300" height="46" rx="11" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="2"/>'+
+    '<text x="170" y="62" text-anchor="middle" font-size="19" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">To eat breakfast</text>'+
+    '<rect x="332" y="32" width="152" height="46" rx="11" fill="#fff" stroke="var(--muted)" stroke-width="1.4"/>'+
+    '<text x="408" y="62" text-anchor="middle" font-size="19" fill="var(--ink)" font-family="Newsreader, serif">is important.</text>'+
+    '<path d="M170 86 L170 108" stroke="var(--rn)" stroke-width="1.8"/>'+
+    '<text x="184" y="104" font-size="17" fill="var(--muted)">통째로 뒤로 보내고, 앞자리에는 It을 세웁니다</text>'+
+    '<rect x="20" y="118" width="74" height="46" rx="11" fill="var(--rv-soft)" stroke="var(--rv)" stroke-width="2"/>'+
+    '<text x="57" y="148" text-anchor="middle" font-size="19" font-weight="700" fill="var(--rv)" font-family="Newsreader, serif">It</text>'+
+    '<rect x="106" y="118" width="152" height="46" rx="11" fill="#fff" stroke="var(--muted)" stroke-width="1.4"/>'+
+    '<text x="182" y="148" text-anchor="middle" font-size="19" fill="var(--ink)" font-family="Newsreader, serif">is important</text>'+
+    '<rect x="270" y="118" width="270" height="46" rx="11" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="2"/>'+
+    '<text x="405" y="148" text-anchor="middle" font-size="19" font-weight="700" fill="var(--rn)" font-family="Newsreader, serif">to eat breakfast.</text>'+
+    '<text x="20" y="190" font-size="17" fill="var(--muted)">It은 자리만 지키는 가짜 주어, 진짜 주어는 뒤의 to부정사입니다</text>'+
+  '</svg>';
+}
+
+/* 선반 높이와 키만 보여 주는 그림 (문제용) */
+function figShelf(h, ko){
+  var top=168-h;
+  return '<svg class="fig" viewBox="0 0 420 206" role="img" aria-label="선반 높이와 아이의 키를 견주어 보여 주는 그림">'+
+    '<text x="10" y="52" font-size="17" fill="var(--muted)">선반</text>'+
+    '<line x1="56" y1="60" x2="408" y2="60" stroke="var(--muted)" stroke-width="3" stroke-dasharray="7 5"/>'+
+    '<rect x="196" y="'+top+'" width="68" height="'+h+'" rx="9" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="2"/>'+
+    '<text x="230" y="156" text-anchor="middle" font-size="17" fill="var(--rn)">키</text>'+
+    '<line x1="56" y1="168" x2="408" y2="168" stroke="var(--muted)" stroke-width="2"/>'+
+    '<text x="210" y="196" text-anchor="middle" font-size="18" fill="var(--ink)">'+ko+'</text>'+
+  '</svg>';
+}
+
+/* 선반에 손이 닿지 않는 쪽과 닿는 쪽을 견주는 그림 */
+function figReach(){
+  var one=function(cx,h,mark,c,eng,ko){
+    var top=176-h;
+    return '<rect x="'+(cx-34)+'" y="'+top+'" width="68" height="'+h+'" rx="9" fill="var(--'+c+'-soft)" stroke="var(--'+c+')" stroke-width="2"/>'+
+      '<text x="'+cx+'" y="'+(top-10)+'" text-anchor="middle" font-size="24" font-weight="700" fill="var(--'+c+')">'+mark+'</text>'+
+      '<text x="'+cx+'" y="202" text-anchor="middle" font-size="18" font-weight="700" fill="var(--'+c+')" font-family="Newsreader, serif">'+eng+'</text>'+
+      '<text x="'+cx+'" y="224" text-anchor="middle" font-size="16" fill="var(--muted)">'+ko+'</text>';
+  };
+  return '<svg class="fig" viewBox="0 0 520 234" role="img" aria-label="한 선반을 두고 키가 모자라 닿지 못하는 쪽과 충분히 닿는 쪽을 견주는 그림">'+
+    '<text x="12" y="56" font-size="17" fill="var(--muted)">선반</text>'+
+    '<line x1="58" y1="64" x2="508" y2="64" stroke="var(--muted)" stroke-width="3" stroke-dasharray="7 5"/>'+
+    '<line x1="58" y1="176" x2="508" y2="176" stroke="var(--muted)" stroke-width="2"/>'+
+    one(160,92,'✕','rv','too short to reach','너무 작아서 못 닿는다')+
+    one(370,142,'○','rn','tall enough to reach','충분히 커서 닿는다')+
+  '</svg>';
+}
+
 /* ===================== 개념 화면 ===================== */
+/* 동사 자리에서 빠져나와 세 자리에 앉는 그림 */
+function figSeat(){
+  var seat=function(x,t,k,c){
+    return '<rect x="'+x+'" y="118" width="168" height="48" rx="12" fill="var(--'+c+'-soft)" stroke="var(--'+c+')" stroke-width="1.6"/>'+
+      '<text x="'+(x+84)+'" y="140" text-anchor="middle" font-size="17" font-weight="700" fill="var(--'+c+')">'+t+'</text>'+
+      '<text x="'+(x+84)+'" y="160" text-anchor="middle" font-size="14" fill="var(--'+c+')">'+k+'</text>'+
+      '<path d="M280 84 L'+(x+84)+' 112" stroke="var(--'+c+')" stroke-width="1.8"/>';
+  };
+  return '<svg class="fig" viewBox="0 0 560 200" role="img" aria-label="동사에 to를 붙여 빼낸 뒤 세 자리에 앉히는 그림">'+
+    '<rect x="196" y="18" width="168" height="48" rx="12" fill="#fff" stroke="var(--muted)" stroke-width="1.8"/>'+
+    '<text x="280" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ink)">동사</text>'+
+    '<text x="280" y="60" text-anchor="middle" font-size="14" fill="var(--muted)">read</text>'+
+    '<text x="396" y="46" font-size="15" fill="var(--muted)">앞에 to를 붙여</text>'+
+    '<text x="396" y="64" font-size="15" fill="var(--muted)">동사 자리에서 빼냅니다</text>'+
+    seat(14,'이름 자리','읽는 것','rn')+
+    seat(196,'꾸미는 자리','읽을','ra')+
+    seat(378,'설명하는 자리','읽으러','rv')+
+    '<text x="280" y="192" text-anchor="middle" font-size="15" fill="var(--muted)">모양은 to read 하나, 앉는 자리는 셋</text>'+
+  '</svg>';
+}
+
 function figToinf(){
   return '<svg class="fig" viewBox="0 0 560 136" role="img" aria-label="to부정사의 세 가지 노릇을 보여 주는 그림">'+
     '<rect x="14" y="14" width="168" height="44" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.5"/>'+
@@ -1154,16 +1254,18 @@ function figToinf(){
 
 function learn1(){
   return ''+
-  '<h2>LEVEL 1 · to부정사가 뭐예요?</h2>'+
-  '<p class="lead">영어 한 문장에 <b>진짜 동사는 하나</b>뿐입니다. 동사를 하나 더 쓰고 싶으면 앞에 <b>to</b>를 붙여 다른 노릇을 맡깁니다. 이것이 <b>to부정사</b>입니다.</p>'+
-  figToinf()+
+  '<h2>LEVEL 1 · 왜 쓰고 어디에 앉나</h2>'+
+  '<p class="lead">영어 한 문장에 <b>진짜 동사는 하나</b>뿐입니다. 동사를 하나 더 쓰고 싶을 때, 그 동사 앞에 <b>to</b>를 붙여 <b>동사 자리에서 빼냅니다</b>. 빠져나온 덩어리는 이제 다른 자리에 앉습니다. 이것이 to부정사입니다.</p>'+
+  figSeat()+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>만드는 법은 하나뿐</span>'+
+    '<span class="bh"><i class="dot d-n"></i>to + 동사원형은 ‘옷’입니다</span>'+
     '<div class="swap"><span>to + 동사원형</span><span class="ar">→</span><span class="good">to go · to eat · to play</span></div>'+
-    '<p>to 뒤에는 <b>언제나 원형</b>입니다. 주어가 바뀌어도, 때가 바뀌어도 그대로입니다. to goes(✕) · to going(✕)</p>'+
+    '<p>이 모양은 to부정사가 <b>입은 옷</b>일 뿐입니다. 왜 쓰는지(동사 자리에서 빼내려고)와 어디에 앉는지가 속입니다. 옷만 외우면 조금만 비틀어도 흔들립니다.</p>'+
+    '<p><b>부정(不定)</b>이라는 이름도 ‘어느 자리에 앉을지 <b>정해지지 않았다</b>’는 뜻입니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>세 가지 노릇</span>'+
+    '<span class="bh"><i class="dot d-a"></i>앉는 자리 셋</span>'+
+    figToinf()+
     '<div class="ex">나는 <u class="hl">읽는 것</u>을 좋아한다.<span class="k">이름처럼 — I like to read.</span></div>'+
     '<div class="ex">나는 <u class="hl a">읽을</u> 책이 있다.<span class="k">꾸며 주기 — a book to read</span></div>'+
     '<div class="ex">나는 <u class="hl v">읽으러</u> 왔다.<span class="k">까닭 말하기 — came to read</span></div>'+
@@ -1175,13 +1277,14 @@ function learn1(){
     '<p>우리말은 꾸미는 말이 <b>앞</b>에 오지만, 영어의 to부정사는 <b>명사 뒤</b>로 갑니다. 이것만 조심하면 됩니다.</p>'+
   '</div>'+
   '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 해 보기</span><div class="ex">I want <u class="hl">to sleep</u>.<span class="k">~하는 것 — 자고 싶다</span></div><div class="ex">a book <u class="hl a">to read</u><span class="k">~할 — 읽을 책</span></div><div class="ex">I went out <u class="hl v">to play</u>.<span class="k">~하러 — 놀러 나갔다</span></div></div>'+
-  '<div class="tip"><span class="h">1단계에서 챙길 것</span><b>to + 동사원형</b> 하나로 세 가지 노릇을 합니다 — <b>~하는 것 · ~할 · ~하려고</b>.</div>';
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span>to는 동사를 <b>동사 자리에서 빼내는</b> 장치입니다. 빠져나온 덩어리가 어디에 앉았는지만 보면 뜻이 정해집니다 — 이름 자리면 <b>~하는 것</b>, 꾸미는 자리면 <b>~할</b>, 설명하는 자리면 <b>~하려고 · ~해서</b>입니다.</div>';
 }
 
 function learn2(){
   return ''+
   '<h2>LEVEL 2 · 넓히기와 함정</h2>'+
   '<p class="lead">이제 영어 문장에 직접 넣어 봅니다. 시험에서 많이 틀리는 곳은 딱 두 군데입니다.</p>'+
+  figFix()+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>to부정사를 데려오는 동사</span>'+
     '<div class="swap"><span>want</span><span class="ar">→</span><span class="good">I want to go.</span></div>'+
@@ -1212,6 +1315,7 @@ function learn3(){
     '<span class="bh"><i class="dot d-n"></i>자주 나오는 짜임</span>'+
     '<div class="ex">My dream is <u class="hl">to be</u> a teacher.<span class="k">is 뒤 — 이름 노릇</span></div>'+
     '<div class="ex">It is important <u class="hl">to eat</u> breakfast.<span class="k">It is + 형용사 + to부정사</span></div>'+
+    figItis()+
     '<p>It은 뜻이 없는 <b>가짜 주어</b>입니다. 진짜 주어는 뒤의 to부정사입니다.</p>'+
   '</div>'+
   '<div class="block">'+
@@ -1243,6 +1347,7 @@ function learn4(){
     '<div class="swap"><span>To swim is fun.</span><span class="ar">=</span><span class="good">It is fun to swim.</span></div>'+
     '<div class="swap"><span>too young to drive</span><span class="ar">=</span><span class="good">so young that he can’t drive</span></div>'+
     '<div class="swap"><span>strong enough to lift</span><span class="ar">=</span><span class="good">so strong that he can lift</span></div>'+
+    figReach()+
     '<p><b>too ~ to</b>는 할 수 <b>없다</b>, <b>enough to</b>는 할 수 <b>있다</b>입니다. 뜻이 반대이니 짝으로 외우세요.</p>'+
     '<p>enough는 형용사 <b>뒤</b>에 옵니다. tall enough(○) · enough tall(✕)</p>'+
   '</div>'+
