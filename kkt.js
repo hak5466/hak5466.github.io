@@ -126,6 +126,7 @@
     "sothat-purpose": familyA("SO THAT 목적 GAME"),
     "form5b": familyA("5형식 뽀개기"),
     "ph": familyA("파닉스 뽀개기"),
+    "comp": familyA("비교급 뽀개기"),
     "adj": familyA("형용사 뽀개기"),
     "conj": familyA("접속사 뽀개기"),
     "interj": familyA("감탄사 뽀개기"),
