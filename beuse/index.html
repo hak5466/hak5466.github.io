@@ -419,246 +419,224 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
    1단계에서 be동사의 네 얼굴을 모두 봅니다.
    ~이다 · ~있다 / 아니다 / 물어보기(물음표) / 지난 일 was · were */
 var L1 = [
-  {type:"n", tag:"한글로 이해", q:"‘이다 · 있다’를 나타내는 동사를 무엇이라고 할까요?",
-   opts:["be동사","일반동사","조동사","형용사","전치사"], a:0,
-   exp:"‘나는 학생<b>이다</b>’, ‘고양이가 방에 <b>있다</b>’처럼 말할 때 쓰는 동사가 <b>be동사</b>입니다."},
+  {type:"n", tag:"동사가 뭐예요", q:"문장에서 <b>동사</b>는 무엇을 말해 주는 말일까요?",
+   opts:["주어가 어떠한지 · 무엇인지 · 무엇을 하는지","주어의 이름","문장의 길이","낱말의 수","아무것도 말해 주지 않는다"], a:0,
+   exp:"‘나는 <b>학생이다</b>’, ‘나는 <b>달린다</b>’처럼 주어에 대해 말해 주는 말이 동사입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"be동사의 현재 모양 세 가지를 바르게 모은 것은?",
-   opts:["am · is · are","do · does · did","was · were · been","can · will · must","has · have · had"], a:0,
-   exp:"지금 일을 말할 때 쓰는 be동사는 <b>am · is · are</b>입니다."},
+  {type:"n", tag:"동사가 뭐예요", q:"‘나는 학생’은 왜 아직 문장이 아닐까요?",
+   opts:["동사가 없기 때문","주어가 없기 때문","너무 짧기 때문","낱말이 어렵기 때문","문장이 맞다"], a:0,
+   exp:"‘<b>이다</b>’가 붙어야 ‘나는 학생이다’라는 문장이 됩니다. 동사가 없으면 문장이 되지 않습니다."},
 
-  {type:"n", tag:"한글로 이해", q:"be동사의 모양이 바뀌는 까닭으로 알맞은 것은?",
-   opts:["주어가 누구인지에 따라 달라지기 때문","문장이 길기 때문","뜻을 반대로 만들려고","발음을 예쁘게 하려고","모양은 바뀌지 않는다"], a:0,
-   exp:"I는 am, He · She · It은 is, You · We · They는 are처럼 <b>주어</b>가 모양을 정합니다."},
+  {type:"n", tag:"동사가 뭐예요", q:"한 문장에 <b>진짜 동사</b>는 몇 개 올 수 있을까요?",
+   opts:["하나","둘","셋","얼마든지","없어도 된다"], a:0,
+   exp:"동사 자리는 <b>하나</b>뿐입니다. 그래서 be동사와 일반동사를 겹쳐 쓸 수 없습니다."},
 
-  {type:"n", tag:"한글로 이해", q:"주어가 ‘나(I)’일 때 쓰는 be동사는?",
+  {type:"n", tag:"동사가 뭐예요", q:"영어 문장의 동사는 크게 몇 가지로 나뉠까요?",
+   opts:["be동사와 일반동사 — 두 가지","한 가지","세 가지","네 가지","나눌 수 없다"], a:0,
+   exp:"조동사는 혼자 서지 못하고 동사를 돕는 말이므로, 문장의 동사는 <b>be동사</b>와 <b>일반동사</b> 둘입니다."},
+
+  {type:"n", tag:"동사가 뭐예요", q:"<b>be동사</b>가 나타내는 뜻 두 가지는?",
+   opts:["~이다 · ~있다","~한다 · ~하지 않는다","~할 것이다 · ~했다","~하고 싶다 · ~해야 한다","뜻이 없다"], a:0,
+   exp:"‘나는 학생<b>이다</b>’와 ‘고양이가 여기에 <b>있다</b>’, 이 둘을 be동사가 맡습니다."},
+
+  {type:"n", tag:"동사가 뭐예요", q:"<b>일반동사</b>가 나타내는 것은?",
+   opts:["주어가 하는 움직임이나 마음","주어의 이름","주어가 있는 곳","주어가 무엇인지","아무것도 아니다"], a:0,
+   exp:"먹다 · 달리다 · 좋아하다처럼 <b>한다</b>를 말하면 일반동사입니다."},
+
+  {type:"n", tag:"be동사는 =", q:"<b>be동사</b>를 기호 하나로 나타내면 무엇일까요?",
+   opts:["= (같다)","+ (더하기)","→ (화살표)","✕ (아니다)","기호로 나타낼 수 없다"], a:0,
+   exp:"be동사는 <b>=</b>입니다. 앞과 뒤를 같다고 묶어 줍니다. 이것 하나만 잡으면 be동사는 다 풀립니다."},
+
+  {type:"n", tag:"be동사는 =", sent:"나는 학생이다.", q:"‘나’와 ‘학생’의 사이는?",
+   opts:["나 = 학생 — 같다","나 ✕ 학생 — 다르다","나 + 학생 — 더한다","나 → 학생 — 옮겨 간다","아무 사이도 아니다"], a:0,
+   exp:"내가 곧 학생입니다. ‘이다’가 앞뒤를 <b>같다</b>고 묶었습니다. 이것이 ‘A는 B다’입니다."},
+
+  {type:"n", tag:"be동사는 =", sent:"나는 축구를 좋아한다.", q:"‘나’와 ‘축구’의 사이는?",
+   opts:["같지 않다 — 내가 축구인 것이 아니다","같다","나 = 축구이다","둘 다 사람이다","알 수 없다"], a:0,
+   exp:"내가 축구인 것이 아니라 축구를 <b>좋아하는</b> 것입니다. 일반동사는 =가 아닙니다."},
+
+  {type:"n", tag:"be동사는 =", q:"be동사와 일반동사를 가리는 가장 쉬운 방법은?",
+   opts:["뒤의 말이 주어와 같은 것이면 be동사","낱말의 길이를 본다","문장의 맨 앞을 본다","물음표가 있는지 본다","가릴 수 없다"], a:0,
+   exp:"‘나는 <b>학생</b>이다’는 나 = 학생이니 be동사, ‘나는 축구를 <b>한다</b>’는 나 ≠ 축구이니 일반동사입니다."},
+
+  {type:"n", tag:"be동사는 =", sent:"나는 행복하다.", q:"이 문장은 어느 동사로 말할까요?",
+   opts:["be동사 — 나 = 행복한 상태","일반동사","조동사","전치사","감탄사"], a:0,
+   exp:"‘어떠하다’는 주어의 <b>상태</b>입니다. 상태도 ‘=’로 묶으므로 be동사입니다."},
+
+  {type:"n", tag:"be동사는 =", sent:"고양이가 상자 안에 있다.", q:"이 문장의 ‘있다’는 어느 동사로 말할까요?",
+   opts:["be동사 — 고양이 = 상자 안에 있는 상태","일반동사","조동사","명사","부사"], a:0,
+   exp:"‘~에 있다’도 be동사가 맡습니다. ‘이다’와 ‘있다’ 둘 다 be동사입니다."},
+
+  {type:"n", tag:"인칭", q:"<b>인칭</b>은 무엇을 기준으로 나눌까요?",
+   opts:["말하는 사람 · 듣는 사람 · 그 밖의 사람이나 사물","나이","키","사는 곳","낱말의 길이"], a:0,
+   exp:"누가 말하고 누가 듣는지로 나눕니다. 이 세 가지가 <b>1인칭 · 2인칭 · 3인칭</b>입니다."},
+
+  {type:"n", tag:"인칭", q:"<b>1인칭</b>은 누구일까요?",
+   opts:["말하는 사람 — 나, 우리","듣는 사람","그 밖의 사람","사물","모두"], a:0,
+   exp:"말하는 내가 1인칭입니다. 혼자면 ‘나’, 여럿이면 ‘우리’입니다."},
+
+  {type:"n", tag:"인칭", q:"<b>2인칭</b>은 누구일까요?",
+   opts:["듣는 사람 — 너, 너희","말하는 사람","그 밖의 사람","사물","아무도 아니다"], a:0,
+   exp:"내 말을 듣는 쪽이 2인칭입니다. 혼자든 여럿이든 영어는 모두 <b>you</b>라고 합니다."},
+
+  {type:"n", tag:"인칭", q:"<b>3인칭</b>에 드는 것은?",
+   opts:["나와 너를 뺀 나머지 — 그, 그녀, 그것, 그들, 사람 이름, 사물","나와 우리","너와 너희","말하는 사람만","없다"], a:0,
+   exp:"민수, 우리 개, 그 책처럼 <b>이름을 가진 것은 모두</b> 3인칭입니다. 가장 넓은 무리입니다."},
+
+  {type:"n", tag:"인칭", multi:true, q:"<b>3인칭 단수</b>에 드는 것을 모두 고르세요. (여러 개)",
+   opts:["그는","우리 언니는","그 고양이는","나는","그들은"], ans:[0,1,2],
+   exp:"나와 너를 뺀 <b>한 사람·한 개</b>가 3인칭 단수입니다. ‘나는’은 1인칭, ‘그들은’은 3인칭이지만 여럿입니다."},
+
+  {type:"n", tag:"인칭", q:"be동사의 모양을 정하는 것은 무엇일까요?",
+   opts:["주어의 인칭과, 혼자인지 여럿인지","낱말의 길이","문장의 뜻","문장의 차례","정해져 있지 않다"], a:0,
+   exp:"뜻은 모두 ‘=’로 같고, <b>인칭</b>과 <b>수</b>만 모양을 정합니다."},
+
+  {type:"n", tag:"인칭", q:"‘<b>나는</b>’에 쓰는 be동사는?",
    opts:["am","is","are","do","be"], a:0,
-   exp:"I 뒤에는 오직 <b>am</b>입니다. I am a student."},
+   exp:"1인칭 단수에는 오직 <b>am</b>입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"주어가 ‘그(He)’나 ‘그녀(She)’일 때 쓰는 be동사는?",
+  {type:"n", tag:"인칭", q:"‘<b>그는 · 그녀는 · 그것은</b>’에 쓰는 be동사는?",
    opts:["is","am","are","do","be"], a:0,
-   exp:"한 사람·한 개를 가리키면 <b>is</b>입니다. He is kind."},
+   exp:"3인칭이면서 혼자이면 <b>is</b>입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"주어가 ‘우리(We)’나 ‘그들(They)’일 때 쓰는 be동사는?",
+  {type:"n", tag:"인칭", q:"‘<b>우리는 · 그들은</b>’에 쓰는 be동사는?",
    opts:["are","am","is","do","be"], a:0,
-   exp:"여럿이면 <b>are</b>입니다. We are friends."},
+   exp:"여럿이면 <b>are</b>입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"고양이가 상자 안에 있다.", q:"이 문장의 ‘있다’는 어느 동사로 말할까요?",
-   opts:["be동사","일반동사","조동사","명사","부사"], a:0,
-   exp:"‘~에 있다’도 be동사로 말합니다. The cat <b>is</b> in the box."},
+  {type:"n", tag:"인칭", q:"주어와 be동사가 바르게 <b>짝지어진</b> 것은?",
+   opts:["나는 — am · 그는 — is · 그들은 — are","나는 — is · 그는 — am · 그들은 — are","나는 — are · 그는 — is · 그들은 — am","나는 — am · 그는 — are · 그들은 — is","모두 are를 쓴다"], a:0,
+   exp:"1인칭 단수는 <b>am</b>, 3인칭 단수는 <b>is</b>, 나머지는 <b>are</b>입니다. 이 세 짝만 외우면 됩니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 축구를 한다.", q:"이 문장의 동사는 어느 쪽인가요?",
-   opts:["일반동사","be동사","조동사","형용사","전치사"], a:0,
-   exp:"‘한다’는 움직임이므로 <b>일반동사</b>입니다. be동사와 함께 쓰지 않습니다."},
+  {type:"n", tag:"함정", q:"‘<b>너는</b>’은 한 사람인데 왜 are를 쓸까요?",
+   opts:["you는 한 사람이든 여럿이든 늘 are이기 때문","여럿이라고 보기 때문","높임말이기 때문","is가 없기 때문","am을 써도 된다"], a:0,
+   exp:"‘너는’ 한 사람이어도 <b>are</b>입니다. 규칙에 어긋나 보이지만 시험에 꼭 나옵니다.", hard:true},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 행복하다.", q:"이 문장은 어느 동사로 말할까요?",
-   opts:["be동사","일반동사","조동사","전치사","감탄사"], a:0,
-   exp:"‘어떠하다’는 상태이므로 be동사입니다. I <b>am</b> happy."},
+  {type:"n", tag:"함정", q:"‘<b>너와 나는</b>’에는 어느 be동사를 쓸까요?",
+   opts:["are — 둘이므로 여럿이다","am — 나가 들어 있으므로","is — 한 덩어리이므로","be — 둘이 섞였으므로","쓸 수 없다"], a:0,
+   exp:"‘와’로 묶이면 <b>여럿</b>이 됩니다. ‘나’가 들어 있어도 am이 아니라 are입니다.", hard:true},
 
-  {type:"n", tag:"한글로 이해", q:"‘나는 배고프지 않다’처럼 아니라고 말할 때 not은 어디에 올까요?",
-   opts:["be동사 바로 뒤","문장 맨 앞","문장 맨 끝","주어 앞","동사 앞"], a:0,
-   exp:"I am <b>not</b> hungry. be동사 뒤에 not을 놓습니다."},
+  {type:"a", tag:"가려내기", sent:"그는 내 친구다.", q:"이 문장은 어느 동사로 말할까요?",
+   opts:["be동사 — 그 = 내 친구","일반동사","조동사","전치사","감탄사"], a:0,
+   exp:"그가 곧 내 친구입니다. ‘=’로 묶이므로 be동사입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 학생이다. → 나는 학생___.", q:"‘아니다’로 바꾸면?",
-   opts:["이 아니다","이었다","이니","일 것이다","이구나"], a:0,
-   exp:"‘~이다’의 반대는 ‘<b>~이 아니다</b>’입니다. I am a student. → I am <b>not</b> a student."},
+  {type:"a", tag:"가려내기", sent:"우리는 학교에 간다.", q:"이 문장은 어느 동사로 말할까요?",
+   opts:["일반동사 — 우리가 하는 일","be동사","조동사","형용사","전치사"], a:0,
+   exp:"‘간다’는 움직임입니다. 우리 = 학교가 아니므로 일반동사입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"‘너는 학생이니?’처럼 물어볼 때 be동사는 어디로 갈까요?",
-   opts:["주어 앞","문장 맨 끝","자리가 그대로","주어 뒤","쓰지 않는다"], a:0,
-   exp:"<b>Are</b> you a student<b>?</b> be동사를 주어 앞으로 보내고 물음표를 찍습니다."},
+  {type:"a", tag:"가려내기", sent:"책이 책상 위에 있다.", q:"이 문장은 어느 동사로 말할까요?",
+   opts:["be동사 — 어디에 있는지를 말한다","일반동사","조동사","명사","부사"], a:0,
+   exp:"‘있다’도 be동사입니다. 책 = 책상 위에 있는 상태입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"너는 학생이다. → 너는 학생___?", q:"물어보는 문장으로 바꾸면?",
-   opts:["이니","이었니","일까","이지 않다","이었다"], a:0,
-   exp:"‘~이다’를 물으면 ‘<b>~이니?</b>’가 됩니다. You are a student. → Are you a student?"},
+  {type:"a", tag:"가려내기", sent:"그녀는 날마다 피아노를 친다.", q:"이 문장은 어느 동사로 말할까요?",
+   opts:["일반동사 — 그녀가 하는 일","be동사","조동사","형용사","감탄사"], a:0,
+   exp:"‘친다’는 움직임입니다. 그녀 = 피아노가 아닙니다."},
 
-  {type:"n", tag:"한글로 이해", q:"be동사 문장에서 물어볼 때 do · does를 빌려 쓰지 않는 까닭은?",
-   opts:["be동사가 혼자 앞으로 나갈 수 있어서","do가 어려워서","be동사가 명사라서","문장이 길어져서","규칙이 없어서"], a:0,
-   exp:"be동사는 not을 뒤에 붙이고, 물을 때는 스스로 앞으로 나갑니다. 도우미가 필요 없습니다."},
+  {type:"a", tag:"가려내기", multi:true, q:"<b>be동사</b>로 말하는 문장을 모두 고르세요. (여러 개)",
+   opts:["나는 학생이다.","그는 친절하다.","책이 책상 위에 있다.","나는 밥을 먹는다.","우리는 학교에 간다."], ans:[0,1,2],
+   exp:"앞의 셋은 ‘이다 · 있다’이므로 be동사, 뒤의 둘은 ‘한다’이므로 일반동사입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"‘나는 어제 아팠다’처럼 <b>지난 일</b>을 말할 때 be동사는 어떻게 될까요?",
-   opts:["was · were로 바뀐다","그대로 am · is · are","did로 바뀐다","have로 바뀐다","쓰지 않는다"], a:0,
-   exp:"지난 일은 <b>was · were</b>로 말합니다. I <b>was</b> sick yesterday."},
+  {type:"a", tag:"가려내기", multi:true, q:"<b>일반동사</b>로 말하는 문장을 모두 고르세요. (여러 개)",
+   opts:["나는 축구를 한다.","그녀는 우유를 마신다.","우리는 책을 읽는다.","나는 행복하다.","고양이가 여기에 있다."], ans:[0,1,2],
+   exp:"앞의 셋은 주어가 <b>하는 일</b>입니다. 뒤의 둘은 ‘=’로 묶이므로 be동사입니다."},
 
-  {type:"n", tag:"한글로 이해", q:"am · is의 지난 일 모양(과거형)은?",
-   opts:["was","were","did","been","be"], a:0,
-   exp:"am · is → <b>was</b>. I was · He was · It was"},
+  {type:"a", tag:"가려내기", multi:true, q:"be동사 <b>is</b>를 쓰는 주어를 모두 고르세요. (여러 개)",
+   opts:["그는","우리 언니는","그 고양이는","나는","그들은"], ans:[0,1,2],
+   exp:"3인칭이면서 혼자인 주어에만 is를 씁니다."},
 
-  {type:"n", tag:"한글로 이해", q:"are의 지난 일 모양(과거형)은?",
-   opts:["were","was","did","been","are not"], a:0,
-   exp:"are → <b>were</b>. You were · We were · They were"},
+  {type:"a", tag:"가려내기", multi:true, q:"be동사 <b>are</b>를 쓰는 주어를 모두 고르세요. (여러 개)",
+   opts:["너는","우리는","그들은","나는","그는"], ans:[0,1,2],
+   exp:"2인칭 ‘너는’과 여럿은 모두 are입니다. ‘나는’은 am, ‘그는’은 is입니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"그들은 어제 공원에 있었다.", q:"‘있었다’에 알맞은 be동사는?",
-   opts:["were","was","are","is","did"], a:0,
-   exp:"They는 are를 쓰므로 지난 일은 <b>were</b>입니다."},
+  {type:"a", tag:"There · Here", q:"‘책상 위에 책이 <b>있다</b>’처럼 무엇이 있다고 알려 주는 말을 영어는 무엇으로 시작할까요?",
+   opts:["There","Here","It","This","That"], a:0,
+   exp:"<b>There is · There are</b>로 시작합니다. 뒤에 무엇이 있는지를 말해 줍니다."},
 
-  {type:"n", tag:"한글로 이해", sent:"나는 작년에 열두 살이었다.", q:"‘이었다’에 알맞은 be동사는?",
-   opts:["was","were","am","is","did"], a:0,
-   exp:"I는 am을 쓰므로 지난 일은 <b>was</b>입니다."},
+  {type:"a", tag:"There · Here", q:"There is · There are에서 <b>There</b>의 뜻은?",
+   opts:["뜻이 없고 자리만 지킨다","거기에","여기에","그것","저것"], a:0,
+   exp:"‘거기에’가 아닙니다. 뒤에 무엇이 있다고 말하려고 <b>앞자리를 채워 둔 말</b>입니다.", hard:true},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"be동사로 말하는 문장을 모두 고르세요. (여러 개)",
-   opts:["나는 열세 살이다.","그는 의사이다.","가방이 책상 위에 있다.","나는 우유를 마신다.","그녀는 피아노를 친다."], ans:[0,1,2],
-   exp:"‘~이다 · ~있다 · 상태’는 be동사, ‘마신다 · 친다’는 일반동사입니다."},
+  {type:"a", tag:"There · Here", q:"<b>There is</b>와 <b>There are</b>는 무엇을 보고 가릴까요?",
+   opts:["뒤에 오는 것이 하나면 is, 여럿이면 are","앞의 There를 본다","문장의 길이를 본다","때를 본다","가릴 수 없다"], a:0,
+   exp:"앞의 There가 아니라 <b>뒤에 오는 말</b>이 주인입니다. 이것이 자주 틀리는 곳입니다.", hard:true},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"be동사 <b>is</b>를 쓰는 주어를 모두 고르세요. (여러 개)",
-   opts:["그는","그녀는","우리 언니는","나는","그들은"], ans:[0,1,2],
-   exp:"한 사람·한 개를 가리키는 주어에는 is. ‘나는’은 am, ‘그들은’은 are입니다."},
+  {type:"a", tag:"There · Here", q:"무엇을 건네주며 ‘여기 있어’라고 할 때 쓰는 말은?",
+   opts:["Here is · Here are","There is · There are","It is","This is","That is"], a:0,
+   exp:"건네주면서 쓰는 말입니다. 하나면 <b>Here is</b>, 여럿이면 <b>Here are</b>입니다."},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"be동사 <b>are</b>를 쓰는 주어를 모두 고르세요. (여러 개)",
-   opts:["너는","우리는","그들은","나는","그 아이는"], ans:[0,1,2],
-   exp:"You · We · They에는 are. ‘나는’은 am, ‘그 아이는’은 is입니다."},
+  {type:"a", tag:"함정", sent:"우리 반 학생들은 친절하다.", q:"이 문장에 쓸 be동사는?",
+   opts:["are — 학생들이 여럿이므로","is — 반이 하나이므로","am — 우리가 들어 있으므로","be — 정해지지 않으므로","쓰지 않는다"], a:0,
+   exp:"주인은 ‘반’이 아니라 <b>학생들</b>입니다. 여럿이므로 are입니다. 주어가 길면 누가 주인인지 먼저 찾습니다.", hard:true},
 
-  {type:"n", tag:"한글로 이해", multi:true, q:"지난 일을 말하는 우리말을 모두 고르세요. (여러 개)",
-   opts:["나는 어제 바빴다.","그들은 작년에 같은 반이었다.","어젯밤에는 추웠다.","나는 지금 바쁘다.","오늘은 춥다."], ans:[0,1,2],
-   exp:"어제 · 작년 · 어젯밤은 지난 일 → was · were로 말합니다."},
+  {type:"a", tag:"함정", q:"‘<b>교실에 학생이 세 명 있다</b>’를 영어로 할 때 be동사는?",
+   opts:["are — 뒤에 오는 학생이 셋이므로","is — There가 하나이므로","am — 사람이므로","be — 수를 모르므로","쓰지 않는다"], a:0,
+   exp:"There <b>are</b>입니다. 앞의 There가 아니라 <b>뒤의 말</b>이 수를 정합니다.", hard:true},
 
-  {type:"n", tag:"한글로 이해", q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["be동사는 주어와 상관없이 한 가지 모양이다.","be동사는 ‘이다 · 있다’로 해석한다.","아니라고 할 때는 be동사 뒤에 not을 쓴다.","물어볼 때는 be동사를 문장 앞으로 보낸다.","지난 일은 was · were로 말한다."], a:0,
-   exp:"be동사는 주어와 때에 따라 <b>am · is · are · was · were</b>로 달라집니다."},
+  {type:"a", tag:"함정", q:"‘나는 축구를 한다’를 영어로 할 때 be동사를 <b>함께 쓰지 않는</b> 까닭은?",
+   opts:["한 문장에 동사를 둘 쓸 수 없기 때문","축구가 어려운 낱말이기 때문","be동사가 길기 때문","지난 일이기 때문","함께 써도 된다"], a:0,
+   exp:"‘한다’는 이미 일반동사입니다. 거기에 be동사를 또 붙이면 동사가 둘이 됩니다.", hard:true},
 
-  {type:"a", tag:"쉬운 영어", sent:"I ___ a student.", q:"‘나는 학생이다’가 되도록 알맞은 것은?",
-   opts:["am","is","are","be","do"], a:0, eng:true,
-   ko:"나는 학생이다.",
-   exp:"주어가 I → <b>am</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"She ___ my sister.", q:"‘그녀는 내 여동생이다’가 되도록 알맞은 것은?",
-   opts:["is","am","are","be","does"], a:0, eng:true,
-   ko:"그녀는 내 여동생이다.",
-   exp:"주어가 She → <b>is</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"They ___ my friends.", q:"‘그들은 내 친구들이다’가 되도록 알맞은 것은?",
-   opts:["are","am","is","be","do"], a:0, eng:true,
-   ko:"그들은 내 친구들이다.",
-   exp:"주어가 They → <b>are</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"The cat ___ on the sofa.", q:"‘고양이가 소파 위에 있다’가 되도록 알맞은 것은?",
-   opts:["is","am","are","be","has"], a:0, eng:true,
-   ko:"고양이가 소파 위에 있다.",
-   exp:"‘~에 있다’도 be동사. The cat은 하나 → <b>is</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"I ___ not hungry.", q:"‘나는 배고프지 않다’가 되도록 알맞은 것은?",
-   opts:["am","is","are","do","don't"], a:0, eng:true,
-   ko:"나는 배고프지 않다.",
-   exp:"be동사 문장의 ‘아니다’는 <b>be동사 + not</b>입니다."},
-
-  {type:"a", tag:"쉬운 영어", sent:"He ___ not at home.", q:"‘그는 집에 없다’가 되도록 알맞은 것은?",
-   opts:["is","are","am","does","do"], a:0, eng:true,
-   ko:"그는 집에 없다.",
-   exp:"He → is not(= isn't). ‘없다’도 be동사 + not으로 말합니다."},
-
-  {type:"a", tag:"쉬운 영어", sent:"___ you a soccer player?", q:"‘너는 축구 선수니?’가 되도록 알맞은 것은?",
-   opts:["Are","Is","Am","Do","Does"], a:0, eng:true,
-   ko:"너는 축구 선수니?",
-   exp:"물어볼 때는 be동사를 앞으로. you → <b>Are</b> you ~<b>?</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"___ she your teacher?", q:"‘그녀는 너의 선생님이니?’가 되도록 알맞은 것은?",
-   opts:["Is","Are","Am","Does","Do"], a:0, eng:true,
-   ko:"그녀는 너의 선생님이니?",
-   exp:"she → <b>Is</b> she ~?"},
-
-  {type:"a", tag:"쉬운 영어", q:"‘너는 행복하다’를 물어보는 문장으로 바르게 바꾼 것은?",
-   opts:["Are you happy?","You are happy.","Do you happy?","Are happy you?","You happy are?"], a:0,
-   exp:"be동사를 주어 앞으로 보내고 물음표를 찍습니다."},
-
-  {type:"a", tag:"쉬운 영어", sent:"I ___ sick yesterday.", q:"‘나는 어제 아팠다’가 되도록 알맞은 것은?",
-   opts:["was","were","am","is","did"], a:0, eng:true,
-   ko:"나는 어제 아팠다.",
-   exp:"yesterday → 지난 일. I → <b>was</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"They ___ in Jeju last summer.", q:"‘그들은 지난여름에 제주에 있었다’가 되도록 알맞은 것은?",
-   opts:["were","was","are","is","did"], a:0, eng:true,
-   ko:"그들은 지난여름에 제주에 있었다.",
-   exp:"They → 지난 일은 <b>were</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"It ___ cold yesterday.", q:"‘어제는 추웠다’가 되도록 알맞은 것은?",
-   opts:["was","were","is","are","did"], a:0, eng:true,
-   ko:"어제는 추웠다.",
-   exp:"It → 지난 일은 <b>was</b>"},
-
-  {type:"a", tag:"쉬운 영어", sent:"___ you at home last night?", q:"‘너는 어젯밤에 집에 있었니?’가 되도록 알맞은 것은?",
-   opts:["Were","Was","Are","Did","Do"], a:0, eng:true,
-   ko:"너는 어젯밤에 집에 있었니?",
-   exp:"지난 일을 물을 때도 be동사를 앞으로. you → <b>Were</b> you ~?"},
-
-  {type:"a", tag:"쉬운 영어", multi:true, q:"be동사를 모두 고르세요. (여러 개)",
-   opts:["am","was","are","run","like"], ans:[0,1,2],
-   exp:"am · was · are는 be동사, run · like는 일반동사입니다."},
-
-  {type:"a", tag:"쉬운 영어", multi:true, q:"어법에 맞는 문장을 모두 고르세요. (여러 개)",
-   opts:["I am a boy.","You are my friend.","It was cold.","I are a boy.","It am cold."], ans:[0,1,2],
-   exp:"I am · You are · It was"},
-
-  {type:"a", tag:"쉬운 영어", q:"‘I'm’은 무엇을 줄인 말일까요?",
-   opts:["I am","I is","I are","I do","I be"], a:0,
-   exp:"I am → <b>I'm</b>"}
+  {type:"a", tag:"함정", q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["be동사는 주어가 하는 움직임을 나타낸다","be동사는 앞뒤를 같다고 묶어 준다","be동사는 ‘이다’와 ‘있다’를 나타낸다","일반동사는 주어가 하는 일을 나타낸다","한 문장에 동사는 하나다"], a:0,
+   exp:"움직임을 나타내는 쪽은 <b>일반동사</b>입니다. be동사는 ‘=’입니다.", hard:true}
 ];
 
 /* ---------- LEVEL 2 : 쉬운 문장으로 모양 만들기 40 (어렵지 않게) ---------- */
 var L2 = [
-  {type:"n", tag:"모양 만들기", sent:"My father ___ a teacher.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","am","are","be","do"], a:0, eng:true,
-   ko:"우리 아버지는 선생님이시다.",
-   exp:"My father는 한 사람 → <b>is</b>"},
+  {type:"n", tag:"문장 세 가지", q:"‘나는 학생이다.’처럼 그냥 알려 주는 문장을 무엇이라고 할까요?",
+   opts:["평서문","부정문","의문문","감탄문","명령문"], a:0,
+   exp:"있는 그대로 알려 주는 문장이 <b>평서문</b>입니다. 끝에 마침표를 찍습니다."},
 
-  {type:"n", tag:"모양 만들기", sent:"My shoes ___ new.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","be","does"], a:0, eng:true,
-   ko:"내 신발은 새것이다.",
-   exp:"shoes는 여러 개 → <b>are</b>"},
+  {type:"n", tag:"문장 세 가지", q:"‘나는 학생이 아니다.’처럼 아니라고 뒤집는 문장을 무엇이라고 할까요?",
+   opts:["부정문","평서문","의문문","감탄문","명령문"], a:0,
+   exp:"아니라고 말하는 문장이 <b>부정문</b>입니다. 영어에서는 <b>not</b>이 들어갑니다."},
 
-  {type:"n", tag:"모양 만들기", sent:"You and I ___ in the same class.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","am","is","be","do"], a:0, eng:true,
-   ko:"너와 나는 같은 반이다.",
-   exp:"You and I = 우리(여럿) → <b>are</b>"},
+  {type:"n", tag:"문장 세 가지", q:"‘너는 학생이니?’처럼 물어보는 문장을 무엇이라고 할까요?",
+   opts:["의문문","평서문","부정문","감탄문","명령문"], a:0,
+   exp:"물어보는 문장이 <b>의문문</b>입니다. 끝에 물음표를 찍습니다."},
 
-  {type:"n", tag:"모양 만들기", sent:"This book ___ very interesting.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","be","does"], a:0, eng:true,
-   ko:"이 책은 아주 재미있다.",
-   exp:"This book은 한 권 → <b>is</b>"},
+  {type:"n", tag:"문장 세 가지", q:"be동사 문장을 <b>부정문</b>으로 만드는 방법은?",
+   opts:["be동사 바로 뒤에 not을 넣는다","문장 맨 앞에 not을 넣는다","문장 맨 끝에 not을 넣는다","do를 빌려 온다","주어를 바꾼다"], a:0,
+   exp:"I am a student. → I am <b>not</b> a student. be동사는 혼자서 뒤집습니다."},
 
-  {type:"n", tag:"모양 만들기", sent:"Mina and Jisu ___ good friends.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","be","has"], a:0, eng:true,
-   ko:"미나와 지수는 좋은 친구다.",
-   exp:"두 사람 → <b>are</b>"},
+  {type:"n", tag:"문장 세 가지", q:"be동사 문장을 <b>의문문</b>으로 만드는 방법은?",
+   opts:["be동사를 주어 앞으로 보내고 끝에 물음표를 찍는다","문장 맨 앞에 Do를 쓴다","끝에 not을 붙인다","주어를 지운다","차례를 그대로 둔다"], a:0,
+   exp:"You are a student. → <b>Are</b> you a student<b>?</b> 자리만 바꾸면 됩니다."},
 
-  {type:"n", tag:"모양 만들기", sent:"I ___ tired last night.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["was","were","am","is","did"], a:0, eng:true,
-   ko:"나는 어젯밤에 피곤했다.",
-   exp:"I, 지난 일 → <b>was</b>"},
+  {type:"n", tag:"문장 세 가지", q:"be동사 문장에서 물을 때 <b>Do · Does</b>를 빌려 오지 <b>않는</b> 까닭은?",
+   opts:["be동사가 혼자서 앞으로 갈 수 있기 때문","Do가 어려운 낱말이기 때문","be동사가 짧기 때문","물음표가 있기 때문","빌려 와도 된다"], a:0,
+   exp:"Do·Does는 <b>일반동사</b>를 도우러 오는 말입니다. be동사는 스스로 앞으로 갑니다.", hard:true},
 
-  {type:"n", tag:"모양 만들기", sent:"We ___ at the zoo yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["were","was","are","is","did"], a:0, eng:true,
-   ko:"우리는 어제 동물원에 있었다.",
-   exp:"We, 지난 일 → <b>were</b>"},
+  {type:"n", tag:"문장 세 가지", q:"다음 가운데 <b>줄여 쓸 수 없는</b> 것은?",
+   opts:["am not","is not","are not","was not","were not"], a:0,
+   exp:"is not은 isn’t, are not은 aren’t가 되지만 <b>am not</b>은 줄이지 않습니다. 대신 <b>I’m not</b>으로 씁니다.", hard:true},
 
-  {type:"n", tag:"모양 만들기", sent:"The cake ___ delicious.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","were","do"], a:0, eng:true,
-   ko:"그 케이크는 맛있다.",
-   exp:"The cake는 하나 → <b>is</b>"},
+  {type:"n", tag:"문장 세 가지", q:"<b>is not</b>과 <b>are not</b>의 줄임말이 바르게 짝지어진 것은?",
+   opts:["isn’t — aren’t","amn’t — aren’t","isn’t — arn’t","is’nt — are’nt","줄일 수 없다"], a:0,
+   exp:"not의 o가 빠진 자리에 아포스트로피를 찍습니다."},
 
-  {type:"n", tag:"모양 만들기", q:"줄임말이 바르게 짝지어진 것은?",
-   opts:["I am → I'm","She is → She're","They are → They's","It is → It am","We are → We's"], a:0,
-   exp:"I am → <b>I'm</b>, She is → She's, They are → They're"},
+  {type:"n", tag:"문장 세 가지", q:"<b>Are you a student?</b>에 ‘그렇다’고 답하는 말은?",
+   opts:["Yes, I am.","Yes, you are.","Yes, I do.","Yes, I is.","Yes, am I."], a:0,
+   exp:"물음이 you로 왔으니 답은 <b>I</b>로 합니다. 쓰인 be동사를 그대로 써서 답합니다."},
 
-  {type:"n", tag:"모양 만들기", q:"줄임말이 <b>잘못된</b> 것은?",
-   opts:["is not → isn't not","is not → isn't","are not → aren't","was not → wasn't","were not → weren't"], a:0,
-   exp:"is not은 <b>isn't</b> 하나로 줄입니다."},
+  {type:"n", tag:"문장 세 가지", q:"<b>Is she your teacher?</b>에 ‘아니다’라고 답하는 말은?",
+   opts:["No, she isn’t.","No, she doesn’t.","No, she not.","No, isn’t she.","No, I’m not."], a:0,
+   exp:"물음에 쓰인 is를 그대로 받아 <b>isn’t</b>로 답합니다."},
 
-  {type:"n", tag:"모양 만들기", q:"‘나는 ~이 아니다’를 바르게 쓴 것은?",
-   opts:["I'm not","I amn't","I not am","I don't am","I isn't"], a:0,
-   exp:"am not은 줄여 쓰지 않습니다. <b>I'm not</b>으로 씁니다."},
+  {type:"n", tag:"문장 세 가지", q:"평서문 · 부정문 · 의문문이 <b>달라지는 곳</b>은 어디일까요?",
+   opts:["be동사의 자리와 not이 있는지 없는지","주어가 누구인지","문장의 길이","낱말의 뜻","달라지지 않는다"], a:0,
+   exp:"You are kind. / You are <b>not</b> kind. / <b>Are</b> you kind? 주어와 뒤의 말은 그대로입니다."},
 
-  {type:"n", tag:"모양 만들기", q:"be동사의 현재와 과거를 바르게 짝지은 것은?",
-   opts:["am · is → was / are → were","am → were / are → was","is → been / are → was","am → did / is → did","모두 was로 바뀐다"], a:0,
-   exp:"am · is의 과거는 <b>was</b>, are의 과거는 <b>were</b>입니다."},
+  {type:"n", tag:"문장 세 가지", q:"<b>There is a cat.</b>를 부정문으로 바르게 만든 것은?",
+   opts:["There is not a cat.","There not is a cat.","Not there is a cat.","There does not a cat.","There is a cat not."], a:0,
+   exp:"There 문장도 be동사 뒤에 not을 넣습니다. 줄이면 There <b>isn’t</b> a cat."},
 
-  {type:"n", tag:"모양 만들기", sent:"There ___ a cat under the chair.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","were","have"], a:0, eng:true,
-   ko:"의자 아래에 고양이가 한 마리 있다.",
-   exp:"a cat은 하나 → There <b>is</b>"},
+  {type:"n", tag:"문장 세 가지", q:"<b>There are two books.</b>를 의문문으로 바르게 만든 것은?",
+   opts:["Are there two books?","Do there two books?","There are two books?","Are two books there?","Is there two books?"], a:0,
+   exp:"be동사 are를 There 앞으로 보냅니다. <b>Are there ~?</b>가 됩니다."},
 
-  {type:"n", tag:"모양 만들기", sent:"There ___ two apples on the table.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","was","has"], a:0, eng:true,
-   ko:"탁자 위에 사과가 두 개 있다.",
-   exp:"two apples는 여럿 → There <b>are</b>"},
+  {type:"n", tag:"문장 세 가지", multi:true, q:"<b>부정문</b>으로 바르게 만든 것을 모두 고르세요. (여러 개)",
+   opts:["I am not hungry.","He isn’t at home.","They aren’t my friends.","I not am hungry.","He don’t is at home."], ans:[0,1,2],
+   exp:"not은 반드시 <b>be동사 뒤</b>에 옵니다. do는 빌려 오지 않습니다."},
 
   {type:"a", tag:"모두 고르기", multi:true, q:"어법에 맞는 문장을 모두 고르세요. (여러 개)",
    opts:["I am ten years old.","He is my brother.","We are hungry.","I is ten years old.","They is hungry."], ans:[0,1,2],
@@ -1141,13 +1119,46 @@ var L4 = [
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · be동사가 뭐예요?", desc:"한글로 이해 24 · 쉬운 영어 16 · 이다와 있다 · 아니다 · 물어보기 · 지난 일 was·were까지 한 번에", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · 쉬운 문장으로 모양 만들기", desc:"주어에 맞는 am·is·are와 was·were · 줄임말 · There is·are · 쉬운 함정", qs:L2, typeLabels:{n:"모양 만들기",a:"모두 고르기",v:"고르기"}},
+  1:{name:"기본1 · 동사가 뭐예요, be동사는 =입니다", desc:"한글로만 · 개념 24 · 가려내기 16 · 동사의 뜻과 역할 · be동사와 일반동사 가리기 · be동사는 =(주어 = 뒤의 말) · 1·2·3인칭 · There is·are와 Here is·are · 함정", qs:L1, typeLabels:{n:"개념",a:"가려내기"}},
+  2:{name:"기본2 · 평서문 · 부정문 · 의문문", desc:"세 가지 문장이 무엇인지와 만드는 법 · be동사 뒤에 not, be동사를 앞으로 · 줄임말과 대답 · There is·are까지", qs:L2, typeLabels:{n:"문장 세 가지",a:"모두 고르기",v:"고르기"}},
   3:{name:"기본3 · 중1 학교 시험형", desc:"현재와 과거를 함께 · 빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
   4:{name:"기본4 · 전 학년 아우르기", desc:"진행형과 will be · 때 가리기 · be동사와 일반동사 종합", qs:L4, typeLabels:{n:"진행형과 미래",a:"때 가리기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
+/* be동사는 = , 일반동사는 ≠ 라는 그림 */
+function figEqual(){
+  var row=function(y,a,sym,bx,c,ko){
+    return '<rect x="30" y="'+y+'" width="150" height="46" rx="11" fill="var(--'+c+'-soft)" stroke="var(--'+c+')" stroke-width="1.8"/>'+
+      '<text x="105" y="'+(y+30)+'" text-anchor="middle" font-size="19" font-weight="700" fill="var(--'+c+')">'+a+'</text>'+
+      '<text x="208" y="'+(y+32)+'" text-anchor="middle" font-size="28" font-weight="700" fill="var(--'+c+')">'+sym+'</text>'+
+      '<rect x="236" y="'+y+'" width="150" height="46" rx="11" fill="var(--'+c+'-soft)" stroke="var(--'+c+')" stroke-width="1.8"/>'+
+      '<text x="311" y="'+(y+30)+'" text-anchor="middle" font-size="19" font-weight="700" fill="var(--'+c+')">'+bx+'</text>'+
+      '<text x="400" y="'+(y+30)+'" font-size="16" fill="var(--muted)">'+ko+'</text>';
+  };
+  return '<svg class="fig" viewBox="0 0 560 160" role="img" aria-label="be동사는 앞뒤를 같다고 묶고 일반동사는 그렇지 않다는 그림">'+
+    '<text x="30" y="20" font-size="17" fill="var(--rn)">be동사 — 앞뒤를 같다고 묶습니다</text>'+
+    row(28,'나','=','학생','rn','나는 학생이다')+
+    '<text x="30" y="106" font-size="17" fill="var(--ra)">일반동사 — 주어가 하는 일입니다</text>'+
+    row(114,'나','✕','축구','ra','나는 축구를 좋아한다')+
+  '</svg>';
+}
+
+/* 1인칭 · 2인칭 · 3인칭 그림 */
+function figPerson(){
+  var box=function(x,t,k,c){
+    return '<rect x="'+x+'" y="26" width="164" height="62" rx="12" fill="var(--'+c+'-soft)" stroke="var(--'+c+')" stroke-width="1.8"/>'+
+      '<text x="'+(x+82)+'" y="52" text-anchor="middle" font-size="18" font-weight="700" fill="var(--'+c+')">'+t+'</text>'+
+      '<text x="'+(x+82)+'" y="76" text-anchor="middle" font-size="16" fill="var(--'+c+')">'+k+'</text>';
+  };
+  return '<svg class="fig" viewBox="0 0 560 128" role="img" aria-label="말하는 사람 듣는 사람 그 밖의 사람으로 인칭을 나눈 그림">'+
+    box(10,'1인칭','나 · 우리','rn')+
+    box(198,'2인칭','너 · 너희','ra')+
+    box(386,'3인칭','그 밖의 모두','rv')+
+    '<text x="92" y="18" text-anchor="middle" font-size="15" fill="var(--muted)">말하는 사람</text>'+'<text x="280" y="18" text-anchor="middle" font-size="15" fill="var(--muted)">듣는 사람</text>'+'<text x="468" y="18" text-anchor="middle" font-size="15" fill="var(--muted)">그 밖의 사람과 사물</text>'+'<text x="280" y="118" text-anchor="middle" font-size="16" fill="var(--muted)">이름을 가진 것은 모두 3인칭입니다</text>'+
+  '</svg>';
+}
+
 function figBe(){
   return '<svg class="fig" viewBox="0 0 560 128" role="img" aria-label="be동사의 두 가지 뜻을 보여 주는 그림">'+
     '<rect x="20" y="10" width="240" height="46" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.5"/>'+
@@ -1163,37 +1174,44 @@ function figBe(){
 
 function learn1(){
   return ''+
-  '<h2>LEVEL 1 · be동사가 뭐예요?</h2>'+
-  '<p class="lead">‘나는 학생<b>이다</b>’, ‘고양이가 여기에 <b>있다</b>’. 이 두 가지를 말해 주는 동사가 <b>be동사</b>입니다. 1단계에서는 <b>이다·있다 → 아니다 → 물어보기 → 지난 일</b>까지 한글과 쉬운 영어로 모두 만나 봅니다.</p>'+
-  figBe()+
+  '<h2>LEVEL 1 · 동사가 뭐예요, be동사는 =입니다</h2>'+
+  '<p class="lead">1단계는 <b>우리말로만</b> 합니다. 동사가 무엇을 하는 말인지 잡고, 영어 동사가 <b>be동사</b>와 <b>일반동사</b> 둘로 나뉘는 것을 알고, be동사가 <b>=</b>라는 것 하나를 또렷이 챙깁니다.</p>'+
+  figEqual()+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>① 주어가 모양을 정합니다</span>'+
-    '<div class="swap"><span>I</span><span class="ar">→</span><span class="good">am</span></div>'+
-    '<div class="swap"><span>He · She · It · 한 사람 · 한 개</span><span class="ar">→</span><span class="good">is</span></div>'+
-    '<div class="swap"><span>You · We · They · 여럿</span><span class="ar">→</span><span class="good">are</span></div>'+
+    '<span class="bh"><i class="dot d-n"></i>① 동사가 무엇을 하나</span>'+
+    '<div class="ex">나는 학생<b>이다</b>.<span class="k">주어가 무엇인지 말해 줍니다</span></div>'+
+    '<div class="ex">나는 <b>행복하다</b>.<span class="k">주어가 어떠한지 말해 줍니다</span></div>'+
+    '<div class="ex">나는 축구를 <b>한다</b>.<span class="k">주어가 무엇을 하는지 말해 줍니다</span></div>'+
+    '<p>‘나는 학생’은 아직 문장이 아닙니다. 동사가 붙어야 문장이 됩니다. 그리고 한 문장에 <b>진짜 동사는 하나</b>뿐입니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>② 아니다 — 뒤에 not</span>'+
-    '<div class="ex">나는 학생<b>이다</b>. → 나는 학생이 <b>아니다</b>.<span class="k">한글로 먼저</span></div>'+
-    '<div class="ex">I am a student. → I am <u class="hl a">not</u> a student.<span class="k">be동사 바로 뒤에 not</span></div>'+
+    '<span class="bh"><i class="dot d-a"></i>② be동사는 = 입니다</span>'+
+    '<div class="swap"><span>나는 학생이다</span><span class="ar">=</span><span class="good">나 = 학생</span></div>'+
+    '<div class="swap"><span>나는 축구를 좋아한다</span><span class="ar">✕</span><span class="good">나 ≠ 축구</span></div>'+
+    '<p><b>be동사</b>는 앞뒤를 같다고 묶습니다 — <b>이다</b>와 <b>있다</b>입니다. <b>일반동사</b>는 주어가 <b>하는 일</b>을 말합니다. 뒤의 말이 주어와 같은 것이면 be동사입니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>③ 물어보기 — be동사가 앞으로, 끝에는 물음표</span>'+
-    '<div class="ex">너는 학생<b>이다</b>. → 너는 학생<b>이니?</b><span class="k">한글로 먼저</span></div>'+
-    '<div class="ex">You are a student. → <u class="hl a">Are</u> you a student<b>?</b><span class="k">be동사를 주어 앞으로</span></div>'+
-    '<p>do · does를 빌려 오지 않습니다. be동사는 혼자서 다 합니다.</p>'+
+    '<span class="bh"><i class="dot d-v"></i>③ 인칭 — 누가 말하고 누가 듣나</span>'+
+    figPerson()+
+    '<div class="ex">1인칭<span class="k">말하는 사람 — 나, 우리</span></div>'+
+    '<div class="ex">2인칭<span class="k">듣는 사람 — 너, 너희</span></div>'+
+    '<div class="ex">3인칭<span class="k">나와 너를 뺀 나머지 — 그, 그녀, 그것, 그들, 사람 이름, 사물</span></div>'+
+    '<p>be동사의 뜻은 모두 ‘=’로 같고, <b>인칭</b>과 <b>혼자냐 여럿이냐</b>만 모양을 정합니다. 나는 <b>am</b>, 3인칭 혼자는 <b>is</b>, 나머지는 <b>are</b>입니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>④ 지난 일 — was · were</span>'+
-    '<div class="swap"><span>am · is</span><span class="ar">→</span><span class="good">was</span></div>'+
-    '<div class="swap"><span>are</span><span class="ar">→</span><span class="good">were</span></div>'+
-    '<div class="ex">나는 어제 아팠다.<span class="k">I <b>was</b> sick yesterday.</span></div>'+
-    '<div class="ex">그들은 어제 공원에 있었다.<span class="k">They <b>were</b> in the park yesterday.</span></div>'+
+    '<span class="bh"><i class="dot d-n"></i>④ ~가 있다 — There와 Here</span>'+
+    '<div class="ex">책상 위에 책이 있다.<span class="k">There is ~ / There are ~</span></div>'+
+    '<div class="ex">여기 네 표 있어.<span class="k">Here is ~ / Here are ~ — 건네주며</span></div>'+
+    '<p>앞의 There는 ‘거기’라는 뜻이 아니라 <b>자리만 지키는 말</b>입니다. 하나냐 여럿이냐는 <b>뒤에 오는 말</b>이 정합니다.</p>'+
   '</div>'+
-  '<div class="block" data-en="1"><span class="bh"><i class="dot d-a"></i>쉬운 영어로 한 바퀴</span><div class="ex">I <u class="hl a">am</u> happy. · I <u class="hl a">am not</u> happy. · <u class="hl a">Are</u> you happy? · I <u class="hl a">was</u> happy yesterday.<span class="k">이다 → 아니다 → 물어보기 → 지난 일</span></div></div>'+
-  '<div class="tip"><span class="h">1단계에서 챙길 것</span>주어를 보고 <b>am · is · are</b>를 고르고, 아니라고 할 때는 뒤에 <b>not</b>, 물어볼 때는 <b>앞으로</b>, 지난 일은 <b>was · were</b>입니다.</div>';
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-v"></i>⑤ 규칙에 어긋나지만 꼭 나오는 것</span>'+
+    '<div class="ex">‘너는’은 한 사람인데도 <b>are</b><span class="k">you는 혼자든 여럿이든 늘 are</span></div>'+
+    '<div class="ex">‘너와 나는’도 <b>are</b><span class="k">‘와’로 묶이면 여럿이 됩니다</span></div>'+
+    '<div class="ex">‘우리 반 학생들은’은 <b>are</b><span class="k">주인은 ‘반’이 아니라 ‘학생들’입니다</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">1단계에서 챙길 것</span><b>be동사는 =</b>입니다. 뒤의 말이 주어와 같은 것이면 be동사, 주어가 하는 일이면 일반동사입니다. 모양은 <b>인칭과 수</b>가 정합니다.</div>';
 }
-
 function learn2(){
   return ''+
   '<h2>LEVEL 2 · 쉬운 문장으로 모양 만들기</h2>'+
