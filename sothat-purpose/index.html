@@ -918,10 +918,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · 목적과 결과", desc:"한글로 이해 10 · 쉬운 영어 10 · ~하려고와 너무 ~해서 · to부정사 목적 · so that 목적 · 쉬운 영어 문장 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · 목적 vs 결과", desc:"so~that 결과 · so that 목적 구별 · 섞어서 20문제", qs:L2, typeLabels:{n:"so~that 결과",a:"so that 목적",v:"구별·전환"}},
-  3:{name:"기본3 · 기출문제", desc:"중2 기출 유형 16 · 고난도 4 · in order that·so as to", qs:L3, typeLabels:{n:"기출",a:"고난도"}},
-  4:{name:"기본4 · 심화", desc:"중등 전학년 아우름 · 함정·고난도 다수", qs:L4, typeLabels:{n:"기본",a:"함정·고난도"}}
+  1:{name:"Level 1 · 목적과 결과", desc:"한글로 이해 10 · 쉬운 영어 10 · ~하려고와 너무 ~해서 · to부정사 목적 · so that 목적 · 쉬운 영어 문장 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"Level 2 · 목적 vs 결과", desc:"so~that 결과 · so that 목적 구별 · 섞어서 20문제", qs:L2, typeLabels:{n:"so~that 결과",a:"so that 목적",v:"구별·전환"}},
+  3:{name:"Level 3 · 기출문제", desc:"중2 기출 유형 16 · 고난도 4 · in order that·so as to", qs:L3, typeLabels:{n:"기출",a:"고난도"}},
+  4:{name:"Level 4 · 심화", desc:"중등 전학년 아우름 · 함정·고난도 다수", qs:L4, typeLabels:{n:"기본",a:"함정·고난도"}}
 };
 
 /* ===================== 상태 ===================== */

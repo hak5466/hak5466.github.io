@@ -1110,10 +1110,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · 이름과 대신하는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 명사 · 대명사 · 인칭대명사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · 영어로 가리기", desc:"쉬운 영어 단어로 명사와 대명사 구별 · I·you·he·she·it·we·they", qs:L2, typeLabels:{n:"모두 고르기",a:"인칭",v:"대신하기"}},
-  3:{name:"기본3 · 학교 문제", desc:"지시대명사 this·that·these·those와 주격·소유격·목적격", qs:L3, typeLabels:{n:"지시대명사",a:"격",v:"모두 고르기·판별"}},
-  4:{name:"기본4 · 명사 총정리", desc:"셀 수 있는 명사와 부정대명사까지 한 번에", qs:L4, typeLabels:{n:"셀 수 있는 명사",a:"부정대명사",v:"종합·고난도"}}
+  1:{name:"Level 1 · 이름과 대신하는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 명사 · 대명사 · 인칭대명사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"Level 2 · 영어로 가리기", desc:"쉬운 영어 단어로 명사와 대명사 구별 · I·you·he·she·it·we·they", qs:L2, typeLabels:{n:"모두 고르기",a:"인칭",v:"대신하기"}},
+  3:{name:"Level 3 · 학교 문제", desc:"지시대명사 this·that·these·those와 주격·소유격·목적격", qs:L3, typeLabels:{n:"지시대명사",a:"격",v:"모두 고르기·판별"}},
+  4:{name:"Level 4 · 명사 총정리", desc:"셀 수 있는 명사와 부정대명사까지 한 번에", qs:L4, typeLabels:{n:"셀 수 있는 명사",a:"부정대명사",v:"종합·고난도"}}
 };
 
 /* ===================== 개념 화면 ===================== */

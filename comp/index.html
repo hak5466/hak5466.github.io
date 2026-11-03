@@ -1128,10 +1128,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · 한글로 개념 잡기", desc:"개념 24 · 한글로 견주기 16 · 두 대상의 우열을 견줄 때 쓴다 · 뒤집어 말하기와 부정까지 모두 우리말로", qs:L1, typeLabels:{n:"개념",a:"한글로 견주기"}},
-  2:{name:"기본2 · 그 한글을 영어로", desc:"-er과 more 가려 쓰기 · than · 철자 바뀌는 낱말 · 불규칙 · 겹쳐 쓰는 함정", qs:L2, typeLabels:{n:"만들기",a:"모두 고르기",v:"함정"}},
-  3:{name:"기본3 · 중1 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열 · 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"훨씬(much·far·even) · 점점 더 · 최상급과 가리기 · not as ~ as로 바꿔 쓰기 · 고난도", qs:L4, typeLabels:{n:"넓히기",a:"바꿔 쓰기",v:"종합"}}
+  1:{name:"Level 1 · 한글로 개념 잡기", desc:"개념 24 · 한글로 견주기 16 · 두 대상의 우열을 견줄 때 쓴다 · 뒤집어 말하기와 부정까지 모두 우리말로", qs:L1, typeLabels:{n:"개념",a:"한글로 견주기"}},
+  2:{name:"Level 2 · 그 한글을 영어로", desc:"-er과 more 가려 쓰기 · than · 철자 바뀌는 낱말 · 불규칙 · 겹쳐 쓰는 함정", qs:L2, typeLabels:{n:"만들기",a:"모두 고르기",v:"함정"}},
+  3:{name:"Level 3 · 중1 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열 · 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
+  4:{name:"Level 4 · 전 학년 아우르기", desc:"훨씬(much·far·even) · 점점 더 · 최상급과 가리기 · not as ~ as로 바꿔 쓰기 · 고난도", qs:L4, typeLabels:{n:"넓히기",a:"바꿔 쓰기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */

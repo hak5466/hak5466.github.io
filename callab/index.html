@@ -1131,10 +1131,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · A를 B라고 부르다", desc:"한글로 이해 24 · 쉬운 영어 16 · 나는 부른다 + 내 동생은 태양이다 → 나는 내 동생을 태양이라고 부른다 · A = B · 어려운 말 없이 우리말로만 · 초등 저학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · call 모양과 쉬운 문장", desc:"call · calls · called · will call · 부정과 의문 · 아주 쉬운 낱말로 5형식 만들기", qs:L2, typeLabels:{n:"call 모양",a:"모두 고르기",v:"문장 만들기"}},
-  3:{name:"기본3 · 중2 학교 시험형", desc:"name · make · keep · find · elect · 수동태 · What do you call ~? · 틀린 곳 고치기 · 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 서술형"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"목적격보어에 형용사 · 수동태로 바꾸기 · that절과 5형식 · 가목적어 it · 고난도", qs:L4, typeLabels:{n:"같은 꼴 동사",a:"바꿔 쓰기",v:"종합"}}
+  1:{name:"Level 1 · A를 B라고 부르다", desc:"한글로 이해 24 · 쉬운 영어 16 · 나는 부른다 + 내 동생은 태양이다 → 나는 내 동생을 태양이라고 부른다 · A = B · 어려운 말 없이 우리말로만 · 초등 저학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"Level 2 · call 모양과 쉬운 문장", desc:"call · calls · called · will call · 부정과 의문 · 아주 쉬운 낱말로 5형식 만들기", qs:L2, typeLabels:{n:"call 모양",a:"모두 고르기",v:"문장 만들기"}},
+  3:{name:"Level 3 · 중2 학교 시험형", desc:"name · make · keep · find · elect · 수동태 · What do you call ~? · 틀린 곳 고치기 · 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 서술형"}},
+  4:{name:"Level 4 · 전 학년 아우르기", desc:"목적격보어에 형용사 · 수동태로 바꾸기 · that절과 5형식 · 가목적어 it · 고난도", qs:L4, typeLabels:{n:"같은 꼴 동사",a:"바꿔 쓰기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */

@@ -1110,10 +1110,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · 자리와 때를 알려 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 전치사가 무엇인지 · 명사 앞자리 · in · on · under · to · with · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · 쉬운 영어 단어로", desc:"in · on · under · behind · next to · to · with", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"구별"}},
-  3:{name:"기본3 · 한글과 영어 섞기", desc:"때의 at·on·in · 자리의 in·at·on · 목적격 · by와 with", qs:L3, typeLabels:{n:"때",a:"자리",v:"가려내기"}},
-  4:{name:"기본4 · 직접 써 보기", desc:"전치사를 직접 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"낱말 쓰기",a:"때 쓰기",v:"문장 채우기"}}
+  1:{name:"Level 1 · 자리와 때를 알려 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 전치사가 무엇인지 · 명사 앞자리 · in · on · under · to · with · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"Level 2 · 쉬운 영어 단어로", desc:"in · on · under · behind · next to · to · with", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"구별"}},
+  3:{name:"Level 3 · 한글과 영어 섞기", desc:"때의 at·on·in · 자리의 in·at·on · 목적격 · by와 with", qs:L3, typeLabels:{n:"때",a:"자리",v:"가려내기"}},
+  4:{name:"Level 4 · 직접 써 보기", desc:"전치사를 직접 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"낱말 쓰기",a:"때 쓰기",v:"문장 채우기"}}
 };
 
 /* ===================== 개념 화면 ===================== */

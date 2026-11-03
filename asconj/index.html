@@ -1149,10 +1149,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · 접속사와 전치사", desc:"한글로 이해 24 · 쉬운 영어 16 · 뒤에 명사인가 문장인가 · 전치사구는 형용사구·부사구 · as의 네 뜻 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · as의 네 뜻 가리기", desc:"~할 때 · ~때문에 · ~하듯이 · ~함에 따라 · 전치사 as 가려내기 · 함정", qs:L2, typeLabels:{n:"뜻 가리기",a:"모두 고르기",v:"함정"}},
-  3:{name:"기본3 · 중3 학교 시험형", desc:"when·while·because·since·the way로 바꿔 쓰기 · 빈칸 · 고치기 · 서술형", qs:L3, typeLabels:{n:"바꿔 쓰기와 빈칸",a:"뜻 고르기",v:"고치기와 서술형"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"because of와 because · during과 while · despite와 although · as의 모든 얼굴 · 영작", qs:L4, typeLabels:{n:"짝 가리기",a:"as의 얼굴",v:"종합"}}
+  1:{name:"Level 1 · 접속사와 전치사", desc:"한글로 이해 24 · 쉬운 영어 16 · 뒤에 명사인가 문장인가 · 전치사구는 형용사구·부사구 · as의 네 뜻 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"Level 2 · as의 네 뜻 가리기", desc:"~할 때 · ~때문에 · ~하듯이 · ~함에 따라 · 전치사 as 가려내기 · 함정", qs:L2, typeLabels:{n:"뜻 가리기",a:"모두 고르기",v:"함정"}},
+  3:{name:"Level 3 · 중3 학교 시험형", desc:"when·while·because·since·the way로 바꿔 쓰기 · 빈칸 · 고치기 · 서술형", qs:L3, typeLabels:{n:"바꿔 쓰기와 빈칸",a:"뜻 고르기",v:"고치기와 서술형"}},
+  4:{name:"Level 4 · 전 학년 아우르기", desc:"because of와 because · during과 while · despite와 although · as의 모든 얼굴 · 영작", qs:L4, typeLabels:{n:"짝 가리기",a:"as의 얼굴",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */

@@ -417,7 +417,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 
 /* ---------- LEVEL 1 : 한글로 이해 24 + 쉬운 영어 16 ----------
    1단계에서 be동사의 네 얼굴을 모두 봅니다.
-   ~이다 · ~있다 / 아니다 / 물어보기(물음표) / 지난 일 was · were */
+   ~이다 · ~있다 · ~되다 / 아니다 / 물어보기(물음표) / 앞으로의 일 will be  (지난 일 was · were는 따로 만드는 과거 게임에서) */
 var L1 = [
   {type:"n", tag:"동사가 뭐예요", q:"문장에서 <b>동사</b>는 무엇을 말해 주는 말일까요?",
    opts:["주어가 어떠한지 · 무엇인지 · 무엇을 하는지","주어의 이름","문장의 길이","낱말의 수","아무것도 말해 주지 않는다"], a:0,
@@ -751,378 +751,337 @@ var L2 = [
    exp:"ⓐ 물을 때는 be동사를 앞으로 → <b>Are</b> you ~? ⓑ 답은 주어 I에 맞춰 <b>am</b> not입니다."}
 ];
 
-/* ---------- LEVEL 3 : 중1 학교 시험형 40 (과거까지 깊이) ---------- */
+/* ---------- LEVEL 3 : 중1 학교 시험형 40 (현재와 미래) ---------- */
 var L3 = [
   {type:"n", tag:"빈칸", sent:"My parents ___ from Busan.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","be","do"], a:0, eng:true,
-   ko:"우리 부모님은 부산 출신이시다.",
-   exp:"parents는 두 분 → <b>are</b>"},
+   opts:["are","is","am","do","be"], a:0, eng:true, ko:"우리 부모님은 부산 출신이다.",
+   exp:"parents는 여럿이므로 <b>are</b>입니다."},
 
   {type:"n", tag:"빈칸", sent:"The students ___ busy these days.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","was","does"], a:0, eng:true,
-   ko:"학생들은 요즘 바쁘다.",
-   exp:"The students는 여럿, these days는 지금 → <b>are</b>"},
+   opts:["are","is","am","does","be"], a:0, eng:true, ko:"학생들은 요즘 바쁘다.",
+   exp:"students는 여럿이므로 <b>are</b>입니다."},
 
   {type:"n", tag:"빈칸", sent:"___ I late for class?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["Am","Is","Are","Do","Does"], a:0, eng:true,
-   ko:"제가 수업에 늦었나요?",
-   exp:"주어가 I → <b>Am</b> I ~?"},
+   opts:["Am","Is","Are","Do","Does"], a:0, eng:true, ko:"제가 수업에 늦었나요?",
+   exp:"주어가 I이므로 <b>Am</b>을 앞으로 보냅니다."},
 
   {type:"n", tag:"빈칸", sent:"My dog ___ not big.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","do","does"], a:0, eng:true,
-   ko:"우리 개는 크지 않다.",
-   exp:"My dog는 한 마리 → is not(= isn't)"},
+   opts:["is","are","am","does","do"], a:0, eng:true, ko:"우리 개는 크지 않다.",
+   exp:"3인칭 단수이므로 <b>is</b>이고, 부정은 그 뒤에 not입니다."},
 
   {type:"n", tag:"빈칸", sent:"These questions ___ too difficult.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","was","has"], a:0, eng:true,
-   ko:"이 문제들은 너무 어렵다.",
-   exp:"These questions는 여러 개 → <b>are</b>"},
+   opts:["are","is","am","do","be"], a:0, eng:true, ko:"이 문제들은 너무 어렵다.",
+   exp:"These questions는 여럿이므로 <b>are</b>입니다."},
 
   {type:"n", tag:"빈칸", sent:"There ___ many students in the gym.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","was","have"], a:0, eng:true,
-   ko:"체육관에 학생이 많이 있다.",
-   exp:"many students → There <b>are</b>"},
+   opts:["are","is","am","do","have"], a:0, eng:true, ko:"체육관에 학생이 많이 있다.",
+   exp:"뒤의 many students가 여럿이므로 There <b>are</b>입니다."},
 
   {type:"n", tag:"빈칸", sent:"My sister and I ___ good at math.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","was","do"], a:0, eng:true,
-   ko:"언니와 나는 수학을 잘한다.",
-   exp:"두 사람 → <b>are</b>. be good at ~ = ~을 잘하다"},
+   opts:["are","am","is","do","be"], a:0, eng:true, ko:"내 언니와 나는 수학을 잘한다.",
+   exp:"and로 묶여 여럿이 되었으므로 <b>are</b>입니다. I가 들어 있어도 am이 아닙니다.", hard:true},
 
   {type:"n", tag:"빈칸", sent:"___ the test difficult?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["Was","Were","Did","Do","Are"], a:0, eng:true,
-   ko:"그 시험은 어려웠니?",
-   exp:"the test는 하나, 지난 일 → <b>Was</b>"},
+   opts:["Is","Are","Am","Do","Does"], a:0, eng:true, ko:"그 시험은 어렵니?",
+   exp:"the test는 3인칭 단수이므로 <b>Is</b>입니다."},
 
-  {type:"n", tag:"빈칸", sent:"We ___ not late for the bus.", q:"‘우리는 버스에 늦지 않았다’가 되도록 알맞은 것은?",
-   opts:["were","was","are","did","do"], a:0, eng:true,
-   ko:"우리는 버스에 늦지 않았다.",
-   exp:"We, 지난 일 → were not(= weren't)"},
+  {type:"n", tag:"빈칸", sent:"We ___ not late for the bus.", q:"‘우리는 버스에 늦지 않는다’가 되도록 알맞은 것은?",
+   opts:["are","is","am","do","does"], a:0, eng:true, ko:"우리는 버스에 늦지 않는다.",
+   exp:"We는 여럿이므로 <b>are</b>이고, 뒤에 not을 붙입니다."},
 
-  {type:"n", tag:"빈칸", sent:"There ___ a big tree in front of the school.", q:"‘학교 앞에 큰 나무가 한 그루 있었다’가 되도록 알맞은 것은?",
-   opts:["was","were","is","are","did"], a:0, eng:true,
-   ko:"학교 앞에 큰 나무가 한 그루 있었다.",
-   exp:"a big tree는 하나, 지난 일 → There <b>was</b>"},
-
-  {type:"n", tag:"빈칸", sent:"There ___ many people at the concert last night.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["were","was","are","is","did"], a:0, eng:true,
-   ko:"어젯밤 그 공연장에는 사람이 많았다.",
-   exp:"many people, 지난 일 → There <b>were</b>"},
+  {type:"n", tag:"빈칸", sent:"There ___ a big tree in front of the school.", q:"‘학교 앞에 큰 나무가 한 그루 있다’가 되도록 알맞은 것은?",
+   opts:["is","are","am","do","have"], a:0, eng:true, ko:"학교 앞에 큰 나무가 한 그루 있다.",
+   exp:"뒤의 a big tree가 하나이므로 There <b>is</b>입니다."},
 
   {type:"n", tag:"빈칸", sent:"My grandmother ___ eighty years old.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","were","has"], a:0, eng:true,
-   ko:"우리 할머니는 여든 살이시다.",
-   exp:"한 분 → <b>is</b>. 나이도 be동사로 말합니다."},
-
-  {type:"n", tag:"빈칸", sent:"Sujin and her brother ___ at the library an hour ago.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["were","was","are","is","did"], a:0, eng:true,
-   ko:"수진이와 남동생은 한 시간 전에 도서관에 있었다.",
-   exp:"두 사람, ago(지난 일) → <b>were</b>"},
+   opts:["is","are","am","does","has"], a:0, eng:true, ko:"우리 할머니는 여든 살이시다.",
+   exp:"나이를 말할 때도 be동사를 씁니다. 3인칭 단수이므로 <b>is</b>입니다."},
 
   {type:"n", tag:"빈칸", sent:"My phone ___ in my pocket, not on the desk.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","were","has"], a:0, eng:true,
-   ko:"내 휴대 전화는 책상 위가 아니라 주머니에 있다.",
-   exp:"My phone은 하나 → <b>is</b>"},
+   opts:["is","are","am","does","have"], a:0, eng:true, ko:"내 전화기는 책상 위가 아니라 주머니 안에 있다.",
+   exp:"어디에 있는지를 말하므로 be동사이고, 3인칭 단수이므로 <b>is</b>입니다."},
+
+  {type:"n", tag:"빈칸", sent:"He ___ be twelve next year.", q:"‘그는 내년에 열두 살이 될 것이다’가 되도록 알맞은 것은?",
+   opts:["will","is","are","does","do"], a:0, eng:true, ko:"그는 내년에 열두 살이 될 것이다.",
+   exp:"앞으로의 일이므로 <b>will be</b>입니다. will 뒤는 언제나 원형 be입니다."},
+
+  {type:"n", tag:"빈칸", sent:"It ___ be rainy tomorrow.", q:"‘내일은 비가 올 것이다’가 되도록 알맞은 것은?",
+   opts:["will","is","are","does","do"], a:0, eng:true, ko:"내일은 비가 올 것이다.",
+   exp:"날씨를 말하는 It에도 앞으로의 일은 <b>will be</b>를 씁니다."},
 
   {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">My friends **is** very kind.</span>",
-   opts:["are","am","be","does","isn't"], a:0, eng:true,
-   exp:"My friends는 여럿 → <b>are</b>"},
+   opts:["are","am","be","do","그대로 둔다"], a:0, eng:true,
+   exp:"friends는 여럿이므로 <b>are</b>입니다."},
 
   {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**Do** you a member of the club?</span>",
-   opts:["Are","Is","Am","Does","Did"], a:0, eng:true,
-   exp:"뒤에 동사가 없고 ‘~이니?’를 묻는 be동사 문장 → <b>Are</b> you ~?"},
+   opts:["Are","Does","Is","Am","그대로 둔다"], a:0, eng:true,
+   exp:"be동사 문장에는 Do를 부르지 않습니다 → <b>Are</b> you a member ~?"},
 
   {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">He **doesn't** busy today.</span>",
-   opts:["isn't","aren't","don't","not is","doesn't be"], a:0, eng:true,
-   exp:"busy는 형용사라 be동사 문장입니다 → He <b>isn't</b> busy."},
+   opts:["isn’t","don’t","aren’t","am not","그대로 둔다"], a:0, eng:true,
+   exp:"‘바쁘다’는 be동사이므로 <b>isn’t</b>입니다."},
 
   {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">They **isn't** my classmates.</span>",
-   opts:["aren't","isn't not","don't","doesn't","not are"], a:0, eng:true,
-   exp:"They → <b>aren't</b>"},
+   opts:["aren’t","am not","doesn’t","don’t","그대로 둔다"], a:0, eng:true,
+   exp:"They는 여럿이므로 <b>aren’t</b>입니다."},
 
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I **didn't** at school yesterday.</span>",
-   opts:["wasn't","weren't","am not","don't","doesn't"], a:0, eng:true,
-   exp:"뒤가 장소라 be동사 문장입니다 → I <b>wasn't</b> at school."},
-
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**Did** you tired after the trip?</span>",
-   opts:["Were","Was","Are","Do","Does"], a:0, eng:true,
-   exp:"tired는 형용사 → <b>Were</b> you tired ~?"},
-
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She **was** at home now.</span>",
-   opts:["is","are","were","did","does"], a:0, eng:true,
-   exp:"now(지금)와 was는 함께 쓸 수 없습니다 → She <b>is</b> at home now."},
-
-  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">They **was** at the park yesterday.</span>",
-   opts:["were","was not","are","did","weren't"], a:0, eng:true,
-   exp:"They → <b>were</b>"},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**Does** she a nurse?</span>",
+   opts:["Is","Are","Am","Do","그대로 둔다"], a:0, eng:true,
+   exp:"‘이다’는 be동사이므로 <b>Is</b>입니다."},
 
   {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">There **is** two books on the desk.</span>",
-   opts:["are","am","be","has","was"], a:0, eng:true,
-   exp:"two books는 여러 권 → There <b>are</b>"},
+   opts:["are","am","be","have","그대로 둔다"], a:0, eng:true,
+   exp:"뒤의 two books가 여럿이므로 <b>are</b>입니다.", hard:true},
 
   {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She **is play** the violin every day.</span>",
-   opts:["plays","is playing every","is play","does play the","play"], a:0, eng:true,
-   exp:"every day는 날마다 하는 일 → 일반동사 <b>plays</b>. be동사는 쓰지 않습니다."},
+   opts:["plays","is playing","play","does play","그대로 둔다"], a:0, eng:true,
+   exp:"be동사와 일반동사를 나란히 쓸 수 없습니다 → <b>plays</b>", hard:true},
 
-  {type:"a", tag:"고치기", q:"다음 중 어법상 옳은 문장은?",
-   opts:["My brother and I are twins.","My brother and I is twins.","My brother and I am twins.","My brother and I be twins.","My brother and I does twins."], a:0,
-   exp:"주어가 두 사람 → <b>are</b>"},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">I **am** not like pizza.</span>",
+   opts:["do","does","will","am","그대로 둔다"], a:0, eng:true,
+   exp:"like는 일반동사이므로 도우미 <b>do</b>를 씁니다 → I <b>don’t</b> like pizza.", hard:true},
 
-  {type:"a", tag:"고치기", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
-   opts:["Is your mom a nurse?","They aren't at home.","I'm not sleepy.","Are he your uncle?","She amn't tired."], ans:[0,1,2],
-   exp:"Is he ~?가 맞고, am not은 줄여 쓰지 않습니다(I'm not)."},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">**Is** he like soccer?</span>",
+   opts:["Does","Do","Are","Am","그대로 둔다"], a:0, eng:true,
+   exp:"like는 일반동사이므로 <b>Does</b>로 묻습니다.", hard:true},
 
-  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Are you tired?<br>B: ___ I slept well last night.</span>",
-   opts:["No, I'm not.","Yes, I am.","No, I don't.","Yes, I do.","No, you aren't."], a:0,
-   exp:"잘 잤다고 했으므로 <b>No, I'm not.</b>"},
+  {type:"a", tag:"고치기", q:"밑줄 친 부분을 바르게 고친 것은?<br><span class=\"eng\">She **will is** happy.</span>",
+   opts:["will be","is will","will am","will does","그대로 둔다"], a:0, eng:true,
+   exp:"will 뒤는 원형이므로 <b>will be</b>입니다.", hard:true},
+
+  {type:"a", tag:"고치기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["There are three cats.","There is three cats.","There are a cat.","There am three cats.","There be three cats."], a:0, eng:true,
+   exp:"뒤의 three cats가 여럿이므로 There <b>are</b>입니다."},
+
+  {type:"a", tag:"고치기", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["My brother is tall.","We aren’t hungry.","Is this your bag?","My brother are tall.","Do you hungry?"], ans:[0,1,2], eng:true,
+   exp:"주어에 맞는 be동사를 쓰고, be동사 문장에는 Do를 부르지 않습니다."},
+
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Are you tired?<br>B: ___ I need some rest.</span>",
+   opts:["Yes, I am.","Yes, I do.","Yes, you are.","No, I am.","Yes, I does."], a:0, eng:true,
+   exp:"쉬고 싶다고 했으니 피곤한 것입니다. Are로 물었으니 <b>am</b>으로 답합니다."},
 
   {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Is this your umbrella?<br>B: ___ Thank you!</span>",
-   opts:["Yes, it is.","Yes, it does.","No, it isn't.","Yes, this is.","No, it doesn't."], a:0,
-   exp:"고맙다고 했으므로 맞다는 대답 <b>Yes, it is.</b>"},
+   opts:["Yes, it is.","Yes, it does.","No, it is.","Yes, this is.","Yes, it do."], a:0, eng:true,
+   exp:"this로 물으면 <b>it</b>으로 받습니다."},
 
-  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Was the movie fun?<br>B: ___ It was boring.</span>",
-   opts:["No, it wasn't.","Yes, it was.","No, it didn't.","Yes, it did.","No, it isn't."], a:0,
-   exp:"지루했다고 했으므로 <b>No, it wasn't.</b>"},
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Are your friends at the party?<br>B: ___ They are at home.</span>",
+   opts:["No, they aren’t.","No, they don’t.","Yes, they are.","No, he isn’t.","No, they doesn’t."], a:0, eng:true,
+   exp:"집에 있다고 했으니 파티에는 없습니다. Are로 물었으니 <b>aren’t</b>입니다."},
 
-  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Were your friends at the party?<br>B: ___ They came together.</span>",
-   opts:["Yes, they were.","No, they weren't.","Yes, they did.","No, they didn't.","Yes, they are."], a:0,
-   exp:"함께 왔다고 했으므로 <b>Yes, they were.</b>"},
+  {type:"v", tag:"대화와 배열", q:"빈칸에 알맞은 대답은?<br><span class=\"eng\">A: Will you be free tomorrow?<br>B: ___ I have a plan.</span>",
+   opts:["No, I won’t.","No, I don’t.","No, I am not.","Yes, I will.","No, I doesn’t."], a:0, eng:true,
+   exp:"Will로 물으면 <b>will</b>이나 <b>won’t</b>로 답합니다.", hard:true},
 
-  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘그들은 교실에 있지 않다.’</span>",
-   opts:["They aren't in the classroom.","They don't in the classroom.","They aren't the classroom in.","Aren't they in the classroom.","They in the classroom aren't."], a:0,
-   exp:"주어 + be동사 + not + 장소"},
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"ko2\">‘그들은 교실에 있지 않다.’</span>",
+   opts:["They aren’t in the classroom.","They don’t in the classroom.","They isn’t in the classroom.","They not are in the classroom.","They aren’t the classroom in."], a:0, eng:true,
+   exp:"‘어디에 있다’는 be동사이므로 aren’t입니다."},
 
-  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘너의 형은 키가 크니?’</span>",
-   opts:["Is your brother tall?","Does your brother tall?","Your brother is tall?","Is tall your brother?","Are your brother tall?"], a:0,
-   exp:"Is + 주어 + 형용사 ~ ?"},
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"ko2\">‘너의 형은 키가 크니?’</span>",
+   opts:["Is your brother tall?","Are your brother tall?","Does your brother tall?","Your brother is tall?","Is tall your brother?"], a:0, eng:true,
+   exp:"3인칭 단수이므로 Is를 맨 앞에 둡니다."},
 
-  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘나는 어제 바쁘지 않았다.’</span>",
-   opts:["I wasn't busy yesterday.","I didn't busy yesterday.","I am not busy yesterday.","I wasn't yesterday busy.","Wasn't I busy yesterday."], a:0,
-   exp:"주어 + wasn't + 형용사 + 때"},
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"ko2\">‘나는 내일 바쁠 것이다.’</span>",
+   opts:["I will be busy tomorrow.","I will am busy tomorrow.","I am will busy tomorrow.","I will busy tomorrow.","I am busy will tomorrow."], a:0, eng:true,
+   exp:"앞으로의 일이므로 <b>will be</b>입니다."},
 
-  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"eng\">‘그 방은 어제 깨끗했다.’</span>",
-   opts:["The room was clean yesterday.","The room were clean yesterday.","The room did clean yesterday.","The room is clean yesterday.","Was the room clean yesterday."], a:0,
-   exp:"The room은 하나, 지난 일 → <b>was</b>"},
+  {type:"v", tag:"대화와 배열", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"ko2\">‘교실에 학생이 많이 있다.’</span>",
+   opts:["There are many students in the classroom.","There is many students in the classroom.","There have many students in the classroom.","Many students there are in the classroom.","There are many student in the classroom."], a:0, eng:true,
+   exp:"뒤의 many students가 여럿이므로 There <b>are</b>입니다."},
 
   {type:"v", tag:"대화와 배열", sent:"Jisu ___ in the library now.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","do","was"], a:0, eng:true,
-   ko:"지수는 지금 도서관에 있다.",
-   exp:"Jisu는 한 사람, now → <b>is</b>"},
+   opts:["is","are","am","does","have"], a:0, eng:true, ko:"지수는 지금 도서관에 있다.",
+   exp:"사람 이름은 3인칭 단수이므로 <b>is</b>입니다."},
 
   {type:"v", tag:"대화와 배열", sent:"My parents ___ proud of me.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","do","have"], a:0, eng:true,
-   ko:"우리 부모님은 나를 자랑스러워하신다.",
-   exp:"parents는 두 분 → <b>are</b>. be proud of ~ = ~을 자랑스러워하다"},
+   opts:["are","is","am","do","does"], a:0, eng:true, ko:"우리 부모님은 나를 자랑스러워하신다.",
+   exp:"parents는 여럿이므로 <b>are</b>입니다."},
 
-  {type:"v", tag:"대화와 배열", multi:true, q:"빈칸에 <b>isn't</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
-   opts:["My bag ___ heavy.","He ___ at school.","The movie ___ boring.","They ___ hungry.","You ___ late."], ans:[0,1,2],
-   exp:"They · You에는 aren't를 씁니다."},
+  {type:"v", tag:"대화와 배열", multi:true, q:"빈칸에 <b>isn’t</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["The weather ___ good today.","My teacher ___ angry.","This book ___ mine.","They ___ my friends.","We ___ ready."], ans:[0,1,2], eng:true,
+   exp:"3인칭 단수 주어에만 isn’t를 씁니다. 뒤의 둘은 aren’t입니다."},
 
-  {type:"v", tag:"대화와 배열", multi:true, q:"빈칸에 <b>were</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
-   opts:["They ___ at the beach.","You ___ my classmates.","My shoes ___ dirty.","She ___ tired.","It ___ cold."], ans:[0,1,2],
-   exp:"She · It에는 was를 씁니다."},
+  {type:"v", tag:"대화와 배열", multi:true, q:"빈칸에 <b>are</b>를 넣을 수 있는 문장을 모두 고르세요. (여러 개)",
+   opts:["You ___ very kind.","They ___ in the park.","My shoes ___ new.","She ___ a dancer.","It ___ cold today."], ans:[0,1,2], eng:true,
+   exp:"2인칭 you와 여럿에 are를 씁니다."},
 
-  {type:"v", tag:"대화와 배열", hard:true, q:"다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ___ your parents at home?<br>B: No, they ___ . They are at work.</span>",
-   opts:["Are – aren't","Is – isn't","Are – don't","Do – don't","Is – aren't"], a:0,
-   exp:"parents는 여럿, 지금 → <b>Are</b> / <b>aren't</b>"},
+  {type:"v", tag:"대화와 배열", q:"다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ___ your parents at home?<br>B: No, ___ .</span>",
+   opts:["Are – they aren’t","Is – they aren’t","Do – they don’t","Are – they don’t","Is – he isn’t"], a:0, eng:true,
+   exp:"parents는 여럿이므로 Are로 묻고 <b>they aren’t</b>로 답합니다.", hard:true},
 
-  {type:"v", tag:"대화와 배열", hard:true, q:"다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ___ you sick yesterday?<br>B: Yes, I ___ . But I'm fine now.</span>",
-   opts:["Were – was","Was – were","Did – was","Are – am","Were – were"], a:0,
-   exp:"you로 물으면 Were, 대답에서 주어가 I이면 <b>was</b>입니다."}
+  {type:"v", tag:"대화와 배열", q:"다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ___ you a student?<br>B: Yes, ___ .</span>",
+   opts:["Are – I am","Do – I do","Are – I do","Is – I am","Do – I am"], a:0, eng:true,
+   exp:"be동사로 물으면 be동사로 답합니다.", hard:true}
 ];
 
 /* ---------- LEVEL 4 : 전 학년 아우르기 40 ---------- */
 var L4 = [
   {type:"n", tag:"진행형과 미래", sent:"She ___ reading a book now.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","does","was","are","do"], a:0, eng:true,
-   ko:"그녀는 지금 책을 읽고 있다.",
-   exp:"be동사 + -ing = ~하고 있다. She, now → <b>is</b> reading"},
+   opts:["is","are","am","does","do"], a:0, eng:true, ko:"그녀는 지금 책을 읽고 있다.",
+   exp:"<b>be동사 + -ing</b>는 지금 하고 있는 일입니다. 3인칭 단수이므로 is입니다."},
 
   {type:"n", tag:"진행형과 미래", sent:"They ___ playing badminton now.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","do","is","were","does"], a:0, eng:true,
-   ko:"그들은 지금 배드민턴을 치고 있다.",
-   exp:"They, now → <b>are</b> playing"},
+   opts:["are","is","am","do","does"], a:0, eng:true, ko:"그들은 지금 배드민턴을 치고 있다.",
+   exp:"They는 여럿이므로 <b>are</b> + playing입니다."},
 
-  {type:"n", tag:"진행형과 미래", sent:"He ___ sleeping when I called him.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["was","were","is","are","did"], a:0, eng:true,
-   ko:"내가 전화했을 때 그는 자고 있었다.",
-   exp:"지난 일에 하고 있던 일 → <b>was</b> + -ing"},
-
-  {type:"n", tag:"진행형과 미래", sent:"We ___ watching TV at nine last night.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["were","was","are","is","did"], a:0, eng:true,
-   ko:"우리는 어젯밤 아홉 시에 TV를 보고 있었다.",
-   exp:"We, 지난 일 → <b>were</b> + -ing"},
-
-  {type:"n", tag:"진행형과 미래", sent:"I ___ be twelve next year.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["will","am","was","do","did"], a:0, eng:true,
-   ko:"나는 내년에 열두 살이 될 것이다.",
-   exp:"앞으로의 일 → <b>will be</b>. 조동사 뒤에는 be가 원형 그대로입니다."},
-
-  {type:"n", tag:"진행형과 미래", q:"다음 중 어법상 <b>틀린</b> 문장은?",
-   opts:["I will am a teacher.","I will be a teacher.","I am a student.","I was a child then.","I'm not a child now."], a:0,
-   exp:"will 뒤에는 원형 <b>be</b>를 씁니다."},
-
-  {type:"n", tag:"진행형과 미래", q:"be동사가 하는 일이 <b>아닌</b> 것은?",
-   opts:["과거형 동사에 ed를 붙여 준다","‘이다 · 있다’를 나타낸다","-ing와 짝을 이루어 진행형을 만든다","not과 함께 부정문을 만든다","앞으로 나가 의문문을 만든다"], a:0,
-   exp:"ed를 붙이는 일은 일반동사의 과거형 규칙입니다."},
+  {type:"n", tag:"진행형과 미래", q:"<b>be동사 + -ing</b>는 무엇을 나타낼까요?",
+   opts:["지금 하고 있는 일","늘 하는 일","앞으로의 일","가진 것","이름"], a:0,
+   exp:"‘~하고 있다’입니다. 이때 be동사는 혼자 쓰이지 않고 -ing와 짝을 이룹니다."},
 
   {type:"n", tag:"진행형과 미래", sent:"Look! The baby ___ smiling.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","was","do","does"], a:0, eng:true,
-   ko:"봐! 아기가 웃고 있어.",
-   exp:"The baby, 지금 → <b>is</b> smiling"},
+   opts:["is","are","am","does","do"], a:0, eng:true, ko:"봐! 아기가 웃고 있어.",
+   exp:"Look!은 지금을 가리킵니다. 3인칭 단수이므로 <b>is</b>입니다."},
+
+  {type:"n", tag:"진행형과 미래", sent:"I ___ be twelve next year.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["will","am","are","do","does"], a:0, eng:true, ko:"나는 내년에 열두 살이 될 것이다.",
+   exp:"앞으로의 일이므로 <b>will be</b>입니다."},
 
   {type:"n", tag:"진행형과 미래", sent:"It ___ going to rain this afternoon.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","were","does"], a:0, eng:true,
-   ko:"오늘 오후에 비가 올 것 같다.",
-   exp:"be going to = ~할 것이다. It → <b>is</b> going to"},
+   opts:["is","are","am","will","does"], a:0, eng:true, ko:"오늘 오후에 비가 올 것 같다.",
+   exp:"<b>be going to</b>도 앞으로의 일입니다. 앞의 be동사를 주어에 맞춥니다."},
+
+  {type:"n", tag:"진행형과 미래", q:"<b>will be</b>와 <b>be going to</b>의 공통점은?",
+   opts:["둘 다 앞으로의 일을 나타낸다","둘 다 지금 하는 일이다","둘 다 늘 하는 일이다","둘 다 지난 일이다","공통점이 없다"], a:0, eng:true,
+   exp:"I <b>will be</b> busy. = I <b>am going to be</b> busy."},
+
+  {type:"n", tag:"진행형과 미래", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["She will is happy.","She will be happy.","She is happy.","She is going to be happy.","She isn’t happy."], a:0, eng:true,
+   exp:"will 뒤는 원형이므로 is가 아니라 <b>be</b>입니다.", hard:true},
+
+  {type:"n", tag:"진행형과 미래", q:"be동사가 하는 일이 <b>아닌</b> 것은?",
+   opts:["주어가 하는 움직임을 나타낸다","주어가 무엇인지 말한다","주어가 어디에 있는지 말한다","-ing와 짝을 이루어 지금 하는 일을 말한다","무엇이 있다고 알려 준다"], a:0,
+   exp:"움직임은 <b>일반동사</b>가 맡습니다.", hard:true},
 
   {type:"n", tag:"진행형과 미래", sent:"How old ___ your brother?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","does","do"], a:0, eng:true,
-   ko:"네 형은 몇 살이니?",
-   exp:"의문사 + be동사 + 주어 ~ ? your brother → <b>is</b>"},
+   opts:["is","are","am","does","do"], a:0, eng:true, ko:"네 동생은 몇 살이니?",
+   exp:"의문사 뒤에도 be동사가 주어 앞으로 옵니다. 3인칭 단수이므로 <b>is</b>입니다."},
 
   {type:"n", tag:"진행형과 미래", sent:"Where ___ your sister now?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","does","do","are","was"], a:0, eng:true,
-   ko:"네 여동생은 지금 어디에 있니?",
-   exp:"Where + is + 주어 ~ ?"},
+   opts:["is","are","am","does","do"], a:0, eng:true, ko:"네 언니는 지금 어디에 있니?",
+   exp:"‘어디에 있니’는 be동사입니다."},
 
   {type:"n", tag:"진행형과 미래", sent:"What ___ they doing over there?", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["are","is","am","does","do"], a:0, eng:true,
-   ko:"그들은 저기서 무엇을 하고 있니?",
-   exp:"의문사 + be동사 + 주어 + -ing ~ ?"},
+   opts:["are","is","am","do","does"], a:0, eng:true, ko:"그들은 저기서 무엇을 하고 있니?",
+   exp:"they + doing이므로 <b>are</b>입니다."},
 
-  {type:"n", tag:"진행형과 미래", multi:true, q:"be동사와 -ing가 짝을 이룬 문장을 모두 고르세요. (여러 개)",
-   opts:["He is running.","They are singing.","She was crying.","He runs fast.","They sing well."], ans:[0,1,2],
-   exp:"be동사 + -ing가 진행을 나타냅니다."},
+  {type:"n", tag:"진행형과 미래", multi:true, q:"<b>be동사와 -ing가 짝</b>을 이룬 문장을 모두 고르세요. (여러 개)",
+   opts:["He is running.","They are singing.","She is cooking.","He is a runner.","They are happy."], ans:[0,1,2], eng:true,
+   exp:"뒤의 둘은 -ing 없이 be동사만 쓰인 문장입니다."},
 
-  {type:"n", tag:"진행형과 미래", multi:true, q:"앞으로의 일을 말한 문장을 모두 고르세요. (여러 개)",
-   opts:["I will be free tomorrow.","She is going to be a nurse.","We will be there at five.","I was free yesterday.","She is a nurse now."], ans:[0,1,2],
-   exp:"will be · be going to be가 앞으로의 일입니다."},
+  {type:"n", tag:"진행형과 미래", multi:true, q:"<b>앞으로의 일</b>을 말한 문장을 모두 고르세요. (여러 개)",
+   opts:["I will be there.","She is going to be a teacher.","They will be busy.","I am there now.","She is a teacher."], ans:[0,1,2], eng:true,
+   exp:"will be와 be going to be가 앞으로의 일입니다."},
 
-  {type:"a", tag:"때 가리기", q:"다음 중 과거를 나타내는 말이 <b>아닌</b> 것은?",
-   opts:["now","yesterday","last week","two days ago","in 2020"], a:0,
-   exp:"now는 지금을 나타냅니다."},
+  {type:"a", tag:"동사 가리기", q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ She ___ a nurse. ⓑ She ___ at the hospital now.</span>",
+   opts:["is – is","is – does","does – is","are – is","is – has"], a:0, eng:true,
+   exp:"ⓐ 무엇인지, ⓑ 어디에 있는지 — 둘 다 be동사입니다."},
 
-  {type:"a", tag:"때 가리기", q:"다음 중 현재를 나타내는 말은?",
-   opts:["these days","last night","an hour ago","in 2019","yesterday"], a:0,
-   exp:"these days(요즘)는 지금을 나타냅니다."},
+  {type:"a", tag:"동사 가리기", sent:"He ___ not like carrots.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["does","is","are","am","do"], a:0, eng:true, ko:"그는 당근을 좋아하지 않는다.",
+   exp:"like는 일반동사이므로 도우미 <b>does</b>를 부릅니다.", hard:true},
 
-  {type:"a", tag:"때 가리기", sent:"He ___ shy before, but now he ___ very outgoing.", q:"빈칸에 알맞게 짝지은 것은?",
-   full:"He **was** shy before, but now he **is** very outgoing.",
-   fullko:"그는 전에는 수줍음이 많았지만 지금은 아주 활발하다.",
-   opts:["was – is","is – was","were – is","was – are","is – is"], a:0, eng:true,
-   ko:"그는 전에는 수줍음이 많았지만 지금은 아주 활발하다.",
-   exp:"before → 지난 일 was, now → 지금 is"},
+  {type:"a", tag:"동사 가리기", sent:"He ___ not tall.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","does","do","am","are"], a:0, eng:true, ko:"그는 키가 크지 않다.",
+   exp:"‘키가 크다’는 be동사이므로 <b>is</b> 뒤에 not입니다."},
 
-  {type:"a", tag:"때 가리기", sent:"We ___ in the same class last year, but now we ___ in different classes.", q:"빈칸에 알맞게 짝지은 것은?",
-   full:"We **were** in the same class last year, but now we **are** in different classes.",
-   fullko:"우리는 작년에 같은 반이었지만 지금은 다른 반이다.",
-   opts:["were – are","was – are","are – were","were – was","are – are"], a:0, eng:true,
-   ko:"우리는 작년에 같은 반이었지만 지금은 다른 반이다.",
-   exp:"last year → were, now → are"},
+  {type:"a", tag:"동사 가리기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["I am a student and I like music.","I am a student and I am like music.","I am a student and I am music.","I like a student and I am music.","I am like a student."], a:0, eng:true,
+   exp:"앞은 ‘이다’라서 be동사, 뒤는 ‘좋아한다’라서 일반동사입니다.", hard:true},
 
-  {type:"a", tag:"때 가리기", sent:"The room ___ messy this morning, but now it ___ clean.", q:"빈칸에 알맞게 짝지은 것은?",
-   full:"The room **was** messy this morning, but now it **is** clean.",
-   fullko:"그 방은 오늘 아침에 어질러져 있었지만 지금은 깨끗하다.",
-   opts:["was – is","is – was","were – is","was – are","is – is"], a:0, eng:true,
-   ko:"그 방은 오늘 아침에 어질러져 있었지만 지금은 깨끗하다.",
-   exp:"this morning → was, now → is"},
+  {type:"a", tag:"동사 가리기", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["He is at home and he watches TV.","He is at home and he is watch TV.","He at home and he watches TV.","He is at home and he watch TV.","He does at home and he watches TV."], a:0, eng:true,
+   exp:"‘있다’는 be동사, ‘본다’는 일반동사입니다. 3인칭 단수이므로 watches입니다.", hard:true},
 
-  {type:"a", tag:"때 가리기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
-   opts:["They was at school yesterday.","They were at school yesterday.","She was at school yesterday.","I was at school yesterday.","It was rainy yesterday."], a:0,
-   exp:"They는 <b>were</b>입니다."},
+  {type:"a", tag:"동사 가리기", sent:"There ___ a lot of snow in winter.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","am","have","do"], a:0, eng:true, ko:"겨울에는 눈이 많이 온다.",
+   exp:"snow는 셀 수 없는 말이라 하나로 보아 There <b>is</b>입니다.", hard:true},
 
-  {type:"a", tag:"때 가리기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
-   opts:["Were she at the party?","Was she at the party?","Were they at the party?","She wasn't at the party.","They weren't at the party."], a:0,
-   exp:"she는 <b>Was</b>로 묻습니다."},
+  {type:"a", tag:"동사 가리기", sent:"There ___ a post office near my house.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","am","have","do"], a:0, eng:true, ko:"우리 집 근처에 우체국이 하나 있다.",
+   exp:"뒤의 a post office가 하나이므로 <b>is</b>입니다."},
 
-  {type:"a", tag:"때 가리기", multi:true, q:"과거로 말해야 하는 문장을 모두 고르세요. (여러 개)",
-   opts:["I ___ sick yesterday.","They ___ here last week.","She ___ in Busan two years ago.","He ___ busy today.","We ___ happy now."], ans:[0,1,2],
-   exp:"yesterday · last week · ago는 과거, today · now는 현재입니다."},
+  {type:"a", tag:"동사 가리기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Are you and your sister twins?<br>B: Yes, ___ .</span>",
+   opts:["we are","I am","they are","we do","you are"], a:0, eng:true,
+   exp:"‘너와 네 언니’로 물었으니 <b>we</b>로 받습니다.", hard:true},
 
-  {type:"a", tag:"때 가리기", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
-   opts:["It was windy last night.","There were many cars on the road.","My parents were at work.","It were windy last night.","There was many cars."], ans:[0,1,2],
-   exp:"It was ~, There were many cars ~가 맞습니다."},
+  {type:"a", tag:"동사 가리기", multi:true, q:"<b>be동사</b>가 들어가야 하는 문장을 모두 고르세요. (여러 개)",
+   opts:["My father ___ a doctor.","The cat ___ on the sofa.","They ___ very kind.","He ___ to school every day.","She ___ milk every morning."], ans:[0,1,2], eng:true,
+   exp:"이름 · 있는 곳 · 어떠한지는 be동사이고, 뒤의 둘은 일반동사 goes · drinks가 들어갑니다."},
 
-  {type:"a", tag:"때 가리기", multi:true, q:"<b>was</b>를 쓰는 주어를 모두 고르세요. (여러 개)",
-   opts:["I","He","The weather","You","They"], ans:[0,1,2],
-   exp:"am · is의 과거가 was입니다. You · They는 were입니다."},
+  {type:"a", tag:"동사 가리기", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["She isn’t a nurse.","She doesn’t like coffee.","He will be here soon.","She isn’t like coffee.","He will is here soon."], ans:[0,1,2], eng:true,
+   exp:"be동사 문장은 not만, 일반동사 문장은 doesn’t를 씁니다. will 뒤는 be입니다.", hard:true},
 
-  {type:"a", tag:"때 가리기", multi:true, q:"<b>were</b>를 쓰는 주어를 모두 고르세요. (여러 개)",
-   opts:["You","We","My friends","She","The sky"], ans:[0,1,2],
-   exp:"are의 과거가 were입니다. She · The sky는 was입니다."},
+  {type:"a", tag:"동사 가리기", q:"‘그는 지금 공원에 <b>있다</b>’와 ‘그는 공원에 <b>간다</b>’는 영어에서 무엇이 다를까요?",
+   opts:["앞은 is, 뒤는 goes를 쓴다","둘 다 is를 쓴다","둘 다 goes를 쓴다","앞은 goes, 뒤는 is를 쓴다","다르지 않다"], a:0, eng:true,
+   exp:"있는 곳은 be동사, 가는 움직임은 일반동사입니다.", hard:true},
 
-  {type:"a", tag:"때 가리기", q:"다음 중 be동사의 과거형이 <b>아닌</b> 것은?",
-   opts:["did","was","were","wasn't","weren't"], a:0,
-   exp:"did는 일반동사의 과거 도우미입니다."},
+  {type:"a", tag:"동사 가리기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["I am have a bike.","I have a bike.","I am a student.","I don’t have a bike.","I am not a student."], a:0, eng:true,
+   exp:"have는 일반동사이므로 am과 나란히 쓸 수 없습니다 → I <b>have</b> a bike.", hard:true},
 
-  {type:"v", tag:"종합", q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ She ___ a nurse. ⓑ She ___ at the hospital every day.</span>",
-   opts:["is – works","works – is","is – is work","are – works","is – work"], a:0,
-   exp:"ⓐ ‘~이다’ → is ⓑ 일반동사 → works"},
+  {type:"v", tag:"종합", sent:"The children ___ in the playground now.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","am","does","do"], a:0, eng:true, ko:"아이들이 지금 놀이터에 있다.",
+   exp:"children은 여럿이므로 <b>are</b>입니다."},
 
-  {type:"v", tag:"종합", sent:"He ___ not like carrots.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["does","is","are","am","was"], a:0, eng:true,
-   ko:"그는 당근을 좋아하지 않는다.",
-   exp:"뒤에 일반동사 like가 있으므로 <b>does</b> not입니다."},
+  {type:"v", tag:"종합", sent:"___ there any questions?", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["Are","Is","Am","Do","Does"], a:0, eng:true, ko:"질문 있나요?",
+   exp:"뒤의 questions가 여럿이므로 <b>Are there ~?</b>입니다.", hard:true},
 
-  {type:"v", tag:"종합", sent:"He ___ not tall.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","does","do","are","did"], a:0, eng:true,
-   ko:"그는 키가 크지 않다.",
-   exp:"tall은 형용사 → be동사 문장. He <b>is</b> not tall."},
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["My sister and I are in the same class.","My sister and I am in the same class.","My sister and I is in the same class.","My sister and I be in the same class.","My sister and I does in the same class."], a:0, eng:true,
+   exp:"and로 묶이면 여럿이므로 <b>are</b>입니다.", hard:true},
 
-  {type:"v", tag:"종합", sent:"I ___ not go to school yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["did","was","were","am","is"], a:0, eng:true,
-   ko:"나는 어제 학교에 가지 않았다.",
-   exp:"뒤에 일반동사 go가 있으므로 <b>did</b> not입니다."},
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+   opts:["Is he goes to school?","Does he go to school?","Is he a student?","Does he like school?","Is he at school?"], a:0, eng:true,
+   exp:"be동사와 일반동사를 섞었습니다 → <b>Does</b> he go to school?", hard:true},
 
-  {type:"v", tag:"종합", sent:"I ___ not at school yesterday.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["was","did","were","am","do"], a:0, eng:true,
-   ko:"나는 어제 학교에 없었다.",
-   exp:"뒤가 장소라 be동사 문장 → I <b>was</b> not at school."},
+  {type:"v", tag:"종합", q:"다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">A: ___ she your sister? B: Yes, she is.<br>A: ___ she like music? B: Yes, she does.</span>",
+   opts:["Is – Does","Does – Is","Is – Is","Does – Does","Are – Does"], a:0, eng:true,
+   exp:"앞은 be동사 문장, 뒤는 일반동사 문장입니다. 대답을 보면 알 수 있습니다.", hard:true},
 
-  {type:"v", tag:"종합", q:"다음 중 어법상 옳은 문장은?",
-   opts:["My hobby is playing the guitar.","My hobby is play the guitar.","My hobby plays the guitar.","My hobby is plays the guitar.","My hobby does playing the guitar."], a:0,
-   exp:"be동사 뒤에 -ing를 써서 ‘~하는 것’을 나타냅니다."},
+  {type:"v", tag:"종합", q:"우리말에 맞게 바르게 배열한 것은?<br><span class=\"ko2\">‘나는 내일 여기에 있지 않을 것이다.’</span>",
+   opts:["I won’t be here tomorrow.","I don’t will be here tomorrow.","I will not am here tomorrow.","I am not will here tomorrow.","I won’t am here tomorrow."], a:0, eng:true,
+   exp:"앞으로의 일을 뒤집으면 <b>won’t be</b>입니다.", hard:true},
 
-  {type:"v", tag:"종합", q:"다음 중 어법상 옳은 문장은?",
-   opts:["Is your father a doctor?","Does your father a doctor?","Is your father is a doctor?","Your father is a doctor?","Are your father a doctor?"], a:0,
-   exp:"be동사 + 주어 ~ ? 차례이고, be동사는 한 번만 씁니다."},
+  {type:"v", tag:"종합", multi:true, q:"어법상 <b>옳은</b> 문장을 모두 고르세요. (여러 개)",
+   opts:["There is a cat under the chair.","There are many people here.","Here are your books.","There are a cat under the chair.","Here is your books."], ans:[0,1,2], eng:true,
+   exp:"There와 Here 모두 <b>뒤에 오는 말</b>이 수를 정합니다.", hard:true},
 
-  {type:"v", tag:"종합", sent:"There ___ a lot of snow in winter.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","were","have"], a:0, eng:true,
-   ko:"겨울에는 눈이 많이 온다.",
-   exp:"snow는 셀 수 없는 명사 → There <b>is</b>"},
+  {type:"v", tag:"종합", multi:true, q:"<b>지금 하고 있는 일</b>을 말한 문장을 모두 고르세요. (여러 개)",
+   opts:["He is eating lunch.","They are watching TV.","She is studying English.","He eats lunch every day.","She studies English."], ans:[0,1,2], eng:true,
+   exp:"be동사 + -ing가 지금 하고 있는 일입니다. 뒤의 둘은 늘 하는 일입니다."},
 
-  {type:"v", tag:"종합", sent:"There ___ a post office near my house.", q:"빈칸에 알맞은 것을 고르세요.",
-   opts:["is","are","am","were","has"], a:0, eng:true,
-   ko:"우리 집 근처에 우체국이 하나 있다.",
-   exp:"a post office는 하나 → There <b>is</b>"},
+  {type:"v", tag:"종합", sent:"My shoes ___ too small for me.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["are","is","am","does","do"], a:0, eng:true, ko:"내 신발은 나에게 너무 작다.",
+   exp:"shoes는 늘 여럿으로 보므로 <b>are</b>입니다.", hard:true},
 
-  {type:"v", tag:"종합", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Are you and your sister twins?<br>B: Yes, ___ .</span>",
-   opts:["we are","I am","they are","we do","you are"], a:0,
-   exp:"‘너와 네 여동생’은 대답할 때 <b>we</b>가 됩니다."},
+  {type:"v", tag:"종합", sent:"Math ___ my favorite subject.", q:"빈칸에 알맞은 것을 고르세요.",
+   opts:["is","are","am","does","do"], a:0, eng:true, ko:"수학은 내가 가장 좋아하는 과목이다.",
+   exp:"과목 이름은 겉이 복수처럼 보여도 하나로 보아 <b>is</b>입니다.", hard:true},
 
-  {type:"v", tag:"종합", multi:true, q:"어법상 옳은 문장을 모두 고르세요. (여러 개)",
-   opts:["She is interested in science.","We were at the beach yesterday.","There is a lot of water in the bottle.","He is go to bed early.","They was my classmates."], ans:[0,1,2],
-   exp:"He goes to bed early, They were my classmates가 맞습니다."},
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["Where are you from?","Where do you from?","Where you are from?","Where is you from?","Where are you from is?"], a:0, eng:true,
+   exp:"‘어디 출신이니’는 be동사 문장입니다."},
 
-  {type:"v", tag:"종합", multi:true, q:"be동사가 들어가야 하는 문장을 모두 고르세요. (여러 개)",
-   opts:["I ___ interested in music.","The door ___ open.","We ___ in the same team.","He ___ to school by bus.","They ___ soccer after school."], ans:[0,1,2],
-   exp:"형용사 · 상태 · 장소 앞에는 be동사, ‘간다 · 한다’는 일반동사(goes · play)입니다."},
+  {type:"v", tag:"종합", q:"다음 중 어법상 <b>옳은</b> 문장은?",
+   opts:["He is going to be a pilot.","He is going to is a pilot.","He will going to be a pilot.","He is go to be a pilot.","He going to be a pilot."], a:0, eng:true,
+   exp:"be going to 뒤에도 동사원형 <b>be</b>가 옵니다.", hard:true},
 
-  {type:"v", tag:"종합", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ Yesterday I ___ at my grandma's house. ⓑ Now I ___ back home.</span>",
-   opts:["was – am","am – was","were – am","was – is","am – am"], a:0,
-   exp:"ⓐ 어제 → was ⓑ 지금 → am"},
+  {type:"v", tag:"종합", multi:true, q:"<b>be동사</b>가 바르게 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["You are my best friend.","It is cold today.","We are in the same team.","You is my best friend.","We am in the same team."], ans:[0,1,2], eng:true,
+   exp:"주어의 인칭과 수에 맞춰 am · is · are를 고릅니다."},
 
-  {type:"v", tag:"정리", hard:true, q:"다음 설명 중 <b>틀린</b> 것은?",
-   opts:["과거에는 주어와 상관없이 was만 쓴다.","be동사 뒤에 not을 붙여 ‘아니다’를 만든다.","물어볼 때는 be동사를 주어 앞으로 보낸다.","There is 뒤에는 한 개, There are 뒤에는 여러 개가 온다.","be동사와 일반동사는 함께 쓰지 않는다."], a:0,
-   exp:"과거도 주어에 따라 <b>was · were</b>로 나뉩니다."}
+  {type:"v", tag:"정리", q:"다음 설명 중 <b>틀린</b> 것은?",
+   opts:["be동사는 주어가 하는 움직임을 나타낸다","be동사는 이다 · 있다 · 되다를 맡는다","be동사 부정문은 뒤에 not을 붙인다","be동사 의문문은 be동사를 앞으로 보낸다","will 뒤에는 be가 온다"], a:0, eng:true,
+   exp:"움직임은 <b>일반동사</b>가 맡습니다. 이것이 be동사 게임의 결론입니다.", hard:true}
 ];
 
 var LEVELS = {
-  1:{name:"기본1 · 동사가 뭐예요, be동사의 두 얼굴", desc:"한글로만 · 개념 22 · 가려내기 18 · 동사의 뜻과 역할 · be동사의 두 얼굴(A는 B다 = / ~가 있다) · 일반동사와 가리기 · 1·2·3인칭 · There is·are와 Here is·are · 함정", qs:L1, typeLabels:{n:"개념",a:"가려내기"}},
-  2:{name:"기본2 · 평서문 · 부정문 · 의문문", desc:"쉬운 영어로 · 세 가지 문장이 무엇인지와 만드는 법 · 부정문은 be동사 뒤에 not, 의문문은 be동사를 앞으로 · 줄임말과 대답 · There is·are까지 (지난 일 was·were는 3단계)", qs:L2, typeLabels:{n:"문장 세 가지",a:"모두 고르기",v:"고르기"}},
-  3:{name:"기본3 · 중1 학교 시험형", desc:"현재와 과거를 함께 · 빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"진행형과 will be · 때 가리기 · be동사와 일반동사 종합", qs:L4, typeLabels:{n:"진행형과 미래",a:"때 가리기",v:"종합"}}
+  1:{name:"Level 1 · 동사가 뭐예요, be동사의 두 얼굴", desc:"한글로만 · 개념 22 · 가려내기 18 · 동사의 뜻과 역할 · be동사의 두 얼굴(A는 B다 = / ~가 있다) · 일반동사와 가리기 · 1·2·3인칭 · There is·are와 Here is·are · 함정", qs:L1, typeLabels:{n:"개념",a:"가려내기"}},
+  2:{name:"Level 2 · 평서문 · 부정문 · 의문문", desc:"쉬운 영어로 · 세 가지 문장이 무엇인지와 만드는 법 · 부정문은 be동사 뒤에 not, 의문문은 be동사를 앞으로 · 줄임말과 대답 · There is·are까지 (지난 일 was·were는 3단계)", qs:L2, typeLabels:{n:"문장 세 가지",a:"모두 고르기",v:"고르기"}},
+  3:{name:"Level 3 · 중1 학교 시험형 (현재와 미래)", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열 · be동사와 do·does 가리기 · There is·are", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
+  4:{name:"Level 4 · 전 학년 아우르기 (현재와 미래)", desc:"be동사 + -ing(지금 하는 일) · will be와 be going to · be동사와 일반동사 가리기 · 종합과 고난도", qs:L4, typeLabels:{n:"진행형과 미래",a:"동사 가리기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
@@ -1242,55 +1201,65 @@ function learn2(){
 
 function learn3(){
   return ''+
-  '<h2>LEVEL 3 · 중1 학교 시험형</h2>'+
-  '<p class="lead">학교 시험에 그대로 나오는 모양입니다. 이제 현재와 과거가 <b>함께</b> 나오고, be동사와 do·does를 가려내는 문제도 나옵니다.</p>'+
+  '<h2>LEVEL 3 · 중1 학교 시험형 (현재와 미래)</h2>'+
+  '<p class="lead">학교 시험에 그대로 나오는 모양입니다. 주어가 몇인지 보고 be동사를 고르고, <b>be동사 자리인지 do·does 자리인지</b>를 가려냅니다.</p>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>주어와 때를 함께 보세요</span>'+
-    '<div class="ex">My parents <u class="hl">are</u> teachers.<span class="k">여럿 · 지금</span></div>'+
-    '<div class="ex">There <u class="hl">were</u> many people last night.<span class="k">여럿 · 지난 일</span></div>'+
-    '<p>주어가 몇인지 세고, 때를 알려 주는 말(now · yesterday · ago)을 찾으면 답이 보입니다.</p>'+
+    '<span class="bh"><i class="dot d-n"></i>주어가 몇인지 먼저 세기</span>'+
+    '<div class="ex">My parents <u class="hl">are</u> teachers.<span class="k">여럿 → are</span></div>'+
+    '<div class="ex">My sister and I <u class="hl">are</u> good at math.<span class="k">and로 묶이면 여럿 → are</span></div>'+
+    '<div class="ex">There <u class="hl">are</u> many students in the gym.<span class="k">뒤의 말이 여럿 → There are</span></div>'+
+    '<p>주어가 길면 <b>누가 주인인지</b> 먼저 찾습니다. 그다음에 am · is · are를 고릅니다.</p>'+
   '</div>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-a"></i>be동사 자리인지 do·does 자리인지</span>'+
-    '<div class="swap"><span>He <b>doesn\'t</b> busy.</span><span class="ar">✕</span><span class="good">He <b>isn\'t</b> busy.</span></div>'+
-    '<div class="swap"><span><b>Did</b> you tired?</span><span class="ar">✕</span><span class="good"><b>Were</b> you tired?</span></div>'+
-    '<div class="swap"><span>I <b>wasn\'t</b> go to school.</span><span class="ar">✕</span><span class="good">I <b>didn\'t</b> go to school.</span></div>'+
-    '<p>뒤에 <b>형용사 · 명사 · 장소</b>가 있으면 be동사, <b>일반동사</b>가 있으면 do · does · did입니다.</p>'+
+    '<div class="swap"><span>He <b>doesn’t</b> busy.</span><span class="ar">✕</span><span class="good">He <b>isn’t</b> busy.</span></div>'+
+    '<div class="swap"><span><b>Do</b> you a member?</span><span class="ar">✕</span><span class="good"><b>Are</b> you a member?</span></div>'+
+    '<div class="swap"><span><b>Is</b> he like soccer?</span><span class="ar">✕</span><span class="good"><b>Does</b> he like soccer?</span></div>'+
+    '<p>뒤에 <b>이름 · 상태 · 장소</b>가 있으면 be동사, <b>일반동사</b>가 있으면 do · does입니다.</p>'+
   '</div>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-v"></i>대답도 짝이 맞아야 합니다</span>'+
-    '<div class="swap"><span>Are you ~ ?</span><span class="ar">→</span><span class="good">Yes, I am. / No, I\'m not.</span></div>'+
-    '<div class="swap"><span>Were you ~ ?</span><span class="ar">→</span><span class="good">Yes, I was. / No, I wasn\'t.</span></div>'+
+    '<div class="swap"><span>Are you ~ ?</span><span class="ar">→</span><span class="good">Yes, I am. / No, I’m not.</span></div>'+
+    '<div class="swap"><span>Is she ~ ?</span><span class="ar">→</span><span class="good">Yes, she is. / No, she isn’t.</span></div>'+
+    '<div class="swap"><span>Will you be ~ ?</span><span class="ar">→</span><span class="good">Yes, I will. / No, I won’t.</span></div>'+
   '</div>'+
-  '<div class="tip"><span class="h">시험에서 볼 곳</span>주어가 몇인지, 때가 언제인지, be동사 자리인지 — 이 세 곳만 보면 됩니다.</div>';
+  '<div class="tip"><span class="h">시험에서 볼 곳</span>주어가 몇인지, be동사 자리인지 — 이 두 곳만 보면 거의 다 풀립니다.</div>';
 }
 
 function learn4(){
   return ''+
-  '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
-  '<p class="lead">마지막입니다. be동사가 <b>-ing</b>와 짝을 이루는 진행형, <b>will be</b>로 앞날을 말하는 모양, 의문사와 함께 쓰는 문장까지 아울러 봅니다.</p>'+
+  '<h2>LEVEL 4 · 전 학년 아우르기 (현재와 미래)</h2>'+
+  '<p class="lead">마지막입니다. be동사가 <b>-ing</b>와 짝을 이루는 모양, <b>will be</b>와 <b>be going to</b>로 앞날을 말하는 모양, 그리고 be동사와 일반동사를 가려 쓰는 눈까지 아울러 봅니다.</p>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>be동사 + -ing — 하고 있는 중</span>'+
-    '<div class="ex">She <u class="hl a">is</u> reading a book now.<span class="k">지금 하고 있는 일</span></div>'+
-    '<div class="ex">He <u class="hl a">was</u> sleeping then.<span class="k">그때 하고 있던 일</span></div>'+
+    '<span class="bh"><i class="dot d-n"></i>be동사 + -ing — 지금 하고 있는 일</span>'+
+    '<div class="ex">She <u class="hl a">is</u> reading a book now.<span class="k">지금 읽고 있다</span></div>'+
+    '<div class="ex">They <u class="hl a">are</u> playing badminton.<span class="k">지금 치고 있다</span></div>'+
+    '<p>이때 be동사는 혼자 쓰이지 않고 <b>-ing와 짝</b>을 이룹니다. ‘늘 하는 일’과는 다릅니다.</p>'+
   '</div>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-a"></i>앞으로의 일</span>'+
-    '<div class="swap"><span>will</span><span class="ar">→</span><span class="good">will be — 뒤에는 be 그대로</span></div>'+
+    '<div class="swap"><span>will</span><span class="ar">→</span><span class="good">will be — 뒤는 언제나 be</span></div>'+
     '<div class="swap"><span>be going to</span><span class="ar">→</span><span class="good">It is going to rain.</span></div>'+
+    '<p>will is(✕) · will am(✕)은 없습니다. will 뒤는 늘 원형 <b>be</b>입니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>의문사와 함께</span>'+
-    '<div class="ex">Where <u class="hl">is</u> your sister?<span class="k">의문사 + be동사 + 주어 ~ ?</span></div>'+
-    '<div class="ex">What <u class="hl">are</u> they doing?<span class="k">진행형도 같은 차례</span></div>'+
+    '<span class="bh"><i class="dot d-v"></i>be동사냐 일반동사냐</span>'+
+    '<div class="swap"><span>He <b>is</b> at the park.</span><span class="ar">↔</span><span class="good">He <b>goes</b> to the park.</span></div>'+
+    '<div class="swap"><span>I <b>am</b> a student.</span><span class="ar">↔</span><span class="good">I <b>like</b> music.</span></div>'+
+    '<div class="swap"><span>I <b>am have</b> a bike.</span><span class="ar">✕</span><span class="good">I <b>have</b> a bike.</span></div>'+
   '</div>'+
-  '<div class="tip"><span class="h">마무리 한 줄</span>주어와 때를 보고 <b>am · is · are · was · were</b> 가운데 하나를 고르면 됩니다.</div>';
+  '<div class="block">'+
+    '<span class="bh"><i class="dot d-n"></i>의문사와 함께</span>'+
+    '<div class="ex">Where <u class="hl">is</u> your sister?<span class="k">의문사 + be동사 + 주어 ~ ?</span></div>'+
+    '<div class="ex">What <u class="hl">are</u> they doing?<span class="k">-ing와 짝을 이룬 꼴도 차례가 같습니다</span></div>'+
+  '</div>'+
+  '<div class="tip"><span class="h">마무리 한 줄</span>주어의 인칭과 수를 보고 <b>am · is · are</b> 가운데 하나를 고릅니다. 앞으로의 일이면 <b>will be</b>입니다.</div>';
 }
 
 var LVCHEER = {
-  1:"이다·있다, 아니다, 물어보기, 지난 일까지 한 바퀴 돌았어요. 2단계에서 손에 익혀 봅니다.",
+  1:"be동사의 두 얼굴을 잡았어요. 2단계에서 평서문·부정문·의문문을 만들어 봅니다.",
   2:"짧은 문장으로 모양 고르기가 익숙해졌습니다. 3단계는 학교 시험형입니다.",
-  3:"현재와 과거를 가려내는 눈이 생겼어요. 마지막 단계만 남았습니다.",
+  3:"be동사 자리인지 do·does 자리인지 가려내는 눈이 생겼어요. 마지막 단계만 남았습니다.",
   4:"진행형과 will be까지 끝냈습니다. be동사는 이제 든든합니다!"
 };
 

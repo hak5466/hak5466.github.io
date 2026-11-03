@@ -1128,10 +1128,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · 덩어리를 한 낱말로", desc:"한글로 이해 24 · 쉬운 영어 16 · 공원에서→어디서 · 밤에→언제 · 그 방법으로→어떻게 · 그 까닭으로→왜 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · where·when·why·how 가리기", desc:"앞말 보고 고르기 · 뒤가 완전한가 · 관계대명사와 가리기 · the way how 함정", qs:L2, typeLabels:{n:"관계부사 고르기",a:"모두 고르기",v:"함정"}},
-  3:{name:"기본3 · 중3 학교 시험형", desc:"두 문장 잇기 · 전치사+which 당기기 · in which를 관계부사로 · 앞말 생략 · 서술형", qs:L3, typeLabels:{n:"당겨 쓰기와 빈칸",a:"바꿔 쓰기",v:"고치기와 서술형"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"관계대명사와 관계부사 가리기 · 쉼표 뒤 쓰임 · 바꿔 쓰기 · 영작 · 종합", qs:L4, typeLabels:{n:"가리기",a:"바꿔 쓰기",v:"종합"}}
+  1:{name:"Level 1 · 덩어리를 한 낱말로", desc:"한글로 이해 24 · 쉬운 영어 16 · 공원에서→어디서 · 밤에→언제 · 그 방법으로→어떻게 · 그 까닭으로→왜 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"Level 2 · where·when·why·how 가리기", desc:"앞말 보고 고르기 · 뒤가 완전한가 · 관계대명사와 가리기 · the way how 함정", qs:L2, typeLabels:{n:"관계부사 고르기",a:"모두 고르기",v:"함정"}},
+  3:{name:"Level 3 · 중3 학교 시험형", desc:"두 문장 잇기 · 전치사+which 당기기 · in which를 관계부사로 · 앞말 생략 · 서술형", qs:L3, typeLabels:{n:"당겨 쓰기와 빈칸",a:"바꿔 쓰기",v:"고치기와 서술형"}},
+  4:{name:"Level 4 · 전 학년 아우르기", desc:"관계대명사와 관계부사 가리기 · 쉼표 뒤 쓰임 · 바꿔 쓰기 · 영작 · 종합", qs:L4, typeLabels:{n:"가리기",a:"바꿔 쓰기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */

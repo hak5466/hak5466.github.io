@@ -1139,10 +1139,10 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"기본1 · what은 ‘~하는 것’", desc:"한글로 이해 12 · 쉬운 영어 8 · ‘무엇’과 ‘~하는 것’ · what = the thing which · 주어·목적어·보어·전치사 뒤 자리", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"기본2 · what과 that 가리기", desc:"앞에 명사가 있나 · 뒤가 완전한가 · 관계대명사 that · 접속사 that · 함정", qs:L2, typeLabels:{n:"what · that 고르기",a:"모두 고르기",v:"함정"}},
-  3:{name:"기본3 · 중3 학교 시험형", desc:"빈칸과 짝 맞추기 · 의문사 what 구별 · 고치기 · 우리말 보고 쓰기", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"서술형"}},
-  4:{name:"기본4 · 전 학년 아우르기", desc:"what의 여러 얼굴(관계대명사·의문사·감탄문) · that의 쓰임 · whose·where · 바꿔 쓰기 · 종합", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
+  1:{name:"Level 1 · what은 ‘~하는 것’", desc:"한글로 이해 12 · 쉬운 영어 8 · ‘무엇’과 ‘~하는 것’ · what = the thing which · 주어·목적어·보어·전치사 뒤 자리", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  2:{name:"Level 2 · what과 that 가리기", desc:"앞에 명사가 있나 · 뒤가 완전한가 · 관계대명사 that · 접속사 that · 함정", qs:L2, typeLabels:{n:"what · that 고르기",a:"모두 고르기",v:"함정"}},
+  3:{name:"Level 3 · 중3 학교 시험형", desc:"빈칸과 짝 맞추기 · 의문사 what 구별 · 고치기 · 우리말 보고 쓰기", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"서술형"}},
+  4:{name:"Level 4 · 전 학년 아우르기", desc:"what의 여러 얼굴(관계대명사·의문사·감탄문) · that의 쓰임 · whose·where · 바꿔 쓰기 · 종합", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
