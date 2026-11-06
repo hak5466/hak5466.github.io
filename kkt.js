@@ -142,6 +142,7 @@
     "subjunctive": familyA("가정법 뽀개기"),
     "themore": familyA("THE 비교급 뽀개기"),
     "verbuse": familyA("일반동사 문장 활용"),
+    "beverb": familyA("be동사 · 일반동사 가리기"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
     "perfect": familyA("현재완료 GAME"),
