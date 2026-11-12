@@ -595,31 +595,31 @@ var L2 = [
 
 /* ---------- LEVEL 3 : 학교 문제 20 (묻고 답하기 7 · 어법 판별 7 · 쓰임 구별·서술형 6) ---------- */
 var L3 = [
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it today?<br>B: It's Thursday.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it today?<br>B: It's Thursday.</span>",
    opts:["What day","What time","How far","How much","What date"], a:0, eng:true,
    exp:"대답이 요일(Thursday)이므로 <b>What day</b>로 물어야 합니다. What time은 시각, How far는 거리를 묻습니다."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it from here to the park?<br>B: It's about 500 meters.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it from here to the park?<br>B: It's about 500 meters.</span>",
    opts:["How far","How long","What time","What day","How many"], a:0, eng:true,
    exp:"대답이 거리(500 meters)이므로 <b>How far</b>가 알맞습니다."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ the weather in Busan?<br>B: It's windy.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ the weather in Busan?<br>B: It's windy.</span>",
    opts:["How's","What's","Where's","When's","Who's"], a:0, eng:true,
    exp:"날씨를 물을 때는 <b>How's the weather?</b> 또는 What's the weather like?라고 합니다."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 B의 대답으로 알맞은 것은?<br><span class=\"eng\">A: What's the date today?</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화에서 B의 대답으로 알맞은 것은?<br><span class=\"eng\">A: What's the date today?</span>",
    opts:["It's March 3rd.","It's Monday.","It's sunny.","It's five o'clock.","It's two kilometers."], a:0, eng:true,
    exp:"date는 <b>날짜</b>를 묻는 말입니다. 요일(Monday)이나 날씨로 답하지 않도록 주의하세요."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It's a quarter to nine.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It's a quarter to nine.</span>",
    opts:["What time is it?","What day is it?","How's the weather?","How far is it?","What's the date?"], a:0, eng:true,
    exp:"a quarter to nine은 ‘아홉 시 십오 분 전’이라는 <b>시각</b>이므로 What time is it?이 알맞습니다."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 중 대화가 <b>어색한</b> 것은?",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 중 대화가 <b>어색한</b> 것은?",
    opts:["A: What day is it? B: It's July 7th.","A: What time is it? B: It's noon.","A: How's the weather? B: It's foggy.","A: How far is it? B: It's one kilometer.","A: What's the date? B: It's May 1st."], a:0, eng:true,
    exp:"What day는 <b>요일</b>을 묻는 말인데 날짜로 답했습니다. It's Monday.처럼 요일로 답해야 합니다."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Is it cold outside?<br>B: No, ___ .</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Is it cold outside?<br>B: No, ___ .</span>",
    opts:["it isn't","there isn't","it doesn't","it don't","that isn't"], a:0, eng:true,
    exp:"It is ~?로 물었으므로 <b>it isn't</b>로 답합니다. 비인칭 주어도 대답할 때 그대로 it을 씁니다."},
 
@@ -845,7 +845,7 @@ var X1 = [
 
   {type:"a", tag:"쉬운 영어", q:"밑줄 친 It의 쓰임이 나머지와 <b>다른</b> 것은?",
    opts:["Where is my cap? **It** is on the bed.","**It** is cold outside.","**It** is six o'clock.","**It** is Sunday.","**It** is dark now."], a:0,
-   exp:"첫째는 my cap을 가리키는 대명사, 나머지는 비인칭 주어입니다."}
+   exp:"정답은 my cap을 가리키는 대명사, 나머지는 비인칭 주어입니다."}
 ];
 
 var X2 = [
@@ -941,31 +941,31 @@ var X2 = [
 ];
 
 var X3 = [
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it now?<br>B: It's eleven fifteen.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it now?<br>B: It's eleven fifteen.</span>",
    opts:["What time","What day","How far","How long","What date"], a:0,
    exp:"시간을 묻는 말 → <b>What time</b> is it?"},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it today?<br>B: It's November 11th.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: ___ is it today?<br>B: It's November 11th.</span>",
    opts:["What date","What time","How far","What weather","How long"], a:0,
    exp:"날짜 → <b>What date</b> is it today? (What's the date today?도 씁니다)"},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What's the weather ___ in Jeju?<br>B: It's windy.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: What's the weather ___ in Jeju?<br>B: It's windy.</span>",
    opts:["like","as","how","about","for"], a:0,
    exp:"What's the weather <b>like</b>? = How's the weather?"},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 B의 대답으로 알맞은 것은?<br><span class=\"eng\">A: How far is it from here to the museum?</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화에서 B의 대답으로 알맞은 것은?<br><span class=\"eng\">A: How far is it from here to the museum?</span>",
    opts:["It's about three kilometers.","It's three o'clock.","It's Wednesday.","It's sunny.","There are three museums."], a:0,
    exp:"How far → <b>거리</b>로 답합니다."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It's Friday today.</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화에서 A의 질문으로 알맞은 것은?<br><span class=\"eng\">B: It's Friday today.</span>",
    opts:["What day is it today?","What time is it?","What's the date today?","How's the weather?","How far is it?"], a:0,
    exp:"요일 → <b>What day</b> is it today?"},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 중 대화가 <b>어색한</b> 것은?",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 중 대화가 <b>어색한</b> 것은?",
    opts:["A: What time is it? B: It's Monday.","A: How's the weather? B: It's cloudy.","A: What's the date? B: It's May 1st.","A: How far is it? B: It's two miles.","A: What day is it? B: It's Tuesday."], a:0,
    exp:"What time → 시간으로 답해야 합니다."},
 
-  {type:"n", tag:"묻고 답하기", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Was it rainy yesterday?<br>B: Yes, ___ .</span>",
+  {type:"n", tag:"묻고 답하기(의문문)", q:"다음 대화의 빈칸에 알맞은 것은?<br><span class=\"eng\">A: Was it rainy yesterday?<br>B: Yes, ___ .</span>",
    opts:["it was","it is","there was","it did","it rained"], a:0,
    exp:"Was it ~? → Yes, <b>it was</b>."},
 
@@ -1001,7 +1001,7 @@ var X3 = [
 
   {type:"v", tag:"쓰임 구별", q:"밑줄 친 It의 쓰임이 나머지와 <b>다른</b> 것은?",
    opts:["I got a letter. **It** was from Tom.","**It** is Tuesday.","**It** is windy.","**It** is five o'clock.","**It** is dark outside."], a:0,
-   exp:"첫째는 a letter를 가리키는 대명사입니다."},
+   exp:"정답은 a letter를 가리키는 대명사입니다."},
 
   {type:"v", tag:"쓰임 구별", q:"밑줄 친 it의 쓰임이 같은 것끼리 묶은 것은?<br><span class=\"eng\">ⓐ It is noon.&nbsp;ⓑ I lost it.&nbsp;ⓒ It is far.&nbsp;ⓓ It is his cap.</span>",
    opts:["ⓐ와 ⓒ / ⓑ와 ⓓ","ⓐ와 ⓑ / ⓒ와 ⓓ","ⓐ와 ⓓ / ⓑ와 ⓒ","ⓐ와 ⓑ와 ⓒ / ⓓ","모두 같다"], a:0,
@@ -1083,7 +1083,7 @@ var X4 = [
 
   {type:"v", tag:"세 가지 구별", q:"밑줄 친 It의 쓰임이 나머지와 <b>다른</b> 것은?",
    opts:["**It** is exciting to ride a roller coaster.","**It** is Thursday.","**It** is very humid.","**It** is five miles away.","**It** is getting dark."], a:0,
-   exp:"첫째는 to ride를 대신하는 <b>가주어</b>, 나머지는 비인칭 주어입니다."},
+   exp:"정답은 to ride를 대신하는 <b>가주어</b>, 나머지는 비인칭 주어입니다."},
 
   {type:"v", tag:"세 가지 구별", q:"밑줄 친 It이 <b>가주어</b>인 것은?",
    opts:["**It** is good to help others.","**It** is my new watch.","**It** is late at night.","**It** is sunny.","I have a dog. **It** is brown."], a:0,
@@ -1117,7 +1117,7 @@ L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4
 var LEVELS = {
   1:{name:"Level 1 · it의 두 얼굴", desc:"한글로 이해 9 · 쉬운 영어 11 · ‘그것’인 it과 해석하지 않는 it · 쉬운 영어 문장으로 가리기 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 여섯 가지 쓰임", desc:"시간 · 요일 · 날짜 · 월 · 날씨 · 거리 · 명암과 해석하는 법 · 중1", qs:L2, typeLabels:{n:"시간·요일·날짜",a:"날씨·계절",v:"거리·명암"}},
-  3:{name:"Level 3 · 학교 문제", desc:"묻고 답하기 · 어법 판별 · 쓰임 구별 · 서술형", qs:L3, typeLabels:{n:"묻고 답하기",a:"어법 판별",v:"구별·서술형"}},
+  3:{name:"Level 3 · 학교 문제", desc:"묻고 답하기 · 어법 판별 · 쓰임 구별 · 서술형", qs:L3, typeLabels:{n:"묻고 답하기(의문문)",a:"어법 판별",v:"구별·서술형"}},
   4:{name:"Level 4 · 전체 어법", desc:"가주어 it · It takes · 세 가지 it 구별까지 아우르기", qs:L4, typeLabels:{n:"가주어",a:"It takes",v:"구별·고난도"}}
 };
 
@@ -1233,7 +1233,7 @@ function learn4(){
 }
 
 var LVCHEER = {
-  1:"it의 두 얼굴을 가려낼 수 있게 되었어요. 2단계에서는 여섯 가지 쓰임을 문장으로 익힙니다.",
+  1:"it의 두 얼굴을 구별할 수 있게 되었어요. 2단계에서는 여섯 가지 쓰임을 문장으로 익힙니다.",
   2:"시간도 날씨도 거리도 모두 It is로 시작한다는 것, 이제 몸에 익었지요?",
   3:"묻는 말만 보면 답이 보입니다. 시험지에서도 헷갈리지 않을 거예요.",
   4:"대명사 · 비인칭 주어 · 가주어, 세 가지를 모두 끝냈습니다. 정말 훌륭합니다."

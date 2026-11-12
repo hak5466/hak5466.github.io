@@ -430,7 +430,7 @@ var L1 = [
    exp:"부사는 <b>명사만 빼고</b> 여러 가지를 꾸밉니다. 명사를 꾸미는 일은 형용사가 맡습니다."},
 
   {type:"n", tag:"한글로 이해", q:"‘예쁜 꽃’과 ‘예쁘게 웃는다’의 차이로 알맞은 것은?",
-   opts:["앞은 명사를 꾸미고, 뒤는 동사를 꾸민다","둘 다 명사를 꾸민다","둘 다 동사를 꾸민다","앞은 동사를, 뒤는 명사를 꾸민다","차이가 없다"], a:0,
+   opts:["앞은 명사를 꾸미고, 뒤는 동사를 꾸민다","둘 다 명사를 꾸민다","둘 다 동사를 꾸민다","앞은 동사를, 뒤는 명사를 꾸민다","앞은 부사, 뒤는 형용사다"], a:0,
    exp:"‘예쁜’은 명사를 꾸미니 <b>형용사</b>, ‘예쁘게’는 동사를 꾸미니 <b>부사</b>입니다."},
 
   {type:"n", tag:"한글로 이해", sent:"아주 큰 집", q:"‘아주’는 무엇을 꾸며 주나요?",
@@ -589,7 +589,7 @@ var L2 = [
    exp:"fastly라는 말은 없습니다. <b>fast</b>가 형용사이면서 부사입니다."}
 ];
 
-/* ---------- LEVEL 3 : 한글과 영어를 섞어서 20 (만들기 7 · 자리 6 · 가려내기 7) ---------- */
+/* ---------- LEVEL 3 : 한글과 영어를 섞어서 20 (만들기 7 · 자리 6 · 구별하기 7) ---------- */
 var L3 = [
   {type:"n", tag:"만들기", q:"형용사를 부사로 바꾸는 가장 흔한 방법은?",
    opts:["끝에 -ly를 붙인다","앞에 a를 붙인다","끝에 -s를 붙인다","끝에 -ed를 붙인다","아무것도 바꾸지 않는다"], a:0,
@@ -645,35 +645,35 @@ var L3 = [
    opts:["I never eat late.","She is never late.","They always study hard.","I eat never late.","She never is late."], ans:[0,1,2],
    exp:"일반동사 앞, be동사 뒤 — 이 규칙만 지키면 됩니다."},
 
-  {type:"v", tag:"가려내기", sent:"He is a ___ runner.", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"He is a ___ runner.", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["fast","fastly","fasts","to fast","very fastly"], a:0, eng:true,
    ko:"그는 빠른 달리기 선수이다.",
    exp:"명사 runner를 꾸미므로 <b>형용사</b> fast입니다."},
 
-  {type:"v", tag:"가려내기", sent:"He runs ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"He runs ___ .", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["fast","a fast","fastly","fasting","the fast"], a:0, eng:true,
    ko:"그는 빨리 달린다.",
    exp:"동사 runs를 꾸미므로 <b>부사</b>입니다. fast는 모양이 그대로입니다."},
 
-  {type:"v", tag:"가려내기", sent:"She is a ___ singer.", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"She is a ___ singer.", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["good","well","goodly","goodness","a good"], a:0, eng:true,
    ko:"그녀는 훌륭한 가수이다.",
    exp:"명사 singer를 꾸미므로 형용사 <b>good</b>입니다."},
 
-  {type:"v", tag:"가려내기", sent:"She sings ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"She sings ___ .", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["well","good","a good","goodly","the well"], a:0, eng:true,
    ko:"그녀는 노래를 잘한다.",
    exp:"동사 sings를 꾸미므로 부사 <b>well</b>입니다. 앞 문제와 나란히 외워 두세요."},
 
-  {type:"v", tag:"가려내기", q:"밑줄 친 말이 <b>부사</b>인 문장은?",
+  {type:"v", tag:"구별하기", q:"밑줄 친 말이 <b>부사</b>인 문장은?",
    opts:["He works **hard**.","a **hard** question","a **fast** car","a **late** bus","a **good** book"], a:0, eng:true,
    exp:"첫 문장의 hard만 동사 works를 꾸밉니다. 나머지는 모두 명사를 꾸미는 형용사입니다."},
 
-  {type:"v", tag:"가려내기", multi:true, eng:true, q:"밑줄 친 말이 <b>형용사</b>인 것을 모두 고르세요. (여러 개)",
+  {type:"v", tag:"구별하기", multi:true, eng:true, q:"밑줄 친 말이 <b>형용사</b>인 것을 모두 고르세요. (여러 개)",
    opts:["a **fast** car","a **kind** girl","a **late** bus","He runs **fast**.","She speaks **kindly**."], ans:[0,1,2],
    exp:"명사 앞에 있으면 형용사, 동사를 꾸미면 부사입니다."},
 
-  {type:"v", tag:"가려내기", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
+  {type:"v", tag:"구별하기", hard:true, q:"다음 중 어법상 <b>틀린</b> 문장은?",
    opts:["She sings very good.","She sings very well.","She is a very good singer.","He runs very fast.","He is a very fast runner."], a:0, eng:true,
    exp:"동사 sings를 꾸미려면 <b>well</b>이어야 합니다. very good은 명사 앞에서만 씁니다."}
 ];
@@ -749,7 +749,7 @@ var L4 = [
 /* ---------- 문제 늘리기 : 단계마다 20문제를 더 두고, 게임이 시작할 때마다 20문제를 뽑습니다 ---------- */
 var X1 = [
   {type:"n", tag:"한글로 이해", sent:"그녀는 조용히 문을 닫았다.", q:"‘닫았다’를 꾸며 주는 말은 무엇인가요?",
-   opts:["조용히","그녀는","문을","닫았다","없다"], a:0,
+   opts:["조용히","그녀는","문을","닫았다","문장 전체"], a:0,
    exp:"어떻게 닫았는지 → <b>조용히</b>. 부사입니다."},
 
   {type:"n", tag:"한글로 이해", sent:"우리는 여기에서 놀았다.", q:"‘여기에서’가 알려 주는 것은?",
@@ -765,7 +765,7 @@ var X1 = [
    exp:"부사는 다른 <b>부사</b>도 꾸밉니다. too fast"},
 
   {type:"n", tag:"한글로 이해", q:"‘친절한 선생님’과 ‘친절하게 말한다’에서 부사는?",
-   opts:["친절하게","친절한","선생님","말한다","둘 다"], a:0,
+   opts:["친절하게","친절한","선생님","말한다","친절한과 친절하게 둘 다"], a:0,
    exp:"동사 ‘말한다’를 꾸미는 <b>친절하게</b>가 부사입니다."},
 
   {type:"n", tag:"한글로 이해", q:"‘그는 열심히 공부한다’에서 ‘열심히’를 빼면 어떻게 될까요?",
@@ -974,35 +974,35 @@ var X3 = [
    opts:["She often goes swimming.","We are always happy.","He usually gets up early.","She goes often swimming.","We always are happy."], ans:[0,1,2],
    exp:"일반동사 앞, be동사 뒤"},
 
-  {type:"v", tag:"가려내기", sent:"The test was ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"The test was ___ .", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["easy","easily","ease","easyly","an easy"], a:0, eng:true,
    ko:"시험은 쉬웠다.",
    exp:"be동사 뒤에서 주어를 설명 → 형용사 <b>easy</b>"},
 
-  {type:"v", tag:"가려내기", sent:"I passed the test ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"I passed the test ___ .", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["easily","easy","ease","easyly","an easy"], a:0, eng:true,
    ko:"나는 쉽게 시험에 통과했다.",
    exp:"동사 passed를 꾸밈 → 부사 <b>easily</b>"},
 
-  {type:"v", tag:"가려내기", sent:"He is a ___ driver.", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"He is a ___ driver.", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["careful","carefully","care","carefuly","cares"], a:0, eng:true,
    ko:"그는 조심성 있는 운전자다.",
    exp:"명사 driver를 꾸밈 → 형용사 <b>careful</b>"},
 
-  {type:"v", tag:"가려내기", sent:"He drives ___ .", q:"빈칸에 알맞은 것을 고르세요.",
+  {type:"v", tag:"구별하기", sent:"He drives ___ .", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["carefully","careful","care","carefuly","a careful"], a:0, eng:true,
    ko:"그는 조심해서 운전한다.",
    exp:"동사 drives를 꾸밈 → 부사 <b>carefully</b>"},
 
-  {type:"v", tag:"가려내기", q:"밑줄 친 말이 <b>부사</b>인 문장은?",
+  {type:"v", tag:"구별하기", q:"밑줄 친 말이 <b>부사</b>인 문장은?",
    opts:["She came home **late**.","It was a **late** night.","I took the **late** bus.","He is a **fast** swimmer.","It was a **hard** test."], a:0,
    exp:"동사 came을 꾸미는 late(늦게)가 부사입니다."},
 
-  {type:"v", tag:"가려내기", multi:true, eng:true, q:"밑줄 친 말이 <b>부사</b>인 것을 모두 고르세요. (여러 개)",
+  {type:"v", tag:"구별하기", multi:true, eng:true, q:"밑줄 친 말이 <b>부사</b>인 것을 모두 고르세요. (여러 개)",
    opts:["She works **hard**.","He got up **early**.","They sang **loudly**.","an **early** train","a **loud** voice"], ans:[0,1,2],
    exp:"동사를 꾸미면 부사, 명사 앞이면 형용사입니다."},
 
-  {type:"v", tag:"가려내기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
+  {type:"v", tag:"구별하기", q:"다음 중 어법상 <b>틀린</b> 문장은?",
    opts:["He speaks English very good.","He speaks English very well.","He is a good speaker.","His English is good.","He speaks slowly."], a:0,
    exp:"동사를 꾸밀 때는 good이 아니라 <b>well</b>"}
 ];
@@ -1079,9 +1079,9 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 더 자세히 말해 주는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 어떻게 · 언제 · 어디서 · 얼마나 · -ly 맛보기 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · 더 자세히 말해 주는 말", desc:"한글로 이해 24 · 쉬운 영어 16 · 어떻게 · 언제 · 어디서 · 얼마나 · -ly 맛보기 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 쉬운 영어 단어로", desc:"fast · slowly · well · very · here · now · always", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"구별"}},
-  3:{name:"Level 3 · 한글과 영어 섞기", desc:"-ly 만들기 · 빈도부사 자리 · 형용사와 부사 가려내기", qs:L3, typeLabels:{n:"만들기",a:"자리",v:"가려내기"}},
+  3:{name:"Level 3 · 한글과 영어 섞기", desc:"-ly 만들기 · 빈도부사 자리 · 형용사와 부사 구별하기", qs:L3, typeLabels:{n:"만들기",a:"자리",v:"구별하기"}},
   4:{name:"Level 4 · 직접 써 보기", desc:"형용사를 부사로 바꾸어 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"부사로 바꾸기",a:"낱말 쓰기",v:"문장 채우기"}}
 };
 
@@ -1154,7 +1154,7 @@ function learn2(){
 function learn3(){
   return ''+
   '<h2>LEVEL 3 · 한글과 영어 섞기</h2>'+
-  '<p class="lead">형용사를 부사로 바꾸는 법, 부사를 놓는 자리, 그리고 형용사인지 부사인지 가려내는 법을 익힙니다.</p>'+
+  '<p class="lead">형용사를 부사로 바꾸는 법, 부사를 놓는 자리, 그리고 형용사인지 부사인지 구별하는 법을 익힙니다.</p>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>-ly 붙이기</span>'+
     '<div class="swap"><span>slow</span><span class="ar">→</span><span class="good">slowly</span></div>'+
@@ -1170,7 +1170,7 @@ function learn3(){
     '<p><b>일반동사 앞, be동사 뒤</b> — 이 한 줄만 외우면 됩니다.</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>형용사인지 부사인지 가려내기</span>'+
+    '<span class="bh"><i class="dot d-v"></i>형용사인지 부사인지 구별하기</span>'+
     '<div class="swap"><span>a fast car</span><span class="ar">↔</span><span class="good">He runs fast.</span></div>'+
     '<div class="swap"><span>a good singer</span><span class="ar">↔</span><span class="good">She sings well.</span></div>'+
     '<p><b>뒤에 명사가 있으면</b> 형용사, <b>동사를 꾸미면</b> 부사입니다.</p>'+
@@ -1200,7 +1200,7 @@ function learn4(){
 var LVCHEER = {
   1:"어떻게·언제·어디서·얼마나를 알게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
   2:"fast와 well 두 개만 조심하면 됩니다. 3단계에서는 -ly 만들기를 익혀요.",
-  3:"형용사인지 부사인지 가려낼 수 있게 되었어요. 마지막 단계만 남았습니다.",
+  3:"형용사인지 부사인지 구별할 수 있게 되었어요. 마지막 단계만 남았습니다.",
   4:"부사를 직접 쓰는 것까지 해냈습니다. 정말 훌륭합니다!"
 };
 

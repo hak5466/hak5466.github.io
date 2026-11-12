@@ -762,7 +762,7 @@ var X1 = [
    exp:"명사의 수나 양을 알려 주는 <b>형용사</b>입니다. many books"},
 
   {type:"n", tag:"한글로 이해", q:"‘빠른 차’와 ‘빨리 달린다’에서 형용사는?",
-   opts:["빠른","빨리","차","달린다","둘 다"], a:0,
+   opts:["빠른","빨리","차","달린다","빠른과 빨리 둘 다"], a:0,
    exp:"명사 ‘차’를 꾸미는 <b>빠른</b>이 형용사, ‘빨리’는 부사입니다."},
 
   {type:"n", tag:"한글로 이해", multi:true, q:"다음 중 형용사를 모두 고르세요. (여러 개)",
@@ -810,7 +810,7 @@ var X1 = [
    exp:"a + 형용사 + 명사"},
 
   {type:"a", tag:"쉬운 영어", q:"a tall boy에서 tall이 꾸며 주는 말은?",
-   opts:["boy","a","tall","없다","a tall"], a:0,
+   opts:["boy","a","tall","tall 스스로","a tall"], a:0,
    exp:"형용사 tall은 명사 <b>boy</b>를 꾸밉니다."},
 
   {type:"a", tag:"쉬운 영어", sent:"The bag is ___ .", q:"‘그 가방은 무겁다’가 되도록 알맞은 것은?",
@@ -1063,7 +1063,7 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 어떠한지를 말하는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 형용사가 하는 일 두 가지 · 쉬운 형용사와 반대말 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · 어떠한지를 말하는 말", desc:"한글로 이해 24 · 쉬운 영어 16 · 형용사가 하는 일 두 가지 · 쉬운 형용사와 반대말 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 쉬운 영어 단어로", desc:"big · small · happy · tall · new · hot 과 반대말", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"반대말"}},
   3:{name:"Level 3 · 한글과 영어 섞기", desc:"두 자리 가리기 · a + 형용사 + 명사 어순 · many 와 much", qs:L3, typeLabels:{n:"두 자리",a:"어순",v:"수량"}},
   4:{name:"Level 4 · 직접 써 보기", desc:"형용사와 반대말을 영어로 쓰고 문장 빈칸 채우기", qs:L4, typeLabels:{n:"낱말 쓰기",a:"반대말 쓰기",v:"문장 채우기"}}
@@ -1145,9 +1145,9 @@ function learn2(){
 function learn3(){
   return ''+
   '<h2>LEVEL 3 · 한글과 영어 섞기</h2>'+
-  '<p class="lead">두 자리를 가려내고, 어순을 맞추고, 수를 나타내는 말까지 익힙니다.</p>'+
+  '<p class="lead">두 자리를 구별하고, 어순을 맞추고, 수를 나타내는 말까지 익힙니다.</p>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>두 자리 가려내기</span>'+
+    '<span class="bh"><i class="dot d-n"></i>두 자리 구별하기</span>'+
     '<div class="ex">She is a <u class="hl">kind</u> girl.<span class="k">명사 girl 을 꾸밈</span></div>'+
     '<div class="ex">She is <u class="hl">kind</u>.<span class="k">주어 She 를 설명</span></div>'+
     '<p>뒤에 <b>명사가 있으면</b> 꾸미는 자리, <b>없으면</b> 설명하는 자리입니다.</p>'+

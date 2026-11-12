@@ -582,7 +582,7 @@ var L3 = [
 
   {type:"v", tag:"고르기와 판별", q:"밑줄 친 낱말의 품사가 <b>나머지와 다른</b> 것은?",
    opts:["She runs **fast**.","She is **happy**.","It is a **red** car.","He is **tall**.","It is **cold**."], a:0, eng:true,
-   exp:"첫째 fast는 동사를 꾸미는 <b>부사</b>입니다. 나머지는 모두 형용사입니다."},
+   exp:"동사를 꾸미는 fast가 <b>부사</b>입니다. 나머지는 모두 형용사입니다."},
 
   {type:"v", tag:"고르기와 판별", sent:"I am ___ .", q:"빈칸에 <b>형용사</b>를 넣어 ‘나는 행복하다’가 되도록 알맞은 것은?",
    opts:["happy","happily","happiness","run","and"], a:0, eng:true,
@@ -797,7 +797,7 @@ var X3 = [
 
   {type:"v", tag:"고르기와 판별", q:"밑줄 친 낱말의 품사가 <b>나머지와 다른</b> 것은?",
    opts:["She sings **happily**.","He is a **happy** boy.","It is a **lovely** day.","She is **kind**.","The box is **heavy**."], a:0, eng:true,
-   exp:"첫째 happily는 동사를 꾸미는 <b>부사</b>입니다. 나머지는 모두 형용사입니다."},
+   exp:"동사를 꾸미는 happily가 <b>부사</b>입니다. 나머지는 모두 형용사입니다."},
 
   {type:"v", tag:"고르기와 판별", sent:"She runs ___ .", q:"빈칸에 <b>부사</b>를 넣어 ‘그녀는 빨리 달린다’가 되도록 알맞은 것은?",
    opts:["quickly","quick","quickness","queen","and"], a:0, eng:true,
@@ -850,7 +850,7 @@ var X4 = [
 
   {type:"v", tag:"종합", hard:true, q:"밑줄 친 낱말의 품사가 <b>나머지와 다른</b> 것은?",
    opts:["I had a good **dream**.","I **dream** of flying.","They **play** tennis.","We **walk** to school.","I **love** music."], a:0, eng:true,
-   exp:"첫째 dream은 a good 뒤의 <b>명사</b>입니다. 나머지는 동사입니다."},
+   exp:"a good 뒤의 dream은 <b>명사</b>입니다. 나머지는 동사입니다."},
 
   {type:"v", tag:"품사 차례", q:"‘매우 빨리 달린다’에서 ‘매우’가 꾸며 주는 말은?",
    opts:["빨리 — 부사가 부사를 꾸밉니다","달린다 — 부사가 동사를 꾸밉니다","매우 — 스스로를 꾸밉니다","문장 전체를 꾸밉니다","아무것도 꾸미지 않습니다"], a:0,
@@ -879,7 +879,7 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 8품사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 여덟 가지 품사의 이름과 하는 일 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · 8품사가 뭐예요?", desc:"한글로 이해 24 · 쉬운 영어 16 · 여덟 가지 품사의 이름과 하는 일 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 넓히기와 함정", desc:"뜻풀이로 낱말 고르기 · 품사별 모두 고르기 · -ly 함정", qs:L2, typeLabels:{n:"뜻풀이",a:"모두 고르기",v:"함정"}},
   3:{name:"Level 3 · 학교 시험형", desc:"문장 속 밑줄 낱말의 품사 · 문장에서 품사 모두 찾기 · 판별", qs:L3, typeLabels:{n:"문장 속 품사",a:"모두 고르기",v:"고르기와 판별"}},
   4:{name:"Level 4 · 전 학년 아우르기", desc:"한 낱말 두 품사 run · on · in · fast · like · that · before · 품사 차례(아주 큰 집) · 종합", qs:L4, typeLabels:{n:"한 낱말 두 품사",a:"문장 속 품사",v:"종합"}}
@@ -948,7 +948,7 @@ function learn3(){
 function learn4(){
   return ''+
   '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
-  '<p class="lead">마지막입니다. 같은 낱말이 문장에 따라 다른 품사가 되는 경우를 가려냅니다.</p>'+
+  '<p class="lead">마지막입니다. 같은 낱말이 문장에 따라 다른 품사가 되는 경우를 구별합니다.</p>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>한 낱말, 두 품사</span>'+
     '<div class="swap"><span>a fast runner (형용사)</span><span class="ar">↔</span><span class="good">run fast (부사)</span></div>'+
@@ -971,7 +971,7 @@ var LVCHEER = {
   1:"여덟 품사의 이름과 하는 일을 한글과 영어로 익혔어요. 2단계에서는 함정을 피해 봅니다.",
   2:"모양에 속지 않고 하는 일로 품사를 가렸습니다. 3단계는 문장 속 품사 찾기입니다.",
   3:"문장 속에서 품사를 척척 찾아냈어요. 마지막 단계만 남았습니다.",
-  4:"한 낱말 두 품사까지 가려냈습니다. 8품사는 이제 든든합니다!"
+  4:"한 낱말 두 품사까지 구별했습니다. 8품사는 이제 든든합니다!"
 };
 
 function renderLearn(){

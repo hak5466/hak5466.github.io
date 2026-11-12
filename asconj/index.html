@@ -462,7 +462,7 @@ var L1 = [
    exp:"‘~때문에’는 <b>까닭</b>을 말합니다. 접속사 as의 두 번째 뜻입니다."},
 
   {type:"n", tag:"한글로 이해", q:"‘내가 <b>하듯이</b> 해 봐’에서 밑줄 친 뜻은 어떤 갈래일까요?",
-   opts:["모양 — 그대로 따라 하기","까닭","때","자격","자리"], a:0,
+   opts:["모양 — 그대로 따라 하기","까닭 — 그래서","때 — 그럴 때","자격 — ~로서","자리 — 어디서"], a:0,
    exp:"‘~하듯이’는 <b>모양</b>을 말합니다. 접속사 as의 세 번째 뜻입니다."},
 
   {type:"a", tag:"쉬운 영어", sent:"He works **as a teacher**.", q:"as 뒤에 온 것은 무엇인가요?", eng:true,
@@ -503,7 +503,7 @@ var L1 = [
    exp:"as <b>뒤</b>에 명사 하나면 전치사, 주어와 동사가 있으면 접속사입니다."}
 ];
 
-/* ---------- LEVEL 2 : 네 뜻 가려내기 ---------- */
+/* ---------- LEVEL 2 : 네 뜻 구별하기 ---------- */
 var L2 = [
   {type:"n", tag:"뜻 가리기", sent:"**As** I opened the door, the cat ran out.", q:"as의 뜻으로 알맞은 것은?", eng:true,
    opts:["~할 때","~때문에","~하듯이","~로서","~함에 따라"], a:0,
@@ -555,11 +555,11 @@ var L2 = [
 
   {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"as가 <b>접속사</b>로 쓰인 것을 모두 고르세요. (여러 개)",
    opts:["As I was tired, I slept.","As the bell rang, we stood up.","Do as he says.","He works as a nurse.","I see it as a problem."], ans:[0,1,2],
-   exp:"앞의 셋은 뒤에 주어와 동사가 있어 접속사, 뒤의 둘은 명사만 와서 전치사입니다."},
+   exp:"고른 셋은 뒤에 주어와 동사가 있어 접속사, 나머지 둘은 명사만 와서 전치사입니다."},
 
   {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"as를 <b>when</b>으로 바꿔 쓸 수 있는 것을 모두 고르세요. (여러 개)",
    opts:["As I came in, he left.","As she sang, we clapped.","As the door opened, I stood.","As he was ill, he rested.","As I do, you should do."], ans:[0,1,2],
-   exp:"앞의 셋은 때를 말하므로 when으로 바꿉니다. 넷째는 까닭, 다섯째는 모양입니다."},
+   exp:"고른 셋은 때를 말하므로 when으로 바꿉니다. 나머지 둘은 까닭(As he was ill)과 모양(As I do)입니다."},
 
   {type:"a", tag:"모두 고르기", multi:true, q:"전치사구의 노릇을 바르게 말한 것을 모두 고르세요. (여러 개)",
    opts:["명사를 꾸미면 형용사구","동사를 꾸미면 부사구","문장 전체를 꾸미면 부사구","명사를 꾸미면 명사구","동사를 꾸미면 형용사구"], ans:[0,1,2],
@@ -796,7 +796,7 @@ var X1 = [
 
   {type:"n", tag:"한글로 이해", multi:true, q:"뒤에 <b>문장</b>이 와야 하는 말을 모두 고르세요. (여러 개)",
    opts:["~때문에","~할 때","~하듯이","~의 위에","~의 안에"], ans:[0,1,2],
-   exp:"앞의 셋은 이어 주는 말이라 뒤에 문장이 옵니다. 뒤의 둘은 명사 앞에 붙는 말입니다."},
+   exp:"고른 셋은 이어 주는 말이라 뒤에 문장이 옵니다. 나머지 둘은 명사 앞에 붙는 말입니다."},
 
   {type:"n", tag:"한글로 이해", q:"전치사와 명사가 모여 이룬 덩어리를 무엇이라고 할까요?",
    opts:["전치사구","접속사구","동사구","감탄구","주어구"], a:0,
@@ -811,7 +811,7 @@ var X1 = [
    exp:"동사 ‘달린다’를 꾸미므로 <b>부사구</b>입니다."},
 
   {type:"n", tag:"한글로 이해", q:"‘<b>눈이 옴에 따라</b> 길이 막혔다’에서 밑줄 친 뜻은 어떤 갈래일까요?",
-   opts:["비례 — 나란히 바뀜","까닭","때","모양","자격"], a:0,
+   opts:["비례 — 나란히 바뀜","까닭 — 그래서","때 — 그럴 때","모양 — 그대로","자격 — ~로서"], a:0,
    exp:"한쪽이 바뀌면 다른 쪽도 바뀌므로 <b>비례</b>입니다."},
 
   {type:"n", tag:"한글로 이해", multi:true, q:"접속사 as의 뜻을 모두 고르세요. (여러 개)",
@@ -923,7 +923,7 @@ var X2 = [
 
   {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"as를 <b>because</b>로 바꿔 쓸 수 있는 것을 모두 고르세요. (여러 개)",
    opts:["As it was late, we left.","As she felt sick, she lay down.","As there was no food, we ordered.","As I walked, I sang.","As I do, you do."], ans:[0,1,2],
-   exp:"앞의 셋은 까닭을 말하므로 because로 바꿉니다."},
+   exp:"고른 셋은 까닭을 말하므로 because로 바꿉니다."},
 
   {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"as가 <b>전치사</b>로 쓰인 것을 모두 고르세요. (여러 개)",
    opts:["as a leader","as a tool","as a model","as he led","as we worked"], ans:[0,1,2],
@@ -935,7 +935,7 @@ var X2 = [
 
   {type:"a", tag:"모두 고르기", multi:true, eng:true, q:"뒤에 <b>명사</b>만 올 수 있는 것을 모두 고르세요. (여러 개)",
    opts:["because of","during","despite","because","while"], ans:[0,1,2],
-   exp:"앞의 셋은 전치사, 뒤의 둘은 접속사입니다."},
+   exp:"고른 셋은 전치사, 나머지 둘은 접속사입니다."},
 
   {type:"v", tag:"함정", sent:"**As** a student, you must study.", q:"여기서 as의 쓰임은?", eng:true,
    opts:["전치사 — 학생으로서","접속사 — ~때문에","접속사 — ~할 때","견주는 as ~ as","접속사 — ~하듯이"], a:0,
@@ -952,7 +952,7 @@ var X2 = [
 
   {type:"v", tag:"함정", q:"다음 중 as가 들어갈 수 <b>없는</b> 자리는?",
    opts:["___ the heavy rain, we stayed in.","___ it rained, we stayed in.","___ I grew up, I learned.","___ he says, do it.","___ time passes, we change."], a:0,
-   exp:"첫째는 뒤에 명사만 있으므로 because of를 써야 합니다.", hard:true},
+   exp:"정답은 뒤에 명사만 있으므로 because of를 써야 합니다.", hard:true},
 
   {type:"v", tag:"함정", sent:"**As** far as I know, he is kind.", q:"as far as의 뜻으로 알맞은 것은?", eng:true,
    opts:["~하는 한 · 내가 아는 한","~때문에","~할 때","~로서","~함에 따라"], a:0,
@@ -1150,7 +1150,7 @@ L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4
 
 var LEVELS = {
   1:{name:"Level 1 · 접속사와 전치사", desc:"한글로 이해 24 · 쉬운 영어 16 · 뒤에 명사인가 문장인가 · 전치사구는 형용사구·부사구 · as의 네 뜻 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
-  2:{name:"Level 2 · as의 네 뜻 가리기", desc:"~할 때 · ~때문에 · ~하듯이 · ~함에 따라 · 전치사 as 가려내기 · 함정", qs:L2, typeLabels:{n:"뜻 가리기",a:"모두 고르기",v:"함정"}},
+  2:{name:"Level 2 · as의 네 뜻 가리기", desc:"~할 때 · ~때문에 · ~하듯이 · ~함에 따라 · 전치사 as 구별하기 · 함정", qs:L2, typeLabels:{n:"뜻 가리기",a:"모두 고르기",v:"함정"}},
   3:{name:"Level 3 · 중3 학교 시험형", desc:"when·while·because·since·the way로 바꿔 쓰기 · 빈칸 · 고치기 · 서술형", qs:L3, typeLabels:{n:"바꿔 쓰기와 빈칸",a:"뜻 고르기",v:"고치기와 서술형"}},
   4:{name:"Level 4 · 전 학년 아우르기", desc:"because of와 because · during과 while · despite와 although · as의 모든 얼굴 · 영작", qs:L4, typeLabels:{n:"짝 가리기",a:"as의 얼굴",v:"종합"}}
 };
@@ -1315,9 +1315,9 @@ function learn4(){
 
 var LVCHEER = {
   1:"접속사와 전치사를 뒤만 보고 가를 수 있게 되었어요. 2단계에서는 as의 네 뜻을 가립니다.",
-  2:"~할 때 · ~때문에 · ~하듯이 · ~함에 따라를 가려냈습니다. 3단계는 중3 학교 시험형입니다.",
+  2:"~할 때 · ~때문에 · ~하듯이 · ~함에 따라를 구별했습니다. 3단계는 중3 학교 시험형입니다.",
   3:"바꿔 쓰기와 짝 맞추기까지 해냈어요. 마지막 단계만 남았습니다.",
-  4:"as의 모든 얼굴을 가려냈습니다. 접속사 as는 이제 든든합니다!"
+  4:"as의 모든 얼굴을 구별했습니다. 접속사 as는 이제 든든합니다!"
 };
 
 function renderLearn(){

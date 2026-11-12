@@ -425,7 +425,7 @@ var L1 = [
 
   {type:"n", tag:"한글로 이해", q:"동사는 크게 <b>세 가족</b>으로 나뉩니다. 바르게 묶은 것은?",
    opts:["be동사 · 일반동사 · 조동사","명사 · 동사 · 형용사","현재 · 과거 · 미래","주어 · 동사 · 목적어","단수 · 복수 · 소유"], a:0,
-   exp:"동사는 <b>be동사</b>, <b>일반동사</b>, <b>조동사</b> 세 가족입니다. 이 세 가족만 가려낼 수 있으면 영어 문장의 절반은 읽힙니다."},
+   exp:"동사는 <b>be동사</b>, <b>일반동사</b>, <b>조동사</b> 세 가족입니다. 이 세 가족만 구별할 수 있으면 영어 문장의 절반은 읽힙니다."},
 
   {type:"n", tag:"한글로 이해", q:"<b>be동사</b>는 우리말로 어떤 뜻일까요?",
    opts:["~이다, ~있다","먹다, 마시다","~할 수 있다","빠르게, 천천히","그리고, 그러나"], a:0,
@@ -776,7 +776,7 @@ var X1 = [
    opts:["조동사","be동사","일반동사","명사","형용사"], a:0,
    exp:"동사 앞에서 뜻을 보태 주는 말 → <b>조동사</b>"},
 
-  {type:"n", tag:"한글로 이해", q:"조동사를 ‘도우미 동사’라고 부르는 까닭은?",
+  {type:"n", tag:"한글로 이해", q:"동사를 돕는 말을 <b>조동사</b>라고 부르는 까닭은?",
    opts:["다른 동사를 도와 뜻을 더해 주기 때문","문장 끝에 오기 때문","이름을 나타내기 때문","혼자 문장을 만들기 때문","모든 문장에 꼭 있어야 하기 때문"], a:0,
    exp:"조동사는 뒤에 오는 동사를 <b>돕는</b> 말입니다. can swim, will go"},
 
@@ -857,7 +857,7 @@ var X1 = [
 var X2 = [
   {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 be동사를 모두 고르세요. (여러 개)",
    opts:["was","were","is","do","can"], ans:[0,1,2],
-   exp:"do는 일반동사 또는 도우미, can은 조동사입니다."},
+   exp:"do는 일반동사 또는 조동사, can은 조동사입니다."},
 
   {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 일반동사를 모두 고르세요. (여러 개)",
    opts:["read","sleep","have","will","are"], ans:[0,1,2],
@@ -865,7 +865,7 @@ var X2 = [
 
   {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 조동사를 모두 고르세요. (여러 개)",
    opts:["will","should","must","eat","am"], ans:[0,1,2],
-   exp:"eat는 일반동사, am은 be동사입니다."},
+   exp:"eat은 일반동사, am은 be동사입니다."},
 
   {type:"n", tag:"모두 고르기", multi:true, q:"다음 중 be동사의 현재형을 모두 고르세요. (여러 개)",
    opts:["am","is","are","was","were"], ans:[0,1,2],
@@ -1030,7 +1030,7 @@ var X3 = [
 
   {type:"v", tag:"판별", q:"밑줄 친 부분의 쓰임이 나머지와 <b>다른</b> 것은?",
    opts:["I **am going to** the park now.","I **am going to** meet her.","She **is going to** buy a bag.","We **are going to** play soccer.","They **are going to** sing."], a:0,
-   exp:"첫째는 ‘공원에 가는 중이다’(진행), 나머지는 ‘~할 것이다’입니다."}
+   exp:"정답은 ‘공원에 가는 중이다’(진행), 나머지는 ‘~할 것이다’입니다."}
 ];
 
 var X4 = [
@@ -1120,7 +1120,7 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 동사 세 가족", desc:"한글로 이해 12 · 쉬운 영어 8 · be동사 · 일반동사 · 조동사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · 동사 세 가족", desc:"한글로 이해 24 · 쉬운 영어 16 · be동사 · 일반동사 · 조동사 · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 영어로 가리기", desc:"am·is·are·was·were / 일반동사 / can·will·must·may·should · 중1", qs:L2, typeLabels:{n:"모두 고르기",a:"뜻과 모양",v:"문장 속 구별"}},
   3:{name:"Level 3 · 조동사의 다른 옷", desc:"be going to · be able to · have to · has to", qs:L3, typeLabels:{n:"짝 찾기",a:"모양 맞추기",v:"판별"}},
   4:{name:"Level 4 · 동사 총정리", desc:"동사가 무엇인지 · 한글과 영어를 합쳐 아우르기", qs:L4, typeLabels:{n:"동사의 역할",a:"한글·영어 짝",v:"판별·고난도"}}
@@ -1178,7 +1178,7 @@ function learn1(){
 function learn2(){
   return ''+
   '<h2>LEVEL 2 · 영어로 가리기</h2>'+
-  '<p class="lead">이제 우리말이 아니라 <b>영어 단어</b>를 보고 가려냅니다. 외울 것은 생각보다 적습니다. be동사는 다섯 개, 조동사는 다섯 개면 충분합니다.</p>'+
+  '<p class="lead">이제 우리말이 아니라 <b>영어 단어</b>를 보고 구별합니다. 외울 것은 생각보다 적습니다. be동사는 다섯 개, 조동사는 다섯 개면 충분합니다.</p>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>be동사 — 다섯 개가 전부입니다</span>'+
     '<div class="swap"><span>am · is · are</span><span class="ar">과거</span><span class="good">was · were</span></div>'+
@@ -1238,7 +1238,7 @@ function learn3(){
 function learn4(){
   return ''+
   '<h2>LEVEL 4 · 동사 총정리</h2>'+
-  '<p class="lead">마지막입니다. 동사가 <b>무엇인지</b>, 그리고 세 가족을 한글과 영어를 오가며 가려냅니다.</p>'+
+  '<p class="lead">마지막입니다. 동사가 <b>무엇인지</b>, 그리고 세 가족을 한글과 영어를 오가며 구별합니다.</p>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>동사란 무엇인가</span>'+
     '<p>동사는 주어가 <b>무엇을 하는지</b>, 또는 <b>어떠한지</b>를 말해 주는 말입니다. 문장에서 주인 노릇을 하는 동사는 <b>하나</b>이고, 조동사가 붙으면 ‘조동사 + 동사’가 한 덩어리로 그 자리를 맡습니다.</p>'+
@@ -1255,11 +1255,11 @@ function learn4(){
     '<div class="ex">He can <u class="hl v">swims</u>. (✕)<span class="k">조동사 뒤에는 -s를 붙이지 않습니다 → can swim</span></div>'+
     '<div class="ex">She <u class="hl v">isn’t like</u> carrots. (✕)<span class="k">일반동사의 부정은 doesn’t → doesn’t like</span></div>'+
   '</div>'+
-  '<div class="tip"><span class="h">마지막 한마디</span>문장을 만나면 <b>동사부터 찾으세요.</b> 그리고 ‘~이다·~있다’인지, 행동인지, 돕는 말인지 하나만 가려내면 됩니다. 여기까지 오면 8품사 다음 어법의 문이 열립니다.</div>';
+  '<div class="tip"><span class="h">마지막 한마디</span>문장을 만나면 <b>동사부터 찾으세요.</b> 그리고 ‘~이다·~있다’인지, 행동인지, 돕는 말인지 하나만 구별하면 됩니다. 여기까지 오면 8품사 다음 어법의 문이 열립니다.</div>';
 }
 
 var LVCHEER = {
-  1:"동사 세 가족을 우리말로 가려낼 수 있게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
+  1:"동사 세 가족을 우리말로 구별할 수 있게 되었어요. 2단계에서는 영어 단어로 만나 봅니다.",
   2:"be동사 다섯 개, 조동사 다섯 개. 이제 문장을 보면 동사가 먼저 눈에 들어올 거예요.",
   3:"can·will·must가 옷을 갈아입어도 알아보는군요. 마지막 한 단계 남았습니다.",
   4:"동사가 무엇인지 끝까지 해냈습니다. 이제 어떤 문장을 만나도 동사부터 찾을 수 있어요."

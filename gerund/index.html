@@ -451,7 +451,7 @@ var L1 = [
 
   {type:"n", tag:"한글로 이해", multi:true, q:"<b>주어 자리</b>에 있는 ‘~하는 것’을 모두 고르세요. (여러 개)",
    opts:["**걷기**는 건강에 좋다.","**일찍 일어나는 것**은 어렵다.","**영어 배우기**는 재미있다.","나는 **걷기**를 좋아한다.","내 꿈은 **가수가 되는 것**이다."], ans:[0,1,2],
-   exp:"‘~은, ~는’이 붙은 앞 셋이 주어입니다. 넷째는 목적어, 다섯째는 보어입니다."},
+   exp:"‘~은, ~는’이 붙은 셋이 주어입니다. 나머지 둘은 목적어와 보어 자리입니다."},
 
   {type:"n", tag:"한글로 이해", multi:true, q:"동명사에 대한 설명으로 <b>맞는</b> 것을 모두 고르세요. (여러 개)",
    opts:["동사에 -ing를 붙여 만든다","명사처럼 쓰인다","주어 자리에 오면 하나로 센다(단수)","문장의 진짜 동사가 된다","to 뒤에만 쓸 수 있다"], ans:[0,1,2],
@@ -470,7 +470,7 @@ var L1 = [
    exp:"동명사는 <b>-ing</b> 모양입니다. sleep은 원형, went는 과거형입니다."},
 
   {type:"a", tag:"쉬운 영어", q:"두 문장에서 <b>~하는 것</b>(동명사)으로 쓰인 playing은?<br><span class=\"eng\">ⓐ He is playing soccer now.<br>ⓑ His hobby is playing soccer.</span>",
-   opts:["ⓑ","ⓐ","둘 다","둘 다 아니다","알 수 없다"], a:0,
+   opts:["ⓑ","ⓐ","둘 다","둘 다 아니다","ⓐ는 동명사, ⓑ는 진행형이다"], a:0,
    exp:"ⓐ는 ‘지금 <b>하고 있다</b>’(진행형), ⓑ는 ‘축구 <b>하기</b>’(동명사)입니다."},
 
   {type:"a", tag:"쉬운 영어", sent:"I enjoy ___ games.", q:"‘나는 게임하는 것을 즐긴다’가 되도록 알맞은 것은?",
@@ -585,7 +585,7 @@ var L2 = [
 
   {type:"v", tag:"함정", hard:true, q:"밑줄 친 -ing의 쓰임이 <b>나머지와 다른</b> 것은?",
    opts:["She is **singing** now.","**Singing** is fun.","I like **singing**.","My hobby is **singing**.","She is good at **singing**."], a:0, eng:true,
-   exp:"첫째는 ‘지금 노래하고 있다’(진행형)입니다. 나머지는 모두 ‘노래하기’(동명사)입니다."},
+   exp:"정답은 ‘지금 노래하고 있다’(진행형)입니다. 나머지는 모두 ‘노래하기’(동명사)입니다."},
 
   {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">I want ___ a cookie, but I should give up ___ sweets.</span>",
    opts:["to eat – eating","eating – to eat","to eat – to eat","eating – eating","eat – eating"], a:0, eng:true,
@@ -715,7 +715,7 @@ var L4 = [
 
   {type:"n", tag:"쓰임 가리기", hard:true, multi:true, eng:true, q:"밑줄 친 부분이 <b>동명사</b>인 것을 모두 고르세요. (여러 개)",
    opts:["a **waiting** room","**Seeing** is believing.","I'm tired of **waiting**.","The girl **waiting** there is Amy.","She is **waiting** for the bus."], ans:[0,1,2],
-   exp:"대기실(기다리기 위한 방) · 보는 것 · 기다리는 것이 동명사입니다. 뒤의 둘은 ‘기다리고 있는’ 현재분사입니다."},
+   exp:"대기실(기다리기 위한 방) · 보는 것 · 기다리는 것이 동명사입니다. 나머지 둘은 ‘기다리고 있는’ 현재분사입니다."},
 
   {type:"a", tag:"바꿔 쓰기", q:"두 문장의 뜻이 같도록 빈칸에 알맞은 것은?<br><span class=\"eng\">To learn a new language is exciting.<br>= ___ a new language is exciting.</span>",
    opts:["Learning","Learn","Learned","Learns","To learning"], a:0, eng:true,
@@ -1134,7 +1134,7 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 동명사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 동사 + -ing = ~하는 것 · 주어·목적어·보어 자리 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · 동명사가 뭐예요?", desc:"한글로 이해 24 · 쉬운 영어 16 · 동사 + -ing = ~하는 것 · 주어·목적어·보어 자리 · 쉬운 영어 문장 · 초등 고학년도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 넓히기와 함정", desc:"-ing 철자 · 동명사와 짝인 동사 · 전치사 뒤 · 단수 주어 함정", qs:L2, typeLabels:{n:"모양",a:"모두 고르기",v:"함정"}},
   3:{name:"Level 3 · 중2 학교 시험형", desc:"관용 표현 빈칸 · 틀린 곳 고치기 · 대화 완성과 배열", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
   4:{name:"Level 4 · 전 학년 아우르기", desc:"현재분사와 구별 · remember·forget·stop · 바꿔 쓰기", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
@@ -1233,7 +1233,7 @@ function learn3(){
 function learn4(){
   return ''+
   '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
-  '<p class="lead">마지막입니다. 같은 -ing라도 동명사와 현재분사를 가려내고, 뒤에 무엇이 오느냐에 따라 뜻이 바뀌는 동사를 익힙니다.</p>'+
+  '<p class="lead">마지막입니다. 같은 -ing라도 동명사와 현재분사를 구별하고, 뒤에 무엇이 오느냐에 따라 뜻이 바뀌는 동사를 익힙니다.</p>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>동명사와 현재분사</span>'+
     '<div class="swap"><span>a sleeping bag</span><span class="ar">↔</span><span class="good">a sleeping baby</span></div>'+

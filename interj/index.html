@@ -640,7 +640,7 @@ var L3 = [
   {type:"a", tag:"How 감탄문", sent:"How tall ___ !", q:"‘그는 정말 키가 크구나!’가 되도록 알맞은 것은?",
    opts:["he is","is he","he","he tall is","is"], a:0, eng:true,
    ko:"그는 정말 키가 크구나!",
-   exp:"감탄문 끝은 물음처럼 뒤집지 않고 <b>he is</b>입니다."},
+   exp:"감탄문 끝은 물음처럼 아니라고 말하지 않고 <b>he is</b>입니다."},
 
   {type:"a", tag:"How 감탄문", sent:"___ smart she is!", q:"빈칸에 알맞은 것을 고르세요.",
    opts:["How","What","What a","Very","So a"], a:0, eng:true,
@@ -1023,7 +1023,7 @@ var X3 = [
 
   {type:"v", tag:"시험형", q:"빈칸에 들어갈 말이 나머지와 <b>다른</b> 것은?",
    opts:["___ nice your bag is!","___ a nice bag!","___ nice bags!","___ an old car!","___ good news!"], a:0,
-   exp:"첫째는 How, 나머지는 What입니다."},
+   exp:"정답은 How, 나머지는 What입니다."},
 
   {type:"v", tag:"시험형", q:"우리말에 맞게 바르게 쓴 것은?<br><span class=\"eng\">‘그는 정말 빨리 달리는구나!’</span>",
    opts:["How fast he runs!","What fast he runs!","How fast does he run!","How he runs fast!","What a fast he runs!"], a:0, eng:true,
@@ -1119,7 +1119,7 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 느낌을 나타내는 말", desc:"한글로 이해 12 · 쉬운 영어 8 · 놀람 · 기쁨 · 아픔 · 부름 · Wow · Ouch · Oops · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · 느낌을 나타내는 말", desc:"한글로 이해 24 · 쉬운 영어 16 · 놀람 · 기쁨 · 아픔 · 부름 · Wow · Ouch · Oops · 초등도 가능", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 영어로 넓히기", desc:"Wow · Ouch · Oops · Hurray · Oh · Well · Hey 뜻과 쓰임", qs:L2, typeLabels:{n:"뜻",a:"모두 고르기",v:"문장 채우기"}},
   3:{name:"Level 3 · 감탄문 학교 시험형", desc:"What 감탄문 · How 감탄문 · 바꿔 쓰기와 고치기", qs:L3, typeLabels:{n:"What 감탄문",a:"How 감탄문",v:"시험형"}},
   4:{name:"Level 4 · 전 학년 아우르기", desc:"셀 수 없는 명사 · 평서문과 바꾸기 · 상황에 맞는 감탄사", qs:L4, typeLabels:{n:"바꿔 쓰기",a:"상황과 대화",v:"종합"}}
@@ -1235,7 +1235,7 @@ function learn4(){
 var LVCHEER = {
   1:"느낌을 나타내는 말을 한글과 영어로 익혔어요. 2단계에서는 영어로 넓혀 봅니다.",
   2:"Wow · Ouch · Oops를 상황에 맞게 골랐습니다. 3단계는 감탄문 시험형입니다.",
-  3:"What과 How 감탄문을 가려냈어요. 마지막 단계만 남았습니다.",
+  3:"What과 How 감탄문을 구별했어요. 마지막 단계만 남았습니다.",
   4:"감탄사와 감탄문을 모두 해냈습니다. 정말 멋지구나!"
 };
 

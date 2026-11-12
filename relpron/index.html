@@ -586,7 +586,7 @@ var L2 = [
 
   {type:"v", tag:"함정", hard:true, q:"밑줄 친 who의 쓰임이 <b>나머지와 다른</b> 것은?",
    opts:["**Who** is that man?","I know a girl **who** can speak French.","The man **who** called you is my dad.","She has a son **who** is a doctor.","I thanked the boy **who** helped me."], a:0, eng:true,
-   exp:"첫째는 ‘누구’라고 묻는 <b>의문사</b>입니다. 나머지는 앞의 사람을 꾸미는 관계대명사입니다."},
+   exp:"정답은 ‘누구’라고 묻는 <b>의문사</b>입니다. 나머지는 앞의 사람을 꾸미는 관계대명사입니다."},
 
   {type:"v", tag:"함정", hard:true, q:"빈칸에 들어갈 말이 바르게 짝지어진 것은?<br><span class=\"eng\">ⓐ The girl ___ is dancing is my sister.<br>ⓑ The bike ___ I ride every day is old.</span>",
    opts:["who – which","which – who","whose – which","who – whose","what – which"], a:0, eng:true,
@@ -680,7 +680,7 @@ var L3 = [
 
   {type:"v", tag:"문장 잇기와 서술형", hard:true, q:"밑줄 친 what의 쓰임이 <b>나머지와 다른</b> 것은?",
    opts:["**What** is your name?","**What** I want is a rest.","This is **what** I need.","Show me **what** you have.","I believe **what** she said."], a:0, eng:true,
-   exp:"첫째는 ‘무엇’이라고 묻는 <b>의문사</b>입니다. 나머지는 ‘~하는 것’이라는 관계대명사입니다."}
+   exp:"정답은 ‘무엇’이라고 묻는 <b>의문사</b>입니다. 나머지는 ‘~하는 것’이라는 관계대명사입니다."}
 ];
 
 /* ---------- LEVEL 4 : 전 학년 아우르기 20 (쓰임 가리기 7 · 바꿔 쓰기 6 · 종합 7) ---------- */
@@ -753,7 +753,7 @@ var L4 = [
 
   {type:"v", tag:"종합", hard:true, q:"밑줄 친 who의 쓰임이 다음 문장과 <b>같은</b> 것은?<br><span class=\"eng\">I know the boy **who** is dancing.</span>",
    opts:["The woman **who** lives here is kind.","**Who** is dancing?","I wonder **who** he is.","**Who** do you like?","Tell me **who** broke it."], a:0, eng:true,
-   exp:"앞의 사람 명사를 꾸미는 관계대명사는 첫째뿐입니다. 나머지는 ‘누구’라는 의문사입니다."},
+   exp:"앞의 사람 명사를 꾸미는 관계대명사는 하나뿐입니다. 나머지는 ‘누구’라는 의문사입니다."},
 
   {type:"v", tag:"종합", hard:true, q:"다음 문장의 뜻으로 알맞은 것은?<br><span class=\"eng\">I have two sisters, who are teachers.</span>",
    opts:["나는 언니가 둘 있는데, 둘 다 선생님이다.","나는 선생님인 언니가 둘 있다(다른 언니도 더 있을 수 있다).","나는 선생님 두 명을 알고 있다.","선생님인 두 언니가 나를 가르친다.","나는 선생님이 되고 싶은 언니가 둘 있다."], a:0,
@@ -1128,7 +1128,7 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 관계대명사가 뭐예요?", desc:"한글로 이해 12 · 쉬운 영어 8 · 두 문장 잇기 · 선행사 · 사람 who와 사물 which · 쉬운 영어 문장", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · 관계대명사가 뭐예요?", desc:"한글로 이해 24 · 쉬운 영어 16 · 두 문장 잇기 · 선행사 · 사람 who와 사물 which · 쉬운 영어 문장", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 넓히기와 함정", desc:"주격·목적격·소유격 · what · 생략 · 동사 맞추기 함정", qs:L2, typeLabels:{n:"모양",a:"모두 고르기",v:"함정"}},
   3:{name:"Level 3 · 중3 학교 시험형", desc:"계속적 용법 · 전치사 + which · that만 쓰는 경우 · 문장 잇기와 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"문장 잇기와 서술형"}},
   4:{name:"Level 4 · 전 학년 아우르기", desc:"접속사 that과 의문사 구별 · 관계부사 where·when · 바꿔 쓰기", qs:L4, typeLabels:{n:"쓰임 가리기",a:"바꿔 쓰기",v:"종합"}}
@@ -1226,7 +1226,7 @@ function learn3(){
 function learn4(){
   return ''+
   '<h2>LEVEL 4 · 전 학년 아우르기</h2>'+
-  '<p class="lead">마지막입니다. 모양이 같은 that · who · what을 가려내고, 관계부사 where · when과 견주어 봅니다.</p>'+
+  '<p class="lead">마지막입니다. 모양이 같은 that · who · what을 구별하고, 관계부사 where · when과 견주어 봅니다.</p>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>같은 모양, 다른 쓰임</span>'+
     '<div class="swap"><span>I know that you are busy.</span><span class="ar">↔</span><span class="good">the song that I like</span></div>'+
@@ -1252,7 +1252,7 @@ var LVCHEER = {
   1:"두 문장을 하나로 잇는 법을 알게 되었어요. 2단계에서는 주격·목적격·소유격을 가립니다.",
   2:"뒤를 보고 격을 가리는 눈이 생겼습니다. 3단계는 중3 학교 시험형입니다.",
   3:"계속적 용법과 전치사 + which까지 해냈어요. 마지막 단계만 남았습니다.",
-  4:"관계부사까지 가려냈습니다. 관계대명사는 이제 든든합니다!"
+  4:"관계부사까지 구별했습니다. 관계대명사는 이제 든든합니다!"
 };
 
 function renderLearn(){

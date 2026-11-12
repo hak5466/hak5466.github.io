@@ -433,7 +433,7 @@ var L1 = [
    exp:"~하기 위해(목적) · ~해서(감정의 원인) · 자라서 ~가 되다(결과)"},
 
   {type:"n", tag:"한글로 이해", sent:"나는 시험에 붙기 위해 열심히 공부했다.", q:"‘붙기 위해’는 어느 용법일까요?",
-   opts:["부사적 용법 — 목적","명사적 용법","형용사적 용법","to부정사가 아니다","감탄"], a:0,
+   opts:["부사적 용법 — 목적","명사적 용법 — 이름 노릇","형용사적 용법 — 명사를 꾸밈","to부정사가 아니다 — 전치사 to다","감탄 — 느낌을 말함"], a:0,
    exp:"왜 공부했는지 <b>목적</b>을 말하는 부사적 용법입니다."},
 
   {type:"n", tag:"한글로 이해", sent:"나는 그 소식을 들어서 기뻤다.", q:"‘들어서’가 나타내는 것은?",
@@ -943,7 +943,7 @@ var X4 = [
    exp:"too ~ <b>for</b> + 의미상 주어 + to부정사"},
 
   {type:"n", tag:"의미상의 주어", q:"다음 문장에서 to solve를 하는 사람은?<br><span class=\"eng\">It is hard for Tom to solve the problem.</span>",
-   opts:["Tom","It","the problem","hard","알 수 없다"], a:0, eng:true,
+   opts:["Tom","It","the problem","hard","말하는 사람(I)"], a:0, eng:true,
    exp:"for Tom이 to solve의 <b>의미상의 주어</b>입니다."},
 
   {type:"a", tag:"의문사 + to부정사", sent:"She taught me how ___ a kite.", q:"빈칸에 알맞은 것을 고르세요.",
@@ -1007,7 +1007,7 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1 = mergeByType(L1, X1); L2 = mergeByType(L2, X2); L3 = mergeByType(L3, X3); L4 = mergeByType(L4, X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · to부정사 세 가지 쓰임", desc:"한글로 이해 12 · 쉬운 영어 8 · 명사적 · 형용사적 · 부사적 용법 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
+  1:{name:"Level 1 · to부정사 세 가지 쓰임", desc:"한글로 이해 24 · 쉬운 영어 16 · 명사적 · 형용사적 · 부사적 용법 · 중2", qs:L1, typeLabels:{n:"한글로 이해",a:"쉬운 영어"}},
   2:{name:"Level 2 · 넓히기와 함정", desc:"세 가지 용법 기본기 · 명사적 7 · 형용사적 7 · 부사적 6", qs:L2, typeLabels:{n:"명사적",a:"형용사적",v:"부사적"}},
   3:{name:"Level 3 · 중2 학교 시험형", desc:"목적격보어 · 가목적어 · 전치사가 붙는 to부정사 · be to · 결과와 판단", qs:L3, typeLabels:{n:"목적어·보어·가주어",a:"형용사적 심화",v:"부사적 심화"}},
   4:{name:"Level 4 · 전 학년 아우르기", desc:"의미상의 주어 for와 of · 의문사 + to부정사 · 심화 종합 · 중3", qs:L4, typeLabels:{n:"의미상의 주어",a:"의문사 + to부정사",v:"심화 종합"}}
@@ -1156,7 +1156,7 @@ function learn4(){
 }
 
 var LVCHEER = {
-  1:"세 가지 용법을 한글과 영어로 가려냈어요. 2단계에서는 용법마다 넓혀 봅니다.",
+  1:"세 가지 용법을 한글과 영어로 구별했어요. 2단계에서는 용법마다 넓혀 봅니다.",
   2:"명사적 · 형용사적 · 부사적 용법의 기본기를 다졌습니다. 3단계는 중2 학교 시험형입니다.",
   3:"목적격보어와 be to까지 해냈어요. 마지막 단계만 남았습니다.",
   4:"의미상의 주어와 의문사 + to부정사까지 끝냈습니다. to부정사는 이제 든든합니다!"

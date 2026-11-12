@@ -418,7 +418,7 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 /* ---------- LEVEL 1 : 한글로 두 동사 가리기 (한글만) ---------- */
 var L1 = [
   {type:"n", tag:"두 동사가 뭐예요", q:"문장에서 <b>동사</b>는 무엇을 말해 주는 말일까요?",
-   opts:["주어가 무엇인지 · 어떠한지 · 무엇을 하는지","주어의 이름","문장의 길이","낱말의 수","아무것도 말해 주지 않는다"], a:0,
+   opts:["주어가 무엇인지 · 어떠한지 · 무엇을 하는지","주어의 이름","문장의 길이","낱말의 수","누가 듣는 사람인지"], a:0,
    exp:"‘나는 <b>학생이다</b>’, ‘나는 <b>달린다</b>’처럼 주어에 대해 말해 주는 말이 동사입니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"영어의 동사는 크게 <b>몇 가지</b>로 나뉠까요?",
@@ -426,23 +426,23 @@ var L1 = [
    exp:"be동사만 따로 떼어 놓고, <b>나머지 전부</b>를 일반동사라고 부릅니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"be동사가 나타내는 뜻 <b>첫째</b>는 무엇일까요?",
-   opts:["~이다 — 나는 학생이다","~먹다","~달리다","~좋아하다","뜻이 없다"], a:0,
+   opts:["~이다 — 나는 학생이다","~먹다 — 나는 밥을 먹는다","~달리다 — 나는 빨리 달린다","~좋아하다 — 나는 책을 좋아한다","~가다 — 나는 학교에 간다"], a:0,
    exp:"‘A는 B다’처럼 <b>같다</b>고 이어 주는 말입니다. 주어와 뒤의 말을 등호로 묶어 줍니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"be동사가 나타내는 뜻 <b>둘째</b>는 무엇일까요?",
-   opts:["~에 있다 — 나는 교실에 있다","~간다","~안다","~원한다","둘째는 없다"], a:0,
+   opts:["~에 있다 — 나는 교실에 있다","~에 간다 — 나는 교실에 간다","~을 안다 — 나는 교실을 안다","~을 원한다 — 나는 물을 원한다","~을 가지고 있다 — 나는 책을 가지고 있다"], a:0,
    exp:"<b>자리</b>를 말해 줍니다. ‘이다’와 ‘있다’, 이 둘이 be동사의 두 얼굴입니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"<b>일반동사</b>는 무엇을 나타낼까요?",
-   opts:["주어가 하는 일 — 먹는다 · 간다 · 좋아한다","주어의 이름","자리만","때만","아무것도 아니다"], a:0,
+   opts:["주어가 하는 일 — 먹는다 · 간다 · 좋아한다","주어의 이름 — 학생 · 의사 · 민수","주어가 있는 자리 — 위 · 안 · 옆","일이 일어난 때 — 어제 · 오늘 · 내일","주어의 생김새 — 큰 · 작은 · 예쁜"], a:0,
    exp:"몸으로 하든 마음으로 하든 <b>주어가 하는 일</b>이면 모두 일반동사입니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"‘나는 <b>학생이다</b>’에서 동사는 어느 쪽일까요?",
-   opts:["be동사 — ‘이다’","일반동사","둘 다 아니다","이름","느낌표"], a:0,
+   opts:["be동사 — ‘이다’","일반동사 — ‘이다’","일반동사 — ‘학생’","조동사 — ‘이다’","명사 — ‘학생’"], a:0,
    exp:"끝이 ‘이다’로 끝납니다. 주어와 ‘학생’을 같다고 묶어 주므로 be동사입니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"‘나는 밥을 <b>먹는다</b>’에서 동사는 어느 쪽일까요?",
-   opts:["일반동사 — ‘먹는다’","be동사","둘 다","동사가 없다","이름"], a:0,
+   opts:["일반동사 — ‘먹는다’","be동사 — ‘먹는다’","be동사 — ‘밥을’","조동사 — ‘먹는다’","명사 — ‘밥’"], a:0,
    exp:"하는 일을 말합니다. ‘이다 · 있다’가 아니므로 일반동사입니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"한 문장에 <b>진짜 동사</b>는 몇 개가 올까요?",
@@ -450,133 +450,133 @@ var L1 = [
    exp:"그래서 be동사 자리에 일반동사가 오면 be동사는 올 수 없습니다. 자리가 하나뿐입니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"be동사와 일반동사를 <b>나란히</b> 쓸 수 있을까요?",
-   opts:["쓸 수 없다 — 동사 자리는 하나뿐이다","언제나 쓸 수 있다","짧으면 쓸 수 있다","뜻이 비슷하면 쓸 수 있다","둘 다 꼭 써야 한다"], a:0,
+   opts:["쓸 수 없다 — 동사 자리는 하나뿐이다","쓸 수 있다 — 동사는 많을수록 좋다","쓸 수 있다 — 짧은 동사끼리는 괜찮다","쓸 수 있다 — 뜻이 비슷하면 괜찮다","꼭 써야 한다 — be동사가 늘 앞에 선다"], a:0,
    exp:"‘나는 축구를 한다’는 한다(play)가 동사입니다. 여기에 ‘이다’를 더 넣을 자리가 없습니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", q:"우리말만 보고 두 동사를 가르는 <b>기준</b>은 무엇일까요?",
-   opts:["끝이 ‘이다 · 있다’면 be동사, 나머지는 일반동사","낱말의 길이","문장의 길이","주어의 이름","가를 수 없다"], a:0,
+   opts:["끝이 ‘이다 · 있다’면 be동사, 나머지는 일반동사","끝이 ‘한다’면 be동사, 나머지는 일반동사","낱말이 길면 be동사, 짧으면 일반동사","주어가 사람이면 be동사, 물건이면 일반동사","문장이 길면 일반동사, 짧으면 be동사"], a:0,
    exp:"우리말 문장의 <b>끝</b>을 보면 거의 다 가려집니다. 이 한 줄이 이 게임의 뼈대입니다."},
 
   {type:"n", tag:"두 동사가 뭐예요", hard:true, q:"‘나는 열쇠를 <b>가지고 있다</b>’는 어느 쪽일까요?",
-   opts:["일반동사 — 가진 것을 말한다","be동사 — ‘있다’로 끝난다","둘 다","동사가 없다","알 수 없다"], a:0,
+   opts:["일반동사 — 가진 것을 말한다","be동사 — ‘있다’로 끝난다","be동사 — 열쇠가 있는 자리를 말한다","be동사 — 나 = 열쇠이다","조동사 — 동사를 도와준다"], a:0,
    exp:"‘있다’로 끝나지만 <b>가진 것</b>을 말하므로 일반동사(have)입니다. 가장 많이 틀리는 곳입니다."},
 
-  {type:"n", tag:"두 동사가 뭐예요", hard:true, q:"‘나는 선생님이 <b>된다</b>’는 어느 쪽일까요?",
-   opts:["be동사 — ‘~이 되다’도 be동사 쪽이다","일반동사","둘 다 아니다","이름","때"], a:0,
-   exp:"‘되다’는 ‘이다’의 식구입니다. 주어와 뒤의 말을 묶어 주므로 be동사(become · be)로 갑니다."},
+  {type:"n", tag:"두 동사가 뭐예요", hard:true, q:"‘나는 선생님이 <b>될 것이다</b>’는 어느 쪽일까요?",
+   opts:["be동사 — 앞으로 ‘~이다’가 되는 일이다","일반동사 — 되는 일을 한다","조동사 — will만 있으면 된다","이름 — 선생님","때 — 앞으로"], a:0,
+   exp:"‘~일 것이다’는 ‘이다’의 미래입니다. I will <b>be</b> a teacher.처럼 will 뒤에 be가 옵니다."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘나는 <b>행복하다</b>’는 어느 동사로 말할까요?",
-   opts:["be동사","일반동사","둘 다","동사가 없다","이름"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘나는 <b>행복하다</b>’는 어느 동사로 말할까요?",
+   opts:["be동사","일반동사","조동사 do","조동사 will","동사 없이 happy만 쓴다"], a:0,
    exp:"‘어떠하다’는 ‘이다’ 쪽입니다. I am happy.처럼 be동사를 씁니다."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘그는 공원에 <b>간다</b>’는 어느 동사로 말할까요?",
-   opts:["일반동사","be동사","둘 다","동사가 없다","자리를 말하니 be동사"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘그는 공원에 <b>간다</b>’는 어느 동사로 말할까요?",
+   opts:["일반동사","be동사","조동사 will","조동사 do","자리를 말하니 be동사"], a:0,
    exp:"자리가 나와도 <b>가는 일</b>을 말하므로 일반동사(go)입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘책이 책상 위에 <b>있다</b>’는 어느 동사로 말할까요?",
-   opts:["be동사","일반동사","둘 다","동사가 없다","이름"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘책이 책상 위에 <b>있다</b>’는 어느 동사로 말할까요?",
+   opts:["be동사","일반동사","조동사 do","조동사 will","일반동사 have"], a:0,
    exp:"<b>어디에 있는지</b>를 말하므로 be동사입니다. The book is on the desk."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘그녀는 영어를 <b>안다</b>’는 어느 동사로 말할까요?",
-   opts:["일반동사","be동사","둘 다","동사가 없다","알 수 없다"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘그녀는 영어를 <b>안다</b>’는 어느 동사로 말할까요?",
+   opts:["일반동사","be동사","조동사 do","조동사 will","동사 없이 English만 쓴다"], a:0,
    exp:"움직이지 않아도 주어가 하는 일입니다. 일반동사(know)입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", multi:true, q:"<b>be동사</b>로 말하는 문장을 모두 고르세요. (여러 개)",
+  {type:"a", tag:"문장에서 구별하기", multi:true, q:"<b>be동사</b>로 말하는 문장을 모두 고르세요. (여러 개)",
    opts:["나는 학생이다","그는 교실에 있다","나는 밥을 먹는다","그녀는 학교에 간다","그는 축구를 좋아한다"], ans:[0,1],
    exp:"끝이 ‘이다 · 있다’인 둘만 be동사입니다. 나머지 셋은 하는 일을 말합니다."},
 
-  {type:"a", tag:"문장에서 가려내기", multi:true, q:"<b>일반동사</b>로 말하는 문장을 모두 고르세요. (여러 개)",
+  {type:"a", tag:"문장에서 구별하기", multi:true, q:"<b>일반동사</b>로 말하는 문장을 모두 고르세요. (여러 개)",
    opts:["나는 빵을 먹는다","그는 영어를 배운다","그녀는 사과를 좋아한다","나는 학생이다","책이 가방 안에 있다"], ans:[0,1,2],
-   exp:"앞의 셋은 하는 일입니다. 뒤의 둘은 ‘이다 · 있다’이므로 be동사입니다."},
+   exp:"고른 셋은 하는 일입니다. 나머지 둘은 ‘이다 · 있다’이므로 be동사입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘나는 선생님이 <b>된다</b>’는 어느 동사로 말할까요?",
-   opts:["be동사","일반동사","둘 다","동사가 없다","이름"], a:0,
-   exp:"‘되다’는 ‘이다’의 식구입니다. 주어와 뒤의 말을 묶어 주므로 be동사 쪽입니다."},
+  {type:"a", tag:"문장에서 구별하기", q:"‘나는 선생님이 <b>될 것이다</b>’는 어느 동사로 말할까요?",
+   opts:["be동사 — will be","일반동사 — will go","일반동사 — will do","일반동사 — will have","조동사 — will만 쓴다"], a:0,
+   exp:"‘~일 것이다’는 ‘이다’의 미래입니다. I will <b>be</b> a teacher.처럼 말합니다."},
 
-  {type:"a", tag:"문장에서 가려내기", hard:true, q:"‘나는 축구를 한다’에 be동사를 <b>함께</b> 쓰지 않는 까닭은?",
+  {type:"a", tag:"문장에서 구별하기", hard:true, q:"‘나는 축구를 한다’에 be동사를 <b>함께</b> 쓰지 않는 까닭은?",
    opts:["동사 자리는 하나뿐인데 ‘한다(play)’가 이미 차지했기 때문","축구가 짧은 말이기 때문","be동사가 어렵기 때문","주어가 ‘나’이기 때문","함께 써도 된다"], a:0,
    exp:"I am play soccer.(✕) 동사가 둘이 되어 틀립니다. I play soccer.가 바릅니다."}
 ];
 
 var X1 = [
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"‘나는 <b>학생이다</b>’를 아니라고 뒤집으면?",
-   opts:["나는 학생이 아니다","나는 학생을 않는다","나는 학생이니","나는 학생이었다","뒤집을 수 없다"], a:0,
-   exp:"be동사 문장은 ‘~이 <b>아니다</b>’로 뒤집습니다."},
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"‘나는 <b>학생이다</b>’를 아니라고 말하면(부정문으로 바꾸면)?",
+   opts:["나는 학생이 아니다","나는 학생을 않는다","나는 학생이니","나는 학생이었다","나는 학생이 아니었다"], a:0,
+   exp:"be동사 문장은 ‘~이 <b>아니다</b>’로 아니라고 말합니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"‘나는 밥을 <b>먹는다</b>’를 아니라고 뒤집으면?",
-   opts:["나는 밥을 먹지 않는다","나는 밥이 아니다","나는 밥을 먹니","나는 밥을 먹었다","뒤집을 수 없다"], a:0,
-   exp:"일반동사 문장은 ‘~하지 <b>않는다</b>’로 뒤집습니다."},
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"‘나는 밥을 <b>먹는다</b>’를 아니라고 말하면(부정문으로 바꾸면)?",
+   opts:["나는 밥을 먹지 않는다","나는 밥이 아니다","나는 밥을 먹니","나는 밥을 먹었다","나는 밥을 먹지 않았다"], a:0,
+   exp:"일반동사 문장은 ‘~하지 <b>않는다</b>’로 아니라고 말합니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"두 부정의 <b>다른 점</b>은 무엇일까요?",
-   opts:["be동사는 ‘아니다’, 일반동사는 ‘않는다’","길이가 다르다","뜻이 같다","다른 점이 없다","주어가 다르다"], a:0,
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"두 부정의 <b>다른 점</b>은 무엇일까요?",
+   opts:["be동사는 ‘아니다’, 일반동사는 ‘않는다’","be동사는 ‘않는다’, 일반동사는 ‘아니다’","be동사는 ‘아니다’, 일반동사는 ‘아니니’","be동사는 ‘없다’, 일반동사는 ‘있다’","be동사는 ‘않았다’, 일반동사는 ‘않는다’"], a:0,
    exp:"우리말에서 벌써 갈라집니다. 영어에서도 not과 don’t로 갈라집니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"‘너는 <b>학생이다</b>’를 물음으로 바꾸면?",
-   opts:["너는 학생이니?","너는 학생이 아니다","너는 학생을 하니?","너는 학생이었니?","바꿀 수 없다"], a:0,
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"‘너는 <b>학생이다</b>’를 물음으로 바꾸면?",
+   opts:["너는 학생이니?","너는 학생이 아니다","너는 학생을 하니?","너는 학생이었니?","너는 학생일 것이다"], a:0,
    exp:"‘~이니?’로 끝나면 be동사로 묻는 문장입니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"‘너는 밥을 <b>먹는다</b>’를 물음으로 바꾸면?",
-   opts:["너는 밥을 먹니?","너는 밥이니?","너는 밥을 먹지 않는다","너는 밥을 먹었니?","바꿀 수 없다"], a:0,
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"‘너는 밥을 <b>먹는다</b>’를 물음으로 바꾸면?",
+   opts:["너는 밥을 먹니?","너는 밥이니?","너는 밥을 먹지 않는다","너는 밥을 먹었니?","너는 밥을 먹을 것이다"], a:0,
    exp:"‘~하니?’로 끝나면 일반동사로 묻는 문장입니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"영어에서 <b>be동사 문장</b>을 뒤집을 때는 어떻게 할까요?",
-   opts:["be동사 바로 뒤에 not을 넣는다","앞에 don’t를 넣는다","동사를 지운다","맨 뒤에 not을 넣는다","뒤집을 수 없다"], a:0,
-   exp:"I am <b>not</b> a student. 도우미가 따로 필요 없습니다."},
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"영어에서 <b>be동사 문장</b>을 아니라고 말할 때는 어떻게 할까요?",
+   opts:["be동사 바로 뒤에 not을 넣는다","앞에 don’t를 넣는다","동사를 지운다","맨 뒤에 not을 넣는다","be동사 앞에 not을 넣는다"], a:0,
+   exp:"I am <b>not</b> a student. 조동사가 따로 필요 없습니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"영어에서 <b>일반동사 문장</b>을 뒤집을 때는 어떻게 할까요?",
-   opts:["동사 앞에 don’t · doesn’t를 넣는다","동사 뒤에 not을 넣는다","동사를 지운다","be동사를 넣는다","뒤집을 수 없다"], a:0,
-   exp:"I <b>don’t</b> like it. 일반동사는 혼자 뒤집지 못해 도우미를 부릅니다."},
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"영어에서 <b>일반동사 문장</b>을 아니라고 말할 때는 어떻게 할까요?",
+   opts:["동사 앞에 don’t · doesn’t를 넣는다","동사 뒤에 not을 넣는다","동사를 지운다","be동사를 넣는다","동사 앞에 not만 넣는다"], a:0,
+   exp:"I <b>don’t</b> like it. 일반동사는 혼자 아니라고 말하지 못해 조동사를 부릅니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"영어에서 <b>be동사 문장</b>으로 물을 때는 어떻게 할까요?",
-   opts:["be동사를 맨 앞으로 보낸다","Do를 맨 앞에 둔다","물음표만 붙인다","동사를 지운다","물을 수 없다"], a:0,
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"영어에서 <b>be동사 문장</b>으로 물을 때는 어떻게 할까요?",
+   opts:["be동사를 맨 앞으로 보낸다","Do를 맨 앞에 둔다","물음표만 붙인다","동사를 지운다","be동사를 맨 뒤로 보낸다"], a:0,
    exp:"You are ~ → <b>Are</b> you ~ ? 자리만 바꾸면 됩니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"영어에서 <b>일반동사 문장</b>으로 물을 때는 어떻게 할까요?",
-   opts:["Do · Does를 맨 앞에 세운다","동사를 맨 앞으로 보낸다","물음표만 붙인다","be동사를 맨 앞에 둔다","물을 수 없다"], a:0,
-   exp:"You like ~ → <b>Do</b> you like ~ ? 도우미가 앞에 나와 줍니다."},
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"영어에서 <b>일반동사 문장</b>으로 물을 때는 어떻게 할까요?",
+   opts:["Do · Does를 맨 앞에 세운다","동사를 맨 앞으로 보낸다","물음표만 붙인다","be동사를 맨 앞에 둔다","Do · Does를 맨 뒤에 붙인다"], a:0,
+   exp:"You like ~ → <b>Do</b> you like ~ ? 조동사가 앞에 나와 줍니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"도우미 <b>do · does</b>는 어떤 문장에만 올까요?",
-   opts:["일반동사 문장","be동사 문장","모든 문장","이름이 있는 문장","아무 데나"], a:0,
-   exp:"be동사는 혼자서도 뒤집고 물을 수 있어 도우미를 부르지 않습니다."},
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"조동사 <b>do · does</b>는 어떤 문장에만 올까요?",
+   opts:["일반동사 문장","be동사 문장","모든 문장","이름이 있는 문장","will이 있는 문장"], a:0,
+   exp:"be동사는 혼자서도 아니라고 말하고 물을 수 있어 조동사를 부르지 않습니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", q:"주어가 <b>3인칭 단수</b>일 때 도우미는 무엇일까요?",
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", q:"주어가 <b>3인칭 단수</b>일 때 조동사는 무엇일까요?",
    opts:["does","do","am","are","be"], a:0,
    exp:"He · She · It, 사람 이름 하나처럼 하나짜리 남의 이야기일 때 does입니다."},
 
-  {type:"n", tag:"한글로 뒤집고 묻기", hard:true, q:"도우미 뒤에 오는 동사는 어떤 모양일까요?",
-   opts:["동사원형 — s도 ed도 붙이지 않는다","s를 붙인 모양","ing 모양","be동사","아무 모양이나"], a:0,
+  {type:"n", tag:"아니라고 말하고 묻기(부정문·의문문)", hard:true, q:"조동사 뒤에 오는 동사는 어떤 모양일까요?",
+   opts:["동사원형 — s도 ed도 붙이지 않는다","s를 붙인 모양 — likes","ing를 붙인 모양 — liking","ed를 붙인 모양 — liked","be동사 — is · are"], a:0,
    exp:"Does he <b>like</b> ~ ? s는 does가 이미 가져갔습니다. 시험에 가장 많이 나오는 함정입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘그는 <b>친절하다</b>’는 무엇으로 뒤집을까요?",
-   opts:["be동사에 not","doesn’t","don’t","didn’t","뒤집을 수 없다"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘그는 <b>친절하다</b>’를 아니라고 말할 때 쓰는 것은?",
+   opts:["be동사에 not","doesn’t","don’t","didn’t","not만 쓴다"], a:0,
    exp:"‘어떠하다’는 be동사입니다. He is <b>not</b> kind."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘그는 축구를 <b>좋아한다</b>’는 무엇으로 뒤집을까요?",
-   opts:["doesn’t","isn’t","aren’t","am not","뒤집을 수 없다"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘그는 축구를 <b>좋아한다</b>’를 아니라고 말할 때 쓰는 것은?",
+   opts:["doesn’t","isn’t","aren’t","am not","don’t"], a:0,
    exp:"일반동사이고 주어가 3인칭 단수이므로 <b>doesn’t</b>입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", multi:true, q:"도우미 <b>do · does</b>가 필요한 문장을 모두 고르세요. (여러 개)",
+  {type:"a", tag:"문장에서 구별하기", multi:true, q:"조동사 <b>do · does</b>가 필요한 문장을 모두 고르세요. (여러 개)",
    opts:["나는 빵을 먹는다","그는 영어를 배운다","그녀는 사과를 좋아한다","나는 학생이다","그는 교실에 있다"], ans:[0,1,2],
-   exp:"일반동사 문장만 도우미를 부릅니다. 뒤의 둘은 be동사라 혼자 합니다."},
+   exp:"일반동사 문장만 조동사를 부릅니다. 나머지 둘은 be동사라 혼자 합니다."},
 
-  {type:"a", tag:"문장에서 가려내기", multi:true, q:"<b>be동사</b>만으로 뒤집고 물을 수 있는 문장을 모두 고르세요. (여러 개)",
+  {type:"a", tag:"문장에서 구별하기", multi:true, q:"<b>be동사</b>만으로 아니라고 말하고 물을 수 있는 문장을 모두 고르세요. (여러 개)",
    opts:["나는 행복하다","책이 가방 안에 있다","그는 의사다","나는 빵을 먹는다","그녀는 학교에 간다"], ans:[0,1,2],
    exp:"‘이다 · 있다 · 어떠하다’ 셋은 be동사입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘우리는 교실에 <b>있다</b>’는 무엇으로 물을까요?",
-   opts:["Are","Do","Does","Is","물을 수 없다"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘우리는 교실에 <b>있다</b>’는 무엇으로 물을까요?",
+   opts:["Are","Do","Does","Is","Am"], a:0,
    exp:"be동사 문장이고 주어가 여럿이므로 <b>Are</b> we ~ ?입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", q:"‘우리는 영어를 <b>배운다</b>’는 무엇으로 물을까요?",
-   opts:["Do","Are","Is","Does","물을 수 없다"], a:0,
+  {type:"a", tag:"문장에서 구별하기", q:"‘우리는 영어를 <b>배운다</b>’는 무엇으로 물을까요?",
+   opts:["Do","Are","Is","Does","Am"], a:0,
    exp:"일반동사 문장이고 주어가 여럿이므로 <b>Do</b> we ~ ?입니다."},
 
-  {type:"a", tag:"문장에서 가려내기", hard:true, q:"‘나는 열쇠를 <b>가지고 있다</b>’는 무엇으로 뒤집을까요?",
-   opts:["don’t — 일반동사 have이기 때문","am not — ‘있다’이기 때문","isn’t","aren’t","뒤집을 수 없다"], a:0,
+  {type:"a", tag:"문장에서 구별하기", hard:true, q:"‘나는 열쇠를 <b>가지고 있다</b>’를 아니라고 말할 때 쓰는 것은?",
+   opts:["don’t — 일반동사 have이기 때문","am not — ‘있다’이기 때문","isn’t — be동사 문장이기 때문","doesn’t — 일반동사 have이기 때문","aren’t — 주어가 하나이기 때문"], a:0,
    exp:"‘있다’로 끝나지만 가진 것을 말하므로 have입니다. I <b>don’t</b> have a key."},
 
-  {type:"a", tag:"문장에서 가려내기", hard:true, q:"‘그는 선생님이 <b>된다</b>’는 무엇으로 말할까요?",
-   opts:["be동사 쪽 — ‘이다’의 식구","일반동사 쪽","둘 다 아니다","이름","알 수 없다"], a:0,
+  {type:"a", tag:"문장에서 구별하기", hard:true, q:"‘그는 선생님이 <b>된다</b>’는 무엇으로 말할까요?",
+   opts:["be동사 쪽 — ‘이다’의 식구","일반동사 쪽 — ‘한다’의 식구","조동사 쪽 — 동사를 돕는 식구","이름 쪽 — 명사의 식구","꾸미는 말 쪽 — 형용사의 식구"], a:0,
    exp:"주어와 뒤의 말을 묶어 주므로 be동사 쪽입니다. He <b>is</b> a teacher.처럼 말합니다."}
 ];
 
@@ -608,7 +608,7 @@ var L2 = [
 
   {type:"n", tag:"모양 만들기", q:"‘나는 사과를 좋아하지 않는다’가 되도록 알맞은 것은?", sent:"I ___ apples.", ko:"나는 사과를 좋아하지 않는다.",
    opts:["don’t like","am not like","doesn’t like","not like","don’t likes"], a:0,
-   exp:"일반동사 문장은 도우미 don’t를 동사 앞에 둡니다."},
+   exp:"일반동사 문장은 조동사 don’t를 동사 앞에 둡니다."},
 
   {type:"n", tag:"모양 만들기", q:"‘그는 사과를 좋아하지 않는다’가 되도록 알맞은 것은?", sent:"He ___ apples.", ko:"그는 사과를 좋아하지 않는다.",
    opts:["doesn’t like","don’t like","isn’t like","doesn’t likes","not likes"], a:0,
@@ -620,7 +620,7 @@ var L2 = [
 
   {type:"n", tag:"모양 만들기", q:"‘너는 사과를 좋아하니?’가 되도록 알맞은 것은?", sent:"___ you like apples?", ko:"너는 사과를 좋아하니?",
    opts:["Do","Are","Is","Does","Am"], a:0,
-   exp:"일반동사 문장은 도우미 Do를 맨 앞에 세웁니다."},
+   exp:"일반동사 문장은 조동사 Do를 맨 앞에 세웁니다."},
 
   {type:"n", tag:"모양 만들기", q:"‘그는 사과를 좋아하니?’가 되도록 알맞은 것은?", sent:"___ he like apples?", ko:"그는 사과를 좋아하니?",
    opts:["Does","Do","Is","Are","Am"], a:0,
@@ -628,7 +628,7 @@ var L2 = [
 
   {type:"n", tag:"모양 만들기", q:"‘그는 행복하니?’가 되도록 알맞은 것은?", sent:"___ he happy?", ko:"그는 행복하니?",
    opts:["Is","Does","Do","Are","Am"], a:0,
-   exp:"‘어떠하니’는 be동사입니다. 도우미를 부르지 않습니다."},
+   exp:"‘어떠하니’는 be동사입니다. 조동사를 부르지 않습니다."},
 
   {type:"a", tag:"모두 고르기", multi:true, q:"어법에 맞는 <b>be동사</b> 문장을 모두 고르세요. (여러 개)",
    opts:["I am happy.","She is a nurse.","They are students.","He are kind.","I is a student."], ans:[0,1,2],
@@ -647,19 +647,19 @@ var L2 = [
    exp:"하나짜리 남의 이야기에는 is, 여럿에는 are입니다."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>I am not like it.</b> 은 왜 틀렸을까요?",
-   opts:["동사 자리에 am과 like가 겹쳤기 때문","not의 자리가 틀렸기 때문","it이 틀렸기 때문","틀리지 않았다","I가 틀렸기 때문"], a:0,
+   opts:["동사 자리에 am과 like가 겹쳤기 때문","not의 자리가 틀렸기 때문","it이 틀렸기 때문","like에 s를 붙이지 않았기 때문","I가 틀렸기 때문"], a:0,
    exp:"동사 자리는 하나입니다. I <b>don’t</b> like it.이 바릅니다."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>I don’t am happy.</b> 는 왜 틀렸을까요?",
-   opts:["be동사 문장에 도우미를 불렀기 때문","happy가 틀렸기 때문","don’t가 짧기 때문","틀리지 않았다","I가 틀렸기 때문"], a:0,
-   exp:"be동사는 혼자 뒤집습니다. I am <b>not</b> happy.가 바릅니다."},
+   opts:["be동사 문장에 조동사를 불렀기 때문","happy가 틀렸기 때문","don’t가 짧기 때문","don’t를 doesn’t로 써야 하기 때문","I가 틀렸기 때문"], a:0,
+   exp:"be동사는 혼자 아니라고 말합니다. I am <b>not</b> happy.가 바릅니다."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>He is likes soccer.</b> 는 왜 틀렸을까요?",
-   opts:["be동사와 일반동사를 나란히 썼기 때문","soccer가 틀렸기 때문","s를 붙여서 틀렸기 때문","틀리지 않았다","He가 틀렸기 때문"], a:0,
+   opts:["be동사와 일반동사를 나란히 썼기 때문","soccer가 틀렸기 때문","s를 붙여서 틀렸기 때문","is를 are로 써야 하기 때문","He가 틀렸기 때문"], a:0,
    exp:"He <b>likes</b> soccer.처럼 일반동사 하나만 씁니다."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>Do you are a student?</b> 는 왜 틀렸을까요?",
-   opts:["be동사 문장인데 Do를 불렀기 때문","you가 틀렸기 때문","물음표가 틀렸기 때문","틀리지 않았다","a가 빠졌기 때문"], a:0,
+   opts:["be동사 문장인데 Do를 불렀기 때문","you가 틀렸기 때문","물음표가 틀렸기 때문","Do를 Does로 써야 하기 때문","a가 빠졌기 때문"], a:0,
    exp:"<b>Are</b> you a student?가 바릅니다. be동사는 혼자 앞으로 갑니다."}
 ];
 
@@ -677,7 +677,7 @@ var X2 = [
    exp:"3인칭 단수이므로 <b>eats</b>입니다."},
 
   {type:"n", tag:"모양 만들기", q:"go에 s가 아니라 <b>es</b>가 붙는 까닭은?",
-   opts:["o로 끝나는 동사이기 때문","긴 동사이기 때문","주어가 여럿이기 때문","뜻이 특별하기 때문","까닭이 없다"], a:0,
+   opts:["o로 끝나는 동사이기 때문","긴 동사이기 때문","주어가 여럿이기 때문","뜻이 특별하기 때문","지난 일을 말하기 때문"], a:0,
    exp:"o · s · x · ch · sh로 끝나면 es를 붙입니다. go → goes, wash → washes."},
 
   {type:"n", tag:"모양 만들기", q:"‘그녀는 학교에 가지 않는다’가 되도록 알맞은 것은?", sent:"She ___ to school.", ko:"그녀는 학교에 가지 않는다.",
@@ -697,11 +697,11 @@ var X2 = [
    exp:"주어가 여럿인 일반동사 문장이므로 don’t + 동사원형입니다."},
 
   {type:"n", tag:"모양 만들기", q:"<b>don’t</b>와 <b>doesn’t</b>는 무엇을 보고 고를까요?",
-   opts:["주어가 3인칭 단수인지 아닌지","동사의 길이","문장의 길이","뜻","아무거나 쓴다"], a:0,
+   opts:["주어가 3인칭 단수인지 아닌지","동사의 길이","문장의 길이","뜻","주어가 사람인지 물건인지"], a:0,
    exp:"He · She · It, 이름 하나이면 doesn’t, 나머지는 don’t입니다."},
 
   {type:"n", tag:"모양 만들기", q:"<b>is</b>와 <b>are</b>는 무엇을 보고 고를까요?",
-   opts:["주어가 하나인지 여럿인지","동사의 길이","문장의 길이","뜻","아무거나 쓴다"], a:0,
+   opts:["주어가 하나인지 여럿인지","동사의 길이","문장의 길이","뜻","주어가 사람인지 물건인지"], a:0,
    exp:"하나짜리 남의 이야기에는 is, 여럿에는 are, 나에게는 am입니다."},
 
   {type:"n", tag:"모양 만들기", q:"‘그는 바쁘지 않다’가 되도록 알맞은 것은?", sent:"He ___ busy.", ko:"그는 바쁘지 않다.",
@@ -714,7 +714,7 @@ var X2 = [
 
   {type:"a", tag:"모두 고르기", multi:true, q:"어법에 맞는 <b>부정문</b>을 모두 고르세요. (여러 개)",
    opts:["I am not happy.","He doesn’t like milk.","We don’t go there.","He doesn’t likes milk.","I don’t am happy."], ans:[0,1,2],
-   exp:"도우미 뒤에는 동사원형, be동사는 도우미를 부르지 않습니다."},
+   exp:"조동사 뒤에는 동사원형, be동사는 조동사를 부르지 않습니다."},
 
   {type:"a", tag:"모두 고르기", multi:true, q:"어법에 맞는 <b>의문문</b>을 모두 고르세요. (여러 개)",
    opts:["Are you happy?","Does he like milk?","Do they go there?","Is he like milk?","Does he likes milk?"], ans:[0,1,2],
@@ -729,19 +729,19 @@ var X2 = [
    exp:"3인칭 단수 주어에만 doesn’t입니다. We와 You는 don’t입니다."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>He doesn’t likes milk.</b> 는 왜 틀렸을까요?",
-   opts:["doesn’t 뒤에 s를 또 붙였기 때문","milk가 틀렸기 때문","He가 틀렸기 때문","틀리지 않았다","doesn’t가 틀렸기 때문"], a:0,
+   opts:["doesn’t 뒤에 s를 또 붙였기 때문","milk가 틀렸기 때문","He가 틀렸기 때문","doesn’t를 isn’t로 써야 하기 때문","doesn’t가 틀렸기 때문"], a:0,
    exp:"s는 does가 이미 가져갔습니다. He doesn’t <b>like</b> milk."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>Is he like soccer?</b> 는 왜 틀렸을까요?",
-   opts:["일반동사 문장인데 be동사로 물었기 때문","soccer가 틀렸기 때문","he가 틀렸기 때문","틀리지 않았다","like가 틀렸기 때문"], a:0,
+   opts:["일반동사 문장인데 be동사로 물었기 때문","soccer가 틀렸기 때문","he가 틀렸기 때문","Is를 Are로 써야 하기 때문","like가 틀렸기 때문"], a:0,
    exp:"<b>Does</b> he like soccer?가 바릅니다."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>She don’t like milk.</b> 는 왜 틀렸을까요?",
-   opts:["3인칭 단수인데 don’t를 썼기 때문","milk가 틀렸기 때문","like가 틀렸기 때문","틀리지 않았다","She가 틀렸기 때문"], a:0,
+   opts:["3인칭 단수인데 don’t를 썼기 때문","milk가 틀렸기 때문","like가 틀렸기 때문","don’t를 isn’t로 써야 하기 때문","She가 틀렸기 때문"], a:0,
    exp:"She <b>doesn’t</b> like milk.가 바릅니다."},
 
   {type:"v", tag:"함정", hard:true, q:"<b>Are you like pizza?</b> 는 왜 틀렸을까요?",
-   opts:["일반동사 문장인데 be동사로 물었기 때문","pizza가 틀렸기 때문","you가 틀렸기 때문","틀리지 않았다","like가 틀렸기 때문"], a:0,
+   opts:["일반동사 문장인데 be동사로 물었기 때문","pizza가 틀렸기 때문","you가 틀렸기 때문","Are를 Is로 써야 하기 때문","like가 틀렸기 때문"], a:0,
    exp:"<b>Do</b> you like pizza?가 바릅니다."}
 ];
 
@@ -775,31 +775,31 @@ var L3 = [
    opts:["Does","Is","Are","Do","Am"], a:0,
    exp:"‘가지고 있다’는 have, 곧 일반동사입니다. 3인칭 단수이므로 Does입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"I ___ a doctor.", ko:"나는 의사가 아니다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"I ___ a doctor.", ko:"나는 의사가 아니다.",
    opts:["am not","don’t","doesn’t","not am","amn’t"], a:0,
    exp:"be동사 뒤에 not입니다. am not은 줄여 쓰지 않습니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"I ___ milk.", ko:"나는 우유를 마시지 않는다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"I ___ milk.", ko:"나는 우유를 마시지 않는다.",
    opts:["don’t drink","am not drink","doesn’t drink","not drink","don’t drinks"], a:0,
    exp:"일반동사 문장이고 주어가 I이므로 don’t + 동사원형입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"She ___ in the library.", ko:"그녀는 도서관에 없다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"She ___ in the library.", ko:"그녀는 도서관에 없다.",
    opts:["isn’t","doesn’t","don’t","aren’t","not is"], a:0,
    exp:"‘없다’는 ‘있다’의 부정이므로 be동사입니다. 3인칭 단수이므로 isn’t입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"She ___ to the library.", ko:"그녀는 도서관에 가지 않는다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"She ___ to the library.", ko:"그녀는 도서관에 가지 않는다.",
    opts:["doesn’t go","isn’t go","don’t go","doesn’t goes","isn’t"], a:0,
    exp:"go는 일반동사이므로 doesn’t, 뒤는 원형 go입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"We ___ hungry.", ko:"우리는 배고프지 않다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"We ___ hungry.", ko:"우리는 배고프지 않다.",
    opts:["aren’t","don’t","doesn’t","isn’t","not are"], a:0,
    exp:"‘어떠하지 않다’는 be동사입니다. 주어가 여럿이므로 aren’t입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"We ___ breakfast.", ko:"우리는 아침을 먹지 않는다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"We ___ breakfast.", ko:"우리는 아침을 먹지 않는다.",
    opts:["don’t eat","aren’t eat","doesn’t eat","don’t eats","aren’t"], a:0,
    exp:"eat은 일반동사입니다. 주어가 여럿이므로 don’t입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"He ___ a car.", ko:"그는 차를 가지고 있지 않다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"He ___ a car.", ko:"그는 차를 가지고 있지 않다.",
    opts:["doesn’t have","isn’t","don’t have","doesn’t has","isn’t have"], a:0,
    exp:"have는 일반동사입니다. doesn’t 뒤에는 원형 have입니다."},
 
@@ -817,7 +817,7 @@ var L3 = [
 
   {type:"v", tag:"대답과 배열", order:true, q:"차례대로 놓아 ‘그는 영어를 좋아하니?’를 만드세요.",
    parts:["Does","he","like","English?"],
-   exp:"도우미 Does가 맨 앞, 그 뒤에 주어, 그리고 동사원형입니다."},
+   exp:"조동사 Does가 맨 앞, 그 뒤에 주어, 그리고 동사원형입니다."},
 
   {type:"v", tag:"대답과 배열", order:true, q:"차례대로 놓아 ‘그녀는 교실에 있니?’를 만드세요.",
    parts:["Is","she","in","the classroom?"],
@@ -825,7 +825,7 @@ var L3 = [
 
   {type:"v", tag:"대답과 배열", hard:true, order:true, q:"차례대로 놓아 ‘나는 우유를 좋아하지 않는다’를 만드세요.",
    parts:["I","don’t","like","milk."],
-   exp:"주어 다음에 도우미, 그다음에 동사원형이 옵니다."}
+   exp:"주어 다음에 조동사, 그다음에 동사원형이 옵니다."}
 ];
 
 var X3 = [
@@ -857,31 +857,31 @@ var X3 = [
    opts:["동사원형","s를 붙인 모양","es를 붙인 모양","ing 모양","be동사"], a:0,
    exp:"Does가 이미 s를 가져갔습니다. 시험에 가장 많이 나오는 함정입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"They ___ my classmates.", ko:"그들은 내 반 친구가 아니다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"They ___ my classmates.", ko:"그들은 내 반 친구가 아니다.",
    opts:["aren’t","don’t","doesn’t","isn’t","not are"], a:0,
    exp:"‘~이 아니다’는 be동사이고 주어가 여럿이므로 aren’t입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"They ___ my name.", ko:"그들은 내 이름을 모른다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"They ___ my name.", ko:"그들은 내 이름을 모른다.",
    opts:["don’t know","aren’t know","doesn’t know","don’t knows","aren’t"], a:0,
    exp:"know는 일반동사입니다. 주어가 여럿이므로 don’t입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"It ___ easy.", ko:"그것은 쉽지 않다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"It ___ easy.", ko:"그것은 쉽지 않다.",
    opts:["isn’t","doesn’t","don’t","aren’t","not is"], a:0,
    exp:"‘어떠하지 않다’이고 주어가 it이므로 isn’t입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"My brother ___ computer games.", ko:"내 동생은 컴퓨터 게임을 하지 않는다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"My brother ___ computer games.", ko:"내 동생은 컴퓨터 게임을 하지 않는다.",
    opts:["doesn’t play","isn’t play","don’t play","doesn’t plays","isn’t"], a:0,
    exp:"play는 일반동사이고 주어가 3인칭 단수이므로 doesn’t + 원형입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", q:"빈칸에 알맞은 것을 고르세요.", sent:"You ___ alone.", ko:"너는 혼자가 아니다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", q:"빈칸에 알맞은 것을 고르세요.", sent:"You ___ alone.", ko:"너는 혼자가 아니다.",
    opts:["aren’t","don’t","doesn’t","isn’t","am not"], a:0,
    exp:"주어가 you이면 be동사는 are, 부정은 aren’t입니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"She ___ a sister.", ko:"그녀는 언니가 없다.",
+  {type:"a", tag:"아니라고 말하기(부정문)", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"She ___ a sister.", ko:"그녀는 언니가 없다.",
    opts:["doesn’t have","isn’t","don’t have","doesn’t has","isn’t have"], a:0,
    exp:"‘없다’지만 가진 것을 말하므로 have입니다. doesn’t have가 바릅니다."},
 
-  {type:"a", tag:"무엇으로 뒤집을까", hard:true, multi:true, q:"어법에 맞는 문장을 모두 고르세요. (여러 개)",
+  {type:"a", tag:"아니라고 말하기(부정문)", hard:true, multi:true, q:"어법에 맞는 문장을 모두 고르세요. (여러 개)",
    opts:["He isn’t busy.","He doesn’t like milk.","We aren’t ready.","He doesn’t busy.","He isn’t like milk."], ans:[0,1,2],
    exp:"be동사 문장에는 isn’t, 일반동사 문장에는 doesn’t입니다. 섞으면 틀립니다."},
 
@@ -899,7 +899,7 @@ var X3 = [
 
   {type:"v", tag:"대답과 배열", order:true, q:"차례대로 놓아 ‘너는 시간이 있니?’를 만드세요.",
    parts:["Do","you","have","time?"],
-   exp:"‘가지고 있다’는 have이므로 도우미 Do를 앞에 세웁니다."},
+   exp:"‘가지고 있다’는 have이므로 조동사 Do를 앞에 세웁니다."},
 
   {type:"v", tag:"대답과 배열", order:true, q:"차례대로 놓아 ‘그는 내 친구가 아니다’를 만드세요.",
    parts:["He","isn’t","my","friend."],
@@ -913,15 +913,15 @@ var X3 = [
 /* ---------- LEVEL 4 : 전체 아우르기 (현재와 미래) ---------- */
 var L4 = [
   {type:"n", tag:"상태 동사까지", q:"<b>have</b>는 어느 동사일까요?",
-   opts:["일반동사 — 가진 것을 말한다","be동사 — ‘있다’로 끝난다","둘 다","동사가 아니다","알 수 없다"], a:0,
+   opts:["일반동사 — 가진 것을 말한다","be동사 — ‘있다’로 끝난다","be동사 — 있는 자리를 말한다","be동사 — 주어 = 가진 것이다","명사 — 가진 물건의 이름이다"], a:0,
    exp:"우리말로 ‘가지고 있다’여도 영어에서는 일반동사입니다."},
 
   {type:"n", tag:"상태 동사까지", q:"<b>know</b>는 어느 동사일까요?",
-   opts:["일반동사 — 아는 일을 말한다","be동사","둘 다","동사가 아니다","알 수 없다"], a:0,
+   opts:["일반동사 — 아는 일을 말한다","be동사 — 움직임이 없다","be동사 — 주어가 어떠한지 말한다","조동사 — 동사를 도와준다","형용사 — 주어를 꾸민다"], a:0,
    exp:"움직이지 않아도 주어가 하는 일이면 일반동사입니다."},
 
   {type:"n", tag:"상태 동사까지", q:"<b>want</b>는 어느 동사일까요?",
-   opts:["일반동사 — 원하는 마음을 말한다","be동사","둘 다","동사가 아니다","알 수 없다"], a:0,
+   opts:["일반동사 — 원하는 마음을 말한다","be동사 — 움직임이 없다","be동사 — 마음의 상태를 말한다","조동사 — 동사를 도와준다","형용사 — 마음을 꾸민다"], a:0,
    exp:"마음도 주어가 하는 일입니다. I want water."},
 
   {type:"n", tag:"상태 동사까지", q:"‘있다’가 둘로 갈리는 기준은 무엇일까요?",
@@ -941,12 +941,12 @@ var L4 = [
    exp:"3인칭 단수에서 have는 <b>has</b>로 바뀝니다."},
 
   {type:"n", tag:"상태 동사까지", hard:true, q:"<b>He is have a dog.</b> 는 왜 틀렸을까요?",
-   opts:["be동사와 일반동사를 나란히 썼기 때문","dog가 틀렸기 때문","is가 틀렸기 때문","틀리지 않았다","He가 틀렸기 때문"], a:0,
+   opts:["be동사와 일반동사를 나란히 썼기 때문","dog가 틀렸기 때문","is가 틀렸기 때문","is를 are로 써야 하기 때문","He가 틀렸기 때문"], a:0,
    exp:"He <b>has</b> a dog.가 바릅니다. 동사 자리는 하나입니다."},
 
   {type:"a", tag:"의문사와 차례", q:"빈칸에 알맞은 것을 고르세요.", sent:"What ___ you like?", ko:"너는 무엇을 좋아하니?",
    opts:["do","are","is","does","am"], a:0,
-   exp:"의문사 뒤에도 도우미가 옵니다. like가 일반동사이므로 do입니다."},
+   exp:"의문사 뒤에도 조동사가 옵니다. like가 일반동사이므로 do입니다."},
 
   {type:"a", tag:"의문사와 차례", q:"빈칸에 알맞은 것을 고르세요.", sent:"Where ___ he live?", ko:"그는 어디에 사니?",
    opts:["does","is","do","are","am"], a:0,
@@ -966,13 +966,13 @@ var L4 = [
 
   {type:"a", tag:"의문사와 차례", hard:true, multi:true, q:"어법에 맞는 문장을 모두 고르세요. (여러 개)",
    opts:["Where is he?","What does she want?","When do they come?","Where does he?","What is she want?"], ans:[0,1,2],
-   exp:"의문사 뒤에는 도우미와 주어, 그리고 동사원형이 옵니다."},
+   exp:"의문사 뒤에는 조동사와 주어, 그리고 동사원형이 옵니다."},
 
-  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:true, sent:"He ___ tired, so he ___ go out.", ko:"그는 피곤해서 밖에 나가지 않는다.",
+  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:"He **is** tired, so he **doesn’t** go out.", sent:"He ___ tired, so he ___ go out.", ko:"그는 피곤해서 밖에 나가지 않는다.",
    opts:["is / doesn’t","does / isn’t","is / isn’t","does / doesn’t","are / don’t"], a:0,
    exp:"앞은 ‘어떠하다’이므로 be동사, 뒤는 ‘가지 않는다’이므로 doesn’t입니다."},
 
-  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:true, sent:"She ___ a nurse and she ___ in a hospital.", ko:"그녀는 간호사이고 병원에서 일한다.",
+  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:"She **is** a nurse and she **works** in a hospital.", sent:"She ___ a nurse and she ___ in a hospital.", ko:"그녀는 간호사이고 병원에서 일한다.",
    opts:["is / works","works / is","is / is","does / works","has / works"], a:0,
    exp:"‘~이다’는 be동사, ‘일한다’는 일반동사입니다."},
 
@@ -985,12 +985,12 @@ var L4 = [
    exp:"원한다 · 안다 · 가지고 있다는 모두 일반동사입니다."},
 
   {type:"v", tag:"종합", hard:true, q:"<b>I am not have a pen.</b> 을 바르게 고치면?",
-   opts:["I don’t have a pen.","I am not a pen.","I doesn’t have a pen.","I not have a pen.","고칠 수 없다"], a:0,
-   exp:"have는 일반동사이므로 도우미 don’t를 부릅니다."},
+   opts:["I don’t have a pen.","I am not a pen.","I doesn’t have a pen.","I not have a pen.","I am don’t have a pen."], a:0,
+   exp:"have는 일반동사이므로 조동사 don’t를 부릅니다."},
 
   {type:"v", tag:"종합", hard:true, q:"<b>Does she is happy?</b> 를 바르게 고치면?",
-   opts:["Is she happy?","Does she happy?","Do she happy?","She is happy?","고칠 수 없다"], a:0,
-   exp:"‘행복하니’는 be동사 문장입니다. 도우미를 부르지 않습니다."}
+   opts:["Is she happy?","Does she happy?","Do she happy?","She is happy?","Are she happy?"], a:0,
+   exp:"‘행복하니’는 be동사 문장입니다. 조동사를 부르지 않습니다."}
 ];
 
 var X4 = [
@@ -1015,7 +1015,7 @@ var X4 = [
    exp:"어디에 있는지를 말하므로 be동사입니다."},
 
   {type:"n", tag:"상태 동사까지", hard:true, q:"<b>has</b>를 쓰는 주어는 어떤 주어일까요?",
-   opts:["3인칭 단수","나","너","여럿","아무 주어나"], a:0,
+   opts:["3인칭 단수","나","너","여럿","우리"], a:0,
    exp:"He · She · It, 이름 하나에는 has입니다. 나머지는 have입니다."},
 
   {type:"n", tag:"상태 동사까지", hard:true, multi:true, q:"어법에 맞는 문장을 모두 고르세요. (여러 개)",
@@ -1023,7 +1023,7 @@ var X4 = [
    exp:"가진 것은 have · has, 어디에 있는지는 be동사입니다."},
 
   {type:"n", tag:"상태 동사까지", hard:true, q:"<b>She doesn’t has a cat.</b> 을 바르게 고치면?",
-   opts:["She doesn’t have a cat.","She don’t has a cat.","She isn’t have a cat.","She doesn’t cat.","고칠 수 없다"], a:0,
+   opts:["She doesn’t have a cat.","She don’t has a cat.","She isn’t have a cat.","She doesn’t cat.","She doesn’t having a cat."], a:0,
    exp:"doesn’t 뒤에는 원형 have입니다. s는 does가 가져갔습니다."},
 
   {type:"a", tag:"의문사와 차례", q:"빈칸에 알맞은 것을 고르세요.", sent:"Who ___ your teacher?", ko:"누가 너의 선생님이니?",
@@ -1050,21 +1050,21 @@ var X4 = [
    opts:["I am ready.","She has lunch at noon.","They go home at six.","She have lunch at noon.","They is ready."], ans:[0,1,2],
    exp:"3인칭 단수에는 has, 여럿에는 are입니다."},
 
-  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:true, sent:"I ___ a student, and I ___ English every day.", ko:"나는 학생이고 날마다 영어를 공부한다.",
+  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:"I **am** a student, and I **study** English every day.", sent:"I ___ a student, and I ___ English every day.", ko:"나는 학생이고 날마다 영어를 공부한다.",
    opts:["am / study","study / am","am / am","do / study","have / study"], a:0,
    exp:"앞은 ‘~이다’, 뒤는 ‘공부한다’입니다."},
 
-  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:true, sent:"___ he a doctor? — No, he ___.", ko:"그는 의사니? — 아니, 그렇지 않아.",
+  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:"**Is** he a doctor? — No, he **isn’t**.", sent:"___ he a doctor? — No, he ___.", ko:"그는 의사니? — 아니, 그렇지 않아.",
    opts:["Is / isn’t","Does / doesn’t","Do / don’t","Is / doesn’t","Does / isn’t"], a:0,
    exp:"물은 말 그대로 돌려줍니다. Is로 물으면 isn’t로 답합니다."},
 
-  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:true, sent:"___ he work here? — No, he ___.", ko:"그는 여기에서 일하니? — 아니, 그렇지 않아.",
+  {type:"v", tag:"종합", q:"빈칸에 알맞은 것을 고르세요.", full:"**Does** he work here? — No, he **doesn’t**.", sent:"___ he work here? — No, he ___.", ko:"그는 여기에서 일하니? — 아니, 그렇지 않아.",
    opts:["Does / doesn’t","Is / isn’t","Do / don’t","Does / isn’t","Is / doesn’t"], a:0,
    exp:"일반동사로 물었으므로 doesn’t로 답합니다."},
 
-  {type:"v", tag:"종합", multi:true, q:"<b>도우미(do · does)</b>가 오지 않는 문장을 모두 고르세요. (여러 개)",
-   opts:["She is kind.","We are ready.","He is in the room.","He likes milk.","They study hard."], ans:[0,1,2],
-   exp:"be동사 문장은 도우미를 부르지 않습니다."},
+  {type:"v", tag:"종합", multi:true, q:"<b>조동사(do · does)</b>가 오지 않는 문장을 모두 고르세요. (여러 개)",
+   opts:["She is kind.","We are ready.","He is in the room.","He doesn’t like milk.","Do they study hard?"], ans:[0,1,2],
+   exp:"be동사 문장은 조동사를 부르지 않습니다. 뒤의 둘에는 doesn’t와 Do가 있습니다."},
 
   {type:"v", tag:"종합", hard:true, order:true, q:"차례대로 놓아 ‘그는 내 이름을 모른다’를 만드세요.",
    parts:["He","doesn’t","know","my name."],
@@ -1079,9 +1079,9 @@ function mergeByType(a,b){ return ["n","a","v"].reduce(function(o,t){ return o.c
 L1=mergeByType(L1,X1); L2=mergeByType(L2,X2); L3=mergeByType(L3,X3); L4=mergeByType(L4,X4);
 
 var LEVELS = {
-  1:{name:"Level 1 · 두 동사 가리기", desc:"한글로만 · 개념 24 · 가려내기 16 · be동사는 이다·있다 · 일반동사는 하는 일 · 한글로 뒤집고 묻기 · 도우미 do·does", qs:L1, typeLabels:{n:"개념",a:"가려내기"}},
+  1:{name:"Level 1 · 두 동사 가리기", desc:"한글로만 · 개념 24 · 구별하기 16 · be동사는 이다·있다 · 일반동사는 하는 일 · 한글로 아니라고 말하고 묻기 · 조동사 do·does", qs:L1, typeLabels:{n:"개념",a:"구별하기"}},
   2:{name:"Level 2 · 영어로 세 모양 만들기", desc:"쉬운 영어로 · am·is·are와 like·eat·go만으로 · 평서문 · 부정문 · 의문문 · 3인칭 단수 s와 es · 함정", qs:L2, typeLabels:{n:"모양 만들기",a:"모두 고르기",v:"함정"}},
-  3:{name:"Level 3 · be냐 do·does냐", desc:"우리말을 보고 무엇을 앞에 세울지 가리기 · 무엇으로 뒤집을지 가리기 · 대답하기와 배열 · 중1 학교 시험형", qs:L3, typeLabels:{n:"무엇으로 물을까",a:"무엇으로 뒤집을까",v:"대답과 배열"}},
+  3:{name:"Level 3 · be냐 do·does냐", desc:"우리말을 보고 무엇을 앞에 세울지 가리기 · 무엇으로 아니라고 말할지 가리기 · 대답하기와 배열 · 중1 학교 시험형", qs:L3, typeLabels:{n:"무엇으로 물을까",a:"아니라고 말하기(부정문)",v:"대답과 배열"}},
   4:{name:"Level 4 · 전체 아우르기", desc:"상태 동사 have·know·want · ‘있다’가 둘로 갈리는 자리 · 의문사 뒤의 차례 · 종합", qs:L4, typeLabels:{n:"상태 동사까지",a:"의문사와 차례",v:"종합"}}
 };
 
@@ -1124,13 +1124,13 @@ function figHelper(){
     return '<text x="24" y="'+y+'" font-size="16" fill="var(--muted)">'+t+'</text>'+
       '<text x="190" y="'+y+'" font-size="18" font-weight="700" fill="var(--'+c+')" font-family="Newsreader, serif">'+e+'</text>';
   };
-  return '<svg class="fig" viewBox="0 0 560 186" role="img" aria-label="be동사는 혼자, 일반동사는 도우미를 부르는 그림">'+
+  return '<svg class="fig" viewBox="0 0 560 186" role="img" aria-label="be동사는 혼자, 일반동사는 조동사를 부르는 그림">'+
     '<rect x="14" y="8" width="532" height="80" rx="12" fill="var(--ra-soft)" stroke="var(--ra)" stroke-width="1.6"/>'+
     '<text x="24" y="30" font-size="17" font-weight="700" fill="var(--ra)">be동사 — 혼자 합니다</text>'+
     line(54,'아니라고','I am not a student.','ra')+
     line(78,'물을 때','Are you a student?','ra')+
     '<rect x="14" y="98" width="532" height="80" rx="12" fill="var(--rn-soft)" stroke="var(--rn)" stroke-width="1.6"/>'+
-    '<text x="24" y="120" font-size="17" font-weight="700" fill="var(--rn)">일반동사 — 도우미를 부릅니다</text>'+
+    '<text x="24" y="120" font-size="17" font-weight="700" fill="var(--rn)">일반동사 — 조동사를 부릅니다</text>'+
     line(144,'아니라고','I don’t like it.','rn')+
     line(168,'물을 때','Do you like it?','rn')+
   '</svg>';
@@ -1153,7 +1153,7 @@ function figHave(){
 function learn1(){
   return ''+
   '<h2>LEVEL 1 · 두 동사 가리기</h2>'+
-  '<p class="lead">1단계는 <b>우리말로만</b> 합니다. 영어 동사가 둘로 나뉜다는 것, 그리고 우리말 문장의 끝만 보고 어느 쪽인지 <b>가려내는 눈</b>을 만듭니다.</p>'+
+  '<p class="lead">1단계는 <b>우리말로만</b> 합니다. 영어 동사가 둘로 나뉜다는 것, 그리고 우리말 문장의 끝만 보고 어느 쪽인지 <b>구별하는 눈</b>을 만듭니다.</p>'+
   figTwo()+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-a"></i>① be동사는 두 얼굴입니다</span>'+
@@ -1189,11 +1189,12 @@ function learn2(){
     '<div class="ex">의문문<span class="k">be동사를 맨 앞으로 — Are you a student?</span></div>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>② 일반동사 — 도우미를 부릅니다</span>'+
+    '<span class="bh"><i class="dot d-n"></i>② 일반동사 — 조동사를 부릅니다</span>'+
+    '<p><b>동사를 도와주는 말이 조동사(助動詞)입니다.</b> do · does · did · will이 모두 조동사입니다.</p>'+
     '<div class="ex">평서문<span class="k">I like apples. / He likes apples. — 3인칭 단수에는 s</span></div>'+
     '<div class="ex">부정문<span class="k">동사 앞에 don’t · doesn’t — He doesn’t like apples.</span></div>'+
     '<div class="ex">의문문<span class="k">Do · Does를 맨 앞으로 — Does he like apples?</span></div>'+
-    '<p>도우미 뒤의 동사는 언제나 <b>동사원형</b>입니다. s는 does가 이미 가져갔습니다.</p>'+
+    '<p>조동사 뒤의 동사는 언제나 <b>동사원형</b>입니다. s는 does가 이미 가져갔습니다.</p>'+
   '</div>'+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-v"></i>③ 주어를 먼저 세어 봅니다</span>'+
@@ -1207,7 +1208,7 @@ function learn2(){
 function learn3(){
   return ''+
   '<h2>LEVEL 3 · be냐 do·does냐</h2>'+
-  '<p class="lead">중1 학교 시험에 그대로 나오는 꼴입니다. 우리말을 보고 <b>무엇을 앞에 세울지</b>, <b>무엇으로 뒤집을지</b>를 고릅니다.</p>'+
+  '<p class="lead">중1 학교 시험에 그대로 나오는 꼴입니다. 우리말을 보고 <b>무엇을 앞에 세울지</b>, <b>무엇으로 아니라고 말할지</b>를 고릅니다.</p>'+
   figHelper()+
   '<div class="block">'+
     '<span class="bh"><i class="dot d-n"></i>① 무엇으로 물을까</span>'+
@@ -1215,7 +1216,7 @@ function learn3(){
     '<div class="ex">~하니<span class="k">Do · Does — Does he like soccer?</span></div>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>② 무엇으로 뒤집을까</span>'+
+    '<span class="bh"><i class="dot d-a"></i>② 아니라고 말하기</span>'+
     '<div class="ex">be동사 문장<span class="k">am not · isn’t · aren’t — She isn’t in the library.</span></div>'+
     '<div class="ex">일반동사 문장<span class="k">don’t · doesn’t — She doesn’t go to the library.</span></div>'+
     '<p>주어가 3인칭 단수면 is · doesn’t, 여럿이면 are · don’t입니다. <b>주어를 먼저 세어 보는 것</b>이 몸에 배어야 합니다.</p>'+
@@ -1226,7 +1227,7 @@ function learn3(){
     '<div class="swap"><span>Do you like pizza?</span><span class="ar">→</span><span class="good">Yes, I do.</span></div>'+
     '<div class="swap"><span>Does he play soccer?</span><span class="ar">→</span><span class="good">No, he doesn’t.</span></div>'+
   '</div>'+
-  '<div class="tip"><span class="h">꼭 챙길 함정</span>Does he likes ~ ?(✕) · Is he like soccer?(✕) — 도우미 뒤에는 동사원형, be동사 문장에는 도우미가 오지 않습니다.</div>';
+  '<div class="tip"><span class="h">꼭 챙길 함정</span>Does he likes ~ ?(✕) · Is he like soccer?(✕) — 조동사 뒤에는 동사원형, be동사 문장에는 조동사가 오지 않습니다.</div>';
 }
 
 function learn4(){
@@ -1257,10 +1258,10 @@ function learn4(){
 }
 
 var LVCHEER = {
-  1:"우리말만 보고도 두 동사를 가려냅니다. 2단계에서 영어로 옮겨 봅니다.",
+  1:"우리말만 보고도 두 동사를 구별합니다. 2단계에서 영어로 옮겨 봅니다.",
   2:"평서문 · 부정문 · 의문문 세 모양을 잡았습니다. 3단계는 학교 시험형입니다.",
   3:"be냐 do·does냐, 이제 망설이지 않습니다. 마지막 단계만 남았습니다.",
-  4:"두 동사를 끝까지 가려냈습니다. 이제 어떤 문장도 든든합니다!"
+  4:"두 동사를 끝까지 구별했습니다. 이제 어떤 문장도 든든합니다!"
 };
 
 function renderLearn(){
