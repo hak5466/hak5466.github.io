@@ -144,6 +144,8 @@
     "verbuse": familyA("일반동사 문장 활용"),
     "beverb": familyA("be동사 · 일반동사 가리기"),
     "pastuse": familyA("be동사 · 일반동사 과거"),
+    "thingto": familyA("to부정사 형용사적 용법 · -thing 꾸미기"),
+    "whto": familyA("의문사 + to부정사"),
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
     "perfect": familyA("현재완료 GAME"),
