@@ -299,6 +299,11 @@ h1 .subtitle{display:block;margin-top:6px;font-family:"IBM Plex Sans KR",sans-se
 .chip-w:active:not(:disabled){transform:translateY(0)}
 .chip-w.used{opacity:.28;border-style:dashed;cursor:default}
 .chip-w:disabled{cursor:default}
+.chip-w,.slotline .slot{touch-action:none;-webkit-user-select:none;user-select:none}
+.slotline .slot[data-i]{cursor:grab}
+.slotline .slot.ph{border:1.5px dashed var(--line-strong);background:var(--paper);color:transparent}
+.chip-w.lifted{opacity:.22}
+.dragghost{position:fixed;z-index:999;margin:0;pointer-events:none;opacity:.96;transform:translate(-50%,-50%) rotate(-2deg);box-shadow:0 10px 22px rgba(0,0,0,.18)}
 .writebox{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .writebox input{flex:1 1 180px;font-family:"Newsreader",Georgia,serif;font-size:22px;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:11px;background:var(--card);color:var(--ink)}
 .writebox input:focus{outline:none;border-color:var(--accent)}
@@ -1602,28 +1607,30 @@ function answerMulti(){
   finishAnswer(q, ok, ok?"":'<span class="ans">정답 '+ansTxt+'</span>');
 }
 
-/* ---------- 조각을 차례대로 눌러 문장 만들기 ---------- */
+/* ---------- 조각을 끌어다 놓아 문장 만들기 ---------- */
+var DRAG=null;
+
+function closestEl(el,sel){
+  while(el && el.nodeType===1){
+    if(el.matches ? el.matches(sel) : false) return el;
+    el=el.parentNode;
+  }
+  return null;
+}
+
 function setupOrder(q){
   S.orderPicked=[];
-  var bag=q.parts.map(function(t,i){ return {t:t,i:i}; });
-  for(var k=bag.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)); var tmp=bag[k];bag[k]=bag[r];bag[r]=tmp; }
-  var chips=$("orderChips");
-  chips.innerHTML = bag.map(function(b){
-    return '<button class="chip-w" data-i="'+b.i+'">'+esc(b.t)+'</button>';
-  }).join("");
-  Array.prototype.forEach.call(chips.querySelectorAll(".chip-w"),function(b){
-    b.addEventListener("click",function(){
-      if(S.answered||this.disabled) return;
-      this.disabled=true; this.classList.add("used");
-      S.orderPicked.push(+this.dataset.i);
-      drawOrder(q);
-    });
-  });
+  S.orderBag=q.parts.map(function(t,i){ return i; });
+  for(var k=S.orderBag.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)); var tmp=S.orderBag[k];S.orderBag[k]=S.orderBag[r];S.orderBag[r]=tmp; }
+  var same=S.orderBag.every(function(v,i){ return v===i; });
+  if(same) S.orderBag.push(S.orderBag.shift());   /* 그대로 나오면 한 칸 돌립니다 */
+  var box=$("orderPick").parentNode;
+  S.orderDragAt=0;
+  box.addEventListener("pointerdown",onOrderDown);
+  box.addEventListener("click",onOrderClick);
   $("orderUndo").addEventListener("click",function(){
     if(S.answered||!S.orderPicked.length) return;
-    var last=S.orderPicked.pop();
-    var b=$("orderChips").querySelector('.chip-w[data-i="'+last+'"]');
-    if(b){ b.disabled=false; b.classList.remove("used"); }
+    S.orderBag.push(S.orderPicked.pop());
     drawOrder(q);
   });
   $("orderBtn").addEventListener("click",function(){ answerOrder(); });
@@ -1631,15 +1638,120 @@ function setupOrder(q){
 }
 
 function drawOrder(q){
-  var line=$("orderPick");
+  var line=$("orderPick"), chips=$("orderChips");
   line.innerHTML = S.orderPicked.length
-    ? S.orderPicked.map(function(i){ return '<span class="slot">'+esc(q.parts[i])+'</span>'; }).join("")
-    : '<span class="slot empty">여기에 차례대로 쌓입니다</span>';
+    ? S.orderPicked.map(function(i){ return '<span class="slot" data-i="'+i+'">'+esc(q.parts[i])+'</span>'; }).join("")
+    : '<span class="slot empty">여기로 조각을 끌어다 놓으세요</span>';
+  chips.innerHTML = S.orderBag.map(function(i){
+    return '<button class="chip-w" data-i="'+i+'">'+esc(q.parts[i])+'</button>';
+  }).join("");
   var note=$("orderNote");
   if(note) note.textContent = S.orderPicked.length===q.parts.length
     ? "다 놓았습니다. 확인을 누르세요."
-    : "차례대로 눌러 주세요 · "+S.orderPicked.length+" / "+q.parts.length;
+    : "끌어다 놓거나 눌러서 차례를 만드세요 · "+S.orderPicked.length+" / "+q.parts.length;
 }
+
+function orderSlots(){
+  return Array.prototype.slice.call($("orderPick").querySelectorAll('.slot[data-i]'));
+}
+function orderDropIndex(x,y){
+  var slots=orderSlots(), k;
+  for(k=0;k<slots.length;k++){
+    if(slots[k]===DRAG.ph) continue;
+    var r=slots[k].getBoundingClientRect();
+    if(y<=r.bottom && x < r.left + r.width/2) return k;
+  }
+  return slots.length;
+}
+function orderPlacePh(x,y){
+  var line=$("orderPick");
+  var em=line.querySelector('.slot.empty'); if(em) em.parentNode.removeChild(em);
+  var slots=orderSlots().filter(function(s){ return s!==DRAG.ph; });
+  var at=0, k;
+  for(k=0;k<slots.length;k++){
+    var r=slots[k].getBoundingClientRect();
+    if(y<=r.bottom && x < r.left + r.width/2) break;
+    at=k+1;
+  }
+  if(at>=slots.length) line.appendChild(DRAG.ph);
+  else line.insertBefore(DRAG.ph, slots[at]);
+}
+
+function onOrderDown(e){
+  if(S.answered) return;
+  var el=closestEl(e.target,".chip-w,.slot");
+  if(!el || el.classList.contains("empty")) return;
+  DRAG={el:el, from:el.classList.contains("chip-w")?"bag":"pick", idx:+el.dataset.i,
+        x0:e.clientX, y0:e.clientY, moved:false, ghost:null, ph:null, id:e.pointerId};
+  var box=$("orderPick").parentNode;
+  box.addEventListener("pointermove",onOrderMove);
+  box.addEventListener("pointerup",onOrderUp);
+  box.addEventListener("pointercancel",onOrderUp);
+}
+
+function onOrderMove(e){
+  if(!DRAG) return;
+  if(!DRAG.moved){
+    if(Math.abs(e.clientX-DRAG.x0)+Math.abs(e.clientY-DRAG.y0) < 7) return;
+    DRAG.moved=true;
+    try{ $("orderPick").parentNode.setPointerCapture(DRAG.id); }catch(err){}
+    var q=curQ(), r=DRAG.el.getBoundingClientRect();
+    var g=DRAG.el.cloneNode(true);
+    g.className=DRAG.el.className.replace("chip-w","chip-w")+" dragghost";
+    g.style.width=r.width+"px"; g.style.height=r.height+"px";
+    document.body.appendChild(g); DRAG.ghost=g;
+    var ph=document.createElement("span");
+    ph.className="slot ph"; ph.setAttribute("data-i",DRAG.idx); ph.textContent=q.parts[DRAG.idx];
+    DRAG.ph=ph;
+    if(DRAG.from==="pick"){ DRAG.el.parentNode.removeChild(DRAG.el); }
+    else { DRAG.el.classList.add("lifted"); }
+  }
+  if(e.cancelable) e.preventDefault();
+  DRAG.ghost.style.left=e.clientX+"px"; DRAG.ghost.style.top=e.clientY+"px";
+  var line=$("orderPick"), lr=line.getBoundingClientRect();
+  var near = e.clientX>=lr.left-30 && e.clientX<=lr.right+30 && e.clientY>=lr.top-30 && e.clientY<=lr.bottom+30;
+  if(near) orderPlacePh(e.clientX,e.clientY);
+  else if(DRAG.ph.parentNode) DRAG.ph.parentNode.removeChild(DRAG.ph);
+}
+
+function onOrderUp(e){
+  var box=$("orderPick").parentNode;
+  box.removeEventListener("pointermove",onOrderMove);
+  box.removeEventListener("pointerup",onOrderUp);
+  box.removeEventListener("pointercancel",onOrderUp);
+  if(!DRAG) return;
+  if(DRAG.moved){ try{ box.releasePointerCapture(DRAG.id); }catch(err){} }
+  var q=curQ(), d=DRAG, at=-1;
+  if(d.moved && d.ph && d.ph.parentNode===$("orderPick")){
+    at=0;
+    var slots=orderSlots(), k;
+    for(k=0;k<slots.length;k++){ if(slots[k]===d.ph) break; at=k+1; }
+  }
+  if(d.ghost && d.ghost.parentNode) d.ghost.parentNode.removeChild(d.ghost);
+  if(d.ph && d.ph.parentNode) d.ph.parentNode.removeChild(d.ph);
+  DRAG=null;
+  if(!d.moved){ return; }                         /* 그냥 눌렀으면 click이 맡습니다 */
+  S.orderDragAt=Date.now();
+  if(at>=0){                                      /* 차례 줄에 놓았을 때 */
+    takeFromBag(d.idx); takeFromPick(d.idx);
+    S.orderPicked.splice(at,0,d.idx);
+  } else if(d.from==="pick"){                     /* 줄 밖으로 끌어냈을 때 */
+    takeFromPick(d.idx); S.orderBag.push(d.idx);
+  }
+  drawOrder(q);
+}
+function onOrderClick(e){
+  if(S.answered) return;
+  if(Date.now()-(S.orderDragAt||0) < 320) return;   /* 끌어 놓은 바로 뒤의 click은 지나갑니다 */
+  var el=closestEl(e.target,".chip-w,.slot");
+  if(!el || el.classList.contains("empty")) return;
+  var i=+el.dataset.i;
+  if(el.classList.contains("chip-w")){ takeFromBag(i); S.orderPicked.push(i); }
+  else { takeFromPick(i); S.orderBag.push(i); }
+  drawOrder(curQ());
+}
+function takeFromBag(i){ var k=S.orderBag.indexOf(i); if(k>=0) S.orderBag.splice(k,1); }
+function takeFromPick(i){ var k=S.orderPicked.indexOf(i); if(k>=0) S.orderPicked.splice(k,1); }
 
 function answerOrder(){
   if(S.answered) return;
