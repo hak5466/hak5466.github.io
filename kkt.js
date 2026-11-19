@@ -113,6 +113,7 @@
     "passive": familyA("수동태 뽀개기"),
     "modalpassive": familyA("조동사 수동태 뽀개기"),
     "dative": familyA("수여동사 뽀개기"),
+    "indirectq": familyA("간접의문문 뽀개기"),
     "callab": familyA("CALL A B 뽀개기"),
     "partph": familyA("분사구 뽀개기"),
     "partcon": familyA("분사구문 뽀개기"),
