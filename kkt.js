@@ -153,6 +153,7 @@
     "sense": familyA("감각동사 GAME"),
     "itsub": familyA("비인칭주어 GAME"),
     "perfect": familyA("현재완료 GAME"),
+    "fakesub": familyA("가주어 진주어 Level Up"),
 
     "phonics": {
       game: "파닉스 자음 뒤집기",
@@ -247,6 +248,7 @@
   var slug = (location.pathname.replace(/\/index\.html?$/i, "").replace(/\/+$/, "").split("/").pop() || "").toLowerCase();
   var R = READERS[slug];
   if (!ENDPOINT || !R) return;
+  try { window.KKT_GAME = R.game; window.KKT_SLUG = slug; } catch (e) {}
 
   /* ---------- 보내기 ---------- */
   function pushQueue(rec) {
@@ -594,7 +596,7 @@
     var done = 0, fail = 0;
     list.forEach(function (p) {
       var rec = {
-        name: who, game: p.game, level: p.level,
+        name: who, game: p.game, slug: slug, level: p.level,
         score: p.score, hit: p.hit, total: p.total, wrongs: p.wrongs || []
       };
       post(rec).then(function (ok) {

@@ -87,21 +87,52 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
   padding:9px 9px 10px;box-shadow:var(--shadow);
   transition:border-color .15s ease,background .15s ease,transform .08s ease;
 }
-.t:hover{border-color:var(--accent);background:var(--accent-soft)}
+.t{border-left:4px solid var(--ac,var(--accent))}
+.t:hover{border-color:var(--ac,var(--accent));background:var(--acs,var(--accent-soft))}
 .t:active{transform:translateY(1px)}
 .t .c{align-self:flex-start;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:12.5px;letter-spacing:.02em;
-  background:var(--accent-soft);color:var(--accent);border-radius:7px;padding:2px 7px}
+  background:var(--acs,var(--accent-soft));color:var(--ac,var(--accent));border-radius:7px;padding:2px 7px}
 .t .n{font-weight:700;font-size:14.5px;line-height:1.28;word-break:keep-all}
 .t .y{margin-top:auto;font-size:12px;color:var(--muted);font-weight:600}
-.t.out{opacity:.5;cursor:default}
+.t.out{opacity:.5;cursor:default;border-left-color:var(--line-strong)}
 .t.out .c{background:var(--line);color:var(--muted)}
-.t.out:hover{border-color:var(--line);background:var(--card)}
+.t.out:hover{border-color:var(--line);border-left-color:var(--line-strong);background:var(--card)}
 .t.hide,.g.hide,.ablock.hide,.recent.hide,.listsec.hide{display:none}
 .ablock{display:flex;flex-direction:column;gap:9px}
-.ah{display:flex;align-items:baseline;gap:9px;margin-top:4px}
-.ah b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;color:var(--accent)}
-.ah span{font-weight:700;font-size:17px}
+.ah{display:flex;align-items:center;gap:10px;margin-top:4px}
+.ah b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;line-height:1;letter-spacing:-.01em;
+  color:#fff;background:var(--ac,var(--accent));border-radius:9px;padding:5px 9px 6px}
+.ah span{font-weight:800;font-size:18px;color:var(--ac,var(--accent))}
 .ah i{font-style:normal;font-size:13.5px;color:var(--muted)}
+.a1{--ac:#0F6E5C;--acs:#E0F0EA}
+.a2{--ac:#1B5FA8;--acs:#E2EDF9}
+.a3{--ac:#6B46A8;--acs:#EDE6F8}
+.a4{--ac:#B35A17;--acs:#FAEADC}
+.a5{--ac:#A62E72;--acs:#FAE4F0}
+.a6{--ac:#3B4AA0;--acs:#E6E8F8}
+.a7{--ac:#0B6E77;--acs:#DEF0F2}
+.a8{--ac:#8A5223;--acs:#F5EADF}
+.a9{--ac:#4A5A66;--acs:#E8EDF1}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]) .a1{--ac:#5AC6A8;--acs:#14332C}
+:root:not([data-theme="light"]) .a2{--ac:#7FB6F0;--acs:#112B45}
+:root:not([data-theme="light"]) .a3{--ac:#B99BEA;--acs:#271A3C}
+:root:not([data-theme="light"]) .a4{--ac:#F0A463;--acs:#3A2411}
+:root:not([data-theme="light"]) .a5{--ac:#F08FC0;--acs:#3A1128}
+:root:not([data-theme="light"]) .a6{--ac:#94A0EE;--acs:#1A1E3E}
+:root:not([data-theme="light"]) .a7{--ac:#5FC7D1;--acs:#0F2F33}
+:root:not([data-theme="light"]) .a8{--ac:#DBA06A;--acs:#2F2113}
+:root:not([data-theme="light"]) .a9{--ac:#A6B8C4;--acs:#1E262C}
+}
+:root[data-theme="dark"] .a1{--ac:#5AC6A8;--acs:#14332C}
+:root[data-theme="dark"] .a2{--ac:#7FB6F0;--acs:#112B45}
+:root[data-theme="dark"] .a3{--ac:#B99BEA;--acs:#271A3C}
+:root[data-theme="dark"] .a4{--ac:#F0A463;--acs:#3A2411}
+:root[data-theme="dark"] .a5{--ac:#F08FC0;--acs:#3A1128}
+:root[data-theme="dark"] .a6{--ac:#94A0EE;--acs:#1A1E3E}
+:root[data-theme="dark"] .a7{--ac:#5FC7D1;--acs:#0F2F33}
+:root[data-theme="dark"] .a8{--ac:#DBA06A;--acs:#2F2113}
+:root[data-theme="dark"] .a9{--ac:#A6B8C4;--acs:#1E262C}
 .recent{display:flex;flex-direction:column;gap:8px}
 .recent .rh{font-weight:700;font-size:16px;color:var(--accent)}
 
@@ -121,8 +152,15 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
   font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:16px;
   width:46px;height:44px;flex:none;border-radius:11px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.02;
-  background:var(--accent-soft);color:var(--accent);
+  background:var(--acs,var(--accent-soft));color:var(--ac,var(--accent));
 }
+.g{border-left:4px solid var(--ac,var(--accent))}
+.g:hover{border-color:var(--ac,var(--accent));background:var(--acs,var(--accent-soft))}
+.g.out{border-left-color:var(--line-strong)}
+.g .go{color:var(--ac,var(--accent))}
+h2 b.an{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;line-height:1;
+  color:#fff;background:var(--ac,var(--accent));border-radius:8px;padding:4px 8px 5px;margin-right:4px;
+  display:inline-block;vertical-align:2px}
 .g .no i{font-style:normal;font-weight:700;font-size:10.5px;letter-spacing:.04em;opacity:.72}
 .g.out{opacity:.62}
 .g .body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
@@ -172,144 +210,144 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
   </div>
 
   <h2>한눈에 보기 <em>번호를 짚어 바로 들어가기</em></h2>
-  <div class="ablock">
+  <div class="ablock a1">
     <div class="ah"><b>01</b><span>소리와 낱말</span><i>초등~중3 · 어법 15개</i></div>
     <div class="grid">
-      <a class="t" href="ph/" data-s="ph" data-g="초등" data-k="01-01 0101 파닉스 글자와 소리 · 매직 e · 낱말 쓰기"><span class="c">01-01</span><span class="n">파닉스</span><span class="y">초등</span></a>
-      <a class="t" href="pumsako/" data-s="pumsako" data-g="초등 중1 중2 중3" data-k="01-02 0102 8품사 우리말 여덟 품사의 개념을 우리말만으로 · 저학년부터 중3까지"><span class="c">01-02</span><span class="n">8품사 우리말</span><span class="y">초등·중1·중2·중3</span></a>
-      <a class="t" href="pumsa8/" data-s="pumsa8" data-g="초등 중1" data-k="01-03 0103 8품사 단어의 역할 여덟 가지"><span class="c">01-03</span><span class="n">8품사</span><span class="y">초등·중1</span></a>
-      <a class="t" href="noun/" data-s="noun" data-g="초등 중1" data-k="01-04 0104 [대]명사 명사 · 대명사 · 인칭대명사 · 지시대명사"><span class="c">01-04</span><span class="n">[대]명사</span><span class="y">초등·중1</span></a>
-      <span class="t out" data-s="article" data-g="중1" data-k="01-05 0105 관사 a · an · the · 관사를 쓰지 않는 자리"><span class="c">01-05</span><span class="n">관사</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="nounnum" data-g="중1" data-k="01-06 0106 명사의 수와 양 셀 수 있는 명사와 셀 수 없는 명사 · many · much · a few · a little"><span class="c">01-06</span><span class="n">명사의 수와 양</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="pronoun2" data-g="중2" data-k="01-07 0107 대명사 심화 재귀대명사 · 부정대명사 one · another · other · 이중소유격 · 전체부정과 부분부정"><span class="c">01-07</span><span class="n">대명사 심화</span><span class="y">준비 중</span></span>
-      <a class="t" href="verbtype/" data-s="verbtype" data-g="중1" data-k="01-08 0108 동사 be동사 · 일반동사 · 조동사 구별"><span class="c">01-08</span><span class="n">동사</span><span class="y">중1</span></a>
-      <a class="t" href="adj/" data-s="adj" data-g="초등 중1" data-k="01-09 0109 형용사 어떠한지를 말하는 말 · 어순과 many·much"><span class="c">01-09</span><span class="n">형용사</span><span class="y">초등·중1</span></a>
-      <a class="t" href="adv/" data-s="adv" data-g="중1" data-k="01-10 0110 부사 어떻게 · 언제 · 어디서 · 얼마나 · -ly 만들기"><span class="c">01-10</span><span class="n">부사</span><span class="y">중1</span></a>
-      <a class="t" href="prep/" data-s="prep" data-g="중1" data-k="01-11 0111 전치사 in · on · under · 때의 at · on · in"><span class="c">01-11</span><span class="n">전치사</span><span class="y">중1</span></a>
-      <a class="t" href="conj/" data-s="conj" data-g="초등 중1" data-k="01-12 0112 등위접속사 and · but · or · so · 앞뒤를 대등하게 잇기"><span class="c">01-12</span><span class="n">등위접속사</span><span class="y">초등·중1</span></a>
-      <span class="t out" data-s="correl" data-g="중3" data-k="01-13 0113 상관접속사 both A and B · not only A but also B · as well as · either or · neither nor · 동사의 수 맞추기"><span class="c">01-13</span><span class="n">상관접속사</span><span class="y">준비 중</span></span>
-      <a class="t" href="interj/" data-s="interj" data-g="초등 중1" data-k="01-14 0114 감탄사 Wow · Ouch · Oops · 감탄문 What·How"><span class="c">01-14</span><span class="n">감탄사</span><span class="y">초등·중1</span></a>
-      <span class="t out" data-s="phrasal" data-g="중2" data-k="01-15 0115 구동사 동사 + 부사·전치사 · pick up · turn off · look for · 대명사는 사이에"><span class="c">01-15</span><span class="n">구동사</span><span class="y">준비 중</span></span>
+      <a class="t a1" href="ph/" data-s="ph" data-g="초등" data-k="01-01 0101 파닉스 글자와 소리 · 매직 e · 낱말 쓰기"><span class="c">01-01</span><span class="n">파닉스</span><span class="y">초등</span></a>
+      <a class="t a1" href="pumsako/" data-s="pumsako" data-g="초등 중1 중2 중3" data-k="01-02 0102 8품사 우리말 여덟 품사의 개념을 우리말만으로 · 저학년부터 중3까지"><span class="c">01-02</span><span class="n">8품사 우리말</span><span class="y">초등·중1·중2·중3</span></a>
+      <a class="t a1" href="pumsa8/" data-s="pumsa8" data-g="초등 중1" data-k="01-03 0103 8품사 단어의 역할 여덟 가지"><span class="c">01-03</span><span class="n">8품사</span><span class="y">초등·중1</span></a>
+      <a class="t a1" href="noun/" data-s="noun" data-g="초등 중1" data-k="01-04 0104 [대]명사 명사 · 대명사 · 인칭대명사 · 지시대명사"><span class="c">01-04</span><span class="n">[대]명사</span><span class="y">초등·중1</span></a>
+      <span class="t out a1" data-s="article" data-g="중1" data-k="01-05 0105 관사 a · an · the · 관사를 쓰지 않는 자리"><span class="c">01-05</span><span class="n">관사</span><span class="y">준비 중</span></span>
+      <span class="t out a1" data-s="nounnum" data-g="중1" data-k="01-06 0106 명사의 수와 양 셀 수 있는 명사와 셀 수 없는 명사 · many · much · a few · a little"><span class="c">01-06</span><span class="n">명사의 수와 양</span><span class="y">준비 중</span></span>
+      <span class="t out a1" data-s="pronoun2" data-g="중2" data-k="01-07 0107 대명사 심화 재귀대명사 · 부정대명사 one · another · other · 이중소유격 · 전체부정과 부분부정"><span class="c">01-07</span><span class="n">대명사 심화</span><span class="y">준비 중</span></span>
+      <a class="t a1" href="verbtype/" data-s="verbtype" data-g="중1" data-k="01-08 0108 동사 be동사 · 일반동사 · 조동사 구별"><span class="c">01-08</span><span class="n">동사</span><span class="y">중1</span></a>
+      <a class="t a1" href="adj/" data-s="adj" data-g="초등 중1" data-k="01-09 0109 형용사 어떠한지를 말하는 말 · 어순과 many·much"><span class="c">01-09</span><span class="n">형용사</span><span class="y">초등·중1</span></a>
+      <a class="t a1" href="adv/" data-s="adv" data-g="중1" data-k="01-10 0110 부사 어떻게 · 언제 · 어디서 · 얼마나 · -ly 만들기"><span class="c">01-10</span><span class="n">부사</span><span class="y">중1</span></a>
+      <a class="t a1" href="prep/" data-s="prep" data-g="중1" data-k="01-11 0111 전치사 in · on · under · 때의 at · on · in"><span class="c">01-11</span><span class="n">전치사</span><span class="y">중1</span></a>
+      <a class="t a1" href="conj/" data-s="conj" data-g="초등 중1" data-k="01-12 0112 등위접속사 and · but · or · so · 앞뒤를 대등하게 잇기"><span class="c">01-12</span><span class="n">등위접속사</span><span class="y">초등·중1</span></a>
+      <span class="t out a1" data-s="correl" data-g="중3" data-k="01-13 0113 상관접속사 both A and B · not only A but also B · as well as · either or · neither nor · 동사의 수 맞추기"><span class="c">01-13</span><span class="n">상관접속사</span><span class="y">준비 중</span></span>
+      <a class="t a1" href="interj/" data-s="interj" data-g="초등 중1" data-k="01-14 0114 감탄사 Wow · Ouch · Oops · 감탄문 What·How"><span class="c">01-14</span><span class="n">감탄사</span><span class="y">초등·중1</span></a>
+      <span class="t out a1" data-s="phrasal" data-g="중2" data-k="01-15 0115 구동사 동사 + 부사·전치사 · pick up · turn off · look for · 대명사는 사이에"><span class="c">01-15</span><span class="n">구동사</span><span class="y">준비 중</span></span>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a2">
     <div class="ah"><b>02</b><span>문장의 뼈대와 종류</span><i>초등~중2 · 어법 10개</i></div>
     <div class="grid">
-      <a class="t" href="beuse/" data-s="beuse" data-g="중1" data-k="02-01 0201 be동사 활용 am · is · are · 부정과 의문 · 현재와 미래"><span class="c">02-01</span><span class="n">be동사 활용</span><span class="y">중1</span></a>
-      <a class="t" href="verbuse/" data-s="verbuse" data-g="중1" data-k="02-02 0202 일반동사 활용 모양 · 부정 · 의문 · 현재와 미래"><span class="c">02-02</span><span class="n">일반동사 활용</span><span class="y">중1</span></a>
-      <a class="t" href="beverb/" data-s="beverb" data-g="초등 중1" data-k="02-03 0203 be동사·일반동사 가리기 두 동사 가리기 · 부정문과 의문문 · be냐 do·does냐 · 현재"><span class="c">02-03</span><span class="n">be동사·일반동사 가리기</span><span class="y">초등·중1</span></a>
-      <a class="t" href="pastuse/" data-s="pastuse" data-g="초등 중1" data-k="02-04 0204 be동사·일반동사 과거 과거·현재·미래 구별 · was·were · 규칙과 불규칙 · wasn’t냐 didn’t냐"><span class="c">02-04</span><span class="n">be동사·일반동사 과거</span><span class="y">초등·중1</span></a>
-      <span class="t out" data-s="whq" data-g="중1" data-k="02-05 0205 의문사 의문문 who · what · when · where · why · how · How many·much · How long·far·soon"><span class="c">02-05</span><span class="n">의문사 의문문</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="imper" data-g="중1" data-k="02-06 0206 명령문과 청유문 명령문 · 명령문 + and·or · Let&#x27;s"><span class="c">02-06</span><span class="n">명령문과 청유문</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="tagq" data-g="중2" data-k="02-07 0207 부가의문문 앞 문장을 보고 꼬리 붙이기 · 대답하기"><span class="c">02-07</span><span class="n">부가의문문</span><span class="y">준비 중</span></span>
-      <a class="t" href="thereis/" data-s="thereis" data-g="중1" data-k="02-08 0208 There is·are ~가 있다 · have와 be동사 가리기 · 과거와 부정·의문"><span class="c">02-08</span><span class="n">There is·are</span><span class="y">중1</span></a>
-      <a class="t" href="itsub/" data-s="itsub" data-g="중1" data-k="02-09 0209 비인칭주어 해석하지 않는 주어 it · 시간 · 날씨 · 거리"><span class="c">02-09</span><span class="n">비인칭주어</span><span class="y">중1</span></a>
-      <a class="t" href="freq/" data-s="freq" data-g="중1" data-k="02-10 0210 빈도부사 always · usually · often · sometimes · rarely · never · 자리와 뜻"><span class="c">02-10</span><span class="n">빈도부사</span><span class="y">중1</span></a>
+      <a class="t a2" href="beuse/" data-s="beuse" data-g="중1" data-k="02-01 0201 be동사 활용 am · is · are · 부정과 의문 · 현재와 미래"><span class="c">02-01</span><span class="n">be동사 활용</span><span class="y">중1</span></a>
+      <a class="t a2" href="verbuse/" data-s="verbuse" data-g="중1" data-k="02-02 0202 일반동사 활용 모양 · 부정 · 의문 · 현재와 미래"><span class="c">02-02</span><span class="n">일반동사 활용</span><span class="y">중1</span></a>
+      <a class="t a2" href="beverb/" data-s="beverb" data-g="초등 중1" data-k="02-03 0203 be동사·일반동사 가리기 두 동사 가리기 · 부정문과 의문문 · be냐 do·does냐 · 현재"><span class="c">02-03</span><span class="n">be동사·일반동사 가리기</span><span class="y">초등·중1</span></a>
+      <a class="t a2" href="pastuse/" data-s="pastuse" data-g="초등 중1" data-k="02-04 0204 be동사·일반동사 과거 과거·현재·미래 구별 · was·were · 규칙과 불규칙 · wasn’t냐 didn’t냐"><span class="c">02-04</span><span class="n">be동사·일반동사 과거</span><span class="y">초등·중1</span></a>
+      <span class="t out a2" data-s="whq" data-g="중1" data-k="02-05 0205 의문사 의문문 who · what · when · where · why · how · How many·much · How long·far·soon"><span class="c">02-05</span><span class="n">의문사 의문문</span><span class="y">준비 중</span></span>
+      <span class="t out a2" data-s="imper" data-g="중1" data-k="02-06 0206 명령문과 청유문 명령문 · 명령문 + and·or · Let&#x27;s"><span class="c">02-06</span><span class="n">명령문과 청유문</span><span class="y">준비 중</span></span>
+      <span class="t out a2" data-s="tagq" data-g="중2" data-k="02-07 0207 부가의문문 앞 문장을 보고 꼬리 붙이기 · 대답하기"><span class="c">02-07</span><span class="n">부가의문문</span><span class="y">준비 중</span></span>
+      <a class="t a2" href="thereis/" data-s="thereis" data-g="중1" data-k="02-08 0208 There is·are ~가 있다 · have와 be동사 가리기 · 과거와 부정·의문"><span class="c">02-08</span><span class="n">There is·are</span><span class="y">중1</span></a>
+      <a class="t a2" href="itsub/" data-s="itsub" data-g="중1" data-k="02-09 0209 비인칭주어 해석하지 않는 주어 it · 시간 · 날씨 · 거리"><span class="c">02-09</span><span class="n">비인칭주어</span><span class="y">중1</span></a>
+      <a class="t a2" href="freq/" data-s="freq" data-g="중1" data-k="02-10 0210 빈도부사 always · usually · often · sometimes · rarely · never · 자리와 뜻"><span class="c">02-10</span><span class="n">빈도부사</span><span class="y">중1</span></a>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a3">
     <div class="ah"><b>03</b><span>문장의 형식</span><i>중1~중3 · 어법 6개</i></div>
     <div class="grid">
-      <span class="t out" data-s="form15" data-g="중1 중2" data-k="03-01 0301 1~5형식 문장 성분 · 자동사와 타동사 · 완전자동사와 불완전자동사 · 다섯 형식 가리기"><span class="c">03-01</span><span class="n">1~5형식</span><span class="y">준비 중</span></span>
-      <a class="t" href="sense/" data-s="sense" data-g="중1" data-k="03-02 0302 감각동사 look · sound · smell · taste · feel"><span class="c">03-02</span><span class="n">감각동사</span><span class="y">중1</span></a>
-      <a class="t" href="dative/" data-s="dative" data-g="중1" data-k="03-03 0303 수여동사 ~에게 ~을 · to · for · of"><span class="c">03-03</span><span class="n">수여동사</span><span class="y">중1</span></a>
-      <a class="t" href="callab/" data-s="callab" data-g="중1 중2" data-k="03-04 0304 CALL A B A를 B라고 부르다 · A = B · 5형식을 쉽게"><span class="c">03-04</span><span class="n">CALL A B</span><span class="y">중1·중2</span></a>
-      <a class="t" href="form5b/" data-s="form5b" data-g="중2" data-k="03-05 0305 지각·[준]사역 5형식 지각 · 사역 · 준사역과 목적격보어"><span class="c">03-05</span><span class="n">지각·[준]사역 5형식</span><span class="y">중2</span></a>
-      <span class="t out" data-s="seem" data-g="중3" data-k="03-06 0306 SEEM seem + 형용사 · seem to + 동사원형 · It seems that ~ 와 바꿔 쓰기 · seemed와 때 맞추기"><span class="c">03-06</span><span class="n">SEEM</span><span class="y">준비 중</span></span>
+      <span class="t out a3" data-s="form15" data-g="중1 중2" data-k="03-01 0301 1~5형식 문장 성분 · 자동사와 타동사 · 완전자동사와 불완전자동사 · 다섯 형식 가리기"><span class="c">03-01</span><span class="n">1~5형식</span><span class="y">준비 중</span></span>
+      <a class="t a3" href="sense/" data-s="sense" data-g="중1" data-k="03-02 0302 감각동사 look · sound · smell · taste · feel"><span class="c">03-02</span><span class="n">감각동사</span><span class="y">중1</span></a>
+      <a class="t a3" href="dative/" data-s="dative" data-g="중1" data-k="03-03 0303 수여동사 ~에게 ~을 · to · for · of"><span class="c">03-03</span><span class="n">수여동사</span><span class="y">중1</span></a>
+      <a class="t a3" href="callab/" data-s="callab" data-g="중1 중2" data-k="03-04 0304 CALL A B A를 B라고 부르다 · A = B · 5형식을 쉽게"><span class="c">03-04</span><span class="n">CALL A B</span><span class="y">중1·중2</span></a>
+      <a class="t a3" href="form5b/" data-s="form5b" data-g="중2" data-k="03-05 0305 지각·[준]사역 5형식 지각 · 사역 · 준사역과 목적격보어"><span class="c">03-05</span><span class="n">지각·[준]사역 5형식</span><span class="y">중2</span></a>
+      <span class="t out a3" data-s="seem" data-g="중3" data-k="03-06 0306 SEEM seem + 형용사 · seem to + 동사원형 · It seems that ~ 와 바꿔 쓰기 · seemed와 때 맞추기"><span class="c">03-06</span><span class="n">SEEM</span><span class="y">준비 중</span></span>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a4">
     <div class="ah"><b>04</b><span>동사의 시제·조동사·태</span><i>초등~중3 · 어법 11개</i></div>
     <div class="grid">
-      <a class="t" href="tense/" data-s="tense" data-g="초등 중1" data-k="04-01 0401 시제 현재 · 과거 · 미래 · 진행 · 현재완료"><span class="c">04-01</span><span class="n">시제</span><span class="y">초등·중1</span></a>
-      <span class="t out" data-s="progressive" data-g="중1" data-k="04-02 0402 진행형 현재진행 · 과거진행 · -ing 만들기 · 진행형으로 쓰지 않는 동사"><span class="c">04-02</span><span class="n">진행형</span><span class="y">준비 중</span></span>
-      <a class="t" href="perfect/" data-s="perfect" data-g="중2" data-k="04-03 0403 현재완료 have + 과거분사 · 게임과 클리닉을 하나로"><span class="c">04-03</span><span class="n">현재완료</span><span class="y">중2</span></a>
-      <a class="t" href="pastperfect/" data-s="pastperfect" data-g="중3" data-k="04-04 0404 과거완료 had + 과거분사 · 먼저 일어난 일 · 대과거"><span class="c">04-04</span><span class="n">과거완료</span><span class="y">중3</span></a>
-      <span class="t out" data-s="modalcan" data-g="중1" data-k="04-05 0405 조동사 CAN WILL can · could · will · would · May I ~? · Shall we ~? · be able to · be going to · 4단계에서 추측의 may · might"><span class="c">04-05</span><span class="n">조동사 CAN WILL</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="modalmust" data-g="중1" data-k="04-06 0406 조동사 MUST HAVE TO must · have to · must not과 don&#x27;t have to · had to · should · 4단계에서 had better · ought to"><span class="c">04-06</span><span class="n">조동사 MUST HAVE TO</span><span class="y">준비 중</span></span>
-      <a class="t" href="usedto/" data-s="usedto" data-g="중2" data-k="04-07 0407 USED TO used to · would · be used to"><span class="c">04-07</span><span class="n">USED TO</span><span class="y">중2</span></a>
-      <a class="t" href="passive/" data-s="passive" data-g="중2" data-k="04-08 0408 수동태 능동과 수동 · be동사 + 과거분사 · 하는 쪽과 당하는 쪽"><span class="c">04-08</span><span class="n">수동태</span><span class="y">중2</span></a>
-      <a class="t" href="modalpassive/" data-s="modalpassive" data-g="중3" data-k="04-09 0409 조동사 수동태 조동사 + be + 과거분사 · 될 수 있다 · 되어야 한다 · 될 것이다"><span class="c">04-09</span><span class="n">조동사 수동태</span><span class="y">중3</span></a>
-      <span class="t out" data-s="passive2" data-g="중3" data-k="04-10 0410 수동태 심화 4형식 수동 · 지각·사역동사 수동 · by 아닌 전치사 · 진행형과 완료형 수동 · 준동사 수동형 being pp · to be pp"><span class="c">04-10</span><span class="n">수동태 심화</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="modalpp" data-g="중3" data-k="04-11 0411 조동사 + 과거분사 should have pp · must have pp · could have pp · 지난 일을 돌아보는 말"><span class="c">04-11</span><span class="n">조동사 + 과거분사</span><span class="y">준비 중</span></span>
+      <a class="t a4" href="tense/" data-s="tense" data-g="초등 중1" data-k="04-01 0401 시제 현재 · 과거 · 미래 · 진행 · 현재완료"><span class="c">04-01</span><span class="n">시제</span><span class="y">초등·중1</span></a>
+      <span class="t out a4" data-s="progressive" data-g="중1" data-k="04-02 0402 진행형 현재진행 · 과거진행 · -ing 만들기 · 진행형으로 쓰지 않는 동사"><span class="c">04-02</span><span class="n">진행형</span><span class="y">준비 중</span></span>
+      <a class="t a4" href="perfect/" data-s="perfect" data-g="중2" data-k="04-03 0403 현재완료 have + 과거분사 · 게임과 클리닉을 하나로"><span class="c">04-03</span><span class="n">현재완료</span><span class="y">중2</span></a>
+      <a class="t a4" href="pastperfect/" data-s="pastperfect" data-g="중3" data-k="04-04 0404 과거완료 had + 과거분사 · 먼저 일어난 일 · 대과거"><span class="c">04-04</span><span class="n">과거완료</span><span class="y">중3</span></a>
+      <span class="t out a4" data-s="modalcan" data-g="중1" data-k="04-05 0405 조동사 CAN WILL can · could · will · would · May I ~? · Shall we ~? · be able to · be going to · 4단계에서 추측의 may · might"><span class="c">04-05</span><span class="n">조동사 CAN WILL</span><span class="y">준비 중</span></span>
+      <span class="t out a4" data-s="modalmust" data-g="중1" data-k="04-06 0406 조동사 MUST HAVE TO must · have to · must not과 don&#x27;t have to · had to · should · 4단계에서 had better · ought to"><span class="c">04-06</span><span class="n">조동사 MUST HAVE TO</span><span class="y">준비 중</span></span>
+      <a class="t a4" href="usedto/" data-s="usedto" data-g="중2" data-k="04-07 0407 USED TO used to · would · be used to"><span class="c">04-07</span><span class="n">USED TO</span><span class="y">중2</span></a>
+      <a class="t a4" href="passive/" data-s="passive" data-g="중2" data-k="04-08 0408 수동태 능동과 수동 · be동사 + 과거분사 · 하는 쪽과 당하는 쪽"><span class="c">04-08</span><span class="n">수동태</span><span class="y">중2</span></a>
+      <a class="t a4" href="modalpassive/" data-s="modalpassive" data-g="중3" data-k="04-09 0409 조동사 수동태 조동사 + be + 과거분사 · 될 수 있다 · 되어야 한다 · 될 것이다"><span class="c">04-09</span><span class="n">조동사 수동태</span><span class="y">중3</span></a>
+      <span class="t out a4" data-s="passive2" data-g="중3" data-k="04-10 0410 수동태 심화 4형식 수동 · 지각·사역동사 수동 · by 아닌 전치사 · 진행형과 완료형 수동 · 준동사 수동형 being pp · to be pp"><span class="c">04-10</span><span class="n">수동태 심화</span><span class="y">준비 중</span></span>
+      <span class="t out a4" data-s="modalpp" data-g="중3" data-k="04-11 0411 조동사 + 과거분사 should have pp · must have pp · could have pp · 지난 일을 돌아보는 말"><span class="c">04-11</span><span class="n">조동사 + 과거분사</span><span class="y">준비 중</span></span>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a5">
     <div class="ah"><b>05</b><span>준동사</span><i>초등~중3 · 어법 10개</i></div>
     <div class="grid">
-      <a class="t" href="toinf-basic/" data-s="toinf-basic" data-g="중1" data-k="05-01 0501 TO부정사 기본 to + 동사원형 · 세 가지 노릇"><span class="c">05-01</span><span class="n">TO부정사 기본</span><span class="y">중1</span></a>
-      <a class="t" href="toinf/" data-s="toinf" data-g="중2" data-k="05-02 0502 TO부정사 명사적 · 형용사적 · 부사적 용법 · 의미상 주어"><span class="c">05-02</span><span class="n">TO부정사</span><span class="y">중2</span></a>
-      <a class="t" href="fakesub/" data-s="fakesub" data-g="중2" data-k="05-03 0503 가주어 진주어 It is ~ to부정사 · 긴 주어를 뒤로 · 의미상 주어 for와 of"><span class="c">05-03</span><span class="n">가주어 진주어</span><span class="y">중2</span></a>
-      <a class="t" href="thingto/" data-s="thingto" data-g="중2" data-k="05-04 0504 TO부정사 형용사적 용법 사·구·절 · something cold to drink · 전치사 남기기"><span class="c">05-04</span><span class="n">TO부정사 형용사적 용법</span><span class="y">중2</span></a>
-      <a class="t" href="whto/" data-s="whto" data-g="중2" data-k="05-05 0505 의문사+TO부정사 먹는다→먹는 것→무엇을 먹을지 · 명사 자리 · 주어+should로 바꿔 쓰기"><span class="c">05-05</span><span class="n">의문사+TO부정사</span><span class="y">중2</span></a>
-      <a class="t" href="gerund/" data-s="gerund" data-g="중2" data-k="05-06 0506 동명사 동명사 -ing"><span class="c">05-06</span><span class="n">동명사</span><span class="y">중2</span></a>
-      <span class="t out" data-s="gerinf" data-g="중2" data-k="05-07 0507 동명사와 TO부정사 목적어 remember · forget · stop · try"><span class="c">05-07</span><span class="n">동명사와 TO부정사 목적어</span><span class="y">준비 중</span></span>
-      <a class="t" href="participle/" data-s="participle" data-g="초등 중1" data-k="05-08 0508 현재분사·과거분사 현재분사 · 과거분사 · 품사로서의 분사"><span class="c">05-08</span><span class="n">현재분사·과거분사</span><span class="y">초등·중1</span></a>
-      <a class="t" href="partph/" data-s="partph" data-g="중2 중3" data-k="05-09 0509 분사구 분사가 이끄는 덩어리 · 한 낱말은 명사 앞, 두 낱말 이상은 명사 뒤"><span class="c">05-09</span><span class="n">분사구</span><span class="y">중2·중3</span></a>
-      <a class="t" href="partcon/" data-s="partcon" data-g="중3" data-k="05-10 0510 분사구문 부사절을 줄여 -ing로 · 때·까닭·조건·양보·동시동작"><span class="c">05-10</span><span class="n">분사구문</span><span class="y">중3</span></a>
+      <a class="t a5" href="toinf-basic/" data-s="toinf-basic" data-g="중1" data-k="05-01 0501 TO부정사 기본 to + 동사원형 · 세 가지 노릇"><span class="c">05-01</span><span class="n">TO부정사 기본</span><span class="y">중1</span></a>
+      <a class="t a5" href="toinf/" data-s="toinf" data-g="중2" data-k="05-02 0502 TO부정사 명사적 · 형용사적 · 부사적 용법 · 의미상 주어"><span class="c">05-02</span><span class="n">TO부정사</span><span class="y">중2</span></a>
+      <a class="t a5" href="fakesub/" data-s="fakesub" data-g="중2" data-k="05-03 0503 가주어 진주어 It is ~ to부정사 · 긴 주어를 뒤로 · 의미상 주어 for와 of"><span class="c">05-03</span><span class="n">가주어 진주어</span><span class="y">중2</span></a>
+      <a class="t a5" href="thingto/" data-s="thingto" data-g="중2" data-k="05-04 0504 TO부정사 형용사적 용법 사·구·절 · something cold to drink · 전치사 남기기"><span class="c">05-04</span><span class="n">TO부정사 형용사적 용법</span><span class="y">중2</span></a>
+      <a class="t a5" href="whto/" data-s="whto" data-g="중2" data-k="05-05 0505 의문사+TO부정사 먹는다→먹는 것→무엇을 먹을지 · 명사 자리 · 주어+should로 바꿔 쓰기"><span class="c">05-05</span><span class="n">의문사+TO부정사</span><span class="y">중2</span></a>
+      <a class="t a5" href="gerund/" data-s="gerund" data-g="중2" data-k="05-06 0506 동명사 동명사 -ing"><span class="c">05-06</span><span class="n">동명사</span><span class="y">중2</span></a>
+      <span class="t out a5" data-s="gerinf" data-g="중2" data-k="05-07 0507 동명사와 TO부정사 목적어 remember · forget · stop · try"><span class="c">05-07</span><span class="n">동명사와 TO부정사 목적어</span><span class="y">준비 중</span></span>
+      <a class="t a5" href="participle/" data-s="participle" data-g="초등 중1" data-k="05-08 0508 현재분사·과거분사 현재분사 · 과거분사 · 품사로서의 분사"><span class="c">05-08</span><span class="n">현재분사·과거분사</span><span class="y">초등·중1</span></a>
+      <a class="t a5" href="partph/" data-s="partph" data-g="중2 중3" data-k="05-09 0509 분사구 분사가 이끄는 덩어리 · 한 낱말은 명사 앞, 두 낱말 이상은 명사 뒤"><span class="c">05-09</span><span class="n">분사구</span><span class="y">중2·중3</span></a>
+      <a class="t a5" href="partcon/" data-s="partcon" data-g="중3" data-k="05-10 0510 분사구문 부사절을 줄여 -ing로 · 때·까닭·조건·양보·동시동작"><span class="c">05-10</span><span class="n">분사구문</span><span class="y">중3</span></a>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a6">
     <div class="ah"><b>06</b><span>절로 이어 붙이기</span><i>중1~중3 · 어법 17개</i></div>
     <div class="grid">
-      <span class="t out" data-s="subconj" data-g="중2" data-k="06-01 0601 종속접속사 주절과 종속절 · 명사절·부사절·형용사절을 이끄는 말 · 등위접속사와 가리기"><span class="c">06-01</span><span class="n">종속접속사</span><span class="y">준비 중</span></span>
-      <a class="t" href="thatclause/" data-s="thatclause" data-g="중2" data-k="06-02 0602 명사절 THAT that의 품사 셋 · ~것 · 주어·목적어·보어 자리"><span class="c">06-02</span><span class="n">명사절 THAT</span><span class="y">중2</span></a>
-      <span class="t out" data-s="appothat" data-g="중3" data-k="06-03 0603 동격 THAT the fact that · the news that · the idea that · 관계대명사 which와 가리기"><span class="c">06-03</span><span class="n">동격 THAT</span><span class="y">준비 중</span></span>
-      <a class="t" href="indirectq/" data-s="indirectq" data-g="중2" data-k="06-04 0604 간접의문문 의문사 + 주어 + 동사 · if와 whether"><span class="c">06-04</span><span class="n">간접의문문</span><span class="y">중2</span></a>
-      <a class="t" href="relwhat/" data-s="relwhat" data-g="중3" data-k="06-05 0605 관계대명사 WHAT what = ~하는 것 · 주어·목적어·보어·전치사 뒤 · what과 that 가리기"><span class="c">06-05</span><span class="n">관계대명사 WHAT</span><span class="y">중3</span></a>
-      <span class="t out" data-s="suggestthat" data-g="중3" data-k="06-06 0606 주장·요구·제안 + THAT suggest · insist · demand · order that + 주어 + (should) 동사원형"><span class="c">06-06</span><span class="n">주장·요구·제안 + THAT</span><span class="y">준비 중</span></span>
-      <a class="t" href="relpron/" data-s="relpron" data-g="중3" data-k="06-07 0607 관계대명사 who · which · that · whose · what"><span class="c">06-07</span><span class="n">관계대명사</span><span class="y">중3</span></a>
-      <a class="t" href="reladv/" data-s="reladv" data-g="중3" data-k="06-08 0608 관계부사 where · when · why · how · 전치사+which를 한 낱말로"><span class="c">06-08</span><span class="n">관계부사</span><span class="y">중3</span></a>
-      <a class="t" href="whenclause/" data-s="whenclause" data-g="중1" data-k="06-09 0609 시간 부사절 WHEN 부사 · 부사구 · 부사절 · ~할 때와 언제"><span class="c">06-09</span><span class="n">시간 부사절 WHEN</span><span class="y">중1</span></a>
-      <span class="t out" data-s="ifclause" data-g="중2" data-k="06-10 0610 조건의 접속사 IF if와 unless · 조건절에서는 현재형이 미래를 대신 · 명사절 if와 가리기"><span class="c">06-10</span><span class="n">조건의 접속사 IF</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="although" data-g="중3" data-k="06-11 0611 양보의 접속사 although · though · even though · in spite of와 despite"><span class="c">06-11</span><span class="n">양보의 접속사</span><span class="y">준비 중</span></span>
-      <a class="t" href="asconj/" data-s="asconj" data-g="중3" data-k="06-12 0612 접속사 AS ~할 때 · ~때문에 · ~하듯이 · ~함에 따라 · 전치사와 접속사 가리기"><span class="c">06-12</span><span class="n">접속사 AS</span><span class="y">중3</span></a>
-      <a class="t" href="sothat/" data-s="sothat" data-g="중2" data-k="06-13 0613 SO~THAT so~that · too~to · enough to"><span class="c">06-13</span><span class="n">SO~THAT</span><span class="y">중2</span></a>
-      <a class="t" href="sothat-purpose/" data-s="sothat-purpose" data-g="중2" data-k="06-14 0614 SO THAT 목적 목적과 결과 가리기 · in order to"><span class="c">06-14</span><span class="n">SO THAT 목적</span><span class="y">중2</span></a>
-      <span class="t out" data-s="compoundrel" data-g="중3" data-k="06-15 0615 복합관계사 whoever · whatever · whenever · however"><span class="c">06-15</span><span class="n">복합관계사</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="connadv" data-g="중3" data-k="06-16 0616 접속부사 however · therefore · besides · moreover · 접속사와 가리기 · 세미콜론과 마침표"><span class="c">06-16</span><span class="n">접속부사</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="clausesort" data-g="중3" data-k="06-17 0617 절 가리기 명사절 · 형용사절 · 부사절을 한자리에서 가려내기"><span class="c">06-17</span><span class="n">절 가리기</span><span class="y">준비 중</span></span>
+      <span class="t out a6" data-s="subconj" data-g="중2" data-k="06-01 0601 종속접속사 주절과 종속절 · 명사절·부사절·형용사절을 이끄는 말 · 등위접속사와 가리기"><span class="c">06-01</span><span class="n">종속접속사</span><span class="y">준비 중</span></span>
+      <a class="t a6" href="thatclause/" data-s="thatclause" data-g="중2" data-k="06-02 0602 명사절 THAT that의 품사 셋 · ~것 · 주어·목적어·보어 자리"><span class="c">06-02</span><span class="n">명사절 THAT</span><span class="y">중2</span></a>
+      <span class="t out a6" data-s="appothat" data-g="중3" data-k="06-03 0603 동격 THAT the fact that · the news that · the idea that · 관계대명사 which와 가리기"><span class="c">06-03</span><span class="n">동격 THAT</span><span class="y">준비 중</span></span>
+      <a class="t a6" href="indirectq/" data-s="indirectq" data-g="중2" data-k="06-04 0604 간접의문문 의문사 + 주어 + 동사 · if와 whether"><span class="c">06-04</span><span class="n">간접의문문</span><span class="y">중2</span></a>
+      <a class="t a6" href="relwhat/" data-s="relwhat" data-g="중3" data-k="06-05 0605 관계대명사 WHAT what = ~하는 것 · 주어·목적어·보어·전치사 뒤 · what과 that 가리기"><span class="c">06-05</span><span class="n">관계대명사 WHAT</span><span class="y">중3</span></a>
+      <span class="t out a6" data-s="suggestthat" data-g="중3" data-k="06-06 0606 주장·요구·제안 + THAT suggest · insist · demand · order that + 주어 + (should) 동사원형"><span class="c">06-06</span><span class="n">주장·요구·제안 + THAT</span><span class="y">준비 중</span></span>
+      <a class="t a6" href="relpron/" data-s="relpron" data-g="중3" data-k="06-07 0607 관계대명사 who · which · that · whose · what"><span class="c">06-07</span><span class="n">관계대명사</span><span class="y">중3</span></a>
+      <a class="t a6" href="reladv/" data-s="reladv" data-g="중3" data-k="06-08 0608 관계부사 where · when · why · how · 전치사+which를 한 낱말로"><span class="c">06-08</span><span class="n">관계부사</span><span class="y">중3</span></a>
+      <a class="t a6" href="whenclause/" data-s="whenclause" data-g="중1" data-k="06-09 0609 시간 부사절 WHEN 부사 · 부사구 · 부사절 · ~할 때와 언제"><span class="c">06-09</span><span class="n">시간 부사절 WHEN</span><span class="y">중1</span></a>
+      <span class="t out a6" data-s="ifclause" data-g="중2" data-k="06-10 0610 조건의 접속사 IF if와 unless · 조건절에서는 현재형이 미래를 대신 · 명사절 if와 가리기"><span class="c">06-10</span><span class="n">조건의 접속사 IF</span><span class="y">준비 중</span></span>
+      <span class="t out a6" data-s="although" data-g="중3" data-k="06-11 0611 양보의 접속사 although · though · even though · in spite of와 despite"><span class="c">06-11</span><span class="n">양보의 접속사</span><span class="y">준비 중</span></span>
+      <a class="t a6" href="asconj/" data-s="asconj" data-g="중3" data-k="06-12 0612 접속사 AS ~할 때 · ~때문에 · ~하듯이 · ~함에 따라 · 전치사와 접속사 가리기"><span class="c">06-12</span><span class="n">접속사 AS</span><span class="y">중3</span></a>
+      <a class="t a6" href="sothat/" data-s="sothat" data-g="중2" data-k="06-13 0613 SO~THAT so~that · too~to · enough to"><span class="c">06-13</span><span class="n">SO~THAT</span><span class="y">중2</span></a>
+      <a class="t a6" href="sothat-purpose/" data-s="sothat-purpose" data-g="중2" data-k="06-14 0614 SO THAT 목적 목적과 결과 가리기 · in order to"><span class="c">06-14</span><span class="n">SO THAT 목적</span><span class="y">중2</span></a>
+      <span class="t out a6" data-s="compoundrel" data-g="중3" data-k="06-15 0615 복합관계사 whoever · whatever · whenever · however"><span class="c">06-15</span><span class="n">복합관계사</span><span class="y">준비 중</span></span>
+      <span class="t out a6" data-s="connadv" data-g="중3" data-k="06-16 0616 접속부사 however · therefore · besides · moreover · 접속사와 가리기 · 세미콜론과 마침표"><span class="c">06-16</span><span class="n">접속부사</span><span class="y">준비 중</span></span>
+      <span class="t out a6" data-s="clausesort" data-g="중3" data-k="06-17 0617 절 가리기 명사절 · 형용사절 · 부사절을 한자리에서 가려내기"><span class="c">06-17</span><span class="n">절 가리기</span><span class="y">준비 중</span></span>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a7">
     <div class="ah"><b>07</b><span>비교와 가정</span><i>중1~중3 · 어법 6개</i></div>
     <div class="grid">
-      <a class="t" href="comp/" data-s="comp" data-g="중1" data-k="07-01 0701 비교급 두 대상의 우열 · -er과 more · than · 부정과 뒤집기"><span class="c">07-01</span><span class="n">비교급</span><span class="y">중1</span></a>
-      <span class="t out" data-s="emphcomp" data-g="중2" data-k="07-02 0702 비교급 강조 much · far · even · still · a lot + 비교급 · very는 쓰지 않음"><span class="c">07-02</span><span class="n">비교급 강조</span><span class="y">준비 중</span></span>
-      <a class="t" href="asas/" data-s="asas" data-g="중2" data-k="07-03 0703 AS~AS as + 원급 + as · not as(so) ~ as · 비교급으로 바꿔 쓰기 · 동등·우등·열등"><span class="c">07-03</span><span class="n">AS~AS</span><span class="y">중2</span></a>
-      <a class="t" href="themore/" data-s="themore" data-g="중3" data-k="07-04 0704 THE 비교급 ~할수록 더 ~하다 · 두 칸 만들기 · 점점 더와 훨씬"><span class="c">07-04</span><span class="n">THE 비교급</span><span class="y">중3</span></a>
-      <span class="t out" data-s="super" data-g="중2" data-k="07-05 0705 최상급 the + 최상급 · one of the + 최상급 · in과 of"><span class="c">07-05</span><span class="n">최상급</span><span class="y">준비 중</span></span>
-      <a class="t" href="subjunctive/" data-s="subjunctive" data-g="중3" data-k="07-06 0706 가정법 직설법과 가정법 · 조건과 가정 가리기 · I wish"><span class="c">07-06</span><span class="n">가정법</span><span class="y">중3</span></a>
+      <a class="t a7" href="comp/" data-s="comp" data-g="중1" data-k="07-01 0701 비교급 두 대상의 우열 · -er과 more · than · 부정과 뒤집기"><span class="c">07-01</span><span class="n">비교급</span><span class="y">중1</span></a>
+      <span class="t out a7" data-s="emphcomp" data-g="중2" data-k="07-02 0702 비교급 강조 much · far · even · still · a lot + 비교급 · very는 쓰지 않음"><span class="c">07-02</span><span class="n">비교급 강조</span><span class="y">준비 중</span></span>
+      <a class="t a7" href="asas/" data-s="asas" data-g="중2" data-k="07-03 0703 AS~AS as + 원급 + as · not as(so) ~ as · 비교급으로 바꿔 쓰기 · 동등·우등·열등"><span class="c">07-03</span><span class="n">AS~AS</span><span class="y">중2</span></a>
+      <a class="t a7" href="themore/" data-s="themore" data-g="중3" data-k="07-04 0704 THE 비교급 ~할수록 더 ~하다 · 두 칸 만들기 · 점점 더와 훨씬"><span class="c">07-04</span><span class="n">THE 비교급</span><span class="y">중3</span></a>
+      <span class="t out a7" data-s="super" data-g="중2" data-k="07-05 0705 최상급 the + 최상급 · one of the + 최상급 · in과 of"><span class="c">07-05</span><span class="n">최상급</span><span class="y">준비 중</span></span>
+      <a class="t a7" href="subjunctive/" data-s="subjunctive" data-g="중3" data-k="07-06 0706 가정법 직설법과 가정법 · 조건과 가정 가리기 · I wish"><span class="c">07-06</span><span class="n">가정법</span><span class="y">중3</span></a>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a8">
     <div class="ah"><b>08</b><span>특수구문</span><i>중3 · 어법 6개</i></div>
     <div class="grid">
-      <span class="t out" data-s="agree" data-g="중3" data-k="08-01 0801 수 일치 주어와 동사의 수 · each·every는 단수 · news·economics는 꼴만 복수 · the number of와 a number of · most of·half of · 긴 수식어구 뒤 주어 찾기"><span class="c">08-01</span><span class="n">수 일치</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="reported" data-g="중3" data-k="08-02 0802 화법 직접화법과 간접화법"><span class="c">08-02</span><span class="n">화법</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="emphit" data-g="중3" data-k="08-03 0803 IT ~ THAT 강조 It is ~ that 사이에 강조할 말 넣기 · 사람은 who"><span class="c">08-03</span><span class="n">IT ~ THAT 강조</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="emphdo" data-g="중3" data-k="08-04 0804 동사 강조 do·does·did + 동사원형 · 때와 인칭 맞추기"><span class="c">08-04</span><span class="n">동사 강조</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="inversion" data-g="중3" data-k="08-05 0805 도치 부정어 앞세우기 · So·Neither 대답 · 장소·방향 부사 도치 Here comes ~"><span class="c">08-05</span><span class="n">도치</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="parallel" data-g="중3" data-k="08-06 0806 병렬구조 and·or·but 앞뒤 형태 맞추기 · not only ~ but also"><span class="c">08-06</span><span class="n">병렬구조</span><span class="y">준비 중</span></span>
+      <span class="t out a8" data-s="agree" data-g="중3" data-k="08-01 0801 수 일치 주어와 동사의 수 · each·every는 단수 · news·economics는 꼴만 복수 · the number of와 a number of · most of·half of · 긴 수식어구 뒤 주어 찾기"><span class="c">08-01</span><span class="n">수 일치</span><span class="y">준비 중</span></span>
+      <span class="t out a8" data-s="reported" data-g="중3" data-k="08-02 0802 화법 직접화법과 간접화법"><span class="c">08-02</span><span class="n">화법</span><span class="y">준비 중</span></span>
+      <span class="t out a8" data-s="emphit" data-g="중3" data-k="08-03 0803 IT ~ THAT 강조 It is ~ that 사이에 강조할 말 넣기 · 사람은 who"><span class="c">08-03</span><span class="n">IT ~ THAT 강조</span><span class="y">준비 중</span></span>
+      <span class="t out a8" data-s="emphdo" data-g="중3" data-k="08-04 0804 동사 강조 do·does·did + 동사원형 · 때와 인칭 맞추기"><span class="c">08-04</span><span class="n">동사 강조</span><span class="y">준비 중</span></span>
+      <span class="t out a8" data-s="inversion" data-g="중3" data-k="08-05 0805 도치 부정어 앞세우기 · So·Neither 대답 · 장소·방향 부사 도치 Here comes ~"><span class="c">08-05</span><span class="n">도치</span><span class="y">준비 중</span></span>
+      <span class="t out a8" data-s="parallel" data-g="중3" data-k="08-06 0806 병렬구조 and·or·but 앞뒤 형태 맞추기 · not only ~ but also"><span class="c">08-06</span><span class="n">병렬구조</span><span class="y">준비 중</span></span>
     </div>
   </div>
-  <div class="ablock">
+  <div class="ablock a9">
     <div class="ah"><b>09</b><span>고등 다지기</span><i>고등 · 어법 8개</i></div>
     <div class="grid">
-      <span class="t out" data-s="mixedif" data-g="고등" data-k="09-01 0901 혼합가정법과 가정법 대용 혼합가정법 · if it were not for · but for · 때가 어긋나는 가정"><span class="c">09-01</span><span class="n">혼합가정법과 가정법 대용</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="ifinv" data-g="고등" data-k="09-02 0902 IF 생략 도치 Had + 주어 + pp · Were + 주어 · Should + 주어"><span class="c">09-02</span><span class="n">IF 생략 도치</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="pseudorel" data-g="고등" data-k="09-03 0903 유사관계대명사 as · than · but · 앞말에 the same·such·as가 있을 때"><span class="c">09-03</span><span class="n">유사관계대명사</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="saidthat" data-g="고등" data-k="09-04 0904 통념 수동태 It is said that ~ 와 단문으로 바꿔 쓰기 · be believed·known·thought"><span class="c">09-04</span><span class="n">통념 수동태</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="perfger" data-g="고등" data-k="09-05 0905 완료동명사와 의미상 주어 having + pp · 소유격과 목적격 의미상 주어"><span class="c">09-05</span><span class="n">완료동명사와 의미상 주어</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="fakeobj" data-g="고등" data-k="09-06 0906 가목적어 구문 make·find·think·consider + it + 형용사 + to부정사·that절"><span class="c">09-06</span><span class="n">가목적어 구문</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="lest" data-g="고등" data-k="09-07 0907 LEST와 목적의 절 lest ~ (should) · so that · in order that + can·may·will"><span class="c">09-07</span><span class="n">LEST와 목적의 절</span><span class="y">준비 중</span></span>
-      <span class="t out" data-s="ellipsis" data-g="고등" data-k="09-08 0908 생략 되풀이되는 주어·동사·목적어 지우기 · 대동사 do"><span class="c">09-08</span><span class="n">생략</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="mixedif" data-g="고등" data-k="09-01 0901 혼합가정법과 가정법 대용 혼합가정법 · if it were not for · but for · 때가 어긋나는 가정"><span class="c">09-01</span><span class="n">혼합가정법과 가정법 대용</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="ifinv" data-g="고등" data-k="09-02 0902 IF 생략 도치 Had + 주어 + pp · Were + 주어 · Should + 주어"><span class="c">09-02</span><span class="n">IF 생략 도치</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="pseudorel" data-g="고등" data-k="09-03 0903 유사관계대명사 as · than · but · 앞말에 the same·such·as가 있을 때"><span class="c">09-03</span><span class="n">유사관계대명사</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="saidthat" data-g="고등" data-k="09-04 0904 통념 수동태 It is said that ~ 와 단문으로 바꿔 쓰기 · be believed·known·thought"><span class="c">09-04</span><span class="n">통념 수동태</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="perfger" data-g="고등" data-k="09-05 0905 완료동명사와 의미상 주어 having + pp · 소유격과 목적격 의미상 주어"><span class="c">09-05</span><span class="n">완료동명사와 의미상 주어</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="fakeobj" data-g="고등" data-k="09-06 0906 가목적어 구문 make·find·think·consider + it + 형용사 + to부정사·that절"><span class="c">09-06</span><span class="n">가목적어 구문</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="lest" data-g="고등" data-k="09-07 0907 LEST와 목적의 절 lest ~ (should) · so that · in order that + can·may·will"><span class="c">09-07</span><span class="n">LEST와 목적의 절</span><span class="y">준비 중</span></span>
+      <span class="t out a9" data-s="ellipsis" data-g="고등" data-k="09-08 0908 생략 되풀이되는 주어·동사·목적어 지우기 · 대동사 do"><span class="c">09-08</span><span class="n">생략</span><span class="y">준비 중</span></span>
     </div>
   </div>
   <div class="listwrap"></div>
   <h2>자세히 보기 <em>어법마다 무엇을 다루는지</em></h2>
-  <div class="listsec">
-  <h2>01 · 소리와 낱말 <em>초등~중3</em></h2>
+  <div class="listsec a1">
+  <h2><b class="an">01</b> 소리와 낱말 <em>초등~중3</em></h2>
   <div class="group">
     <a class="g" href="ph/" data-s="ph" data-g="초등" data-k="01-01 0101 파닉스 글자와 소리 · 매직 e · 낱말 쓰기"><span class="no"><i>01</i>01</span><span class="body"><span class="nm">파닉스 Level Up</span><span class="ds">글자와 소리 · 매직 e · 낱말 쓰기 · 초등 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
     <a class="g" href="pumsako/" data-s="pumsako" data-g="초등 중1 중2 중3" data-k="01-02 0102 8품사 우리말 여덟 품사의 개념을 우리말만으로 · 저학년부터 중3까지"><span class="no"><i>01</i>02</span><span class="body"><span class="nm">8품사 우리말 Level Up</span><span class="ds">여덟 품사의 개념을 우리말만으로 · 저학년부터 중3까지 · 초등~중3 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
@@ -328,8 +366,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <span class="g out" data-s="phrasal" data-g="중2" data-k="01-15 0115 구동사 동사 + 부사·전치사 · pick up · turn off · look for · 대명사는 사이에"><span class="no"><i>01</i>15</span><span class="body"><span class="nm">구동사 Level Up</span><span class="ds">동사 + 부사·전치사 · pick up · turn off · look for · 대명사는 사이에 · 중2</span></span><span class="go">준비 중</span></span>
   </div>
   </div>
-  <div class="listsec">
-  <h2>02 · 문장의 뼈대와 종류 <em>초등~중2</em></h2>
+  <div class="listsec a2">
+  <h2><b class="an">02</b> 문장의 뼈대와 종류 <em>초등~중2</em></h2>
   <div class="group">
     <a class="g" href="beuse/" data-s="beuse" data-g="중1" data-k="02-01 0201 be동사 활용 am · is · are · 부정과 의문 · 현재와 미래"><span class="no"><i>02</i>01</span><span class="body"><span class="nm">be동사 활용 Level Up</span><span class="ds">am · is · are · 부정과 의문 · 현재와 미래 · 중1 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
     <a class="g" href="verbuse/" data-s="verbuse" data-g="중1" data-k="02-02 0202 일반동사 활용 모양 · 부정 · 의문 · 현재와 미래"><span class="no"><i>02</i>02</span><span class="body"><span class="nm">일반동사 활용 Level Up</span><span class="ds">모양 · 부정 · 의문 · 현재와 미래 · 중1 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
@@ -343,8 +381,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <a class="g" href="freq/" data-s="freq" data-g="중1" data-k="02-10 0210 빈도부사 always · usually · often · sometimes · rarely · never · 자리와 뜻"><span class="no"><i>02</i>10</span><span class="body"><span class="nm">빈도부사 Level Up</span><span class="ds">always · usually · often · sometimes · rarely · never · 자리와 뜻 · 중1 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
   </div>
   </div>
-  <div class="listsec">
-  <h2>03 · 문장의 형식 <em>중1~중3</em></h2>
+  <div class="listsec a3">
+  <h2><b class="an">03</b> 문장의 형식 <em>중1~중3</em></h2>
   <div class="group">
     <span class="g out" data-s="form15" data-g="중1 중2" data-k="03-01 0301 1~5형식 문장 성분 · 자동사와 타동사 · 완전자동사와 불완전자동사 · 다섯 형식 가리기"><span class="no"><i>03</i>01</span><span class="body"><span class="nm">1~5형식 Level Up</span><span class="ds">문장 성분 · 자동사와 타동사 · 완전자동사와 불완전자동사 · 다섯 형식 가리기 · 중1·중2</span></span><span class="go">준비 중</span></span>
     <a class="g" href="sense/" data-s="sense" data-g="중1" data-k="03-02 0302 감각동사 look · sound · smell · taste · feel"><span class="no"><i>03</i>02</span><span class="body"><span class="nm">감각동사 Level Up</span><span class="ds">look · sound · smell · taste · feel · 중1 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
@@ -354,8 +392,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <span class="g out" data-s="seem" data-g="중3" data-k="03-06 0306 SEEM seem + 형용사 · seem to + 동사원형 · It seems that ~ 와 바꿔 쓰기 · seemed와 때 맞추기"><span class="no"><i>03</i>06</span><span class="body"><span class="nm">SEEM Level Up</span><span class="ds">seem + 형용사 · seem to + 동사원형 · It seems that ~ 와 바꿔 쓰기 · seemed와 때 맞추기 · 중3</span></span><span class="go">준비 중</span></span>
   </div>
   </div>
-  <div class="listsec">
-  <h2>04 · 동사의 시제·조동사·태 <em>초등~중3</em></h2>
+  <div class="listsec a4">
+  <h2><b class="an">04</b> 동사의 시제·조동사·태 <em>초등~중3</em></h2>
   <div class="group">
     <a class="g" href="tense/" data-s="tense" data-g="초등 중1" data-k="04-01 0401 시제 현재 · 과거 · 미래 · 진행 · 현재완료"><span class="no"><i>04</i>01</span><span class="body"><span class="nm">시제 Level Up</span><span class="ds">현재 · 과거 · 미래 · 진행 · 현재완료 · 초등·중1 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
     <span class="g out" data-s="progressive" data-g="중1" data-k="04-02 0402 진행형 현재진행 · 과거진행 · -ing 만들기 · 진행형으로 쓰지 않는 동사"><span class="no"><i>04</i>02</span><span class="body"><span class="nm">진행형 Level Up</span><span class="ds">현재진행 · 과거진행 · -ing 만들기 · 진행형으로 쓰지 않는 동사 · 중1</span></span><span class="go">준비 중</span></span>
@@ -370,8 +408,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <span class="g out" data-s="modalpp" data-g="중3" data-k="04-11 0411 조동사 + 과거분사 should have pp · must have pp · could have pp · 지난 일을 돌아보는 말"><span class="no"><i>04</i>11</span><span class="body"><span class="nm">조동사 + 과거분사 Level Up</span><span class="ds">should have pp · must have pp · could have pp · 지난 일을 돌아보는 말 · 중3</span></span><span class="go">준비 중</span></span>
   </div>
   </div>
-  <div class="listsec">
-  <h2>05 · 준동사 <em>초등~중3</em></h2>
+  <div class="listsec a5">
+  <h2><b class="an">05</b> 준동사 <em>초등~중3</em></h2>
   <div class="group">
     <a class="g" href="toinf-basic/" data-s="toinf-basic" data-g="중1" data-k="05-01 0501 TO부정사 기본 to + 동사원형 · 세 가지 노릇"><span class="no"><i>05</i>01</span><span class="body"><span class="nm">TO부정사 기본 Level Up</span><span class="ds">to + 동사원형 · 세 가지 노릇 · 중1 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
     <a class="g" href="toinf/" data-s="toinf" data-g="중2" data-k="05-02 0502 TO부정사 명사적 · 형용사적 · 부사적 용법 · 의미상 주어"><span class="no"><i>05</i>02</span><span class="body"><span class="nm">TO부정사 Level Up</span><span class="ds">명사적 · 형용사적 · 부사적 용법 · 의미상 주어 · 중2 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
@@ -385,8 +423,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <a class="g" href="partcon/" data-s="partcon" data-g="중3" data-k="05-10 0510 분사구문 부사절을 줄여 -ing로 · 때·까닭·조건·양보·동시동작"><span class="no"><i>05</i>10</span><span class="body"><span class="nm">분사구문 Level Up</span><span class="ds">부사절을 줄여 -ing로 · 때·까닭·조건·양보·동시동작 · 중3 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
   </div>
   </div>
-  <div class="listsec">
-  <h2>06 · 절로 이어 붙이기 <em>중1~중3</em></h2>
+  <div class="listsec a6">
+  <h2><b class="an">06</b> 절로 이어 붙이기 <em>중1~중3</em></h2>
   <div class="group">
     <span class="g out" data-s="subconj" data-g="중2" data-k="06-01 0601 종속접속사 주절과 종속절 · 명사절·부사절·형용사절을 이끄는 말 · 등위접속사와 가리기"><span class="no"><i>06</i>01</span><span class="body"><span class="nm">종속접속사 Level Up</span><span class="ds">주절과 종속절 · 명사절·부사절·형용사절을 이끄는 말 · 등위접속사와 가리기 · 중2</span></span><span class="go">준비 중</span></span>
     <a class="g" href="thatclause/" data-s="thatclause" data-g="중2" data-k="06-02 0602 명사절 THAT that의 품사 셋 · ~것 · 주어·목적어·보어 자리"><span class="no"><i>06</i>02</span><span class="body"><span class="nm">명사절 THAT Level Up</span><span class="ds">that의 품사 셋 · ~것 · 주어·목적어·보어 자리 · 중2 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
@@ -407,8 +445,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <span class="g out" data-s="clausesort" data-g="중3" data-k="06-17 0617 절 가리기 명사절 · 형용사절 · 부사절을 한자리에서 가려내기"><span class="no"><i>06</i>17</span><span class="body"><span class="nm">절 가리기 Level Up</span><span class="ds">명사절 · 형용사절 · 부사절을 한자리에서 가려내기 · 중3</span></span><span class="go">준비 중</span></span>
   </div>
   </div>
-  <div class="listsec">
-  <h2>07 · 비교와 가정 <em>중1~중3</em></h2>
+  <div class="listsec a7">
+  <h2><b class="an">07</b> 비교와 가정 <em>중1~중3</em></h2>
   <div class="group">
     <a class="g" href="comp/" data-s="comp" data-g="중1" data-k="07-01 0701 비교급 두 대상의 우열 · -er과 more · than · 부정과 뒤집기"><span class="no"><i>07</i>01</span><span class="body"><span class="nm">비교급 Level Up</span><span class="ds">두 대상의 우열 · -er과 more · than · 부정과 뒤집기 · 중1 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
     <span class="g out" data-s="emphcomp" data-g="중2" data-k="07-02 0702 비교급 강조 much · far · even · still · a lot + 비교급 · very는 쓰지 않음"><span class="no"><i>07</i>02</span><span class="body"><span class="nm">비교급 강조 Level Up</span><span class="ds">much · far · even · still · a lot + 비교급 · very는 쓰지 않음 · 중2</span></span><span class="go">준비 중</span></span>
@@ -418,8 +456,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <a class="g" href="subjunctive/" data-s="subjunctive" data-g="중3" data-k="07-06 0706 가정법 직설법과 가정법 · 조건과 가정 가리기 · I wish"><span class="no"><i>07</i>06</span><span class="body"><span class="nm">가정법 Level Up</span><span class="ds">직설법과 가정법 · 조건과 가정 가리기 · I wish · 중3 · 160문제 · 4단계</span></span><span class="go">시작 →</span></a>
   </div>
   </div>
-  <div class="listsec">
-  <h2>08 · 특수구문 <em>중3</em></h2>
+  <div class="listsec a8">
+  <h2><b class="an">08</b> 특수구문 <em>중3</em></h2>
   <div class="group">
     <span class="g out" data-s="agree" data-g="중3" data-k="08-01 0801 수 일치 주어와 동사의 수 · each·every는 단수 · news·economics는 꼴만 복수 · the number of와 a number of · most of·half of · 긴 수식어구 뒤 주어 찾기"><span class="no"><i>08</i>01</span><span class="body"><span class="nm">수 일치 Level Up</span><span class="ds">주어와 동사의 수 · each·every는 단수 · news·economics는 꼴만 복수 · the number of와 a number of · most of·half of · 긴 수식어구 뒤 주어 찾기 · 중3</span></span><span class="go">준비 중</span></span>
     <span class="g out" data-s="reported" data-g="중3" data-k="08-02 0802 화법 직접화법과 간접화법"><span class="no"><i>08</i>02</span><span class="body"><span class="nm">화법 Level Up</span><span class="ds">직접화법과 간접화법 · 중3</span></span><span class="go">준비 중</span></span>
@@ -429,8 +467,8 @@ h2 em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin
     <span class="g out" data-s="parallel" data-g="중3" data-k="08-06 0806 병렬구조 and·or·but 앞뒤 형태 맞추기 · not only ~ but also"><span class="no"><i>08</i>06</span><span class="body"><span class="nm">병렬구조 Level Up</span><span class="ds">and·or·but 앞뒤 형태 맞추기 · not only ~ but also · 중3</span></span><span class="go">준비 중</span></span>
   </div>
   </div>
-  <div class="listsec">
-  <h2>09 · 고등 다지기 <em>고등</em></h2>
+  <div class="listsec a9">
+  <h2><b class="an">09</b> 고등 다지기 <em>고등</em></h2>
   <div class="group">
     <span class="g out" data-s="mixedif" data-g="고등" data-k="09-01 0901 혼합가정법과 가정법 대용 혼합가정법 · if it were not for · but for · 때가 어긋나는 가정"><span class="no"><i>09</i>01</span><span class="body"><span class="nm">혼합가정법과 가정법 대용 Level Up</span><span class="ds">혼합가정법 · if it were not for · but for · 때가 어긋나는 가정 · 고등</span></span><span class="go">준비 중</span></span>
     <span class="g out" data-s="ifinv" data-g="고등" data-k="09-02 0902 IF 생략 도치 Had + 주어 + pp · Were + 주어 · Should + 주어"><span class="no"><i>09</i>02</span><span class="body"><span class="nm">IF 생략 도치 Level Up</span><span class="ds">Had + 주어 + pp · Were + 주어 · Should + 주어 · 고등</span></span><span class="go">준비 중</span></span>
