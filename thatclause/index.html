@@ -917,73 +917,73 @@ var X3 = [
 
 /* ---------- LEVEL 4 : 심화 ---------- */
 var L4 = [
-  {type:"n", tag:"가주어와 진주어", q:"<b>That he is honest is true.</b>에서 주어가 긴 것이 불편할 때 어떻게 할까요?",
-   opts:["It을 앞에 세우고 that절을 뒤로 보낸다","that절을 지운다","주어를 둘로 나눈다","동사를 앞으로 보낸다","그대로 둘 수밖에 없다"], a:0,
-   exp:"<b>It is true that he is honest.</b>로 바꿉니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>명사절 that</b>이 앉을 수 있는 자리를 바르게 묶은 것은?",
+   opts:["주어 · 목적어 · 보어","부사 · 형용사 · 전치사","현재 · 과거 · 미래","단수 · 복수 · 셀 수 없는 것","앞 · 뒤 · 가운데"], a:0,
+   exp:"이름 노릇을 하므로 명사가 앉는 세 자리에 앉습니다."},
 
-  {type:"n", tag:"가주어와 진주어", q:"<b>It is true that he is honest.</b>에서 It을 무엇이라고 할까요?",
-   opts:["가주어","진주어","목적어","보어","지시대명사"], a:0,
-   exp:"자리를 대신 맡아 주는 <b>가주어</b>입니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>주어 자리</b>의 that은 생략할 수 있을까요?",
+   opts:["생략할 수 없다","언제나 생략한다","문장이 길 때만 생략한다","과거일 때만 생략한다","의문문에서만 생략한다"], a:0,
+   exp:"That he is honest is true.에서 That을 빼면 문장이 무너집니다."},
 
-  {type:"n", tag:"가주어와 진주어", q:"<b>It is true that he is honest.</b>에서 that절을 무엇이라고 할까요?",
-   opts:["진주어","가주어","목적어","부사절","보어"], a:0,
-   exp:"진짜 주어이므로 <b>진주어</b>입니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>목적어 자리</b>의 that은 생략할 수 있을까요?",
+   opts:["생략할 수 있다","생략할 수 없다","주어가 길 때만 생략한다","의문문에서만 생략한다","언제나 생략해야 한다"], a:0,
+   exp:"I know (that) he is kind. — 말할 때 흔히 뺍니다."},
 
-  {type:"n", tag:"가주어와 진주어", q:"가주어 It은 우리말로 옮길까요?",
-   opts:["옮기지 않는다","‘그것은’으로 옮긴다","‘저것은’으로 옮긴다","‘이것은’으로 옮긴다","‘거기’로 옮긴다"], a:0,
-   exp:"자리만 맡는 말이라 해석하지 않습니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>전치사 바로 뒤</b>에 명사절 that을 쓸 수 있을까요?",
+   opts:["쓸 수 없다 — 전치사를 지운다","쓸 수 있다","of 뒤에만 쓴다","about 뒤에만 쓴다","언제나 써야 한다"], a:0,
+   exp:"I am sure of that ~(✕) → I am sure that ~(○)"},
 
-  {type:"n", tag:"가주어와 진주어", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"___ is clear that she is prepared.", ko:"그녀가 준비되었다는 것은 분명하다.",
-   opts:["It","That","This","There","What"], a:0,
-   exp:"가주어 It입니다."},
+  {type:"n", tag:"명사절 넓히기", sent:"I am sure ___ he will come.", q:"빈칸에 알맞은 것을 고르세요.", ko:"나는 그가 올 것이라고 확신한다.",
+   opts:["that","what","of","if not","to"], a:0, eng:true,
+   exp:"형용사 sure 뒤에도 that절이 바로 옵니다."},
 
-  {type:"n", tag:"가주어와 진주어", hard:true, q:"<b>It is true that he won.</b>을 원래 꼴로 되돌리면?",
-   opts:["That he won is true.","True is that he won.","It that he won is true.","He won is that true.","되돌릴 수 없다"], a:0,
-   exp:"진주어를 다시 앞으로 보냅니다."},
+  {type:"n", tag:"명사절 넓히기", sent:"The problem is ___ we have no time.", q:"빈칸에 알맞은 것을 고르세요.", ko:"문제는 우리에게 시간이 없다는 것이다.",
+   opts:["that","what","which","to","for"], a:0, eng:true,
+   exp:"be동사 뒤 보어 자리의 that절입니다."},
 
-  {type:"n", tag:"강조", q:"<b>It is ~ that ~</b> 꼴로 어떤 일을 할 수 있을까요?",
-   opts:["문장에서 한 부분을 도드라지게 말할 수 있다","문장을 묻는 말로 바꾼다","문장을 과거로 바꾼다","문장을 짧게 줄인다","아무 일도 못 한다"], a:0,
-   exp:"강조하고 싶은 말을 It is와 that 사이에 넣습니다."},
+  {type:"n", tag:"명사절 넓히기", q:"뒤에 명사절 that을 자주 데려오는 동사끼리 묶인 것은?",
+   opts:["think · know · believe · hope","go · come · run · walk","be · do · have · get","very · quite · too · also","in · on · at · to"], a:0, eng:true,
+   exp:"생각하고 말하는 동사가 that절을 목적어로 받습니다."},
 
-  {type:"n", tag:"강조", q:"<b>Tom broke the window yesterday.</b>에서 Tom을 도드라지게 하면?",
-   opts:["It was Tom that broke the window yesterday.","It was the window that Tom broke.","It was yesterday that Tom broke the window.","Tom it was that broke the window.","That was Tom broke the window."], a:0,
-   exp:"It was <b>Tom</b> that ~ 입니다."},
+  {type:"n", tag:"명사절 넓히기", sent:"I am afraid ___ I can't go.", q:"빈칸에 알맞은 것을 고르세요.", ko:"나는 갈 수 없을까 봐 걱정이다.",
+   opts:["that","what","of","to","for"], a:0, eng:true,
+   exp:"afraid 뒤에도 전치사 없이 that절이 옵니다."},
 
-  {type:"n", tag:"강조", hard:true, q:"<b>Tom broke the window yesterday.</b>에서 yesterday를 도드라지게 하면?",
-   opts:["It was yesterday that Tom broke the window.","It was Tom that broke the window.","It was the window that Tom broke.","Yesterday it was that Tom broke.","That was yesterday Tom broke."], a:0,
-   exp:"It was <b>yesterday</b> that ~ 입니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>I think that he will not come.</b> 을 영어답게 고친 것은?",
+   opts:["I don't think that he will come.","I think not that he will come.","I not think that he will come.","I think that not he will come.","고칠 곳이 없다"], a:0, eng:true,
+   exp:"영어는 부정어를 앞 문장으로 당겨 씁니다."},
 
-  {type:"n", tag:"강조", hard:true, q:"가주어 It과 강조의 It을 구별하는 열쇠는?",
-   opts:["It is와 that 사이를 빼고도 문장이 되면 강조","길이로 가른다","that이 있으면 가주어","It이 있으면 강조","구별할 수 없다"], a:0,
-   exp:"강조는 그 부분을 제자리에 되돌리면 본디 문장이 됩니다."},
+  {type:"n", tag:"명사절 넓히기", q:"두 개의 that절을 and로 이을 때 <b>뒤의 that</b>은 어떻게 할까요?",
+   opts:["그대로 두는 것이 바르다","반드시 지운다","what으로 바꾼다","if로 바꾼다","and를 지운다"], a:0, eng:true,
+   exp:"I think that A and that B — 뒤의 that을 두어야 두 절이 또렷합니다."},
 
-  {type:"a", tag:"넓혀 보기", multi:true, q:"<b>가주어 It</b>이 쓰인 문장을 모두 고르세요. (여러 개)",
-   opts:["It is true that he came.","It is clear that she is right.","It is strange that they left early.","It was Tom that broke the window.","It is my book."], ans:[0,1,2],
-   exp:"앞의 셋은 that절이 진주어입니다."},
+  {type:"a", tag:"넓혀 보기", multi:true, q:"<b>명사절 that</b>이 쓰인 문장을 모두 고르세요. (여러 개)",
+   opts:["I know that he is kind.","The problem is that we are late.","That is my book.","That book is mine.","I like the cat that he has."], ans:[0,1],
+   exp:"뒤에 완전한 문장을 데려와 자리를 차지한 것만 명사절입니다."},
 
   {type:"a", tag:"넓혀 보기", multi:true, q:"<b>틀린 문장</b>을 모두 고르세요. (여러 개)",
    opts:["It is true what he came.","I am sure of that he is right.","That he is honest it is true.","It is true that he came.","That he is honest is true."], ans:[0,1,2],
    exp:"what을 잘못 쓰거나, 전치사 뒤에 that절을 쓰거나, 차례가 틀렸습니다."},
 
-  {type:"a", tag:"넓혀 보기", q:"밑줄 친 It의 쓰임은?<br><span class=\"eng\">**It** is true that she quit.</span>",
-   opts:["가주어","강조","지시대명사","비인칭주어","목적어"], a:0,
-   exp:"뒤의 that절이 진주어입니다."},
+  {type:"a", tag:"넓혀 보기", q:"밑줄 친 that절이 앉은 자리는?<br><span class=\"eng\">I know **that** she quit.</span>",
+   opts:["목적어 자리","주어 자리","보어 자리","꾸미는 자리","자리가 없다"], a:0,
+   exp:"know의 목적어로 앉았습니다. 이 자리의 that은 생략할 수 있습니다."},
 
-  {type:"a", tag:"넓혀 보기", q:"밑줄 친 It의 쓰임은?<br><span class=\"eng\">**It** was Tom that broke the window.</span>",
-   opts:["강조","가주어","지시대명사","비인칭주어","보어"], a:0,
-   exp:"Tom을 도드라지게 하는 꼴입니다."},
+  {type:"a", tag:"넓혀 보기", q:"밑줄 친 that절이 앉은 자리는?<br><span class=\"eng\">**That** he quit is true.</span>",
+   opts:["주어 자리","목적어 자리","보어 자리","꾸미는 자리","자리가 없다"], a:0,
+   exp:"문장의 주어로 앉았습니다. 이 자리의 that은 생략하지 못합니다."},
 
-  {type:"a", tag:"넓혀 보기", hard:true, order:true, q:"차례대로 놓아 ‘그가 정직하다는 것은 사실이다’를 가주어로 만드세요.",
-   parts:["It is true","that","he is honest."],
-   exp:"It이 자리를 맡고 that절이 뒤로 갑니다."},
+  {type:"a", tag:"넓혀 보기", hard:true, order:true, q:"차례대로 놓아 ‘나는 그가 정직하다고 생각한다’를 만드세요.",
+   parts:["I think","that","he is","honest."],
+   exp:"think의 목적어 자리에 that절이 앉습니다."},
 
-  {type:"a", tag:"넓혀 보기", hard:true, order:true, q:"차례대로 놓아 ‘창문을 깬 것은 바로 톰이었다’를 만드세요.",
-   parts:["It was Tom","that","broke the window."],
-   exp:"강조하고 싶은 말을 It was와 that 사이에 둡니다."},
+  {type:"a", tag:"넓혀 보기", hard:true, order:true, q:"차례대로 놓아 ‘문제는 우리에게 시간이 없다는 것이다’를 만드세요.",
+   parts:["The problem is","that","we have","no time."],
+   exp:"be동사 뒤 보어 자리의 that절입니다."},
 
-  {type:"v", tag:"종합", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"___ is important that we save water.", ko:"우리가 물을 아끼는 것은 중요하다.",
-   opts:["It","That","This","There","What"], a:0,
-   exp:"가주어 It입니다."},
+  {type:"v", tag:"종합", hard:true, q:"짧은 글에서 틀린 곳을 고르세요.<br><span class=\"eng\">I am afraid of that I am late. The fact is that I missed the bus.</span>",
+   opts:["I am afraid of that → I am afraid that","The fact is that → The fact that is","I am late → I was late","I missed → I miss","틀린 곳이 없다"], a:0,
+   exp:"전치사 바로 뒤에는 that절이 오지 못하므로 of를 지웁니다."},
 
   {type:"v", tag:"종합", hard:true, q:"짧은 글에서 틀린 곳을 고르세요.<br><span class=\"eng\">I am sure of that he is right. It is true that he studied hard.</span>",
    opts:["I am sure of that → I am sure that","It is true that → It is true what","he is right → is he right","he studied → he study","틀린 곳이 없다"], a:0,
@@ -999,49 +999,49 @@ var L4 = [
 ];
 
 var X4 = [
-  {type:"n", tag:"가주어와 진주어", q:"빈칸에 알맞은 것을 고르세요.", sent:"___ is strange that he left early.", ko:"그가 일찍 떠났다는 것은 이상하다.",
-   opts:["It","That","This","There","What"], a:0,
-   exp:"가주어 It입니다."},
+  {type:"n", tag:"명사절 넓히기", sent:"She said ___ she was tired.", q:"빈칸에 알맞은 것을 고르세요.", ko:"그녀는 피곤하다고 말했다.",
+   opts:["that","what","which","to","for"], a:0, eng:true,
+   exp:"say 뒤의 목적어 자리 that절입니다."},
 
-  {type:"n", tag:"가주어와 진주어", q:"<b>It is surprising that she won.</b>에서 진주어는?",
-   opts:["that she won","It","surprising","is","she"], a:0,
-   exp:"진짜 주어는 that절입니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>tell</b>은 that절과 어떻게 쓸까요?",
+   opts:["tell + 사람 + that절","tell + that절 + 사람","tell to 사람 that절","tell that 사람절","tell은 that절과 쓰지 않는다"], a:0, eng:true,
+   exp:"He told me that he was busy."},
 
-  {type:"n", tag:"가주어와 진주어", q:"가주어를 쓰는 까닭으로 알맞은 것은?",
-   opts:["주어가 길면 읽기 불편해서","뜻을 바꾸려고","문장을 묻는 말로 바꾸려고","동사를 지우려고","까닭이 없다"], a:0,
-   exp:"긴 주어를 뒤로 보내면 읽기가 훨씬 편합니다."},
+  {type:"n", tag:"명사절 넓히기", sent:"I hope ___ it will be sunny.", q:"빈칸에 알맞은 것을 고르세요.", ko:"나는 날이 맑기를 바란다.",
+   opts:["that","what","if not","to","for"], a:0, eng:true,
+   exp:"hope 뒤의 that절에는 미래형도 그대로 씁니다."},
 
-  {type:"n", tag:"가주어와 진주어", hard:true, q:"<b>That we save water is important.</b>를 가주어로 바꾼 것은?",
-   opts:["It is important that we save water.","It that we save water is important.","Important it is that we save water.","It is that we save water important.","바꿀 수 없다"], a:0,
-   exp:"It을 세우고 that절을 맨 뒤로 보냅니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>명사절 that</b>과 <b>관계대명사 that</b>은 어떻게 가릴까요?",
+   opts:["앞에 꾸밀 명사가 있으면 관계대명사, 없으면 명사절","길이로 가린다","뜻으로만 가린다","that은 모두 명사절이다","가릴 수 없다"], a:0, eng:true,
+   exp:"the book that I read — book을 꾸미므로 관계대명사입니다."},
 
-  {type:"n", tag:"가주어와 진주어", hard:true, q:"<b>It is true that he is honest.</b>에서 It을 ‘그것은’이라고 옮기면?",
-   opts:["틀린 해석이다 — 가주어는 옮기지 않는다","바른 해석이다","더 자연스럽다","뜻이 같다","둘 다 쓴다"], a:0,
-   exp:"가주어는 자리만 맡는 말이라 해석하지 않습니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>the news that he won</b>처럼 명사 바로 뒤에 와서 그 명사를 풀어 주는 that절을 무엇이라고 할까요?",
+   opts:["동격절 — 06-03에서 다룹니다","명사절","부사절","관계대명사절","형용사"], a:0, eng:true,
+   exp:"앞 명사와 같은 내용을 말해 주므로 동격절입니다."},
 
-  {type:"n", tag:"강조", q:"<b>Mina met Tom at the park.</b>에서 at the park를 도드라지게 하면?",
-   opts:["It was at the park that Mina met Tom.","It was Mina that met Tom at the park.","It was Tom that Mina met.","At the park it was that Mina met Tom.","That was at the park Mina met Tom."], a:0,
-   exp:"It was <b>at the park</b> that ~ 입니다."},
+  {type:"n", tag:"명사절 넓히기", sent:"She said that she ___ tired.", q:"빈칸에 알맞은 것을 고르세요.", ko:"그녀는 피곤하다고 말했다.",
+   opts:["was","is","be","being","are"], a:0, eng:true,
+   exp:"앞 동사가 과거이므로 that절도 과거로 맞춥니다."},
 
-  {type:"n", tag:"강조", q:"강조할 때 It is와 It was는 무엇으로 가를까요?",
-   opts:["본디 문장의 때 — 현재면 is, 과거면 was","길이","사람인지 사물인지","주어인지 목적어인지","아무거나 쓴다"], a:0,
-   exp:"본디 문장이 과거이면 It was를 씁니다."},
+  {type:"n", tag:"명사절 넓히기", sent:"The fact is ___ he lied to us.", q:"빈칸에 알맞은 것을 고르세요.", ko:"사실은 그가 우리에게 거짓말을 했다는 것이다.",
+   opts:["that","what","which","to","of"], a:0, eng:true,
+   exp:"보어 자리의 that절입니다."},
 
-  {type:"n", tag:"강조", hard:true, q:"강조하는 It is ~ that ~ 에서 가운데 말을 제자리에 되돌리면?",
-   opts:["본디 문장이 된다","문장이 무너진다","묻는 말이 된다","뜻이 반대가 된다","되돌릴 수 없다"], a:0,
-   exp:"이것이 가주어와 가르는 열쇠입니다."},
+  {type:"n", tag:"명사절 넓히기", q:"명사절 that 뒤에는 어떤 문장이 와야 할까요?",
+   opts:["주어와 동사를 갖춘 완전한 문장","주어가 빠진 문장","목적어가 빠진 문장","낱말 하나","to부정사"], a:0, eng:true,
+   exp:"한 자리라도 비면 that이 아니라 what입니다."},
 
-  {type:"n", tag:"강조", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"It was the wheel ___ changed the world.", ko:"세상을 바꾼 것은 바로 바퀴였다.",
-   opts:["that","what","who","whose","when"], a:0,
-   exp:"강조하는 It was ~ that ~ 꼴입니다."},
+  {type:"n", tag:"명사절 넓히기", q:"<b>that</b>과 <b>what</b>을 가리는 열쇠는 무엇일까요?",
+   opts:["뒤가 완전하면 that, 한 자리가 빠져 있으면 what","앞말의 길이","뜻이 좋은지 나쁜지","that이 언제나 바르다","가릴 수 없다"], a:0, eng:true,
+   exp:"what은 명사 몫까지 하므로 뒤가 모자랍니다."},
 
-  {type:"n", tag:"강조", hard:true, q:"<b>It is useful.</b>의 It은 무엇일까요?",
-   opts:["앞에 나온 것을 가리키는 대명사","가주어","강조","비인칭주어","접속사"], a:0,
-   exp:"뒤에 that절이 없으므로 그냥 대명사입니다."},
+  {type:"n", tag:"명사절 넓히기", q:"명사절 that을 한 줄로 바르게 정리한 것은?",
+   opts:["완전한 문장을 데려와 주어·목적어·보어 자리에 앉고, 목적어 자리에서만 마음 놓고 생략한다","무엇이든 꾸며 준다","전치사 뒤에 즐겨 쓴다","언제나 생략한다","낱말 하나를 데려온다"], a:0, eng:true,
+   exp:"자리와 생략, 이 둘만 잡으면 됩니다."},
 
-  {type:"a", tag:"넓혀 보기", multi:true, q:"<b>강조</b>의 It이 쓰인 문장을 모두 고르세요. (여러 개)",
-   opts:["It was Tom that called me.","It was yesterday that she left.","It was the note that I lost.","It is true that he came.","It is clear that she is right."], ans:[0,1,2],
-   exp:"뒤의 둘은 가주어입니다."},
+  {type:"a", tag:"넓혀 보기", multi:true, q:"that절이 <b>주어 자리</b>에 앉은 문장을 모두 고르세요. (여러 개)",
+   opts:["That he lied is clear.","That she won surprised us.","I know that he lied.","The point is that she won.","I am sure that he lied."], ans:[0,1],
+   exp:"문장 맨 앞에서 주어 노릇을 하는 것만 고릅니다."},
 
   {type:"a", tag:"넓혀 보기", multi:true, q:"that을 <b>생략할 수 있는</b> 문장을 모두 고르세요. (여러 개)",
    opts:["I think that he is kind.","I heard that she quit.","I believe that we can win.","That he is kind is true.","The fact is that she quit."], ans:[0,1,2],
@@ -1063,9 +1063,9 @@ var X4 = [
    opts:["that절은 자리를 차지하고, when절은 보태 준다","둘 다 자리를 차지한다","둘 다 보태 준다","that절만 동사가 있다","차이가 없다"], a:0,
    exp:"명사절은 빼면 문장이 무너지고, 부사절은 빼도 섭니다."},
 
-  {type:"v", tag:"종합", hard:true, q:"빈칸 두 곳에 알맞은 것을 고르세요.", sent:"___ is true ___ she solved the problem.", full:"It is true that she solved the problem.", ko:"그녀가 그 문제를 풀었다는 것은 사실이다.",
-   opts:["It … that","That … that","It … what","That … what","There … that"], a:0,
-   exp:"가주어 It과 진주어 that절입니다."},
+  {type:"v", tag:"종합", hard:true, q:"빈칸에 알맞은 것을 고르세요.", sent:"She told ___ that she was busy.", ko:"그녀는 나에게 바쁘다고 말했다.",
+   opts:["me","to me","for me","that me","about me"], a:0, eng:true,
+   exp:"tell은 <b>tell + 사람 + that절</b> 차례로 씁니다."},
 
   {type:"v", tag:"종합", hard:true, q:"짧은 글에서 틀린 곳을 고르세요.<br><span class=\"eng\">That he quit is true. It is clear what he was tired.</span>",
    opts:["what he was tired → that he was tired","That he quit → What he quit","is true → are true","It is clear → That is clear","틀린 곳이 없다"], a:0,
@@ -1087,7 +1087,7 @@ var LEVELS = {
   1:{name:"Level 1 · 명사와 명사절", desc:"한글로만 · 개념 24 · 구별하기 16 · 명사가 무엇이고 어느 자리에 앉는가 · 그 자리에 문장이 통째로 들어가면 명사절 · that의 품사 셋(지시대명사·지시형용사·접속사) · 해석은 ~것(주어 ~것은 · 목적어 ~것을 · 보어 ~것)", qs:L1, typeLabels:{n:"개념",a:"구별하기"}},
   2:{name:"Level 2 · 쉬운 영어로", desc:"I think that · I know that · I believe that · I heard that · I hope that · It is true that · The problem is that · 세 자리에 앉히기 · 함정 8", qs:L2, typeLabels:{n:"덩어리와 자리",a:"모두 고르기",v:"함정"}},
   3:{name:"Level 3 · 중2 학교 기출형", desc:"빈칸 채우기 · 틀린 곳 고치기와 차례 놓기 · 목적어 자리의 that만 생략 · 전치사 뒤에는 바로 못 온다 · that과 what 가리기 · 함정 8", qs:L3, typeLabels:{n:"빈칸(기출)",a:"고치기와 차례 놓기",v:"생략과 가려내기"}},
-  4:{name:"Level 4 · 기출 심화", desc:"가주어 It과 진주어 that절 · It is ~ that ~ 강조 · 가주어와 강조 가리기 · that의 품사 셋 종합", qs:L4, typeLabels:{n:"가주어와 강조",a:"넓혀 보기",v:"종합"}}
+  4:{name:"Level 4 · 기출 심화", desc:"세 자리와 생략 규칙 · 전치사 뒤에는 못 온다 · sure·afraid 뒤의 that · tell + 사람 + that · 부정어 당겨 쓰기 · 관계대명사 that과 가리기 · that과 what", qs:L4, typeLabels:{n:"명사절 넓히기",a:"넓혀 보기",v:"종합"}}
 };
 
 /* ── 그림 ── */
@@ -1204,23 +1204,27 @@ function learn3(){
 function learn4(){
   return ''+
   '<h2>LEVEL 4 · 기출 심화</h2>'+
-  '<p class="lead">마지막 단계입니다. 긴 주어를 뒤로 보내는 <b>가주어</b>와, 한 부분을 도드라지게 하는 <b>강조</b>를 가립니다.</p>'+
+  '<p class="lead">마지막 단계입니다. <b>세 자리</b>와 <b>생략 규칙</b>을 다지고, 비슷하게 생긴 that들과 가립니다.</p>'+
   figIt()+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-n"></i>① 가주어 It과 진주어 that절</span>'+
-    '<div class="ex">It<span class="k">자리를 대신 맡는 가주어 — 해석하지 않습니다</span></div>'+
-    '<div class="ex">that절<span class="k">진짜 주어인 진주어</span></div>'+
-    '<p>It is true · It is clear · It is important + that절 꼴로 자주 나옵니다.</p>'+
+    '<span class="bh"><i class="dot d-n"></i>① 생략 규칙</span>'+
+    '<div class="ex">주어 자리<span class="k">That he is honest is true. — 생략하지 못합니다</span></div>'+
+    '<div class="ex">목적어 자리<span class="k">I know (that) he is kind. — 생략할 수 있습니다</span></div>'+
+    '<div class="ex">보어 자리<span class="k">The problem is that we are late. — 두는 것이 바릅니다</span></div>'+
+    '<p>전치사 바로 뒤에는 오지 못합니다. I am sure <s>of</s> that ~ → I am sure that ~</p>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-a"></i>② It is ~ that ~ 강조</span>'+
-    '<div class="ex">본디 문장<span class="k">Tom broke the window yesterday.</span></div>'+
-    '<div class="ex">Tom 강조<span class="k">It was Tom that broke the window yesterday.</span></div>'+
-    '<div class="ex">yesterday 강조<span class="k">It was yesterday that Tom broke the window.</span></div>'+
+    '<span class="bh"><i class="dot d-a"></i>② 자주 쓰는 꼴</span>'+
+    '<div class="ex">형용사 뒤<span class="k">I am sure that ~ · I am afraid that ~</span></div>'+
+    '<div class="ex">사람이 끼는 동사<span class="k">He told <b>me</b> that he was busy.</span></div>'+
+    '<div class="ex">부정어 당겨 쓰기<span class="k">I don’t think that he is right.</span></div>'+
   '</div>'+
   '<div class="block">'+
-    '<span class="bh"><i class="dot d-v"></i>③ 둘을 가리는 열쇠</span>'+
-    '<p>It is와 that 사이의 말을 <b>제자리에 되돌려</b> 보십시오. 본디 문장이 되면 강조이고, 되돌릴 수 없으면 가주어입니다.</p>'+
+    '<span class="bh"><i class="dot d-v"></i>③ 비슷하게 생긴 that 가리기</span>'+
+    '<div class="swap"><span>앞에 꾸밀 명사가 있다</span><span class="ar">→</span><span class="good">관계대명사 that — the book that I read</span></div>'+
+    '<div class="swap"><span>앞 명사를 풀어 준다</span><span class="ar">→</span><span class="good">동격절 — the news that he won (06-03)</span></div>'+
+    '<div class="swap"><span>뒤에서 한 자리가 빠졌다</span><span class="ar">→</span><span class="good">that이 아니라 what</span></div>'+
+    '<p>가주어 It과 진주어 that절은 <b>05-03 가주어 진주어</b>, It is ~ that ~ 강조는 <b>08-03</b>에서 다룹니다.</p>'+
   '</div>'+
   '<div class="tip"><span class="h">마지막 한마디</span>that은 <b>지시대명사 · 지시형용사 · 접속사</b> 셋입니다. 접속사 that은 완전한 문장을 데려와 <b>~것</b>으로 명사 자리에 앉습니다.</div>';
 }

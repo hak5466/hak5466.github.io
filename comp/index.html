@@ -707,10 +707,10 @@ var L4 = [
    opts:["very","much","far","even","a lot"], a:0,
    exp:"very는 원급 앞에만 씁니다. 비교급을 세게 말할 때는 <b>much · far · even · a lot</b>을 씁니다.", hard:true},
 
-  {type:"n", tag:"넓히기", sent:"This house is ___ bigger than mine.", ko:"이 집은 내 집보다 훨씬 더 크다.",
-   q:"빈칸에 알맞은 것은?", eng:true,
-   opts:["much","very","so","too","many"], a:0,
-   exp:"비교급을 세게 말할 때는 <b>much</b>를 씁니다. very bigger는 쓰지 않습니다.", hard:true},
+  {type:"n", tag:"넓히기", sent:"This book is ___ than that one.", ko:"이 책이 저 책보다 더 좋다.",
+   q:"빈칸에 알맞은 것은? (good)", eng:true,
+   opts:["better","gooder","more good","best","goodest"], a:0,
+   exp:"good의 비교급은 모양이 아주 바뀌어 <b>better</b>가 됩니다.", hard:true},
 
   {type:"n", tag:"넓히기", q:"‘점점 더 ~한’을 나타내는 꼴은?", eng:true,
    opts:["비교급 and 비교급","the 비교급","as 비교급 as","most 비교급","비교급 than 비교급"], a:0,
@@ -726,9 +726,9 @@ var L4 = [
    opts:["taller는 비교급, tallest는 최상급","taller는 최상급, tallest는 비교급","둘 다 비교급","둘 다 최상급","than이 있으면 최상급이다"], a:0,
    exp:"-er은 둘을 견주고, -est는 셋 이상 가운데 으뜸을 말합니다."},
 
-  {type:"n", tag:"넓히기", q:"최상급 앞에 보통 붙이는 말은?", eng:true,
-   opts:["the","a","an","more","than"], a:0,
-   exp:"the tallest처럼 <b>the</b>를 붙입니다. 비교급에는 보통 붙이지 않습니다."},
+  {type:"n", tag:"넓히기", q:"불규칙 비교급 짝이 바르게 묶인 것은?", eng:true,
+   opts:["good – better · bad – worse · many – more","good – gooder · bad – badder · many – manyer","good – best · bad – worst · many – most","good – well · bad – ill · many – much","good – more · bad – less · many – few"], a:0,
+   exp:"자주 쓰는 낱말일수록 모양이 아주 바뀝니다."},
 
   {type:"n", tag:"넓히기", multi:true, q:"<b>비교급</b>인 것을 모두 고르세요. (여러 개)", eng:true,
    opts:["happier","more useful","better","the happiest","most useful"], ans:[0,1,2],
@@ -1045,10 +1045,10 @@ var X3 = [
 ];
 
 var X4 = [
-  {type:"n", tag:"넓히기", sent:"This is ___ more difficult than that.", ko:"이것은 저것보다 훨씬 더 어렵다.",
-   q:"빈칸에 알맞은 것은?", eng:true,
-   opts:["far","very","too","so","many"], a:0,
-   exp:"비교급을 세게 말할 때는 far · much · even을 씁니다.", hard:true},
+  {type:"n", tag:"넓히기", sent:"My cold is ___ than yesterday.", ko:"감기가 어제보다 더 나빠졌다.",
+   q:"빈칸에 알맞은 것은? (bad)", eng:true,
+   opts:["worse","badder","more bad","worst","baddest"], a:0,
+   exp:"bad의 비교급은 <b>worse</b>입니다.", hard:true},
 
   {type:"n", tag:"넓히기", sent:"The line is getting ___ and ___ .", ko:"줄이 점점 더 길어지고 있다.",
    q:"빈칸에 알맞게 짝지은 것은?", eng:true,
@@ -1056,25 +1056,25 @@ var X4 = [
    exp:"같은 비교급을 and로 이으면 점점 더라는 뜻이 됩니다.",
    full:"The line is getting **longer** and **longer**.", hard:true},
 
-  {type:"n", tag:"넓히기", q:"‘셋 가운데 가장 큰’을 영어로 바르게 쓴 것은?", eng:true,
-   opts:["the tallest of the three","the taller of the three","taller than three","more tall of three","the tallest than three"], a:0,
-   exp:"셋 이상 가운데 으뜸은 <b>the + 최상급</b>입니다.", hard:true},
-
+  {type:"n", tag:"넓히기", q:"<b>happy</b>의 비교급으로 알맞은 것은?", eng:true,
+   opts:["happier","happyer","more happy","happiest","happily"], a:0,
+   exp:"자음 + y로 끝나면 y를 i로 바꾸고 -er을 붙입니다.", hard:true},
   {type:"n", tag:"넓히기", q:"<b>둘</b> 가운데 더 ~한 쪽을 콕 집어 말할 때 쓰는 꼴은?", eng:true,
    opts:["the + 비교급 + of the two","the + 최상급","비교급 + than","as + 원급 + as","more + 최상급"], a:0,
    exp:"the taller of the two처럼 둘 가운데 하나를 집을 때는 비교급에 the를 붙입니다.", hard:true},
 
-  {type:"n", tag:"넓히기", q:"다음 가운데 <b>최상급</b>인 것은?", eng:true,
-   opts:["the most beautiful","more beautiful","as beautiful as","beautiful","much more beautiful"], a:0,
-   exp:"the + most가 최상급입니다."},
+  {type:"n", tag:"넓히기", q:"<b>big</b>의 비교급으로 알맞은 것은?", eng:true,
+   opts:["bigger","biger","more big","biggest","bigly"], a:0,
+   exp:"짧은 모음 + 자음 하나로 끝나면 자음을 한 번 더 쓰고 -er을 붙입니다."},
 
   {type:"n", tag:"넓히기", q:"‘나는 그보다 두 배 더 빠르다’처럼 <b>몇 배</b>를 말할 때 쓰는 꼴은?", eng:true,
    opts:["twice as fast as","twice faster than","two times faster as","as twice fast as","more twice than"], a:0,
    exp:"배수는 <b>twice as ~ as</b>처럼 원급을 씁니다.", hard:true},
 
-  {type:"n", tag:"넓히기", multi:true, q:"비교급을 세게 해 주는 말을 모두 고르세요. (여러 개)", eng:true,
-   opts:["much","far","even","very","so"], ans:[0,1,2],
-   exp:"very와 so는 원급 앞에만 씁니다."},
+  {type:"n", tag:"넓히기", sent:"He has ___ money than I do.", ko:"그는 나보다 돈이 더 적다.",
+   q:"빈칸에 알맞은 것은? (little)", eng:true,
+   opts:["less","littler","more little","least","fewer"], a:0,
+   exp:"little의 비교급은 <b>less</b>입니다. 셀 수 있는 것에는 fewer를 씁니다."},
 
   {type:"a", tag:"바꿔 쓰기", q:"<b>He is not as old as I am.</b>과 뜻이 같은 것은?", eng:true,
    opts:["I am older than he is.","He is older than I am.","We are the same age.","He is the oldest.","I am as old as he is."], a:0,
@@ -1084,14 +1084,12 @@ var X4 = [
    opts:["둘 가운데 이것이 더 크다","셋 가운데 이것이 가장 크다","이것이 가장 작다","둘이 똑같다","이것보다 큰 것이 더 있다"], a:0,
    exp:"of the two가 있으면 견주는 것이 둘이므로 비교급입니다.", hard:true},
 
-  {type:"a", tag:"바꿔 쓰기", q:"<b>그는 우리 반에서 가장 키가 크다</b>를 영어로 바르게 쓴 것은?", eng:true,
-   opts:["He is the tallest in our class.","He is taller in our class.","He is the taller in our class.","He is tallest than our class.","He is more tall in our class."], a:0,
-   exp:"셋 이상 가운데 으뜸이므로 the + 최상급입니다."},
-
-  {type:"a", tag:"바꿔 쓰기", q:"<b>오늘은 어제보다 훨씬 더 덥다</b>를 영어로 바르게 쓴 것은?", eng:true,
-   opts:["Today is much hotter than yesterday.","Today is very hotter than yesterday.","Today is much hot than yesterday.","Today is hotter much than yesterday.","Today is the hottest than yesterday."], a:0,
-   exp:"비교급 앞에 much를 붙여 ‘훨씬’을 나타냅니다.", hard:true},
-
+  {type:"a", tag:"바꿔 쓰기", q:"비교하는 대상을 바르게 맞춘 문장은?", eng:true,
+   opts:["My bag is bigger than yours.","My bag is bigger than you.","My bag is bigger than your.","My bag is bigger than you are.","My bag is bigger than yours bag."], a:0,
+   exp:"가방과 가방을 견주어야 하므로 your bag, 곧 <b>yours</b>입니다."},
+  {type:"a", tag:"바꿔 쓰기", q:"<b>그녀는 나보다 더 빨리 달린다</b>를 영어로 바르게 쓴 것은?", eng:true,
+   opts:["She runs faster than I do.","She runs more fast than I do.","She runs fastest than I do.","She runs faster than I am.","She runs as faster than I do."], a:0,
+   exp:"than 뒤에는 앞 문장과 같은 꼴을 세웁니다. than I do 또는 than me입니다.", hard:true},
   {type:"a", tag:"바꿔 쓰기", write:true, sent:"This bag is ___ than that one.", ko:"이 가방은 저 가방보다 더 비싸다.",
    q:"우리말을 보고 빈칸에 알맞은 말을 써 보세요. (두 낱말, expensive)", ans:"more expensive",
    exp:"expensive는 긴 낱말이므로 <b>more expensive</b>입니다."},
@@ -1136,7 +1134,7 @@ var LEVELS = {
   1:{name:"Level 1 · 한글로 개념 잡기", desc:"개념 24 · 한글로 견주기 16 · 두 대상의 우열을 견줄 때 쓴다 · 아니라고 말해 말하기와 부정까지 모두 우리말로", qs:L1, typeLabels:{n:"개념",a:"한글로 견주기"}},
   2:{name:"Level 2 · 그 한글을 영어로", desc:"-er과 more 가려 쓰기 · than · 철자 바뀌는 낱말 · 불규칙 · 겹쳐 쓰는 함정", qs:L2, typeLabels:{n:"만들기",a:"모두 고르기",v:"함정"}},
   3:{name:"Level 3 · 중1 학교 시험형", desc:"빈칸 채우기 · 틀린 곳 고치기 · 대화 완성과 배열 · 서술형", qs:L3, typeLabels:{n:"빈칸",a:"고치기",v:"대화와 배열"}},
-  4:{name:"Level 4 · 전 학년 아우르기", desc:"훨씬(much·far·even) · 점점 더 · 최상급과 가리기 · not as ~ as로 바꿔 쓰기 · 고난도", qs:L4, typeLabels:{n:"넓히기",a:"바꿔 쓰기",v:"종합"}}
+  4:{name:"Level 4 · 전 학년 아우르기", desc:"불규칙 비교급 better·worse·less · 비교급 만드는 규칙 · 비교 대상 맞추기 · 최상급과 가리기 · not as ~ as로 바꿔 쓰기 · 고난도", qs:L4, typeLabels:{n:"넓히기",a:"바꿔 쓰기",v:"종합"}}
 };
 
 /* ===================== 개념 화면 ===================== */
