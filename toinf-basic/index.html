@@ -250,7 +250,8 @@ u.hl.v{background:var(--rv-soft);color:var(--rv);box-shadow:inset 0 -2px 0 var(-
 .tab{font-family:inherit;font-size:16.5px;font-weight:700;padding:8px 15px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
 .tab:hover{border-color:var(--accent);color:var(--accent)}
 .tab.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
-.scopebar{display:flex;gap:8px;margin:0 0 12px}
+.scopebar{display:flex;gap:8px;margin:0 0 8px;flex-wrap:wrap}
+.scopenote{margin:0 0 12px;font-size:15px;color:var(--muted)}
 .scopebar .sbtn{font:inherit;font-size:15.5px;font-weight:700;cursor:pointer;
   border:1.5px solid var(--line-strong);background:var(--paper);color:var(--ink);
   border-radius:99px;padding:7px 16px;line-height:1.2}
@@ -1396,11 +1397,12 @@ function renderLearn(){
 /* ===================== 상태 ===================== */
 var RKEY="kkumettang_toinfb_v2", NKEY="kkumettang_name";
 var GAME_SLUG="toinf-basic";
+var AREA_NO=5, AREA_NAME="준동사", AREA_GAMES=["TO부정사 기본", "TO부정사 GAME", "가주어 진주어 Level Up", "to부정사 형용사적 용법 · -thing 꾸미기", "의문사 + to부정사", "동명사 GAME", "분사 뽀개기", "분사구 뽀개기", "분사구문 뽀개기"];
 /* 선생님 구글 시트에서 학원 전체 순위를 불러옵니다. 닿지 않으면 이 기기 순위만 보여 줍니다. */
 var SHARE_URL="https://script.google.com/macros/s/AKfycbzYfIkE34V5EYemZ7zPwBPcmrVZT6s25ANMtehe7Q6wPoaMjLXQa_gtRyhZ0po8s60ECQ/exec";
-var SHARE={rows:null, key:"", at:0, want:"all"};
-function shareFetch(lv, cb){
-  var key=String(lv);
+var SHARE={rows:null, key:"", at:0};
+function shareFetch(lv, scope, cb){
+  var key=String(scope||"game")+"|"+String(lv);
   if(!SHARE_URL||!GAME_SLUG){ cb(null); return; }
   if(SHARE.rows && SHARE.key===key && Date.now()-SHARE.at<60000){ cb(SHARE.rows); return; }
   var fn="__kktRank"+(Date.now()%1000000), done=false, sc;
@@ -1412,15 +1414,19 @@ function shareFetch(lv, cb){
     cb(rows);
   }
   window[fn]=function(d){ finish((d&&d.rows)||[]); };
+  var q="?mode=rank&level="+encodeURIComponent(String(lv))+"&callback="+fn;
+  if(scope==="area") q+="&gnames="+encodeURIComponent(AREA_GAMES.join("|"));
+  else q+="&gname="+encodeURIComponent(window.KKT_GAME||"");
   sc=document.createElement("script");
-  sc.src=SHARE_URL+"?mode=rank&game="+encodeURIComponent(GAME_SLUG)+"&gname="+encodeURIComponent(window.KKT_GAME||"")+"&level="+encodeURIComponent(key)+"&callback="+fn;
+  sc.src=SHARE_URL+q;
   sc.onerror=function(){ finish(null); };
   document.head.appendChild(sc);
   setTimeout(function(){ finish(null); }, 7000);
 }
+
 var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
        correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
-       round:1,retryWrong:[],score:0,rankTab:"all",rankScope:"all",rankNote:"",
+       round:1,retryWrong:[],score:0,rankTab:"all",rankScope:"area",rankNote:"",
        active:0,resume:"quiz",finished:{}};
 
 function $(id){return document.getElementById(id);}
@@ -2160,17 +2166,21 @@ function rankTableHTML(rows, lv, title, note){
 function miniRank(lv){
   var box=$("rrank"); if(!box) return;
   var mine=rankRows(String(lv));
-  box.innerHTML = mine.length ? rankTableHTML(mine, lv, "이 기기 순위", "학원 전체 순위를 불러오는 중입니다…") : "";
-  shareFetch(lv, function(rows){
-    if(rows && rows.length) box.innerHTML = rankTableHTML(rows, lv, "학원 전체 순위", "");
-    else if(mine.length) box.innerHTML = rankTableHTML(mine, lv, "이 기기 순위", "학원 전체 순위는 지금 불러올 수 없습니다.");
+  box.innerHTML = mine.length ? rankTableHTML(mine, lv, "이 기기 순위", "학원 순위를 불러오는 중입니다…") : "";
+  shareFetch(lv, "game", function(rows){
+    if(rows && rows.length) box.innerHTML = rankTableHTML(rows, lv, "이 어법 학원 순위", "");
+    else if(mine.length) box.innerHTML = rankTableHTML(mine, lv, "이 기기 순위", "학원 순위는 지금 불러올 수 없습니다.");
   });
 }
 function rankScopeHTML(){
   return '<div class="scopebar" id="rankScope">'+
-    '<button class="sbtn'+(S.rankScope==="all"?" on":"")+'" data-s="all">학원 전체</button>'+
+    '<button class="sbtn'+(S.rankScope==="area"?" on":"")+'" data-s="area">이 영역</button>'+
+    '<button class="sbtn'+(S.rankScope==="game"?" on":"")+'" data-s="game">이 어법</button>'+
     '<button class="sbtn'+(S.rankScope==="me"?" on":"")+'" data-s="me">이 기기</button>'+
-    '</div>';
+    '</div>'+
+    '<p class="scopenote">'+(S.rankScope==="area"
+      ? esc(AREA_NAME)+' 영역 어법을 모두 더한 순위입니다.'
+      : S.rankScope==="game" ? '이 어법만의 순위입니다.' : '이 기기에 쌓인 기록입니다.')+'</p>';
 }
 function rankListHTML(rows, isAll){
   var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
@@ -2204,14 +2214,14 @@ function renderRank(){
       : '<div class="empty">이 기기에는 아직 기록이 없습니다.<br>단계를 끝내면 점수가 올라갑니다.</div>');
     show("rank"); return;
   }
-  paintRank('<div class="empty">학원 전체 순위를 불러오는 중입니다…</div>');
+  paintRank('<div class="empty">학원 순위를 불러오는 중입니다…</div>');
   show("rank");
-  var tab=S.rankTab;
-  shareFetch(tab, function(rows){
-    if(S.rankTab!==tab || S.rankScope!=="all") return;
-    if(rows && rows.length){ paintRank(rankListHTML(rows,isAll)); return; }
+  var tab=S.rankTab, scope=S.rankScope;
+  shareFetch(tab, scope, function(rows){
+    if(S.rankTab!==tab || S.rankScope!==scope) return;
+    if(rows && rows.length){ paintRank(rankListHTML(rows,isAll || scope==="area")); return; }
     var mine=rankRows(tab);
-    paintRank('<div class="empty">학원 전체 순위를 지금 불러올 수 없습니다.<br>이 기기 기록을 보여 드립니다.</div>'+
+    paintRank('<div class="empty">학원 순위를 지금 불러올 수 없습니다.<br>이 기기 기록을 보여 드립니다.</div>'+
       (mine.length ? rankListHTML(mine,isAll) : ''));
   });
 }
