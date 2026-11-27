@@ -1339,7 +1339,7 @@ function shareFetch(lv, scope, cb){
 
 var S={name:"",level:0,list:[],i:0,picked:-1,answered:false,
        correct:0,wrong:[],byType:{n:[0,0],a:[0,0],v:[0,0]},
-       round:1,retryWrong:[],score:0,rankTab:"all",rankScope:"area",rankNote:"",
+       round:1,retryWrong:[],score:0,rankTab:"all",rankNote:"",
        active:0,resume:"quiz",finished:{}};
 
 function $(id){return document.getElementById(id);}
@@ -1921,9 +1921,9 @@ function renderResult(){
   var r=loadR(), hadScore=null, at=-1;
   for(var i=0;i<r.length;i++) if(r[i].name===S.name&&r[i].level===S.level){ at=i; hadScore=r[i].score; }
   if(!isAdmin){
-    var d=new Date(), dt=(d.getMonth()+1)+"/"+d.getDate();
-    if(at<0) r.push({name:S.name,level:S.level,score:S.score,date:dt});
-    else { r[at].score=S.score; r[at].date=dt; }
+    var d=new Date(), dt=(d.getMonth()+1)+"/"+d.getDate(), ts=d.getTime();
+    if(at<0) r.push({name:S.name,level:S.level,score:S.score,date:dt,ts:ts});
+    else { r[at].score=S.score; r[at].date=dt; r[at].ts=ts; }
     saveR(r);
   }
   S.rankNote = hadScore===null ? "" : "순위 점수가 "+hadScore+"점에서 "+S.score+"점으로 고쳐졌습니다.";
@@ -2042,36 +2042,49 @@ function renderRetryResult(){
 function rankRows(t){
   var r=loadR(), rows=[];
   if(t==="all"){
+    /* 종합은 네 단계를 더한 400점 만점입니다 */
     var by={};
     r.forEach(function(x){
-      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date};
-      by[x.name].sum+=(+x.score||0); by[x.name].cnt++; by[x.name].date=x.date;
+      if(!by[x.name]) by[x.name]={name:x.name,sum:0,cnt:0,date:x.date,ts:0};
+      by[x.name].sum+=(+x.score||0); by[x.name].cnt++;
+      if((+x.ts||0) >= by[x.name].ts){ by[x.name].ts=+x.ts||0; by[x.name].date=x.date; }
     });
-    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,extra:by[k].cnt+"단계",date:by[k].date});
+    for(var k in by) rows.push({name:by[k].name,score:by[k].sum,
+                                cnt:by[k].cnt,extra:by[k].cnt+"단계",date:by[k].date,ts:by[k].ts});
   }else{
     var lv=+t;
-    r.forEach(function(x){ if(+x.level===lv) rows.push({name:x.name,score:+x.score||0,extra:"",date:x.date}); });
+    r.forEach(function(x){ if(+x.level===lv) rows.push({name:x.name,score:+x.score||0,extra:"",date:x.date,ts:+x.ts||0}); });
   }
-  rows.sort(function(a,b){ return b.score-a.score; });
+  /* 점수가 같으면 나중에 한 사람이 위로 */
+  rows.sort(function(a,b){ return (b.score-a.score) || ((b.ts||0)-(a.ts||0)); });
+  return rows;
+}
+/* 같은 점수는 공동 순위(공동 1위, 공동 2위 …)로 매깁니다 */
+function withPos(rows){
+  var pos=0, prev=null;
+  rows.forEach(function(x,i){
+    if(prev===null || x.score!==prev){ pos=i+1; prev=x.score; }
+    x.pos=pos;
+  });
   return rows;
 }
 function rankTableHTML(rows, lv, title, note){
+  withPos(rows);
   var at=-1;
   for(var i=0;i<rows.length;i++) if(rows[i].name===S.name){ at=i; break; }
   var top=rows.slice(0,5);
   if(at>=5) top.push(rows[at]);
-  var h='<div class="minirank"><div class="mh"><b>'+esc(title)+'</b><i>'+lv+'단계</i></div>'+
+  var h='<div class="minirank"><div class="mh"><b>'+esc(title)+'</b><i>'+(lv==="all"?"종합":lv+"단계")+'</i></div>'+
     '<div class="tablewrap"><table class="rank"><thead><tr>'+
     '<th class="pos">위</th><th>이름</th><th class="num">점수</th><th class="num">날짜</th>'+
     '</tr></thead><tbody>';
-  top.forEach(function(x,i){
-    var pos = (at>=5 && i===top.length-1) ? at+1 : i+1;
-    h+='<tr class="'+(pos===1?"top ":"")+(x.name===S.name?"me":"")+'">'+
-       '<td class="pos">'+pos+'</td><td class="who">'+esc(x.name)+'</td>'+
+  top.forEach(function(x){
+    h+='<tr class="'+(x.pos===1?"top ":"")+(x.name===S.name?"me":"")+'">'+
+       '<td class="pos">'+x.pos+'</td><td class="who">'+esc(x.name)+'</td>'+
        '<td class="num pt">'+x.score+'</td><td class="num when">'+esc(x.date||"")+'</td></tr>';
   });
   h+='</tbody></table></div>';
-  if(at>=0) h+='<p class="mine"><b>'+esc(S.name)+'</b> 님은 <b>'+(at+1)+'위</b>입니다.</p>';
+  if(at>=0) h+='<p class="mine"><b>'+esc(S.name)+'</b> 님은 <b>'+rows[at].pos+'위</b>입니다.</p>';
   if(note) h+='<p class="mine">'+note+'</p>';
   h+='</div>';
   return h;
@@ -2081,27 +2094,23 @@ function miniRank(lv){
   var mine=rankRows(String(lv));
   box.innerHTML = mine.length ? rankTableHTML(mine, lv, "이 기기 순위", "학원 순위를 불러오는 중입니다…") : "";
   shareFetch(lv, "game", function(rows){
-    if(rows && rows.length) box.innerHTML = rankTableHTML(rows, lv, "이 어법 학원 순위", "");
+    if(rows && rows.length) box.innerHTML = rankTableHTML(rows, lv, "이 어법 "+lv+"단계 순위", "");
     else if(mine.length) box.innerHTML = rankTableHTML(mine, lv, "이 기기 순위", "학원 순위는 지금 불러올 수 없습니다.");
   });
 }
 function rankScopeHTML(){
-  return '<div class="scopebar" id="rankScope">'+
-    '<button class="sbtn'+(S.rankScope==="area"?" on":"")+'" data-s="area">이 영역</button>'+
-    '<button class="sbtn'+(S.rankScope==="game"?" on":"")+'" data-s="game">이 어법</button>'+
-    '<button class="sbtn'+(S.rankScope==="me"?" on":"")+'" data-s="me">이 기기</button>'+
-    '</div>'+
-    '<p class="scopenote">'+(S.rankScope==="area"
-      ? esc(AREA_NAME)+' 영역 어법을 모두 더한 순위입니다.'
-      : S.rankScope==="game" ? '이 어법만의 순위입니다.' : '이 기기에 쌓인 기록입니다.')+'</p>';
+  return '<p class="scopenote">'+(S.rankTab==="all"
+    ? '네 단계 점수를 모두 더한 순위입니다. 400점 만점이고, 안 푼 단계는 0점입니다.'
+    : S.rankTab+'단계 순위입니다. 100점 만점이고, 점수가 같으면 공동 순위입니다.')+'</p>';
 }
 function rankListHTML(rows, isAll){
+  withPos(rows);
   var h='<div class="tablewrap"><table class="rank"><thead><tr>'+
-    '<th class="pos">위</th><th>이름</th>'+(isAll?'<th class="num">합계</th><th class="num">완료</th>':'<th class="num">점수</th>')+
+    '<th class="pos">위</th><th>이름</th><th class="num">점수</th>'+(isAll?'<th class="num">푼 것</th>':'')+
     '<th class="num">날짜</th></tr></thead><tbody>';
-  rows.slice(0,20).forEach(function(x,i){
+  rows.slice(0,20).forEach(function(x){
     var me = x.name===S.name ? " me":"";
-    h+='<tr class="'+(i===0?"top":"")+me+'"><td class="pos">'+(i+1)+'</td>'+
+    h+='<tr class="'+(x.pos===1?"top":"")+me+'"><td class="pos">'+x.pos+'</td>'+
        '<td class="who">'+esc(x.name)+'</td>'+
        '<td class="num pt">'+x.score+'</td>'+
        (isAll?'<td class="num when">'+esc(x.extra||"")+'</td>':'')+
@@ -2109,30 +2118,18 @@ function rankListHTML(rows, isAll){
   });
   return h+'</tbody></table></div>';
 }
-function wireScope(){
-  var bar=$("rankScope"); if(!bar) return;
-  Array.prototype.forEach.call(bar.querySelectorAll(".sbtn"),function(b){
-    b.addEventListener("click",function(){ S.rankScope=this.dataset.s; renderRank(); });
-  });
-}
-function paintRank(html){ $("rankBody").innerHTML = rankScopeHTML()+html; wireScope(); }
+function paintRank(html){ $("rankBody").innerHTML = rankScopeHTML()+html; }
 function renderRank(){
   Array.prototype.forEach.call($("rankTabs").querySelectorAll(".tab"),function(b){
     b.classList.toggle("on", b.dataset.t===S.rankTab);
   });
   var isAll = S.rankTab==="all";
-  if(S.rankScope==="me"){
-    var rows=rankRows(S.rankTab);
-    paintRank(rows.length ? rankListHTML(rows,isAll)
-      : '<div class="empty">이 기기에는 아직 기록이 없습니다.<br>단계를 끝내면 점수가 올라갑니다.</div>');
-    show("rank"); return;
-  }
   paintRank('<div class="empty">학원 순위를 불러오는 중입니다…</div>');
   show("rank");
-  var tab=S.rankTab, scope=S.rankScope;
-  shareFetch(tab, scope, function(rows){
-    if(S.rankTab!==tab || S.rankScope!==scope) return;
-    if(rows && rows.length){ paintRank(rankListHTML(rows,isAll || scope==="area")); return; }
+  var tab=S.rankTab;
+  shareFetch(tab, "game", function(rows){
+    if(S.rankTab!==tab) return;
+    if(rows && rows.length){ paintRank(rankListHTML(rows,isAll)); return; }
     var mine=rankRows(tab);
     paintRank('<div class="empty">학원 순위를 지금 불러올 수 없습니다.<br>이 기기 기록을 보여 드립니다.</div>'+
       (mine.length ? rankListHTML(mine,isAll) : ''));
